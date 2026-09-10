@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html data-theme="night" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>ERJ Conversion Command Centre · Cohort 11</title>
+<meta content="noindex,nofollow" name="robots"/>
+<link rel="preload" href="/fonts/space-grotesk-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:'Space Grotesk';font-style:normal;font-weight:300 800;font-display:swap;src:url('/fonts/space-grotesk-var.woff2') format('woff2-variations'),url('/fonts/space-grotesk-var.woff2') format('woff2')}
+@font-face{font-family:'Inter';font-style:normal;font-weight:300;font-display:swap;src:url('/fonts/inter-300.woff2') format('woff2')}
+@font-face{font-family:'Inter';font-style:normal;font-weight:400;font-display:swap;src:url('/fonts/inter-400.woff2') format('woff2')}
+@font-face{font-family:'Inter';font-style:normal;font-weight:500;font-display:swap;src:url('/fonts/inter-500.woff2') format('woff2')}
+:root{--paper:#000;--card:#0d0d0d;--card2:#111;--ink:#fff;--soft:#A1A1A1;--faint:#737373;--accent:#FF5722;--line:rgba(255,255,255,.11);--line2:rgba(255,255,255,.06);--fd:'Space Grotesk',system-ui,sans-serif;--fb:'Inter',system-ui,sans-serif}
+*,*::before,*::after{box-sizing:border-box}html{background:#000}body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--fb);font-weight:300;line-height:1.65;-webkit-font-smoothing:antialiased;padding-bottom:5rem}.wrap{max-width:920px;margin:auto;padding:0 clamp(1rem,4vw,2rem)}a{color:inherit}.hide{display:none!important}
+header{position:sticky;top:0;z-index:40;background:rgba(0,0,0,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);padding:1.1rem 0 .9rem}.topline{display:flex;gap:1rem;justify-content:space-between;align-items:flex-start}.brand{font-family:var(--fd);font-weight:750;letter-spacing:.12em;text-transform:uppercase;font-size:.78rem}.brand span{color:var(--accent)}.stamp{font-size:.68rem;color:var(--soft);text-transform:uppercase;letter-spacing:.11em;text-align:right}.cd{display:flex;gap:.45rem;align-items:center;flex-wrap:wrap;margin-top:.75rem}.u{min-width:58px;border:1px solid var(--line);background:var(--card2);border-radius:8px;padding:.42rem .55rem;text-align:center}.n{font-family:var(--fd);font-size:1.3rem;font-weight:750;line-height:1}.l{font-size:.54rem;color:var(--faint);letter-spacing:.14em;text-transform:uppercase;margin-top:.25rem}.to{font-size:.76rem;color:var(--soft);line-height:1.45}.to b{color:var(--ink);font-weight:500}.closed{font-family:var(--fd);font-weight:700;color:var(--accent)}
+nav.tabs{display:flex;gap:.38rem;overflow:auto;scrollbar-width:none;margin-top:.8rem}nav.tabs::-webkit-scrollbar{display:none}nav.tabs button{flex:0 0 auto;border:1px solid var(--line);background:transparent;color:var(--soft);border-radius:999px;padding:.48rem .78rem;font:500 .68rem/1 var(--fb);letter-spacing:.08em;text-transform:uppercase;cursor:pointer}nav.tabs button.on{background:var(--accent);border-color:var(--accent);color:#fff}
+section{padding:2.4rem 0}.lab{font-size:.62rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:.55rem;margin:0 0 .9rem}.lab::before{content:'';height:1px;width:22px;background:var(--accent)}h1,h2,h3{font-family:var(--fd);letter-spacing:-.02em}h1{font-size:clamp(2rem,6vw,3.3rem);line-height:1.02;margin:.2rem 0 .8rem}h2{font-size:clamp(1.45rem,4.8vw,2.2rem);line-height:1.1;margin:.1rem 0 .65rem}h3{font-size:1rem;line-height:1.25;margin:0 0 .35rem}.sub{max-width:64ch;color:var(--soft);font-size:.94rem;margin:0 0 1.4rem}.accent{color:var(--accent)}
+.alert{border-left:3px solid var(--accent);background:rgba(255,87,34,.07);padding:1rem 1.05rem;border-radius:0 10px 10px 0;margin:1rem 0 1.35rem;color:var(--soft);font-size:.9rem}.alert b{display:block;color:var(--ink);font-family:var(--fd);font-weight:600;margin-bottom:.2rem}.grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:.75rem}.card{grid-column:span 6;border:1px solid var(--line);background:var(--card);border-radius:12px;padding:1.05rem}.card.full{grid-column:1/-1}.card.third{grid-column:span 4}.card p{margin:.25rem 0 0;color:var(--soft);font-size:.86rem}.big{font-family:var(--fd);font-weight:750;font-size:1.75rem;line-height:1}.kicker{font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);margin-bottom:.5rem}.goal{color:var(--accent);font-family:var(--fd);font-weight:650}.rule{border-top:1px solid var(--line2);margin:1.4rem 0}.mini{font-size:.78rem;color:var(--faint)}
+.plan{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}.plan li{display:grid;grid-template-columns:110px 1fr;gap:.9rem;padding:.9rem 0;border-bottom:1px solid var(--line2)}.plan time{font-family:var(--fd);font-size:.78rem;font-weight:650;color:var(--accent)}.plan b{font-weight:500;color:var(--ink)}.plan div{color:var(--soft);font-size:.88rem}
+.score{grid-column:span 4;border:1px solid var(--line);background:var(--card);border-radius:12px;padding:1rem}.score .v{display:flex;align-items:center;justify-content:space-between;gap:.5rem}.score .num{font-family:var(--fd);font-size:2rem;font-weight:750}.score .target{font-size:.72rem;color:var(--faint)}.counter{display:flex;gap:.35rem}.counter button{width:34px;height:34px;border:1px solid var(--line);border-radius:8px;background:var(--card2);color:#fff;font-size:1rem;cursor:pointer}.counter button:last-child{border-color:var(--accent);color:var(--accent)}.score label{display:block;font-size:.62rem;text-transform:uppercase;letter-spacing:.12em;color:var(--soft);margin-bottom:.45rem}.money{width:100%;margin-top:.5rem;background:#000;color:#fff;border:1px solid var(--line);border-radius:8px;padding:.65rem .75rem;font:500 .95rem var(--fd)}
+.flow{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:.4rem;margin:1rem 0}.step{border:1px solid var(--line);background:var(--card);border-radius:9px;padding:.7rem .55rem;text-align:center;font-size:.68rem;color:var(--soft)}.step b{display:block;color:var(--accent);font-family:var(--fd);font-size:.58rem;letter-spacing:.08em;margin-bottom:.3rem}.dont{display:flex;flex-wrap:wrap;gap:.4rem}.chip{border:1px solid var(--line);border-radius:999px;padding:.35rem .6rem;font-size:.72rem;color:var(--faint)}
+.rep{border:1px solid var(--line);border-radius:12px;background:var(--card);margin-bottom:.72rem;overflow:hidden}.rep summary{cursor:pointer;padding:.95rem 1rem;display:flex;gap:.65rem;align-items:flex-start;list-style:none}.rep summary::-webkit-details-marker{display:none}.rep summary::after{content:'+';margin-left:auto;color:var(--accent);font-family:var(--fd);font-weight:700}.rep[open] summary::after{content:'–'}.q{font-family:var(--fd);font-weight:550;font-size:.94rem;line-height:1.35}.tag{font-size:.54rem;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);border:1px solid var(--line);border-radius:999px;padding:.18rem .45rem;white-space:nowrap}.body{padding:0 1rem 1rem}.body pre{white-space:pre-wrap;margin:.15rem 0 .65rem;background:#111;border:1px solid var(--line2);border-radius:9px;padding:.9rem .95rem;color:var(--soft);font:300 .88rem/1.68 var(--fb)}.note{font-size:.78rem;color:var(--faint);margin:.15rem 0 .6rem}.copy{border:1px solid var(--accent);color:var(--accent);background:transparent;border-radius:999px;padding:.45rem .85rem;font:500 .7rem var(--fb);letter-spacing:.08em;text-transform:uppercase;cursor:pointer}.copy.done{background:var(--accent);color:#fff}
+.offer{grid-column:span 6;border:1px solid var(--line);border-radius:12px;background:var(--card);padding:1rem}.offer .price{font-family:var(--fd);font-weight:750;color:var(--accent);font-size:1.25rem}.offer .fit{font-size:.84rem;color:var(--soft);margin:.45rem 0}.offer .limit{font-size:.75rem;color:var(--faint);border-top:1px solid var(--line2);padding-top:.55rem}.offer a{display:inline-block;color:var(--accent);font-size:.74rem;text-decoration:none;margin-top:.55rem}
+.checks{list-style:none;margin:0;padding:0}.checks li{display:flex;gap:.7rem;align-items:flex-start;border-bottom:1px solid var(--line2);padding:.75rem 0;color:var(--soft);font-size:.88rem}.checks input{appearance:none;width:20px;height:20px;border:1px solid var(--line);border-radius:5px;background:var(--card2);flex:0 0 auto;margin-top:.05rem}.checks input:checked{background:var(--accent);border-color:var(--accent)}.checks input:checked::after{content:'✓';display:flex;height:100%;align-items:center;justify-content:center;color:#fff;font-size:.75rem}.checks b{color:var(--ink);font-weight:500}
+.notes{width:100%;min-height:130px;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:12px;padding:.9rem;font:300 .88rem/1.6 var(--fb);resize:vertical}.save-state{font-size:.72rem;color:var(--faint);margin-top:.4rem}.danger{color:var(--accent)}footer{border-top:1px solid var(--line);padding:1.8rem 0;color:var(--faint);font-size:.75rem}#toast{position:fixed;bottom:1.3rem;left:50%;transform:translate(-50%,150%);background:var(--accent);color:#fff;border-radius:999px;padding:.6rem 1rem;font-size:.78rem;transition:.25s;z-index:80}#toast.up{transform:translate(-50%,0)}
+@media(max-width:720px){.card,.card.third,.score,.offer{grid-column:1/-1}.flow{grid-template-columns:repeat(2,minmax(0,1fr))}.plan li{grid-template-columns:82px 1fr}.stamp{display:none}}@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+</style>
+<link href="/favicon.ico" rel="icon" sizes="48x48 32x32 16x16"/>
+<link href="/favicon-96.png" rel="icon" sizes="96x96" type="image/png"/>
+<link href="/appletouchicon.png" rel="apple-touch-icon"/>
+</head>
+<body>
+<header><div class="wrap">
+  <div class="topline"><div class="brand">ERJ <span>Conversion Command Centre</span></div><div class="stamp">Internal · Cohort 11 · 31 Aug 2026</div></div>
+  <div class="cd" id="cd">
+    <div class="u"><div class="n" id="d">–</div><div class="l">days</div></div>
+    <div class="u"><div class="n" id="h">–</div><div class="l">hrs</div></div>
+    <div class="u"><div class="n" id="m">–</div><div class="l">min</div></div>
+    <div class="to">until the <b>Cohort 11 instalment window</b> closes<br/>Mon 14 Sep · 11:59 PM WAT · full fee remains ₦250,000<br/><span style="opacity:.72">enrolment closes 27 Sep · cohort begins 28 Sep · 8:00 PM WAT</span></div>
+  </div>
+  <nav class="tabs" id="tabs"></nav>
+</div></header>
+<main class="wrap">
+<section data-tab="Today">
+  <div class="lab">31 August · reset day</div>
+  <h1>Get ERJ back to <span class="accent">paid.</span></h1>
+  <p class="sub">Cohort 10 closed with zero paid clients. Today is not another countdown campaign. It is a conversion reset: move real people from attention to diagnosis, prescribe one correct door, and get the first verified payment.</p>
+  <div class="alert"><b>Internal truth — do not publish this as marketing.</b>The zero-client result is the baseline we are fixing. Do not spend today polishing pages, producing another masterclass, or broadcasting the whole product catalogue. The sales floor is WhatsApp; the front door is AUDIT.</div>
+  <div class="grid">
+    <div class="card third"><div class="kicker">Primary outcome</div><div class="big">≥ 1</div><p>verified payment today — any correct paid rung. The first job is to make revenue non-zero.</p></div>
+    <div class="card third"><div class="kicker">Operating rule</div><div class="big">1 door</div><p>per person. Diagnose first; then recommend the smallest correct door and state its limit.</p></div>
+    <div class="card third"><div class="kicker">Channel rule</div><div class="big">5–10</div><p>verified jobs maximum. Jobs are the feed; diagnosis is the next step. No product grid under every job.</p></div>
+  </div>
+  <div class="rule"></div>
+  <div class="lab">Today’s operating targets</div>
+  <div class="grid">
+    <div class="card"><div class="goal">30 warm reconnections</div><p>Clinic registrants/attendees/no-shows, prior AUDITs, past cohort enquiries, and people who replied to recent job/content posts.</p></div>
+    <div class="card"><div class="goal">12 AUDIT starts → 8 completed</div><p>Do not count “AUDIT” messages alone. A completed audit includes target role, 30-day application/interview signal and CV/LinkedIn.</p></div>
+    <div class="card"><div class="goal">4 qualified opportunities</div><p>A paid opportunity exists only after you can name the earliest leak and a paid door is actually justified.</p></div>
+    <div class="card"><div class="goal">1+ payment</div><p>Do not force Foundation Training. ₦5,000, ₦35,000 or ₦50,000 is a win when it is the correct door.</p></div>
+  </div>
+  <div class="rule"></div>
+  <div class="lab">Run the day</div>
+  <ul class="plan">
+    <li><time>06:00–07:00</time><div><b>Build the warm list.</b> Pull every live WhatsApp thread from the Clinic, prior AUDITs, cohort enquiries and recent content replies. No cold lead spreadsheet first.</div></li>
+    <li><time>07:00–09:00</time><div><b>Re-open 30 conversations.</b> Send the warm-reconnection message in Follow-up. The ask is AUDIT completion, not “register for Cohort 11”.</div></li>
+    <li><time>09:00–13:00</time><div><b>Run Audit Round 01.</b> Complete audits in the order they return. Give one useful action before any paid recommendation.</div></li>
+    <li><time>13:00–14:00</time><div><b>Prescribe and close.</b> For qualified people only: name the leak, the smallest correct door, its price, its limitation, then ask for YES / NOT NOW / NOT THIS PRODUCT.</div></li>
+    <li><time>14:00–16:00</time><div><b>Publish useful feed.</b> Post today’s 5–10 verified jobs plus one diagnostic post. CTA: send <strong>AUDIT</strong> if applications are producing silence or mismatches.</div></li>
+    <li><time>16:00–18:30</time><div><b>Run Audit Round 02 + payment recovery.</b> Work only active replies, failed payments and qualified “thinking” leads. Do not chase silent people repeatedly.</div></li>
+    <li><time>19:30–20:30</time><div><b>Cohort 10 debrief → Cohort 11 reset.</b> Record objections, where the funnel broke, payment received, and tomorrow’s warm list. There is no symbolic empty-cohort launch.</div></li>
+  </ul>
+</section>
+<section data-tab="Pipeline">
+  <div class="lab">Only numbers that move revenue</div>
+  <h2>Live conversion scoreboard</h2>
+  <p class="sub">Update these as the day moves. They persist on this browser. No blank lead table, no vanity reach table, no “engagement” column that cannot tell us what to do next.</p>
+  <div class="flow">
+    <div class="step"><b>01</b>Warm conversation</div><div class="step"><b>02</b>AUDIT started</div><div class="step"><b>03</b>AUDIT complete</div><div class="step"><b>04</b>Diagnosis given</div><div class="step"><b>05</b>Qualified</div><div class="step"><b>06</b>Decision</div><div class="step"><b>07</b>Paid</div>
+  </div>
+  <div class="grid" id="scores">
+    <div class="score" data-key="warm"><label>Warm conversations</label><div class="v"><span class="num">0</span><span class="counter"><button data-delta="-1">−</button><button data-delta="1">+</button></span></div><div class="target">Target 30</div></div>
+    <div class="score" data-key="auditStart"><label>AUDIT starts</label><div class="v"><span class="num">0</span><span class="counter"><button data-delta="-1">−</button><button data-delta="1">+</button></span></div><div class="target">Target 12</div></div>
+    <div class="score" data-key="auditComplete"><label>AUDIT completed</label><div class="v"><span class="num">0</span><span class="counter"><button data-delta="-1">−</button><button data-delta="1">+</button></span></div><div class="target">Target 8</div></div>
+    <div class="score" data-key="qualified"><label>Qualified opportunities</label><div class="v"><span class="num">0</span><span class="counter"><button data-delta="-1">−</button><button data-delta="1">+</button></span></div><div class="target">Target 4</div></div>
+    <div class="score" data-key="decisions"><label>Clean decisions</label><div class="v"><span class="num">0</span><span class="counter"><button data-delta="-1">−</button><button data-delta="1">+</button></span></div><div class="target">YES · NOT NOW · NOT THIS PRODUCT</div></div>
+    <div class="score" data-key="paid"><label>Paid</label><div class="v"><span class="num">0</span><span class="counter"><button data-delta="-1">−</button><button data-delta="1">+</button></span></div><div class="target">Target ≥ 1</div></div>
+    <div class="score" style="grid-column:1/-1"><label>Verified revenue today · ₦</label><input id="revenue" class="money" inputmode="numeric" placeholder="0"/><div class="target" style="margin-top:.4rem">Count only cleared/confirmed payments.</div></div>
+  </div>
+  <div class="rule"></div>
+  <div class="lab">Do not use these as success metrics today</div>
+  <div class="dont"><span class="chip">channel views</span><span class="chip">likes</span><span class="chip">website sessions</span><span class="chip">number of job links posted</span><span class="chip">“interested” without audit</span><span class="chip">payment promise without payment</span></div>
+</section>
+<section data-tab="AUDIT">
+  <div class="lab">Diagnosis before prescription</div>
+  <h2>The one sales workflow</h2>
+  <p class="sub">A new lead does not receive a product list. Establish the target, read the last 30 days, inspect representation, name the earliest leak, give one useful action, then open the smallest honest paid door.</p>
+  <div class="grid">
+    <div class="card"><h3>01 · Target role</h3><p>One title/field. If they cannot name one, the conversation is not ready for pricing.</p></div>
+    <div class="card"><h3>02 · 30-day signal</h3><p>How many applications? How many interviews? This separates silence from mismatch from conversion.</p></div>
+    <div class="card"><h3>03 · Representation</h3><p>Read the CV/LinkedIn against the target. Do not assume “CV problem” just because they have a CV.</p></div>
+    <div class="card"><h3>04 · Earliest leak</h3><p><b>Supply</b> → no legitimate roles. <b>Representation</b> → applications, no interviews. <b>Aim</b> → rejections/mismatch. <b>Conversion</b> → interviews, no offer.</p></div>
+    <div class="card"><h3>05 · First useful action</h3><p>Give one fix they can act on immediately. This proves the diagnosis before the sale.</p></div>
+    <div class="card"><h3>06 · Smallest correct door</h3><p>Only now recommend a paid rung, state its limit, and ask for a clean decision.</p></div>
+  </div>
+  <div class="rule"></div>
+  <details class="rep" open><summary><span class="q">AUDIT invite · use for warm reconnection</span><span class="tag">Copy</span></summary><div class="body"><pre id="audit-invite">Hi [Name] — I’m closing the loop from [the Clinic / our last chat]. I do not want to send you another product list.
+
+If you are still trying to land a remote [target role], send me these four things:
+1. the exact role you want,
+2. how many applications you sent in the last 30 days,
+3. how many interviews came from them,
+4. your current CV or LinkedIn link.
+
+I’ll tell you which part is failing first — Supply, Representation, Aim or Conversion — and the smallest next step. If free is enough, I’ll say so.</pre><button class="copy" data-t="audit-invite">Copy</button></div></details>
+  <details class="rep"><summary><span class="q">Diagnosis message · before any offer</span><span class="tag">Copy</span></summary><div class="body"><pre id="audit-dx">I’ve checked it. Your earliest leak is [SUPPLY / REPRESENTATION / AIM / CONVERSION].
+
+Why: [one concrete sentence from their last 30 days or CV].
+
+Do this first: [one useful action they can take now].
+
+If you want help beyond that, I’ll recommend one ERJ door only — the smallest one that actually fixes this. I won’t push you into a larger programme you do not need.</pre><button class="copy" data-t="audit-dx">Copy</button></div></details>
+  <details class="rep"><summary><span class="q">Paid prescription · qualified lead only</span><span class="tag">Copy</span></summary><div class="body"><pre id="audit-rx">For what I can see, the correct paid door is [PRODUCT].
+
+It fixes: [specific diagnosed problem].
+Price: [₦].
+Its limit: [what it does NOT include].
+
+If you want to move on it today, say YES and I’ll send the exact payment route. If the timing is wrong, say NOT NOW. If this is not the product you want, say NOT THIS PRODUCT. Any of the three is fine — I just do not want to leave you in an endless “thinking about it” loop.</pre><button class="copy" data-t="audit-rx">Copy</button></div></details>
+</section>
+<section data-tab="Offers">
+  <div class="lab">Current ladder · Cohort 11</div>
+  <h2>Sell the door, not the ecosystem</h2>
+  <p class="sub">Use these internally after diagnosis. The cohort is only one rung. The immediate business objective is not “sell ₦250,000”; it is “get the right buyer through the right paid door”.</p>
+  <div class="grid">
+    <div class="offer"><h3>CV Engine Pass</h3><div class="price">₦5,000</div><div class="fit">Representation leak concentrated in the CV; needs the instrument, not training.</div><div class="limit">30 days from first use · tool only · no teaching.</div><a href="cvbuilder.html">cvbuilder.html →</a></div>
+    <div class="offer"><h3>Self-Learn Pack</h3><div class="price">₦35,000</div><div class="fit">Needs Stages 1–4 but cannot sit a live cohort and will work independently.</div><div class="limit">Self-paced · no certificate · no placement/search execution.</div><a href="selflearn/">selflearn/ →</a></div>
+    <div class="offer"><h3>Job Hunt DFY · 7 days</h3><div class="price">₦50,000</div><div class="fit">Already employable and represented; time/sourcing is the gap.</div><div class="limit">One field · source, tailor and submit · no offer guarantee.</div><a href="jobapplication/">jobapplication/ →</a></div>
+    <div class="offer"><h3>Single Stage</h3><div class="price">from ₦70,000</div><div class="fit">One specific build leak needs depth, but the whole Foundation programme would be unnecessary.</div><div class="limit">Stage 1 ₦70k · Stage 2 ₦130k · Stage 3 ₦70k · Stage 4 ₦100k.</div><a href="register.html">register.html →</a></div>
+    <div class="offer"><h3>Foundation Training · Cohort 11</h3><div class="price">₦250,000</div><div class="fit">Needs the full live Stages 1–4 build, marking and support.</div><div class="limit">Until 14 Sep: start with any amount and pay down. After that: full payment only. Enrolment closes 27 Sep · starts 28 Sep, 8PM WAT.</div><a href="earlybird.html">earlybird.html →</a></div>
+    <div class="offer"><h3>Stage 5 · Application Engine</h3><div class="price">₦300,000</div><div class="fit">Assets are ready; wants ERJ to run sourcing, tailoring and submissions for a month.</div><div class="limit">Execution after hireability/target fit · does not guarantee employer timing.</div><a href="jobapplication/">jobapplication/ →</a></div>
+    <div class="offer"><h3>Dream Job Offer · Stages 1–5</h3><div class="price">₦500,000</div><div class="fit">Needs both the complete build and the application engine; wants one decision instead of two.</div><div class="limit">Persistence and execution, never a job-by-date guarantee.</div><a href="jobapplication/">jobapplication/ →</a></div>
+    <div class="offer"><h3>Inner Circle</h3><div class="price">₦250,000 once</div><div class="fit">Stable, skilled senior professional who needs private application-first advisory, not a syllabus.</div><div class="limit">Private 1:1 route · admission fit matters.</div><a href="innercircle/">innercircle/ →</a></div>
+  </div>
+  <div class="alert"><b>Cohort 11 payment language</b>The fee remains ₦250,000. The 14 September deadline closes the right to start with any amount and pay it down; it is not a discount. Do not recreate the expired Cohort 10 ₦50,000 reservation script.</div>
+</section>
+<section data-tab="Follow-up">
+  <div class="lab">Warm leads before new traffic</div>
+  <h2>Re-open the conversations we already paid for</h2>
+  <p class="sub">Work the warmest lanes first. One useful message, one diagnostic ask, one follow-up when there is a real next step. Silence is not a reason to send five reminders.</p>
+  <details class="rep" open><summary><span class="q">Clinic attendee · 29 Aug</span><span class="tag">Copy</span></summary><div class="body"><pre id="f-attendee">Hi [Name] — thanks again for joining the Remote Job Application Clinic.
+
+I want to make the Clinic useful after Zoom, not leave it as another event you attended. If you send me the one application you are most serious about plus your current CV, I’ll run the short AUDIT on it and tell you the earliest leak.
+
+No product recommendation until I can see what is actually wrong.</pre><button class="copy" data-t="f-attendee">Copy</button></div></details>
+  <details class="rep"><summary><span class="q">Clinic registrant / interested person who did not attend</span><span class="tag">Copy</span></summary><div class="body"><pre id="f-noshow">Hi [Name] — you had shown interest in the Remote Job Application Clinic but did not get into the room.
+
+You do not need to wait for another event to get the useful part. Send me one target remote role, your CV/LinkedIn, and your last 30-day application/interview numbers. I’ll tell you where the search is breaking first and what to fix next.</pre><button class="copy" data-t="f-noshow">Copy</button></div></details>
+  <details class="rep"><summary><span class="q">Previous AUDIT started but incomplete</span><span class="tag">Copy</span></summary><div class="body"><pre id="f-incomplete">Hi [Name] — we started your AUDIT but did not finish the evidence, so I never gave you a proper verdict.
+
+If you still want me to close it, send the missing [CV / LinkedIn / target role / 30-day application and interview numbers]. Once I have that, I’ll give you the leak and one next action. No need to restart the whole conversation.</pre><button class="copy" data-t="f-incomplete">Copy</button></div></details>
+  <details class="rep"><summary><span class="q">Diagnosed, qualified, but no decision</span><span class="tag">Copy</span></summary><div class="body"><pre id="f-decision">Hi [Name] — I’m closing the loop on the recommendation I gave you for [PRODUCT].
+
+The reason I prescribed it was [one sentence tied to their leak]. The price is [₦] and the limit is [limit].
+
+I only need a clean answer so I know how to handle your file: YES, NOT NOW, or NOT THIS PRODUCT.</pre><button class="copy" data-t="f-decision">Copy</button></div></details>
+  <details class="rep"><summary><span class="q">Qualified for Foundation · Cohort 11 instalment window</span><span class="tag">Copy</span></summary><div class="body"><pre id="f-c11">Your audit shows you need the full build, not just one tool or one application service.
+
+Cohort 11 begins Monday 28 September at 8:00 PM WAT. Foundation Training is ₦250,000. Until Monday 14 September, you can start with any amount and pay the balance down; after that, it becomes full payment only until enrolment closes Sunday 27 September at 8:00 PM.
+
+This is not a discount — only a payment-timing window. If you want to use it, say YES and I’ll send the exact page.</pre><button class="copy" data-t="f-c11">Copy</button></div></details>
+  <details class="rep"><summary><span class="q">Payment link sent · no payment yet</span><span class="tag">Copy</span></summary><div class="body"><pre id="f-pay">Hi [Name] — checking one thing only: did the payment page work for you?
+
+If the issue is technical, send me what you saw and I’ll help you complete it. If you have simply decided not to proceed today, say NOT NOW and I’ll close the loop — no pressure.</pre><button class="copy" data-t="f-pay">Copy</button></div></details>
+</section>
+<section data-tab="Content">
+  <div class="lab">Today’s content job</div>
+  <h2>Feed → private diagnosis</h2>
+  <p class="sub">Today’s content is not a new campaign. It exists to create AUDIT conversations from the audience already watching ERJ.</p>
+  <div class="grid">
+    <div class="card"><h3>WhatsApp job channel</h3><p>Publish 5–10 handpicked verified roles. After the batch, one CTA only: if their applications keep producing silence or mismatches, message AUDIT.</p></div>
+    <div class="card"><h3>One diagnostic post</h3><p>Use the Four Points. Do not start with Cohort 11 price or the deadline. Start with the pain signal and route to AUDIT.</p></div>
+    <div class="card"><h3>One proof post</h3><p>Use one documented case already on the site. Keep outcome claims traceable and state that individual results vary.</p></div>
+    <div class="card"><h3>One direct close only</h3><p>Cohort 11 installment-window copy goes to qualified Foundation leads, not as the headline under every piece of content.</p></div>
+  </div>
+  <div class="rule"></div>
+  <details class="rep" open><summary><span class="q">WhatsApp channel · after today’s job batch</span><span class="tag">Copy</span></summary><div class="body"><pre id="c-channel">You may not need more job links.
+
+If you have been applying and getting silence, repeated “not eligible” replies, or interviews that go nowhere, one part of the search is failing first.
+
+Supply. Representation. Aim. Conversion.
+
+Send AUDIT privately with:
+• the role you want,
+• applications in the last 30 days,
+• interviews in the last 30 days,
+• your CV or LinkedIn.
+
+We’ll tell you the earliest leak and one useful next action before recommending anything paid.</pre><button class="copy" data-t="c-channel">Copy</button></div></details>
+  <details class="rep"><summary><span class="q">LinkedIn / Facebook diagnostic post</span><span class="tag">Copy</span></summary><div class="body"><pre id="c-social">If 30 applications produced 0 interviews, “apply more” is not yet a strategy.
+
+A remote job search usually breaks at one of four points:
+
+01 Supply — you are not seeing enough legitimate roles you can actually take.
+02 Representation — the employer cannot read your value from the CV/LinkedIn.
+03 Aim — you are applying where your location, level or evidence does not fit.
+04 Conversion — interviews are happening, but offers are not.
+
+The mistake is fixing all four at once.
+
+Find the earliest leak first.
+
+If you want us to look at yours, send AUDIT on WhatsApp with your target role, last 30-day application/interview numbers, and CV/LinkedIn. If the free fix is enough, we will tell you.</pre><button class="copy" data-t="c-social">Copy</button></div></details>
+  <details class="rep"><summary><span class="q">Qualified Foundation lead · deadline copy</span><span class="tag">Copy</span></summary><div class="body"><pre id="c-deadline">Cohort 11 is open.
+
+Foundation Training remains ₦250,000. Until 14 September, a qualified person who needs the full live build can start with any amount and pay the fee down. After 14 September, the fee is full payment only until enrolment closes 27 September at 8:00 PM WAT.
+
+Cohort 11 begins 28 September at 8:00 PM WAT.
+
+Use this only after we have confirmed Foundation Training is actually your correct door.</pre><button class="copy" data-t="c-deadline">Copy</button></div></details>
+</section>
+<section data-tab="Closeout">
+  <div class="lab">Before you finish today</div>
+  <h2>What we learn from the first day</h2>
+  <p class="sub">The command centre is useful only if it tells us exactly where tomorrow should change. Complete this at the end of the day; the notes save locally.</p>
+  <ul class="checks" id="eodChecks">
+    <li><input type="checkbox" data-check="1"><span><b>All active warm leads have a next status.</b> No thread is left at “interested”.</span></li>
+    <li><input type="checkbox" data-check="2"><span><b>Every qualified lead has one prescribed door.</b> No one got the full product catalogue.</span></li>
+    <li><input type="checkbox" data-check="3"><span><b>Every payment promise has a result.</b> Paid, failed technically, or explicitly not now.</span></li>
+    <li><input type="checkbox" data-check="4"><span><b>Top three objections are recorded.</b> These become tomorrow’s content and sales fixes.</span></li>
+    <li><input type="checkbox" data-check="5"><span><b>Tomorrow’s warm list exists.</b> Start with people who moved today, not a new mass broadcast.</span></li>
+  </ul>
+  <div class="rule"></div>
+  <label class="kicker" for="eodNotes">End-of-day diagnosis</label>
+  <textarea class="notes" id="eodNotes" placeholder="Record: what broke most often; what people objected to; which door was prescribed most; payments/failures; what changes tomorrow."></textarea>
+  <div class="save-state">Saved automatically on this browser.</div>
+  <div class="alert"><b>The question at 8:30 PM</b>Did we create enough completed diagnoses and clean decisions to deserve a sale? If not, tomorrow’s fix is the stage with the biggest drop — not “post more”.</div>
+</section>
+<footer><div>ERJ Conversion Command Centre · internal operating surface · updated 31 August 2026.</div><div style="margin-top:.35rem">Cohort 11: instalment window closes 14 Sep · enrolment closes 27 Sep, 8PM WAT · begins 28 Sep, 8PM WAT. Prices and routing follow the ERJ Official Reference Document v2.7.</div></footer>
+</main>
+<div id="toast">Copied</div>
+<script>
+const secs=[...document.querySelectorAll('section[data-tab]')],tabs=document.getElementById('tabs');
+secs.forEach((s,i)=>{const b=document.createElement('button');b.textContent=s.dataset.tab;b.onclick=()=>{secs.forEach(x=>x.classList.add('hide'));s.classList.remove('hide');[...tabs.children].forEach(x=>x.classList.remove('on'));b.classList.add('on');window.scrollTo({top:0,behavior:'smooth'})};tabs.appendChild(b);if(i>0)s.classList.add('hide');else b.classList.add('on')});
+const toast=document.getElementById('toast');let tt;function flash(msg){toast.textContent=msg;toast.classList.add('up');clearTimeout(tt);tt=setTimeout(()=>toast.classList.remove('up'),1450)}
+document.querySelectorAll('.copy').forEach(b=>b.onclick=async()=>{const txt=document.getElementById(b.dataset.t).innerText;try{await navigator.clipboard.writeText(txt)}catch(e){const ta=document.createElement('textarea');ta.value=txt;document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove()}b.classList.add('done');b.textContent='Copied';flash('Copied — personalise before sending');setTimeout(()=>{b.classList.remove('done');b.textContent='Copy'},1800)});
+const KEY='erj-command-centre-2026-08-31';let state={};try{state=JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(state))}catch(e){}}
+document.querySelectorAll('.score[data-key]').forEach(card=>{const key=card.dataset.key,num=card.querySelector('.num');let v=Number(state[key]||0);num.textContent=v;card.querySelectorAll('button[data-delta]').forEach(btn=>btn.onclick=()=>{v=Math.max(0,v+Number(btn.dataset.delta));state[key]=v;num.textContent=v;save()})});
+const revenue=document.getElementById('revenue');revenue.value=state.revenue||'';revenue.addEventListener('input',()=>{state.revenue=revenue.value;save()});
+const notes=document.getElementById('eodNotes');notes.value=state.notes||'';notes.addEventListener('input',()=>{state.notes=notes.value;save()});
+document.querySelectorAll('[data-check]').forEach(c=>{c.checked=!!state['check'+c.dataset.check];c.addEventListener('change',()=>{state['check'+c.dataset.check]=c.checked;save()})});
+const DEAD=new Date('2026-09-14T23:59:00+01:00').getTime();function tick(){const gap=DEAD-Date.now(),cd=document.getElementById('cd');if(gap<=0){cd.innerHTML='<div class="closed">The Cohort 11 instalment window is closed.</div><div class="to">Foundation remains open at full payment until Sun 27 Sep · 8:00 PM WAT.</div>';return}const d=Math.floor(gap/864e5),h=Math.floor(gap%864e5/36e5),m=Math.floor(gap%36e5/6e4);document.getElementById('d').textContent=String(d).padStart(2,'0');document.getElementById('h').textContent=String(h).padStart(2,'0');document.getElementById('m').textContent=String(m).padStart(2,'0')};tick();setInterval(tick,30000);
+</script>
+</body>
+</html>

@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+
+<html data-theme="night" lang="en">
+<head><meta charset="utf-8"/><script>try{document.documentElement.classList.add('js')}catch(e){}</script><style id="erjCanvasGuard">html{background:#000000}html[data-theme="day"]{background:#FAFAF8}</style>
+
+<!-- Meta Pixel + Google Tag Manager -->
+<script async="" src="erj-track.js?v=20260910a"></script>
+<!-- This picture is the Largest Contentful Paint on mobile — announce it in the head
+     so the download starts with the HTML instead of after the parser reaches it. -->
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Your Starting Line — Find the One Door That Fits You | Everything Remote Job</title>
+<meta content="Six situations, one door each, and every route ERJ runs from ₦0 to ₦500,000 on a single screen — with who each one is not for. Choose without comparing nine products." name="description"/>
+<meta content="https://everythingremotejob.com/preview-starting-line.jpg" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<link href="https://everythingremotejob.com/starthere.html" rel="canonical"/>
+<meta content="index,follow,max-image-preview:large,max-snippet:-1" name="robots"/>
+<link href="manifest.json" rel="manifest"/>
+<meta content="#000000" name="theme-color"/>
+<link rel="preload" href="/fonts/space-grotesk-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin>
+<style id="erjFonts">
+/* Self-hosted, subset to the characters this site renders. Same family names
+   as the Google versions, so nothing downstream changes. swap matches what
+   Google's stylesheet set: text paints in the fallback, then upgrades. */
+@font-face{font-family:'Space Grotesk';font-style:normal;font-weight:300 800;font-display:swap;
+  src:url('/fonts/space-grotesk-var.woff2') format('woff2-variations'),
+      url('/fonts/space-grotesk-var.woff2') format('woff2');}
+@font-face{font-family:'Inter';font-style:normal;font-weight:300;font-display:swap;
+  src:url('/fonts/inter-300.woff2') format('woff2');}
+@font-face{font-family:'Inter';font-style:normal;font-weight:400;font-display:swap;
+  src:url('/fonts/inter-400.woff2') format('woff2');}
+@font-face{font-family:'Inter';font-style:normal;font-weight:500;font-display:swap;
+  src:url('/fonts/inter-500.woff2') format('woff2');}
+</style>
+<!-- BEGIN product.css (inlined by inline-css.py — edit product.css, not this) -->
+<style>/* ═══════════════════════════════════════════════════════════════
+   EVERYTHING REMOTE JOB · RocketAir Design System (shared marketing)
+   Pure-black canvas (night, default) · clean light (day) · system-aware
+   Space Grotesk (display) + Inter (body) · one cosmic-orange accent
+   Minimalist, lively, high-contrast. Class names preserved for reuse.
+   ═══════════════════════════════════════════════════════════════ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  /* NIGHT — the RocketAir default. Pure black. */
+  --paper:#000000; --paper-2:#0b0b0b; --bg2:#111111; --card:#0d0d0d;
+  --ink:#FFFFFF; --ink-soft:#A1A1A1; --ink-faint:#858585;
+  --accent:#FF5722;
+  /* Solid CTA buttons keep the full brand orange. White text on #FF5722 is
+     3.16:1 — fine for LARGE text (WCAG needs only 3:1 there), which is why
+     .btn-yes / .btn-pay are set at 18.7px/700 below. Small orange chips use
+     near-black text instead, see the end of this file. */
+  --accent-btn:#FF5722; --accent-h:#ff6f43; --accent2:#FF5722;
+  --line:rgba(255,255,255,0.10); --line-soft:rgba(255,255,255,0.055);
+  --card-line:rgba(255,255,255,0.10); --wa:#FF5722; --wa-ink:#ffffff;
+  --grid-dot:transparent;
+  --font-display:'Space Grotesk',system-ui,sans-serif;
+  --font-body:'Inter',system-ui,sans-serif;
+  --ease:cubic-bezier(0.22,1,0.36,1);
+  --transition:background 0.45s ease,color 0.35s ease,border-color 0.35s ease;
+}
+html[data-theme="day"]{
+  /* DAY — clean light counterpart. Keeps RocketAir character. */
+  --paper:#FAFAF8; --paper-2:#F2F1ED; --bg2:#FFFFFF; --card:#FFFFFF;
+  --ink:#0A0A0A; --ink-soft:#52514C; --ink-faint:#6E6C65;
+  /* Day theme keeps the darker #AD350A for small accent TEXT on paper, but the
+     BUTTON fill is the same bright #FF5722 as night. One orange on every
+     button, on every page, in both themes — a button that shifts hue with the
+     theme reads as two different brands. */
+  --accent:#AD350A;--accent-btn:#FF5722; --accent-h:#ff6f43; --accent2:#FF5722;
+  --line:rgba(10,10,10,0.12); --line-soft:rgba(10,10,10,0.06);
+  --card-line:rgba(10,10,10,0.10); --wa:#E8470F; --wa-ink:#ffffff;
+  --grid-dot:rgba(10,10,10,0.05);
+}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+
+/* Shared accessibility primitive — was previously only defined in
+   cvscan/scan.css, so any other page using it showed a stray link. */
+.skip-link{position:absolute;left:-9999px;top:0;z-index:100;background:var(--accent);color:#fff;
+  padding:0.7rem 1.1rem;font-size:0.85rem;font-weight:600;text-decoration:none;border-radius:0 0 2px 0;}
+.skip-link:focus{left:0;}
+body{
+  background:var(--paper); color:var(--ink); font-family:var(--font-body); font-weight:300;
+  line-height:1.7; min-height:100vh; overflow-x:hidden; transition:var(--transition);
+  -webkit-font-smoothing:antialiased; position:relative;
+}
+body::before{
+  content:''; position:fixed; inset:0; z-index:0; pointer-events:none;
+  background-image:radial-gradient(var(--grid-dot) 0.5px,transparent 0.5px);
+  background-size:24px 24px; opacity:1;
+}
+::selection{background:var(--accent);color:#fff;}
+img{max-width:100%;display:block;}
+a{color:inherit;}
+
+/* layout */
+.wrap{position:relative;z-index:1;width:100%;max-width:1120px;margin:0 auto;padding-left:clamp(1.3rem,5vw,2.4rem);padding-right:clamp(1.3rem,5vw,2.4rem);}
+section{position:relative;z-index:1;padding-top:clamp(4.5rem,9vw,7.5rem);padding-bottom:clamp(4.5rem,9vw,7.5rem);}
+.section-line{border-top:1px solid var(--line);}
+
+/* labels + headings */
+.section-label{font-size:0.66rem;font-weight:500;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);
+  display:inline-flex;align-items:center;gap:0.7rem;margin-bottom:1.5rem;}
+.section-label .mark{width:24px;height:1px;background:var(--accent);display:inline-block;}
+h1{font-family:var(--font-display);font-size:clamp(2.6rem,7vw,5rem);font-weight:800;line-height:1.0;
+  letter-spacing:-0.03em;color:var(--ink);margin-bottom:1.4rem;}
+h1 em{font-style:normal;color:var(--accent);}
+h2{font-family:var(--font-display);font-size:clamp(1.9rem,4.5vw,3.1rem);font-weight:800;letter-spacing:-0.02em;
+  line-height:1.08;color:var(--ink);margin-bottom:0.8rem;}
+h2 span,h2 em{font-style:normal;color:var(--accent);}
+h3{font-family:var(--font-display);font-weight:700;letter-spacing:-0.01em;color:var(--ink);}
+.section-sub{font-size:clamp(1rem,1.5vw,1.14rem);color:var(--ink-soft);font-weight:300;line-height:1.7;max-width:62ch;margin-bottom:2.6rem;}
+.lede{font-size:clamp(1.05rem,1.8vw,1.35rem);color:var(--ink-soft);font-weight:300;line-height:1.6;max-width:48ch;}
+
+/* hero */
+.hero{padding-top:clamp(2.6rem,7vw,5rem);}
+.hero .lede{margin-bottom:2.4rem;}
+.hero-cta{display:flex;flex-wrap:wrap;gap:1rem;margin-bottom:3rem;}
+.stat-row{display:flex;flex-wrap:wrap;gap:clamp(1.8rem,5vw,3.5rem);margin-top:3rem;padding-top:3rem;border-top:1px solid var(--line);}
+.stat-num{font-family:var(--font-display);font-size:clamp(1.8rem,4vw,2.6rem);font-weight:800;color:var(--ink);line-height:1;letter-spacing:-0.02em;}
+.stat-lbl{font-size:0.76rem;color:var(--ink-soft);margin-top:0.45rem;letter-spacing:0.02em;}
+
+/* buttons — pill, RocketAir */
+.btn-yes{display:inline-flex;align-items:center;gap:0.6rem;background:var(--accent-btn,#FF5722);color:#fff;text-decoration:none;
+  padding:0.8rem 1.6rem;border-radius:100px;font-family:var(--font-body);font-size:1.18rem;font-weight:700;letter-spacing:0.01em;
+  border:1px solid var(--accent-btn,#FF5722);transition:all 0.28s var(--ease);}
+.btn-yes .arrow{transition:transform 0.28s var(--ease);}
+.btn-yes:hover{background:var(--accent-h);border-color:var(--accent-h);color:#fff;transform:translateY(-2px);}
+.btn-yes:hover .arrow{transform:translateX(4px);}
+.btn-more{display:inline-flex;align-items:center;gap:0.5rem;background:transparent;color:var(--ink);text-decoration:none;
+  padding:0.8rem 1.5rem;border-radius:100px;font-family:var(--font-body);font-size:0.98rem;font-weight:500;letter-spacing:0.01em;
+  border:1px solid var(--line);cursor:pointer;transition:all 0.28s var(--ease);}
+.btn-more:hover{border-color:var(--ink);color:var(--ink);transform:translateY(-2px);}
+.btn-block{width:100%;justify-content:center;white-space:nowrap;}
+/* The old rule here shrank full-width buttons to as little as 0.78rem on a
+   phone. White on #FF5722 measures 3.16:1, which clears WCAG only as LARGE
+   text — 18.66px bold. At 0.78rem those buttons were white-on-orange at
+   12.5px, needing 4.5:1 and delivering 3.16:1. Nineteen of them across the
+   site, all invisible to anyone not measuring.
+   The type now holds 1.18rem and the fit is bought from the padding. */
+@media(max-width:600px){.btn-block{padding-left:1rem;padding-right:1rem;gap:0.4rem;}}
+@media(max-width:380px){.btn-block{padding-left:0.7rem;padding-right:0.7rem;}}
+
+/* deliverables / asset grid */
+.deliverables-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(205px,1fr));gap:0.9rem;}
+.del-item{background:var(--bg2);border:1px solid var(--line);border-radius:12px;padding:1rem 1.3rem;display:flex;
+  align-items:center;gap:11px;font-size:0.88rem;color:var(--ink);font-weight:400;transition:border-color .25s var(--ease),background .25s var(--ease),transform .25s var(--ease);}
+.del-item:hover{border-color:rgba(255,87,34,0.45);transform:translateY(-2px);}
+.del-item .del-icon{font-size:1.3rem;flex-shrink:0;}
+
+/* stage rows — RocketAir listing feel */
+.stage{display:grid;grid-template-columns:auto 1fr;gap:1.6rem;padding:2rem 0;border-bottom:1px solid var(--line);align-items:start;
+  transition:background .3s var(--ease),padding .3s var(--ease);border-radius:8px;}
+.stage:last-child{border-bottom:none;}
+.stage:hover{background:var(--bg2);padding-left:1.1rem;padding-right:1.1rem;}
+.stage-num{font-family:var(--font-display);font-size:clamp(2rem,4vw,2.6rem);font-weight:800;color:var(--accent);line-height:1;min-width:2.2ch;letter-spacing:-0.02em;}
+.stage h3{font-size:clamp(1.3rem,2.4vw,1.7rem);margin-bottom:0.25rem;}
+.stage .stage-tag{font-size:0.64rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:0.9rem;}
+.stage-list{list-style:none;display:flex;flex-direction:column;gap:0.55rem;margin-top:0.7rem;}
+.stage-list li{display:flex;gap:0.6rem;font-size:0.94rem;color:var(--ink-soft);line-height:1.55;}
+.stage-list li::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--accent);flex-shrink:0;margin-top:0.5rem;}
+.stage-deliverable{margin-top:1.1rem;padding:0.9rem 1.2rem;background:linear-gradient(160deg,rgba(255,87,34,0.10),transparent 70%);
+  border:1px solid rgba(255,87,34,0.22);border-radius:10px;font-size:0.86rem;color:var(--ink);}
+.stage-deliverable strong{color:var(--accent);display:block;font-size:0.64rem;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:4px;}
+
+/* cards */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.1rem;}
+.card{background:var(--card);border:1px solid var(--card-line);border-radius:16px;padding:2rem 1.8rem;
+  transition:border-color .3s var(--ease),transform .3s var(--ease);display:flex;flex-direction:column;}
+.card:hover{border-color:rgba(255,87,34,0.4);transform:translateY(-4px);}
+.card-k{font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:0.8rem;}
+.card h3{font-size:1.25rem;margin-bottom:0.55rem;}
+.card p{font-size:0.92rem;color:var(--ink-soft);font-weight:300;line-height:1.65;}
+
+/* feature list */
+.flist{list-style:none;display:flex;flex-direction:column;gap:0.6rem;}
+.flist li{display:flex;gap:0.6rem;font-size:0.95rem;color:var(--ink-soft);line-height:1.55;}
+.flist li::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--accent);flex-shrink:0;margin-top:0.55rem;}
+
+/* pricing */
+.price-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.3rem;align-items:stretch;}
+.price-card{background:var(--card);border:1px solid var(--card-line);border-radius:18px;padding:2.2rem 2rem;display:flex;flex-direction:column;
+  transition:border-color .3s var(--ease),transform .3s var(--ease);}
+.price-card:hover{transform:translateY(-3px);}
+.price-card.feature{border-color:var(--accent);position:relative;}
+.price-card.feature::before{content:'Lowest Total';position:absolute;top:-11px;left:1.8rem;background:var(--accent);color:#fff;
+  font-size:0.58rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;padding:4px 13px;border-radius:100px;}
+.price-tag{display:inline-block;font-size:0.56rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);
+  border:1px solid var(--accent);border-radius:100px;padding:3px 12px;margin-bottom:1.1rem;align-self:flex-start;white-space:nowrap;}
+.price-was{font-size:0.95rem;color:var(--ink-faint);text-decoration:line-through;text-decoration-color:var(--accent);}
+.price-now{font-family:var(--font-display);font-size:clamp(2.2rem,5vw,3rem);font-weight:800;letter-spacing:-0.03em;color:var(--ink);line-height:1;margin:0.4rem 0 0.5rem;}
+.price-now small{display:block;font-family:var(--font-body);font-size:0.85rem;font-weight:300;color:var(--ink-soft);letter-spacing:0;line-height:1.5;margin-top:0.6rem;}
+.price-split{font-size:0.85rem;color:var(--accent);margin-bottom:0.5rem;}
+.price-card .btn-yes,.price-card .btn-more{margin-top:auto;}
+
+/* ROI */
+.roi{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;}
+.roi-col{border:1px solid var(--line);border-radius:18px;padding:2rem 1.8rem;background:var(--card);}
+.roi-col.win{border-color:rgba(255,87,34,0.45);background:linear-gradient(160deg,rgba(255,87,34,0.08),transparent 62%);}
+.roi-k{font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:0.8rem;}
+.roi-col.win .roi-k{color:var(--accent);}
+.roi-big{font-family:var(--font-display);font-size:clamp(1.6rem,3.2vw,2.2rem);font-weight:800;letter-spacing:-0.02em;line-height:1.05;margin-bottom:0.9rem;color:var(--ink);}
+.roi-big small{font-family:var(--font-body);font-size:0.85rem;font-weight:300;color:var(--ink-soft);letter-spacing:0;display:block;margin-top:0.25rem;}
+.roi-note{font-size:0.9rem;color:var(--ink-soft);font-weight:300;line-height:1.6;}
+
+/* application form */
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem;align-items:start;}
+.field{margin-bottom:1rem;}
+.field label{display:block;font-size:0.62rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:0.5rem;}
+.field input,.field textarea{width:100%;background:var(--bg2);border:1px solid var(--line);border-radius:10px;color:var(--ink);
+  font-family:var(--font-body);font-size:0.95rem;padding:0.85rem 1rem;outline:none;transition:border-color .2s;}
+.field input:focus,.field textarea:focus{border-color:var(--accent);}
+.field textarea{resize:vertical;min-height:92px;}
+.acct{border:1px solid var(--line);border-radius:12px;padding:1.1rem 1.3rem;background:var(--bg2);margin:1rem 0;}
+.acct div{display:flex;justify-content:space-between;gap:1rem;font-size:0.86rem;padding:0.3rem 0;}
+.acct div span:first-child{color:var(--ink-soft);}
+.acct div span:last-child{color:var(--ink);font-weight:500;}
+.pay-path{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;padding:0.65rem 0;border-bottom:1px solid var(--line-soft);}
+.pay-path:last-child{border-bottom:none;}
+.pay-path .pp-l{font-size:0.86rem;color:var(--ink-soft);}
+.pay-path .pp-v{font-family:var(--font-display);font-weight:700;color:var(--ink);}
+
+.note{font-size:0.82rem;color:var(--ink-faint);line-height:1.6;margin-top:1rem;}
+.note a{color:var(--accent);text-decoration:none;}
+
+/* footer */
+.foot{border-top:1px solid var(--line);padding:clamp(2.4rem,5vw,3.5rem) 1.25rem;font-size:0.78rem;color:var(--ink-faint);text-align:center;line-height:2;}
+.foot .foot-links{display:flex;flex-wrap:wrap;justify-content:center;column-gap:1.1rem;row-gap:.15rem;margin-top:.45rem;}
+.foot .foot-links a{white-space:nowrap;}
+.foot a{color:var(--ink-soft);text-decoration:none;border-bottom:1px solid var(--line);transition:color .3s;}
+.foot a:hover{color:var(--accent);}
+.foot .sep{color:var(--line);margin:0 0.5rem;}
+
+/* WhatsApp float */
+.wa-float{position:fixed;bottom:22px;right:22px;z-index:50;width:50px;height:50px;border-radius:50%;background:var(--wa);
+  color:var(--wa-ink);display:flex;align-items:center;justify-content:center;text-decoration:none;
+  box-shadow:0 8px 30px rgba(255,87,34,0.35);transition:transform 0.3s var(--ease);}
+.wa-float:hover{transform:scale(1.08);}
+.wa-float svg{width:24px;height:24px;fill:var(--wa-ink);}
+
+/* reveal */
+html.js .reveal{opacity:0;transform:translateY(16px);transition:opacity .45s var(--ease),transform .45s var(--ease);}
+html.js .reveal.in{opacity:1;transform:translateY(0);}
+
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;}
+  .reveal{opacity:1!important;transform:none!important;transition:none!important;}
+  html{scroll-behavior:auto;}
+}
+@media (max-width:720px){
+  .price-grid{grid-template-columns:1fr;}
+  .roi{grid-template-columns:1fr;}
+  .form-grid{grid-template-columns:1fr;}
+  .hero-cta{flex-direction:column;}
+  .hero-cta .btn-yes,.hero-cta .btn-more{width:100%;justify-content:center;}
+  .stage{grid-template-columns:auto 1fr;gap:1rem;}
+  .stage:hover{padding-left:0;padding-right:0;}
+}
+
+/* ── The Thrive Pledge ribbon — the promise the site is built on ── */
+.pledge-ribbon{display:flex;align-items:center;justify-content:center;gap:0.65rem;flex-wrap:wrap;
+  padding:0.72rem clamp(1rem,3vw,2rem);background:var(--card);border-bottom:1px solid var(--card-line);
+  text-decoration:none;text-align:center;position:relative;overflow:hidden;}
+.pledge-ribbon::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--accent);}
+.pledge-ribbon .pr-tag{font-family:var(--font-display);font-size:0.6rem;font-weight:700;letter-spacing:0.24em;
+  text-transform:uppercase;color:var(--accent);white-space:nowrap;display:inline-flex;align-items:center;gap:0.45rem;}
+.pledge-ribbon .pr-dot{width:7px;height:7px;border-radius:50%;background:var(--accent);
+  animation:prPulse 2.4s ease-in-out infinite;}
+.pledge-ribbon .pr-text{font-size:0.86rem;font-weight:500;color:var(--ink);letter-spacing:0.01em;}
+.pledge-ribbon .pr-text em{font-style:normal;color:var(--accent);font-weight:700;}
+.pledge-ribbon .pr-go{font-size:0.8rem;color:var(--ink-faint);transition:color .25s var(--ease),transform .25s var(--ease);}
+a.pledge-ribbon:hover .pr-go{color:var(--accent);transform:translateX(3px);}
+@keyframes prPulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.45;transform:scale(.75);}}
+@media(max-width:640px){.pledge-ribbon{gap:0.35rem;padding:0.6rem 0.8rem;}
+  .pledge-ribbon .pr-text{font-size:0.78rem;}}
+
+/* narrow-screen safety: never let a long word push a block past the edge */
+h1,h2,h3,h4,.ask,.cost-h,.rung-title,.shelf-title,.fb-title,.pledge-h,.joint-t,.jmap-t{
+  overflow-wrap:break-word; word-break:normal; hyphens:none;
+}
+
+/* ── FOUR JOINTS · ONE LEAK ─────────────────────────────
+   The pipeline model from the campaign graphic: Supply →
+   Representation → Aim → Conversion. Full rows (.joints)
+   for the home page; compact 4-cell strip (.jmap) for the
+   product and register pages. */
+.joints{margin-top:1.8rem;}
+.joint{display:grid;grid-template-columns:96px 1fr;gap:0 1.4rem;
+  padding:1.6rem 0.2rem 1.6rem 1rem;border-top:1px solid var(--line);position:relative;}
+.joint:last-of-type{border-bottom:1px solid var(--line);}
+.joint::before{content:'';position:absolute;left:0;top:1.3rem;bottom:1.3rem;width:4px;
+  background:var(--accent);border-radius:2px;opacity:0;transition:opacity .25s var(--ease);}
+.joint:hover::before{opacity:1;}
+.joint-n{font-family:var(--font-display);font-size:clamp(2.3rem,6vw,3.4rem);font-weight:800;
+  line-height:1;color:var(--ink-faint);opacity:.55;letter-spacing:-0.02em;}
+.joint-t{font-family:var(--font-display);font-weight:800;letter-spacing:0.16em;
+  font-size:clamp(0.95rem,2.4vw,1.05rem);text-transform:uppercase;color:var(--ink);}
+.joint-law{color:var(--ink-soft);margin-top:0.3rem;font-size:0.95rem;}
+.joint-leak{margin-top:0.8rem;font-size:0.88rem;color:var(--ink-soft);line-height:1.6;}
+.joint-leak b{color:var(--ink);font-weight:600;}
+.joint-fix{margin-top:0.55rem;font-size:0.88rem;line-height:1.7;}
+.joint-fix .fx{color:var(--ink-faint);letter-spacing:0.1em;font-size:0.68rem;
+  text-transform:uppercase;font-weight:700;margin-right:0.45rem;}
+.joint-fix a{color:var(--accent);font-weight:600;text-decoration:none;
+  border-bottom:1px solid transparent;transition:border-color .15s;}
+.joint-fix a:hover{border-bottom-color:var(--accent);}
+.joints-close{margin-top:1.5rem;font-size:0.98rem;color:var(--ink-soft);line-height:1.7;}
+.joints-close b{color:var(--ink);}
+@media(max-width:560px){.joint{grid-template-columns:52px 1fr;gap:0 0.85rem;padding-left:0.8rem;}}
+
+.jmap{display:grid;grid-template-columns:repeat(4,1fr);gap:0.8rem;margin-top:1.4rem;}
+.jmap-cell{border:1px solid var(--line);border-radius:12px;padding:1rem 0.95rem;
+  background:var(--card);position:relative;overflow:hidden;transition:border-color .2s;}
+.jmap-cell::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;
+  background:var(--accent);opacity:0;transition:opacity .2s;}
+.jmap-cell:hover{border-color:var(--accent);}
+.jmap-cell:hover::before{opacity:1;}
+.jmap-n{font-family:var(--font-display);font-weight:800;font-size:0.7rem;
+  color:var(--accent);letter-spacing:0.12em;}
+.jmap-t{font-family:var(--font-display);font-weight:700;font-size:0.85rem;
+  letter-spacing:0.08em;text-transform:uppercase;margin-top:0.3rem;color:var(--ink);}
+.jmap-d{font-size:0.8rem;color:var(--ink-soft);margin-top:0.45rem;line-height:1.55;}
+.jmap-d a{color:var(--accent);font-weight:600;text-decoration:none;}
+.jmap-d a:hover{text-decoration:underline;}
+@media(max-width:900px){.jmap{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:480px){.jmap{grid-template-columns:1fr;}}
+
+/* ── PROMISE MARQUEE ─────────────────────────────────────
+   One sentence in motion: enters from the right, holds at
+   centre, then continues left. Replaces the named pledge
+   ribbon everywhere. Reduced-motion users get it static. */
+.pledge-marq{display:flex;justify-content:center;align-items:center;overflow:hidden;
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:0.8rem 0;background:var(--paper-2);text-decoration:none;}
+.pledge-marq span{display:inline-block;white-space:nowrap;will-change:transform;
+  font-family:var(--font-display);font-weight:700;letter-spacing:-0.01em;
+  font-size:clamp(0.95rem,2.6vw,1.15rem);color:var(--ink);
+  animation:pmarq 11s cubic-bezier(0.22,1,0.36,1) infinite;}
+.pledge-marq em{font-style:normal;color:var(--accent);}
+@keyframes pmarq{
+  0%   {transform:translateX(100vw);}   /* enters from the right  */
+  34%  {transform:translateX(0);}       /* holds at the centre    */
+  66%  {transform:translateX(0);}
+  100% {transform:translateX(-100vw);}  /* continues off left     */
+}
+@media (prefers-reduced-motion:reduce){
+  .pledge-marq span{animation:none;}
+}
+
+/* ── PHOTO CARDS — lightweight WebP imagery that blends ── */
+.photo-card{display:block;width:100%;border-radius:16px;border:1px solid var(--line);
+  overflow:hidden;background:var(--card);margin-top:1.4rem;}
+.photo-card img{display:block;width:100%;height:auto;}
+.photo-card figcaption{padding:0.6rem 0.9rem;font-size:0.74rem;color:var(--ink-faint);
+  border-top:1px solid var(--line);letter-spacing:0.04em;}
+.photo-side{float:right;width:min(300px,42%);margin:0 0 0.9rem 1.2rem;}
+@media(max-width:640px){.photo-side{float:none;width:100%;margin:1.2rem 0 0;}}
+
+/* ── HERO WITH IMAGE ────────────────────────────────────
+   Two-column hero: copy left, photo right; stacks on mobile
+   with the photo after the CTAs. */
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,0.85fr);
+  gap:clamp(1.4rem,4vw,3rem);align-items:center;}
+.hero-photo{border-radius:18px;border:1px solid var(--line);overflow:hidden;
+  background:var(--card);align-self:center;}
+.hero-photo img{display:block;width:100%;height:100%;object-fit:cover;aspect-ratio:4/4.6;}
+.hero-photo figcaption{padding:0.55rem 0.85rem;font-size:0.72rem;color:var(--ink-faint);
+  border-top:1px solid var(--line);}
+@media(max-width:820px){.hero-grid{grid-template-columns:1fr;}
+  .hero-photo{max-width:440px;}
+  .hero-photo img{aspect-ratio:16/10;object-position:50% 12%;}}
+.photo-card{margin-left:auto;margin-right:auto;}
+
+/* ════════════════════════════════════════════════════════════════
+   CAPTURE LAYER
+   The shared components (.cap-btn, .cap-send, .cap-bridge,
+   .evergreen, .cap-bar, .cap-read) are NOT defined here on purpose.
+   blog.html and testimonials.html carry bespoke stylesheets and do
+   not load product.css, so erj-capture.js injects that CSS itself
+   and inherits whatever tokens the host page defines. One source,
+   every page. Only the /diagnose/ page styles live below.
+   ════════════════════════════════════════════════════════════════ */
+
+/* ── FIND YOUR LEAK · the diagnostic ─────────────────────────── */
+.dx{margin-top:2rem;background:var(--card);border:1px solid var(--card-line);border-radius:2px;
+  overflow:hidden;}
+.dx-progress{height:3px;background:var(--line-soft);}
+.dx-progress span{display:block;height:100%;background:var(--accent);
+  transition:width 0.45s var(--ease);}
+.dx-step{padding:clamp(1.6rem,4vw,2.6rem);}
+.dx-count{font-size:0.63rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);
+  margin-bottom:0.9rem;}
+.dx-q{font-family:var(--font-display);font-size:clamp(1.25rem,3vw,1.75rem);font-weight:800;
+  line-height:1.25;letter-spacing:-0.015em;color:var(--ink);margin-bottom:0.6rem;}
+.dx-why{font-size:0.85rem;line-height:1.65;color:var(--ink-faint);max-width:62ch;margin-bottom:1.5rem;}
+.dx-answers{display:grid;gap:0.6rem;}
+.dx-a{display:flex;align-items:center;gap:0.9rem;width:100%;text-align:left;
+  padding:1.05rem 1.2rem;background:transparent;color:var(--ink);
+  border:1px solid var(--line);border-radius:2px;cursor:pointer;font-family:var(--font-body);
+  transition:border-color 0.22s ease,background 0.22s ease,transform 0.22s var(--ease);}
+.dx-a:hover,.dx-a:focus-visible{border-color:var(--accent);background:var(--paper-2);
+  transform:translateX(3px);outline:none;}
+.dx-a-t{font-size:0.95rem;font-weight:500;line-height:1.45;}
+.dx-a-n{font-size:0.76rem;color:var(--ink-faint);margin-left:0.35rem;}
+.dx-a-x{margin-left:auto;color:var(--accent);opacity:0;transition:opacity 0.22s ease;flex:0 0 auto;}
+.dx-a:hover .dx-a-x,.dx-a:focus-visible .dx-a-x{opacity:1;}
+.dx-back{margin-top:1.3rem;background:none;border:none;cursor:pointer;padding:0;
+  font-family:var(--font-body);font-size:0.8rem;color:var(--ink-faint);
+  transition:color 0.2s ease;}
+.dx-back:hover{color:var(--accent);}
+@media(max-width:520px){.dx-a{flex-wrap:wrap;gap:0.3rem;}.dx-a-n{margin-left:0;width:100%;}}
+
+/* — the result — */
+.dx-result{margin-top:2rem;}
+.dxr-head{display:grid;grid-template-columns:auto 1fr;gap:0 1.4rem;align-items:start;
+  padding-bottom:1.4rem;border-bottom:1px solid var(--line);}
+.dxr-n{font-family:var(--font-display);font-size:clamp(3rem,9vw,4.6rem);font-weight:800;
+  line-height:0.9;color:var(--accent);}
+.dxr-name{font-family:var(--font-display);font-size:clamp(1.9rem,5vw,2.9rem);font-weight:800;
+  letter-spacing:-0.02em;line-height:1.05;color:var(--ink);margin:0;}
+.dxr-law{font-size:0.95rem;color:var(--ink-soft);margin-top:0.25rem;}
+.dxr-verdict{margin-top:1.5rem;font-size:1.02rem;line-height:1.75;color:var(--ink-soft);max-width:68ch;}
+.dxr-verdict::first-line{color:var(--ink);}
+
+.dxr-scores{margin-top:2rem;padding:1.4rem 1.5rem;background:var(--paper-2);
+  border:1px solid var(--line-soft);border-radius:2px;}
+.dxs-k{font-size:0.63rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--ink-faint);
+  margin-bottom:1rem;}
+.dxs-row{display:grid;grid-template-columns:8.5rem 1fr 3rem;align-items:center;gap:0.8rem;
+  margin-bottom:0.55rem;}
+.dxs-l{font-size:0.82rem;color:var(--ink-faint);}
+.dxs-t{height:6px;background:var(--line-soft);border-radius:3px;overflow:hidden;}
+.dxs-t span{display:block;height:100%;background:var(--ink-faint);border-radius:3px;
+  transition:width 0.7s var(--ease);}
+.dxs-p{font-size:0.76rem;color:var(--ink-faint);text-align:right;}
+.dxs-row.is-win .dxs-l{color:var(--ink);font-weight:600;}
+.dxs-row.is-win .dxs-t span{background:var(--accent);}
+.dxs-row.is-win .dxs-p{color:var(--accent);font-weight:600;}
+.dxs-note{margin-top:1rem;font-size:0.78rem;line-height:1.6;color:var(--ink-faint);max-width:60ch;}
+@media(max-width:520px){.dxs-row{grid-template-columns:6.5rem 1fr 2.6rem;gap:0.55rem;}}
+
+.dxr-tonight{margin-top:2rem;padding:1.5rem 1.6rem;border:1px solid var(--card-line);
+  border-left:3px solid var(--accent);border-radius:2px;background:var(--card);}
+.dxr-k{font-family:var(--font-display);font-weight:800;font-size:1rem;color:var(--ink);
+  margin-bottom:0.9rem;}
+.dxr-tonight ol{margin:0;padding-left:1.1rem;}
+.dxr-tonight li{font-size:0.9rem;line-height:1.7;color:var(--ink-soft);margin-bottom:0.6rem;
+  padding-left:0.35rem;}
+.dxr-tonight li::marker{color:var(--accent);font-weight:700;}
+
+.dxr-doors{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1.4rem;}
+.dxr-door{padding:1.5rem 1.6rem;background:var(--card);border:1px solid var(--card-line);
+  border-radius:2px;transition:border-color 0.25s ease,transform 0.25s var(--ease);}
+.dxr-door:hover{border-color:var(--accent);transform:translateY(-3px);}
+.dxr-door-k{font-size:0.63rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);
+  margin-bottom:0.7rem;}
+.dxr-door p{font-size:0.87rem;line-height:1.7;color:var(--ink-soft);}
+.dxr-door .btn-more{margin-top:1.1rem;}
+@media(max-width:760px){.dxr-doors{grid-template-columns:1fr;}}
+
+.dxr-send{margin-top:1.4rem;}
+
+/* ── BUTTON LABELS STAY ON ONE LINE ───────────────────────────────────
+   A CTA that wraps reads as an accident, and it makes the button a
+   different height from every sibling in the same row.
+
+   Note what is NOT done here: the font is not shrunk to make things fit.
+   White on #FF5722 measures 3.16:1, which clears WCAG's 3:1 bar for LARGE
+   text (18.66px bold) and fails the 4.5:1 bar for anything smaller. The
+   button type is 1.18rem/700 — 18.88px — which is 0.22px above that line.
+   Take a hair off the size and the button becomes non-compliant.
+
+   So the size is fixed and the fit is bought elsewhere: shorter labels,
+   and tighter horizontal padding on narrow screens. If a future label is
+   still too long, shorten the label. ── */
+.btn-yes,.btn-pay,.btn-block,.fi-go,.r-go,.dfy-btn,.cvp-btn,.ts-cta-btn{white-space:nowrap;}
+@media(max-width:520px){
+  .btn-yes,.btn-pay{padding-left:1.25rem;padding-right:1.25rem;gap:0.45rem;}
+}
+
+/* ── WHITE INK ON ORANGE HAS A SIZE FLOOR ─────────────────────────────
+   White on #FF5722 is 3.16:1. That passes WCAG AA for LARGE text only —
+   18.66px bold, or 24px regular. Any solid-orange control carrying white
+   text therefore sits at 1.18rem/700 (18.88px) and no smaller.
+
+   If something genuinely cannot be that big, it does not get white ink:
+   it takes near-black #14110E, which measures 5.95:1 and passes at any
+   size. That is the whole rule, and it is why the orange never darkens. */
+.btn-yes,.btn-pay,.btn-block,.dfy-btn,.cvp-btn,.ts-cta-btn,.fi-go,.r-go{
+  font-size:1.18rem;font-weight:700;color:#fff;}
+</style>
+<!-- END product.css -->
+<style>
+  .route{display:grid;grid-template-columns:minmax(0,0.72fr) minmax(0,1fr);gap:clamp(1.2rem,3.5vw,2.6rem);
+    align-items:center;padding:clamp(1.8rem,4vw,2.8rem) 0;border-top:1px solid var(--line);}
+  .route:last-of-type{border-bottom:1px solid var(--line);}
+  /* The flipped row moves the photo into grid column 2. That column is the wide
+     one (1fr), so the middle photo rendered 582px against 419px either side.
+     Mirror the track widths for flipped rows so the photo column stays 0.72fr
+     whichever side it sits on. */
+  .route.flip{grid-template-columns:minmax(0,1fr) minmax(0,0.72fr);}
+  .route.flip .r-photo{order:2;}
+  .r-kind{font-size:0.66rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent);}
+  .r-title{font-family:var(--font-display);font-size:clamp(1.4rem,3.4vw,2rem);font-weight:800;
+    letter-spacing:-0.02em;line-height:1.1;margin:0.45rem 0 0.7rem;}
+  .r-title em{font-style:normal;color:var(--accent);}
+  .r-desc{font-size:0.95rem;color:var(--ink-soft);font-weight:300;line-height:1.75;max-width:56ch;}
+  .r-list{list-style:none;margin:0.9rem 0 0;padding:0;}
+  .r-list li{font-size:0.88rem;color:var(--ink-soft);padding:0.3rem 0 0.3rem 1.3rem;position:relative;line-height:1.6;}
+  .r-list li::before{content:'→';position:absolute;left:0;color:var(--accent);font-weight:700;}
+  .r-go{display:inline-flex;align-items:center;gap:0.5rem;margin-top:1.1rem;padding:0.75rem 1.3rem;border-radius:10px;
+    background:var(--accent-btn,#FF5722);color:#fff;font-weight:700;font-size:1.18rem;text-decoration:none;transition:background .2s;}
+  .r-go:hover{background:var(--accent-h);}
+  /* All three photos render at one identical size. The source files are wildly
+     different shapes — 626x417 landscape, 735x639 near-square, 820x1230 portrait —
+     so height:auto gave three different card heights down the page. A fixed
+     aspect-ratio plus object-fit:cover crops them to a common frame instead of
+     squashing them; object-position is tuned per image so no face gets cut. */
+  .r-photo{border-radius:16px;border:1px solid var(--line);overflow:hidden;background:var(--card);margin:0;
+    aspect-ratio:4/3;}
+  .r-photo img{display:block;width:100%;height:100%;object-fit:cover;object-position:center center;}
+  #r-inner .r-photo img{object-position:center 22%;}   /* portrait — keep the face */
+  #r-remote .r-photo img{object-position:center 38%;}
+  /* Route 1 carries a fuller brief than the other two — it is the only route
+     with four distinct stages to account for, so its list items name the stage
+     and then what you walk out holding. */
+  .r-list li b{color:var(--ink);font-weight:700;}
+  .r-foot{margin-top:1rem;font-size:0.85rem;color:var(--ink-faint);font-weight:300;line-height:1.65;}
+  .r-foot a{color:var(--accent);font-weight:600;text-decoration:none;}
+  .r-foot a:hover{text-decoration:underline;}
+  @media(max-width:760px){.route,.route.flip{grid-template-columns:1fr;}
+    .route .r-photo{order:0;max-width:420px;}.route.flip .r-photo{order:0;}}
+</style>
+<script>window.ERJ_NAV={active:'startline',onPage:[{label:'Which One Is You',href:'#router',sub:'Six situations · one door each'},{label:'Every Route And Price',href:'#ladder',sub:'₦0 to ₦500,000 on one screen, with who each is not for'},{label:'Who We Turn Away',href:'#turnaway',sub:'Six people we tell not to buy'},{label:'Still Not Sure',href:'#close',sub:'The 90-second diagnostic, or a human AUDIT'}]};</script>
+<style id="erjNavReserve">body{padding-top:63px}@media(min-width:980px){body{padding-top:65px}}
+/* A skip link is white on orange and only ever seen on keyboard focus.
+   Sized to clear the large-text bar so it is compliant while it is visible. */
+.skip-link{font-size:1.18rem;font-weight:700;}
+
+/* Too small to carry white on orange compliantly, so it does not carry a
+   solid orange fill at all — an orange outline reads with the same weight
+   and passes contrast at any size. */
+.cap-btn.small{background:transparent;color:var(--accent);border:1.5px solid var(--accent);font-weight:700;}
+.cap-btn.small:hover{background:var(--accent);color:#fff;}
+</style>
+<meta content="Your Starting Line — Six Situations, One Door Each" property="og:title"/><meta content="Four free questions. About 90 seconds. One clear starting point." property="og:description"/>
+<style id="erjStartingLineGateway">
+  .sl-hero{padding-top:clamp(3.2rem,8vw,6.5rem);padding-bottom:clamp(3.8rem,9vw,7rem);}
+  .sl-hero-wrap{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(320px,.95fr);gap:clamp(2rem,5vw,4rem);align-items:start;}
+  .sl-hero h1{max-width:13ch;}
+  .sl-hero .lede{max-width:62ch;margin-bottom:1.65rem;}
+  .sl-actions{display:flex;gap:.9rem;flex-wrap:wrap;align-items:center;margin-bottom:1rem;}
+  .sl-sidecard{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:clamp(1.25rem,3vw,2rem);display:grid;gap:1rem;box-shadow:0 14px 34px rgba(0,0,0,.06);}
+  .sl-sidecard-row{padding-bottom:1rem;border-bottom:1px solid var(--line-soft);}
+  .sl-sidecard-row:last-child{padding-bottom:0;border-bottom:0;}
+  .sl-sidecard-row b{display:block;font-family:var(--font-display);font-size:1.02rem;color:var(--ink);margin-bottom:.2rem;}
+  .sl-sidecard-row span{display:block;font-size:.88rem;line-height:1.55;color:var(--ink-soft);}
+
+  /* Button styling now lives in erj-buttons.css — one file, whole site. */
+
+  .sl-trust{display:flex;flex-wrap:wrap;gap:.7rem 1.1rem;margin-top:1.4rem;color:var(--ink-soft);font-size:.84rem;}
+  .sl-trust span::before{content:'✓';color:var(--accent);font-weight:800;margin-right:.38rem;}
+  .sl-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:16px;overflow:hidden;margin-top:2rem;}
+  .sl-point{background:var(--card);padding:clamp(1.2rem,2.7vw,1.8rem);min-height:190px;}
+  .sl-num{font-family:var(--font-display);font-size:.72rem;font-weight:700;letter-spacing:.12em;color:var(--accent);margin-bottom:.9rem;}
+  .sl-point h3{font-size:1.08rem;margin-bottom:.5rem;}
+  .sl-point p{font-size:.82rem;line-height:1.65;color:var(--ink-soft);}
+  .sl-process{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(1rem,3vw,2rem);margin-top:2.2rem;}
+  .sl-step{border-top:1px solid var(--line);padding-top:1.2rem;}
+  .sl-step b{display:block;font-family:var(--font-display);font-size:1rem;margin:.25rem 0 .45rem;}
+  .sl-step p{font-size:.84rem;color:var(--ink-soft);line-height:1.65;}
+  .sl-k{font-size:.65rem;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);font-weight:700;}
+  .sl-reassure{display:grid;grid-template-columns:minmax(0,.7fr) minmax(0,1.3fr);gap:clamp(2rem,7vw,5rem);align-items:start;}
+  .sl-reassure ul{list-style:none;display:grid;gap:1rem;}
+  .sl-reassure li{padding-bottom:1rem;border-bottom:1px solid var(--line);font-size:.9rem;line-height:1.65;color:var(--ink-soft);}
+  .sl-reassure li b{color:var(--ink);}
+  .sl-final{border:1px solid var(--line);border-radius:18px;background:var(--card);padding:clamp(1.6rem,5vw,3rem);text-align:center;}
+  .sl-final h2{max-width:16ch;margin-left:auto;margin-right:auto;}
+  .sl-final p{max-width:58ch;margin:.8rem auto 1.5rem;color:var(--ink-soft);}
+  @media(max-width:900px){.sl-hero-wrap{grid-template-columns:1fr;gap:1.5rem;}.sl-sidecard{grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;}}
+  @media(max-width:840px){.sl-grid{grid-template-columns:repeat(2,minmax(0,1fr));}.sl-reassure{grid-template-columns:1fr;}}
+  @media(max-width:620px){.sl-grid,.sl-process{grid-template-columns:1fr;}.sl-actions{flex-direction:column;align-items:stretch}.sl-actions .btn-yes,.sl-actions .btn-more{width:100%;justify-content:center}.btn-primary-ui,.btn-secondary-ui{min-height:60px;font-size:1rem;padding:.85rem 1.1rem;}.sl-sidecard{grid-template-columns:1fr;padding:1.1rem 1.2rem;gap:.75rem;}.sl-sidecard-row{padding-bottom:.75rem;}.sl-sidecard-row span{font-size:.84rem;}.sl-point{min-height:0;}}
+
+  /* ══ THE ROUTER ══ */
+  .rt-lead{max-width:64ch;color:var(--ink-soft);font-size:clamp(1rem,1.7vw,1.14rem);line-height:1.7;margin-bottom:.6rem;}
+  .rt-lead b{color:var(--ink);font-weight:600;}
+  .rt-list{margin-top:2rem;border-top:1px solid var(--line);}
+  .rt-row{border-bottom:1px solid var(--line);}
+  .rt-row > summary{
+    list-style:none;cursor:pointer;display:flex;align-items:flex-start;gap:1rem;
+    padding:1.35rem .25rem;transition:background-color .2s ease,padding-left .2s ease;}
+  .rt-row > summary::-webkit-details-marker{display:none;}
+  .rt-row > summary:hover{background:rgba(255,87,34,.05);padding-left:.75rem;}
+  .rt-row > summary:focus-visible{outline:2px solid var(--accent);outline-offset:-2px;}
+  .rt-n{font-family:var(--font-display);font-size:.72rem;font-weight:700;letter-spacing:.14em;
+    color:var(--accent);padding-top:.5rem;flex:0 0 2.2rem;}
+  .rt-says{flex:1;font-family:var(--font-display);font-size:clamp(1.08rem,2.3vw,1.42rem);
+    font-weight:700;letter-spacing:-.015em;line-height:1.35;color:var(--ink);}
+  .rt-chev{flex:0 0 2rem;height:2rem;border-radius:999px;border:1px solid var(--line);
+    display:inline-flex;align-items:center;justify-content:center;color:var(--ink-soft);
+    font-size:.9rem;transition:transform .24s var(--ease),border-color .2s ease,color .2s ease;}
+  .rt-row > summary:hover .rt-chev{border-color:var(--accent);color:var(--accent);}
+  .rt-row[open] > summary .rt-chev{transform:rotate(180deg);border-color:var(--accent);color:var(--accent);}
+  .rt-row[open] > summary{background:rgba(255,87,34,.045);}
+  .rt-door{padding:.2rem .25rem 2rem 3.2rem;display:grid;gap:1.15rem;max-width:78ch;}
+  .rt-tag{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--font-display);
+    font-size:.63rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--accent);border:1px solid var(--accent);border-radius:999px;
+    padding:.3rem .7rem;justify-self:start;}
+  .rt-law{font-family:var(--font-display);font-size:1.02rem;font-weight:500;color:var(--ink);
+    line-height:1.5;border-left:2px solid var(--accent);padding-left:.9rem;}
+  .rt-h{display:block;font-family:var(--font-display);font-size:.66rem;font-weight:700;
+    letter-spacing:.15em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:.4rem;}
+  .rt-block p{font-size:.94rem;line-height:1.7;color:var(--ink-soft);}
+  .rt-block a{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(255,87,34,.35);}
+  .rt-block a:hover{border-bottom-color:var(--accent);}
+  .rt-limit{background:rgba(255,87,34,.06);border-left:3px solid var(--accent);
+    border-radius:0 12px 12px 0;padding:1rem 1.15rem;}
+  .rt-limit b.rt-h{color:var(--accent);}
+  .rt-limit p{color:var(--ink-soft);font-size:.92rem;}
+  .rt-cta{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:.2rem;}
+
+  /* ══ THE LADDER ══ */
+  .ld{margin-top:2rem;border-top:1px solid var(--line);}
+  .ld-row{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,2.2fr) minmax(0,2.2fr) auto;
+    gap:1.2rem;align-items:start;padding:1.5rem .25rem;border-bottom:1px solid var(--line);}
+  .ld-row.is-aside{background:rgba(127,127,127,.045);}
+  .ld-name{font-family:var(--font-display);font-size:1.06rem;font-weight:700;color:var(--ink);
+    letter-spacing:-.01em;line-height:1.3;}
+  .ld-price{display:block;font-family:var(--font-display);font-size:1.32rem;font-weight:800;
+    color:var(--accent);margin-top:.35rem;letter-spacing:-.02em;}
+  .ld-what{display:block;font-size:.82rem;color:var(--ink-faint);line-height:1.6;margin-top:.4rem;}
+  .ld-col b{display:block;font-family:var(--font-display);font-size:.63rem;font-weight:700;
+    letter-spacing:.15em;text-transform:uppercase;margin-bottom:.35rem;}
+  .ld-for b{color:var(--ink-faint);}
+  .ld-not b{color:var(--accent);}
+  .ld-col p{font-size:.89rem;line-height:1.65;color:var(--ink-soft);}
+  .ld-go{align-self:center;white-space:nowrap;font-family:var(--font-display);font-size:.84rem;
+    font-weight:700;color:var(--ink);text-decoration:none;border:1px solid var(--line);
+    border-radius:999px;padding:.55rem 1rem;transition:all .22s var(--ease);}
+  .ld-go:hover{border-color:var(--accent);color:var(--accent);}
+  .ld-note{margin-top:1.4rem;font-size:.84rem;line-height:1.7;color:var(--ink-faint);max-width:72ch;}
+  .ld-note b{color:var(--ink-soft);}
+
+  /* ══ TURN AWAY ══ */
+  .ta-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;
+    background:var(--line);border:1px solid var(--line);border-radius:16px;
+    overflow:hidden;margin-top:2rem;}
+  .ta-item{background:var(--card);padding:clamp(1.15rem,2.6vw,1.6rem);}
+  .ta-item b{display:block;font-family:var(--font-display);font-size:.98rem;color:var(--ink);
+    margin-bottom:.45rem;line-height:1.35;}
+  .ta-item p{font-size:.86rem;line-height:1.65;color:var(--ink-soft);}
+  .ta-close{margin-top:1.6rem;font-size:.9rem;line-height:1.75;color:var(--ink-soft);max-width:74ch;}
+  .ta-close b{color:var(--ink);}
+
+  @media(max-width:900px){
+    .ld-row{grid-template-columns:1fr;gap:.85rem;}
+    .ld-go{justify-self:start;}
+  }
+  @media(max-width:840px){.ta-grid{grid-template-columns:1fr;}}
+  @media(max-width:620px){
+    .rt-door{padding-left:.25rem;}
+    .rt-cta{flex-direction:column;align-items:stretch;}
+    .rt-says{font-size:1.02rem;}
+  }
+</style><style id="erjButtons">:root{--btn-ink-on-orange:#FFFFFF;--btn-orange:#FF5722;--btn-orange-ink-on-white:#AD350A;--btn-invert-surface:#FFFFFF;--btn-ease:cubic-bezier(0.22,1,0.36,1)}.btn-primary-ui,.btn-secondary-ui{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:.75rem;min-height:64px;padding:1rem 1.45rem;border-radius:999px;border:1px solid transparent;font-family:var(--font-body),'Inter',system-ui,sans-serif;font-size:1.18rem !important;font-weight:700 !important;letter-spacing:-0.01em;line-height:1.15;text-decoration:none;cursor:pointer;white-space:nowrap;transition:background-color .24s var(--btn-ease),color .24s var(--btn-ease),border-color .24s var(--btn-ease),box-shadow .24s var(--btn-ease),transform .24s var(--btn-ease)}.btn-primary-ui>span:first-child,.btn-secondary-ui>span:first-child{white-space:normal}.arrow-wrap{display:inline-flex;align-items:center;justify-content:center;width:2rem;height:2rem;flex:0 0 2rem;border-radius:999px;font-size:1rem;line-height:1;transition:background-color .24s var(--btn-ease),color .24s var(--btn-ease)}.btn-primary-ui .arrow,.btn-secondary-ui .arrow{display:inline-block;transition:transform .24s var(--btn-ease)}.btn-primary-ui:hover .arrow,.btn-secondary-ui:hover .arrow,.btn-primary-ui:focus-visible .arrow,.btn-secondary-ui:focus-visible .arrow{transform:translateX(4px)}.btn-primary-ui:hover .arrow.is-down,.btn-secondary-ui:hover .arrow.is-down,.btn-primary-ui:focus-visible .arrow.is-down,.btn-secondary-ui:focus-visible .arrow.is-down{transform:translateY(3px)}.btn-primary-ui{background:var(--btn-orange) !important;color:var(--btn-ink-on-orange) !important;border-color:var(--btn-orange) !important;box-shadow:0 10px 24px rgba(255,87,34,.18)}.btn-primary-ui .arrow-wrap{background:rgba(255,255,255,.16);color:var(--btn-ink-on-orange)}.btn-primary-ui:hover,.btn-primary-ui:focus-visible{background:var(--btn-invert-surface) !important;color:var(--btn-orange-ink-on-white) !important;border-color:var(--btn-orange) !important;transform:translateY(-2px);box-shadow:0 16px 34px rgba(255,87,34,.24)}.btn-primary-ui:hover .arrow-wrap,.btn-primary-ui:focus-visible .arrow-wrap{background:rgba(255,87,34,.14);color:var(--btn-orange-ink-on-white)}.btn-secondary-ui{background:var(--card,#FFFFFF) !important;color:var(--ink,#0A0A0A) !important;border-color:var(--line,rgba(10,10,10,.12)) !important;box-shadow:0 7px 18px rgba(0,0,0,.04)}.btn-secondary-ui .arrow-wrap{background:rgba(10,10,10,.06);color:inherit}html[data-theme="night"] .btn-secondary-ui .arrow-wrap{background:rgba(255,255,255,.10)}.btn-secondary-ui:hover,.btn-secondary-ui:focus-visible{background:var(--btn-orange) !important;color:var(--btn-ink-on-orange) !important;border-color:var(--btn-orange) !important;transform:translateY(-2px);box-shadow:0 16px 34px rgba(255,87,34,.22)}.btn-secondary-ui:hover .arrow-wrap,.btn-secondary-ui:focus-visible .arrow-wrap,html[data-theme="night"] .btn-secondary-ui:hover .arrow-wrap,html[data-theme="night"] .btn-secondary-ui:focus-visible .arrow-wrap{background:rgba(255,255,255,.18);color:var(--btn-ink-on-orange)}.fc-actions:has(.btn-secondary-ui:hover) .btn-primary-ui,.sl-actions:has(.btn-secondary-ui:hover) .btn-primary-ui,.answers:has(.btn-secondary-ui:hover) .btn-primary-ui,.hero-cta:has(.btn-secondary-ui:hover) .btn-primary-ui,.erj-actions:has(.btn-secondary-ui:hover) .btn-primary-ui,.rt-cta:has(.btn-secondary-ui:hover) .btn-primary-ui,.fc-actions:has(.btn-secondary-ui:focus-visible) .btn-primary-ui,.sl-actions:has(.btn-secondary-ui:focus-visible) .btn-primary-ui,.answers:has(.btn-secondary-ui:focus-visible) .btn-primary-ui,.hero-cta:has(.btn-secondary-ui:focus-visible) .btn-primary-ui,.erj-actions:has(.btn-secondary-ui:focus-visible) .btn-primary-ui,.rt-cta:has(.btn-secondary-ui:focus-visible) .btn-primary-ui{background:var(--btn-invert-surface) !important;color:var(--btn-orange-ink-on-white) !important;border-color:var(--btn-orange) !important;box-shadow:0 6px 16px rgba(0,0,0,.06)}.fc-actions:has(.btn-secondary-ui:hover) .btn-primary-ui .arrow-wrap,.sl-actions:has(.btn-secondary-ui:hover) .btn-primary-ui .arrow-wrap,.answers:has(.btn-secondary-ui:hover) .btn-primary-ui .arrow-wrap,.hero-cta:has(.btn-secondary-ui:hover) .btn-primary-ui .arrow-wrap,.erj-actions:has(.btn-secondary-ui:hover) .btn-primary-ui .arrow-wrap,.rt-cta:has(.btn-secondary-ui:hover) .btn-primary-ui .arrow-wrap{background:rgba(255,87,34,.14);color:var(--btn-orange-ink-on-white)}.btn-primary-ui:active{background:var(--btn-invert-surface) !important;color:var(--btn-orange-ink-on-white) !important;border-color:var(--btn-orange) !important}.btn-primary-ui:active .arrow-wrap{background:rgba(255,87,34,.14);color:var(--btn-orange-ink-on-white)}.btn-secondary-ui:active{background:var(--btn-orange) !important;color:var(--btn-ink-on-orange) !important;border-color:var(--btn-orange) !important}.btn-secondary-ui:active .arrow-wrap{background:rgba(255,255,255,.18);color:var(--btn-ink-on-orange)}.btn-primary-ui:active,.btn-secondary-ui:active{transform:translateY(0) scale(.985);box-shadow:none}@media (hover:none){.btn-primary-ui:hover{background:var(--btn-orange) !important;color:var(--btn-ink-on-orange) !important;border-color:var(--btn-orange) !important;transform:none}.btn-primary-ui:hover .arrow-wrap{background:rgba(255,255,255,.16);color:var(--btn-ink-on-orange)}.btn-secondary-ui:hover{background:var(--card,#FFFFFF) !important;color:var(--ink,#0A0A0A) !important;border-color:var(--line,rgba(10,10,10,.12)) !important;transform:none}.btn-secondary-ui:hover .arrow-wrap{background:rgba(10,10,10,.06);color:inherit}html[data-theme="night"] .btn-secondary-ui:hover .arrow-wrap{background:rgba(255,255,255,.10)}.btn-primary-ui:hover .arrow,.btn-secondary-ui:hover .arrow{transform:none}}.btn-primary-ui:focus-visible,.btn-secondary-ui:focus-visible{outline:2px solid var(--btn-orange);outline-offset:3px}.btn-primary-ui.btn-block,.btn-secondary-ui.btn-block{width:100%}.fc-actions,.sl-actions,.answers,.hero-cta,.erj-actions{display:flex;flex-wrap:wrap;gap:1rem;align-items:center}.btn-primary-ui.pulse::after{border-color:var(--btn-orange)}.btn-primary-ui.pulse:hover::after{opacity:0 !important;animation:none !important}@media(max-width:620px){.fc-actions,.sl-actions,.answers,.hero-cta,.erj-actions{flex-direction:column;align-items:stretch}.fc-actions>.btn-primary-ui,.fc-actions>.btn-secondary-ui,.sl-actions>.btn-primary-ui,.sl-actions>.btn-secondary-ui,.answers>.btn-primary-ui,.answers>.btn-secondary-ui,.hero-cta>.btn-primary-ui,.hero-cta>.btn-secondary-ui,.erj-actions>.btn-primary-ui,.erj-actions>.btn-secondary-ui{width:100%}.btn-primary-ui,.btn-secondary-ui{min-height:60px;padding:.85rem 1.05rem;gap:.5rem}.arrow-wrap{width:1.75rem;height:1.75rem;flex:0 0 1.75rem}}@media(prefers-reduced-motion:reduce){.btn-primary-ui,.btn-secondary-ui,.btn-primary-ui .arrow,.btn-secondary-ui .arrow,.arrow-wrap{transition:background-color .01ms,color .01ms,border-color .01ms}.btn-primary-ui:hover,.btn-secondary-ui:hover,.btn-primary-ui:active,.btn-secondary-ui:active{transform:none}.btn-primary-ui:hover .arrow,.btn-secondary-ui:hover .arrow{transform:none}.btn-primary-ui.pulse::after{animation:none;opacity:0}}@media(forced-colors:active){.btn-primary-ui,.btn-secondary-ui{border:1px solid ButtonText}}</style><link href="/favicon.ico" rel="icon" sizes="48x48 32x32 16x16"/>
+<link href="/favicon-96.png" rel="icon" sizes="96x96" type="image/png"/>
+<link href="/appletouchicon.png" rel="apple-touch-icon"/>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe height="0" src="https://www.googletagmanager.com/ns.html?id=GTM-NMFHS59B" style="display:none;visibility:hidden" width="0"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<main>
+<a aria-label="We will not let you go until you're hired." class="pledge-marq" href="index.html#pledge"><span>We will not let you go <em>until you're hired.</em></span></a>
+
+<section class="hero wrap sl-hero" id="router">
+<p class="section-label"><span class="mark"></span> Your Starting Line</p>
+<h1>Six situations. <em>One door each.</em></h1>
+<p class="rt-lead">You do not have to compare nine products to make one decision. <b>Find the sentence below that sounds like your last three months</b> and open it. You will get the free thing to try first, the paid door only if there is one, and the limit of that door stated before any price — because a customer who bought the wrong thing is a refund, a bad review and a person we failed.</p>
+<p class="rt-lead">If none of them fit, the last one is for you.</p>
+<div class="rt-list">
+<details class="rt-row" name="erj-router">
+<summary><span class="rt-n">01</span><span class="rt-says">&ldquo;I have not started applying yet.&rdquo;</span><span class="rt-chev" aria-hidden="true">⌄</span></summary>
+<div class="rt-door">
+<span class="rt-tag">No leak yet · a baseline</span>
+<p class="rt-law">You cannot diagnose a search you have not run.</p>
+<div class="rt-block"><b class="rt-h">The free door — try this first</b><p>Everything you need is free. Score your CV with the <a href="cvscan/">10-Point Self-Scan</a> — the rubric is published, so you can fix it yourself and owe us nothing. Bring it to the <a href="masterclass/">Remote Job Application Clinic</a> on Zoom. Then join the <a href="https://whatsapp.com/channel/0029Vaym4DE3mFY2wCrC713S" rel="noopener" target="_blank">Global Remote Job Board on WhatsApp</a> so real roles start reaching you while you build.</p></div>
+<div class="rt-block"><b class="rt-h">If you want it built or run for you</b><p>If you want the whole method today and know you will genuinely work it alone, the <a href="selflearn/">Self-Learn Pack</a> is ₦35,000. It is the same four stages and the same rubrics we run with paying cohorts, written to be worked without one.</p></div>
+<div class="rt-limit"><b class="rt-h">The limit, before you spend anything</b><p>Do not buy a diagnosis of a search you have not run. Starting without a job history is a position we build <em>from</em>, not around — but nothing on this page is required to begin.</p></div>
+<div class="rt-cta">
+<a class="btn-yes btn-primary-ui" href="cvscan/"><span>Start With The Free CV Scan</span><span class="arrow-wrap"><span class="arrow">→</span></span></a>
+
+</div>
+</div>
+</details>
+<details class="rt-row" name="erj-router">
+<summary><span class="rt-n">02</span><span class="rt-says">&ldquo;I apply and hear nothing back.&rdquo;</span><span class="rt-chev" aria-hidden="true">⌄</span></summary>
+<div class="rt-door">
+<span class="rt-tag">02 · Representation</span>
+<p class="rt-law">If your CV cannot be read, you were never really in the running.</p>
+<div class="rt-block"><b class="rt-h">The free door — try this first</b><p>Run the <a href="cvscan/">10-Point CV Self-Scan</a> first. It runs entirely on your own device — nothing uploads, nothing is stored — and every point it fails comes with the specific fix. Many people close the leak here and never pay us anything, which is the correct outcome.</p></div>
+<div class="rt-block"><b class="rt-h">If you want it built or run for you</b><p>If the problem is the CV alone, the <a href="cvbuilder.html">CV Engine Pass</a> is ₦5,000 for thirty days from first use. If it is broader — LinkedIn, portfolio, evidence of work, async writing — that is <a href="foundationtraining/">Foundation Training</a> at ₦250,000, or the single stage that covers your gap from ₦70,000.</p></div>
+<div class="rt-limit"><b class="rt-h">The limit, before you spend anything</b><p>The ₦5,000 pass rents an instrument for thirty days. It buys a tool, never teaching. If what is missing is the method rather than the document, it is the wrong door and it will feel like one.</p></div>
+<div class="rt-cta">
+<a class="btn-yes btn-primary-ui" href="cvscan/"><span>Run The Free CV Scan</span><span class="arrow-wrap"><span class="arrow">→</span></span></a>
+
+</div>
+</div>
+</details>
+<details class="rt-row" name="erj-router">
+<summary><span class="rt-n">03</span><span class="rt-says">&ldquo;I apply constantly, and get rejections or eligibility mismatches.&rdquo;</span><span class="rt-chev" aria-hidden="true">⌄</span></summary>
+<div class="rt-door">
+<span class="rt-tag">03 · Aim</span>
+<p class="rt-law">Applying everywhere is not the same as applying where you would get hired.</p>
+<div class="rt-block"><b class="rt-h">The free door — try this first</b><p>Read the targeting and eligibility guides on the <a href="blog.html">blog</a> — which companies can legally pay you from here, which postings mean do not apply, and how many applications a week actually works. Bring one real job advert to the free <a href="masterclass/">Clinic</a> and we will check the fit live.</p></div>
+<div class="rt-block"><b class="rt-h">If you want it built or run for you</b><p><a href="foundationtraining/">Foundation Training</a> installs a weekly targeting and application system you operate yourself. Once your assets are ready, the <a href="jobapplication/">Done-For-You routes</a> run the aiming on your behalf instead.</p></div>
+<div class="rt-limit"><b class="rt-h">The limit, before you spend anything</b><p>Done-For-You only starts after hireability and target fit are confirmed. It is not a way to skip readiness, and buying it before your assets are ready wastes the month you paid for.</p></div>
+<div class="rt-cta">
+<a class="btn-yes btn-primary-ui" href="blog.html"><span>Read The Targeting Guides Free</span><span class="arrow-wrap"><span class="arrow">→</span></span></a>
+
+</div>
+</div>
+</details>
+<details class="rt-row" name="erj-router">
+<summary><span class="rt-n">04</span><span class="rt-says">&ldquo;I can do the work. I have no time to run the search.&rdquo;</span><span class="rt-chev" aria-hidden="true">⌄</span></summary>
+<div class="rt-door">
+<span class="rt-tag">01 · Supply · time-poor</span>
+<p class="rt-law">You cannot apply for a job you never saw.</p>
+<div class="rt-block"><b class="rt-h">The free door — try this first</b><p>The <a href="https://whatsapp.com/channel/0029Vaym4DE3mFY2wCrC713S" rel="noopener" target="_blank">Global Remote Job Board on WhatsApp</a> carries real, verified global roles open to Africans, posted continuously, at no cost and with no gatekeeping. If your problem is purely that nothing reaches you, start there before you pay for anything.</p></div>
+<div class="rt-block"><b class="rt-h">If you want it built or run for you</b><p><a href="jobapplication/">Job Hunt DFY</a> is ₦50,000 for seven days: one target field, sourcing, tailoring and submission, three or more verified roles. <a href="jobapplication/">Stage 5 · Application Engine</a> is ₦300,000 and runs thirty or more roles sourced and applied weekly for a month.</p></div>
+<div class="rt-limit"><b class="rt-h">The limit, before you spend anything</b><p>There is no offer guarantee, and there never will be. We are accountable for sourcing, tailoring and submitting on your behalf. We are not accountable for the market&rsquo;s timing — anyone promising you a specific job by a specific date is promising something they do not control.</p></div>
+<div class="rt-cta">
+<a class="btn-yes btn-primary-ui" href="jobapplication/"><span>See How Done-For-You Works</span><span class="arrow-wrap"><span class="arrow">→</span></span></a>
+
+</div>
+</div>
+</details>
+<details class="rt-row" name="erj-router">
+<summary><span class="rt-n">05</span><span class="rt-says">&ldquo;I get interviews, but no offers — or the money is wrong.&rdquo;</span><span class="rt-chev" aria-hidden="true">⌄</span></summary>
+<div class="rt-door">
+<span class="rt-tag">04 · Conversion</span>
+<p class="rt-law">Interviews do not pay you. A signed offer does.</p>
+<div class="rt-block"><b class="rt-h">The free door — try this first</b><p>The <a href="blog.html">blog</a> carries the interview and negotiation material — the twelve questions you will be asked, the two-minute answer, and the salary question that loses offers in four seconds. The free <a href="masterclass/">Clinic</a> walks the salary answer live.</p></div>
+<div class="rt-block"><b class="rt-h">If you want it built or run for you</b><p><a href="register.html">Stage 4 alone</a> is ₦100,000: interview performance, the STAR video, and negotiation preparation. The <a href="innercircle/">Inner Circle</a> is ₦250,000 once — private one-to-one advisory, for when what you need is a room and a person rather than a syllabus.</p></div>
+<div class="rt-limit"><b class="rt-h">The limit, before you spend anything</b><p>If your CV, LinkedIn and portfolio are already producing interviews, do not rebuild them. A more expensive product existing is not a reason to buy it, and the leak you have is later in the process than the one it fixes.</p></div>
+<div class="rt-cta">
+<a class="btn-yes btn-primary-ui" href="register.html"><span>See Stage 4 And The Inner Circle</span><span class="arrow-wrap"><span class="arrow">→</span></span></a>
+
+</div>
+</div>
+</details>
+<details class="rt-row" name="erj-router">
+<summary><span class="rt-n">06</span><span class="rt-says">&ldquo;I am honestly not sure which of these is me.&rdquo;</span><span class="rt-chev" aria-hidden="true">⌄</span></summary>
+<div class="rt-door">
+<span class="rt-tag">Start here</span>
+<p class="rt-law">Most people patch the wrong point for months.</p>
+<div class="rt-block"><b class="rt-h">The free door — try this first</b><p>This is the normal answer, not a failure — the four failures feel identical from the inside. Two free ways to find out. The <a href="diagnose/">90-second diagnostic</a> asks four questions and returns an instant result with one action you can take tonight. Or send <b>AUDIT</b> on WhatsApp and a person reads your target role, your last thirty days of applications and interviews, and your CV or LinkedIn, then names the earliest leak in one sentence.</p></div>
+
+<div class="rt-limit"><b class="rt-h">The limit, before you spend anything</b><p>A clean answer can be <b>yes</b>, <b>not now</b>, or <b>not this product</b>. Any of the three is more useful to you than an indefinite follow-up, and we would rather give you one than keep you warm.</p></div>
+<div class="rt-cta">
+<a class="btn-yes btn-primary-ui" href="diagnose/"><span>Find My Starting Point — Free</span><span class="arrow-wrap"><span class="arrow">→</span></span></a>
+<a class="btn-more btn-secondary-ui" href="https://wa.me/2348032925957?text=AUDIT%0A%0AMy%20target%20role%3A%0AApplications%20in%20the%20last%2030%20days%3A%0AInterviews%20in%20the%20last%2030%20days%3A%0AMy%20CV%20or%20LinkedIn%3A%0A%0APlease%20tell%20me%20which%20point%20is%20leaking%20first."><span>Send AUDIT On WhatsApp</span><span class="arrow-wrap"><span class="arrow">→</span></span></a>
+</div>
+</div>
+</details>
+</div>
+</section>
+
+<section class="wrap section-line" id="ladder">
+<p class="section-label"><span class="mark"></span> Every Route And Price</p>
+<h2 class="cost-h" style="margin-bottom:.9rem;">The whole ladder, <em>on one screen.</em></h2>
+<p class="rt-lead">One ladder, ₦0 to ₦500,000, with the Inner Circle beside it rather than on top of it. Every rung carries who it is not for, in the same size type as who it is for. <b>You only need to find yours.</b></p>
+<div class="ld">
+<div class="ld-row">
+<div><span class="ld-name">Free</span><span class="ld-price">₦0</span><span class="ld-what">CV scan · diagnosis · Application Clinic · blog · WhatsApp job channel</span></div>
+<div class="ld-col ld-for"><b>Who it is for</b><p>Everyone, without exception. This is the layer that finds out whether you need us at all.</p></div>
+<div class="ld-col ld-not"><b>Who it is not for</b><p>Nobody. If the free layer closes your leak, that is the right outcome and you should take it.</p></div>
+<a class="ld-go" href="free.html">See what&rsquo;s free</a>
+</div>
+<div class="ld-row">
+<div><span class="ld-name">CV Engine Pass</span><span class="ld-price">₦5,000</span><span class="ld-what">The CV Engine only · 30 days from first use</span></div>
+<div class="ld-col ld-for"><b>Who it is for</b><p>A Representation leak concentrated in one document, where you need the instrument rather than the teaching.</p></div>
+<div class="ld-col ld-not"><b>Who it is not for</b><p>Anyone whose leak is not the CV. It rents a tool for a month — it is not a cheap Self-Learn Pack.</p></div>
+<a class="ld-go" href="cvbuilder.html">See the pass</a>
+</div>
+<div class="ld-row">
+<div><span class="ld-name">Self-Learn Pack</span><span class="ld-price">₦35,000</span><span class="ld-what">Stages 1–4 self-paced · files + private Telegram</span></div>
+<div class="ld-col ld-for"><b>Who it is for</b><p>Someone who cannot sit a live cohort, will genuinely work alone, and wants the method today.</p></div>
+<div class="ld-col ld-not"><b>Who it is not for</b><p>Anyone who will not do unwatched work. No certificate and no placement — it is only cheap if you finish it.</p></div>
+<a class="ld-go" href="selflearn/">See the pack</a>
+</div>
+<div class="ld-row">
+<div><span class="ld-name">Job Hunt DFY · 7 days</span><span class="ld-price">₦50,000</span><span class="ld-what">One target field · source, tailor, submit · 3+ verified roles</span></div>
+<div class="ld-col ld-for"><b>Who it is for</b><p>Already employable and well represented, where the only missing input is your time.</p></div>
+<div class="ld-col ld-not"><b>Who it is not for</b><p>Anyone whose CV still cannot be read. There is no offer guarantee at any price.</p></div>
+<a class="ld-go" href="jobapplication/">See how it works</a>
+</div>
+<div class="ld-row">
+<div><span class="ld-name">Single stages</span><span class="ld-price">from ₦70,000</span><span class="ld-what">Stage 1 ₦70k · Stage 2 ₦130k · Stage 3 ₦70k · Stage 4 ₦100k</span></div>
+<div class="ld-col ld-for"><b>Who it is for</b><p>One specific, already-diagnosed build leak — not a general sense that something is wrong.</p></div>
+<div class="ld-col ld-not"><b>Who it is not for</b><p>Anyone buying three or four of them. That is the full programme at a worse price; take Foundation Training.</p></div>
+<a class="ld-go" href="register.html">See the stages</a>
+</div>
+<div class="ld-row">
+<div><span class="ld-name">Foundation Training</span><span class="ld-price">₦250,000</span><span class="ld-what">Live Stages 1–4 · 20 training days · marking · certificate</span></div>
+<div class="ld-col ld-for"><b>Who it is for</b><p>Someone who can do real work but owns nothing that would convince a stranger of it in thirty seconds.</p></div>
+<div class="ld-col ld-not"><b>Who it is not for</b><p>Anyone who cannot give the live build its time, or for whom this money competes with rent or school fees.</p></div>
+<a class="ld-go" href="foundationtraining/">See Cohort 11</a>
+</div>
+<div class="ld-row">
+<div><span class="ld-name">Stage 5 · Application Engine</span><span class="ld-price">₦300,000</span><span class="ld-what">Assets ready, then 30+ roles sourced and applied weekly for a month</span></div>
+<div class="ld-col ld-for"><b>Who it is for</b><p>Skilled, represented and time-poor — you want the search executed, not taught.</p></div>
+<div class="ld-col ld-not"><b>Who it is not for</b><p>Anyone whose assets are not finished yet. The engine needs something worth sending.</p></div>
+<a class="ld-go" href="jobapplication/">See Stage 5</a>
+</div>
+<div class="ld-row">
+<div><span class="ld-name">Dream Job Offer</span><span class="ld-price">₦500,000</span><span class="ld-what">Stages 1–5 complete · build + application engine · lifetime access</span></div>
+<div class="ld-col ld-for"><b>Who it is for</b><p>Someone who would rather make one decision than two, and wants the build and the search under one roof.</p></div>
+<div class="ld-col ld-not"><b>Who it is not for</b><p>Anyone shopping on price alone. The cheapest wrong option is the expensive one.</p></div>
+<a class="ld-go" href="jobapplication/">See the full path</a>
+</div>
+<div class="ld-row is-aside">
+<div><span class="ld-name">Inner Circle</span><span class="ld-price">₦250,000 once</span><span class="ld-what">Private 1:1 advisory and residency · member deal flow · rolling admission</span></div>
+<div class="ld-col ld-for"><b>Who it is for</b><p>Stable and skilled already. You need a room and a person, not a syllabus.</p></div>
+<div class="ld-col ld-not"><b>Who it is not for</b><p>Anyone looking for training. This sits beside the ladder, not on top of it — it is not Foundation Training plus.</p></div>
+<a class="ld-go" href="innercircle/">Request admission</a>
+</div>
+</div>
+<p class="ld-note"><b>Prices are one payment, self-funded, in naira.</b> Nothing here is a subscription and nothing renews. Cohort 11 enrolment closes <b>Sunday 27 September, 8:00 PM WAT</b> and the cohort begins <b>Monday 28 September, 8:00 PM WAT</b>. Visa sponsorship and relocation are not the proposition — every route here is global remote work performed from where you already live.</p>
+</section>
+
+<section class="wrap section-line" id="turnaway">
+<p class="section-label"><span class="mark"></span> Who We Turn Away</p>
+<h2 class="cost-h" style="margin-bottom:.9rem;">Six people <em>we tell not to buy.</em></h2>
+<p class="rt-lead">This list costs us money every month. It stays because it is the only thing that makes the rest of what we say believable.</p>
+<div class="ta-grid">
+<div class="ta-item"><b>Anyone for whom this money competes with rent or school fees</b><p>Do not borrow for this. Use the free layer, or wait until it is money you can lose. That instruction has cost us revenue and it stays.</p></div>
+<div class="ta-item"><b>Anyone expecting a guaranteed job handed over</b><p>Foundation Training does not apply on your behalf. Done-For-You does run applications — but only after hireability and target fit are confirmed.</p></div>
+<div class="ta-item"><b>Anyone who will not do unwatched work</b><p>The self-paced pack is the cheapest rung and the easiest to waste. It is only cheap if you finish it.</p></div>
+<div class="ta-item"><b>Anyone already employable and well represented</b><p>If your CV and portfolio are working and interviews are arriving, do not let us sell you Stages 1–4. Your leak is later.</p></div>
+<div class="ta-item"><b>Anyone who cannot give the live programme its time</b><p>Twenty training days, missed in most part, produces a fraction of the value and a bad opinion of us. Both are avoidable.</p></div>
+<div class="ta-item"><b>Anyone shopping on price alone</b><p>The cheapest wrong option is expensive. If you are choosing by the number, run the diagnostic instead and choose by the leak.</p></div>
+</div>
+<p class="ta-close">We do not sell to people who cannot do the work. We sell to people who <b>can</b> do the work and cannot prove it across a border. That is a much smaller market than &ldquo;job seekers&rdquo; — and a much better one, because the raw material is already there.</p>
+</section>
+
+<section class="wrap section-line" id="close">
+<div class="sl-final">
+<h2 class="cost-h">Still not sure? <em>Then do not choose yet.</em></h2>
+<p>Four questions, about ninety seconds, an instant result and one action you can take tonight. No payment, no account, and no obligation to come back.</p>
+<div class="rt-cta" style="justify-content:center;">
+<a class="btn-yes btn-primary-ui" href="diagnose/"><span>Find My Starting Point — Free</span><span class="arrow-wrap"><span class="arrow">→</span></span></a>
+<a class="btn-more btn-secondary-ui" href="https://wa.me/2348032925957?text=AUDIT%0A%0AMy%20target%20role%3A%0AApplications%20in%20the%20last%2030%20days%3A%0AInterviews%20in%20the%20last%2030%20days%3A%0AMy%20CV%20or%20LinkedIn%3A%0A%0APlease%20tell%20me%20which%20point%20is%20leaking%20first."><span>Send AUDIT On WhatsApp</span><span class="arrow-wrap"><span class="arrow">→</span></span></a>
+</div>
+</div>
+</section>
+</main>
+<footer class="foot wrap">
+<nav class="foot-links"><a href="index.html">Home</a><a href="starthere.html">Your Starting Line</a><a href="free.html">Free For You</a><a href="blog.html">Blog</a><a href="blog/">Blog Archive</a><a href="register.html">Register</a><a href="login.html">Participant Login</a></nav>
+<div class="erj-rights-line" role="note" style="max-width:900px;margin:1rem auto 0;padding-top:.85rem;border-top:1px solid rgba(127,127,127,.18);font-size:.72rem;line-height:1.6;letter-spacing:.02em;text-align:center;color:#8A8A86;">© 2026 Business Play Limited · Everything Remote Job. Built for <span style="color:var(--accent,#FF5722)">global career scale.</span> All rights reserved. ERJ frameworks, curriculum and paid resources are not licensed for redistribution. <a href="terms.html" style="color:var(--accent,#FF5722);text-decoration:none">Terms</a> · <a href="privacy.html" style="color:var(--accent,#FF5722);text-decoration:none">Privacy</a></div>
+</footer>
+<script defer="" src="erj-theme.js?v=20260910a"></script>
+<script defer="" src="erj-product.js?v=20260910a"></script>
+<script defer="" src="erj-nav.js?v=20260910a"></script>
+<script defer="" src="erj-config.js?v=20260910a"></script>
+<script defer="" src="erj-capture.js?v=20260910a"></script>
+<script defer="" src="erj-schema.js?v=20260910a"></script>
+</body>
+</html>
