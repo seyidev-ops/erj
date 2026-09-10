@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+
+<html data-theme="night" lang="en">
+<head><meta charset="utf-8"/><style id="erjCanvasGuard">html{background:#000000}html[data-theme="day"]{background:#FAFAF8}</style>
+
+<!-- Meta Pixel + Google Tag Manager -->
+<script async="" src="../erj-track.js?v=20260910a"></script>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="../manifest.json" rel="manifest"/>
+<meta content="#FAFAF8" media="(prefers-color-scheme: light)" name="theme-color"/>
+<meta content="#000000" media="(prefers-color-scheme: dark)" name="theme-color"/>
+<title>Find Your Leak — Which of the Four Points Is Breaking Your Job Search | Everything Remote Job</title>
+<meta content="Four questions, ninety seconds. Find out whether your remote job search is leaking at Supply, Representation, Aim or Conversion — and get the one fix that matters. Free, no email required." name="description"/>
+<meta content="Find Your Leak — Four Questions, One Answer" property="og:title"/>
+<meta content="Your job search runs on four points and fails at one. Answer four questions and find out which — then fix that one instead of all four." property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="https://everythingremotejob.com/diagnose/" property="og:url"/>
+<meta content="https://everythingremotejob.com/preview-diagnose.jpg" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<link href="https://everythingremotejob.com/diagnose/" rel="canonical"/>
+<meta content="en_NG" property="og:locale"/>
+<meta content="index,follow,max-image-preview:large,max-snippet:-1" name="robots"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="https://everythingremotejob.com/preview-diagnose.jpg" name="twitter:image"/>
+<meta content="Find Your Leak — Four Questions, One Answer" name="twitter:title"/>
+<meta content="Most people patch the wrong point for months. Four questions tells you which one is actually yours." name="twitter:description"/>
+<link rel="preload" href="/fonts/space-grotesk-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin>
+<style id="erjFonts">
+/* Self-hosted, subset to the characters this site renders. Same family names
+   as the Google versions, so nothing downstream changes. swap matches what
+   Google's stylesheet set: text paints in the fallback, then upgrades. */
+@font-face{font-family:'Space Grotesk';font-style:normal;font-weight:300 800;font-display:swap;
+  src:url('/fonts/space-grotesk-var.woff2') format('woff2-variations'),
+      url('/fonts/space-grotesk-var.woff2') format('woff2');}
+@font-face{font-family:'Inter';font-style:normal;font-weight:300;font-display:swap;
+  src:url('/fonts/inter-300.woff2') format('woff2');}
+@font-face{font-family:'Inter';font-style:normal;font-weight:400;font-display:swap;
+  src:url('/fonts/inter-400.woff2') format('woff2');}
+@font-face{font-family:'Inter';font-style:normal;font-weight:500;font-display:swap;
+  src:url('/fonts/inter-500.woff2') format('woff2');}
+</style>
+<link href="../product.css?v=20260910a" rel="stylesheet"/>
+<style>
+  /* The pipeline diagram, moved here from starthere.html — it explains
+     the model this page diagnoses, so it belongs with the questions. */
+  .pipe{border:1px solid var(--line);border-radius:16px;background:var(--card);
+    overflow:hidden;margin:1.6rem 0 0.4rem;}
+  .pipe svg{display:block;width:100%;height:auto;}
+  .dxr-human{margin:1.35rem 0 1.2rem;border-color:var(--accent);}
+  .dxr-human .cr-k{font-family:var(--font-display);font-size:1rem;font-weight:800;color:var(--accent);}
+  .dxr-human p{max-width:68ch;}
+  .dxr-privacy{font-size:.82rem!important;color:var(--ink-faint)!important;margin-top:.9rem!important;}
+  .dxr-reset{margin-top:1.25rem;}
+  #dxPdf{cursor:pointer;}
+
+  .dxr-export{margin:1.1rem 0 1.25rem;display:flex;align-items:center;gap:.9rem;flex-wrap:wrap;padding:1rem 1.05rem;border:1px solid var(--line);border-radius:12px;background:var(--card);}
+  .dxr-export span{font-size:.82rem;line-height:1.55;color:var(--ink-soft);max-width:38ch;}
+  .dx-pdf-btn{appearance:none;border:1.5px solid var(--accent);background:transparent;color:var(--accent);border-radius:9px;padding:.72rem 1rem;font-family:var(--font-display);font-size:.95rem;font-weight:800;cursor:pointer;line-height:1.2;white-space:nowrap;}
+  .dx-pdf-btn:hover{background:rgba(255,87,34,.08);}
+  @media(max-width:560px){.dxr-export{align-items:stretch}.dx-pdf-btn{width:100%;white-space:normal}.dxr-export span{max-width:none;}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://everythingremotejob.com/"},{"@type":"ListItem","position":2,"name":"Find Your Leak","item":"https://everythingremotejob.com/diagnose/"}]}</script>
+<style id="erjNavReserve">body{padding-top:63px}@media(min-width:980px){body{padding-top:65px}}
+/* Button labels stay on one line. The type size is NOT reduced to make them
+   fit — white on #FF5722 is 3.16:1, which passes WCAG only as LARGE text
+   (18.66px bold), and the buttons sit at 18.88px. Shrinking the font would
+   quietly make every CTA non-compliant. Fit is bought with shorter labels
+   and tighter padding instead. */
+.btn-yes,.btn-pay,.btn-block,.fi-go,.r-go,.dfy-btn,.cvp-btn,.ts-cta-btn{white-space:nowrap;}
+@media(max-width:520px){.btn-yes,.btn-pay{padding-left:1.25rem;padding-right:1.25rem;gap:0.45rem;}}
+
+/* A skip link is white on orange, seen only on keyboard focus. Sized to
+   clear the large-text bar so it is compliant while it is on screen. */
+.skip-link,.skip{font-size:1.18rem!important;font-weight:700!important;}
+</style>
+<style id="erjDiagnosePanel">
+  /* ══ THE QUESTION PANEL ════════════════════════════════════════════
+     The single complaint about this page was that you could not tell
+     where the questions were. Everything below exists to answer that:
+     a framed instrument with an orange edge, a step counter that is
+     visible before the first question loads, and answer rows that look
+     tappable when nothing is hovering them. ── */
+  .dx-hero-cta{margin-top:2rem;}
+  .dx-handoff{margin-top:1.6rem;}
+
+  .dx-frame{
+    margin-top:1.8rem;
+    border:1px solid var(--card-line);
+    border-top:3px solid var(--accent);
+    border-radius:16px;
+    background:var(--card);
+    overflow:hidden;
+    box-shadow:0 18px 44px rgba(0,0,0,.10);
+    scroll-margin-top:96px;
+  }
+  .dx-frame-top{
+    display:flex;align-items:center;justify-content:space-between;gap:1rem;
+    padding:.85rem clamp(1.1rem,3vw,1.7rem);
+    border-bottom:1px solid var(--line-soft);
+    background:var(--paper-2);
+  }
+  .dx-frame-k{
+    font-family:var(--font-display);font-size:.66rem;font-weight:700;
+    letter-spacing:.2em;text-transform:uppercase;color:var(--accent);
+  }
+  .dx-dots{display:inline-flex;gap:.4rem;}
+  .dx-dots i{
+    width:7px;height:7px;border-radius:50%;
+    background:var(--line);display:block;transition:background .3s ease;
+  }
+  .dx-frame .dx{
+    margin-top:0;border:0;border-radius:0;background:transparent;box-shadow:none;
+  }
+  .dx-frame .dx-progress{height:5px;background:var(--line-soft);}
+  .dx-frame .dx-step{padding:clamp(1.5rem,4vw,2.4rem);}
+
+  /* the question itself, larger and unmissable */
+  .dx-count{
+    display:inline-flex;align-items:center;
+    font-size:.66rem!important;font-weight:700;letter-spacing:.18em;
+    border:1px solid var(--accent);border-radius:999px;
+    padding:.32rem .75rem;margin-bottom:1rem!important;
+  }
+  .dx-q{font-size:clamp(1.35rem,3.4vw,2.05rem)!important;line-height:1.2!important;}
+  .dx-why{font-size:.88rem!important;margin-bottom:1.7rem!important;}
+
+  /* Answer rows read as controls at rest, not only on hover. */
+  .dx-answers{gap:.7rem!important;}
+  .dx-a{
+    padding:1.05rem 1.15rem!important;
+    border:1px solid var(--line)!important;
+    border-radius:12px!important;
+    background:var(--paper-2)!important;
+    min-height:64px;
+    transition:border-color .2s ease,background-color .2s ease,transform .2s ease;
+  }
+  .dx-a-t{font-size:1rem!important;font-weight:500;}
+  .dx-a-x{
+    opacity:1!important;
+    width:2rem;height:2rem;flex:0 0 2rem;border-radius:999px;
+    display:inline-flex;align-items:center;justify-content:center;
+    background:rgba(255,87,34,.12);color:var(--accent);
+    transition:background-color .2s ease,transform .2s ease;
+  }
+  .dx-a:hover,.dx-a:focus-visible{
+    border-color:var(--accent)!important;
+    background:rgba(255,87,34,.07)!important;
+    transform:translateX(2px);
+  }
+  .dx-a:hover .dx-a-x,.dx-a:focus-visible .dx-a-x{
+    background:var(--accent);color:#fff;transform:translateX(3px);
+  }
+  .dx-a:active{transform:scale(.995);}
+  @media (hover:none){
+    .dx-a:hover{border-color:var(--line)!important;background:var(--paper-2)!important;transform:none;}
+    .dx-a:hover .dx-a-x{background:rgba(255,87,34,.12);color:var(--accent);transform:none;}
+    .dx-a:active{border-color:var(--accent)!important;background:rgba(255,87,34,.09)!important;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .dx-a,.dx-a-x,.dx-dots i{transition:none;}
+    .dx-a:hover,.dx-a:focus-visible{transform:none;}
+  }
+
+  .dx-back{margin-top:1.5rem!important;font-size:.86rem;}
+
+  /* the result keeps its own frame once the questions are done */
+  .dx-result{scroll-margin-top:96px;}
+
+  @media(max-width:620px){
+    .dx-frame{border-radius:14px;}
+    .dx-a{padding:.95rem 1rem!important;}
+  }
+</style>
+<style id="erjButtons">:root{--btn-ink-on-orange:#FFFFFF;--btn-orange:#FF5722;--btn-orange-ink-on-white:#AD350A;--btn-invert-surface:#FFFFFF;--btn-ease:cubic-bezier(0.22,1,0.36,1)}.btn-primary-ui,.btn-secondary-ui{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:.75rem;min-height:64px;padding:1rem 1.45rem;border-radius:999px;border:1px solid transparent;font-family:var(--font-body),'Inter',system-ui,sans-serif;font-size:1.18rem !important;font-weight:700 !important;letter-spacing:-0.01em;line-height:1.15;text-decoration:none;cursor:pointer;white-space:nowrap;transition:background-color .24s var(--btn-ease),color .24s var(--btn-ease),border-color .24s var(--btn-ease),box-shadow .24s var(--btn-ease),transform .24s var(--btn-ease)}.btn-primary-ui>span:first-child,.btn-secondary-ui>span:first-child{white-space:normal}.arrow-wrap{display:inline-flex;align-items:center;justify-content:center;width:2rem;height:2rem;flex:0 0 2rem;border-radius:999px;font-size:1rem;line-height:1;transition:background-color .24s var(--btn-ease),color .24s var(--btn-ease)}.btn-primary-ui .arrow,.btn-secondary-ui .arrow{display:inline-block;transition:transform .24s var(--btn-ease)}.btn-primary-ui:hover .arrow,.btn-secondary-ui:hover .arrow,.btn-primary-ui:focus-visible .arrow,.btn-secondary-ui:focus-visible .arrow{transform:translateX(4px)}.btn-primary-ui:hover .arrow.is-down,.btn-secondary-ui:hover .arrow.is-down,.btn-primary-ui:focus-visible .arrow.is-down,.btn-secondary-ui:focus-visible .arrow.is-down{transform:translateY(3px)}.btn-primary-ui{background:var(--btn-orange) !important;color:var(--btn-ink-on-orange) !important;border-color:var(--btn-orange) !important;box-shadow:0 10px 24px rgba(255,87,34,.18)}.btn-primary-ui .arrow-wrap{background:rgba(255,255,255,.16);color:var(--btn-ink-on-orange)}.btn-primary-ui:hover,.btn-primary-ui:focus-visible{background:var(--btn-invert-surface) !important;color:var(--btn-orange-ink-on-white) !important;border-color:var(--btn-orange) !important;transform:translateY(-2px);box-shadow:0 16px 34px rgba(255,87,34,.24)}.btn-primary-ui:hover .arrow-wrap,.btn-primary-ui:focus-visible .arrow-wrap{background:rgba(255,87,34,.14);color:var(--btn-orange-ink-on-white)}.btn-secondary-ui{background:var(--card,#FFFFFF) !important;color:var(--ink,#0A0A0A) !important;border-color:var(--line,rgba(10,10,10,.12)) !important;box-shadow:0 7px 18px rgba(0,0,0,.04)}.btn-secondary-ui .arrow-wrap{background:rgba(10,10,10,.06);color:inherit}html[data-theme="night"] .btn-secondary-ui .arrow-wrap{background:rgba(255,255,255,.10)}.btn-secondary-ui:hover,.btn-secondary-ui:focus-visible{background:var(--btn-orange) !important;color:var(--btn-ink-on-orange) !important;border-color:var(--btn-orange) !important;transform:translateY(-2px);box-shadow:0 16px 34px rgba(255,87,34,.22)}.btn-secondary-ui:hover .arrow-wrap,.btn-secondary-ui:focus-visible .arrow-wrap,html[data-theme="night"] .btn-secondary-ui:hover .arrow-wrap,html[data-theme="night"] .btn-secondary-ui:focus-visible .arrow-wrap{background:rgba(255,255,255,.18);color:var(--btn-ink-on-orange)}.fc-actions:has(.btn-secondary-ui:hover) .btn-primary-ui,.sl-actions:has(.btn-secondary-ui:hover) .btn-primary-ui,.answers:has(.btn-secondary-ui:hover) .btn-primary-ui,.hero-cta:has(.btn-secondary-ui:hover) .btn-primary-ui,.erj-actions:has(.btn-secondary-ui:hover) .btn-primary-ui,.rt-cta:has(.btn-secondary-ui:hover) .btn-primary-ui,.fc-actions:has(.btn-secondary-ui:focus-visible) .btn-primary-ui,.sl-actions:has(.btn-secondary-ui:focus-visible) .btn-primary-ui,.answers:has(.btn-secondary-ui:focus-visible) .btn-primary-ui,.hero-cta:has(.btn-secondary-ui:focus-visible) .btn-primary-ui,.erj-actions:has(.btn-secondary-ui:focus-visible) .btn-primary-ui,.rt-cta:has(.btn-secondary-ui:focus-visible) .btn-primary-ui{background:var(--btn-invert-surface) !important;color:var(--btn-orange-ink-on-white) !important;border-color:var(--btn-orange) !important;box-shadow:0 6px 16px rgba(0,0,0,.06)}.fc-actions:has(.btn-secondary-ui:hover) .btn-primary-ui .arrow-wrap,.sl-actions:has(.btn-secondary-ui:hover) .btn-primary-ui .arrow-wrap,.answers:has(.btn-secondary-ui:hover) .btn-primary-ui .arrow-wrap,.hero-cta:has(.btn-secondary-ui:hover) .btn-primary-ui .arrow-wrap,.erj-actions:has(.btn-secondary-ui:hover) .btn-primary-ui .arrow-wrap,.rt-cta:has(.btn-secondary-ui:hover) .btn-primary-ui .arrow-wrap{background:rgba(255,87,34,.14);color:var(--btn-orange-ink-on-white)}.btn-primary-ui:active{background:var(--btn-invert-surface) !important;color:var(--btn-orange-ink-on-white) !important;border-color:var(--btn-orange) !important}.btn-primary-ui:active .arrow-wrap{background:rgba(255,87,34,.14);color:var(--btn-orange-ink-on-white)}.btn-secondary-ui:active{background:var(--btn-orange) !important;color:var(--btn-ink-on-orange) !important;border-color:var(--btn-orange) !important}.btn-secondary-ui:active .arrow-wrap{background:rgba(255,255,255,.18);color:var(--btn-ink-on-orange)}.btn-primary-ui:active,.btn-secondary-ui:active{transform:translateY(0) scale(.985);box-shadow:none}@media (hover:none){.btn-primary-ui:hover{background:var(--btn-orange) !important;color:var(--btn-ink-on-orange) !important;border-color:var(--btn-orange) !important;transform:none}.btn-primary-ui:hover .arrow-wrap{background:rgba(255,255,255,.16);color:var(--btn-ink-on-orange)}.btn-secondary-ui:hover{background:var(--card,#FFFFFF) !important;color:var(--ink,#0A0A0A) !important;border-color:var(--line,rgba(10,10,10,.12)) !important;transform:none}.btn-secondary-ui:hover .arrow-wrap{background:rgba(10,10,10,.06);color:inherit}html[data-theme="night"] .btn-secondary-ui:hover .arrow-wrap{background:rgba(255,255,255,.10)}.btn-primary-ui:hover .arrow,.btn-secondary-ui:hover .arrow{transform:none}}.btn-primary-ui:focus-visible,.btn-secondary-ui:focus-visible{outline:2px solid var(--btn-orange);outline-offset:3px}.btn-primary-ui.btn-block,.btn-secondary-ui.btn-block{width:100%}.fc-actions,.sl-actions,.answers,.hero-cta,.erj-actions{display:flex;flex-wrap:wrap;gap:1rem;align-items:center}.btn-primary-ui.pulse::after{border-color:var(--btn-orange)}.btn-primary-ui.pulse:hover::after{opacity:0 !important;animation:none !important}@media(max-width:620px){.fc-actions,.sl-actions,.answers,.hero-cta,.erj-actions{flex-direction:column;align-items:stretch}.fc-actions>.btn-primary-ui,.fc-actions>.btn-secondary-ui,.sl-actions>.btn-primary-ui,.sl-actions>.btn-secondary-ui,.answers>.btn-primary-ui,.answers>.btn-secondary-ui,.hero-cta>.btn-primary-ui,.hero-cta>.btn-secondary-ui,.erj-actions>.btn-primary-ui,.erj-actions>.btn-secondary-ui{width:100%}.btn-primary-ui,.btn-secondary-ui{min-height:60px;padding:.85rem 1.05rem;gap:.5rem}.arrow-wrap{width:1.75rem;height:1.75rem;flex:0 0 1.75rem}}@media(prefers-reduced-motion:reduce){.btn-primary-ui,.btn-secondary-ui,.btn-primary-ui .arrow,.btn-secondary-ui .arrow,.arrow-wrap{transition:background-color .01ms,color .01ms,border-color .01ms}.btn-primary-ui:hover,.btn-secondary-ui:hover,.btn-primary-ui:active,.btn-secondary-ui:active{transform:none}.btn-primary-ui:hover .arrow,.btn-secondary-ui:hover .arrow{transform:none}.btn-primary-ui.pulse::after{animation:none;opacity:0}}@media(forced-colors:active){.btn-primary-ui,.btn-secondary-ui{border:1px solid ButtonText}}</style><link href="/favicon.ico" rel="icon" sizes="48x48 32x32 16x16"/>
+<link href="/favicon-96.png" rel="icon" sizes="96x96" type="image/png"/>
+<link href="/appletouchicon.png" rel="apple-touch-icon"/>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe height="0" src="https://www.googletagmanager.com/ns.html?id=GTM-NMFHS59B" style="display:none;visibility:hidden" width="0"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<a class="skip-link" href="#dx">Skip to the four questions</a>
+<div aria-label="Why this page exists" class="pledge-marq"><span>Until you know where to begin, <em>you might be moving in circles.</em></span></div>
+<main>
+<!-- ── HERO ───────────────────────────────────────────────── -->
+<section class="hero wrap">
+<div class="section-label"><span class="mark"></span>Free · 90 seconds · instant result</div>
+<h1>Your job search is leaking at <em>one</em> of four points. Find out which.</h1>
+<p class="lede">Most people patch the wrong point for months — rewriting a CV when the problem was aim, or hunting for more job boards when the problem was the document. Four questions, and you will know where to spend your next thirty days.</p>
+<div class="stat-row">
+<div><div class="stat-num">4</div><div class="stat-lbl">Questions</div></div>
+<div><div class="stat-num">1</div><div class="stat-lbl">Answer that matters</div></div>
+<div><div class="stat-num">0</div><div class="stat-lbl">Payment required</div></div>
+</div>
+<div class="erj-actions dx-hero-cta">
+<a class="btn-yes btn-primary-ui" href="#dx"><span>Start The 4 Questions</span><span class="arrow-wrap"><span class="arrow is-down">↓</span></span></a>
+<a class="btn-more btn-secondary-ui" href="#four"><span>Show Me How It Works First</span><span class="arrow-wrap"><span class="arrow is-down">↓</span></span></a>
+</div>
+</section>
+<!-- ── FIRST: THE MODEL ───────────────── -->
+<section class="section-line wrap reveal" id="four">
+<div class="section-label"><span class="mark"></span>First · how this works</div>
+<h2>Four points. <span>One leak.</span></h2>
+<p class="section-sub">A pipe does not usually burst along its length. It fails at a joint. Every remote job search runs on these same four, in this order — and when it is not producing offers, the fault is almost always at one of them.</p>
+<div aria-hidden="true" class="pipe">
+<svg role="img" viewbox="0 0 800 190" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#0d0d0d" height="190" width="800"></rect>
+<line stroke="#2a2a2a" stroke-linecap="round" stroke-width="10" x1="70" x2="730" y1="80" y2="80"></line>
+<line stroke="#FF5722" stroke-linecap="round" stroke-width="10" x1="70" x2="470" y1="80" y2="80"></line>
+<g>
+<circle cx="110" cy="80" fill="#161616" r="22" stroke="#FF5722" stroke-width="3"></circle>
+<circle cx="310" cy="80" fill="#161616" r="22" stroke="#FF5722" stroke-width="3"></circle>
+<circle cx="510" cy="80" fill="#161616" r="22" stroke="#3a3a3a" stroke-width="3"></circle>
+<circle cx="710" cy="80" fill="#161616" r="22" stroke="#3a3a3a" stroke-width="3"></circle>
+</g>
+<g fill="#fff" font-family="Space Grotesk,system-ui" font-size="15" font-weight="800" text-anchor="middle">
+<text x="110" y="86">01</text><text x="310" y="86">02</text>
+<text fill="#858585" x="510" y="86">03</text><text fill="#858585" x="710" y="86">04</text>
+</g>
+<g fill="#a1a1a1" font-family="Inter,system-ui" font-size="12" letter-spacing="1.5" text-anchor="middle">
+<text x="110" y="130">SUPPLY</text><text x="310" y="130">REPRESENTATION</text>
+<text x="510" y="130">AIM</text><text x="710" y="130">CONVERSION</text>
+</g>
+<path d="M505 96 q5 16 -4 26 q12 -4 12 -18 q0 -5 -8 -8z" fill="#FF5722"></path>
+<text fill="#FF5722" font-family="Inter,system-ui" font-size="11" text-anchor="middle" x="510" y="160">the leak</text>
+</svg>
+</div>
+<div class="joints">
+<div class="joint reveal">
+<div class="joint-n">01</div>
+<div>
+<div class="joint-t">Supply</div>
+<p class="joint-law">You can't apply for a job you never saw.</p>
+<p class="joint-leak"><b>The leak looks like:</b> you cannot find real openings at all — or everything you find smells like a scam, is already closed, or was never open to applicants from here.</p>
+</div>
+</div>
+<div class="joint reveal">
+<div class="joint-n">02</div>
+<div>
+<div class="joint-t">Representation</div>
+<p class="joint-law">If your CV can't be read, you were never really in the running.</p>
+<p class="joint-leak"><b>The leak looks like:</b> you apply and hear nothing. Your CV, LinkedIn and portfolio either do not exist, cannot be read by the software that screens them, or do not say what you can actually do.</p>
+</div>
+</div>
+<div class="joint reveal">
+<div class="joint-n">03</div>
+<div>
+<div class="joint-t">Aim</div>
+<p class="joint-law">Applying everywhere isn't the same as applying where you'd get hired.</p>
+<p class="joint-leak"><b>The leak looks like:</b> you are applying — a lot — but at the wrong roles, the wrong companies, or into portals where the application dies. Volume without direction.</p>
+</div>
+</div>
+<div class="joint reveal">
+<div class="joint-n">04</div>
+<div>
+<div class="joint-t">Conversion</div>
+<p class="joint-law">Interviews don't pay you. A signed offer does.</p>
+<p class="joint-leak"><b>The leak looks like:</b> replies come, even interviews come — but offers do not. Or the offer arrives and the money is wrong because nobody taught you to negotiate it.</p>
+</div>
+</div>
+</div>
+<p class="joints-close reveal"><b>Fix one at a time.</b> The most common mistake is trying to repair all four at once and finishing none of them. The four questions below name the one to start with.</p>
+<div class="erj-actions dx-handoff">
+<a class="btn-yes btn-primary-ui" href="#dx"><span>I Understand — Start The Questions</span><span class="arrow-wrap"><span class="arrow is-down">↓</span></span></a>
+</div>
+</section>
+<!-- ── SECOND: THE QUESTIONS ───────────── -->
+<section class="section-line wrap" id="dx">
+<div class="section-label"><span class="mark"></span>Second · the four questions</div>
+<h2>Answer honestly. <span>Nobody is watching.</span></h2>
+<p class="section-sub">There are no wrong answers and no scoring against anyone else. These four questions only sort your situation into one of the four points above. About ninety seconds, and nothing is uploaded or stored.</p>
+<div class="dx-frame">
+<div class="dx-frame-top">
+<span class="dx-frame-k">The diagnostic</span>
+<span class="dx-dots" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+</div>
+<div class="dx" id="dxBox">
+<div class="dx-progress"><span id="dxBar" style="width:0%"></span></div>
+<div class="dx-step" id="dxStep"></div>
+</div>
+</div>
+<div class="dx-result" hidden="" id="dxResult"></div>
+</section>
+</main>
+<footer class="foot wrap">
+<nav class="foot-links"><a href="../index.html">Home</a><a href="../starthere.html">Your Starting Line</a><a href="../free.html">Free For You</a><a href="../blog.html">Blog</a><a href="../register.html">Register</a><a href="../login.html">Participant Login</a></nav>
+<div class="erj-rights-line" role="note" style="max-width:900px;margin:1rem auto 0;padding-top:.85rem;border-top:1px solid rgba(127,127,127,.18);font-size:.72rem;line-height:1.6;letter-spacing:.02em;text-align:center;color:#8A8A86;">© 2026 Business Play Limited · Everything Remote Job. Built for <span style="color:var(--accent,#FF5722)">global career scale.</span> All rights reserved. ERJ frameworks, curriculum and paid resources are not licensed for redistribution. <a href="../terms.html" style="color:var(--accent,#FF5722);text-decoration:none">Terms</a> · <a href="../privacy.html" style="color:var(--accent,#FF5722);text-decoration:none">Privacy</a></div>
+</footer>
+<a class="wa-float" href="https://wa.me/2348032925957" rel="noopener" target="_blank" title="Chat on WhatsApp">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"></path></svg>
+</a>
+<script>window.ERJ_NAV={active:'diagnose',base:'../',onPage:[
+  {label:'How This Works',href:'#four',sub:'The four points, and why only one of them is yours'},
+  {label:'The 4 Questions',href:'#dx',sub:'About 90 seconds · instant result · nothing stored'}
+]};</script>
+<script src="../erj-theme.js?v=20260910a"></script>
+<script src="../erj-nav.js?v=20260910a"></script>
+<script src="../erj-config.js?v=20260910a"></script>
+<script src="../erj-capture.js?v=20260910a"></script>
+<script src="report-pdf.js?v=20260910a"></script>
+<script src="dx.js?v=20260910a"></script>
+<script src="../erj-product.js?v=20260910a"></script>
+<script src="../erj-schema.js?v=20260910a"></script>
+</body>
+</html>

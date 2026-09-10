@@ -1,0 +1,316 @@
+/* ═══════════════════════════════════════════════════════════════════════
+   ERJ BUTTON v2 — the single button format for everythingremotejob.com
+   ───────────────────────────────────────────────────────────────────────
+   One shape, one size, one behaviour, on every public page, in both themes.
+
+   Rest → hover is a true tonal inversion:
+
+     .btn-primary-ui     solid orange, white ink   →  white pill, orange ink
+     .btn-secondary-ui   card/ghost, page ink      →  solid orange, white ink
+
+   ── WHY THE TYPE SIZE IS NOT NEGOTIABLE ──────────────────────────────
+   Contrast is bought two different ways here and both are load-bearing:
+
+     white   on #FF5722  = 3.16:1  → passes WCAG AA for LARGE TEXT ONLY
+                                     (18.66px bold). The type is therefore
+                                     locked at 1.18rem/700 = 18.88px.
+                                     0.22px of headroom. Never shrink it.
+     #AD350A on #FFFFFF  = 5.94:1  → passes at ANY size. This is why the
+                                     inverted state uses #AD350A and never
+                                     the bright #FF5722, which would be
+                                     3.16:1 as small orange text on white.
+
+   If a label does not fit, shorten the label. Do not shrink the button.
+
+   ── STRUCTURE THE MARKUP MUST USE ────────────────────────────────────
+     <a class="btn-yes btn-primary-ui" href="…">
+       <span>Label goes here</span>
+       <span class="arrow-wrap"><span class="arrow">→</span></span>
+     </a>
+
+   The .btn-yes / .btn-more classes stay on the element as a fallback for
+   any control this file has not reached yet.
+
+   !important appears only where a page-level <style> block sets the same
+   property at the same specificity. It is deliberate, not defensive.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+:root{
+  --btn-ink-on-orange:#FFFFFF;
+  --btn-orange:#FF5722;
+  --btn-orange-ink-on-white:#AD350A;
+  --btn-invert-surface:#FFFFFF;
+  --btn-ease:cubic-bezier(0.22,1,0.36,1);
+}
+
+/* ── shared shape ──────────────────────────────────────────────────── */
+.btn-primary-ui,
+.btn-secondary-ui{
+  position:relative;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:.75rem;
+  min-height:64px;
+  padding:1rem 1.45rem;
+  border-radius:999px;
+  border:1px solid transparent;
+  font-family:var(--font-body),'Inter',system-ui,sans-serif;
+  font-size:1.18rem !important;   /* 18.88px — the white-on-orange floor */
+  font-weight:700 !important;
+  letter-spacing:-0.01em;
+  line-height:1.15;
+  text-decoration:none;
+  cursor:pointer;
+  white-space:nowrap;
+  transition:background-color .24s var(--btn-ease),
+             color .24s var(--btn-ease),
+             border-color .24s var(--btn-ease),
+             box-shadow .24s var(--btn-ease),
+             transform .24s var(--btn-ease);
+}
+
+/* The label span is allowed to wrap on very small screens; the pill is not
+   allowed to shrink its type to accommodate it. */
+.btn-primary-ui > span:first-child,
+.btn-secondary-ui > span:first-child{white-space:normal;}
+
+/* ── the arrow capsule ─────────────────────────────────────────────── */
+.arrow-wrap{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:2rem;
+  height:2rem;
+  flex:0 0 2rem;
+  border-radius:999px;
+  font-size:1rem;
+  line-height:1;
+  transition:background-color .24s var(--btn-ease),color .24s var(--btn-ease);
+}
+.btn-primary-ui .arrow,
+.btn-secondary-ui .arrow{
+  display:inline-block;
+  transition:transform .24s var(--btn-ease);
+}
+.btn-primary-ui:hover .arrow,
+.btn-secondary-ui:hover .arrow,
+.btn-primary-ui:focus-visible .arrow,
+.btn-secondary-ui:focus-visible .arrow{transform:translateX(4px);}
+
+/* A ↓ arrow points down the page, so it should nudge down, not right. */
+.btn-primary-ui:hover .arrow.is-down,
+.btn-secondary-ui:hover .arrow.is-down,
+.btn-primary-ui:focus-visible .arrow.is-down,
+.btn-secondary-ui:focus-visible .arrow.is-down{transform:translateY(3px);}
+
+/* ═══ PRIMARY — orange, inverting to white ═════════════════════════ */
+.btn-primary-ui{
+  background:var(--btn-orange) !important;
+  color:var(--btn-ink-on-orange) !important;
+  border-color:var(--btn-orange) !important;
+  box-shadow:0 10px 24px rgba(255,87,34,.18);
+}
+.btn-primary-ui .arrow-wrap{
+  background:rgba(255,255,255,.16);
+  color:var(--btn-ink-on-orange);
+}
+
+.btn-primary-ui:hover,
+.btn-primary-ui:focus-visible{
+  background:var(--btn-invert-surface) !important;
+  color:var(--btn-orange-ink-on-white) !important;
+  border-color:var(--btn-orange) !important;
+  transform:translateY(-2px);
+  box-shadow:0 16px 34px rgba(255,87,34,.24);
+}
+.btn-primary-ui:hover .arrow-wrap,
+.btn-primary-ui:focus-visible .arrow-wrap{
+  background:rgba(255,87,34,.14);
+  color:var(--btn-orange-ink-on-white);
+}
+
+/* ═══ SECONDARY — card/ghost, inverting to orange ══════════════════ */
+.btn-secondary-ui{
+  background:var(--card,#FFFFFF) !important;
+  color:var(--ink,#0A0A0A) !important;
+  border-color:var(--line,rgba(10,10,10,.12)) !important;
+  box-shadow:0 7px 18px rgba(0,0,0,.04);
+}
+.btn-secondary-ui .arrow-wrap{
+  background:rgba(10,10,10,.06);
+  color:inherit;
+}
+html[data-theme="night"] .btn-secondary-ui .arrow-wrap{background:rgba(255,255,255,.10);}
+
+.btn-secondary-ui:hover,
+.btn-secondary-ui:focus-visible{
+  background:var(--btn-orange) !important;
+  color:var(--btn-ink-on-orange) !important;
+  border-color:var(--btn-orange) !important;
+  transform:translateY(-2px);
+  box-shadow:0 16px 34px rgba(255,87,34,.22);
+}
+.btn-secondary-ui:hover .arrow-wrap,
+.btn-secondary-ui:focus-visible .arrow-wrap,
+html[data-theme="night"] .btn-secondary-ui:hover .arrow-wrap,
+html[data-theme="night"] .btn-secondary-ui:focus-visible .arrow-wrap{
+  background:rgba(255,255,255,.18);
+  color:var(--btn-ink-on-orange);
+}
+
+/* ═══ THE PAIR NEVER SHOWS TWO ORANGE BUTTONS ══════════════════════
+   A group holds one primary and one ghost. Hovering the ghost turns it
+   orange — so without this rule there would be a moment with two solid
+   orange buttons side by side, and the eye has nowhere to land.
+
+   :has() lets the group tell the primary to step back into its white
+   state while the ghost is being pointed at. Exactly one orange button
+   is visible at any time, whichever one the cursor is on.
+
+   In a browser without :has() the rule is simply skipped and the older
+   behaviour returns. Nothing breaks; the balance is just less careful. */
+.fc-actions:has(.btn-secondary-ui:hover)      .btn-primary-ui,
+.sl-actions:has(.btn-secondary-ui:hover)      .btn-primary-ui,
+.answers:has(.btn-secondary-ui:hover)         .btn-primary-ui,
+.hero-cta:has(.btn-secondary-ui:hover)        .btn-primary-ui,
+.erj-actions:has(.btn-secondary-ui:hover)     .btn-primary-ui,
+.rt-cta:has(.btn-secondary-ui:hover)          .btn-primary-ui,
+.fc-actions:has(.btn-secondary-ui:focus-visible)  .btn-primary-ui,
+.sl-actions:has(.btn-secondary-ui:focus-visible)  .btn-primary-ui,
+.answers:has(.btn-secondary-ui:focus-visible)     .btn-primary-ui,
+.hero-cta:has(.btn-secondary-ui:focus-visible)    .btn-primary-ui,
+.erj-actions:has(.btn-secondary-ui:focus-visible) .btn-primary-ui,
+.rt-cta:has(.btn-secondary-ui:focus-visible)      .btn-primary-ui{
+  background:var(--btn-invert-surface) !important;
+  color:var(--btn-orange-ink-on-white) !important;
+  border-color:var(--btn-orange) !important;
+  box-shadow:0 6px 16px rgba(0,0,0,.06);
+}
+.fc-actions:has(.btn-secondary-ui:hover)  .btn-primary-ui .arrow-wrap,
+.sl-actions:has(.btn-secondary-ui:hover)  .btn-primary-ui .arrow-wrap,
+.answers:has(.btn-secondary-ui:hover)     .btn-primary-ui .arrow-wrap,
+.hero-cta:has(.btn-secondary-ui:hover)    .btn-primary-ui .arrow-wrap,
+.erj-actions:has(.btn-secondary-ui:hover) .btn-primary-ui .arrow-wrap,
+.rt-cta:has(.btn-secondary-ui:hover)      .btn-primary-ui .arrow-wrap{
+  background:rgba(255,87,34,.14);
+  color:var(--btn-orange-ink-on-white);
+}
+
+/* ── pressed ───────────────────────────────────────────────────────
+   Also the touch story. A phone has no hover: the finger lands and the
+   control must answer immediately, so :active carries the same
+   inversion the mouse gets from :hover. */
+.btn-primary-ui:active{
+  background:var(--btn-invert-surface) !important;
+  color:var(--btn-orange-ink-on-white) !important;
+  border-color:var(--btn-orange) !important;
+}
+.btn-primary-ui:active .arrow-wrap{
+  background:rgba(255,87,34,.14);
+  color:var(--btn-orange-ink-on-white);
+}
+.btn-secondary-ui:active{
+  background:var(--btn-orange) !important;
+  color:var(--btn-ink-on-orange) !important;
+  border-color:var(--btn-orange) !important;
+}
+.btn-secondary-ui:active .arrow-wrap{
+  background:rgba(255,255,255,.18);
+  color:var(--btn-ink-on-orange);
+}
+.btn-primary-ui:active,
+.btn-secondary-ui:active{transform:translateY(0) scale(.985);box-shadow:none;}
+
+/* ── touch devices must not keep a hover state after the tap ────────
+   A phone browser leaves :hover applied to the last thing tapped until
+   you tap somewhere else, which strands a button in its inverted state
+   and makes it look broken. Where there is no real pointer, the hover
+   rules are withdrawn and :active above does the work instead. */
+@media (hover: none){
+  .btn-primary-ui:hover{
+    background:var(--btn-orange) !important;
+    color:var(--btn-ink-on-orange) !important;
+    border-color:var(--btn-orange) !important;
+    transform:none;
+  }
+  .btn-primary-ui:hover .arrow-wrap{
+    background:rgba(255,255,255,.16);
+    color:var(--btn-ink-on-orange);
+  }
+  .btn-secondary-ui:hover{
+    background:var(--card,#FFFFFF) !important;
+    color:var(--ink,#0A0A0A) !important;
+    border-color:var(--line,rgba(10,10,10,.12)) !important;
+    transform:none;
+  }
+  .btn-secondary-ui:hover .arrow-wrap{
+    background:rgba(10,10,10,.06);
+    color:inherit;
+  }
+  html[data-theme="night"] .btn-secondary-ui:hover .arrow-wrap{
+    background:rgba(255,255,255,.10);
+  }
+  .btn-primary-ui:hover .arrow,
+  .btn-secondary-ui:hover .arrow{transform:none;}
+}
+
+/* ── keyboard focus ring ───────────────────────────────────────────── */
+.btn-primary-ui:focus-visible,
+.btn-secondary-ui:focus-visible{
+  outline:2px solid var(--btn-orange);
+  outline-offset:3px;
+}
+
+/* ── full-width variant ────────────────────────────────────────────── */
+.btn-primary-ui.btn-block,
+.btn-secondary-ui.btn-block{width:100%;}
+
+/* ── groups ────────────────────────────────────────────────────────── */
+.fc-actions,.sl-actions,.answers,.hero-cta,.erj-actions{
+  display:flex;flex-wrap:wrap;gap:1rem;align-items:center;
+}
+
+/* ── the pulse ring rides the inversion ────────────────────────────── */
+.btn-primary-ui.pulse::after{border-color:var(--btn-orange);}
+.btn-primary-ui.pulse:hover::after{opacity:0 !important;animation:none !important;}
+
+/* ── narrow screens ────────────────────────────────────────────────── */
+@media(max-width:620px){
+  .fc-actions,.sl-actions,.answers,.hero-cta,.erj-actions{
+    flex-direction:column;align-items:stretch;
+  }
+  .fc-actions   > .btn-primary-ui, .fc-actions   > .btn-secondary-ui,
+  .sl-actions   > .btn-primary-ui, .sl-actions   > .btn-secondary-ui,
+  .answers      > .btn-primary-ui, .answers      > .btn-secondary-ui,
+  .hero-cta     > .btn-primary-ui, .hero-cta     > .btn-secondary-ui,
+  .erj-actions  > .btn-primary-ui, .erj-actions  > .btn-secondary-ui{
+    width:100%;
+  }
+  /* Padding buys the fit, never the type size. */
+  .btn-primary-ui,
+  .btn-secondary-ui{min-height:60px;padding:.85rem 1.05rem;gap:.5rem;}
+  .arrow-wrap{width:1.75rem;height:1.75rem;flex:0 0 1.75rem;}
+}
+
+/* ── motion preferences ────────────────────────────────────────────── */
+@media(prefers-reduced-motion:reduce){
+  .btn-primary-ui,
+  .btn-secondary-ui,
+  .btn-primary-ui .arrow,
+  .btn-secondary-ui .arrow,
+  .arrow-wrap{transition:background-color .01ms,color .01ms,border-color .01ms;}
+  .btn-primary-ui:hover,
+  .btn-secondary-ui:hover,
+  .btn-primary-ui:active,
+  .btn-secondary-ui:active{transform:none;}
+  .btn-primary-ui:hover .arrow,
+  .btn-secondary-ui:hover .arrow{transform:none;}
+  .btn-primary-ui.pulse::after{animation:none;opacity:0;}
+}
+
+/* ── forced-colours / Windows high contrast ────────────────────────── */
+@media(forced-colors:active){
+  .btn-primary-ui,
+  .btn-secondary-ui{border:1px solid ButtonText;}
+}
