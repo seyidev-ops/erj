@@ -24,6 +24,7 @@
 
   var cfg = window.ERJ_CONFIG || {};
   var WA = cfg.whatsapp || '2348032925957';
+  var CART_PAGE = cfg.cartPage || 'https://paystack.shop/pay/erjcart';
 
   function ngn(n) { return '\u20A6' + Number(n).toLocaleString('en-NG'); }
 
@@ -195,13 +196,13 @@
     var note = key
       ? 'One payment, all items, secured by Paystack.'
       : (one ? 'Takes you straight to the secure Paystack page for this item.'
-             : 'We send you one combined invoice for all ' + cart.length +
-               ' items, then confirm access the same day.');
+             : 'One secure Paystack payment for all ' + cart.length +
+               ' items. Send us the receipt and access follows the same day.');
 
     foot.innerHTML =
       '<div class="cart-total"><span>Total</span><b>' + ngn(total()) + '</b></div>' +
       '<button class="cart-go btn-primary-ui" id="cartGo"><span>' +
-        (key || one ? 'Pay ' + ngn(total()) : 'Place this order') +
+        'Pay ' + ngn(total()) +
       '</span><span class="arrow-wrap"><span class="arrow">\u2192</span></span></button>' +
       '<p class="cart-note">' + note + '</p>';
     document.getElementById('cartGo').addEventListener('click', checkout);
@@ -238,11 +239,11 @@
       return;
     }
 
-    var lines = cart.map(function (i) { return '\u2022 ' + i.name + ' \u2014 ' + ngn(i.price); });
-    var msg = 'ORDER\n\nI would like to buy:\n' + lines.join('\n') +
-              '\n\nTotal: ' + ngn(total()) +
-              '\n\nPlease send me one invoice for all of it.';
-    window.open('https://wa.me/' + WA + '?text=' + encodeURIComponent(msg), '_blank', 'noopener');
+    /* Multi-item: one Paystack page that accepts a custom amount. The amount
+       is passed in KOBO, which is what Paystack expects — sending naira would
+       charge a hundredth of the total. */
+    var kobo = total() * 100;
+    window.location.href = CART_PAGE + '?amount=' + kobo;
   }
 
   /* ── boot ────────────────────────────────────────────────────── */

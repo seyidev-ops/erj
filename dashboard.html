@@ -837,7 +837,7 @@ a.ml-status.open:hover { background: var(--electric); color:#fff; }
 body.offline .offline-bar { display: block; }
 body.offline .main { filter: none; }
 
-/* ── Cohort 9 minimalist overrides ── */
+/* ── portal minimalist overrides ── */
 #particles,.radial-glow,.grid-overlay{display:none!important}
 *{text-shadow:none!important}
 h1 strong,h1 em{ -webkit-text-fill-color:currentColor!important;background:none!important;color:var(--accent)!important;}
@@ -849,7 +849,7 @@ h1 strong,h1 em{ -webkit-text-fill-color:currentColor!important;background:none!
 .wa-float svg{fill:var(--bg)!important;}
 .wa-float:hover{box-shadow:none!important;}
 
-/* ── Cohort 9 cleanup ── */
+/* ── portal cleanup ── */
 h1 span,h2 span,.hero h1 span,[class*="grad"]{ -webkit-text-fill-color:var(--accent)!important;background:none!important;background-image:none!important;color:var(--accent)!important;-webkit-background-clip:initial!important;background-clip:initial!important;}
 .nav,nav{background:var(--bg)!important;}
 html[data-theme="day"] .nav,html[data-theme="day"] nav{background:var(--bg)!important;}
@@ -923,6 +923,30 @@ html[data-theme="day"] .erj-mark-day{display:inline-block!important;}</style>
 </meta></meta></meta></meta></meta><link href="/favicon.ico" rel="icon" sizes="48x48 32x32 16x16"/>
 <link href="/favicon-96.png" rel="icon" sizes="96x96" type="image/png"/>
 <link href="/appletouchicon.png" rel="apple-touch-icon"/>
+<script>
+/* The cohort a new registration belongs to. Reads erj-passcode.js rather than
+   hard-coding a number, so this never goes stale again: nextCohort() is the one
+   still enrolling, currentCohort() the one actually running. Cohort 11 begins
+   Mon 28 Sep 2026 20:00 WAT; its codes are ERJM-CORE-2026TI / ERJM-FULL-2026TI. */
+/* The cohort a NEW registration joins is the one still ENROLLING, which is
+   nextCohort() — not currentCohort(). On 11 Sep 2026 currentCohort() is 10
+   (running to 27 Sep) while registrations being taken are for 11, so using
+   currentCohort() here would label every new student with the cohort that is
+   already closed. An existing student is never labelled from this function:
+   their own session.cohort wins, and this is only the fallback. */
+function enrollingCohortLabel(){
+  try{
+    var P = window.ERJPasscode; if(!P) return 'Cohort 11';
+    var c = P.nextCohort() || P.currentCohort();
+    return c ? 'Cohort ' + c.n : 'Cohort 11';
+  }catch(e){ return 'Cohort 11'; }
+}
+/* The cohort THIS student is in: what they registered under, falling back to
+   the one currently enrolling for a brand-new account. */
+function cohortLabelFor(session, rec){
+  return (session && session.cohort) || (rec && rec.cohort) || enrollingCohortLabel();
+}
+</script>
 </head>
 <body>
 <!-- Portal app shell: this topbar + the sidebar are the ONLY navigation here.
@@ -1274,7 +1298,7 @@ function openAccountPanel() {
     <div style="padding:.2rem 0 .4rem">
       ${row('Full name', session.name || '—')}
       ${row('Email', session.email || '—')}
-      ${row('Cohort', session.cohort || rec.cohort || 'Cohort 9')}
+      ${row('Cohort', cohortLabelFor(session, rec))}
       ${row('Enrolled', enrolled)}
       ${row('Stages complete', done + ' / 5')}
       ${row('Done-For-You Application', 'Available separately')}
@@ -1459,7 +1483,7 @@ function populateUser() {
   if (avBtn) avBtn.textContent = initials;
   if (un) un.textContent = session.name || 'Student';
   if (dn) dn.textContent = session.name || 'Student';
-  if (dr) dr.textContent = (session.role === 'admin' ? '⚙️ Admin' : session.role === 'instructor' ? '🎓 Instructor' : '🎓 Participant · Cohort 9');
+  if (dr) dr.textContent = (session.role === 'admin' ? '⚙️ Admin' : session.role === 'instructor' ? '🎓 Instructor' : '🎓 Participant · ' + (session.cohort || enrollingCohortLabel()));
 }
 
 function updateWelcome() {
@@ -2080,19 +2104,19 @@ function renderMaterials() {
   const STAGE_SLIDES = [
     { stageId:'stage1', stage:'Stage 1', icon:'🧠', title:'Remote Mindset Blueprint',
       color:'#E8470F', sessions:'Sessions 1 & 2',
-      url:'https://docs.google.com/presentation/d/1ZpqlDPebvO9yyYRaGQ4RPzAv_tqyQ5YT/edit?usp=sharing' },
+      url:'https://docs.google.com/presentation/d/1eVTHt4VF39oyHqwkjNF6dacO0jZLIanE/edit?usp=sharing' },
     { stageId:'stage2', stage:'Stage 2', icon:'🛠️', title:'The Digital Toolkit',
       color:'#E8470F', sessions:'Sessions 3 & 4',
-      url:'https://docs.google.com/presentation/d/1a_DK-axvPo1x7V7hPdpdQ9EFqmb7tSrv/edit?usp=sharing' },
+      url:'https://docs.google.com/presentation/d/1xReZBfMELqX6suROdQ2riTncIdxVgffX/edit?usp=sharing' },
     { stageId:'stage3', stage:'Stage 3', icon:'📡', title:'Asynchronous Communication Mastery',
       color:'#C96130', sessions:'Sessions 5 & 6',
-      url:'https://docs.google.com/presentation/d/1r7dJvXQbFC4QQGWXL8JYy_QAMiXXpIuk/edit?usp=sharing' },
+      url:'https://docs.google.com/presentation/d/1yG961gNzZ5CCSzwPMZ25_BLHduw1ANcM/edit?usp=sharing' },
     { stageId:'stage4', stage:'Stage 4', icon:'🔍', title:'Global Job Search Mastery',
       color:'#E8470F', sessions:'Sessions 7 & 8',
-      url:'https://docs.google.com/presentation/d/1esTZfKNm8HiKaLUTa_xzlMunNO12BJkc/edit?usp=sharing' },
+      url:'https://docs.google.com/presentation/d/1BWiodEFFtpgcfBVGVfoqiYO7FCqWAtwV/edit?usp=sharing' },
     { stageId:'stage5', stage:'Stage 5', icon:'🌟', title:'The Thrive Programme',
       color:'#7A8B5A', sessions:'Sessions 9 & 10',
-      url:'https://docs.google.com/presentation/d/1yXgfoU1k0QyXtGiw6-YOeGhxOWQrIb4K/edit?usp=sharing' },
+      url:'https://docs.google.com/presentation/d/1kG4VOkKPQWLxX37qTAK9BiTDI57el-Jh/edit?usp=sharing' },
   ];
 
   const slideGrid = document.getElementById('slideDeckGrid');
@@ -2125,19 +2149,19 @@ function renderMaterials() {
   const WORKBOOK_ITEMS = [
     { stageId:'stage1', icon:'📒', title:'Stage 1 Participant Workbook',
       meta:'Remote Mindset Blueprint · Fill-in workbook',
-      url:'https://docs.google.com/document/d/1-hkntAHJMObEnlnj46k8gmnhteua4ws9/edit?usp=sharing',
+      url:'https://docs.google.com/document/d/1arfgV34gRB_sTLtuJX9SnBLyiHtOM-K0Q4eUNj1ITio/edit?usp=sharing',
       color:'#E8470F', type:'doc' },
     { stageId:'stage2', icon:'📒', title:'Stage 2 Participant Workbook',
       meta:'The Digital Toolkit · Tools & setup guide',
-      url:'https://docs.google.com/document/d/1lBr38HcT2Zg_43Pd-DzegSRoq8QXgxLB/edit?usp=sharing',
+      url:'https://docs.google.com/document/d/1X5bvzgwpQU_eEBytwVr5TNlsL7MuD661ICqdB0pbKgc/edit?usp=sharing',
       color:'#E8470F', type:'doc' },
     { stageId:'stage3', icon:'📒', title:'Stage 3 Participant Workbook',
       meta:'Async Communication Mastery · Exercises & templates',
-      url:'https://docs.google.com/document/d/1yKXGv4aSgWCqG1p9kSb8fc85F_wexFoc/edit?usp=sharing',
+      url:'https://docs.google.com/document/d/18PQRXiCZHNIeIZrX3GjytBh3090aZbZ6Ml3ovNzX94E/edit?usp=sharing',
       color:'#C96130', type:'doc' },
     { stageId:'stage4', icon:'📒', title:'Stage 4 Participant Workbook',
       meta:'Job Search Mastery · Platform tracker & scripts',
-      url:'https://docs.google.com/document/d/1hBdH5Quu7xc3BwBpqhiLgDs_OwI_8Arv/edit?usp=sharing',
+      url:'https://docs.google.com/document/d/1D24_UfmPFy9r_oTKBdk6pa9B8gKSHjpyBSaipkZKqTU/edit?usp=sharing',
       color:'#E8470F', type:'doc' },
     { stageId:'stage4', icon:'✉️', title:'3-Sentence Cover Letter Formula',
       meta:'Stage 4 Extra · Copy-and-adapt templates',
@@ -2153,7 +2177,7 @@ function renderMaterials() {
       color:'#E8470F', type:'doc' },
     { stageId:'stage5', icon:'📒', title:'Stage 5 Participant Workbook',
       meta:'Negotiation & Onboarding · Salary scripts & 90-day plan',
-      url:'https://docs.google.com/document/d/17uMf44bl9RTHHTzf6pTxh_3GDR33q1qH/edit?usp=sharing',
+      url:'https://docs.google.com/document/d/1gKsPPIcwli9tnMIPsM7w6YmC1QX0E2CiFMPLlOldnWg/edit?usp=sharing',
       color:'#7A8B5A', type:'doc' },
   ];
 
