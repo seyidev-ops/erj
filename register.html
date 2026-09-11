@@ -4,7 +4,7 @@
 <head><meta charset="utf-8"/><script>try{document.documentElement.classList.add('js')}catch(e){}</script><style id="erjCanvasGuard">html{background:#000000}html[data-theme="day"]{background:#FAFAF8}</style>
 
 <!-- Meta Pixel + Google Tag Manager -->
-<script async="" src="erj-track.js?v=20260910a"></script>
+<script async="" src="erj-track.js?v=20260911a"></script>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <link href="manifest.json" rel="manifest"/>
 <meta content="#000000" id="metaThemeColor" name="theme-color"/>
@@ -122,22 +122,11 @@ h3{font-family:var(--font-display);font-weight:700;letter-spacing:-0.01em;color:
 /* hero */
 .hero{padding-top:clamp(2.6rem,7vw,5rem);}
 .hero .lede{margin-bottom:2.4rem;}
-.hero-cta{display:flex;flex-wrap:wrap;gap:1rem;margin-bottom:3rem;}
-.stat-row{display:flex;flex-wrap:wrap;gap:clamp(1.8rem,5vw,3.5rem);margin-top:3rem;padding-top:3rem;border-top:1px solid var(--line);}
-.stat-num{font-family:var(--font-display);font-size:clamp(1.8rem,4vw,2.6rem);font-weight:800;color:var(--ink);line-height:1;letter-spacing:-0.02em;}
-.stat-lbl{font-size:0.76rem;color:var(--ink-soft);margin-top:0.45rem;letter-spacing:0.02em;}
 
 /* buttons — pill, RocketAir */
 .btn-yes{display:inline-flex;align-items:center;gap:0.6rem;background:var(--accent-btn,#FF5722);color:#fff;text-decoration:none;
   padding:0.8rem 1.6rem;border-radius:100px;font-family:var(--font-body);font-size:1.18rem;font-weight:700;letter-spacing:0.01em;
   border:1px solid var(--accent-btn,#FF5722);transition:all 0.28s var(--ease);}
-.btn-yes .arrow{transition:transform 0.28s var(--ease);}
-.btn-yes:hover{background:var(--accent-h);border-color:var(--accent-h);color:#fff;transform:translateY(-2px);}
-.btn-yes:hover .arrow{transform:translateX(4px);}
-.btn-more{display:inline-flex;align-items:center;gap:0.5rem;background:transparent;color:var(--ink);text-decoration:none;
-  padding:0.8rem 1.5rem;border-radius:100px;font-family:var(--font-body);font-size:0.98rem;font-weight:500;letter-spacing:0.01em;
-  border:1px solid var(--line);cursor:pointer;transition:all 0.28s var(--ease);}
-.btn-more:hover{border-color:var(--ink);color:var(--ink);transform:translateY(-2px);}
 .btn-block{width:100%;justify-content:center;white-space:nowrap;}
 /* The old rule here shrank full-width buttons to as little as 0.78rem on a
    phone. White on #FF5722 measures 3.16:1, which clears WCAG only as LARGE
@@ -146,29 +135,14 @@ h3{font-family:var(--font-display);font-weight:700;letter-spacing:-0.01em;color:
    site, all invisible to anyone not measuring.
    The type now holds 1.18rem and the fit is bought from the padding. */
 @media(max-width:600px){.btn-block{padding-left:1rem;padding-right:1rem;gap:0.4rem;}}
-@media(max-width:380px){.btn-block{padding-left:0.7rem;padding-right:0.7rem;}}
-
-/* deliverables / asset grid */
-.deliverables-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(205px,1fr));gap:0.9rem;}
-.del-item{background:var(--bg2);border:1px solid var(--line);border-radius:12px;padding:1rem 1.3rem;display:flex;
-  align-items:center;gap:11px;font-size:0.88rem;color:var(--ink);font-weight:400;transition:border-color .25s var(--ease),background .25s var(--ease),transform .25s var(--ease);}
-.del-item:hover{border-color:rgba(255,87,34,0.45);transform:translateY(-2px);}
-.del-item .del-icon{font-size:1.3rem;flex-shrink:0;}
+@media(max-width:380px){.btn-block{padding-left:0.7rem;padding-right:0.7rem;}
 
 /* stage rows — RocketAir listing feel */
 .stage{display:grid;grid-template-columns:auto 1fr;gap:1.6rem;padding:2rem 0;border-bottom:1px solid var(--line);align-items:start;
   transition:background .3s var(--ease),padding .3s var(--ease);border-radius:8px;}
 .stage:last-child{border-bottom:none;}
 .stage:hover{background:var(--bg2);padding-left:1.1rem;padding-right:1.1rem;}
-.stage-num{font-family:var(--font-display);font-size:clamp(2rem,4vw,2.6rem);font-weight:800;color:var(--accent);line-height:1;min-width:2.2ch;letter-spacing:-0.02em;}
 .stage h3{font-size:clamp(1.3rem,2.4vw,1.7rem);margin-bottom:0.25rem;}
-.stage .stage-tag{font-size:0.64rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:0.9rem;}
-.stage-list{list-style:none;display:flex;flex-direction:column;gap:0.55rem;margin-top:0.7rem;}
-.stage-list li{display:flex;gap:0.6rem;font-size:0.94rem;color:var(--ink-soft);line-height:1.55;}
-.stage-list li::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--accent);flex-shrink:0;margin-top:0.5rem;}
-.stage-deliverable{margin-top:1.1rem;padding:0.9rem 1.2rem;background:linear-gradient(160deg,rgba(255,87,34,0.10),transparent 70%);
-  border:1px solid rgba(255,87,34,0.22);border-radius:10px;font-size:0.86rem;color:var(--ink);}
-.stage-deliverable strong{color:var(--accent);display:block;font-size:0.64rem;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:4px;}
 
 /* cards */
 .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.1rem;}
@@ -178,54 +152,6 @@ h3{font-family:var(--font-display);font-weight:700;letter-spacing:-0.01em;color:
 .card-k{font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:0.8rem;}
 .card h3{font-size:1.25rem;margin-bottom:0.55rem;}
 .card p{font-size:0.92rem;color:var(--ink-soft);font-weight:300;line-height:1.65;}
-
-/* feature list */
-.flist{list-style:none;display:flex;flex-direction:column;gap:0.6rem;}
-.flist li{display:flex;gap:0.6rem;font-size:0.95rem;color:var(--ink-soft);line-height:1.55;}
-.flist li::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--accent);flex-shrink:0;margin-top:0.55rem;}
-
-/* pricing */
-.price-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.3rem;align-items:stretch;}
-.price-card{background:var(--card);border:1px solid var(--card-line);border-radius:18px;padding:2.2rem 2rem;display:flex;flex-direction:column;
-  transition:border-color .3s var(--ease),transform .3s var(--ease);}
-.price-card:hover{transform:translateY(-3px);}
-.price-card.feature{border-color:var(--accent);position:relative;}
-.price-card.feature::before{content:'Lowest Total';position:absolute;top:-11px;left:1.8rem;background:var(--accent);color:#fff;
-  font-size:0.58rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;padding:4px 13px;border-radius:100px;}
-.price-tag{display:inline-block;font-size:0.56rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);
-  border:1px solid var(--accent);border-radius:100px;padding:3px 12px;margin-bottom:1.1rem;align-self:flex-start;white-space:nowrap;}
-.price-was{font-size:0.95rem;color:var(--ink-faint);text-decoration:line-through;text-decoration-color:var(--accent);}
-.price-now{font-family:var(--font-display);font-size:clamp(2.2rem,5vw,3rem);font-weight:800;letter-spacing:-0.03em;color:var(--ink);line-height:1;margin:0.4rem 0 0.5rem;}
-.price-now small{display:block;font-family:var(--font-body);font-size:0.85rem;font-weight:300;color:var(--ink-soft);letter-spacing:0;line-height:1.5;margin-top:0.6rem;}
-.price-split{font-size:0.85rem;color:var(--accent);margin-bottom:0.5rem;}
-.price-card .btn-yes,.price-card .btn-more{margin-top:auto;}
-
-/* ROI */
-.roi{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;}
-.roi-col{border:1px solid var(--line);border-radius:18px;padding:2rem 1.8rem;background:var(--card);}
-.roi-col.win{border-color:rgba(255,87,34,0.45);background:linear-gradient(160deg,rgba(255,87,34,0.08),transparent 62%);}
-.roi-k{font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:0.8rem;}
-.roi-col.win .roi-k{color:var(--accent);}
-.roi-big{font-family:var(--font-display);font-size:clamp(1.6rem,3.2vw,2.2rem);font-weight:800;letter-spacing:-0.02em;line-height:1.05;margin-bottom:0.9rem;color:var(--ink);}
-.roi-big small{font-family:var(--font-body);font-size:0.85rem;font-weight:300;color:var(--ink-soft);letter-spacing:0;display:block;margin-top:0.25rem;}
-.roi-note{font-size:0.9rem;color:var(--ink-soft);font-weight:300;line-height:1.6;}
-
-/* application form */
-.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem;align-items:start;}
-.field{margin-bottom:1rem;}
-.field label{display:block;font-size:0.62rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:0.5rem;}
-.field input,.field textarea{width:100%;background:var(--bg2);border:1px solid var(--line);border-radius:10px;color:var(--ink);
-  font-family:var(--font-body);font-size:0.95rem;padding:0.85rem 1rem;outline:none;transition:border-color .2s;}
-.field input:focus,.field textarea:focus{border-color:var(--accent);}
-.field textarea{resize:vertical;min-height:92px;}
-.acct{border:1px solid var(--line);border-radius:12px;padding:1.1rem 1.3rem;background:var(--bg2);margin:1rem 0;}
-.acct div{display:flex;justify-content:space-between;gap:1rem;font-size:0.86rem;padding:0.3rem 0;}
-.acct div span:first-child{color:var(--ink-soft);}
-.acct div span:last-child{color:var(--ink);font-weight:500;}
-.pay-path{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;padding:0.65rem 0;border-bottom:1px solid var(--line-soft);}
-.pay-path:last-child{border-bottom:none;}
-.pay-path .pp-l{font-size:0.86rem;color:var(--ink-soft);}
-.pay-path .pp-v{font-family:var(--font-display);font-weight:700;color:var(--ink);}
 
 .note{font-size:0.82rem;color:var(--ink-faint);line-height:1.6;margin-top:1rem;}
 .note a{color:var(--accent);text-decoration:none;}
@@ -256,79 +182,16 @@ html.js .reveal.in{opacity:1;transform:translateY(0);}
 }
 @media (max-width:720px){
   .price-grid{grid-template-columns:1fr;}
-  .roi{grid-template-columns:1fr;}
-  .form-grid{grid-template-columns:1fr;}
-  .hero-cta{flex-direction:column;}
-  .hero-cta .btn-yes,.hero-cta .btn-more{width:100%;justify-content:center;}
   .stage{grid-template-columns:auto 1fr;gap:1rem;}
   .stage:hover{padding-left:0;padding-right:0;}
-}
-
-/* ── The Thrive Pledge ribbon — the promise the site is built on ── */
-.pledge-ribbon{display:flex;align-items:center;justify-content:center;gap:0.65rem;flex-wrap:wrap;
-  padding:0.72rem clamp(1rem,3vw,2rem);background:var(--card);border-bottom:1px solid var(--card-line);
-  text-decoration:none;text-align:center;position:relative;overflow:hidden;}
-.pledge-ribbon::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--accent);}
-.pledge-ribbon .pr-tag{font-family:var(--font-display);font-size:0.6rem;font-weight:700;letter-spacing:0.24em;
-  text-transform:uppercase;color:var(--accent);white-space:nowrap;display:inline-flex;align-items:center;gap:0.45rem;}
-.pledge-ribbon .pr-dot{width:7px;height:7px;border-radius:50%;background:var(--accent);
-  animation:prPulse 2.4s ease-in-out infinite;}
-.pledge-ribbon .pr-text{font-size:0.86rem;font-weight:500;color:var(--ink);letter-spacing:0.01em;}
-.pledge-ribbon .pr-text em{font-style:normal;color:var(--accent);font-weight:700;}
-.pledge-ribbon .pr-go{font-size:0.8rem;color:var(--ink-faint);transition:color .25s var(--ease),transform .25s var(--ease);}
-a.pledge-ribbon:hover .pr-go{color:var(--accent);transform:translateX(3px);}
 @keyframes prPulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.45;transform:scale(.75);}}
-@media(max-width:640px){.pledge-ribbon{gap:0.35rem;padding:0.6rem 0.8rem;}
-  .pledge-ribbon .pr-text{font-size:0.78rem;}}
+@media(max-width:640px){.pledge-ribbon{gap:0.35rem;padding:0.6rem 0.8rem;}}
 
 /* narrow-screen safety: never let a long word push a block past the edge */
 h1,h2,h3,h4,.ask,.cost-h,.rung-title,.shelf-title,.fb-title,.pledge-h,.joint-t,.jmap-t{
   overflow-wrap:break-word; word-break:normal; hyphens:none;
 }
-
-/* ── FOUR JOINTS · ONE LEAK ─────────────────────────────
-   The pipeline model from the campaign graphic: Supply →
-   Representation → Aim → Conversion. Full rows (.joints)
-   for the home page; compact 4-cell strip (.jmap) for the
-   product and register pages. */
-.joints{margin-top:1.8rem;}
-.joint{display:grid;grid-template-columns:96px 1fr;gap:0 1.4rem;
-  padding:1.6rem 0.2rem 1.6rem 1rem;border-top:1px solid var(--line);position:relative;}
-.joint:last-of-type{border-bottom:1px solid var(--line);}
-.joint::before{content:'';position:absolute;left:0;top:1.3rem;bottom:1.3rem;width:4px;
-  background:var(--accent);border-radius:2px;opacity:0;transition:opacity .25s var(--ease);}
-.joint:hover::before{opacity:1;}
-.joint-n{font-family:var(--font-display);font-size:clamp(2.3rem,6vw,3.4rem);font-weight:800;
-  line-height:1;color:var(--ink-faint);opacity:.55;letter-spacing:-0.02em;}
-.joint-t{font-family:var(--font-display);font-weight:800;letter-spacing:0.16em;
-  font-size:clamp(0.95rem,2.4vw,1.05rem);text-transform:uppercase;color:var(--ink);}
-.joint-law{color:var(--ink-soft);margin-top:0.3rem;font-size:0.95rem;}
-.joint-leak{margin-top:0.8rem;font-size:0.88rem;color:var(--ink-soft);line-height:1.6;}
-.joint-leak b{color:var(--ink);font-weight:600;}
-.joint-fix{margin-top:0.55rem;font-size:0.88rem;line-height:1.7;}
-.joint-fix .fx{color:var(--ink-faint);letter-spacing:0.1em;font-size:0.68rem;
-  text-transform:uppercase;font-weight:700;margin-right:0.45rem;}
-.joint-fix a{color:var(--accent);font-weight:600;text-decoration:none;
-  border-bottom:1px solid transparent;transition:border-color .15s;}
-.joint-fix a:hover{border-bottom-color:var(--accent);}
-.joints-close{margin-top:1.5rem;font-size:0.98rem;color:var(--ink-soft);line-height:1.7;}
-.joints-close b{color:var(--ink);}
-@media(max-width:560px){.joint{grid-template-columns:52px 1fr;gap:0 0.85rem;padding-left:0.8rem;}}
-
-.jmap{display:grid;grid-template-columns:repeat(4,1fr);gap:0.8rem;margin-top:1.4rem;}
-.jmap-cell{border:1px solid var(--line);border-radius:12px;padding:1rem 0.95rem;
-  background:var(--card);position:relative;overflow:hidden;transition:border-color .2s;}
-.jmap-cell::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;
-  background:var(--accent);opacity:0;transition:opacity .2s;}
-.jmap-cell:hover{border-color:var(--accent);}
-.jmap-cell:hover::before{opacity:1;}
-.jmap-n{font-family:var(--font-display);font-weight:800;font-size:0.7rem;
-  color:var(--accent);letter-spacing:0.12em;}
-.jmap-t{font-family:var(--font-display);font-weight:700;font-size:0.85rem;
-  letter-spacing:0.08em;text-transform:uppercase;margin-top:0.3rem;color:var(--ink);}
-.jmap-d{font-size:0.8rem;color:var(--ink-soft);margin-top:0.45rem;line-height:1.55;}
-.jmap-d a{color:var(--accent);font-weight:600;text-decoration:none;}
-.jmap-d a:hover{text-decoration:underline;}
+@media(max-width:560px){.joint{grid-template-columns:52px 1fr;gap:0 0.85rem;padding-left:0.8rem;}
 @media(max-width:900px){.jmap{grid-template-columns:repeat(2,1fr);}}
 @media(max-width:480px){.jmap{grid-template-columns:1fr;}}
 
@@ -352,15 +215,6 @@ h1,h2,h3,h4,.ask,.cost-h,.rung-title,.shelf-title,.fb-title,.pledge-h,.joint-t,.
 }
 @media (prefers-reduced-motion:reduce){
   .pledge-marq span{animation:none;}
-}
-
-/* ── PHOTO CARDS — lightweight WebP imagery that blends ── */
-.photo-card{display:block;width:100%;border-radius:16px;border:1px solid var(--line);
-  overflow:hidden;background:var(--card);margin-top:1.4rem;}
-.photo-card img{display:block;width:100%;height:auto;}
-.photo-card figcaption{padding:0.6rem 0.9rem;font-size:0.74rem;color:var(--ink-faint);
-  border-top:1px solid var(--line);letter-spacing:0.04em;}
-.photo-side{float:right;width:min(300px,42%);margin:0 0 0.9rem 1.2rem;}
 @media(max-width:640px){.photo-side{float:none;width:100%;margin:1.2rem 0 0;}}
 
 /* ── HERO WITH IMAGE ────────────────────────────────────
@@ -368,15 +222,7 @@ h1,h2,h3,h4,.ask,.cost-h,.rung-title,.shelf-title,.fb-title,.pledge-h,.joint-t,.
    with the photo after the CTAs. */
 .hero-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,0.85fr);
   gap:clamp(1.4rem,4vw,3rem);align-items:center;}
-.hero-photo{border-radius:18px;border:1px solid var(--line);overflow:hidden;
-  background:var(--card);align-self:center;}
-.hero-photo img{display:block;width:100%;height:100%;object-fit:cover;aspect-ratio:4/4.6;}
-.hero-photo figcaption{padding:0.55rem 0.85rem;font-size:0.72rem;color:var(--ink-faint);
-  border-top:1px solid var(--line);}
 @media(max-width:820px){.hero-grid{grid-template-columns:1fr;}
-  .hero-photo{max-width:440px;}
-  .hero-photo img{aspect-ratio:16/10;object-position:50% 12%;}}
-.photo-card{margin-left:auto;margin-right:auto;}
 
 /* ════════════════════════════════════════════════════════════════
    CAPTURE LAYER
@@ -391,81 +237,9 @@ h1,h2,h3,h4,.ask,.cost-h,.rung-title,.shelf-title,.fb-title,.pledge-h,.joint-t,.
 /* ── FIND YOUR LEAK · the diagnostic ─────────────────────────── */
 .dx{margin-top:2rem;background:var(--card);border:1px solid var(--card-line);border-radius:2px;
   overflow:hidden;}
-.dx-progress{height:3px;background:var(--line-soft);}
-.dx-progress span{display:block;height:100%;background:var(--accent);
-  transition:width 0.45s var(--ease);}
-.dx-step{padding:clamp(1.6rem,4vw,2.6rem);}
-.dx-count{font-size:0.63rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);
-  margin-bottom:0.9rem;}
-.dx-q{font-family:var(--font-display);font-size:clamp(1.25rem,3vw,1.75rem);font-weight:800;
-  line-height:1.25;letter-spacing:-0.015em;color:var(--ink);margin-bottom:0.6rem;}
-.dx-why{font-size:0.85rem;line-height:1.65;color:var(--ink-faint);max-width:62ch;margin-bottom:1.5rem;}
-.dx-answers{display:grid;gap:0.6rem;}
-.dx-a{display:flex;align-items:center;gap:0.9rem;width:100%;text-align:left;
-  padding:1.05rem 1.2rem;background:transparent;color:var(--ink);
-  border:1px solid var(--line);border-radius:2px;cursor:pointer;font-family:var(--font-body);
-  transition:border-color 0.22s ease,background 0.22s ease,transform 0.22s var(--ease);}
-.dx-a:hover,.dx-a:focus-visible{border-color:var(--accent);background:var(--paper-2);
-  transform:translateX(3px);outline:none;}
-.dx-a-t{font-size:0.95rem;font-weight:500;line-height:1.45;}
-.dx-a-n{font-size:0.76rem;color:var(--ink-faint);margin-left:0.35rem;}
-.dx-a-x{margin-left:auto;color:var(--accent);opacity:0;transition:opacity 0.22s ease;flex:0 0 auto;}
-.dx-a:hover .dx-a-x,.dx-a:focus-visible .dx-a-x{opacity:1;}
-.dx-back{margin-top:1.3rem;background:none;border:none;cursor:pointer;padding:0;
-  font-family:var(--font-body);font-size:0.8rem;color:var(--ink-faint);
-  transition:color 0.2s ease;}
-.dx-back:hover{color:var(--accent);}
-@media(max-width:520px){.dx-a{flex-wrap:wrap;gap:0.3rem;}.dx-a-n{margin-left:0;width:100%;}}
-
-/* — the result — */
-.dx-result{margin-top:2rem;}
-.dxr-head{display:grid;grid-template-columns:auto 1fr;gap:0 1.4rem;align-items:start;
-  padding-bottom:1.4rem;border-bottom:1px solid var(--line);}
-.dxr-n{font-family:var(--font-display);font-size:clamp(3rem,9vw,4.6rem);font-weight:800;
-  line-height:0.9;color:var(--accent);}
-.dxr-name{font-family:var(--font-display);font-size:clamp(1.9rem,5vw,2.9rem);font-weight:800;
-  letter-spacing:-0.02em;line-height:1.05;color:var(--ink);margin:0;}
-.dxr-law{font-size:0.95rem;color:var(--ink-soft);margin-top:0.25rem;}
-.dxr-verdict{margin-top:1.5rem;font-size:1.02rem;line-height:1.75;color:var(--ink-soft);max-width:68ch;}
-.dxr-verdict::first-line{color:var(--ink);}
-
-.dxr-scores{margin-top:2rem;padding:1.4rem 1.5rem;background:var(--paper-2);
-  border:1px solid var(--line-soft);border-radius:2px;}
-.dxs-k{font-size:0.63rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--ink-faint);
-  margin-bottom:1rem;}
-.dxs-row{display:grid;grid-template-columns:8.5rem 1fr 3rem;align-items:center;gap:0.8rem;
-  margin-bottom:0.55rem;}
-.dxs-l{font-size:0.82rem;color:var(--ink-faint);}
-.dxs-t{height:6px;background:var(--line-soft);border-radius:3px;overflow:hidden;}
-.dxs-t span{display:block;height:100%;background:var(--ink-faint);border-radius:3px;
-  transition:width 0.7s var(--ease);}
-.dxs-p{font-size:0.76rem;color:var(--ink-faint);text-align:right;}
-.dxs-row.is-win .dxs-l{color:var(--ink);font-weight:600;}
-.dxs-row.is-win .dxs-t span{background:var(--accent);}
-.dxs-row.is-win .dxs-p{color:var(--accent);font-weight:600;}
-.dxs-note{margin-top:1rem;font-size:0.78rem;line-height:1.6;color:var(--ink-faint);max-width:60ch;}
-@media(max-width:520px){.dxs-row{grid-template-columns:6.5rem 1fr 2.6rem;gap:0.55rem;}}
-
-.dxr-tonight{margin-top:2rem;padding:1.5rem 1.6rem;border:1px solid var(--card-line);
-  border-left:3px solid var(--accent);border-radius:2px;background:var(--card);}
-.dxr-k{font-family:var(--font-display);font-weight:800;font-size:1rem;color:var(--ink);
-  margin-bottom:0.9rem;}
-.dxr-tonight ol{margin:0;padding-left:1.1rem;}
-.dxr-tonight li{font-size:0.9rem;line-height:1.7;color:var(--ink-soft);margin-bottom:0.6rem;
-  padding-left:0.35rem;}
-.dxr-tonight li::marker{color:var(--accent);font-weight:700;}
-
-.dxr-doors{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1.4rem;}
-.dxr-door{padding:1.5rem 1.6rem;background:var(--card);border:1px solid var(--card-line);
-  border-radius:2px;transition:border-color 0.25s ease,transform 0.25s var(--ease);}
-.dxr-door:hover{border-color:var(--accent);transform:translateY(-3px);}
-.dxr-door-k{font-size:0.63rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);
-  margin-bottom:0.7rem;}
-.dxr-door p{font-size:0.87rem;line-height:1.7;color:var(--ink-soft);}
-.dxr-door .btn-more{margin-top:1.1rem;}
-@media(max-width:760px){.dxr-doors{grid-template-columns:1fr;}}
-
-.dxr-send{margin-top:1.4rem;}
+@media(max-width:520px){.dx-a{flex-wrap:wrap;gap:0.3rem;}
+@media(max-width:520px){.dxs-row{grid-template-columns:6.5rem 1fr 2.6rem;gap:0.55rem;}
+@media(max-width:760px){.dxr-doors{grid-template-columns:1fr;}
 
 /* ── BUTTON LABELS STAY ON ONE LINE ───────────────────────────────────
    A CTA that wraps reads as an accident, and it makes the button a
@@ -524,11 +298,6 @@ h1,h2,h3,h4,.ask,.cost-h,.rung-title,.shelf-title,.fb-title,.pledge-h,.joint-t,.
     display:flex;align-items:center;gap:1rem;margin:0 0 1.8rem;}
   .sec-label::before,.sec-label::after{content:'';flex:1;height:1px;background:var(--line);}
 
-  .discount{margin:0 0 1.8rem;padding:1.2rem 1.5rem;background:var(--bg2);border:1px solid var(--line);border-radius:14px;
-    font-size:0.88rem;color:var(--ink-soft);line-height:1.65;text-align:center;}
-  .discount strong{color:var(--ink);font-weight:500;}
-  .discount .tag{display:block;font-size:0.62rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-bottom:0.5rem;}
-
   .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.2rem;text-align:left;}
   .pcard{background:var(--card);border:1px solid var(--card-line);border-radius:16px;padding:2rem 1.8rem;display:flex;flex-direction:column;
     transition:border-color .3s var(--ease),transform .3s var(--ease);}
@@ -554,6 +323,19 @@ h1,h2,h3,h4,.ask,.cost-h,.rung-title,.shelf-title,.fb-title,.pledge-h,.joint-t,.
   .btn-pay.quiet{background:transparent;color:var(--ink);border:1px solid var(--line);}
   .btn-pay.quiet:hover{background:transparent;border-color:var(--ink);color:var(--ink);}
 
+
+  /* --- store additions (v106) --- */
+  .pcard{scroll-margin-top:110px;}
+  .p-line{font-size:0.86rem;line-height:1.55;color:var(--ink-soft);font-weight:300;margin:-0.4rem 0 1rem;}
+  .p-amount-sm{font-size:1.5rem;}
+  .p-shot{margin:-0.6rem 0 1.2rem;border-radius:10px;overflow:hidden;background:var(--bg2);
+    display:flex;align-items:center;justify-content:center;padding:0.9rem;}
+  .p-shot img{width:100%;max-width:190px;height:auto;display:block;
+    filter:drop-shadow(0 10px 22px rgba(0,0,0,0.16));}
+  .store-foot{margin-top:2rem;font-size:0.84rem;line-height:1.7;color:var(--ink-soft);
+    font-weight:300;text-align:center;max-width:620px;margin-left:auto;margin-right:auto;}
+  .store-foot strong{color:var(--ink);font-weight:500;}
+  .reg-sub a{color:var(--accent);text-decoration:underline;text-underline-offset:3px;}
   .payinfo{padding:2.2rem 2rem;background:var(--card);border:1px solid var(--card-line);border-radius:18px;text-align:center;}
   .payinfo h3{font-family:var(--font-display);font-size:1.4rem;font-weight:800;letter-spacing:-0.02em;color:var(--ink);margin-bottom:0.8rem;}
   .payinfo p{font-size:0.88rem;color:var(--ink-soft);line-height:1.7;max-width:540px;margin:0 auto 0.5rem;}
@@ -566,7 +348,6 @@ h1,h2,h3,h4,.ask,.cost-h,.rung-title,.shelf-title,.fb-title,.pledge-h,.joint-t,.
      button at 0.84rem — white on orange at 13px. */
   .pay-actions .pa-primary{background:var(--accent-btn,#FF5722);color:#fff;
     border:1px solid var(--accent-btn,#FF5722);font-size:1.18rem;font-weight:700;white-space:nowrap;}
-  .pa-primary:hover{background:var(--accent-h);border-color:var(--accent-h);}
   .pa-quiet{color:var(--ink-soft);border:1px solid var(--line);}
   .pa-quiet:hover{color:var(--ink);border-color:var(--ink);}
   .steps{display:grid;grid-template-columns:repeat(3,1fr);margin:1.6rem auto 0;max-width:760px;
@@ -583,52 +364,7 @@ h1,h2,h3,h4,.ask,.cost-h,.rung-title,.shelf-title,.fb-title,.pledge-h,.joint-t,.
     .step+.step::before{display:none;}
     .step{border-top:1px solid var(--line-soft);}
     .step:first-child{border-top:none;}
-  }
-
-  /* ── "Which door is mine?" chooser ── */
-  .ch-wrap{border:1px solid var(--card-line);background:var(--card);border-radius:20px;
-    padding:clamp(1.4rem,4vw,2.4rem);margin-top:1.6rem;}
-  .ch-step{display:none;}
-  .ch-step.on{display:block;animation:chIn .35s var(--ease) both;}
-  @keyframes chIn{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:none;}}
-  .ch-prog{display:flex;align-items:center;gap:0.5rem;margin-bottom:1.4rem;}
-  .ch-pip{height:3px;flex:1;border-radius:100px;background:var(--line);overflow:hidden;}
-  .ch-pip i{display:block;height:100%;width:0;background:var(--accent);transition:width .4s var(--ease);}
-  .ch-pip.done i,.ch-pip.now i{width:100%;}
-  .ch-pip.now i{opacity:.5;}
-  .ch-qn{font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);
-    font-weight:600;margin-bottom:0.6rem;}
-  .ch-q{font-family:var(--font-display);font-size:clamp(1.25rem,3.2vw,1.75rem);font-weight:800;
-    letter-spacing:-0.02em;color:var(--ink);line-height:1.2;margin-bottom:0.5rem;}
-  .ch-why{font-size:0.86rem;color:var(--ink-soft);font-weight:300;line-height:1.65;max-width:62ch;margin-bottom:1.3rem;}
-  .ch-opts{display:flex;flex-direction:column;gap:0.7rem;}
-  .ch-opt{display:grid;grid-template-columns:auto 1fr auto;gap:0.9rem;align-items:center;width:100%;
-    text-align:left;cursor:pointer;background:var(--bg2);border:1px solid var(--card-line);
-    border-radius:12px;padding:0.95rem 1.1rem;transition:border-color .2s var(--ease),transform .2s var(--ease),background .2s var(--ease);}
-  .ch-opt:hover{border-color:var(--accent);transform:translateX(3px);}
-  .ch-opt-k{font-family:var(--font-display);font-size:0.72rem;font-weight:800;color:var(--accent);
-    border:1px solid var(--accent);border-radius:7px;width:26px;height:26px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-  .ch-opt-t{font-size:0.95rem;color:var(--ink);font-weight:500;line-height:1.35;}
-  .ch-opt-t small{display:block;font-size:0.78rem;color:var(--ink-faint);font-weight:300;margin-top:0.2rem;line-height:1.5;}
-  .ch-opt-go{font-size:0.85rem;color:var(--ink-faint);}
-  .ch-opt:hover .ch-opt-go{color:var(--accent);}
-  .ch-back{background:none;border:none;color:var(--ink-faint);font-size:0.78rem;cursor:pointer;
-    padding:0;margin-top:1.1rem;text-decoration:underline;font-family:inherit;}
-  .ch-back:hover{color:var(--accent);}
-  /* Result */
-  .ch-res-k{font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:0.7rem;}
-  .ch-res-t{font-family:var(--font-display);font-size:clamp(1.4rem,3.6vw,2.1rem);font-weight:800;
-    letter-spacing:-0.02em;color:var(--ink);line-height:1.15;margin-bottom:0.35rem;}
-  .ch-res-p{font-family:var(--font-display);font-size:1.05rem;font-weight:700;color:var(--accent);margin-bottom:1rem;}
-  .ch-res-body{font-size:0.92rem;color:var(--ink-soft);font-weight:300;line-height:1.75;max-width:62ch;margin-bottom:1rem;}
-  .ch-res-body strong{color:var(--ink);font-weight:500;}
-  .ch-logic{border-left:2px solid var(--accent);padding:0.2rem 0 0.2rem 1rem;margin:1.1rem 0 1.3rem;}
-  .ch-logic-t{font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:0.5rem;}
-  .ch-logic p{font-size:0.85rem;color:var(--ink-soft);font-weight:300;line-height:1.7;margin:0;}
-  .ch-acts{display:flex;flex-wrap:wrap;gap:0.7rem;align-items:center;}
-  .ch-alt{font-size:0.82rem;color:var(--ink-faint);font-weight:300;line-height:1.7;margin-top:1.1rem;padding-top:1.1rem;border-top:1px solid var(--line);}
-  .ch-alt a{color:var(--accent);text-decoration:none;font-weight:500;}
-  .ch-alt a:hover{text-decoration:underline;}
+  @keyframes chIn{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:none;}
 </style>
 <link href="https://everythingremotejob.com/register.html" rel="canonical"/>
 <meta content="en_NG" property="og:locale"/>
@@ -645,44 +381,10 @@ h1,h2,h3,h4,.ask,.cost-h,.rung-title,.shelf-title,.fb-title,.pledge-h,.joint-t,.
 .cap-btn.small{background:transparent;color:var(--accent);border:1.5px solid var(--accent);font-weight:700;}
 .cap-btn.small:hover{background:var(--accent);color:#fff;}
 
-.reserve-fit{margin-top:1rem;padding:1rem 1.05rem;border:1px solid var(--accent);border-radius:12px;background:var(--card);}
-.reserve-fit strong{display:block;font-family:var(--font-display);font-size:.98rem;color:var(--ink);margin-bottom:.35rem;}
-.reserve-fit p{font-size:.82rem;line-height:1.65;color:var(--ink-soft);margin:0 0 .65rem;}
-.reserve-fit a{color:var(--accent);font-weight:700;text-decoration:none;border-bottom:1px solid currentColor;}
-
 </style>
 </meta></meta></meta></meta><style id="erjButtons">:root{--btn-ink-on-orange:#FFFFFF;--btn-orange:#FF5722;--btn-orange-ink-on-white:#AD350A;--btn-invert-surface:#FFFFFF;--btn-ease:cubic-bezier(0.22,1,0.36,1)}.btn-primary-ui,.btn-secondary-ui{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:.75rem;min-height:64px;padding:1rem 1.45rem;border-radius:999px;border:1px solid transparent;font-family:var(--font-body),'Inter',system-ui,sans-serif;font-size:1.18rem !important;font-weight:700 !important;letter-spacing:-0.01em;line-height:1.15;text-decoration:none;cursor:pointer;white-space:nowrap;transition:background-color .24s var(--btn-ease),color .24s var(--btn-ease),border-color .24s var(--btn-ease),box-shadow .24s var(--btn-ease),transform .24s var(--btn-ease)}.btn-primary-ui>span:first-child,.btn-secondary-ui>span:first-child{white-space:normal}.arrow-wrap{display:inline-flex;align-items:center;justify-content:center;width:2rem;height:2rem;flex:0 0 2rem;border-radius:999px;font-size:1rem;line-height:1;transition:background-color .24s var(--btn-ease),color .24s var(--btn-ease)}.btn-primary-ui .arrow,.btn-secondary-ui .arrow{display:inline-block;transition:transform .24s var(--btn-ease)}.btn-primary-ui:hover .arrow,.btn-secondary-ui:hover .arrow,.btn-primary-ui:focus-visible .arrow,.btn-secondary-ui:focus-visible .arrow{transform:translateX(4px)}.btn-primary-ui:hover .arrow.is-down,.btn-secondary-ui:hover .arrow.is-down,.btn-primary-ui:focus-visible .arrow.is-down,.btn-secondary-ui:focus-visible .arrow.is-down{transform:translateY(3px)}.btn-primary-ui{background:var(--btn-orange) !important;color:var(--btn-ink-on-orange) !important;border-color:var(--btn-orange) !important;box-shadow:0 10px 24px rgba(255,87,34,.18)}.btn-primary-ui .arrow-wrap{background:rgba(255,255,255,.16);color:var(--btn-ink-on-orange)}.btn-primary-ui:hover,.btn-primary-ui:focus-visible{background:var(--btn-invert-surface) !important;color:var(--btn-orange-ink-on-white) !important;border-color:var(--btn-orange) !important;transform:translateY(-2px);box-shadow:0 16px 34px rgba(255,87,34,.24)}.btn-primary-ui:hover .arrow-wrap,.btn-primary-ui:focus-visible .arrow-wrap{background:rgba(255,87,34,.14);color:var(--btn-orange-ink-on-white)}.btn-secondary-ui{background:var(--card,#FFFFFF) !important;color:var(--ink,#0A0A0A) !important;border-color:var(--line,rgba(10,10,10,.12)) !important;box-shadow:0 7px 18px rgba(0,0,0,.04)}.btn-secondary-ui .arrow-wrap{background:rgba(10,10,10,.06);color:inherit}html[data-theme="night"] .btn-secondary-ui .arrow-wrap{background:rgba(255,255,255,.10)}.btn-secondary-ui:hover,.btn-secondary-ui:focus-visible{background:var(--btn-orange) !important;color:var(--btn-ink-on-orange) !important;border-color:var(--btn-orange) !important;transform:translateY(-2px);box-shadow:0 16px 34px rgba(255,87,34,.22)}.btn-secondary-ui:hover .arrow-wrap,.btn-secondary-ui:focus-visible .arrow-wrap,html[data-theme="night"] .btn-secondary-ui:hover .arrow-wrap,html[data-theme="night"] .btn-secondary-ui:focus-visible .arrow-wrap{background:rgba(255,255,255,.18);color:var(--btn-ink-on-orange)}.fc-actions:has(.btn-secondary-ui:hover) .btn-primary-ui,.sl-actions:has(.btn-secondary-ui:hover) .btn-primary-ui,.answers:has(.btn-secondary-ui:hover) .btn-primary-ui,.hero-cta:has(.btn-secondary-ui:hover) .btn-primary-ui,.erj-actions:has(.btn-secondary-ui:hover) .btn-primary-ui,.rt-cta:has(.btn-secondary-ui:hover) .btn-primary-ui,.fc-actions:has(.btn-secondary-ui:focus-visible) .btn-primary-ui,.sl-actions:has(.btn-secondary-ui:focus-visible) .btn-primary-ui,.answers:has(.btn-secondary-ui:focus-visible) .btn-primary-ui,.hero-cta:has(.btn-secondary-ui:focus-visible) .btn-primary-ui,.erj-actions:has(.btn-secondary-ui:focus-visible) .btn-primary-ui,.rt-cta:has(.btn-secondary-ui:focus-visible) .btn-primary-ui{background:var(--btn-invert-surface) !important;color:var(--btn-orange-ink-on-white) !important;border-color:var(--btn-orange) !important;box-shadow:0 6px 16px rgba(0,0,0,.06)}.fc-actions:has(.btn-secondary-ui:hover) .btn-primary-ui .arrow-wrap,.sl-actions:has(.btn-secondary-ui:hover) .btn-primary-ui .arrow-wrap,.answers:has(.btn-secondary-ui:hover) .btn-primary-ui .arrow-wrap,.hero-cta:has(.btn-secondary-ui:hover) .btn-primary-ui .arrow-wrap,.erj-actions:has(.btn-secondary-ui:hover) .btn-primary-ui .arrow-wrap,.rt-cta:has(.btn-secondary-ui:hover) .btn-primary-ui .arrow-wrap{background:rgba(255,87,34,.14);color:var(--btn-orange-ink-on-white)}.btn-primary-ui:active{background:var(--btn-invert-surface) !important;color:var(--btn-orange-ink-on-white) !important;border-color:var(--btn-orange) !important}.btn-primary-ui:active .arrow-wrap{background:rgba(255,87,34,.14);color:var(--btn-orange-ink-on-white)}.btn-secondary-ui:active{background:var(--btn-orange) !important;color:var(--btn-ink-on-orange) !important;border-color:var(--btn-orange) !important}.btn-secondary-ui:active .arrow-wrap{background:rgba(255,255,255,.18);color:var(--btn-ink-on-orange)}.btn-primary-ui:active,.btn-secondary-ui:active{transform:translateY(0) scale(.985);box-shadow:none}@media (hover:none){.btn-primary-ui:hover{background:var(--btn-orange) !important;color:var(--btn-ink-on-orange) !important;border-color:var(--btn-orange) !important;transform:none}.btn-primary-ui:hover .arrow-wrap{background:rgba(255,255,255,.16);color:var(--btn-ink-on-orange)}.btn-secondary-ui:hover{background:var(--card,#FFFFFF) !important;color:var(--ink,#0A0A0A) !important;border-color:var(--line,rgba(10,10,10,.12)) !important;transform:none}.btn-secondary-ui:hover .arrow-wrap{background:rgba(10,10,10,.06);color:inherit}html[data-theme="night"] .btn-secondary-ui:hover .arrow-wrap{background:rgba(255,255,255,.10)}.btn-primary-ui:hover .arrow,.btn-secondary-ui:hover .arrow{transform:none}}.btn-primary-ui:focus-visible,.btn-secondary-ui:focus-visible{outline:2px solid var(--btn-orange);outline-offset:3px}.btn-primary-ui.btn-block,.btn-secondary-ui.btn-block{width:100%}.fc-actions,.sl-actions,.answers,.hero-cta,.erj-actions{display:flex;flex-wrap:wrap;gap:1rem;align-items:center}.btn-primary-ui.pulse::after{border-color:var(--btn-orange)}.btn-primary-ui.pulse:hover::after{opacity:0 !important;animation:none !important}@media(max-width:620px){.fc-actions,.sl-actions,.answers,.hero-cta,.erj-actions{flex-direction:column;align-items:stretch}.fc-actions>.btn-primary-ui,.fc-actions>.btn-secondary-ui,.sl-actions>.btn-primary-ui,.sl-actions>.btn-secondary-ui,.answers>.btn-primary-ui,.answers>.btn-secondary-ui,.hero-cta>.btn-primary-ui,.hero-cta>.btn-secondary-ui,.erj-actions>.btn-primary-ui,.erj-actions>.btn-secondary-ui{width:100%}.btn-primary-ui,.btn-secondary-ui{min-height:60px;padding:.85rem 1.05rem;gap:.5rem}.arrow-wrap{width:1.75rem;height:1.75rem;flex:0 0 1.75rem}}@media(prefers-reduced-motion:reduce){.btn-primary-ui,.btn-secondary-ui,.btn-primary-ui .arrow,.btn-secondary-ui .arrow,.arrow-wrap{transition:background-color .01ms,color .01ms,border-color .01ms}.btn-primary-ui:hover,.btn-secondary-ui:hover,.btn-primary-ui:active,.btn-secondary-ui:active{transform:none}.btn-primary-ui:hover .arrow,.btn-secondary-ui:hover .arrow{transform:none}.btn-primary-ui.pulse::after{animation:none;opacity:0}}@media(forced-colors:active){.btn-primary-ui,.btn-secondary-ui{border:1px solid ButtonText}}
-/* ── CV ENGINE PASS · moved here from the testimonials page ────────────
-   It is the cheapest rung on the ladder and it now sits where the ladder
-   is actually read. As a standalone section it needs the card frame the
-   testimonials grid used to give it. ── */
-.cvp-reg{display:grid;grid-template-columns:1.55fr 1fr;gap:2.4rem;padding:2.1rem 2.3rem;
-  border:1px solid var(--line,#26262B);border-radius:18px;background:var(--card,#0E0E11);align-items:start;}
-.cvp-tag{display:inline-flex;align-items:center;gap:.45rem;font-size:.62rem;font-weight:700;
-  letter-spacing:1.5px;text-transform:uppercase;color:var(--accent,#FF5722);margin-bottom:.7rem;}
-.cvp-tag .mark{width:6px;height:6px;border-radius:50%;background:var(--accent,#FF5722);display:inline-block;}
-.cvp-h{font-family:var(--fd,'Space Grotesk',sans-serif);font-size:clamp(1.25rem,3vw,1.6rem);
-  font-weight:800;line-height:1.2;letter-spacing:-.02em;color:var(--ink,#fff);margin:0 0 .7rem;}
-.cvp-h em{font-style:normal;color:var(--accent,#FF5722);}
-.cvp-sub{font-size:.9rem;color:var(--ink-soft,#9A9A96);line-height:1.72;margin:0 0 1.1rem;}
-.cvp-feat{list-style:none;padding:0;margin:0 0 1.1rem;display:flex;flex-direction:column;gap:.5rem;}
-.cvp-feat li{font-size:.85rem;color:var(--ink,#fff);line-height:1.55;padding-left:1.5rem;position:relative;}
-.cvp-feat li::before{content:"\2713";position:absolute;left:0;color:#3FB950;font-weight:700;}
-.cvp-limit{font-size:.8rem;color:var(--ink-soft,#9A9A96);line-height:1.7;margin:0;
-  padding-top:.9rem;border-top:1px solid var(--line-soft,rgba(127,127,127,.18));}
-.cvp-limit a{color:var(--accent,#FF5722);text-decoration:none;}
-.cvp-buy{border-left:1px solid var(--line-soft,rgba(127,127,127,.18));padding-left:2.2rem;min-width:0;}
-.cvp-price{font-family:var(--fd,'Space Grotesk',sans-serif);font-size:2.4rem;font-weight:900;
-  color:var(--ink,#fff);line-height:1.05;margin-bottom:.45rem;}
-.cvp-price small{display:block;font-family:var(--fb,Inter,sans-serif);font-size:.8rem;font-weight:400;
-  color:var(--ink-faint,#6E6E6A);line-height:1.6;margin-top:.5rem;}
-.cvp-note{font-size:.74rem;color:var(--ink-faint,#6E6E6A);line-height:1.65;margin-top:.85rem;}
-.cvp-note a{color:var(--accent,#FF5722);text-decoration:none;}
-html[data-theme="day"] .cvp-reg{background:#fff;}
 @media(max-width:820px){
   .cvp-reg{grid-template-columns:1fr;gap:1.4rem;padding:1.4rem 1.2rem;}
-  .cvp-buy{border-left:0;padding-left:0;padding-top:1.2rem;
-    border-top:1px solid var(--line-soft,rgba(127,127,127,.18));}
 }
 </style><link href="/favicon.ico" rel="icon" sizes="48x48 32x32 16x16"/>
 <link href="/favicon-96.png" rel="icon" sizes="96x96" type="image/png"/>
@@ -693,318 +395,46 @@ html[data-theme="day"] .cvp-reg{background:#fff;}
 <noscript><iframe height="0" src="https://www.googletagmanager.com/ns.html?id=GTM-NMFHS59B" style="display:none;visibility:hidden" width="0"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 <div id="erjNavMount"></div>
-<script>window.ERJ_NAV={active:'pricing',onPage:[{label:'Four Problem · Fix It',href:'#sec-joints'},{label:'Which door is mine?',href:'#sec-chooser'},{label:'Training stages',href:'#sec-training'},{label:'Job Application DFY',href:'#sec-remote'},{label:'Inner Circle',href:'#sec-inner'},{label:'Secured by Paystack',href:'#sec-paystack'}]};</script>
+<script>window.ERJ_NAV={active:'pricing',onPage:[{label:'The shelf',href:'#sec-store'},{label:'Cohort 11',href:'#foundation'},{label:'Under ₦40,000',href:'#book'},{label:'How payment works',href:'#sec-paystack'}]};</script>
 <main>
 <div aria-label="We will not let you go until you're hired." class="pledge-marq" role="note"><span>We will not let you go <em>until you're hired.</em></span></div>
 <section class="wrap reg-hero">
-<div class="kicker"><span class="mark"></span> Register · Enrolment Open</div>
-<h1>Your first dollar salary is one enrolment away — <em>Cohort 11 closes 27 September.</em></h1>
-<p class="lede">One page, every option. Choose a single stage, the complete programme, or the Inner Circle — all payments are processed securely through Paystack: cards, bank transfer, and USSD accepted.</p>
+<div class="kicker"><span class="mark"></span> The ERJ Store</div>
+<h1 class="reg-h1">Everything we sell,<br/><em>on one page.</em></h1>
+<p class="reg-sub">Twelve doors, cheapest first. Every one is paid for here, then delivered by us. If you don't yet know which is yours, <a href="diagnose/">take the free 90-second diagnosis</a> — buying the wrong rung is the expensive mistake.</p>
 <div class="urgency" data-closed-label="Enrolment has closed" data-deadline="2026-09-27T20:00:00+01:00">
-<span class="urg-lbl" data-lbl="">Enrolment closes in</span>
+<span class="urg-lbl" data-lbl="">Cohort 11 enrolment closes in</span>
 <span class="urg-count">
 <span><span data-k="d">00</span><small>d</small></span>
 <span><span data-k="h">00</span><small>h</small></span>
 <span><span data-k="m">00</span><small>m</small></span>
 <span><span data-k="s">00</span><small>s</small></span>
 </span>
-<span class="urg-date"><strong>Closes Sun, 27 Sep · 8:00 PM WAT</strong>. Cohort 11 begins Mon, 28 Sep · 8:00 PM WAT.</span>
+<span class="urg-date"><strong>Closes Sun 27 Sep · 8:00 PM WAT</strong>. Cohort 11 begins Mon 28 Sep.</span>
 </div>
 <div class="trust">
-<span><b>382+</b> placed</span>
-<span><b>Refined</b> after every cohort</span>
-<span><b>100%</b> hiring focus</span>
+<span><b>382+</b> placed</span><span><b>9</b> cohorts completed</span><span><b>Paystack</b> secured</span>
 </div>
 </section>
-<!-- ===== KNOW YOUR LEAK? ===== -->
-<section class="wrap section-line" id="sec-joints">
-<div class="sec-label">Four Problem · Fix It</div>
-<h2 style="font-family:var(--font-display);font-size:clamp(1.6rem,4vw,2.4rem);font-weight:800;letter-spacing:-0.02em;color:var(--ink);line-height:1.15;margin-bottom:0.7rem;">Already know where your search leaks? <em style="font-style:normal;color:var(--accent)">Go straight to its fix.</em></h2>
-<p style="font-size:0.95rem;color:var(--ink-soft);font-weight:300;line-height:1.75;max-width:64ch;">A stalled search leaks at one of four joints. Each card names the leak and takes you to its fix — or let the three questions below find it for you.</p>
-<div class="jmap">
-<div class="jmap-cell reveal">
-<div class="jmap-n">01 · SUPPLY</div>
-<div class="jmap-t">"I can't find real openings"</div>
-<p class="jmap-d">Don't pay for this one first. <a href="https://whatsapp.com/channel/0029Vaym4DE3mFY2wCrC713S" rel="noopener" target="_blank">Join the free Global Remote Job Board channel</a> — or have the hunt run for you: <a href="#sec-remote">the 7-day done-for-you job hunt finds and applies to roles on your behalf</a>.</p>
-</div>
-<div class="jmap-cell reveal">
-<div class="jmap-n">02 · REPRESENTATION</div>
-<div class="jmap-t">"I apply and hear nothing"</div>
-<p class="jmap-d">Your CV, LinkedIn and portfolio aren't carrying your signal. <a href="#sec-training">Stages 1–4 build every asset</a> — or the <a href="#sec-remote">Job Application DFY engine builds them for you in 7 days</a>.</p>
-</div>
-<div class="jmap-cell reveal">
-<div class="jmap-n">03 · AIM</div>
-<div class="jmap-t">"I apply a lot — nothing lands"</div>
-<p class="jmap-d">Volume without direction. <a href="#sec-training">Stage 4's targeting system</a> teaches you to aim — or <a href="#sec-remote">the placement engine aims and sends for you</a>, at volume.</p>
-</div>
-<div class="jmap-cell reveal">
-<div class="jmap-n">04 · CONVERSION</div>
-<div class="jmap-t">"Interviews come, offers don't"</div>
-<p class="jmap-d">The last metre. Interview and negotiation coaching lives in <a href="#sec-training">Stages 1–4</a>, and goes deepest in the <a href="#sec-inner">Inner Circle residency</a> — held with you until you're hired.</p>
-</div>
-</div>
+
+<section class="wrap section-line" id="sec-store">
+<div class="sec-label">The shelf</div>
+<div class="grid"><div class="pcard reveal" id="book"><div class="p-shot"><img alt="Google Search: Best Kept Open Secret — book cover" loading="lazy" onerror="this.parentNode.style.display='none'" src="googlesearchbook.png"/></div><div class="p-stage">Book · Instant download</div><div class="p-title">Google Search: Best Kept Open Secret</div><p class="p-line">Stop waiting to be shown jobs. Learn to find them yourself.</p><div class="p-amount p-amount-sm">See price on Paystack</div><ul class="p-feat"><li>Search operators, dorking and URL hacks</li><li>AI search tools that actually surface roles</li><li>Specialised vaults: career pages, documents, company data</li></ul><a class="btn-pay btn-primary-ui" href="https://paystack.com/buy/google-search-best-kept-open-secret" rel="noopener" target="_blank"><span>Get the book</span><span class="arrow-wrap"><span class="arrow">→</span></span></a></div><div class="pcard reveal" id="cvpass"><div class="p-stage">Tool · 30 days</div><div class="p-title">CV Engine — 30-Day Pass</div><p class="p-line">For when the only thing broken is the document.</p><div class="p-amount">₦5,000</div><ul class="p-feat"><li>Rebuild unlimited versions for thirty days</li><li>Scored live against the ten-point ATS rubric</li><li>Real .docx export · no cohort, no subscription</li></ul><a class="btn-pay btn-primary-ui" href="https://paystack.shop/pay/erj-cvpass"><span>Get my 30-day pass</span><span class="arrow-wrap"><span class="arrow">→</span></span></a></div><div class="pcard reveal" id="selflearn"><div class="p-stage">Stages 1–4 · Self-paced</div><div class="p-title">The Self-Learn Pack</div><p class="p-line">The whole curriculum, worked alone, starting today.</p><div class="p-amount">₦35,000</div><ul class="p-feat"><li>Twenty sessions across all four stages</li><li>Four finished deliverables you keep</li><li>Instant download · no cohort to wait for</li><li>No live teaching, marking or certificate</li></ul><a class="btn-pay btn-primary-ui" href="https://selar.com/77v230274x" rel="noopener" target="_blank"><span>Buy the pack</span><span class="arrow-wrap"><span class="arrow">→</span></span></a></div><div class="pcard reveal" id="dfy7"><div class="p-stage">Job hunt &amp; application</div><div class="p-title">Done-For-You, 7 Days</div><p class="p-line">You have the skill and no time to search.</p><div class="p-amount">₦50,000</div><ul class="p-feat"><li>We hunt one field for you, local and foreign</li><li>Tailored CV for that field and company</li><li>3+ verified roles sourced and applied in 7 days</li></ul><a class="btn-pay btn-primary-ui" href="https://paystack.shop/pay/dfy7days"><span>Start my 7 days</span><span class="arrow-wrap"><span class="arrow">→</span></span></a></div><div class="pcard reveal" id="stage1"><div class="p-stage">Stage 1 · Standalone</div><div class="p-title">Remote Mindset Blueprint</div><p class="p-line">How remote work is actually done and measured.</p><div class="p-amount">₦70,000</div><ul class="p-feat"><li>5-day intensive bootcamp</li><li>Deep Work + Pomodoro operating system</li><li>Daily KPI and end-of-day report frameworks</li></ul><a class="btn-pay btn-primary-ui" href="https://paystack.shop/pay/Stage1"><span>Take Stage 1</span><span class="arrow-wrap"><span class="arrow">→</span></span></a></div><div class="pcard reveal" id="stage3"><div class="p-stage">Stage 3 · Standalone</div><div class="p-title">Async Communication Mastery</div><p class="p-line">Writing that works across time zones.</p><div class="p-amount">₦70,000</div><ul class="p-feat"><li>5-day intensive bootcamp</li><li>Zero-Follow-Up email framework</li><li>Slack batch protocol and tone translation</li></ul><a class="btn-pay btn-primary-ui" href="https://paystack.shop/pay/stage3alony"><span>Take Stage 3</span><span class="arrow-wrap"><span class="arrow">→</span></span></a></div><div class="pcard reveal" id="stage4"><div class="p-stage">Stage 4 · Standalone</div><div class="p-title">Start Your Remote Career</div><p class="p-line">The assets and the aim, built together.</p><div class="p-amount">₦100,000</div><ul class="p-feat"><li>5-day intensive bootcamp</li><li>Remote-first, ATS-optimised CV</li><li>Digital portfolio + video interview and STAR coaching</li></ul><a class="btn-pay btn-primary-ui" href="https://paystack.shop/pay/stage4only"><span>Take Stage 4</span><span class="arrow-wrap"><span class="arrow">→</span></span></a></div><div class="pcard reveal" id="stage2"><div class="p-stage">Stage 2 · Standalone</div><div class="p-title">The Digital Toolkit</div><p class="p-line">The tools a distributed team assumes you know.</p><div class="p-amount">₦130,000</div><ul class="p-feat"><li>5-day intensive bootcamp</li><li>Zoom / Meet / Teams, Asana / Trello / ClickUp</li><li>Cloud recording, transcription and AI fluency</li></ul><a class="btn-pay btn-primary-ui" href="https://paystack.shop/pay/stage2ai"><span>Take Stage 2</span><span class="arrow-wrap"><span class="arrow">→</span></span></a></div><div class="pcard reveal feature" id="foundation"><div class="p-stage">Stages 1–4 · Cohort 11</div><div class="p-title">Remote Job Foundation Training</div><p class="p-line">The full live build, taught, marked and certified.</p><div class="p-was">Regular total ₦370,000</div><span class="p-save">Save ₦120,000</span><div class="p-amount">₦250,000</div><ul class="p-feat"><li>All four stage intensives — 20 training days</li><li>Every workbook, template and rubric</li><li>AI Fluency woven through all four stages</li><li>Marked verdict, certificate and LMS portal access</li></ul><a class="btn-pay btn-primary-ui" href="https://paystack.shop/pay/rjmtstages1-4"><span>Enrol in Cohort 11</span><span class="arrow-wrap"><span class="arrow">→</span></span></a></div><div class="pcard reveal" id="inner"><div class="p-stage">Stages 6–12 · Private 1:1</div><div class="p-title">The Inner Circle</div><p class="p-line">Interviews come, offers don&rsquo;t. Held until they do.</p><div class="p-amount">₦250,000</div><ul class="p-feat"><li>Seven weeks, one-on-one, audit to signed offer</li><li>Real-time co-applying and pre-interview dry-runs</li><li>Private partner directory and alumni network</li></ul><a class="btn-pay btn-primary-ui" href="https://paystack.shop/pay/erj-inner-circle"><span>Join the Inner Circle</span><span class="arrow-wrap"><span class="arrow">→</span></span></a></div><div class="pcard reveal" id="placement"><div class="p-stage">Stage 5 · Done for you</div><div class="p-title">Done-For-You Placement Engine</div><p class="p-line">We build the assets and run the search for a month.</p><div class="p-amount">₦300,000</div><ul class="p-feat"><li>All four career assets built for you in 7 days</li><li>30+ verified roles sourced and applied weekly</li><li>The until-hired pledge applies</li></ul><a class="btn-pay btn-primary-ui" href="https://paystack.shop/pay/gtdj-stage5"><span>Start placement</span><span class="arrow-wrap"><span class="arrow">→</span></span></a></div><div class="pcard reveal" id="dreamjob"><div class="p-stage">Stages 1–5 · Everything</div><div class="p-title">Get Your Dream Job Offer</div><p class="p-line">Trained, certified and placed — the complete route.</p><div class="p-was">Regular total ₦740,000</div><span class="p-save">Save ₦240,000</span><div class="p-amount">₦500,000</div><ul class="p-feat"><li>The full Stages 1–5 system end to end</li><li>All four assets done for you, placement running a month</li><li>30-Day Remote Job Secrets playbook</li><li>Weekly accountability and lifetime mentor access</li></ul><a class="btn-pay btn-primary-ui" href="https://paystack.shop/pay/gydjo-stages1-5"><span>Get the full route</span><span class="arrow-wrap"><span class="arrow">→</span></span></a></div></div>
+<p class="store-foot">Prices are one-time unless stated. Nothing here auto-renews. Our promise applies to every training rung: <strong>we will not let you go until you're hired.</strong></p>
 </section>
-<!-- ===== WHICH DOOR IS MINE? ===== -->
-<section class="wrap section-line" id="sec-chooser">
-<div class="sec-label">Which door is mine?</div>
-<p class="note" style="margin:0.4rem 0 0;">Torn between the ₦35,000 self-paced pack and the live cohort? <a href="self-learn-vs-foundation-training.html" style="color:var(--accent);font-weight:600;">Read the two compared line by line →</a></p>
-<h2 style="font-family:var(--font-display);font-size:clamp(1.6rem,4vw,2.4rem);font-weight:800;letter-spacing:-0.02em;color:var(--ink);line-height:1.15;margin-bottom:0.7rem;">Three questions. Then you'll know — <em style="font-style:normal;color:var(--accent)">and you'll know why.</em></h2>
-<p style="font-size:0.95rem;color:var(--ink-soft);font-weight:300;line-height:1.75;max-width:64ch;">Buying the wrong rung is the expensive mistake — placement when you needed training, or training again when you needed placing. These are the three questions we ask on every enrolment call.</p>
-<div class="ch-wrap" id="chooser">
-<div class="ch-prog">
-<span class="ch-pip now" data-pip="1"><i></i></span>
-<span class="ch-pip" data-pip="2"><i></i></span>
-<span class="ch-pip" data-pip="3"><i></i></span>
-</div>
-<!-- Q1 — SKILL -->
-<div class="ch-step on" data-step="1">
-<div class="ch-qn">Question 1 of 3 · Skill</div>
-<div class="ch-q">Do you already have a skill a global company would pay for?</div>
-<p class="ch-why">We ask this first because it decides everything downstream. No filter, feed or placement engine can sell a skill that isn't there yet — and no amount of training helps someone who was already hireable and just badly represented. Be honest here; the answer costs you nothing but saves you a wrong purchase.</p>
-<div class="ch-opts">
-<button class="ch-opt" onclick="chPick('skill','none')"><span class="ch-opt-k">A</span><span class="ch-opt-t">Not yet — I'd be starting from scratch<small>No portfolio, no remote-relevant experience, or changing field entirely</small></span><span class="ch-opt-go">→</span></button>
-<button class="ch-opt" onclick="chPick('skill','some')"><span class="ch-opt-k">B</span><span class="ch-opt-t">I have experience, but not remote-ready<small>Real work history, but no global CV, portfolio or async working habits</small></span><span class="ch-opt-go">→</span></button>
-<button class="ch-opt" onclick="chPick('skill','strong')"><span class="ch-opt-k">C</span><span class="ch-opt-t">Yes — I'm employable today<small>Dev, design, support, ops, marketing, VA, data — I could start Monday if hired</small></span><span class="ch-opt-go">→</span></button>
-</div>
-</div>
-<!-- Q2 — TIMELINE -->
-<div class="ch-step" data-step="2">
-<div class="ch-qn">Question 2 of 3 · Timeline</div>
-<div class="ch-q">When do you need the dollar income to start?</div>
-<p class="ch-why">Timeline is not impatience — it's a real constraint that changes the correct answer. Someone who needs income in six weeks should not be starting a four-week build then applying alone; someone with six months should not be paying for speed they don't need.</p>
-<div class="ch-opts">
-<button class="ch-opt" onclick="chPick('time','urgent')"><span class="ch-opt-k">A</span><span class="ch-opt-t">As fast as humanly possible — weeks, not months<small>The naira maths is not holding; I need this moving now</small></span><span class="ch-opt-go">→</span></button>
-<button class="ch-opt" onclick="chPick('time','quarter')"><span class="ch-opt-k">B</span><span class="ch-opt-t">Within about 3 months<small>I can build properly first, as long as it's actually progressing</small></span><span class="ch-opt-go">→</span></button>
-<button class="ch-opt" onclick="chPick('time','patient')"><span class="ch-opt-k">C</span><span class="ch-opt-t">I'm building for the long game<small>Employed and stable — I want it done right, not rushed</small></span><span class="ch-opt-go">→</span></button>
-</div>
-<button class="ch-back" onclick="chBack(1)">← Back to question 1</button>
-</div>
-<!-- Q3 — BUDGET -->
-<div class="ch-step" data-step="3">
-<div class="ch-qn">Question 3 of 3 · Budget</div>
-<div class="ch-q">What can you commit right now — without borrowing dangerously?</div>
-<p class="ch-why">We ask this last, deliberately. Budget should narrow the options after skill and timeline have identified the right kind of help — never before. And the honest instruction stands: if the amount competes with rent or school fees, the correct answer is the next cohort, not a loan.</p>
-<div class="ch-opts">
-<button class="ch-opt" onclick="chPick('budget','low')"><span class="ch-opt-k">A</span><span class="ch-opt-t">Under ₦100,000 for now<small>Or nothing yet — I'm working out whether this is real</small></span><span class="ch-opt-go">→</span></button>
-<button class="ch-opt" onclick="chPick('budget','mid')"><span class="ch-opt-k">B</span><span class="ch-opt-t">₦100,000 – ₦300,000<small>Serious, and I want the full build or the placement engine</small></span><span class="ch-opt-go">→</span></button>
-<button class="ch-opt" onclick="chPick('budget','high')"><span class="ch-opt-k">C</span><span class="ch-opt-t">₦300,000+ if it's the thing that actually works<small>I'd rather buy the outcome once than the cheapest option twice</small></span><span class="ch-opt-go">→</span></button>
-</div>
-<button class="ch-back" onclick="chBack(2)">← Back to question 2</button>
-</div>
-<!-- RESULT -->
-<div class="ch-step" data-step="4">
-<div class="ch-res-k" id="chResKicker">Your door</div>
-<div class="ch-res-t" id="chResTitle">—</div>
-<div class="ch-res-p" id="chResPrice">—</div>
-<p class="ch-res-body" id="chResBody">—</p>
-<div class="ch-logic">
-<div class="ch-logic-t">Why this one, given your answers</div>
-<p id="chResLogic">—</p>
-</div>
-<div class="ch-acts">
-<a class="btn-pay btn-primary-ui" href="#" id="chResCta"><span>See This Option</span><span class="arrow-wrap"><span class="arrow">→</span></span></a>
-<button class="ch-back" onclick="chReset()" style="margin-top:0">Start the three questions again</button>
-</div>
-<p class="ch-alt" id="chResAlt"></p>
-</div>
-</div>
-</section>
-<!-- ===== TRAINING ===== -->
-<!-- ══ CV ENGINE PASS · ₦5,000 · the smallest correct door ══════════
-     Placed before the ₦250,000 training on purpose. Somebody on this page is
-     deciding what to spend; the cheapest honest option has to be visible at
-     that moment, not buried on another page. -->
-<section class="wrap section-line" id="sec-cvpass">
-<div class="cvp cvp-reg" id="cvpass">
-<div>
-<span class="cvp-tag"><span class="mark"></span>₦5,000 &middot; the cheapest step on this page</span>
-<h3 class="cvp-h">If only your CV is broken, <em>do not buy a cohort.</em></h3>
-<p class="cvp-sub">Most people who land here do not need twenty training days. They need the document to stop being filtered before a human ever opens it. This rents the same CV Engine our paying participants use &mdash; built against the ten-point ATS scan &mdash; for thirty days on its own. No cohort, no stages, no subscription.</p>
-<ul class="cvp-feat">
-<li>Rebuild as many versions as you want for thirty days</li>
-<li>Tailor a fresh CV per application instead of sending one everywhere</li>
-<li>Scored against the same ten points that decide if a person ever sees it</li>
-<li>Export to .docx and PDF in formatting a parser can actually read</li>
-<li><b>The thirty days start the first time you open it</b>, not the day you pay &mdash; buy it now, use it when you are ready</li>
-</ul>
-<p class="cvp-limit"><b>Who this is not for.</b> If roles are not reaching you at all, a better CV changes nothing &mdash; that is a supply problem and the <a href="https://whatsapp.com/channel/0029Vaym4DE3mFY2wCrC713S" rel="noopener" target="_blank">free job channel</a> fixes it for ₦0. If you are getting interviews and no offers, the CV already works; that is conversion, and it is further down this page. <a href="diagnose/">Ninety seconds will tell you which</a>.</p>
-</div>
-<div class="cvp-buy">
-<div class="cvp-price">₦5,000<small>One payment &middot; thirty days from first use &middot; no auto-renewal, ever</small></div>
-<a class="btn-primary-ui cvp-btn" href="https://paystack.shop/pay/erj-cvpass"><span>Get My 30-Day Pass</span><span class="arrow-wrap"><span class="arrow">→</span></span></a>
-<p class="cvp-note">After payment, send your receipt to <a href="https://wa.me/2348032925957" rel="noopener" target="_blank">+234 803 292 5957</a> with the message <em>"CV PASS"</em> and your code comes the same day. Not sure it is your problem? The <a href="cvscan/">ten-point self-scan is free</a> and runs on your own device &mdash; see your score before you spend anything. <a href="cvbuilder.html">Full details of the pass</a>.</p>
-</div>
-</div>
-</section>
-<section class="wrap section-line" id="sec-training">
-<div class="sec-label">Remote Job Foundation Training</div>
-<div class="grid">
-<div class="pcard feature reveal">
-<div class="p-stage">Stages 1 – 4</div>
-<div class="p-title">Complete Remote Foundation Programme</div>
-<div class="p-amount">₦250,000</div>
-<div class="p-was">Regular total ₦370,000</div>
-<span class="p-save">Save ₦120,000</span>
-<ul class="p-feat">
-<li>All 4 stage intensives (20 training days)</li>
-<li>Remote Mindset Blueprint (Stage 1)</li>
-<li>Digital Toolkit Mastery (Stage 2)</li>
-<li>Async Communication Mastery (Stage 3)</li>
-<li>Global Ready Package — CV + Portfolio + Video (Stage 4)</li>
-<li>All workbooks, templates &amp; resources</li>
-<li>AI Fluency — prompt craft, AI-assisted output and the AI tools global teams now expect</li>
-<li>Full LMS portal access · priority support</li>
-</ul>
-<a class="btn-pay btn-primary-ui" href="https://paystack.shop/pay/rjmtstages1-4"><span>Enroll All 4 Stages</span><span class="arrow-wrap"><span class="arrow">→</span></span></a>
-<div class="reserve-fit">
-<strong>Need salary timing, not a discount?</strong>
-<p>Cohort 11 is open now. Until <strong>14 September</strong>, the ₦250,000 Foundation Training fee can be paid in instalments: start with any amount, pay it down, and complete the balance within the instalment window. The fee does not change; only the payment shape does. After 14 September, Cohort 11 remains open at full payment until enrolment closes on 27 September.</p>
-<a href="earlybird.html">See the Cohort 11 instalment option →</a>
-</div>
-<p class="note">Covered by our promise — the community and the sourcing engine stay with you until you're hired.</p>
-</div>
-<div class="pcard reveal">
-<div class="p-stage">Stage 1</div>
-<div class="p-title">Remote Mindset Blueprint</div>
-<div class="p-amount">₦70,000</div>
-<ul class="p-feat">
-<li>5-day intensive bootcamp</li>
-<li>Deep Work + Pomodoro system</li>
-<li>Daily KPI framework</li>
-<li>EOD report system</li>
-<li>AI Fluency — AI-assisted planning, KPIs and daily reporting</li>
-<li>Workspace audit · workbook · LMS access</li>
-</ul>
-<a class="btn-pay btn-secondary-ui quiet" href="https://paystack.shop/pay/Stage1"><span>Pay via Paystack</span><span class="arrow-wrap"><span class="arrow">→</span></span></a>
-</div>
-<div class="pcard reveal">
-<div class="p-stage">Stage 2</div>
-<div class="p-title">The Digital Toolkit</div>
-<div class="p-amount">₦130,000</div>
-<ul class="p-feat">
-<li>5-day intensive bootcamp</li>
-<li>Zoom / Meet / Teams mastery</li>
-<li>Asana / Trello / ClickUp boards</li>
-<li>Cloud recording + transcription</li>
-<li>AI Fluency — the AI layer on top of every tool in the stack</li>
-<li>Capstone sprint · LMS access</li>
-</ul>
-<a class="btn-pay btn-secondary-ui quiet" href="https://paystack.shop/pay/stage2ai"><span>Pay via Paystack</span><span class="arrow-wrap"><span class="arrow">→</span></span></a>
-</div>
-<div class="pcard reveal">
-<div class="p-stage">Stage 3</div>
-<div class="p-title">Async Communication Mastery</div>
-<div class="p-amount">₦70,000</div>
-<ul class="p-feat">
-<li>5-day intensive bootcamp</li>
-<li>Zero-Follow-Up email framework</li>
-<li>Slack batch-message protocol</li>
-<li>Tone translation masterclass</li>
-<li>AI Fluency — AI-assisted writing that still sounds like you</li>
-<li>Working With Me manual · LMS access</li>
-</ul>
-<a class="btn-pay btn-secondary-ui quiet" href="https://paystack.shop/pay/stage3alony"><span>Pay via Paystack</span><span class="arrow-wrap"><span class="arrow">→</span></span></a>
-</div>
-<div class="pcard reveal">
-<div class="p-stage">Stage 4</div>
-<div class="p-title">Start Your Remote Career</div>
-<div class="p-amount">₦100,000</div>
-<ul class="p-feat">
-<li>5-day intensive bootcamp</li>
-<li>Remote-First CV (ATS optimised)</li>
-<li>Digital portfolio (2–3 projects)</li>
-<li>Video interview + STAR coaching</li>
-<li>AI Fluency — AI-assisted CV, portfolio and interview preparation</li>
-<li>Global Ready Package review · LMS access</li>
-</ul>
-<a class="btn-pay btn-secondary-ui quiet" href="https://paystack.shop/pay/stage4only"><span>Pay via Paystack</span><span class="arrow-wrap"><span class="arrow">→</span></span></a>
-</div>
-</div>
-</section>
-<!-- ===== STAGE 5 + DREAM JOB OFFER ===== -->
-<section class="wrap section-line" id="sec-remote">
-<div class="sec-label">Job Application DFY — Done For You</div>
-<div class="grid">
-<div class="pcard reveal">
-<div class="p-stage">Job Hunt &amp; Application</div>
-<div class="p-title">Done-For-You, 7 Days</div>
-<div class="p-amount">₦50,000</div>
-<ul class="p-feat">
-<li>Job hunt for one field (local and foreign)</li>
-<li>Tailored CV for that field and company</li>
-<li>Application done for you</li>
-<li>3+ verified roles sourced &amp; applied in 7 days</li>
-</ul>
-<a class="btn-pay btn-primary-ui" href="https://paystack.shop/pay/dfy7days"><span>Start My Job Hunt</span><span class="arrow-wrap"><span class="arrow">→</span></span></a>
-<p class="note"><a href="jobapplication/">See how it works →</a></p>
-</div>
-<div class="pcard reveal">
-<div class="p-stage">Stage 5 Only</div>
-<div class="p-title">Done-For-You Placement Engine</div>
-<div class="p-amount">₦300,000</div>
-<ul class="p-feat">
-<li>All 4 career assets done for you in 7 days (CV, LinkedIn, Engine, Negotiation)</li>
-<li>30+ verified roles sourced &amp; applied weekly, for a full month</li>
-<li>AI Fluency — AI-assisted sourcing, applications and interview prep</li>
-<li>The until-hired pledge — we don't let go until your offer letter lands</li>
-</ul>
-<a class="btn-pay btn-primary-ui" href="https://paystack.shop/pay/gtdj-stage5"><span>Join Stage 5 Only</span><span class="arrow-wrap"><span class="arrow">→</span></span></a>
-<p class="note"><a href="jobapplication/">See how it works →</a></p>
-</div>
-<div class="pcard feature reveal">
-<div class="p-stage">Stages 1 – 5 · Recommended</div>
-<div class="p-title">Get Your Dream Job Offer</div>
-<div class="p-was">₦740,000+ value</div>
-<div class="p-amount">₦500,000</div>
-<ul class="p-feat">
-<li>The complete Stages 1–5 system — trained, certified, and placed</li>
-<li>All 4 career assets done for you in 7 days, placement running for a month</li>
-<li>Bonus: 30-Day Remote Job Secrets playbook</li>
-<li>Bonus: weekly accountability + lifetime mentor access</li>
-<li>AI Fluency — prompt craft and AI-assisted output, woven through all five stages</li>
-<li>The until-hired pledge — we don't let go until your offer letter lands</li>
-</ul>
-<a class="btn-pay btn-primary-ui" href="https://paystack.shop/pay/gydjo-stages1-5"><span>Claim the Offer</span><span class="arrow-wrap"><span class="arrow">→</span></span></a>
-<p class="note"><a href="jobapplication/#dream-offer">See the full value stack →</a></p>
-</div>
-</div>
-</section>
-<!-- ===== INNER CIRCLE ===== -->
-<section class="wrap section-line" id="sec-inner">
-<div class="sec-label">The Inner Circle — Private Mentorship</div>
-<div class="grid" style="grid-template-columns:1fr;max-width:580px;">
-<div class="pcard reveal">
-<div class="p-stage">Stages 6 – 12 · Private 1:1 WhatsApp Mentorship</div>
-<div class="p-title">The Inner Circle</div>
-<div class="p-amount">₦250,000</div>
-<span class="p-save">Private 1:1 · one payment · application-first</span>
-<ul class="p-feat">
-<li>Seven weeks, one-on-one, from positioning audit to a signed remote offer</li>
-<li>Real-time co-applying + pre-interview dry-runs</li>
-<li>Private partner directory &amp; private alumni network</li>
-<li>AI Fluency — prompt craft and AI-assisted output, applied to your own pipeline</li>
-<li>Application-first — admission verified before payment</li>
-</ul>
-<a class="btn-pay btn-primary-ui" href="https://paystack.shop/pay/erj-inner-circle"><span>Join the Inner Circle</span><span class="arrow-wrap"><span class="arrow">→</span></span></a>
-<p class="note">The Inner Circle is private 1:1 and application-first. After admission, pay ₦250,000 once through the official payment route, then send proof on WhatsApp to open your private thread. <a href="innercircle/">See how it works →</a></p>
-</div>
-</div>
-</section>
-<!-- ===== PAYSTACK ===== -->
+
 <section class="wrap section-line" id="sec-paystack">
 <div class="payinfo reveal">
-<h3>All payments secured by Paystack</h3>
-<p>Cards, bank transfer, USSD and more — all supported, fully encrypted, PCI-DSS compliant. Your card details are never stored on our servers.</p>
-<p style="margin-top:.6rem;">Prefer a bank transfer? <strong>GTBank — 0761646755</strong> (Business Play Ltd). For full payments, send your receipt on WhatsApp to confirm enrolment. For Cohort 11 instalments, use the <a href="earlybird.html">instalment route</a> and send each receipt on WhatsApp so your running balance can be confirmed.</p>
-<div class="pay-actions">
-<a class="pa-primary" href="https://paystack.shop/pay/rjmtstages1-4">Enroll via Paystack →</a>
-<a class="pa-quiet" href="login.html">🎓 Participant Login</a>
-<a class="pa-quiet" href="https://wa.me/2348032925957">💬 WhatsApp Us</a>
-</div>
+<h3>How payment works</h3>
 <div class="steps">
-<div class="step"><div class="step-n">1</div><div class="step-t"><strong>Pay securely</strong>Choose your stage or bundle and complete checkout on Paystack.</div></div>
-<div class="step"><div class="step-n">2</div><div class="step-t"><strong>Send your receipt</strong>Share proof of payment with us on WhatsApp.</div></div>
-<div class="step"><div class="step-n">3</div><div class="step-t"><strong>Get portal access</strong>Receive your LMS login within 24 hours and begin your training.</div></div>
+<div class="step"><div class="step-n">1</div><div class="step-t"><strong>Pay</strong>Cards, bank transfer and USSD, secured by Paystack.</div></div>
+<div class="step"><div class="step-n">2</div><div class="step-t"><strong>Send the receipt</strong>WhatsApp it to <a href="https://wa.me/2348032925957" rel="noopener" target="_blank">+234 803 292 5957</a>.</div></div>
+<div class="step"><div class="step-n">3</div><div class="step-t"><strong>Get access</strong>Your login or download arrives within 24 hours.</div></div>
+</div>
+<p>Prefer a direct transfer? <strong>GTBank — 0761646755</strong> (Business Play Ltd). Paying Cohort 11 in instalments? Use the <a href="earlybird.html">instalment route</a> — it changes the payment timing, not the price.</p>
+<div class="pay-actions">
+<a class="pa-quiet" href="login.html">Participant login</a>
+<a class="pa-quiet" href="https://wa.me/2348032925957" rel="noopener" target="_blank">WhatsApp us</a>
 </div>
 </div>
 </section>
@@ -1016,7 +446,7 @@ html[data-theme="day"] .cvp-reg{background:#fff;}
 <a class="wa-float" href="https://wa.me/2348032925957" rel="noopener" target="_blank" title="Chat on WhatsApp">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"></path></svg>
 </a>
-<script defer="" src="erj-theme.js?v=20260910a"></script>
+<script defer="" src="erj-theme.js?v=20260911a"></script>
 <script>
 /* ── "Which door is mine?" — a decision-teaching chooser.
       Order matters: skill decides WHAT kind of help, timeline decides
@@ -1170,11 +600,11 @@ html[data-theme="day"] .cvp-reg{background:#fff;}
   window.chReset = function () { A = { skill:null, time:null, budget:null }; show(1); };
 })();
 </script>
-<script defer="" src="erj-product.js?v=20260910a"></script>
-<script defer="" src="erj-nav.js?v=20260910a"></script>
-<script defer="" src="erj-config.js?v=20260910a"></script>
-<script defer="" src="erj-capture.js?v=20260910a"></script>
+<script defer="" src="erj-product.js?v=20260911a"></script>
+<script defer="" src="erj-nav.js?v=20260911a"></script>
+<script defer="" src="erj-config.js?v=20260911a"></script>
+<script defer="" src="erj-capture.js?v=20260911a"></script>
 <script>if("serviceWorker" in navigator){window.addEventListener("load",function(){var go=function(){navigator.serviceWorker.register("/sw.js").then(function(reg){reg.update();}).catch(function(){});};if("requestIdleCallback" in window){requestIdleCallback(go,{timeout:3000});}else{setTimeout(go,1200);}});}</script>
-<script defer="" src="erj-schema.js?v=20260910a"></script>
+<script defer="" src="erj-schema.js?v=20260911a"></script>
 </body>
 </html>

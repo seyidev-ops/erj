@@ -50,7 +50,7 @@ function showPassBanner(r) {
   el.innerHTML = '<span><b>' + r.daysLeft + ' day' + (r.daysLeft === 1 ? '' : 's') +
     '</b> left on your CV Engine pass \u00b7 ends ' + fmtDay(r.ends) + '</span>' +
     (urgent
-      ? '<a href="https://paystack.shop/pay/erj-cvpass" target="_blank" rel="noopener">Renew for \u20a65,000</a>'
+      ? '<a href="../register.html#cvpass">Renew for \u20a65,000</a>'
       : '<a href="../register.html">See the full programme</a>');
 }
 
