@@ -2,7 +2,7 @@
    EVERYTHING REMOTE JOB — SERVICE WORKER
    Cache-first for app shell, network-first for fonts
 ═══════════════════════════════════════════════════════ */
-const CACHE = 'erj-site-20260910a';
+const CACHE = 'erj-site-20260911b';
 const OFFLINE = '/offline.html';
 
 /* SHELL is what a first-time visitor pays for before anything renders. It had
@@ -22,19 +22,19 @@ const SHELL = [
   '/blog/index.html',
   '/free.html',
   '/starthere.html',
-  '/erj-nav.js?v=20260910a',
-  '/erj-track.js?v=20260910a',
+  '/erj-nav.js?v=20260911a',
+  '/erj-track.js?v=20260911a',
   '/founder-oluwaseyi.webp',
-  '/erj-theme.js?v=20260910a',
-  '/erj-product.js?v=20260910a',
-  '/erj-passcode.js?v=20260910a',
-  '/erj-schema.js?v=20260910a',
-  '/diagnose/dx.js?v=20260910a',
-  '/diagnose/report-pdf.js?v=20260910a',
+  '/erj-theme.js?v=20260911a',
+  '/erj-product.js?v=20260911a',
+  '/erj-passcode.js?v=20260911a',
+  '/erj-schema.js?v=20260911a',
+  '/diagnose/dx.js?v=20260911a',
+  '/diagnose/report-pdf.js?v=20260911a',
   '/diagnose/index.html',
-  '/erj-capture.js?v=20260910a',
-  '/erj-config.js?v=20260910a',
-  '/product.css?v=20260910a',
+  '/erj-capture.js?v=20260911a',
+  '/erj-config.js?v=20260911a',
+  '/product.css?v=20260911a',
   '/manifest.json',
   '/erj-mark-dark-128.png',
   '/erj-mark-light-128.png',
@@ -45,7 +45,19 @@ const SHELL = [
   '/fonts/inter-300.woff2',
   '/fonts/inter-400.woff2',
   '/fonts/inter-500.woff2',
-  OFFLINE,
+  '/erj-cart.js?v=20260911a',
+  '/shop/book.webp',
+  '/shop/cvpass.webp',
+  '/shop/dfy7.webp',
+  '/shop/dreamjob.webp',
+  '/shop/foundation.webp',
+  '/shop/inner.webp',
+  '/shop/placement.webp',
+  '/shop/selflearn.webp',
+  '/shop/stage1.webp',
+  '/shop/stage2.webp',
+  '/shop/stage3.webp',
+  '/shop/stage4.webp'
 ];
 
 self.addEventListener('install', e => {
