@@ -503,22 +503,24 @@ h1,h2,h3,h4,.ask,.cost-h,.rung-title,.shelf-title,.fb-title,.pledge-h,.joint-t,.
   font-size:1.18rem;font-weight:700;color:#fff;}
 
 /* ── PROMO TICKER ────────────────────────────────────────
-   Replaces .pledge-marq. The track holds the message twice
-   and slides exactly half its own width, so there is no
-   seam and the bar is never empty. Pauses on hover. */
+   Replaces .pledge-marq. ONE copy of the message, parked off
+   the right edge by padding-left:100%, translating -100% of
+   its own width so it exits fully left. Travel distance is
+   bar + text, so the line is on screen for nearly the whole
+   cycle without a second copy. Pauses on hover. */
 a.promo-tick{text-decoration:none;display:block;}
 .promo-tick{overflow:hidden;border-top:1px solid var(--line);
   border-bottom:1px solid var(--line);background:var(--paper-2);padding:0.8rem 0;}
-.promo-track{display:flex;width:max-content;animation:promoloop 34s linear infinite;}
-.promo-track span{display:block;white-space:nowrap;padding-right:2.5rem;
+.promo-track{display:inline-block;white-space:nowrap;padding-left:100%;
+  will-change:transform;animation:promoloop 18s linear infinite;
   font-family:var(--font-display);font-weight:700;letter-spacing:-0.01em;
   font-size:clamp(0.9rem,2.4vw,1.1rem);color:var(--ink);}
 .promo-track em{font-style:normal;color:var(--accent);}
 .promo-tick:hover .promo-track{animation-play-state:paused;}
-@keyframes promoloop{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+@keyframes promoloop{from{transform:translateX(0);}to{transform:translateX(-100%);}}
 @media (prefers-reduced-motion:reduce){
-  .promo-track{animation:none;}
-  .promo-track span:nth-child(2){display:none;}
+  .promo-tick{display:flex;justify-content:center;}
+  .promo-track{animation:none;padding-left:0;}
 }
 </style>
 <!-- END product.css -->
