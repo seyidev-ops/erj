@@ -1,7 +1,18 @@
 <!DOCTYPE html>
 
 <html data-theme="night" lang="en">
-<head><meta charset="utf-8"/><style id="erjCanvasGuard">html{background:#000000}html[data-theme="day"]{background:#FAFAF8}html[data-theme="day"]{--bg:#FAFAF8;--card:#fff;--text:#14110E;--muted:#52514C;--muted2:#6E6C65;--accent:#AD350A;--line:rgba(20,17,14,.12);--ink:#14110E;--paper:#FAFAF8;--ink-faint:#6E6C65;--ink-soft:#52514C}</style>
+<head><meta charset="utf-8"/><style id="erjCanvasGuard">html{background:#000000}html[data-theme="day"]{background:#FAFAF8}html[data-theme="day"]{--bg:#FAFAF8;--card:#fff;--text:#14110E;--muted:#52514C;--muted2:#6E6C65;--accent:#AD350A;--line:rgba(20,17,14,.12);--ink:#14110E;--paper:#FAFAF8;--ink-faint:#6E6C65;--ink-soft:#52514C}
+/* Day counterparts for the hardcoded light colours above. Without these the
+   article text stays white and disappears on the light background. The filled
+   .cta/.door buttons keep white text on purpose — they sit on accent orange. */
+html[data-theme="day"] .body h2,html[data-theme="day"] .body h3,html[data-theme="day"] .body strong,html[data-theme="day"] .cta h2,html[data-theme="day"] .door h2,html[data-theme="day"] .more a{color:#14110E;}
+html[data-theme="day"] .body p,html[data-theme="day"] .body ul,html[data-theme="day"] .body ol,html[data-theme="day"] .body blockquote{color:#3A3733;}
+html[data-theme="day"] .cta a.ghost{color:#14110E;border-color:var(--line);}
+html[data-theme="day"] .cta a.ghost:hover{color:#AD350A;border-color:#AD350A;}
+/* the night hover turns the button white, which on a day card (--card:#fff)
+   would be white on white. Inverted. */
+html[data-theme="day"] .door a:hover,html[data-theme="day"] .cta a:hover{background:#AD350A;color:#fff;border-color:#AD350A;}
+</style>
 
 <!-- Meta Pixel + Google Tag Manager -->
 <script async="" src="../../erj-track.js?v=20260911a"></script>
