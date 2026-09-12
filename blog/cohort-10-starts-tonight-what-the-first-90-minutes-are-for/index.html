@@ -3,7 +3,7 @@
 <html data-theme="night" lang="en">
 <head><meta charset="utf-8"/><style id="erjCanvasGuard">html{background:#000000}html[data-theme="day"]{background:#FAFAF8}</style>
 
-<script async="" src="../../erj-track.js?v=20260910a"></script>
+<script async="" src="../../erj-track.js?v=20260911a"></script>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Cohort 10 Starts Tonight: What the First 90 Minutes Are For | Everything Remote Job</title>
 <meta content="The first night is not about collecting notes. It establishes the operating system the rest of the cohort will sit on — and what to do if you missed enrolment" name="description"/>
@@ -72,6 +72,18 @@ h1{font-family:var(--fd);font-size:clamp(1.75rem,5.2vw,2.7rem);line-height:1.14;
 .more a:hover{color:var(--accent)}
 .more .d{display:block;font-size:.72rem;color:var(--muted2);margin-top:2px}
 footer{border-top:1px solid var(--line);padding:2rem 0 3rem;font-size:.82rem;color:var(--muted2);text-align:center}
+/* .wrap is a class and footer is an element, so .wrap{padding:0 ...} was
+   flattening the footer's vertical padding to zero. This rule is specific
+   enough to win. Longhands on purpose: a clamp() inside a padding shorthand
+   has been silently dropped in this codebase before. */
+footer.wrap{padding-top:clamp(2.2rem,5vw,3.2rem);padding-bottom:calc(clamp(2.6rem,6vw,3.8rem) + env(safe-area-inset-bottom,0px));margin-top:2.4rem;box-sizing:border-box;}
+footer.wrap nav{margin-top:.9rem;}
+footer.wrap nav a{white-space:nowrap;border-bottom:1px solid var(--line);transition:color .3s;}
+footer.wrap nav a:hover{color:var(--accent);}
+
+footer.wrap .erj-rights-line{max-width:900px;margin:1.4rem auto 0;padding-top:1rem;border-top:1px solid rgba(127,127,127,.18);font-size:.68rem;line-height:1.6;letter-spacing:.02em;color:var(--muted2);opacity:.78;text-align:center;}
+footer.wrap .erj-rights-line a{color:var(--accent);text-decoration:none;border-bottom:0;}
+
 footer nav{display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem 1.1rem;margin-top:.6rem}
 footer a{color:var(--muted);text-decoration:none}
 @media(max-width:520px){body{font-size:16px}}
@@ -137,6 +149,6 @@ html[data-theme="day"] .body p,html[data-theme="day"] .body ul,html[data-theme="
 </aside>
 <nav class="more"><h2>Read next</h2><ul><li><a href="../cohort-10-closes-tonight-three-reasons-to-join-and-three-reasons-not-to/">Cohort 10 Closes Tonight: Three Reasons to Join — and Three Reasons Not To<span class="d">30 August 2026 · 6 min</span></a></li><li><a href="../tonights-remote-job-application-clinic-what-we-will-fix-in-75-minutes/">Tonight’s Remote Job Application Clinic: What We Will Fix in 75 Minutes<span class="d">29 August 2026 · 5 min</span></a></li><li><a href="../bring-one-real-job-advert-how-to-prepare-for-saturdays-application-clinic/">Bring One Real Job Advert: How to Prepare for Saturday’s Application Clinic<span class="d">28 August 2026 · 5 min</span></a></li></ul></nav>
 </article></main>
-<footer class="wrap"><nav><a href="../../">Home</a><a href="../../starthere.html">Your Starting Line</a><a href="../../free.html">Free For You</a><a href="../../blog.html">Blog</a><a href="../">Blog Archive</a><a href="../../register.html">Register</a></nav><div style="margin-top:1rem;padding-top:.85rem;border-top:1px solid rgba(127,127,127,.18);font-size:.68rem;opacity:.72;line-height:1.55">© 2026 Business Play Limited · Everything Remote Job. Built for <span style="color:var(--accent,#FF5722)">global career scale.</span> All rights reserved. ERJ frameworks, curriculum and paid resources are not licensed for redistribution. <a href="../../terms.html">Terms</a> · <a href="../../privacy.html">Privacy</a></div></footer>
-<script defer="" src="../../erj-theme.js?v=20260910a"></script><script defer="" src="../../erj-nav.js?v=20260910a"></script>
+<footer class="wrap"><nav><a href="../../">Home</a><a href="../../starthere.html">Your Starting Line</a><a href="../../free.html">Free For You</a><a href="../../blog.html">Blog</a><a href="../">Blog Archive</a><a href="../../register.html">Register</a><a href="../../login.html">Participant Login</a></nav><div class="erj-rights-line" role="note">© 2026 Business Play Limited · Everything Remote Job. Built for <span style="color:var(--accent,#FF5722)">global career scale.</span> All rights reserved. ERJ frameworks, curriculum and paid resources are not licensed for redistribution. <a href="../../terms.html">Terms</a> · <a href="../../privacy.html">Privacy</a></div></footer>
+<script defer="" src="../../erj-theme.js?v=20260911a"></script><script defer="" src="../../erj-nav.js?v=20260911a"></script>
 </body></html>

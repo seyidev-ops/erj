@@ -4,7 +4,7 @@
 <head><meta charset="utf-8"/><style id="erjCanvasGuard">html{background:#000000}html[data-theme="day"]{background:#FAFAF8}</style>
 
 <!-- Meta Pixel + Google Tag Manager -->
-<script async="" src="../erj-track.js?v=20260910a"></script>
+<script async="" src="../erj-track.js?v=20260911a"></script>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Blog Archive — every article, 115 and counting | Everything Remote Job</title>
 <meta content="The complete Everything Remote Job archive: 115 published articles on CVs, interviews, salary and remote job strategy. Newest first." name="description"/>
@@ -75,6 +75,18 @@ aside.cta h2{font-family:var(--fd);font-size:1.15rem;font-weight:800;margin:0 0 
 aside.cta p{color:var(--muted);margin:0 0 1rem;font-size:.95rem}
 aside.cta a{display:inline-block;background:var(--accent);color:#fff;font-weight:700;font-size:1.18rem;text-decoration:none;padding:.7rem 1.4rem;border-radius:100px}
 footer{border-top:1px solid var(--line);padding:clamp(2.4rem,5vw,3.5rem) 1.25rem;margin-top:2.4rem;font-size:.78rem;color:var(--muted2);text-align:center;line-height:2;box-sizing:border-box}
+/* .wrap is a class and footer is an element, so .wrap{padding:0 ...} was
+   flattening the footer's vertical padding to zero. This rule is specific
+   enough to win. Longhands on purpose: a clamp() inside a padding shorthand
+   has been silently dropped in this codebase before. */
+footer.wrap{padding-top:clamp(2.2rem,5vw,3.2rem);padding-bottom:calc(clamp(2.6rem,6vw,3.8rem) + env(safe-area-inset-bottom,0px));margin-top:2.4rem;box-sizing:border-box;}
+footer.wrap nav{margin-top:.9rem;}
+footer.wrap nav a{white-space:nowrap;border-bottom:1px solid var(--line);transition:color .3s;}
+footer.wrap nav a:hover{color:var(--accent);}
+
+footer.wrap .erj-rights-line{max-width:900px;margin:1.4rem auto 0;padding-top:1rem;border-top:1px solid rgba(127,127,127,.18);font-size:.68rem;line-height:1.6;letter-spacing:.02em;color:var(--muted2);opacity:.78;text-align:center;}
+footer.wrap .erj-rights-line a{color:var(--accent);text-decoration:none;border-bottom:0;}
+
 footer nav{display:flex;flex-wrap:wrap;justify-content:center;column-gap:1.1rem;row-gap:.15rem;margin-top:.45rem}
 footer nav a{white-space:nowrap;color:var(--muted);text-decoration:none;border-bottom:1px solid var(--line);transition:color .3s}
 footer nav a:hover{color:var(--accent)}
@@ -294,6 +306,6 @@ footer .erj-rights-line a{color:var(--accent);text-decoration:none;border-bottom
   });
 })();
 </script>
-<script defer="" src="../erj-theme.js?v=20260910a"></script>
-<script defer="" src="../erj-nav.js?v=20260910a"></script>
+<script defer="" src="../erj-theme.js?v=20260911a"></script>
+<script defer="" src="../erj-nav.js?v=20260911a"></script>
 </body></html>
