@@ -90,7 +90,7 @@
             n: '02', name: 'Supply', law: 'You can\u2019t apply for a job you never saw.',
             verdict: 'You are not seeing enough real, eligible roles to have a job search yet. Everything downstream \u2014 your CV, your aim, your interviews \u2014 is being judged on far too little evidence. Fix this one first and the rest becomes measurable.',
             free: {
-                text: 'Join the free Global Remote Job Board on WhatsApp. Verified roles, open to Africans, posted continuously \u2014 and the blog\u2019s scam-check guides so you can tell a live listing from a fossil.',
+                text: 'Join the free Remote Jobs (Global+) channel on WhatsApp. Verified roles, open to Africans, posted continuously \u2014 and the blog\u2019s scam-check guides so you can tell a live listing from a fossil.',
                 href: 'https://whatsapp.com/channel/0029Vaym4DE3mFY2wCrC713S', label: 'Join the free job board'
             },
             paid: {
@@ -264,6 +264,10 @@
                 '</div>' +
                 '</div>' +
                 '<p class="dxr-verdict">' + esc(j.verdict) + '</p>' +
+                /* More than one part can be weak at once, so the result names the
+                   EARLIEST one worth acting on and points at the breakdown
+                   rather than claiming a single cause. */
+                '<p class="dxr-note">More than one part can be weak at the same time. This is the earliest one worth acting on \u2014 the breakdown below shows how the other four scored.</p>' +
                 '<div class="dxr-export"><button type="button" class="dx-pdf-btn" id="dxPdf">Download my diagnostic PDF <span aria-hidden="true">↓</span></button><span>Your result, score breakdown and next action in one branded report.</span></div>' +
 
                 '<div class="cap-read dxr-send dxr-human">' +

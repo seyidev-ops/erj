@@ -106,6 +106,30 @@ button{-webkit-tap-highlight-color:transparent;}
   .dfy-sec .dfy-grid-solo .dfy-free-list li:last-child{grid-column:1/-1;}
   .dfy-sec .dfy-grid-solo .dfy-free-cta{grid-column:1/-1;justify-self:start;min-width:min(320px,100%);
     text-align:center;font-size:1.18rem;font-weight:700;padding:1rem 1.6rem;}
+/* two-column intro — the old .dfy-sub{max-width:640px} left ~440px of the
+   1120px wrap empty on the right, with nothing to fill it */
+.dfy-head{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(1.6rem,4vw,3.4rem);
+  align-items:start;margin-bottom:2.6rem;}
+.dfy-head .dfy-h{margin-bottom:0;}
+.dfy-head-r{display:flex;flex-direction:column;gap:.9rem;}
+.dfy-head-r .dfy-sub{max-width:none;margin-bottom:0;}
+@media (max-width:900px){
+  .dfy-head{grid-template-columns:1fr;gap:1.1rem;margin-bottom:2rem;}
+}
+/* channel card */
+.dfy-sec .dfy-grid-solo .dfy-free-head{grid-column:1/-1;}
+/* with the head spanning both columns the sub would otherwise sit alone in
+   column 1 and leave column 2 empty */
+.dfy-sec .dfy-grid-solo .dfy-free-sub{grid-column:1/-1;max-width:76ch;margin-bottom:0;}
+.dfy-free-head{display:flex;align-items:center;justify-content:space-between;
+  gap:1rem;width:100%;margin-bottom:0;flex-wrap:wrap;}
+.dfy-free-head .dfy-free-title{margin-bottom:.25rem;font-size:1.35rem;}
+.dfy-free-meta{font-size:.78rem;color:var(--muted);}
+.dfy-free-live{display:inline-flex;align-items:center;gap:7px;flex-shrink:0;
+  font-size:.62rem;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;
+  color:var(--green-text,#2e7d32);border:1px solid var(--border2);border-radius:100px;
+  padding:5px 11px;}
+
   @media(max-width:700px){
     .dfy-sec .dfy-grid-solo .dfy-free{grid-template-columns:1fr;gap:1.1rem;padding:1.4rem 1.2rem;}
     .dfy-sec .dfy-grid-solo .dfy-free-cta{width:100%;}
@@ -525,21 +549,33 @@ html[data-theme="day"] .nav,html[data-theme="day"] nav{background:var(--bg)!impo
 <!-- ══ DONE-FOR-YOU · 7 DAYS ══ -->
 <section class="ts-wrap dfy-sec" id="jobboard">
 <div class="dfy-label"><span class="mark"></span>Free · No payment, ever</div>
+<div class="dfy-head">
 <h2 class="dfy-h">Every story above started the same way: <em>seeing a role they were eligible for.</em></h2>
-<p class="dfy-sub">Not with a course, not with a payment &mdash; with a job advert from a company that could legally pay someone in their country. That is the part most searches never fix, and it is the part that costs nothing. Our WhatsApp channel carries verified global remote roles open to applicants across Africa, posted continuously. No fee, no gatekeeping, and you can leave the moment it stops being useful.</p>
+<div class="dfy-head-r">
+<p class="dfy-sub">Not with a course, not with a payment &mdash; with a job advert from a company that could legally pay someone in their country. That is the part most searches never fix, and it is the part that costs nothing.</p>
+<p class="dfy-sub">Our WhatsApp channel carries remote opportunities for African professionals, posted continuously. Check each listing&rsquo;s hiring geography, requirements and deadline before you apply.</p>
+</div>
+</div>
 <div class="dfy-grid dfy-grid-solo">
 <a class="dfy-free" href="https://whatsapp.com/channel/0029Vaym4DE3mFY2wCrC713S" rel="noopener" target="_blank">
 <span class="dfy-free-tag"><span class="dfy-free-dot"></span> 100% Free &middot; No Payment</span>
-<div class="dfy-free-title">Global Remote Job Board <span>(open to Africans)</span></div>
-<p class="dfy-free-sub">Real roles, checked before they are posted, from companies that can actually hire and pay across borders. The same channel the people above were reading while they were still deciding.</p>
+<div class="dfy-free-head">
+<div>
+<div class="dfy-free-title">Remote Jobs (Global+)</div>
+<div class="dfy-free-meta">WhatsApp channel &middot; open to applicants across Africa</div>
+</div>
+<span class="dfy-free-live"><span class="dfy-free-dot"></span> Posting now</span>
+</div>
+<p class="dfy-free-sub">Remote opportunities for African professionals, checked before they are posted. The same channel the people above were reading while they were still deciding.</p>
 <ul class="dfy-free-list">
-<li>Verified global remote roles, posted continuously</li>
-<li>Every role screened for whether it can pay someone in your country</li>
+<li>Hiring geography stated on every listing, so you know who can pay you</li>
+<li>Requirements and deadlines noted where the employer states them</li>
 <li>Scam adverts filtered out before you ever see them</li>
 <li>Delivered to WhatsApp &mdash; nothing to install, nothing to log into</li>
-<li>Leave whenever you like. No email, no card, no upsell in the channel</li>
+<li>No fee, no email, no card, and no upsell inside the channel</li>
+<li>Leave the moment it stops being useful</li>
 </ul>
-<span class="dfy-free-cta">Join The Free Job Channel &rarr;</span>
+<span class="dfy-free-cta">Join Remote Jobs (Global+) &rarr;</span>
 </a>
 </div>
 <p class="dfy-more">Roles reaching you and still no replies? Then supply is not your leak. <a href="diagnose/">Find which of the five parts is</a> &mdash; five questions, about ninety seconds, no payment and no email.</p>
