@@ -14,7 +14,7 @@
 
      The old settings were threshold:0.14 with rootMargin '0px 0px 120px 0px'.
      Against a flick of roughly 2000px/s that is 60ms of warning for a fade
-     that takes 700ms, so tall blocks -- the "Four Problem" cards are ~400px
+     that takes 700ms, so tall blocks -- the "Find The Problem" cards are ~400px
      each, two of them a full phone screen -- were still near-invisible well
      after they arrived. Empty black space in the night theme; a white blank in
      the day theme.
@@ -58,7 +58,7 @@
      in-page anchor (#joints etc.), or a URL that already carries a #hash on
      load — moves the viewport in a single instant frame. The observer above
      only sees whatever is on-screen at that instant, so a card further down
-     a tall section (e.g. the 3rd/4th "Four Problem · Fix It" card) is left
+     a tall section (e.g. the 3rd/4th "Find The Problem · Fix It" card) is left
      sitting at opacity:0 until the reader scrolls again. On the night theme
      that just reads as empty space; on the day theme it is a plain blank
      white gap. Force-reveal the target section, and everything the reader

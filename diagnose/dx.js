@@ -1,9 +1,9 @@
 "use strict";
 /* ═══════════════════════════════════════════════════════════════
-   FIND YOUR LEAK · four-point diagnostic  (dx.ts)
+   FIND YOUR LEAK · five-part diagnostic  (dx.ts)
    Compile: tsc diagnose/dx.ts --target es2017 --strict --lib es2017,dom
 
-   Four questions, weighted. Each answer adds to one or two joints;
+   Five questions, weighted. Each answer adds to one or two parts;
    the highest total wins, with an explicit tie-break that prefers
    the EARLIEST joint in the pipe — because a leak upstream makes
    every downstream reading unreliable. Someone who cannot find
@@ -16,6 +16,16 @@
 (function () {
     'use strict';
     const QUESTIONS = [
+        {
+            q: 'Thinking about the remote roles you want \u2014 could you do the job itself today, without training first?',
+            why: 'This is the one question people skip. A CV rewrite cannot close a skill gap, and no amount of applying fixes work you cannot yet deliver.',
+            answers: [
+                { label: 'Not yet \u2014 I am still learning the actual skill', note: 'the honest answer, and a common one', weight: { capacity: 6 } },
+                { label: 'I can do the work, but never remotely', note: 'no experience being managed at a distance', weight: { capacity: 4 } },
+                { label: 'Yes \u2014 I have done this work, in an office', weight: { capacity: 1, representation: 1 } },
+                { label: 'Yes, and I have delivered it remotely before', weight: { representation: 1, aim: 1 } }
+            ]
+        },
         {
             q: 'In the last month, how many remote roles have you found that you were genuinely eligible for?',
             why: 'Eligible means the company can actually pay someone in your country \u2014 not just that the advert said \u201Cremote\u201D.',
@@ -43,7 +53,7 @@
                 { label: 'I apply to whatever reaches me', note: 'forwarded links, adverts, whatever appears', weight: { supply: 2, aim: 2 } },
                 { label: 'I apply to as many as I can, quickly', weight: { aim: 3 } },
                 { label: 'I check the company first, then tailor', weight: { conversion: 1 } },
-                { label: 'I have not been applying much lately', note: 'honest answer, very common', weight: { aim: 2, supply: 1 } }
+                { label: 'I have not been applying much lately', note: 'honest answer, very common', weight: { aim: 2, supply: 1, capacity: 1 } }
             ]
         },
         {
@@ -57,10 +67,27 @@
             ]
         }
     ];
-    const ORDER = ['supply', 'representation', 'aim', 'conversion'];
+    const ORDER = ['capacity', 'supply', 'representation', 'aim', 'conversion'];
     const JOINTS = {
+        capacity: {
+            n: '01', name: 'Capacity', law: 'You can\u2019t be hired for work you can\u2019t yet do.',
+            verdict: 'The gap here is the work itself, not the paperwork \u2014 either the skill the role needs, or the habits that let someone trust you to deliver it unsupervised. This is the honest place to start, because a rewritten CV cannot close it and applying harder will only produce faster rejections. It is also the most fixable, and nobody sees you learning it.',
+            free: {
+                text: 'Start with the blog\u2019s remote-readiness guides \u2014 how remote work is actually measured, what employers expect you to run without being chased, and the AI and tool fluency now assumed on day one.',
+                href: '../blog.html', label: 'Read the remote-readiness guides'
+            },
+            paid: {
+                text: 'Stages 1 and 2 of Foundation Training exist for exactly this: the remote operating system \u2014 deep work, daily KPIs, end-of-day reporting \u2014 and the digital toolkit a distributed team assumes you already know.',
+                href: '../foundationtraining/', label: 'See Foundation Training'
+            },
+            tonight: [
+                'Write the job description of the role you want, from memory. Every line you cannot honestly claim is your real list.',
+                'Pick the single most-repeated tool across five adverts for that role. Learn that one first, not all of them.',
+                'Do one piece of the work nobody asked for and keep the artifact. Evidence you created is still evidence.'
+            ]
+        },
         supply: {
-            n: '01', name: 'Supply', law: 'You can\u2019t apply for a job you never saw.',
+            n: '02', name: 'Supply', law: 'You can\u2019t apply for a job you never saw.',
             verdict: 'You are not seeing enough real, eligible roles to have a job search yet. Everything downstream \u2014 your CV, your aim, your interviews \u2014 is being judged on far too little evidence. Fix this one first and the rest becomes measurable.',
             free: {
                 text: 'Join the free Global Remote Job Board on WhatsApp. Verified roles, open to Africans, posted continuously \u2014 and the blog\u2019s scam-check guides so you can tell a live listing from a fossil.',
@@ -77,8 +104,8 @@
             ]
         },
         representation: {
-            n: '02', name: 'Representation', law: 'If your CV can\u2019t be read, you were never really in the running.',
-            verdict: 'You are real and competent, and the document representing you is not readable \u2014 by software first, by a stranger second. Total silence almost always means you were never actually read. This is the fastest of the four to fix.',
+            n: '03', name: 'Representation', law: 'If your CV can\u2019t be read, you were never really in the running.',
+            verdict: 'You are real and competent, and the document representing you is not readable \u2014 by software first, by a stranger second. Total silence almost always means you were never actually read. This is the fastest of the five to fix.',
             free: {
                 text: 'Run the free 10-Point CV Self-Scan. It takes ninety seconds, runs entirely on your own device, and shows exactly which points you default on.',
                 href: '../cvscan/', label: 'Score my CV free'
@@ -94,7 +121,7 @@
             ]
         },
         aim: {
-            n: '03', name: 'Aim', law: 'Applying everywhere isn\u2019t the same as applying where you\u2019d get hired.',
+            n: '04', name: 'Aim', law: 'Applying everywhere isn\u2019t the same as applying where you\u2019d get hired.',
             verdict: 'Your effort is not the problem \u2014 your direction is. Applications sent is a measure of effort, not of aim, and a big number with no replies is evidence of a problem rather than proof of trying. There is no feedback loop in job hunting, so the lesson never arrives on its own.',
             free: {
                 text: 'Start a one-page tracker tonight: date, company, role, source, whether they can hire across borders, what you tailored, what came back. After thirty rows, patterns appear that no advice could have given you.',
@@ -111,8 +138,8 @@
             ]
         },
         conversion: {
-            n: '04', name: 'Conversion', law: 'Interviews don\u2019t pay you. A signed offer does.',
-            verdict: 'Here is the good news hiding in your answers: your CV is working and your aim is close enough to get you into rooms. The hard joints are already fixed. What is leaking is the twenty minutes after the document \u2014 and that is the most learnable part of the whole process.',
+            n: '05', name: 'Conversion', law: 'Interviews don\u2019t pay you. A signed offer does.',
+            verdict: 'Here is the good news hiding in your answers: your CV is working and your aim is close enough to get you into rooms. The hard parts are already fixed. What is leaking is the twenty minutes after the document \u2014 and that is the most learnable part of the whole process.',
             free: {
                 text: 'Write your answer to the question that ends most remote interviews \u2014 \u201Chow do you work when nobody is watching?\u201D \u2014 as a description of your system, not a list of adjectives. Four sentences, tonight, before anyone asks.',
                 href: '../blog.html', label: 'Read the interview guides'
@@ -129,7 +156,7 @@
         }
     };
     /* ── state ───────────────────────────────────────────────── */
-    const scores = { supply: 0, representation: 0, aim: 0, conversion: 0 };
+    const scores = { capacity: 0, supply: 0, representation: 0, aim: 0, conversion: 0 };
     const chosen = [];
     let step = 0;
     const stepEl = document.getElementById('dxStep');
@@ -196,7 +223,7 @@
     function winner() {
         // highest score; ties resolve UPSTREAM — an early leak makes
         // every later reading unreliable, so fix the earliest one first.
-        let best = 'supply';
+        let best = 'capacity';
         let bestScore = -1;
         ORDER.forEach(k => {
             if (scores[k] > bestScore) {
