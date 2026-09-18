@@ -156,8 +156,11 @@
       /* Every term that must never appear anywhere in this repository
          again. validate-facts.py fails the build on any of them.
          Retiring something is a one-line addition here. */
+      /* NOTE: these ban the MODEL term only. The four-stage curriculum
+         (Stages 1 to 4) is legitimate and must survive \u2014 never run a
+         blanket find-and-replace on the word "four". */
       retired: [
-        'Four-Point', 'Four Point', 'four-point diagnostic', 'Four-Point Job Search',
+        'Four-Point', 'Four Point', 'Four Problem', 'four-point diagnostic', 'Four-Point Job Search',
         'Mastery Setup', 'Remote Job World Mastery', 'Mastery Training',
         'Private Remote Job Board',
         '2347033134979', '+234 703 313 4979',
