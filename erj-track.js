@@ -87,7 +87,7 @@
     'paystack.shop/pay/gtdj-stage5':      { value: 300000, name: 'Stage 5 - Placement Engine' },
     'paystack.shop/pay/gydjo-stages1-5':  { value: 500000, name: 'Dream Job Offer (Stages 1-5)' },
     'paystack.shop/pay/erj-inner-circle': { value: 250000, name: 'The Inner Circle' },
-    'paystack.shop/pay/erj-cvpass':       { value: 5000,   name: 'CV Engine Pass (30 days)' },
+    'paystack.shop/pay/84mjv4w4x7':       { value: 5000,   name: 'CV Engine Pass (30 days)' },
     'paystack.com/buy/google-search-best-kept-open-secret': { value: 5000, name: 'Google Search - Best Kept Open Secret' },
   };
 
