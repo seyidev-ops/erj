@@ -51,8 +51,11 @@
        model and the figures all live HERE and nowhere else.
 
        Two rules make this permanent:
-         1. No page hard-codes any of these values. Pages render them
-            with erj-facts.js: <span data-erj="price.foundation"></span>
+         1. No page states a price, a date or a product name that
+            disagrees with this block. Pages carry the figure as real
+            text — so it is in the HTML for search engines and for
+            readers without JavaScript — and the check below is what
+            keeps that text honest.
          2. validate-facts.py reads this block, scans every file, and
             FAILS the build when a surface disagrees with it or uses
             anything listed under `retired`.
@@ -120,8 +123,10 @@
       products: [
         { id:'book',       name:'Google Search: Best Kept Open Secret', naira:5000,   unit:'one-time', part:'supply',
           href:'register.html#book', pay:'https://paystack.com/buy/google-search-best-kept-open-secret', badge:'Start here' },
-        { id:'cvengine',   name:'CV Engine \u2014 30-Day Pass',            naira:5000,   unit:'one-time', part:'representation',
-          href:'cvbuilder.html', pay:'https://paystack.shop/pay/erj-cvpass' },
+        { id:'cvpass',     name:'The CV Engine',                       naira:5000,   unit:'monthly',  part:'representation',
+          href:'cvbuilder.html', pay:'https://paystack.shop/pay/84mjv4w4x7' },
+        { id:'cvfix',      name:'CV Fix \u2014 one CV, one field',         naira:30000,  unit:'one-time', part:'representation',
+          href:'register.html#cvfix', pay:'https://wa.me/2348032925957' },
         { id:'selflearn',  name:'The Self-Learn Pack',                 naira:35000,  unit:'one-time', part:'capacity',
           href:'selflearn/', pay:'https://selar.com/77v230274x' },
         { id:'dfy7',       name:'Done-For-You, 7 Days',                naira:50000,  unit:'one-time', part:'supply',
@@ -138,7 +143,7 @@
           href:'foundationtraining/', pay:'https://paystack.shop/pay/rjmtstages1-4', badge:'Most recommended' },
         { id:'inner',      name:'The Inner Circle',                    naira:250000, unit:'one-time', part:'conversion',
           href:'innercircle/', pay:'https://paystack.shop/pay/erj-inner-circle' },
-        { id:'stage5',     name:'Done-For-You Placement Engine',       naira:300000, unit:'one-time', part:'aim',
+        { id:'placement',  name:'Done-For-You Placement Engine',       naira:300000, unit:'one-time', part:'aim',
           href:'jobapplication/', pay:'https://paystack.shop/pay/gtdj-stage5' },
         { id:'dreamjob',   name:'Get Your Dream Job Offer',            naira:500000, wasNaira:740000, unit:'one-time', part:'conversion',
           href:'jobapplication/', pay:'https://paystack.shop/pay/gydjo-stages1-5', badge:'Best value' }
@@ -161,6 +166,7 @@
          blanket find-and-replace on the word "four". */
       retired: [
         'Four-Point', 'Four Point', 'Four Problem', 'four-point diagnostic', 'Four-Point Job Search',
+        '4-point', '4 point', '4-Point Model',
         'Mastery Setup', 'Remote Job World Mastery', 'Mastery Training',
         'Private Remote Job Board',
         '2347033134979', '+234 703 313 4979',
