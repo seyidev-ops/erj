@@ -46,6 +46,19 @@ OUTCOME_PAGES = {"testimonials.html", "blog.html"}
 # archive is a content decision, not a release blocker.
 ARCHIVE = {"blog.html", "testimonials.html"}
 
+
+def is_archive(path):
+    """The archive is the blog index, the testimonials wall and every dated
+    post under blog/. A post announcing Cohort 6 in 2025 is a record of what
+    happened, not a claim about what is open now. Drift is reported, not
+    blocked."""
+    return path in ARCHIVE or path.startswith("blog/")
+
+
+def is_outcome_page(path):
+    """Pages that quote member salaries and offers rather than ERJ prices."""
+    return path in OUTCOME_PAGES or path.startswith("blog/")
+
 # Any line carrying this marker is exempt from every check.
 ESCAPE = "canon-ok"
 
@@ -129,7 +142,7 @@ def main():
         for term in retired:
             for line in body.splitlines():
                 if term.lower() in line.lower() and ESCAPE not in line:
-                    (warn if path in ARCHIVE else fail)(
+                    (warn if is_archive(path) else fail)(
                         "retired term", path, '"%s" must not appear anywhere' % term)
                     break
 
@@ -144,7 +157,7 @@ def main():
     # ── 3. no money figure outside canon ────────────────────────────────
     price_re = re.compile(NAIRA + r"\s?([0-9][0-9,]{3,})")
     for path, raw in corpus:
-        if path == DEFINITION or path in OUTCOME_PAGES or path in PORTAL:
+        if path == DEFINITION or is_outcome_page(path) or path in PORTAL:
             continue
         for line in raw.splitlines():
             if ESCAPE in line:
@@ -159,7 +172,7 @@ def main():
     # ── 4. the cohort in play is the cohort in canon ────────────────────
     current = canon["cohort"]["number"]
     for path, raw in corpus:
-        if path == DEFINITION or path in PORTAL or path in ARCHIVE:
+        if path == DEFINITION or path in PORTAL or is_archive(path):
             continue
         for line in raw.splitlines():
             if ESCAPE in line:
@@ -190,7 +203,7 @@ def main():
         # case-sensitive: these are the published labels, not css class names
         if all(re.search(r"\b%s\b" % l, raw) for l in downstream):
             if not re.search(r"\bCapacity\b", raw) and ESCAPE not in raw:
-                (warn if path in ARCHIVE else fail)(
+                (warn if is_archive(path) else fail)(
                     "model", path,
                     "enumerates the model without Capacity — the order starts at Capacity")
 

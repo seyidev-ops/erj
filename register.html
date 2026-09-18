@@ -4,7 +4,7 @@
 <head><meta charset="utf-8"/><script>try{document.documentElement.classList.add('js')}catch(e){}</script><style id="erjCanvasGuard">html{background:#000000}html[data-theme="day"]{background:#FAFAF8}</style>
 
 <!-- Meta Pixel + Google Tag Manager -->
-<script async="" src="erj-track.js?v=20260910a"></script>
+<script async="" src="erj-track.js?v=20260911a"></script>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <link href="manifest.json" rel="manifest"/>
 <meta content="#000000" id="metaThemeColor" name="theme-color"/>
@@ -289,11 +289,10 @@ h1,h2,h3,h4,.ask,.cost-h,.rung-title,.shelf-title,.fb-title,.pledge-h,.joint-t,.
   overflow-wrap:break-word; word-break:normal; hyphens:none;
 }
 
-/* ── FIVE-FINGER MODEL · ONE LEAK ─────────────────────────────
-   The pipeline model from the campaign graphic: Supply →
-   Representation → Aim → Conversion. Full rows (.joints)
-   for the home page; compact 4-cell strip (.jmap) for the
-   product and register pages. */
+/* ── FIVE-FINGER MODEL · ONE LEAK ─────────────────────────
+   Full rows (.joints) for the home page; compact strip (.jmap)
+   for the product and register pages. The part labels live in
+   the markup and in erj-config.js canon, never here. */
 .joints{margin-top:1.8rem;}
 .joint{display:grid;grid-template-columns:96px 1fr;gap:0 1.4rem;
   padding:1.6rem 0.2rem 1.6rem 1rem;border-top:1px solid var(--line);position:relative;}
@@ -620,6 +619,12 @@ a.promo-tick{text-decoration:none;display:block;}
     text-align:center;max-width:600px;margin-left:auto;margin-right:auto;}
   .store-foot strong{color:var(--ink);font-weight:500;}
   .reg-sub a{color:var(--accent);text-decoration:underline;text-underline-offset:3px;}
+/* Reserve the tallest line-count this paragraph can take on a phone.
+   The fallback face is wider than Inter, so at some narrow widths it
+   wraps to one extra line and then jumps up when the webfont swaps in
+   — measured 0.106 CLS, the whole of this page’s layout shift. Holding
+   the box at its tallest makes the swap invisible. */
+@media(max-width:479px){.reg-sub{min-height:136px;}}
 
 
   /* ══ BASKET ══
@@ -823,15 +828,15 @@ html[data-theme="day"] .cvp-reg{background:#fff;}
 <noscript><iframe height="0" src="https://www.googletagmanager.com/ns.html?id=GTM-NMFHS59B" style="display:none;visibility:hidden" width="0"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 <div id="erjNavMount"></div>
-<script>window.ERJ_NAV={active:'pricing',onPage:[{label:'The shelf',href:'#sec-store'},{label:'Cohort 11',href:'#foundation'},{label:'Under ₦40,000',href:'#book'},{label:'How payment works',href:'#sec-paystack'}]};</script>
+<script>window.ERJ_NAV={active:'pricing',onPage:[{label:'The shelf',href:'#sec-store'},{label:'Cohort 11',href:'#foundation'},{label:'Under ₦40,000',href:'#book'},{label:'How payment works',href:'#sec-paystack'}]}; /* canon-ok: navigation threshold, not a product price */</script>
 <main>
 <div class="promo-tick" role="note" aria-label="You can start from somewhere, at the lowest budget.">
 <div class="promo-track">You can start from somewhere, <em>at the lowest budget.</em></div>
 </div>
 <section class="wrap reg-hero">
 <div class="kicker"><span class="mark"></span> The ERJ Store</div>
-<h1 class="reg-h1">Twelve doors.<br/><em>One of them is yours.</em></h1>
-<p class="reg-sub">Everything we sell, cheapest first, with the price on the front of every box. Add what you need to the basket, or buy a single item outright. If you don't yet know which door is yours, <a href="diagnose/">take the free 90-second diagnosis</a> — buying the wrong rung is the expensive mistake, and we would rather you spent nothing.</p>
+<h1 class="reg-h1">Thirteen doors.<br/><em>One of them is yours.</em></h1>
+<p class="reg-sub">Everything we sell, cheapest first, with the price on the front of every box. Not sure which door is yours? <a href="diagnose/">Take the free 90-second diagnosis</a> — buying the wrong one is the expensive mistake.</p>
 <div class="urgency" data-closed-label="Enrolment has closed" data-deadline="2026-09-27T20:00:00+01:00">
 <span class="urg-lbl" data-lbl="">Remote Job Foundation Training Cohort 11 enrolment closes in</span>
 <span class="urg-count">
@@ -886,7 +891,7 @@ html[data-theme="day"] .cvp-reg{background:#fff;}
 <div class="step"><div class="step-n">2</div><div class="step-t"><strong>Send the receipt</strong>WhatsApp it to <a href="https://wa.me/2348032925957" rel="noopener" target="_blank">+234 803 292 5957</a>.</div></div>
 <div class="step"><div class="step-n">3</div><div class="step-t"><strong>Get access</strong>Your login or download arrives within 24 hours.</div></div>
 </div>
-<p>Prefer a direct transfer? <strong>GTBank — 0761646755</strong> (Business Play Ltd). Paying Cohort 11 in instalments? Use the <a href="earlybird.html">instalment route</a> — it changes the payment timing, not the price.</p>
+<p>Prefer a direct transfer? <strong>GTBank — 0761646755</strong> (Business Play Ltd). Cohort 11 is ₦250,000 in one payment — the instalment window closed on 14 September. <a href="earlybird.html">How that window worked</a>.</p>
 <div class="pay-actions">
 <a class="pa-quiet" href="login.html">Participant login</a>
 <a class="pa-quiet" href="https://wa.me/2348032925957" rel="noopener" target="_blank">WhatsApp us</a>
@@ -901,7 +906,7 @@ html[data-theme="day"] .cvp-reg{background:#fff;}
 <a class="wa-float" href="https://wa.me/2348032925957" rel="noopener" target="_blank" title="Chat on WhatsApp">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"></path></svg>
 </a>
-<script defer="" src="erj-theme.js?v=20260910a"></script>
+<script defer="" src="erj-theme.js?v=20260911a"></script>
 <script>
 /* ── "Which door is mine?" — a decision-teaching chooser.
       Order matters: skill decides WHAT kind of help, timeline decides
@@ -916,49 +921,49 @@ html[data-theme="day"] .cvp-reg{background:#fff;}
       title: 'Stages 1–4 · Complete Remote Foundation Programme',
       price: '₦250,000 · 20 training days',
       body: 'The full build: mindset and deep-work systems, the digital toolkit, async communication, then the Global Ready Package (Remote-First CV, portfolio, STAR video). You leave hireable and properly represented — <strong>then you apply yourself</strong>, with the community and mentor support behind you.',
-      cta: 'See Stages 1–4', href: '#sec-training',
-      alt: 'Need payment flexibility rather than a discount? Cohort 11 keeps the ₦250,000 fee unchanged, but the instalment window lets you start with any amount and pay it down until 14 September. After that, full payment applies until enrolment closes 27 September. <a href="earlybird.html">See the Cohort 11 instalment option →</a>'
+      cta: 'See Stages 1–4', href: '#foundation',
+      alt: 'Need payment flexibility rather than a discount? The Cohort 11 instalment window closed on 14 September, so the fee is ₦250,000 in one payment until enrolment closes on 27 September. If a single stage at ₦70,000 is the realistic start, take that instead — it is the same material, paid for one stage at a time. <a href="earlybird.html">How the instalment window worked →</a>'
     },
     singleStage: {
       title: 'Start with one stage',
       price: 'From ₦70,000 · 5 days',
       body: 'Take Stage 1 (Remote Mindset Blueprint) on its own. It is the smallest honest entry point into the programme — real training, real deliverable, no commitment to the rest. Most people who start here continue, but you decide after you have seen how we teach.',
-      cta: 'See single stages', href: '#sec-training',
-      alt: 'Want the whole build at a better rate? <a href="#sec-training">Stages 1–4 together is ₦250,000 →</a>'
+      cta: 'See single stages', href: '#stage1',
+      alt: 'Want the whole build at a better rate? <a href="#foundation">Stages 1–4 together is ₦250,000 →</a>'
     },
     stage4: {
       title: 'Stage 4 · Start Your Remote Career',
       price: '₦100,000 · 5 days',
       body: 'You are already employable — your problem is representation, not competence. Five days turns your existing history into the <strong>Global Ready Package</strong>: an ATS-compliant Remote-First CV, a live portfolio, an optimised LinkedIn and a rehearsed STAR video, expert-reviewed as a set.',
-      cta: 'See Stage 4', href: '#sec-training',
+      cta: 'See Stage 4', href: '#stage4',
       alt: 'Not sure your CV is the bottleneck? Run the free 10-point scan first — it takes seconds and costs nothing. <a href="cvscan/">Scan my CV →</a>'
     },
     stage5: {
       title: 'Stage 5 · Done-For-You Placement Engine',
       price: '₦300,000 · a month, then until hired',
       body: 'You can do the job; you do not have the bandwidth to run the hunt. We build the four assets and run the sourcing, outbound and applications for you — and under our promise <strong>we do not let go until you are hired.</strong>',
-      cta: 'See Stage 5', href: '#sec-remote',
-      alt: 'If your CV and portfolio also need building from scratch, the Stages 1–5 bundle covers both and saves ₦240,000. <a href="#sec-remote">Compare Stages 1–5 →</a>'
+      cta: 'See Stage 5', href: '#placement',
+      alt: 'If your CV and portfolio also need building from scratch, the Stages 1–5 bundle covers both and saves ₦240,000. <a href="#dreamjob">Compare Stages 1–5 →</a>'
     },
     dream: {
       title: 'Stages 1–5 · Get Your Dream Job Offer',
       price: '₦500,000 (from ₦740,000+) · Recommended',
       body: 'The whole path, end to end: the four-stage build, the done-for-you placement engine, the 30-day playbook and lifetime mentor access. This is the option for someone who wants one decision to cover everything rather than four decisions over a year.',
-      cta: 'See Stages 1–5', href: '#sec-remote',
-      alt: 'Only need the placement half? <a href="#sec-remote">Stage 5 alone is ₦300,000 →</a>'
+      cta: 'See Stages 1–5', href: '#dreamjob',
+      alt: 'Only need the placement half? <a href="#placement">Stage 5 alone is ₦300,000 →</a>'
     },
     inner: {
       title: 'The Inner Circle · Private 1:1 mentorship',
       price: '₦250,000 · private 1:1 · one payment',
       body: 'You are stable and skilled — what you lack is a room. Direct mentor access, member job leads, live reviews of your negotiations and a network that compounds for twelve months. This is the long-game option, not the emergency one.',
-      cta: 'See the Inner Circle', href: '#sec-inner',
-      alt: 'Want the applications sent for you as well? The 7-day done-for-you job hunt pairs naturally with it at ₦50,000. <a href="#sec-remote">See the 7-day hunt →</a>'
+      cta: 'See the Inner Circle', href: '#inner',
+      alt: 'Want the applications sent for you as well? The 7-day done-for-you job hunt pairs naturally with it at ₦50,000. <a href="#dfy7">See the 7-day hunt →</a>'
     },
     dfy7: {
       title: 'Job Hunt & Application, Done For You in 7 Days',
       price: '₦50,000 · one payment',
       body: 'Honest answer: you are hireable and you do not need us to teach or build anything. What you are missing is time and targets — so we take both off you. We hunt one field for you, local and foreign, tailor your CV to each role, and send the applications: <strong>3+ verified roles applied to within seven days.</strong> Nothing else on this page would serve you better today.',
-      cta: 'See the 7-day done-for-you hunt', href: '#sec-remote',
+      cta: 'See the 7-day done-for-you hunt', href: '#dfy7',
       alt: 'And run the free CV scan before your next application — if it scores well, you genuinely need nothing else from us. <a href="cvscan/">Scan my CV free →</a>'
     },
     free: {
@@ -1055,12 +1060,12 @@ html[data-theme="day"] .cvp-reg{background:#fff;}
   window.chReset = function () { A = { skill:null, time:null, budget:null }; show(1); };
 })();
 </script>
-<script defer="" src="erj-product.js?v=20260910a"></script>
-<script defer="" src="erj-nav.js?v=20260910a"></script>
-<script defer="" src="erj-config.js?v=20260910a"></script>
-<script defer="" src="erj-capture.js?v=20260910a"></script>
+<script defer="" src="erj-product.js?v=20260911a"></script>
+<script defer="" src="erj-nav.js?v=20260911a"></script>
+<script defer="" src="erj-config.js?v=20260911a"></script>
+<script defer="" src="erj-capture.js?v=20260911a"></script>
 <script>if("serviceWorker" in navigator){window.addEventListener("load",function(){var go=function(){navigator.serviceWorker.register("/sw.js").then(function(reg){reg.update();}).catch(function(){});};if("requestIdleCallback" in window){requestIdleCallback(go,{timeout:3000});}else{setTimeout(go,1200);}});}</script>
-<script defer="" src="erj-schema.js?v=20260910a"></script>
+<script defer="" src="erj-schema.js?v=20260911a"></script>
 <script defer="" src="erj-cart.js?v=20260911a"></script>
 </body>
 </html>
