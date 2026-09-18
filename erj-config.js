@@ -15,11 +15,14 @@
           which is exactly why every mention of it needs a bridge). ── */
     channel: 'https://whatsapp.com/channel/0029Vaym4DE3mFY2wCrC713S',
 
-    /* ── Placement capacity: REMOVED. The figures here were static and
-          rendered as a live reading ("3 of 8 open") with a progress bar.
-          A count that only changes when someone edits this file is a
-          scarcity claim, not a fact. Both pages now state the constraint
-          in words instead. Do not reinstate without a real data source. */
+    /* ── Placement capacity. Real hours, not marketing scarcity.
+          Update `taken` as engagements start and finish. ────────── */
+    capacity: {
+      placementTotal: 8,     // Job Application DFY engagements we can run at once
+      placementTaken: 5,
+      innerCircleTotal: 12,  // Inner Circle residency seats per intake
+      innerCircleTaken: 7
+    },
 
     /* ── The evergreen sentence. Shown under every countdown so a
           person who becomes ready mid-cycle is never told to wait. ── */
@@ -40,6 +43,126 @@
       diagnose: 'AUDIT\n\nMy diagnostic says: {joint} \u2014 {law}\n\nTarget role:\nApplications in the last 30 days:\nInterviews in the last 30 days:\nCV/LinkedIn: I will attach or paste it here.\n\nMy diagnostic answers: {answer}\n\nPlease tell me what I should fix first. If I do not need a paid ERJ service, please tell me that too.',
       blog: 'Hello ERJ \u2014 I have been reading the blog and I want to sort out my job hunt properly. Where do I start?',
       capacity: 'Hello ERJ \u2014 I would like one of the placement engagements. Are there still places open this month?'
+    },
+
+    /* ═══════════════════════════════════════════════════════════
+       CANON — the single source of truth for every commercial fact
+       on this site. Prices, dates, product names, the diagnostic
+       model and the figures all live HERE and nowhere else.
+
+       Two rules make this permanent:
+         1. No page hard-codes any of these values. Pages render them
+            with erj-facts.js: <span data-erj="price.foundation"></span>
+         2. validate-facts.py reads this block, scans every file, and
+            FAILS the build when a surface disagrees with it or uses
+            anything listed under `retired`.
+
+       Changing a price or a cohort date is therefore a one-line edit
+       in this file. Everything downstream follows, and anything that
+       did not follow is caught before it ships.
+       ═══════════════════════════════════════════════════════════ */
+    canon: {
+
+      org: {
+        brand: 'Everything Remote Job',
+        legal: 'Business Play Limited',
+        tagline: 'Work Beyond Borders.',
+        domain: 'everythingremotejob.com',
+        pledge: 'We will not let you go until you\u2019re hired.',
+        footerSignature: 'Built for global career scale.',
+        bank: 'GTBank \u00b7 0761646755 (Business Play Ltd)'
+      },
+
+      /* The official line is the ONLY number that may appear on a
+         published page or in any template. The founder's personal
+         line is deliberately not recorded here, so it cannot be
+         rendered by accident. */
+      lines: {
+        official: '2348032925957',
+        officialDisplay: '+234 803 292 5957'
+      },
+
+      figures: {
+        trained: '446+',
+        placed: '382+',
+        cohortsCompleted: 9
+      },
+
+      /* The diagnostic model. Capacity is first and the order is
+         load-bearing \u2014 ties resolve upstream. */
+      model: {
+        name: 'The Five-Finger Model',
+        instruction: 'Find the problem. Fix it.',
+        parts: [
+          { n: '01', key: 'capacity',       label: 'Capacity',       line: 'You can\u2019t be hired for work you can\u2019t yet do.' },
+          { n: '02', key: 'supply',         label: 'Supply',         line: 'You can\u2019t apply for a job you never saw.' },
+          { n: '03', key: 'representation', label: 'Representation', line: 'If your CV can\u2019t be read, you were never really in the running.' },
+          { n: '04', key: 'aim',            label: 'Aim',            line: 'Applying everywhere isn\u2019t the same as applying where you\u2019d get hired.' },
+          { n: '05', key: 'conversion',     label: 'Conversion',     line: 'Interviews don\u2019t pay you. A signed offer does.' }
+        ]
+      },
+
+      cohort: {
+        number: 11,
+        feeNaira: 250000,
+        closes:  '2026-09-27T20:00:00+01:00',
+        begins:  '2026-09-28T20:00:00+01:00',
+        closesDisplay: 'Sun 27 Sep \u00b7 8:00 PM WAT',
+        beginsDisplay: 'Mon 28 Sep \u00b7 8:00 PM WAT',
+        instalmentWindowCloses: '2026-09-14',
+        instalmentHref: 'earlybird.html',
+        instalmentNote: 'It changes the payment timing, not the price.'
+      },
+
+      /* The store, cheapest first. `part` is the Five-Finger part the
+         door addresses. `wasNaira` may only be set where that figure
+         is a genuine separate-purchase total. */
+      products: [
+        { id:'book',       name:'Google Search: Best Kept Open Secret', naira:5000,   unit:'one-time', part:'supply',
+          href:'register.html#book', pay:'https://paystack.com/buy/google-search-best-kept-open-secret', badge:'Start here' },
+        { id:'cvengine',   name:'CV Engine \u2014 30-Day Pass',            naira:5000,   unit:'one-time', part:'representation',
+          href:'cvbuilder.html', pay:'https://paystack.shop/pay/erj-cvpass' },
+        { id:'selflearn',  name:'The Self-Learn Pack',                 naira:35000,  unit:'one-time', part:'capacity',
+          href:'selflearn/', pay:'https://selar.com/77v230274x' },
+        { id:'dfy7',       name:'Done-For-You, 7 Days',                naira:50000,  unit:'one-time', part:'supply',
+          href:'jobapplication/', pay:'https://paystack.shop/pay/dfy7days' },
+        { id:'stage1',     name:'Stage 1 \u2014 Remote Mindset Blueprint',  naira:70000,  unit:'one-time', part:'capacity',
+          href:'register.html#stage1', pay:'https://paystack.shop/pay/Stage1' },
+        { id:'stage3',     name:'Stage 3 \u2014 Async Communication Mastery',naira:70000, unit:'one-time', part:'capacity',
+          href:'register.html#stage3', pay:'https://paystack.shop/pay/stage3alony' },
+        { id:'stage4',     name:'Stage 4 \u2014 Start Your Remote Career',  naira:100000, unit:'one-time', part:'representation',
+          href:'register.html#stage4', pay:'https://paystack.shop/pay/stage4only' },
+        { id:'stage2',     name:'Stage 2 \u2014 The Digital Toolkit',       naira:130000, unit:'one-time', part:'capacity',
+          href:'register.html#stage2', pay:'https://paystack.shop/pay/stage2ai' },
+        { id:'foundation', name:'Remote Job Foundation Training',      naira:250000, wasNaira:370000, unit:'one-time', part:'capacity',
+          href:'foundationtraining/', pay:'https://paystack.shop/pay/rjmtstages1-4', badge:'Most recommended' },
+        { id:'inner',      name:'The Inner Circle',                    naira:250000, unit:'one-time', part:'conversion',
+          href:'innercircle/', pay:'https://paystack.shop/pay/erj-inner-circle' },
+        { id:'stage5',     name:'Done-For-You Placement Engine',       naira:300000, unit:'one-time', part:'aim',
+          href:'jobapplication/', pay:'https://paystack.shop/pay/gtdj-stage5' },
+        { id:'dreamjob',   name:'Get Your Dream Job Offer',            naira:500000, wasNaira:740000, unit:'one-time', part:'conversion',
+          href:'jobapplication/', pay:'https://paystack.shop/pay/gydjo-stages1-5', badge:'Best value' }
+      ],
+
+      /* Published credits. A credit is never called a discount, and a
+         credit that is not listed here does not exist \u2014 which is the
+         whole point of recording it in one place. */
+      credits: [
+        { id:'selflearn-to-foundation', from:'selflearn', to:'foundation',
+          naira:35000, days:90, word:'credit',
+          line:'The full \u20a635,000 comes off Foundation Training if you upgrade within 90 days.' }
+      ],
+
+      /* Every term that must never appear anywhere in this repository
+         again. validate-facts.py fails the build on any of them.
+         Retiring something is a one-line addition here. */
+      retired: [
+        'Four-Point', 'Four Point', 'four-point diagnostic', 'Four-Point Job Search',
+        'Mastery Setup', 'Remote Job World Mastery', 'Mastery Training',
+        'Private Remote Job Board',
+        '2347033134979', '+234 703 313 4979',
+        'Get A Remote Job \u2014 Stage 5'
+      ]
     }
   };
 })();
