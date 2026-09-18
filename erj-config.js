@@ -15,14 +15,11 @@
           which is exactly why every mention of it needs a bridge). ── */
     channel: 'https://whatsapp.com/channel/0029Vaym4DE3mFY2wCrC713S',
 
-    /* ── Placement capacity. Real hours, not marketing scarcity.
-          Update `taken` as engagements start and finish. ────────── */
-    capacity: {
-      placementTotal: 8,     // Job Application DFY engagements we can run at once
-      placementTaken: 5,
-      innerCircleTotal: 12,  // Inner Circle residency seats per intake
-      innerCircleTaken: 7
-    },
+    /* ── Placement capacity: REMOVED. The figures here were static and
+          rendered as a live reading ("3 of 8 open") with a progress bar.
+          A count that only changes when someone edits this file is a
+          scarcity claim, not a fact. Both pages now state the constraint
+          in words instead. Do not reinstate without a real data source. */
 
     /* ── The evergreen sentence. Shown under every countdown so a
           person who becomes ready mid-cycle is never told to wait. ── */

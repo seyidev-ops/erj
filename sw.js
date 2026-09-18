@@ -2,7 +2,7 @@
    EVERYTHING REMOTE JOB — SERVICE WORKER
    Cache-first for app shell, network-first for fonts
 ═══════════════════════════════════════════════════════ */
-const CACHE = 'erj-site-20260918a';
+const CACHE = 'erj-site-20260918c';
 const OFFLINE = '/offline.html';
 
 /* SHELL is what a first-time visitor pays for before anything renders. It had
@@ -57,7 +57,8 @@ const SHELL = [
   '/shop/stage1.webp',
   '/shop/stage2.webp',
   '/shop/stage3.webp',
-  '/shop/stage4.webp'
+  '/shop/stage4.webp',
+  '/shop/cvfix.webp'
 ];
 
 self.addEventListener('install', e => {

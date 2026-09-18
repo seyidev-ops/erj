@@ -230,7 +230,10 @@
        its live figure from config — one place to update. */
     function capacityLines() {
         const nodes = Array.from(document.querySelectorAll('[data-erj-capacity]'));
-        if (!nodes.length)
+        /* CFG.capacity was removed deliberately — the figures were static and
+           shown as a live reading. Guard so a re-added host node renders
+           nothing rather than a stale number. */
+        if (!nodes.length || !CFG.capacity)
             return;
         nodes.forEach(node => {
             const kind = node.dataset.erjCapacity === 'innercircle' ? 'innercircle' : 'placement';
