@@ -1,0 +1,88 @@
+/* ═══════════════════════════════════════════════════════════════
+   ERJ CAPACITY AUDIT · page styles
+   Tokens only — the palette, fonts and lines come from product.css,
+   so the scan follows the day/night theme like every other page.
+   ═══════════════════════════════════════════════════════════════ */
+.csc-shell{margin-top:1.6rem;border:1px solid var(--line);border-radius:18px;
+  background:var(--card);padding:clamp(1.2rem,3.5vw,2rem);min-height:320px;}
+.csc-bar{height:3px;border-radius:99px;background:var(--line);overflow:hidden;margin-bottom:1.6rem;}
+.csc-bar span{display:block;height:100%;background:var(--accent);transition:width .3s var(--ease,ease);}
+.csc-kicker{font-family:var(--font-display);font-weight:800;font-size:.66rem;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--accent);margin:0 0 .7rem;}
+.csc-q{font-family:var(--font-display);font-weight:700;font-size:clamp(1.12rem,2.6vw,1.5rem);
+  line-height:1.35;color:var(--ink);margin:0 0 .6rem;letter-spacing:-.01em;}
+.csc-help{font-size:.9rem;color:var(--ink-soft);line-height:1.6;margin:0 0 .4rem;}
+/* role picker */
+.csc-roles{display:grid;grid-template-columns:repeat(auto-fit,minmax(248px,1fr));gap:.6rem;margin-top:1.3rem;}
+.csc-role{display:block;width:100%;text-align:left;font-family:var(--font-body);font-size:.92rem;
+  font-weight:500;color:var(--ink);background:transparent;border:1px solid var(--line);
+  border-radius:12px;padding:.95rem 1.05rem;cursor:pointer;line-height:1.45;
+  transition:border-color .18s,color .18s,background .18s;}
+.csc-role:hover,.csc-role:focus-visible{border-color:var(--accent);color:var(--accent);}
+.csc-role.is-other{text-decoration:none;color:var(--ink-soft);border-style:dashed;}
+/* answer options */
+.csc-opts{display:grid;gap:.6rem;margin-top:1.3rem;}
+.csc-opt{display:block;width:100%;text-align:left;background:transparent;border:1px solid var(--line);
+  border-radius:12px;padding:.95rem 1.1rem;cursor:pointer;transition:border-color .18s,background .18s;}
+.csc-opt:hover,.csc-opt:focus-visible{border-color:var(--accent);}
+.csc-opt b{display:block;font-family:var(--font-display);font-weight:700;font-size:1rem;
+  color:var(--ink);margin-bottom:.2rem;}
+.csc-opt span{display:block;font-size:.86rem;color:var(--ink-soft);line-height:1.5;}
+.csc-nav{display:flex;flex-wrap:wrap;gap:1.2rem;margin-top:1.4rem;}
+.csc-back{background:none;border:0;padding:0;cursor:pointer;font-size:.84rem;
+  color:var(--ink-faint);font-family:var(--font-body);}
+.csc-back:hover{color:var(--accent);}
+/* result */
+.csc-result{border:1px solid var(--line);border-radius:16px;padding:clamp(1.1rem,3vw,1.6rem);
+  background:var(--paper);}
+.csc-result.is-build,.csc-result.is-core{border-color:rgba(255,87,34,.55);}
+.csc-result.is-capable,.csc-result.is-strong{border-color:rgba(64,160,96,.45);}
+.csc-score{display:flex;align-items:baseline;gap:.6rem;margin-bottom:.7rem;}
+.csc-score b{font-family:var(--font-display);font-weight:800;font-size:clamp(2.6rem,9vw,3.8rem);
+  color:var(--ink);line-height:1;letter-spacing:-.03em;}
+.csc-score span{font-size:.88rem;color:var(--ink-faint);letter-spacing:.02em;}
+.csc-tag{font-family:var(--font-display);font-weight:800;font-size:.7rem;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--accent);margin:0 0 .6rem;}
+.csc-head{font-family:var(--font-display);font-weight:700;font-size:clamp(1.1rem,2.6vw,1.4rem);
+  color:var(--ink);line-height:1.35;margin:0 0 .7rem;}
+.csc-body{font-size:.95rem;color:var(--ink-soft);line-height:1.7;margin:0 0 .8rem;}
+.csc-role-line{font-size:.85rem;color:var(--ink-faint);margin:0;}
+.csc-role-line b{color:var(--ink-soft);font-weight:600;}
+.csc-sub{font-family:var(--font-display);font-weight:800;font-size:.68rem;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--accent);margin:1.8rem 0 .8rem;}
+.csc-dims{display:grid;gap:.45rem;}
+.csc-dim{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;
+  padding:.7rem .95rem;border:1px solid var(--line);border-radius:10px;}
+.csc-dim.is-low{border-color:rgba(255,87,34,.4);}
+.csc-dim-l{font-size:.9rem;color:var(--ink-soft);}
+.csc-dim.is-low .csc-dim-l{color:var(--ink);}
+.csc-dim-v{font-family:var(--font-display);font-weight:800;font-size:.95rem;color:var(--ink);
+  font-variant-numeric:tabular-nums;white-space:nowrap;}
+.csc-gaps{list-style:none;margin:0;padding:0;display:grid;gap:.45rem;}
+.csc-gaps li{position:relative;padding-left:1.4rem;font-size:.92rem;color:var(--ink-soft);line-height:1.6;}
+.csc-gaps li::before{content:'';position:absolute;left:0;top:.6em;width:7px;height:7px;
+  border-radius:50%;background:var(--accent);}
+.csc-note{font-size:.88rem;color:var(--ink-soft);line-height:1.7;margin:.9rem 0 0;}
+.csc-note.is-warn{color:var(--ink);border-left:2px solid var(--accent);padding-left:.9rem;}
+.csc-acts{display:flex;flex-wrap:wrap;gap:1rem;align-items:center;}
+@media(max-width:620px){
+  .csc-roles{grid-template-columns:1fr;}
+  .csc-acts{flex-direction:column;align-items:stretch;}
+  .csc-acts>a{width:100%;}
+}
+
+/* Shared with the book page: the five-part chain and the bullet list.
+   Same markup, same rules, so the two pages cannot drift apart. */
+.bk-chain{margin-top:1.6rem;border-top:1px solid var(--line);}
+.bk-step{display:grid;grid-template-columns:132px minmax(0,1fr);gap:.4rem 1.4rem;
+  padding:1.15rem .2rem 1.15rem 0;border-bottom:1px solid var(--line);align-items:baseline;}
+.bk-step-n{font-family:var(--font-display);font-weight:800;font-size:.74rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--accent);}
+.bk-step-b b{display:block;font-family:var(--font-display);font-weight:700;font-size:1.02rem;color:var(--ink);margin-bottom:.25rem;}
+.bk-step-b span{display:block;font-size:.92rem;color:var(--ink-soft);line-height:1.62;}
+.bk-apx{list-style:none;margin:1.4rem 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:.7rem 1.4rem;}
+.bk-apx li{position:relative;padding-left:1.5rem;font-size:.94rem;color:var(--ink-soft);line-height:1.6;}
+.bk-apx li::before{content:'';position:absolute;left:0;top:.62em;width:7px;height:7px;border-radius:50%;background:var(--accent);}
+.bk-apx li b{display:block;color:var(--ink);font-weight:600;}
+.bk-step{grid-template-columns:1fr;gap:.3rem;}
+@media(max-width:860px){.bk-step{grid-template-columns:1fr;gap:.3rem;}}

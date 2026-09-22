@@ -131,11 +131,13 @@ The site is a static HTML/CSS/JavaScript website hosted on **GitHub Pages** with
 
 - `/` — main website
 - `/starthere.html` — first-contact routing gateway, the default cold-traffic destination
-- `/register.html` — the store: twelve doors, basket, enrolment
+- `/register.html` — the store: fourteen doors, basket, enrolment
 - `/free.html` — the free layer in one place
 - `/diagnose/` — the five-part Job Search Diagnostic and branded PDF result
+- `/capacityscan/` — the Capacity Audit: fourteen role families, ten questions, scored out of ten, runs entirely in the browser. **The gate for the other four fingers.**
 - `/cvscan/` — the 10-Point CV Self-Scan, runs entirely in the browser
 - `/cvbuilder/` — the CV Engine
+- `/fromintenttooffer/` — *From Intent to Offer*, the book
 - `/selflearn/` — the self-paced Stages 1–4 pack
 - `/foundationtraining/` — live Foundation Training
 - `/jobapplication/` — Done-For-You application and placement services

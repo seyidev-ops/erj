@@ -73,11 +73,11 @@
             n: '01', name: 'Capacity', law: 'You can\u2019t be hired for work you can\u2019t yet do.',
             verdict: 'The gap here is the work itself, not the paperwork \u2014 either the skill the role needs, or the habits that let someone trust you to deliver it unsupervised. This is the honest place to start, because a rewritten CV cannot close it and applying harder will only produce faster rejections. It is also the most fixable, and nobody sees you learning it.',
             free: {
-                text: 'Start with the blog\u2019s remote-readiness guides \u2014 how remote work is actually measured, what employers expect you to run without being chased, and the AI and tool fluency now assumed on day one.',
-                href: '../blog.html', label: 'Read the remote-readiness guides'
+                text: 'Measure it before you spend anything. The free Capacity Audit asks ten questions about the work itself \u2014 not your CV \u2014 and scores it out of ten against the role family you are targeting. It is the gate for the other four parts, and it will tell you plainly if no ERJ product is the right purchase this month.',
+                href: '../capacityscan/', label: 'Run the free Capacity Audit'
             },
             paid: {
-                text: 'Stages 1 and 2 of Foundation Training exist for exactly this: the remote operating system \u2014 deep work, daily KPIs, end-of-day reporting \u2014 and the digital toolkit a distributed team assumes you already know.',
+                text: 'Only if the audit says the occupational skill is already there and it is the remote half that is missing: Stages 1 and 2 of Foundation Training are the remote operating system \u2014 deep work, daily KPIs, end-of-day reporting \u2014 and the digital toolkit a distributed team assumes you know. If the audit says the profession itself is the gap, build that first and buy nothing here yet.',
                 href: '../foundationtraining/', label: 'See Foundation Training'
             },
             tonight: [

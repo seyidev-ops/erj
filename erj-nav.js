@@ -52,6 +52,7 @@
         {
             key: 'g-free', label: 'Free For You', href: 'free.html', keys: ['free'], children: [
                 { label: 'Find Your Leak · 5-part diagnostic', href: 'diagnose/', keys: ['diagnose'] },
+                { label: 'Capacity Audit · can you do the work?', href: 'capacityscan/', keys: ['capacityscan'] },
                 { label: '10-Point CV Self-Scan', href: 'cvscan/', keys: ['cvscan'] },
                 { label: 'Free Live Masterclass', href: 'masterclass/', keys: ['masterclass'] },
                 { label: 'Remote Career Blog', href: 'blog.html', keys: ['blog'] },
