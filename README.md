@@ -78,6 +78,7 @@ Any page still advertising an open instalment window after that date is stale an
 |------|-------|----------------|
 | Google Search: Best Kept Open Secret (book) | ₦5,000 | Supply — carries the **Start here** badge |
 | The CV Engine | ₦5,000 / month | Representation — the instrument, operated by you |
+| From Intent to Offer (book) | ₦15,000 | The whole method — eighteen chapters, six appendices, instant download |
 | CV Fix — one CV, one field | ₦30,000 | Representation — the same work, done for you once |
 | The Self-Learn Pack — Stages 1–4 | ₦35,000 | Capacity and Representation |
 | Done-For-You, 7 Days | ₦50,000 | Supply and Aim |
