@@ -127,6 +127,8 @@
           href:'cvbuilder.html', pay:'https://paystack.shop/pay/84mjv4w4x7' },
         { id:'cvfix',      name:'CV Fix \u2014 one CV, one field',         naira:30000,  unit:'one-time', part:'representation',
           href:'register.html#cvfix', pay:'https://wa.me/2348032925957' },
+        { id:'intentbook', name:'From Intent to Offer',               naira:15000,  unit:'one-time', part:'capacity',
+          href:'fromintenttooffer/', pay:'https://selar.com/from_intent_to_offer', badge:'New' },
         { id:'selflearn',  name:'The Self-Learn Pack',                 naira:35000,  unit:'one-time', part:'capacity',
           href:'selflearn/', pay:'https://selar.com/77v230274x' },
         { id:'dfy7',       name:'Done-For-You, 7 Days',                naira:50000,  unit:'one-time', part:'supply',
@@ -166,7 +168,7 @@
          blanket find-and-replace on the word "four". */
       retired: [
         'Four-Point', 'Four Point', 'Four Problem', 'four-point diagnostic', 'Four-Point Job Search',
-        '4-point', '4 point', '4-Point Model',
+        '4-point', '4 point', '4-Point Model', '4 Question', 'Four Questions That',
         'Mastery Setup', 'Remote Job World Mastery', 'Mastery Training',
         'Private Remote Job Board',
         '2347033134979', '+234 703 313 4979',

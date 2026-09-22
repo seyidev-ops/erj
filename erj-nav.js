@@ -41,6 +41,7 @@
         },
         {
             key: 'g-start', label: 'Your Starting Line', href: 'starthere.html', keys: ['startline'], children: [
+                { label: 'From Intent to Offer · the book, ₦15,000', href: 'fromintenttooffer/', keys: ['book'] },
                 { label: 'CV Engine Pass · ₦5,000 for 30 days', href: 'cvbuilder.html', keys: ['cvpass'] },
                 { label: 'Self-Learn Pack · Stages 1–4', href: 'selflearn/', keys: ['selflearn'] },
                 { label: 'Foundation Training · Stages 1–4', href: 'foundationtraining/', keys: ['mastery'] },
