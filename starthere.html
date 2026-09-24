@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <html data-theme="night" lang="en">
-<head><meta charset="utf-8"/><script>try{document.documentElement.classList.add('js')}catch(e){}</script><style id="erjCanvasGuard">html{background:#000000}html[data-theme="day"]{background:#FAFAF8}</style>
+<head><meta charset="utf-8"/><script id="erjThemeBoot">/* Apply the saved theme before first paint. erj-theme.js loads deferred, so without this a day-theme visitor sees the night page first. */try{var d=document.documentElement,p=localStorage.getItem('rjt-theme');if(p==='system')p=window.matchMedia&&matchMedia('(prefers-color-scheme: light)').matches?'day':'night';if(p==='day'||p==='night')d.setAttribute('data-theme',p)}catch(e){}</script><script>try{document.documentElement.classList.add('js')}catch(e){}</script><style id="erjCanvasGuard">html{background:#000000}html[data-theme="day"]{background:#FAFAF8}</style>
 
 <!-- Meta Pixel + Google Tag Manager -->
 <script async="" src="erj-track.js?v=20260911a"></script>
@@ -622,6 +622,7 @@ a.promo-tick{text-decoration:none;display:block;}
     list-style:none;cursor:pointer;display:flex;align-items:flex-start;gap:1rem;
     padding:1.35rem .25rem;transition:background-color .2s ease,padding-left .2s ease;}
   .rt-row > summary::-webkit-details-marker{display:none;}
+  .rt-row{scroll-margin-top:84px;}
   .rt-row > summary:hover{background:rgba(255,87,34,.05);padding-left:.75rem;}
   .rt-row > summary:focus-visible{outline:2px solid var(--accent);outline-offset:-2px;}
   .rt-n{font-family:var(--font-display);font-size:.72rem;font-weight:700;letter-spacing:.14em;
@@ -662,6 +663,8 @@ a.promo-tick{text-decoration:none;display:block;}
   .ld-price{display:block;font-family:var(--font-display);font-size:1.32rem;font-weight:800;
     color:var(--accent);margin-top:.35rem;letter-spacing:-.02em;}
   .ld-what{display:block;font-size:.82rem;color:var(--ink-faint);line-height:1.6;margin-top:.4rem;}
+  .ld-part{display:inline-block;margin-top:.45rem;font-size:.62rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);}
+  html[data-theme="day"] .ld-part{color:#AD350A;}
   .ld-col b{display:block;font-family:var(--font-display);font-size:.63rem;font-weight:700;
     letter-spacing:.15em;text-transform:uppercase;margin-bottom:.35rem;}
   .ld-for b{color:var(--ink-faint);}
@@ -718,7 +721,7 @@ a.promo-tick{text-decoration:none;display:block;}
 <span class="rt-tag">No leak yet · a baseline</span>
 <p class="rt-law">You cannot diagnose a search you have not run.</p>
 <div class="rt-block"><b class="rt-h">The free door — try this first</b><p>Everything you need is free. Score your CV with the <a href="cvscan/">10-Point Self-Scan</a> — the rubric is published, so you can fix it yourself and owe us nothing. Bring it to the <a href="masterclass/">Remote Job Application Clinic</a> on Zoom. Then join the <a href="https://whatsapp.com/channel/0029Vaym4DE3mFY2wCrC713S" rel="noopener" target="_blank">Remote Jobs (Global+) channel on WhatsApp</a> so real roles start reaching you while you build.</p></div>
-<div class="rt-block"><b class="rt-h">If you want it built or run for you</b><p>If you want the whole method today and know you will genuinely work it alone, the <a href="selflearn/">Self-Learn Pack</a> is ₦35,000. It is the same four stages and the same rubrics we run with paying cohorts, written to be worked without one.</p></div>
+<div class="rt-block"><b class="rt-h">If you want it built or run for you</b><p>If you want the whole method in your hands tonight, the book <a href="fromintenttooffer/">How to Get a Remote Job: From Intent to Offer</a> is ₦15,000. If you want the full course and know you will genuinely work it alone, the <a href="selflearn/">Self-Learn Pack</a> is ₦35,000. It is the same four stages and the same rubrics we run with paying cohorts, written to be worked without one.</p></div>
 <div class="rt-limit"><b class="rt-h">The limit, before you spend anything</b><p>Do not buy a diagnosis of a search you have not run. Starting without a job history is a position we build <em>from</em>, not around — but nothing on this page is required to begin.</p></div>
 <div class="rt-cta">
 <a class="btn-yes btn-primary-ui" href="cvscan/"><span>Start With The Free CV Scan</span><span class="arrow-wrap"><span class="arrow">→</span></span></a>
@@ -735,17 +738,31 @@ a.promo-tick{text-decoration:none;display:block;}
 <div class="rt-block"><b class="rt-h">If you want it built or run for you</b><p>Stages 1 and 2 of <a href="foundationtraining/">Foundation Training</a> exist for exactly this: the remote mindset, then the toolkit every global team runs on. The <a href="selflearn/">Self-Learn Pack</a> carries all four stages at ₦35,000 if you will genuinely work them alone.</p></div>
 <div class="rt-limit"><b class="rt-h">The limit, before you spend anything</b><p>We can teach you to work remotely. We cannot teach you someone else’s profession in four weeks. If the gap is the occupational skill itself, build that first — and come back when an employer would have something to assess.</p></div>
 <div class="rt-cta">
-<a class="btn-yes btn-primary-ui" href="diagnose/"><span>Find Your Leak — Free</span><span class="arrow-wrap"><span class="arrow">→</span></span></a>
+<a class="btn-yes btn-primary-ui" href="capacityscan/"><span>Take The Free Capacity Audit</span><span class="arrow-wrap"><span class="arrow">→</span></span></a>
 </div>
 </div>
 </details>
 <details class="rt-row" name="erj-router">
-<summary><span class="rt-n">03</span><span class="rt-says">&ldquo;I apply and hear nothing back.&rdquo;</span><span class="rt-chev" aria-hidden="true">⌄</span></summary>
+<summary><span class="rt-n">03</span><span class="rt-says">&ldquo;I rarely see remote jobs I could actually apply for — or I have no time to look.&rdquo;</span><span class="rt-chev" aria-hidden="true">⌄</span></summary>
+<div class="rt-door">
+<span class="rt-tag">02 · Supply</span>
+<p class="rt-law">You cannot apply for a job you never saw.</p>
+<div class="rt-block"><b class="rt-h">The free door — try this first</b><p>The <a href="https://whatsapp.com/channel/0029Vaym4DE3mFY2wCrC713S" rel="noopener" target="_blank">Remote Jobs (Global+) channel on WhatsApp</a> carries real, verified global roles open to Africans, posted continuously, at no cost and with no gatekeeping. If your problem is purely that nothing reaches you, start there before you pay for anything.</p></div>
+<div class="rt-block"><b class="rt-h">If you want it built or run for you</b><p>If the roles never reach you, the book <a href="register.html#book">Google Search: Best Kept Open Secret</a> is ₦5,000: the search methods that surface roles before they reach a job board. If you can find them but have no hours left, <a href="jobapplication/">Done-For-You, 7 Days</a> is ₦50,000: one target field, sourcing, tailoring and submission, three or more verified roles.</p></div>
+<div class="rt-limit"><b class="rt-h">The limit, before you spend anything</b><p>There is no offer guarantee, and there never will be. We are accountable for sourcing, tailoring and submitting on your behalf. We are not accountable for the market&rsquo;s timing — anyone promising you a specific job by a specific date is promising something they do not control.</p></div>
+<div class="rt-cta">
+<a class="btn-yes btn-primary-ui" href="https://whatsapp.com/channel/0029Vaym4DE3mFY2wCrC713S" rel="noopener" target="_blank"><span>Join Remote Jobs (Global+) Free</span><span class="arrow-wrap"><span class="arrow">→</span></span></a>
+
+</div>
+</div>
+</details>
+<details class="rt-row" name="erj-router">
+<summary><span class="rt-n">04</span><span class="rt-says">&ldquo;I apply and hear nothing back.&rdquo;</span><span class="rt-chev" aria-hidden="true">⌄</span></summary>
 <div class="rt-door">
 <span class="rt-tag">03 · Representation</span>
 <p class="rt-law">If your CV cannot be read, you were never really in the running.</p>
 <div class="rt-block"><b class="rt-h">The free door — try this first</b><p>Run the <a href="cvscan/">10-Point CV Self-Scan</a> first. It runs entirely on your own device — nothing uploads, nothing is stored — and every point it fails comes with the specific fix. Many people close the leak here and never pay us anything, which is the correct outcome.</p></div>
-<div class="rt-block"><b class="rt-h">If you want it built or run for you</b><p>If the problem is the CV alone, the <a href="cvbuilder.html">CV Engine</a> is ₦5,000 a month, cancellable any time. If it is broader — LinkedIn, portfolio, evidence of work, async writing — that is <a href="foundationtraining/">Foundation Training</a> at ₦250,000, or the single stage that covers your gap from ₦70,000.</p></div>
+<div class="rt-block"><b class="rt-h">If you want it built or run for you</b><p>If the problem is the CV alone, <a href="cvbuilder.html">The CV Engine</a> is ₦5,000 a month, cancellable any time, and you rebuild it yourself. If you would rather we rebuilt it once, properly, <a href="register.html#cvfix">CV Fix</a> is ₦30,000 for one CV in one field. If it is broader — LinkedIn, portfolio, evidence of work, async writing — that is <a href="foundationtraining/">Foundation Training</a> at ₦250,000, or the single stage that covers your gap from ₦70,000.</p></div>
 <div class="rt-limit"><b class="rt-h">The limit, before you spend anything</b><p>The ₦5,000 a month rents an instrument. It buys a tool, never teaching. If what is missing is the method rather than the document, it is the wrong door and it will feel like one.</p></div>
 <div class="rt-cta">
 <a class="btn-yes btn-primary-ui" href="cvscan/"><span>Run The Free CV Scan</span><span class="arrow-wrap"><span class="arrow">→</span></span></a>
@@ -754,29 +771,15 @@ a.promo-tick{text-decoration:none;display:block;}
 </div>
 </details>
 <details class="rt-row" name="erj-router">
-<summary><span class="rt-n">04</span><span class="rt-says">&ldquo;I apply constantly, and get rejections or eligibility mismatches.&rdquo;</span><span class="rt-chev" aria-hidden="true">⌄</span></summary>
+<summary><span class="rt-n">05</span><span class="rt-says">&ldquo;I apply constantly, and get rejections or eligibility mismatches.&rdquo;</span><span class="rt-chev" aria-hidden="true">⌄</span></summary>
 <div class="rt-door">
 <span class="rt-tag">04 · Aim</span>
 <p class="rt-law">Applying everywhere is not the same as applying where you would get hired.</p>
 <div class="rt-block"><b class="rt-h">The free door — try this first</b><p>Read the targeting and eligibility guides on the <a href="blog.html">blog</a> — which companies can legally pay you from here, which postings mean do not apply, and how many applications a week actually works. Bring one real job advert to the free <a href="masterclass/">Clinic</a> and we will check the fit live.</p></div>
-<div class="rt-block"><b class="rt-h">If you want it built or run for you</b><p><a href="foundationtraining/">Foundation Training</a> installs a weekly targeting and application system you operate yourself. Once your assets are ready, the <a href="jobapplication/">Done-For-You routes</a> run the aiming on your behalf instead.</p></div>
+<div class="rt-block"><b class="rt-h">If you want it built or run for you</b><p><a href="foundationtraining/">Foundation Training</a> installs a weekly targeting and application system you operate yourself. Once your assets are ready, the <a href="jobapplication/">Done-For-You Placement Engine</a> (₦300,000) runs an aimed search on your behalf for a month: thirty or more verified roles a week.</p></div>
 <div class="rt-limit"><b class="rt-h">The limit, before you spend anything</b><p>Done-For-You only starts after hireability and target fit are confirmed. It is not a way to skip readiness, and buying it before your assets are ready wastes the month you paid for.</p></div>
 <div class="rt-cta">
 <a class="btn-yes btn-primary-ui" href="blog.html"><span>Read The Targeting Guides Free</span><span class="arrow-wrap"><span class="arrow">→</span></span></a>
-
-</div>
-</div>
-</details>
-<details class="rt-row" name="erj-router">
-<summary><span class="rt-n">05</span><span class="rt-says">&ldquo;I can do the work. I have no time to run the search.&rdquo;</span><span class="rt-chev" aria-hidden="true">⌄</span></summary>
-<div class="rt-door">
-<span class="rt-tag">02 · Supply · time-poor</span>
-<p class="rt-law">You cannot apply for a job you never saw.</p>
-<div class="rt-block"><b class="rt-h">The free door — try this first</b><p>The <a href="https://whatsapp.com/channel/0029Vaym4DE3mFY2wCrC713S" rel="noopener" target="_blank">Remote Jobs (Global+) channel on WhatsApp</a> carries real, verified global roles open to Africans, posted continuously, at no cost and with no gatekeeping. If your problem is purely that nothing reaches you, start there before you pay for anything.</p></div>
-<div class="rt-block"><b class="rt-h">If you want it built or run for you</b><p><a href="jobapplication/">Job Hunt DFY</a> is ₦50,000 for seven days: one target field, sourcing, tailoring and submission, three or more verified roles. <a href="jobapplication/">Stage 5 · Application Engine</a> is ₦300,000 and runs thirty or more roles sourced and applied weekly for a month.</p></div>
-<div class="rt-limit"><b class="rt-h">The limit, before you spend anything</b><p>There is no offer guarantee, and there never will be. We are accountable for sourcing, tailoring and submitting on your behalf. We are not accountable for the market&rsquo;s timing — anyone promising you a specific job by a specific date is promising something they do not control.</p></div>
-<div class="rt-cta">
-<a class="btn-yes btn-primary-ui" href="jobapplication/"><span>See How Done-For-You Works</span><span class="arrow-wrap"><span class="arrow">→</span></span></a>
 
 </div>
 </div>
@@ -818,55 +821,73 @@ a.promo-tick{text-decoration:none;display:block;}
 <p class="rt-lead">Every rung carries who it is <b>not</b> for, in the same size type as who it is for. You only need to find yours — then <a href="register.html" style="color:var(--accent);font-weight:600;">pay for it in the store</a>.</p>
 <div class="ld">
 <div class="ld-row">
-<div><span class="ld-name">Free</span><span class="ld-price">₦0</span><span class="ld-what">CV scan · diagnosis · Application Clinic · blog · WhatsApp job channel</span></div>
+<div><span class="ld-name">Free</span><span class="ld-price">₦0</span><span class="ld-part">Finds your leak</span><span class="ld-what">CV scan · diagnosis · Application Clinic · blog · Remote Jobs (Global+)</span></div>
 <div class="ld-col ld-for"><b>Who it is for</b><p>Everyone, without exception. This is the layer that finds out whether you need us at all.</p></div>
 <div class="ld-col ld-not"><b>Who it is not for</b><p>Nobody. If the free layer closes your leak, that is the right outcome and you should take it.</p></div>
 <a class="ld-go" href="free.html">See what&rsquo;s free</a>
 </div>
 <div class="ld-row">
-<div><span class="ld-name">CV Engine Pass</span><span class="ld-price">₦5,000</span><span class="ld-what">The CV Engine only · 30 days from first use</span></div>
-<div class="ld-col ld-for"><b>Who it is for</b><p>A Representation leak concentrated in one document, where you need the instrument rather than the teaching.</p></div>
-<div class="ld-col ld-not"><b>Who it is not for</b><p>Anyone whose leak is not the CV. It rents a tool for a month — it is not a cheap Self-Learn Pack.</p></div>
-<a class="ld-go" href="cvbuilder.html">See the pass</a>
+<div><span class="ld-name">Google Search: Best Kept Open Secret</span><span class="ld-price">₦5,000</span><span class="ld-part">Fixes: Supply</span><span class="ld-what">Book · instant download</span></div>
+<div class="ld-col ld-for"><b>Who it is for</b><p>Someone who rarely sees roles they could apply for, and wants to find them before they reach a job board.</p></div>
+<div class="ld-col ld-not"><b>Who it is not for</b><p>Anyone already seeing plenty of roles. More roles will not fix a CV that cannot be read.</p></div>
+<a class="ld-go" href="register.html#book">See the book</a>
 </div>
 <div class="ld-row">
-<div><span class="ld-name">Self-Learn Pack</span><span class="ld-price">₦35,000</span><span class="ld-what">Stages 1–4 self-paced · files + private Telegram</span></div>
+<div><span class="ld-name">The CV Engine</span><span class="ld-price">₦5,000</span><span class="ld-part">Fixes: Representation</span><span class="ld-what">The CV Engine only · 30 days from first use</span></div>
+<div class="ld-col ld-for"><b>Who it is for</b><p>A Representation leak concentrated in one document, where you need the instrument rather than the teaching.</p></div>
+<div class="ld-col ld-not"><b>Who it is not for</b><p>Anyone whose leak is not the CV. It rents a tool for a month — it is not a cheap Self-Learn Pack.</p></div>
+<a class="ld-go" href="cvbuilder.html">See the CV Engine</a>
+</div>
+<div class="ld-row">
+<div><span class="ld-name">How to Get a Remote Job: From Intent to Offer</span><span class="ld-price">₦15,000</span><span class="ld-part">The whole method</span><span class="ld-what">Book · 171 pages · instant download</span></div>
+<div class="ld-col ld-for"><b>Who it is for</b><p>Someone who wants the whole five-part method in their hands tonight and will work it alone.</p></div>
+<div class="ld-col ld-not"><b>Who it is not for</b><p>Anyone who needs a person to mark their work. A book cannot tell you what you got wrong.</p></div>
+<a class="ld-go" href="fromintenttooffer/">See the book</a>
+</div>
+<div class="ld-row">
+<div><span class="ld-name">CV Fix — one CV, one field</span><span class="ld-price">₦30,000</span><span class="ld-part">Fixes: Representation</span><span class="ld-what">Done for you · 72 hours · two revision rounds</span></div>
+<div class="ld-col ld-for"><b>Who it is for</b><p>Someone who can do the work and has the evidence, but wants the CV rebuilt once, properly, rather than learning the tool.</p></div>
+<div class="ld-col ld-not"><b>Who it is not for</b><p>Anyone whose leak is not the CV, or who needs more than one field. A second field is a second CV.</p></div>
+<a class="ld-go" href="register.html#cvfix">See CV Fix</a>
+</div>
+<div class="ld-row">
+<div><span class="ld-name">The Self-Learn Pack</span><span class="ld-price">₦35,000</span><span class="ld-part">Fixes: Capacity · Representation</span><span class="ld-what">Stages 1–4 self-paced · files + private Telegram</span></div>
 <div class="ld-col ld-for"><b>Who it is for</b><p>Someone who cannot sit a live cohort, will genuinely work alone, and wants the method today.</p></div>
 <div class="ld-col ld-not"><b>Who it is not for</b><p>Anyone who will not do unwatched work. No certificate and no placement — it is only cheap if you finish it.</p></div>
 <a class="ld-go" href="selflearn/">See the pack</a>
 </div>
 <div class="ld-row">
-<div><span class="ld-name">Job Hunt DFY · 7 days</span><span class="ld-price">₦50,000</span><span class="ld-what">One target field · source, tailor, submit · 3+ verified roles</span></div>
+<div><span class="ld-name">Done-For-You, 7 Days</span><span class="ld-price">₦50,000</span><span class="ld-part">Fixes: Supply · Aim</span><span class="ld-what">One target field · source, tailor, submit · 3+ verified roles</span></div>
 <div class="ld-col ld-for"><b>Who it is for</b><p>Already employable and well represented, where the only missing input is your time.</p></div>
 <div class="ld-col ld-not"><b>Who it is not for</b><p>Anyone whose CV still cannot be read. There is no offer guarantee at any price.</p></div>
 <a class="ld-go" href="jobapplication/">See how it works</a>
 </div>
 <div class="ld-row">
-<div><span class="ld-name">Single stages</span><span class="ld-price">from ₦70,000</span><span class="ld-what">Stage 1 ₦70k · Stage 2 ₦130k · Stage 3 ₦70k · Stage 4 ₦100k</span></div>
+<div><span class="ld-name">Single stages</span><span class="ld-price">from ₦70,000</span><span class="ld-part">Fixes: one part at a time</span><span class="ld-what">Stage 1 ₦70k · Stage 2 ₦130k · Stage 3 ₦70k · Stage 4 ₦100k</span></div>
 <div class="ld-col ld-for"><b>Who it is for</b><p>One specific, already-diagnosed build leak — not a general sense that something is wrong.</p></div>
 <div class="ld-col ld-not"><b>Who it is not for</b><p>Anyone buying three or four of them. That is the full programme at a worse price; take Foundation Training.</p></div>
 <a class="ld-go" href="register.html">See the stages</a>
 </div>
 <div class="ld-row">
-<div><span class="ld-name">Foundation Training</span><span class="ld-price">₦250,000</span><span class="ld-what">Live Stages 1–4 · 20 training days · marking · certificate</span></div>
+<div><span class="ld-name">Remote Job Foundation Training</span><span class="ld-price">₦250,000</span><span class="ld-part">Fixes: Capacity · Supply · Representation · Aim</span><span class="ld-what">Live Stages 1–4 · 20 training days · marking · certificate</span></div>
 <div class="ld-col ld-for"><b>Who it is for</b><p>Someone who can do real work but owns nothing that would convince a stranger of it in thirty seconds.</p></div>
 <div class="ld-col ld-not"><b>Who it is not for</b><p>Anyone who cannot give the live build its time, or for whom this money competes with rent or school fees.</p></div>
 <a class="ld-go" href="foundationtraining/">See Cohort 11</a>
 </div>
 <div class="ld-row">
-<div><span class="ld-name">Stage 5 · Application Engine</span><span class="ld-price">₦300,000</span><span class="ld-what">Assets ready, then 30+ roles sourced and applied weekly for a month</span></div>
+<div><span class="ld-name">Done-For-You Placement Engine</span><span class="ld-price">₦300,000</span><span class="ld-part">Fixes: Supply · Representation · Aim</span><span class="ld-what">Assets ready, then 30+ roles sourced and applied weekly for a month</span></div>
 <div class="ld-col ld-for"><b>Who it is for</b><p>Skilled, represented and time-poor — you want the search executed, not taught.</p></div>
 <div class="ld-col ld-not"><b>Who it is not for</b><p>Anyone whose assets are not finished yet. The engine needs something worth sending.</p></div>
-<a class="ld-go" href="jobapplication/">See Stage 5</a>
+<a class="ld-go" href="jobapplication/">See the Placement Engine</a>
 </div>
 <div class="ld-row">
-<div><span class="ld-name">Dream Job Offer</span><span class="ld-price">₦500,000</span><span class="ld-what">Stages 1–5 complete · build + application engine · lifetime access</span></div>
+<div><span class="ld-name">Get Your Dream Job Offer</span><span class="ld-price">₦500,000</span><span class="ld-part">The full route</span><span class="ld-what">Stages 1–5 complete · build + application engine · lifetime access</span></div>
 <div class="ld-col ld-for"><b>Who it is for</b><p>Someone who would rather make one decision than two, and wants the build and the search under one roof.</p></div>
 <div class="ld-col ld-not"><b>Who it is not for</b><p>Anyone shopping on price alone. The cheapest wrong option is the expensive one.</p></div>
 <a class="ld-go" href="jobapplication/">See the full path</a>
 </div>
 <div class="ld-row is-aside">
-<div><span class="ld-name">Inner Circle</span><span class="ld-price">₦250,000 once</span><span class="ld-what">Private 1:1 advisory and residency · member deal flow · rolling admission</span></div>
+<div><span class="ld-name">The Inner Circle</span><span class="ld-price">₦250,000 once</span><span class="ld-part">Fixes: Conversion</span><span class="ld-what">Private 1:1 advisory and residency · member deal flow · rolling admission</span></div>
 <div class="ld-col ld-for"><b>Who it is for</b><p>Stable and skilled already. You need a room and a person, not a syllabus.</p></div>
 <div class="ld-col ld-not"><b>Who it is not for</b><p>Anyone looking for training. This sits beside the ladder, not on top of it — it is not Foundation Training plus.</p></div>
 <a class="ld-go" href="innercircle/">Request admission</a>
@@ -911,5 +932,23 @@ a.promo-tick{text-decoration:none;display:block;}
 <script defer="" src="erj-config.js?v=20260911a"></script>
 <script defer="" src="erj-capture.js?v=20260911a"></script>
 <script defer="" src="erj-schema.js?v=20260911a"></script>
+<script>
+/* One situation open at a time (details[name]). Opening a lower one closes the
+   one above it, the page shortens, and the reader is left looking at the
+   middle of an answer or empty space. Bring the opened heading back into view. */
+(function(){
+  var rows=document.querySelectorAll('details.rt-row');
+  var smooth=!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches);
+  rows.forEach(function(d){
+    d.addEventListener('toggle',function(){
+      if(!d.open) return;
+      requestAnimationFrame(function(){
+        var top=d.getBoundingClientRect().top;
+        if(top<70||top>window.innerHeight*0.6) d.scrollIntoView({behavior:smooth?'smooth':'auto',block:'start'});
+      });
+    });
+  });
+})();
+</script>
 </body>
 </html>
