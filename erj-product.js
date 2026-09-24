@@ -109,6 +109,10 @@
        data-next-label      what the heading becomes    (optional)
        data-next-for        what the subject line becomes (optional)
        data-next-date       what the date line becomes  (optional)
+       data-next-from       when to switch to the next gate (optional).
+                            Until then the panel shows its closed state.
+                            Without it, the switch happens the moment the
+                            first gate closes.
 
      Only when there is no next gate does it show the closed state. ── */
   var findUp=function(el,sel){
@@ -123,6 +127,7 @@
       nextLabel:p.dataset.nextLabel||'',
       nextFor:p.dataset.nextFor||'',
       nextDate:p.dataset.nextDate||'',
+      nextFrom:p.dataset.nextFrom?new Date(p.dataset.nextFrom):null,
       deadline:new Date(p.dataset.deadline),nodes:{
       d:p.querySelector('[data-k="d"]'),h:p.querySelector('[data-k="h"]'),
       m:p.querySelector('[data-k="m"]'),s:p.querySelector('[data-k="s"]')}};
@@ -130,11 +135,12 @@
   if(panels.length){
     var tick=function(){panels.forEach(function(p){
       var diff=p.deadline-new Date();
-      if(diff<=0&&p.nextDeadline){
+      if(diff<=0&&p.nextDeadline&&(!p.nextFrom||new Date()>=p.nextFrom)){
         /* Roll onto the next gate instead of dying at zero. */
         p.deadline=new Date(p.nextDeadline);
         p.nextDeadline='';
         p.el.classList.remove('is-closed');
+        p.done=false;
         if(p.nextLabel){var l1=findUp(p.el,'[data-lbl]'); if(l1)l1.textContent=p.nextLabel;}
         if(p.nextFor){var l2=findUp(p.el,'.timer-for'); if(l2)l2.textContent=p.nextFor;}
         if(p.nextDate){var l3=findUp(p.el,'.timer-date,.urg-date'); if(l3)l3.innerHTML=p.nextDate;}

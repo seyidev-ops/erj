@@ -248,6 +248,23 @@ def main():
     except FileNotFoundError as e:
         fail("sitemap", "(site)", "cannot check sitemap: %s" % e)
 
+    # ── 10. every blog post with a page is listed in the archive ────────
+    # generate-blog-archive.py adds them; blog/index.html hides each until
+    # its date, so future-dated posts are listed ahead of time.
+    try:
+        spec = importlib.util.spec_from_file_location("genarchive", os.path.join(ROOT, "generate-blog-archive.py"))
+        ga = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(ga)
+        archive = open(ga.ARCHIVE, encoding="utf-8").read()
+        for post in ga.posts():
+            if 'href="%s/"' % post["slug"] not in archive:
+                fail("archive", "blog/index.html",
+                     "blog/%s/ is not in the archive — run generate-blog-archive.py" % post["slug"])
+    except FileNotFoundError as e:
+        fail("archive", "(site)", "cannot check blog archive: %s" % e)
+    if os.path.exists(os.path.join(ROOT, "blog", "blog.html")):
+        fail("blog", "blog/blog.html", "misplaced upload — blog.html belongs at the site root")
+
     # ── report ──────────────────────────────────────────────────────────
     for check, path, detail in warnings:
         print("%sWARN%s  %-16s %-34s %s" % (YELL, OFF, check, path, detail))
@@ -255,7 +272,7 @@ def main():
         print("%sFAIL%s  %-16s %-34s %s" % (RED, OFF, check, path, detail))
 
     print()
-    print("%s%d files scanned · %d checks%s" % (DIM, len(corpus), 9, OFF))
+    print("%s%d files scanned · %d checks%s" % (DIM, len(corpus), 10, OFF))
     if failures:
         print("%s%d failure(s)%s — the site disagrees with erj-config.js canon." % (RED, len(failures), OFF))
         print("Fix the page, or change canon and let every surface follow.")
