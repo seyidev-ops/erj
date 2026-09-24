@@ -58,6 +58,7 @@ The homepage remains the institutional ERJ ecosystem. Its first screen neverthel
 
 - **Enrolment closes:** Sunday, 27 September 2026 · 8:00 PM WAT
 - **Cohort 11 begins:** Monday, 28 September 2026 · 8:00 PM WAT
+- **Next cohort:** enrolment opens Monday, 5 October 2026 and closes Saturday, 31 October 2026 · 8:00 PM WAT. The countdowns on the home page and the store switch to it automatically when Cohort 11 begins (`data-next-from` on the countdown).
 - **Foundation Training fee:** ₦250,000
 
 ### Instalment route
@@ -169,6 +170,10 @@ The site is a static HTML/CSS/JavaScript website hosted on **GitHub Pages** with
 ## Blog publishing
 
 `sitemap.xml` is maintained by `generate-sitemap.py`: every post at `blog/<slug>/index.html` whose `datePublished` has arrived (WAT) is listed, and deleted, noindexed or future-dated posts are left out. The GitHub Action in `.github/workflows/sitemap.yml` runs it on every push to `main` and daily at 00:05 WAT, and commits the result. Nobody needs to edit the sitemap by hand for a blog post.
+
+The archive page (`blog/index.html`) is maintained the same way by `generate-blog-archive.py`, which adds every post in `blog.html` that has a page under `blog/`. Future-dated posts are listed ahead of time and the archive shows each one on its date.
+
+To publish posts, upload the new `blog/<slug>/` folders and the updated `blog.html` **to the repository root**. If `blog.html` or `sitemap.xml` is uploaded into the `blog/` folder by mistake, the Action moves it back.
 
 The blog archive follows the **Africa/Lagos (WAT)** daily publication schedule. The archive exposes posts according to their scheduled date rather than displaying every pre-generated article file at once.
 

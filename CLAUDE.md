@@ -122,6 +122,13 @@ Open Graph / Twitter images must stay evergreen: no cohort numbers or dates.
   `.github/workflows/sitemap.yml` on push to `main` and daily at 00:05 WAT);
   run it locally with `python3 generate-sitemap.py`. The validator fails if a
   published post is missing.
+- The blog archive (`blog/index.html`) is generated the same way by
+  `generate-blog-archive.py` from `blog.html`; the validator fails if a post
+  page is missing from it. `blog.html` belongs at the root, never in `blog/`.
+- Countdowns (`[data-deadline]`, handled in `erj-product.js`) can roll onto a
+  next gate: `data-next-deadline`, `-label`, `-date`, `-for`, and
+  `data-next-from` to delay the switch. Keep cohort numbers out of `data-next-*`
+  text; the validator checks every "Cohort N" against canon.
 - Scroll reveals: `.reveal` blocks are visible by default. Only
   `erj-product.js` hides one (class `.pre`) after measuring it off-screen.
   Never reintroduce CSS that hides content until JS un-hides it; that is
