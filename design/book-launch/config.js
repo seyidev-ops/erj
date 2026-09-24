@@ -1,10 +1,11 @@
 // Launch details, set once here. Every piece in index.html reads from this.
 // You can also override a value without editing this file by adding URL params:
-//   index.html?date=Sat%2018%20Oct%202026&time=6%3A00%20PM%20WAT&url=...&cta=...
+//   index.html?date=Sunday%2C%2027%20September%202026&short=Sun%2C%2027%20Sep%202026&time=7%3A00%20PM%20WAT&url=...&cta=...
 window.LAUNCH = {
-  eventDate: "[Launch date]",
-  eventTime: "[Time] WAT",
+  eventDate: "Sunday, 27 September 2026",
+  // Short form for the 640 × 200 Zoom cover, where the full date doesn't fit.
+  eventDateShort: "Sun, 27 Sep 2026",
+  eventTime: "7:00 PM WAT",
   regUrl: "everythingremotejob.com/launch",
-  // Not yet confirmed whether registration is free. Change the label here if it isn't.
   ctaLabel: "Register free",
 };

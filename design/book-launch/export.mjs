@@ -1,7 +1,7 @@
 // Renders every [data-export] piece in index.html to a file in ./out.
 //
 //   node export.mjs                       # uses config.js
-//   node export.mjs --date "Sat 18 Oct 2026" --time "6:00 PM WAT" --url "..." --cta "Register free"
+//   node export.mjs --date "Sunday, 27 September 2026" --short-date "Sun, 27 Sep 2026" --time "7:00 PM WAT" --url "..." --cta "Register free"
 //
 // Needs Playwright (global install is fine: NODE_PATH="$(npm root -g)" node export.mjs).
 // All PNGs are written as 24-bit RGB (no alpha), which is what Zoom asks for.
@@ -31,7 +31,7 @@ const JOBS = [
 ];
 
 function parseArgs(argv) {
-  const keys = { "--date": "date", "--time": "time", "--url": "url", "--cta": "cta" };
+  const keys = { "--date": "date", "--short-date": "short", "--time": "time", "--url": "url", "--cta": "cta" };
   const params = new URLSearchParams();
   for (let i = 0; i < argv.length; i += 2) {
     const k = keys[argv[i]];

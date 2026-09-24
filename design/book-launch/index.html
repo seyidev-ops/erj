@@ -179,7 +179,7 @@ img{display:block;}
           <div class="display zoom-title">From Intent to <span class="accent">Offer</span></div>
         </div>
         <div class="zoom-meta">
-          <span data-bind="eventDate"></span><span class="dot"></span><span data-bind="eventTime"></span><span class="dot"></span><span class="who">with Oluwaseyi Ashiru</span>
+          <span data-bind="eventDateShort"></span><span class="dot"></span><span data-bind="eventTime"></span><span class="dot"></span><span class="who">with Oluwaseyi Ashiru</span>
         </div>
       </div>
       <div class="frame cover"><img src="assets/intentbook.jpg" alt="From Intent to Offer book cover"></div>
@@ -295,7 +295,7 @@ img{display:block;}
 (function () {
   var vals = Object.assign({}, window.LAUNCH);
   var params = new URLSearchParams(location.search);
-  var map = { date: "eventDate", time: "eventTime", url: "regUrl", cta: "ctaLabel" };
+  var map = { date: "eventDate", short: "eventDateShort", time: "eventTime", url: "regUrl", cta: "ctaLabel" };
   Object.keys(map).forEach(function (p) {
     if (params.has(p)) vals[map[p]] = params.get(p);
   });
