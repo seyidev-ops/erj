@@ -9,7 +9,7 @@
      so the download starts with the HTML instead of after the parser reaches it. -->
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Your Starting Line — Find the One Door That Fits You | Everything Remote Job</title>
-<meta content="Seven situations, one door each, and every route ERJ runs from ₦0 to ₦500,000 on a single screen — with who each one is not for. Choose without comparing thirteen products." name="description"/>
+<meta content="Seven situations, one door each, and every route ERJ runs from ₦0 to ₦500,000 on a single screen — with who each one is not for. Choose without comparing fourteen products." name="description"/>
 <meta content="https://everythingremotejob.com/preview-starting-line.jpg" property="og:image"/>
 <meta content="1200" property="og:image:width"/>
 <meta content="630" property="og:image:height"/>
@@ -243,7 +243,11 @@ h3{font-family:var(--font-display);font-weight:700;letter-spacing:-0.01em;color:
 .wa-float svg{width:24px;height:24px;fill:var(--wa-ink);}
 
 /* reveal */
-.reveal{opacity:0;transform:translateY(16px);transition:opacity .7s var(--ease),transform .7s var(--ease);}
+/* Content is visible by default. Only erj-product.js hides a block (.pre), and only
+   after it has measured that block as off-screen and taken responsibility for
+   revealing it. If the script is slow, blocked or broken, nothing is hidden. */
+.reveal{transition:opacity .7s var(--ease),transform .7s var(--ease);}
+.reveal.pre{opacity:0;transform:translateY(16px);}
 .reveal.in{opacity:1;transform:translateY(0);}
 
 @media (prefers-reduced-motion:reduce){
@@ -705,7 +709,7 @@ a.promo-tick{text-decoration:none;display:block;}
 <section class="hero wrap sl-hero" id="router">
 <p class="section-label"><span class="mark"></span> Your Starting Line</p>
 <h1>Seven situations. <em>One door each.</em></h1>
-<p class="rt-lead">You do not have to compare thirteen products to make one decision. <b>Find the sentence below that sounds like your last three months</b> and open it. You will get the free thing to try first, the paid door only if there is one, and the limit of that door stated before any price — because a customer who bought the wrong thing is a refund, a bad review and a person we failed.</p>
+<p class="rt-lead">You do not have to compare fourteen products to make one decision. <b>Find the sentence below that sounds like your last three months</b> and open it. You will get the free thing to try first, the paid door only if there is one, and the limit of that door stated before any price — because a customer who bought the wrong thing is a refund, a bad review and a person we failed.</p>
 <p class="rt-lead">If none of them fit, the last one is for you.</p>
 <div class="rt-list">
 <details class="rt-row" name="erj-router">
@@ -902,7 +906,7 @@ a.promo-tick{text-decoration:none;display:block;}
 <div class="erj-rights-line" role="note" style="max-width:900px;margin:1rem auto 0;padding-top:.85rem;border-top:1px solid rgba(127,127,127,.18);font-size:.72rem;line-height:1.6;letter-spacing:.02em;text-align:center;color:#8A8A86;">© 2026 Business Play Limited · Everything Remote Job. Built for <span style="color:var(--accent,#FF5722)">global career scale.</span> All rights reserved. ERJ frameworks, curriculum and paid resources are not licensed for redistribution. <a href="terms.html" style="color:var(--accent,#FF5722);text-decoration:none">Terms</a> · <a href="privacy.html" style="color:var(--accent,#FF5722);text-decoration:none">Privacy</a></div>
 </footer>
 <script defer="" src="erj-theme.js?v=20260911a"></script>
-<script defer="" src="erj-product.js?v=20260919a"></script>
+<script defer="" src="erj-product.js?v=20260924a"></script>
 <script defer="" src="erj-nav.js?v=20260922a"></script>
 <script defer="" src="erj-config.js?v=20260911a"></script>
 <script defer="" src="erj-capture.js?v=20260911a"></script>

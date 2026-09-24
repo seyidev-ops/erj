@@ -237,7 +237,11 @@ h3{font-family:var(--font-display);font-weight:700;letter-spacing:-0.01em;color:
 .wa-float svg{width:24px;height:24px;fill:var(--wa-ink);}
 
 /* reveal */
-.reveal{opacity:0;transform:translateY(16px);transition:opacity .7s var(--ease),transform .7s var(--ease);}
+/* Content is visible by default. Only erj-product.js hides a block (.pre), and only
+   after it has measured that block as off-screen and taken responsibility for
+   revealing it. If the script is slow, blocked or broken, nothing is hidden. */
+.reveal{transition:opacity .7s var(--ease),transform .7s var(--ease);}
+.reveal.pre{opacity:0;transform:translateY(16px);}
 .reveal.in{opacity:1;transform:translateY(0);}
 
 @media (prefers-reduced-motion:reduce){

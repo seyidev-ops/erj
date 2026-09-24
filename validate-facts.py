@@ -229,6 +229,21 @@ def main():
         if p.get("pay") and p["pay"] not in joined:
             warn("link", "(site)", "%s: payment link is in canon but on no page" % p["name"])
 
+    # ── 9. every published blog post is in the sitemap ──────────────────
+    # generate-sitemap.py adds them; this makes sure nobody ships without it.
+    try:
+        import importlib.util
+        spec = importlib.util.spec_from_file_location("gensitemap", os.path.join(ROOT, "generate-sitemap.py"))
+        gs = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(gs)
+        sitemap = open(os.path.join(ROOT, "sitemap.xml"), encoding="utf-8").read()
+        for slug in gs.published_posts(gs.today_wat()):
+            if "%sblog/%s/" % (gs.BASE, slug) not in sitemap:
+                fail("sitemap", "sitemap.xml",
+                     "blog/%s/ is published but not listed — run generate-sitemap.py" % slug)
+    except FileNotFoundError as e:
+        fail("sitemap", "(site)", "cannot check sitemap: %s" % e)
+
     # ── report ──────────────────────────────────────────────────────────
     for check, path, detail in warnings:
         print("%sWARN%s  %-16s %-34s %s" % (YELL, OFF, check, path, detail))
@@ -236,7 +251,7 @@ def main():
         print("%sFAIL%s  %-16s %-34s %s" % (RED, OFF, check, path, detail))
 
     print()
-    print("%s%d files scanned · %d checks%s" % (DIM, len(corpus), 8, OFF))
+    print("%s%d files scanned · %d checks%s" % (DIM, len(corpus), 9, OFF))
     if failures:
         print("%s%d failure(s)%s — the site disagrees with erj-config.js canon." % (RED, len(failures), OFF))
         print("Fix the page, or change canon and let every surface follow.")
