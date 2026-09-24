@@ -10,7 +10,7 @@
 <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
 <meta name="theme-color" content="#000000" id="metaThemeColor">
 <title>Book Launch: How to Get a Remote Job — From Intent to Offer | Everything Remote Job</title>
-<meta name="description" content="Join Oluwaseyi Ashiru live on Zoom for the launch of How to Get a Remote Job: From Intent to Offer. Free to attend. Register once and Zoom sends your joining link.">
+<meta name="description" content="Join Oluwaseyi Ashiru live on Zoom on Sunday 27 September 2026, 7:00 PM WAT, for the launch of How to Get a Remote Job: From Intent to Offer. Free to attend. Register once and Zoom sends your joining link.">
 <meta property="og:title" content="Book Launch — How to Get a Remote Job: From Intent to Offer">
 <meta property="og:description" content="A free live session on Zoom with the author, Oluwaseyi Ashiru. Register free.">
 <meta property="og:image" content="https://everythingremotejob.com/preview-fromintenttooffer.jpg">
@@ -52,13 +52,55 @@
   .sl-credit a{color:var(--accent);text-decoration:underline;text-underline-offset:3px;}
   .sl-credit-terms{font-size:.78rem !important;color:var(--ink-faint) !important;margin:0 !important;}
 
-/* Launch page */
-.ln-when{display:inline-flex;align-items:center;gap:.6rem;margin:0 0 1.4rem;padding:.55rem 1rem;border:1px solid var(--accent);border-radius:999px;font-size:.85rem;color:var(--ink);}
-.ln-when b{color:var(--accent);font-weight:600;white-space:nowrap;}
-@media(max-width:620px){.ln-when{border-radius:14px;align-items:flex-start;}}
-.ln-cover{margin:0;border-radius:18px;overflow:hidden;background:#F4F1EA;border:1px solid var(--card-line);display:flex;align-items:center;justify-content:center;}
-.ln-cover img{display:block;width:100%;height:auto;object-fit:contain;object-position:center;}
-@media(max-width:860px){.ln-cover{max-width:380px;margin:0 auto;width:100%;}}
+/* Launch page: the hero follows the launch-kit fliers (design/book-launch).
+   It is black artwork in both themes, like the printed flier. */
+.ln-art{position:relative;overflow:hidden;background:#000;color:#fff;border-radius:24px;border:1px solid rgba(255,255,255,.10);
+  padding:clamp(1.4rem,4.5vw,3.6rem);display:flex;flex-direction:column;gap:clamp(1.2rem,3vw,2rem);}
+.ln-glow{position:absolute;right:-22%;top:18%;width:70%;aspect-ratio:1;border-radius:50%;pointer-events:none;
+  background:radial-gradient(circle,rgba(255,87,34,.14),rgba(255,87,34,0) 62%);}
+.ln-art>*:not(.ln-glow){position:relative;}
+.ln-top{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;}
+.ln-eyebrow{display:flex;align-items:center;gap:.8rem;font-family:var(--font-display);font-weight:600;font-size:clamp(.66rem,1.4vw,.85rem);
+  letter-spacing:.2em;text-transform:uppercase;color:#FF5722;}
+.ln-eyebrow::before{content:"";width:34px;height:2px;background:#FF5722;flex:none;}
+.ln-pill{font-family:var(--font-display);font-weight:600;font-size:clamp(.66rem,1.3vw,.8rem);letter-spacing:.16em;text-transform:uppercase;
+  border:1.5px solid #FF5722;color:#FF5722;border-radius:999px;padding:.45rem .9rem;}
+.ln-title{font-family:var(--font-display);font-weight:700;font-size:clamp(2.9rem,10vw,7rem);line-height:.92;letter-spacing:-.035em;color:#fff;margin:0;max-width:none;}
+.ln-title span{color:#FF5722;}
+.ln-lede{font-size:clamp(1rem,2vw,1.3rem);line-height:1.5;color:#C9C9C9;max-width:44ch;margin:0;}
+.ln-media{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:clamp(.9rem,2.5vw,1.8rem);}
+.ln-frame{margin:0;overflow:hidden;border-radius:18px;}
+.ln-frame img{display:block;width:100%;height:100%;object-fit:cover;}
+.ln-book{background:#F2F1ED;height:100%;}
+.ln-book img{object-fit:cover;object-position:center;}
+.ln-author{display:flex;flex-direction:column;gap:.9rem;min-height:0;}
+.ln-photo{aspect-ratio:4/5;border:1px solid rgba(255,255,255,.12);}
+.ln-photo img{object-position:50% 18%;}
+.ln-byline{display:flex;flex-direction:column;gap:.2rem;}
+.ln-byline b{font-family:var(--font-display);font-size:clamp(1.05rem,2vw,1.35rem);font-weight:700;color:#fff;}
+.ln-byline span{font-size:.88rem;color:#A1A1A1;}
+.ln-foot{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:1.4rem;align-items:center;border-top:1px solid rgba(255,255,255,.16);padding-top:clamp(1.1rem,2.5vw,1.6rem);}
+.ln-when{display:flex;flex-direction:column;gap:.35rem;}
+.ln-when b{font-family:var(--font-display);font-size:clamp(1.25rem,3vw,1.9rem);font-weight:700;letter-spacing:-.015em;color:#fff;}
+.ln-when span{font-family:var(--font-display);font-size:clamp(.95rem,2vw,1.2rem);font-weight:500;color:#FF5722;}
+.ln-cta{display:flex;flex-direction:column;gap:.5rem;align-items:flex-end;}
+.ln-cta>span{font-size:.82rem;color:#A1A1A1;}
+.ln-btn{display:inline-flex;align-items:center;gap:.9rem;background:#FF5722;color:#fff;font-family:var(--font-display);font-weight:700;
+  font-size:clamp(1.1rem,2.2vw,1.35rem);padding:.95rem 1rem .95rem 1.6rem;border-radius:999px;text-decoration:none;white-space:nowrap;
+  box-shadow:0 10px 24px rgba(255,87,34,.22);transition:background .2s,color .2s,transform .2s;}
+.ln-btn i{font-style:normal;display:inline-flex;align-items:center;justify-content:center;width:2.1rem;height:2.1rem;border-radius:50%;background:rgba(255,255,255,.18);}
+.ln-btn:hover,.ln-btn:focus-visible{background:#fff;color:#AD350A;transform:translateY(-2px);}
+.ln-btn:focus-visible{outline:2px solid #FF5722;outline-offset:3px;}
+@media(max-width:720px){
+  .ln-media{grid-template-columns:1fr;}
+  .ln-book{height:auto;aspect-ratio:1;}
+  .ln-author{flex-direction:row;align-items:center;}
+  .ln-photo{flex:0 0 76px;width:76px;height:76px;aspect-ratio:auto;border-radius:50%;border:2px solid #FF5722;}
+  .ln-foot{grid-template-columns:1fr;}
+  .ln-cta{align-items:stretch;}
+  .ln-btn{justify-content:space-between;}
+}
+@media(prefers-reduced-motion:reduce){.ln-btn{transition:none}.ln-btn:hover{transform:none}}
 </style>
 <noscript></noscript>
 <link rel="stylesheet" href="../product.css?v=20260924a">
@@ -125,6 +167,7 @@
   .bk-step{grid-template-columns:1fr;gap:.3rem;}
 }
 </style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Event","name":"Book launch: How to Get a Remote Job — From Intent to Offer","startDate":"2026-09-27T19:00:00+01:00","eventAttendanceMode":"https://schema.org/OnlineEventAttendanceMode","eventStatus":"https://schema.org/EventScheduled","location":{"@type":"VirtualLocation","url":"https://us06web.zoom.us/meeting/register/s1LgnffbQxmwseqvnOP7Gw"},"image":"https://everythingremotejob.com/shop/intentbook-centred.jpg","description":"A free live Zoom session with the author, Oluwaseyi Ashiru, for the launch of From Intent to Offer.","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"NGN","url":"https://us06web.zoom.us/meeting/register/s1LgnffbQxmwseqvnOP7Gw","availability":"https://schema.org/InStock"},"organizer":{"@type":"Organization","name":"Everything Remote Job","url":"https://everythingremotejob.com/"},"performer":{"@type":"Person","name":"Oluwaseyi Ashiru"}}</script>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -132,30 +175,45 @@
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 <div id="erjNavMount"></div>
-<script>window.ERJ_NAV={active:'book',base:'../',onPage:[{label:'Save Your Seat',href:'#register',sub:'Free live session on Zoom'},{label:'What We Will Cover',href:'#cover',sub:'Three things you leave with'},{label:'Who It Is For',href:'#fit',sub:'And who can skip it'},{label:'The Book',href:'#book',sub:'₦15,000 · instant download'}]};</script>
+<script>window.ERJ_NAV={active:'book',base:'../',onPage:[{label:'Save Your Seat',href:'#register',sub:'Sun 27 Sep · 7:00 PM WAT · Zoom'},{label:'What We Will Cover',href:'#cover',sub:'Three things you leave with'},{label:'Who It Is For',href:'#fit',sub:'And who can skip it'},{label:'The Book',href:'#book',sub:'₦15,000 · instant download'}]};</script>
 
 <main>
 <a class="promo-tick" href="#register" aria-label="Book launch — free live session on Zoom"><div class="promo-track">Book launch — <em>free live session on Zoom</em></div></a>
 
   <!-- HERO -->
   <section class="hero wrap" id="register">
-    <div class="bk-hero">
-      <div>
-        <p class="section-label reveal"><span class="mark"></span>Book launch · Live on Zoom</p>
-        <h1 class="reveal">How to Get a Remote Job: <em>From Intent to Offer.</em></h1>
-        <p class="lede reveal">Join the author, Oluwaseyi Ashiru, live on Zoom for the launch of the book: how to prepare for, find, position for and win a global remote job, from right where you are.</p>
-        <p class="ln-when reveal"><b>Free to attend</b> Register once. Zoom emails your joining link and the session time.</p>
-        <div class="hero-cta reveal">
-          <a href="https://us06web.zoom.us/meeting/register/s1LgnffbQxmwseqvnOP7Gw" class="btn-primary-ui btn-yes" rel="noopener" target="_blank"><span>Register Free</span><span class="arrow-wrap"><span class="arrow">→</span></span></a>
-          <a href="#cover" class="btn-more btn-secondary-ui"><span>What We Will Cover</span><span class="arrow-wrap"><span class="arrow is-down">↓</span></span></a>
+    <div class="ln-art">
+      <div class="ln-glow" aria-hidden="true"></div>
+      <div class="ln-top">
+        <span class="ln-eyebrow">Book launch · How to get a remote job</span>
+        <span class="ln-pill">Live on Zoom</span>
+      </div>
+      <h1 class="ln-title">From Intent to <span>Offer.</span></h1>
+      <p class="ln-lede">The whole method (intent, evidence, diagnosis, execution) launched live by the author. Bring your job search; leave knowing where it breaks.</p>
+      <div class="ln-media">
+        <figure class="ln-frame ln-book">
+          <picture>
+            <source srcset="../shop/intentbook-centred.webp" type="image/webp">
+            <img src="../shop/intentbook-centred.jpg" alt="How to Get a Remote Job: From Intent to Offer by Oluwaseyi Ashiru, the paperback cover" width="900" height="900" loading="eager" decoding="async" fetchpriority="high">
+          </picture>
+        </figure>
+        <div class="ln-author">
+          <figure class="ln-frame ln-photo">
+            <picture>
+              <source srcset="../founder-oluwaseyi.webp" type="image/webp">
+              <img src="../founder-oluwaseyi.jpg" alt="Oluwaseyi Ashiru" loading="eager" decoding="async">
+            </picture>
+          </figure>
+          <div class="ln-byline"><b>Oluwaseyi Ashiru</b><span>Author · Founder, Everything Remote Job</span></div>
         </div>
       </div>
-      <figure class="ln-cover reveal">
-        <picture>
-          <source srcset="../shop/intentbook-centred.webp" type="image/webp">
-          <img src="../shop/intentbook-centred.jpg" alt="How to Get a Remote Job: From Intent to Offer by Oluwaseyi Ashiru — the paperback cover" width="900" height="900" loading="eager" decoding="async" fetchpriority="high">
-        </picture>
-      </figure>
+      <div class="ln-foot">
+        <div class="ln-when"><b>Sunday, 27 September 2026</b><span>7:00 PM WAT · Zoom · Free to attend</span></div>
+        <div class="ln-cta">
+          <a href="https://us06web.zoom.us/meeting/register/s1LgnffbQxmwseqvnOP7Gw" class="ln-btn" rel="noopener" target="_blank">Register free <i aria-hidden="true">→</i></a>
+          <span>Zoom emails your joining link.</span>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -190,7 +248,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <!-- CLOSE -->
   <section class="section-line wrap reveal" id="close">
-    <h2>Save your seat. <span>It costs nothing.</span></h2>
+    <h2>Sunday, 27 September 2026, 7:00 PM WAT. <span>Save your seat; it costs nothing.</span></h2>
     <p class="section-sub">Questions before then? Message <b>+234 803 292 5957</b>, the only official line.</p>
     <div class="hero-cta">
       <a href="https://us06web.zoom.us/meeting/register/s1LgnffbQxmwseqvnOP7Gw" class="btn-primary-ui btn-yes" rel="noopener" target="_blank"><span>Register Free</span><span class="arrow-wrap"><span class="arrow">→</span></span></a>
