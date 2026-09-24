@@ -70,7 +70,7 @@ Any page still advertising an open instalment window after that date is stale an
 
 > **Note for future cohorts:** the ₦50,000 reservation mechanic used by the previous cohort has been retired. ₦50,000 on the current store is the Done-For-You 7-day service — a different product entirely. Do not reintroduce reservation copy at that figure.
 
-## The store — twelve doors
+## The store — fourteen doors
 
 `register.html` presents the full catalogue, cheapest first, with a basket. A buyer can add several items or buy any one outright. Every price is a one-time payment unless the product states otherwise.
 
@@ -163,7 +163,7 @@ The site is a static HTML/CSS/JavaScript website hosted on **GitHub Pages** with
 
 **Shared modules**
 
-`erj-theme.js` · `erj-nav.js` · `erj-product.js` · `erj-config.js` · `erj-capture.js` · `erj-schema.js` · `erj-passcode.js` · `erj-ascend.js` · `erj-track.js` · `erj-private-protection.js` · `product.css` · `erj-buttons.css` · `sw.js` · `manifest.json`
+`erj-theme.js` · `erj-nav.js` · `erj-product.js` · `erj-config.js` · `erj-capture.js` · `erj-schema.js` · `erj-cart.js` · `erj-facts.js` · `erj-passcode.js` · `erj-ascend.js` · `erj-track.js` · `erj-private-protection.js` · `product.css` · `erj-buttons.css` · `sw.js` · `manifest.json`
 
 ## Blog publishing
 
@@ -190,7 +190,8 @@ Primary masters in this repository:
 - `erj-mark-dark.png`
 - `erj-mark-light.png`
 - `erj-lockup-dark.png`
-- `erj-lockup-light.png`
+
+A light lockup master is not in this repository yet. Add the supplied artwork before referencing it; do not generate one.
 
 Small interface derivatives such as the 128px marks, favicons and app icons exist only where the website actually uses them.
 
@@ -235,27 +236,22 @@ diagnostic model, the official phone line, published credits — lives in one
 place and is enforced by one script.
 
 **`erj-config.js` → `canon`** holds the facts.
-**`erj-facts.js`** renders them into pages at runtime.
+**`erj-facts.js`** can render them into marked-up spots at runtime (not currently loaded by any page).
 **`validate-facts.py`** fails the build when any file disagrees.
 
-### Pages never hard-code a fact
+### Pages state facts as real text
 
-Mark the spot; the renderer fills it:
+Every page carries its prices, dates and names as ordinary HTML text, so they
+are visible to search engines and to readers without JavaScript. **Changing
+canon does not change a page by itself.** To change a fact: edit canon, update
+every page that states it, then run the gate below. Anything missed fails.
 
-```html
-<span data-erj="price.foundation"></span>       <!-- ₦250,000 -->
-<span data-erj="was.foundation"></span>         <!-- ₦370,000 -->
-<span data-erj="save.foundation"></span>        <!-- ₦120,000 -->
-<span data-erj="cohort.closesDisplay"></span>   <!-- Sun 27 Sep · 8:00 PM WAT -->
-<span data-erj="model.03.label"></span>         <!-- Representation -->
-<span data-erj="figures.placed"></span>         <!-- 382+ -->
-<a data-erj-href="pay.foundation">Buy now</a>
-<a data-erj-href="whatsapp">Message us</a>
-```
-
-Load order: `erj-config.js` then `erj-facts.js`. For markup built after load
-(the basket, the diagnostic report, the scan result), call
-`window.ERJFacts.paint(node)`.
+`erj-facts.js` is an optional renderer for spots marked with
+`data-erj="price.foundation"`, `data-erj="cohort.closesDisplay"`,
+`data-erj-href="pay.foundation"` and similar keys. No page loads it or uses
+those attributes today. A page that adopts it must load `erj-config.js` first,
+then `erj-facts.js`, and call `window.ERJFacts.paint(node)` for markup built
+after load.
 
 ### The gate
 
@@ -285,12 +281,12 @@ dozen files and only some of them were updated. A config nobody checks is
 just another document that goes stale. The gate is what makes the single
 source of truth permanent.
 
-Change a price in `erj-config.js` and every surface follows on the next load.
-Anything that did not follow is caught before it ships.
+Change a price in `erj-config.js`, update the pages that state it, and run the
+gate. Anything that did not follow is caught before it ships.
 
 ## Repository documentation rule
 
-`README.md` is the only Markdown document required in this website package.
+`README.md` is the business and structure reference for this website package. `CLAUDE.md` holds the working rules for code changes. No other Markdown documents belong here.
 
 It should always describe **what the website is now**. Historical implementation notes, patch records and temporary campaign-working documents belong outside the website repository.
 
