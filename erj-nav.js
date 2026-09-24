@@ -41,22 +41,21 @@
         },
         {
             key: 'g-start', label: 'Your Starting Line', href: 'starthere.html', keys: ['startline'], children: [
-                { label: 'From Intent to Offer · the book, ₦15,000', href: 'fromintenttooffer/', keys: ['book'] },
-                { label: 'CV Engine Pass · ₦5,000 for 30 days', href: 'cvbuilder.html', keys: ['cvpass'] },
-                { label: 'Self-Learn Pack · Stages 1–4', href: 'selflearn/', keys: ['selflearn'] },
-                { label: 'Foundation Training · Stages 1–4', href: 'foundationtraining/', keys: ['mastery'] },
-                { label: 'Job Application DFY · Done-For-You', href: 'jobapplication/', keys: ['remote'] },
-                { label: 'Inner Circle · Private 1:1', href: 'innercircle/', keys: ['inner'] }
+                { label: 'From Intent to Offer', href: 'fromintenttooffer/', keys: ['book'] },
+                { label: 'CV Builder', href: 'cvbuilder.html', keys: ['cvpass'] },
+                { label: 'Self-Learn Pack', href: 'selflearn/', keys: ['selflearn'] },
+                { label: 'Foundation Training', href: 'foundationtraining/', keys: ['mastery'] },
+                { label: 'Job Application', href: 'jobapplication/', keys: ['remote'] },
+                { label: 'Inner Circle', href: 'innercircle/', keys: ['inner'] }
             ]
         },
         {
-            key: 'g-free', label: 'Free For You', href: 'free.html', keys: ['free'], children: [
-                { label: 'Find Your Leak · 5-part diagnostic', href: 'diagnose/', keys: ['diagnose'] },
-                { label: 'Capacity Audit · can you do the work?', href: 'capacityscan/', keys: ['capacityscan'] },
-                { label: '10-Point CV Self-Scan', href: 'cvscan/', keys: ['cvscan'] },
-                { label: 'Free Live Masterclass', href: 'masterclass/', keys: ['masterclass'] },
-                { label: 'Remote Career Blog', href: 'blog.html', keys: ['blog'] },
-                { label: 'Global Job Board · WhatsApp', href: WA_CHANNEL, external: true }
+            key: 'g-free', label: 'Free For You', href: 'free.html', keys: ['free', 'blog'], children: [
+                { label: 'What\u2019s Holding You Back?', href: 'diagnose/', keys: ['diagnose'] },
+                { label: 'Capacity Audit', href: 'capacityscan/', keys: ['capacityscan'] },
+                { label: 'Remote CV Scan', href: 'cvscan/', keys: ['cvscan'] },
+                { label: 'Free Live Masterclass / Clinic', href: 'masterclass/', keys: ['masterclass'] },
+                { label: 'Remote Jobs (Global+)', href: WA_CHANNEL, external: true }
             ]
         },
         { key: 'stories', label: 'Success Stories', href: 'testimonials.html', keys: ['stories', 'jobs'] },
