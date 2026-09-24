@@ -10,7 +10,7 @@
      <span data-erj="save.foundation"></span>         → ₦120,000
      <span data-erj="name.selflearn"></span>          → The Self-Learn Pack
      <span data-erj="cohort.number"></span>           → 11
-     <span data-erj="cohort.closesDisplay"></span>    → Sun 27 Sep · 8:00 PM WAT
+     <span data-erj="cohort.closesDisplay"></span>    → Sat 31 Oct · 8:00 PM WAT
      <span data-erj="model.03.label"></span>          → Representation
      <span data-erj="model.03.line"></span>           → If your CV can't be read…
      <span data-erj="figures.placed"></span>          → 382+

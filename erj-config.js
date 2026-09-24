@@ -88,7 +88,7 @@
       figures: {
         trained: '446+',
         placed: '382+',
-        cohortsCompleted: 9
+        cohortsCompleted: 10
       },
 
       /* The diagnostic model. Capacity is first and the order is
@@ -106,13 +106,15 @@
       },
 
       cohort: {
-        number: 11,
+        number: 12,
         feeNaira: 250000,
-        closes:  '2026-09-27T20:00:00+01:00',
-        begins:  '2026-09-28T20:00:00+01:00',
-        closesDisplay: 'Sun 27 Sep \u00b7 8:00 PM WAT',
-        beginsDisplay: 'Mon 28 Sep \u00b7 8:00 PM WAT',
-        instalmentWindowCloses: '2026-09-14',
+        opens:   '2026-10-05',
+        closes:  '2026-10-31T20:00:00+01:00',
+        begins:  '2026-11-02T20:00:00+01:00',
+        opensDisplay:  'Mon 5 Oct',
+        closesDisplay: 'Sat 31 Oct \u00b7 8:00 PM WAT',
+        beginsDisplay: 'Mon 2 Nov \u00b7 8:00 PM WAT',
+        instalmentWindowCloses: '2026-10-24',
         instalmentHref: 'earlybird.html',
         instalmentNote: 'It changes the payment timing, not the price.'
       },

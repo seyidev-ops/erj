@@ -63,9 +63,12 @@
        Tishrei, so the suffix is 2026TI and codes read ERJM-CORE-2026TI. If
        that is wrong, every passcode minted for this cohort is wrong. */
     { n: 11, starts: '2026-09-28', ends: '2026-10-25', year: 2026, hm: 'TI', confirmed: true  },
-    { n: 12, starts: '2026-10-26', ends: '2026-11-22', year: 2026, hm: 'CH', confirmed: false },
-    { n: 13, starts: '2026-11-23', ends: '2026-12-20', year: 2026, hm: 'KI', confirmed: false },
-    { n: 14, starts: '2026-12-21', ends: '2027-01-17', year: 2026, hm: 'TE', confirmed: false }
+    /* Cohort 12: enrolment 5-31 Oct (closes Sat 31 Oct 20:00 WAT), the cohort
+       BEGINS Mon 2 Nov 20:00 WAT. 2 Nov 2026 is 22 Cheshvan (1 Cheshvan =
+       12 Oct 2026), so the suffix is 2026CH. 13 and 14 are projections only. */
+    { n: 12, starts: '2026-11-02', ends: '2026-11-29', year: 2026, hm: 'CH', confirmed: true  },
+    { n: 13, starts: '2026-11-30', ends: '2026-12-27', year: 2026, hm: 'KI', confirmed: false },
+    { n: 14, starts: '2026-12-28', ends: '2027-01-24', year: 2026, hm: 'TE', confirmed: false }
   ];
 
   /* Every cohort begins at 20:00 WAT on its start date — never at midnight.
