@@ -72,7 +72,7 @@ Any page still advertising an open instalment window after that date is stale an
 
 ## The store — fourteen doors
 
-`register.html` presents the full catalogue, cheapest first, with a basket. A buyer can add several items or buy any one outright. Every price is a one-time payment unless the product states otherwise.
+`register.html` presents the full catalogue with a basket, in three groups: **DIY — Do It Yourself** (the books, The CV Engine, the Self-Learn Pack), **DWY — Done With You** (the live Foundation Training courses, Stages 1–4 individually or all four together, and the Inner Circle 1:1) and **DFY — Done For You** (CV Fix, Done-For-You 7 Days, the Placement Engine and Get Your Dream Job Offer). A buyer can add several items or buy any one outright. Every price is a one-time payment unless the product states otherwise.
 
 | Door | Price | Part addressed |
 |------|-------|----------------|
@@ -167,6 +167,8 @@ The site is a static HTML/CSS/JavaScript website hosted on **GitHub Pages** with
 
 ## Blog publishing
 
+`sitemap.xml` is maintained by `generate-sitemap.py`: every post at `blog/<slug>/index.html` whose `datePublished` has arrived (WAT) is listed, and deleted, noindexed or future-dated posts are left out. The GitHub Action in `.github/workflows/sitemap.yml` runs it on every push to `main` and daily at 00:05 WAT, and commits the result. Nobody needs to edit the sitemap by hand for a blog post.
+
 The blog archive follows the **Africa/Lagos (WAT)** daily publication schedule. The archive exposes posts according to their scheduled date rather than displaying every pre-generated article file at once.
 
 Each article carries one conversion job — diagnosis, CV scan, Clinic registration, AUDIT, a named product or the correct post-diagnosis route — rather than sending every reader to the same place.
@@ -260,10 +262,10 @@ python3 validate-facts.py          # exits 1 on failure — run before every dep
 python3 validate-facts.py --warn   # report only
 ```
 
-Eight checks: retired terms, the official line, money figures outside canon,
+Nine checks: retired terms, the official line, money figures outside canon,
 the cohort in play, an expired window still advertised as open, the model
-enumerated without Capacity, README drift, and payment links in canon that
-appear on no page.
+enumerated without Capacity, README drift, payment links in canon that
+appear on no page, and published blog posts missing from `sitemap.xml`.
 
 - Retiring a term is a one-line addition to `canon.retired`. It is enforced
   from that moment.

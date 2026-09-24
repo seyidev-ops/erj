@@ -21,8 +21,8 @@ python3 validate-facts.py          # must pass before every commit (exit 1 on fa
 python3 validate-facts.py --warn   # report only
 ```
 
-Needs `python3` and `node` (it loads `erj-config.js` via node). There are no
-other tests, linters or CI. To preview locally: `python3 -m http.server` from
+Needs `python3` and `node` (it loads `erj-config.js` via node). The only CI is
+`.github/workflows/sitemap.yml` (sitemap + this validator). To preview locally: `python3 -m http.server` from
 the repo root (the service worker needs `http://localhost`, not `file://`).
 
 ## Commercial facts: canon
@@ -117,7 +117,18 @@ Open Graph / Twitter images must stay evergreen: no cohort numbers or dates.
   the logo.
 - Private pages carry `<meta name="robots" content="noindex">` and are
   **not** `Disallow`ed in `robots.txt` (a blocked URL's noindex is never read).
-- New public pages and new blog posts must be added to `sitemap.xml`.
+- New public pages must be added to `sitemap.xml` by hand. Blog posts are
+  added automatically by `generate-sitemap.py` (run by
+  `.github/workflows/sitemap.yml` on push to `main` and daily at 00:05 WAT);
+  run it locally with `python3 generate-sitemap.py`. The validator fails if a
+  published post is missing.
+- Scroll reveals: `.reveal` blocks are visible by default. Only
+  `erj-product.js` hides one (class `.pre`) after measuring it off-screen.
+  Never reintroduce CSS that hides content until JS un-hides it; that is
+  what caused the blank-page glitch. The same `.reveal` rules are inlined
+  in several root pages as well as `product.css`, so change them everywhere.
+- The store (`register.html`) is grouped DIY / DWY / DFY. A new product
+  goes into the right group, and each card's `h3` is the product name.
 - WhatsApp prefill text lives in `ERJ_CONFIG.messages`; don't inline new
   copies in pages.
 - Blog posts are scheduled by date (Africa/Lagos, WAT). Each post has one

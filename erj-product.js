@@ -8,6 +8,7 @@
   function showNow(e){
     e.style.transitionDelay='0s';
     e.classList.add('in');
+    e.classList.remove('pre');
     if(obs)obs.unobserve(e);
   }
   /* Reveal on APPROACH, not on arrival.
@@ -29,8 +30,16 @@
        still be waiting 150ms after the first has finished. */
     el.style.transitionDelay = (Math.min(Math.max(0, idx), 3) * 0.05) + 's';
     el.classList.add('in');
+    el.classList.remove('pre');
     if (obs) obs.unobserve(el);
   }
+  /* Blocks are VISIBLE by default (see .reveal in product.css). This script
+     only hides a block -- by adding .pre -- once it has measured it as
+     off-screen and is about to observe it. The old CSS hid every .reveal
+     up front and relied on this file to un-hide them, so a slow, blocked or
+     failed download of this one script left whole pages blank: black in the
+     night theme, a white page in the day theme. Hiding is now opt-in by the
+     only code that can undo it. */
   if('IntersectionObserver' in window){
     obs=new IntersectionObserver(function(es){es.forEach(function(e){
       if(e.isIntersecting){
@@ -47,12 +56,13 @@
        paint: Lighthouse traced 1.9s of style/layout to this loop on a
        throttled phone, 89% of the home page's LCP. One read pass, one
        write pass, one layout. */
-    var vh=window.innerHeight||0, onScreen=[];
+    var vh=window.innerHeight||0, onScreen=[], offScreen=[];
     els.forEach(function(e){
       var b=e.getBoundingClientRect();
-      if(b.top < vh && b.bottom > 0) onScreen.push(e);
+      (b.top < vh && b.bottom > 0 ? onScreen : offScreen).push(e);
     });
     onScreen.forEach(showNow);
+    offScreen.forEach(function(e){ e.classList.add('pre'); });
 
     /* Safety net. A transition is decoration; the content underneath is not.
        If anything is still hidden 1.2s after load -- a stalled observer, a
