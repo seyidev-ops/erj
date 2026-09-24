@@ -22,6 +22,10 @@ import subprocess
 import sys
 from datetime import date
 
+# Loading generate-sitemap.py below must not leave a __pycache__ folder in
+# the site: every file in this repository is published.
+sys.dont_write_bytecode = True
+
 ROOT = os.path.dirname(os.path.abspath(__file__))
 SCAN_EXT = {".html", ".js", ".ts", ".css", ".md", ".json", ".txt", ".xml", ".webmanifest"}
 SKIP_DIRS = {".git", "node_modules", ".github", "og-fonts"}
