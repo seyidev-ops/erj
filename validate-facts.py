@@ -262,6 +262,17 @@ def main():
                      "blog/%s/ is not in the archive — run generate-blog-archive.py" % post["slug"])
     except FileNotFoundError as e:
         fail("archive", "(site)", "cannot check blog archive: %s" % e)
+    # ── 11. every link-preview image a page names actually exists ───────
+    # Replaced cards get a new filename and the old one is deleted; a page
+    # still naming the old file would show a broken preview when shared.
+    prev_re = re.compile(r'(?:https://everythingremotejob\.com/|["\'/])(preview-[a-z0-9-]+\.(?:jpg|png|webp))')
+    for path, raw in corpus:
+        if not path.endswith(".html"):
+            continue
+        for img in set(prev_re.findall(raw)):
+            if not os.path.exists(os.path.join(ROOT, img)):
+                fail("image", path, "%s does not exist" % img)
+
     if os.path.exists(os.path.join(ROOT, "blog", "blog.html")):
         fail("blog", "blog/blog.html", "misplaced upload — blog.html belongs at the site root")
 
@@ -272,7 +283,7 @@ def main():
         print("%sFAIL%s  %-16s %-34s %s" % (RED, OFF, check, path, detail))
 
     print()
-    print("%s%d files scanned · %d checks%s" % (DIM, len(corpus), 10, OFF))
+    print("%s%d files scanned · %d checks%s" % (DIM, len(corpus), 11, OFF))
     if failures:
         print("%s%d failure(s)%s — the site disagrees with erj-config.js canon." % (RED, len(failures), OFF))
         print("Fix the page, or change canon and let every surface follow.")
