@@ -46,15 +46,18 @@ jobs:
       - name: Point uploads at the current preview images
         if: github.event_name != 'pull_request'
         run: |
-          # A replaced link-preview card gets a new name (preview-x-v2.jpg) and
-          # the old file is deleted. Pages generated elsewhere may still use the
-          # old name; repoint them so their previews do not break.
+          # A replaced link-preview card gets a new name (preview-x-v2.jpg,
+          # then -v3 ...) and the old file is deleted. Pages generated elsewhere
+          # may still use an older name; repoint them so their previews do not
+          # break.
           for new in preview-*-v[0-9]*.jpg; do
             [ -e "$new" ] || continue
-            old="$(printf '%s' "$new" | sed -E 's/-v[0-9]+\.jpg$/.jpg/')"
-            [ -e "$old" ] && continue
-            grep -rlF --include='*.html' "$old" . | while read -r f; do
-              sed -i -E "s#(^|[^a-z0-9-])${old//./\\.}#\1${new}#g" "$f"
+            stem="${new%-v*.jpg}"
+            grep -rhoE --include='*.html' "${stem}(-v[0-9]+)?\.jpg" . | sort -u | while read -r old; do
+              [ -e "$old" ] && continue
+              grep -rlF --include='*.html' "$old" . | while read -r f; do
+                sed -i -E "s#(^|[^a-z0-9-])${old//./\\.}#\1${new}#g" "$f"
+              done
             done
           done
 
