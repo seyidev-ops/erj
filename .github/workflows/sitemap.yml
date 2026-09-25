@@ -43,6 +43,21 @@ jobs:
           if [ -f blog/blog.html ]; then git mv -f blog/blog.html blog.html; fi
           if [ -f blog/sitemap.xml ]; then git rm -q blog/sitemap.xml; fi
 
+      - name: Point uploads at the current preview images
+        if: github.event_name != 'pull_request'
+        run: |
+          # A replaced link-preview card gets a new name (preview-x-v2.jpg) and
+          # the old file is deleted. Pages generated elsewhere may still use the
+          # old name; repoint them so their previews do not break.
+          for new in preview-*-v[0-9]*.jpg; do
+            [ -e "$new" ] || continue
+            old="$(printf '%s' "$new" | sed -E 's/-v[0-9]+\.jpg$/.jpg/')"
+            [ -e "$old" ] && continue
+            grep -rlF --include='*.html' "$old" . | while read -r f; do
+              sed -i -E "s#(^|[^a-z0-9-])${old//./\\.}#\1${new}#g" "$f"
+            done
+          done
+
       - name: Regenerate blog archive and sitemap
         if: github.event_name != 'pull_request'
         run: |
@@ -52,14 +67,14 @@ jobs:
       - name: Commit if anything changed
         if: github.event_name != 'pull_request'
         run: |
-          if [ -z "$(git status --porcelain -- blog.html blog sitemap.xml)" ]; then
+          if [ -z "$(git status --porcelain)" ]; then
             echo "blog archive and sitemap already current"
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A -- blog.html blog sitemap.xml
-          git commit -m "Update blog archive and sitemap.xml with new blog posts"
+          git add -A
+          git commit -m "Update blog archive, sitemap.xml and preview image links"
           git push
 
       - name: Check blog archive and sitemap (pull requests)
