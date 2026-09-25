@@ -82,6 +82,9 @@ When you change a shared JS/CSS file:
 
 Changing an image's content needs a **new filename**, not an overwrite.
 Open Graph / Twitter images must stay evergreen: no cohort numbers or dates.
+Replaced link-preview cards are named `preview-<page>-vN.jpg` and the old file
+is deleted. The Action repoints uploaded pages that still use an old name, and
+the validator fails on any page naming a preview image that does not exist.
 
 `sw.js` also has `PRIVATE_PATHS` (never cached) and `NO_SW_HOSTS`
 (analytics bypass). Add new private pages to `PRIVATE_PATHS`.
