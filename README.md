@@ -54,18 +54,20 @@ Cold or uncertain visitors should not be asked to choose among ERJ products firs
 
 The homepage remains the institutional ERJ ecosystem. Its first screen nevertheless prioritises the free diagnostic, with the wider site available as the secondary path.
 
-## Current Cohort 11 campaign
+## Current Cohort 12 campaign
 
-- **Enrolment closes:** Sunday, 27 September 2026 · 8:00 PM WAT
-- **Cohort 11 begins:** Monday, 28 September 2026 · 8:00 PM WAT
-- **Next cohort:** enrolment opens Monday, 5 October 2026 and closes Saturday, 31 October 2026 · 8:00 PM WAT. The countdowns on the home page and the store switch to it automatically when Cohort 11 begins (`data-next-from` on the countdown).
+- **Enrolment opens:** Monday, 5 October 2026
+- **Enrolment closes:** Saturday, 31 October 2026 · 8:00 PM WAT
+- **Cohort 12 begins:** Monday, 2 November 2026 · 8:00 PM WAT
 - **Foundation Training fee:** ₦250,000
+
+The countdowns on the home page and the store count down to 31 October.
 
 ### Instalment route
 
 `earlybird.html` carries the instalment route for Foundation Training. It **changes the payment timing, not the price** — the fee remains ₦250,000 either way.
 
-The Cohort 11 instalment window closed on 14 September 2026. Full payment applies until enrolment closes.
+The Cohort 12 instalment window runs from 5 October to Saturday 24 October 2026, 11:59 PM WAT. After that, full payment applies until enrolment closes.
 
 Any page still advertising an open instalment window after that date is stale and must be corrected.
 
@@ -87,7 +89,7 @@ Any page still advertising an open instalment window after that date is stale an
 | Stage 3 — Async Communication Mastery | ₦70,000 | Capacity |
 | Stage 4 — Start Your Remote Career | ₦100,000 | Representation and Aim |
 | Stage 2 — The Digital Toolkit | ₦130,000 | Capacity |
-| Remote Job Foundation Training (Cohort 11) | ₦250,000 (from ₦370,000) | Capacity, Supply, Representation, Aim |
+| Remote Job Foundation Training (Cohort 12) | ₦250,000 (from ₦370,000) | Capacity, Supply, Representation, Aim |
 | The Inner Circle — Stages 6–12 | ₦250,000 | Conversion |
 | Done-For-You Placement Engine — Stage 5 | ₦300,000 | Supply, Representation, Aim |
 | Get Your Dream Job Offer — Stages 1–5 | ₦500,000 (from ₦740,000) | The full route |
