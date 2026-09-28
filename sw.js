@@ -2,7 +2,7 @@
    EVERYTHING REMOTE JOB — SERVICE WORKER
    Cache-first for app shell, network-first for fonts
 ═══════════════════════════════════════════════════════ */
-const CACHE = 'erj-site-20260928b';
+const CACHE = 'erj-site-20260928c';
 const OFFLINE = '/offline.html';
 
 /* SHELL is what a first-time visitor pays for before anything renders. It had
@@ -21,9 +21,10 @@ const SHELL = [
   '/selflearn-box-foundation.webp',
   '/cvscan/index.html',
   '/capacityscan/index.html',
-  '/capacityscan/cap.css?v=20260922b',
+  '/capacityscan/cap.css?v=20260928c',
   '/capacityscan/bank.js?v=20260922a',
-  '/capacityscan/cap.js?v=20260922a',
+  '/capacityscan/report-pdf.js?v=20260928c',
+  '/capacityscan/cap.js?v=20260928c',
   '/blog/index.html',
   '/free.html',
   '/starthere.html',
@@ -33,7 +34,7 @@ const SHELL = [
   '/erj-theme.js?v=20260911a',
   '/erj-product.js?v=20260924c',
   '/erj-passcode.js?v=20260928a',
-  '/erj-schema.js?v=20260911a',
+  '/erj-schema.js?v=20260928c',
   '/diagnose/dx.js?v=20260911a',
   '/diagnose/report-pdf.js?v=20260911a',
   '/diagnose/index.html',

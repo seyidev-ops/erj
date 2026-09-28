@@ -71,7 +71,7 @@
         "Salary negotiation"
       ],
       "sameAs": [
-        "https://www.linkedin.com/in/oluwaseyiashiru/"
+        "https://www.linkedin.com/in/seyiashiru"
       ]
     },
     {
