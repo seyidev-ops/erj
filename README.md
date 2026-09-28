@@ -52,7 +52,7 @@ Cold or uncertain visitors should not be asked to choose among ERJ products firs
 5. **Correct ERJ door** — only after diagnosis should the smallest suitable paid route be introduced.
 6. **Register / payment** — `register.html` supports a decision already made. It is not the default first-contact page.
 
-The homepage remains the institutional ERJ ecosystem. Its first screen nevertheless prioritises the free diagnostic, with the wider site available as the secondary path.
+The homepage remains the institutional ERJ ecosystem and leads with the main promise, not the diagnostic. Its order is: promise → founder welcome → proof, the Five-Finger Model, free resources and paid routes → story, pledge and FAQs → the diagnosis block ("Still unsure where to start?") → the cohort timer and enrolment. A small Free Diagnosis button stays in the opening screen for visitors ready to act immediately.
 
 ## Current Cohort 12 campaign
 

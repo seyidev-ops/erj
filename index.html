@@ -1053,9 +1053,16 @@ a.promo-tick{text-decoration:none;display:block;}
     gap:clamp(2rem,5vw,4rem);
     align-items:start;
   }
-  .first-contact h1{max-width:16ch;margin-bottom:1rem;font-size:clamp(2.35rem,6vw,4.3rem);}
-  @media(max-width:620px){.first-contact h1{max-width:14ch;font-size:clamp(2.1rem,9vw,2.8rem);}}
+  .first-contact h1,.first-contact h2{max-width:16ch;margin-bottom:1rem;font-size:clamp(2.35rem,6vw,4.3rem);}
+  @media(max-width:620px){.first-contact h1,.first-contact h2{max-width:14ch;font-size:clamp(2.1rem,9vw,2.8rem);}}
   .first-contact .fc-lede{max-width:58ch;font-size:clamp(1.03rem,1.9vw,1.3rem);line-height:1.65;color:var(--ink-soft);margin:0 0 1.6rem;}
+  .hero-dx{margin:0;display:flex;flex-direction:column;align-items:flex-start;gap:.3rem;align-self:center;}
+  @media(max-width:620px){.answers>.hero-dx{align-self:flex-start;flex-direction:row;flex-wrap:wrap;align-items:center;gap:.4rem .7rem;margin-top:.3rem;}}
+  .hero-dx a{display:inline-flex;align-items:center;gap:.35rem;padding:.42rem .95rem;font-size:.92rem;border:1px solid var(--accent);border-radius:999px;color:var(--accent);font-weight:600;text-decoration:none;white-space:nowrap;transition:background-color .2s,color .2s;}
+  .hero-dx a:hover,.hero-dx a:focus-visible{background:var(--accent);color:#fff;}
+  .hero-dx-note{font-size:.78rem;color:var(--ink-faint);white-space:nowrap;}
+  html[data-theme="day"] .hero-dx a{color:#AD350A;border-color:#E8470F;}
+  html[data-theme="day"] .hero-dx a:hover,html[data-theme="day"] .hero-dx a:focus-visible{background:#E8470F;color:#fff;}
   .fc-actions{display:flex;gap:.9rem;flex-wrap:wrap;align-items:center;}
   .fc-note{margin-top:1.15rem;font-size:.79rem;line-height:1.6;color:var(--ink-faint);max-width:62ch;}
   .fc-note strong{color:var(--ink-soft);font-weight:600;}
@@ -1171,33 +1178,26 @@ a.promo-tick{text-decoration:none;display:block;}
 <noscript><iframe height="0" src="https://www.googletagmanager.com/ns.html?id=GTM-NMFHS59B" style="display:none;visibility:hidden" width="0"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 <div id="erjNavMount"></div>
-<script>window.ERJ_NAV={active:'home',tourTitle:'A quick tour — or jump anywhere',tourSkip:{label:'Explore the ERJ ecosystem',href:'#facilitator'},onPage:[{label:'Start Your Search With Clarity',href:'#start',sub:'Five questions to show what needs attention first'},{label:'Meet Your Facilitator',href:'#facilitator',sub:'Why this system exists, in his own words'},{label:'What We Can Do For You',href:'#promise',sub:'Become hireable, represented and aimed at global employers — from right where you are'},{label:'Find The Problem · Fix It',href:'#joints',sub:'The pipeline model — find where yours is leaking'},{label:'Your Starting Line',href:'starthere.html',sub:'A simple place to begin, whether you are new or already applying'},{label:'Free For You',href:'#free',sub:'The CV scan, the clinic, the blog and the job board — all free'},{label:'Proof It Works',href:'#story',sub:'Documented outcomes and case studies'},{label:'The Promise',href:'#pledge',sub:'Persistence, never a promised date'},{label:'Before You Decide',href:'#faq',sub:'The questions everyone asks first'},{label:'Cohort 12',href:'#timers',sub:'Enrolment closes Saturday 31 October · 8:00 PM WAT'}]};</script>
+<script>window.ERJ_NAV={active:'home',tourTitle:'A quick tour — or jump anywhere',tourSkip:{label:'Explore the ERJ ecosystem',href:'#facilitator'},onPage:[{label:'What We Can Do For You',href:'#promise',sub:'Become hireable, represented and aimed at global employers — from right where you are'},{label:'Meet Your Facilitator',href:'#facilitator',sub:'Why this system exists, in his own words'},{label:'Find The Problem · Fix It',href:'#joints',sub:'The pipeline model — find where yours is leaking'},{label:'Your Starting Line',href:'starthere.html',sub:'A simple place to begin, whether you are new or already applying'},{label:'Free For You',href:'#free',sub:'The CV scan, the clinic, the blog and the job board — all free'},{label:'Proof It Works',href:'#story',sub:'Documented outcomes and case studies'},{label:'The Promise',href:'#pledge',sub:'Persistence, never a promised date'},{label:'Before You Decide',href:'#faq',sub:'The questions everyone asks first'},{label:'Still Unsure? Free Diagnosis',href:'#start',sub:'Five questions to show what needs attention first'},{label:'Cohort 12',href:'#timers',sub:'Enrolment closes Saturday 31 October · 8:00 PM WAT'}]};</script>
 <main>
-<a class="promo-tick" href="#pledge" aria-label="We will not let you go until you're hired."><div class="promo-track">We will not let you go <em>until you're hired.</em></div></a><section class="wrap first-contact" id="start">
-<div class="first-contact-grid">
-<div>
-<p class="section-label"><span class="mark"></span> Your Starting Line</p>
-<h1>Start your remote job search <em>with clarity.</em></h1>
-<p class="fc-lede">Whether you are just beginning, applying without replies, or getting interviews without offers, start by seeing what needs attention first. Five questions. About 90 seconds. One clear starting point.</p>
-<div class="fc-actions">
-<a class="btn-yes btn-primary-ui" href="diagnose/"><span>Find My Starting Point — Free</span><span class="arrow-wrap"><span class="arrow">→</span></span></a>
-<a class="btn-more btn-secondary-ui" href="#facilitator"><span>Explore Everything Remote Job</span><span class="arrow-wrap"><span class="arrow is-down">↓</span></span></a>
+<a class="promo-tick" href="#pledge" aria-label="We will not let you go until you're hired."><div class="promo-track">We will not let you go <em>until you're hired.</em></div></a>
+<!-- HERO -->
+<section class="wrap home-hero" id="promise" style="padding-top:clamp(2.5rem,6vw,4rem);">
+<div class="step"><span class="step-n">01</span><span class="step-l">What We Can Do For You</span></div>
+<h1 class="ask">Become <em>hireable and represented</em> for global remote work — from right where you are.</h1>
+<p class="ask-sub">You do not need to relocate. You need the capacity to do the work remotely, roles you are actually eligible for, career assets a global employer can read, an aimed search and the judgement to convert an offer. We are accountable for what we teach and build with you; we do not control the market's timing. <strong>Cohort 12 enrolment opens 5 October and closes 31 October.</strong></p>
+<div class="answers">
+<a class="btn-yes btn-primary-ui pulse" href="#enrol"><span>Show Me How</span><span class="arrow-wrap"><span class="arrow">→</span></span></a>
+<a class="btn-more btn-secondary-ui" href="#facilitator"><span>Continue The Tour</span><span class="arrow-wrap"><span class="arrow is-down">↓</span></span></a>
+<p class="hero-dx"><a href="diagnose/">Free Diagnosis <span aria-hidden="true">→</span></a><span class="hero-dx-note">Ready now? 5 questions · 90 seconds</span></p>
 </div>
-<p class="fc-note"><strong>You May Not Need To Buy Anything.</strong> If your best next step is something you can fix yourself, we will show you that first.</p>
-</div>
-<div class="fc-proof-card" aria-label="What to expect">
-<div class="fc-proof-row"><b>5 Questions</b><span>See which part of your search needs attention first.</span></div>
-<div class="fc-proof-row"><b>Instant Result</b><span>Know what to work on before your next move.</span></div>
-<div class="fc-proof-row"><b>Practical Next Step</b><span>Leave with one action you can take immediately.</span></div>
-<div class="fc-proof-row"><b>Optional Human Review</b><span>Send your result to ERJ if you want another set of eyes.</span></div>
-</div>
-</div>
+<div class="scroll-hint">Refined after every cohort — here's the proof</div>
 </section>
 <!-- FOUNDER WELCOME -->
 <span aria-hidden="true" id="about"></span>
 <!-- #about is the canonical anchor for "who runs this". The section keeps
        id="facilitator" so existing links still resolve. -->
-<section class="wrap" id="facilitator" style="padding-top:clamp(2.4rem,6vw,4rem);padding-bottom:clamp(1.6rem,4vw,2.4rem);">
+<section class="wrap section-line" id="facilitator" style="padding-top:clamp(2.4rem,6vw,4rem);padding-bottom:clamp(1.6rem,4vw,2.4rem);">
 <p class="section-label"><span class="mark"></span> A word from your facilitator</p>
 <div class="founder">
 <div class="f-frame reveal">
@@ -1221,17 +1221,6 @@ a.promo-tick{text-decoration:none;display:block;}
 <div class="f-tour" data-erj-tour=""></div>
 </div>
 </div>
-</section>
-<!-- HERO -->
-<section class="wrap home-hero section-line" id="promise" style="padding-top:clamp(2.5rem,6vw,4rem);">
-<div class="step"><span class="step-n">01</span><span class="step-l">What We Can Do For You</span></div>
-<h1 class="ask">Become <em>hireable and represented</em> for global remote work — from right where you are.</h1>
-<p class="ask-sub">You do not need to relocate. You need the capacity to do the work remotely, roles you are actually eligible for, career assets a global employer can read, an aimed search and the judgement to convert an offer. We are accountable for what we teach and build with you; we do not control the market's timing. <strong>Cohort 12 enrolment opens 5 October and closes 31 October.</strong></p>
-<div class="answers">
-<a class="btn-yes btn-primary-ui pulse" href="#enrol"><span>Show Me How</span><span class="arrow-wrap"><span class="arrow">→</span></span></a>
-<a class="btn-more btn-secondary-ui" href="#joints"><span>Continue The Tour</span><span class="arrow-wrap"><span class="arrow is-down">↓</span></span></a>
-</div>
-<div class="scroll-hint">Refined after every cohort — here's the proof</div>
 </section>
 <!-- PROOF BAR -->
 <section class="wrap" id="proof" style="padding-top:0;">
@@ -1491,6 +1480,27 @@ a.promo-tick{text-decoration:none;display:block;}
 <summary>I'm not sure which path fits me. Where do I start?</summary>
 <p class="a">Start with the <strong>free Five-Part Job Search Diagnostic</strong>. It shows which part of your search needs attention first and gives you one practical next step. If you have not started applying yet, it helps you build a baseline instead of guessing. <a href="diagnose/">Find my starting point →</a></p>
 </details>
+</div>
+</section>
+<!-- DIAGNOSIS · DECISION POINT -->
+<section class="wrap section-line first-contact" id="start">
+<div class="first-contact-grid">
+<div>
+<p class="section-label"><span class="mark"></span> Still unsure where to start?</p>
+<h2>Start your remote job search <em>with clarity.</em></h2>
+<p class="fc-lede">You have seen the options. If you are still not sure which one is yours, find out before you pay. Whether you are just beginning, applying without replies, or getting interviews without offers, start by seeing what needs attention first. Five questions. About 90 seconds. One clear starting point.</p>
+<div class="fc-actions">
+<a class="btn-yes btn-primary-ui" href="diagnose/"><span>Find My Starting Point — Free</span><span class="arrow-wrap"><span class="arrow">→</span></span></a>
+<a class="btn-more btn-secondary-ui" href="#paths"><span>View Training Options</span><span class="arrow-wrap"><span class="arrow">↑</span></span></a>
+</div>
+<p class="fc-note"><strong>You May Not Need To Buy Anything.</strong> If your best next step is something you can fix yourself, we will show you that first.</p>
+</div>
+<div class="fc-proof-card" aria-label="What to expect">
+<div class="fc-proof-row"><b>5 Questions</b><span>See which part of your search needs attention first.</span></div>
+<div class="fc-proof-row"><b>Instant Result</b><span>Know what to work on before your next move.</span></div>
+<div class="fc-proof-row"><b>Practical Next Step</b><span>Leave with one action you can take immediately.</span></div>
+<div class="fc-proof-row"><b>Optional Human Review</b><span>Send your result to ERJ if you want another set of eyes.</span></div>
+</div>
 </div>
 </section>
 <!-- FINAL CTA -->
