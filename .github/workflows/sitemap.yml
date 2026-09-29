@@ -46,18 +46,13 @@ jobs:
       - name: Point uploads at the current preview images
         if: github.event_name != 'pull_request'
         run: |
-          # A replaced link-preview card gets a new name (preview-x-v2.jpg,
-          # then -v3 ...) and the old file is deleted. Pages generated elsewhere
-          # may still use an older name; repoint them so their previews do not
-          # break.
-          for new in preview-*-v[0-9]*.jpg; do
-            [ -e "$new" ] || continue
-            stem="${new%-v*.jpg}"
-            grep -rhoE --include='*.html' "${stem}(-v[0-9]+)?\.jpg" . | sort -u | while read -r old; do
-              [ -e "$old" ] && continue
-              grep -rlF --include='*.html' "$old" . | while read -r f; do
-                sed -i -E "s#(^|[^a-z0-9-])${old//./\\.}#\1${new}#g" "$f"
-              done
+          # Link-preview cards are always preview-<page>.jpg with no version
+          # suffix. Pages generated elsewhere may still name an old suffixed
+          # card; repoint them to the plain name when that file exists.
+          grep -rlE --include='*.html' 'preview-[a-z0-9-]+-v[0-9]+\.jpg' . | while read -r f; do
+            for old in $(grep -oE 'preview-[a-z0-9-]+-v[0-9]+\.jpg' "$f" | sort -u); do
+              new="${old%-v*.jpg}.jpg"
+              [ -e "$new" ] && sed -i "s#${old//./\\.}#${new}#g" "$f"
             done
           done
 
