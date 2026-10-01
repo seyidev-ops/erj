@@ -224,7 +224,7 @@ var CHECKS = [
       return part('Name your remote capability explicitly — working autonomously, distributed teams, or delivering across time zones.');
     }},
   { id: 3, t: 'Remote tool stack', run: function (d) {
-      var t = (d.fTools || '').toLowerCase();
+      var t = ((d.fTools || '') + ' ' + (d.jd || []).join(' ')).toLowerCase();  /* confirmed tools print on the TOOLS line */
       var n = TOOL_WORDS.filter(function (w) { return t.indexOf(w) > -1; }).length;
       if (n >= 3) return ok();
       if (n >= 1) return part('Name at least three. One tool reads as incidental; three reads as someone who has actually worked this way.');
@@ -388,9 +388,7 @@ function humanise() {
       RULES.forEach(function (r) {
         if (!r.re.test(t)) return;
         r.re.lastIndex = 0;
-        var fixed = t.replace(r.re, r.to);
-        if (r.cap) fixed = fixed.charAt(0).toUpperCase() + fixed.slice(1);
-        fixed = fixed.replace(/\s{2,}/g, ' ').replace(/\s+([,.;])/g, '$1').trim();
+        var fixed = tidy(t.replace(r.re, r.to));
         if (fixed === t || !fixed) return;
         items.push({ label: label, note: r.note, was: t, now: fixed, apply: apply, line: li });
         t = fixed;
@@ -446,6 +444,23 @@ function humanise() {
     });
   });
 }
+/* Cutting a filler word can strand its neighbours: "Results-driven and
+   hard-working specialist. Leveraged Zendesk" became "and specialist. used
+   Zendesk". This repairs only the seams the cut left — dangling and/or,
+   orphaned commas, a lower-case sentence start. It adds no words. */
+function tidy(s) {
+  s = String(s)
+    .replace(/\s{2,}/g, ' ')
+    .replace(/\s+([,.;:])/g, '$1')
+    .replace(/^[\s,;:]+/, '')
+    .replace(/(^|[.!?]\s+)(?:and|or|but)\s+/gi, '$1')
+    .replace(/\s(?:and|or)(?=[,.;:]|$)/gi, '')
+    .replace(/,(?=\s*[,.;])/g, '')
+    .replace(/(^|[.!?]\s+),\s*/g, '$1')
+    .replace(/\s{2,}/g, ' ')
+    .trim();
+  return s.replace(/(^|[.!?]\s+)([a-z])/g, function (m, a, b) { return a + b.toUpperCase(); });
+}
 function escHtml(s) {
   return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 }
@@ -454,6 +469,16 @@ function escHtml(s) {
 function parseCv() {
   var raw = $('pasteCv').value;
   if (!raw.trim()) { $('parseOut').innerHTML = '<b>Nothing pasted yet.</b> Copy your CV text into the box above first.'; return; }
+  /* An import REPLACES the person's details. Before this reset, any field the
+     parser did not find kept its old value — import one CV over another (or
+     over the example) and the export carried the previous person's city,
+     headline and portfolio. The vacancy (step 3) and template are kept. */
+  var PERSON = ['fName','fTitle','fEmail','fPhone','fCity','fTz','fLinkedin','fPortfolio',
+                'fSummary','fSkills','fTools','fEdu'];
+  var hasData = PERSON.some(function (f) { return val(f); }) || readJobs().length;
+  if (hasData && !confirm('Importing replaces everything in step 2 with what is read from this CV. Continue?')) return;
+  PERSON.forEach(function (f) { $(f).value = ''; });
+  jdPicked = [];
   var lines = raw.split('\n').map(function (l) { return l.replace(/\s+$/, ''); });
   var found = [];
 
@@ -520,8 +545,8 @@ function parseCv() {
 
   /* experience: split on lines that look like a header (contain a year range) */
   var exp = pick('experience', 'employment');
+  jobsEl.innerHTML = '';   /* always: stale roles must not survive an import */
   if (exp) {
-    jobsEl.innerHTML = '';
     var blocks = [], b = null;
     exp.split('\n').forEach(function (l) {
       var t = l.trim(); if (!t) return;
@@ -559,10 +584,17 @@ function model() {
   if (d.fLinkedin) c.push(d.fLinkedin);
   if (d.fPortfolio) c.push(d.fPortfolio);
 
-  var skills = d.fSkills;
+  /* Confirmed vacancy terms go where a reader expects them: a named tool
+     (Intercom, HubSpot) joins the TOOLS line, everything else joins CORE
+     COMPETENCIES. Before, a confirmed tool landed under competencies. */
+  var skills = d.fSkills, tools = d.fTools;
   if (jdPicked.length) {
-    var extra = jdPicked.filter(function (k) { return (skills || '').toLowerCase().indexOf(k.toLowerCase()) === -1; });
-    if (extra.length) skills = (skills ? skills + ', ' : '') + extra.join(', ');
+    var cap = function (k) { return k.charAt(0).toUpperCase() + k.slice(1); };
+    var isTool = function (k) { return TOOL_WORDS.indexOf(k.toLowerCase()) > -1; };
+    var extraT = jdPicked.filter(function (k) { return isTool(k) && (tools || '').toLowerCase().indexOf(k.toLowerCase()) === -1; });
+    var extraS = jdPicked.filter(function (k) { return !isTool(k) && (skills || '').toLowerCase().indexOf(k.toLowerCase()) === -1; });
+    if (extraT.length) tools = (tools ? tools + ', ' : '') + extraT.map(cap).join(', ');
+    if (extraS.length) skills = (skills ? skills + ', ' : '') + extraS.join(', ');
   }
   return {
     name: d.fName, title: d.fTitle, contact: c.join(' | '), summary: d.fSummary,
@@ -578,7 +610,7 @@ function model() {
        in a comma run. "ticket triage" reads as a fragment on its own bullet. */
     skillList: (skills || '').split(',').map(function (x) { return x.trim(); }).filter(Boolean)
       .map(function (x) { return x.charAt(0).toUpperCase() + x.slice(1); }),
-    tools: d.fTools,
+    tools: tools,
     edu: (d.fEdu || '').split('\n').map(function (x) { return x.trim().replace(/^[\u2022\-\u2013*]\s*/, ''); }).filter(Boolean)
   };
 }
@@ -774,6 +806,12 @@ function safeTargetPreview() {
     + '<br><br><b>Safe alignment changes only the professional headline and the order of skills/tools you already supplied.</b> It does not touch your employment history or achievement bullets.';
 }
 function tailorPreview() { safeTargetPreview(); }
+/* The button is a .btn-primary-ui pill: label span + arrow span. Setting
+   textContent on the button wiped the arrow and the pill's inner layout. */
+function btnLabel(id, t) {
+  var s = $(id) && $(id).querySelector('span');
+  if (s) s.textContent = t; else if ($(id)) $(id).textContent = t;
+}
 
 function applyTailor() {
   var terms = jdTerms();
@@ -787,7 +825,7 @@ function applyTailor() {
   if (tl.length > 1) $('fTools').value = byRelevance(tl, terms).join(', ');
   render(); save(); safeTargetPreview();
   $('untailorBtn').style.display = '';
-  $('tailorBtn').textContent = 'Re-apply safe target alignment';
+  btnLabel('tailorBtn', 'Re-apply Safe Target Alignment');
   $('tailorNote').insertAdjacentHTML('afterbegin','<b>Aligned safely.</b> Your target headline, skills and tools now lead with the employer-relevant items. Your job history and achievement bullets were not edited.<br><br>');
 }
 function undoTailor() {
@@ -798,7 +836,7 @@ function undoTailor() {
   tailorBackup = null;
   render(); save(); safeTargetPreview();
   $('untailorBtn').style.display = 'none';
-  $('tailorBtn').textContent = 'Apply safe target alignment';
+  btnLabel('tailorBtn', 'Apply Safe Target Alignment');
   $('tailorNote').insertAdjacentHTML('afterbegin','<b>Restored.</b> Your headline, skills and tools are back to their pre-alignment values.<br><br>');
 }
 
@@ -894,7 +932,10 @@ $('btnClear').addEventListener('click', function () {
   try { localStorage.removeItem(LS); } catch (e) {}
   FIELDS.forEach(function (f) { if ($(f)) $(f).value = ''; });
   jobsEl.innerHTML = ''; jdPicked = []; addJob(true);
-  $('jdPanel').style.display = 'none'; render(); go('s1');
+  tailorBackup = null; tpl = 'intl';
+  $('untailorBtn').style.display = 'none'; btnLabel('tailorBtn', 'Apply Safe Target Alignment');
+  $('jdPanel').style.display = 'none'; $('tailorPanel').style.display = 'none';
+  render(); go('s1');
 });
 $('btnSample').addEventListener('click', function () {
   $('fName').value = 'Chidi Okafor';
@@ -915,7 +956,7 @@ $('btnSample').addEventListener('click', function () {
   addJob(true, { title: 'Bank Teller', co: 'First Bank', dates: 'Aug 2020 \u2013 Dec 2022', loc: 'Ibadan, Nigeria',
     bul: 'Processed about 120 customer transactions a day at an error rate under 1%\nResolved account disputes at first contact, escalating fewer than 5% to a supervisor' });
   render(); save(); go('s2');
-  toast('Example loaded \u2014 a 10/10 document. Replace it with your own work.');
+  toast('Example loaded \u2014 9/10 until you paste a vacancy in step 3. Replace it with your own work.');
 });
 
 /* Auto-unlock last, once every function and variable above exists. */

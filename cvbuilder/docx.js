@@ -111,18 +111,24 @@ function zip(files) {
 function xesc(s) {
   return String(s == null ? '' : s)
     .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;').replace(/\u0000-\u0008|\u000B|\u000C|\u000E-\u001F/g, '');
+    .replace(/"/g, '&quot;').replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F]/g, '');   /* a CHARACTER CLASS: the old alternation matched the literal sequence, so control chars from pasted PDFs reached the XML and corrupted the file */
 }
 function half(pt) { return Math.round(pt * 2); }          /* Word sizes are half-points */
 function twips(pt) { return Math.round(pt * 20); }
 
 function para(o) {
   o = o || {};
+  /* Child order is fixed by the OOXML schema (CT_PPr): pStyle, keepNext,
+     numPr, pBdr, spacing, ind, jc. Word is entitled to reject a file that
+     breaks the sequence ("unreadable content"), even though LibreOffice
+     and most parsers forgive it. */
   var pPr = '<w:pPr>';
   if (o.style) pPr += '<w:pStyle w:val="' + o.style + '"/>';
-  pPr += '<w:spacing w:before="' + twips(o.before || 0) + '" w:after="' + twips(o.after == null ? 3 : o.after) + '" w:line="' + Math.round((o.line || 1.15) * 240) + '" w:lineRule="auto"/>';
-  if (o.bullet) pPr += '<w:numPr><w:ilvl w:val="0"/><w:numId w:val="1"/></w:numPr><w:ind w:left="360" w:hanging="180"/>';
+  if (o.keepNext) pPr += '<w:keepNext/>';
+  if (o.bullet) pPr += '<w:numPr><w:ilvl w:val="0"/><w:numId w:val="1"/></w:numPr>';
   if (o.rule) pPr += '<w:pBdr><w:bottom w:val="single" w:sz="6" w:space="2" w:color="808080"/></w:pBdr>';
+  pPr += '<w:spacing w:before="' + twips(o.before || 0) + '" w:after="' + twips(o.after == null ? 3 : o.after) + '" w:line="' + Math.round((o.line || 1.15) * 240) + '" w:lineRule="auto"/>';
+  if (o.bullet) pPr += '<w:ind w:left="360" w:hanging="180"/>';
   if (o.align) pPr += '<w:jc w:val="' + o.align + '"/>';
   pPr += '</w:pPr>';
 
@@ -132,8 +138,8 @@ function para(o) {
     if (r.b) rPr += '<w:b/>';
     if (r.i) rPr += '<w:i/>';
     if (r.caps) rPr += '<w:caps/>';
+    if (r.color) rPr += '<w:color w:val="' + r.color + '"/>';   /* CT_RPr: color precedes sz */
     rPr += '<w:sz w:val="' + half(r.pt || o.pt || 11) + '"/><w:szCs w:val="' + half(r.pt || o.pt || 11) + '"/>';
-    if (r.color) rPr += '<w:color w:val="' + r.color + '"/>';
     rPr += '</w:rPr>';
     return '<w:r>' + rPr + '<w:t xml:space="preserve">' + xesc(r.t) + '</w:t></w:r>';
   }).join('');
@@ -163,7 +169,7 @@ var NUMBERING_XML =
 '<w:abstractNum w:abstractNumId="0"><w:multiLevelType w:val="hybridMultilevel"/>' +
 '<w:lvl w:ilvl="0"><w:start w:val="1"/><w:numFmt w:val="bullet"/><w:lvlText w:val="\u2022"/>' +
 '<w:lvlJc w:val="left"/><w:pPr><w:ind w:left="360" w:hanging="180"/></w:pPr>' +
-'<w:rPr><w:rFonts w:ascii="Symbol" w:hAnsi="Symbol" w:hint="default"/></w:rPr></w:lvl>' +
+'<w:rPr><w:rFonts w:ascii="Calibri" w:hAnsi="Calibri" w:hint="default"/></w:rPr></w:lvl>' +
 '</w:abstractNum><w:num w:numId="1"><w:abstractNumId w:val="0"/></w:num></w:numbering>';
 
 /* ───────────────────── DOCUMENT ASSEMBLY ───────────────────── */
@@ -180,7 +186,7 @@ function buildBody(d, tpl) {
   }
 
   function heading(txt) {
-    body.push(para({ style: 'Heading1', pt: T.bodyPt + 0.5, before: T.gapPt, after: 3, rule: T.rule,
+    body.push(para({ style: 'Heading1', keepNext: true, pt: T.bodyPt + 0.5, before: T.gapPt, after: 3, rule: T.rule,
       runs: [{ t: txt, b: true, caps: true, pt: T.bodyPt + 0.5 }] }));
   }
 
@@ -190,10 +196,10 @@ function buildBody(d, tpl) {
     heading(H.exp);
     d.jobs.forEach(function (j, i) {
       var line = (j.title || 'Role') + (j.co ? ' \u2014 ' + j.co : '');
-      body.push(para({ style: 'Heading2', pt: T.bodyPt, before: i ? 5 : 1, after: 0,
+      body.push(para({ style: 'Heading2', keepNext: true, pt: T.bodyPt, before: i ? 5 : 1, after: 0,
         runs: [{ t: line, b: true, pt: T.bodyPt }] }));
       var meta = [j.dates, j.loc].filter(Boolean).join(' | ');
-      if (meta) body.push(para({ pt: T.bodyPt - 1.2, after: 2, runs: [{ t: meta, pt: T.bodyPt - 1.2, color: '444444' }] }));
+      if (meta) body.push(para({ pt: T.bodyPt - 1.2, after: 2, keepNext: true, runs: [{ t: meta, pt: T.bodyPt - 1.2, color: '444444' }] }));
       (j.bullets || []).forEach(function (b) {
         body.push(para({ pt: T.bodyPt, after: 1, bullet: true, style: 'ListParagraph', runs: [{ t: b, pt: T.bodyPt }] }));
       });
