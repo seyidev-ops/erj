@@ -8,12 +8,13 @@
         one popup for the whole basket, any number of items.
      2. Exactly one item in the basket            → straight to that
         product's own Paystack/Selar link.
-     3. Two or more items, no key                 → itemised WhatsApp
-        order to the Registrar, who sends one combined invoice.
+     3. Two or more items, no key                 → the "Cart Payment"
+        Paystack page (cfg.cartPage), with the basket total passed as
+        ?amount= in kobo. That page takes a customer-entered amount,
+        so the buyer confirms the total there.
 
-   Path 3 is the honest fallback: Paystack payment LINKS are one
-   product per link and cannot total a basket. Add the public key
-   and path 1 takes over with no other change.
+   Paystack payment LINKS are one product per link and cannot total a
+   basket. Add the public key and path 1 takes over with no other change.
    ═══════════════════════════════════════════════════════════════ */
 (function () {
   'use strict';
