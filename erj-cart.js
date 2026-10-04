@@ -44,6 +44,35 @@
     });
   }
 
+  /* ── live fields ───────────────────────────────────────────────
+     A card can change its own name and link after load (the Career
+     Development card writes the chosen track into both), so they are
+     re-read from the element whenever they are about to be used. A card
+     with data-p-needs="<selector>" cannot be added or paid for until
+     that control has a value. */
+  function refresh(p) {
+    p.name = p.el.getAttribute('data-p-name');
+    p.link = p.el.getAttribute('data-p-link');
+    return p;
+  }
+  function missing(p) {
+    var sel = p.el.getAttribute('data-p-needs');
+    if (!sel) return null;
+    var c = p.el.querySelector(sel);
+    return (c && !c.value) ? c : null;
+  }
+  function demand(p) {
+    var c = missing(p);
+    if (!c) return false;
+    toast(p.el.getAttribute('data-p-needs-msg') || 'Make a choice on this card first.');
+    var wrap = c.closest('label') || c;
+    wrap.classList.add('need');
+    c.focus();
+    close();
+    if (c.scrollIntoView) c.scrollIntoView({ block: 'center', behavior: 'smooth' });
+    return true;
+  }
+
   /* ── persistence (sessionStorage; falls back to memory) ──────── */
   function save() {
     try { sessionStorage.setItem(KEY, JSON.stringify(cart.map(function (i) { return i.id; }))); }
@@ -72,6 +101,8 @@
     var p = PRODUCTS[id];
     if (!p) return;
     if (cart.some(function (i) { return i.id === id; })) { open(); return; }
+    if (demand(p)) return;
+    refresh(p);
 
     var covering = coveredBy(p);
     if (covering) {
@@ -142,6 +173,7 @@
 
   function open() {
     if (!cart.length) return;
+    render();   /* re-read live card fields: a track changed after adding must show here */
     document.getElementById('cartPanel').hidden = false;
     document.getElementById('cartScrim').hidden = false;
     requestAnimationFrame(function () {
@@ -180,6 +212,7 @@
     });
 
     if (!cart.length) { close(); return; }
+    cart.forEach(refresh);
 
     body.innerHTML = cart.map(function (i) {
       return '<div class="cart-row">' +
@@ -212,6 +245,8 @@
   /* ── checkout ────────────────────────────────────────────────── */
   function checkout() {
     var key = cfg.paystackPublicKey;
+    cart.forEach(refresh);
+    for (var n = 0; n < cart.length; n++) { if (demand(cart[n])) return; }
 
     if (key && window.PaystackPop) {
       window.PaystackPop.setup({

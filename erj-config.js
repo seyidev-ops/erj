@@ -42,7 +42,11 @@
       channel: 'AUDIT\n\nI am on the ERJ free job channel and I have been applying for remote roles.\n\nTarget role:\nApplications in the last 30 days:\nInterviews in the last 30 days:\nCV/LinkedIn: I will attach or paste it here.\n\nPlease tell me which part of my search is leaking and what I should fix first.',
       diagnose: 'AUDIT\n\nMy diagnostic says: {joint} \u2014 {law}\n\nTarget role:\nApplications in the last 30 days:\nInterviews in the last 30 days:\nCV/LinkedIn: I will attach or paste it here.\n\nMy diagnostic answers: {answer}\n\nPlease tell me what I should fix first. If I do not need a paid ERJ service, please tell me that too.',
       blog: 'Hello ERJ \u2014 I have been reading the blog and I want to sort out my job hunt properly. Where do I start?',
-      capacity: 'Hello ERJ \u2014 I would like one of the placement engagements. Are there still places open this month?'
+      capacity: 'Hello ERJ \u2014 I would like one of the placement engagements. Are there still places open this month?',
+      /* Career Development \u2014 Self-Study (register.html#careerdev). {track} is the buyer's choice. */
+      careerdev: 'CAREER DEVELOPMENT \u2014 SELF-STUDY\n\nTrack: {track}\nFull name:\nEmail:\nTarget role:\n\nI am paying by transfer to Business Play Ltd and will send the receipt here. Please issue my access code for The Mentorine School once payment is verified.',
+      /* Foundation participants claiming the included access (dashboard.html). No payment is asked for. */
+      careerdevIncluded: 'MENTORINE ACCESS\n\nI am enrolled in Foundation Training and I am ready for my included career-development access at The Mentorine School.\n\nFull name:\nEmail:\nTarget role:\nAssessment done: yes / not yet'
     },
 
     /* ═══════════════════════════════════════════════════════════
@@ -135,6 +139,13 @@
           href:'selflearn/', pay:'https://selar.com/77v230274x' },
         { id:'dfy7',       name:'Done-For-You, 7 Days',                naira:50000,  unit:'one-time', part:'supply',
           href:'jobapplication/', pay:'https://paystack.shop/pay/dfy7days' },
+        /* Delivered by the partner school (see `partners.mentorine`). Paid to
+           ERJ; the Registrar verifies payment and issues the Mentorine code.
+           No Paystack link yet, so it is paid by transfer and confirmed on the
+           official line — the same route as CV Fix. */
+        { id:'careerdev',  name:'Career Development — Self-Study',  naira:50000,  unit:'one-time', part:'capacity',
+          href:'register.html#careerdev', pay:'https://wa.me/2348032925957', badge:'New',
+          partner:'mentorine', accessDays:90 },
         { id:'stage1',     name:'Stage 1 \u2014 Remote Mindset Blueprint',  naira:70000,  unit:'one-time', part:'capacity',
           href:'register.html#stage1', pay:'https://paystack.shop/pay/Stage1' },
         { id:'stage3',     name:'Stage 3 \u2014 Async Communication Mastery',naira:70000, unit:'one-time', part:'capacity',
@@ -152,6 +163,26 @@
         { id:'dreamjob',   name:'Get Your Dream Job Offer',            naira:500000, wasNaira:740000, unit:'one-time', part:'conversion',
           href:'jobapplication/', pay:'https://paystack.shop/pay/gydjo-stages1-5', badge:'Best value' }
       ],
+
+      /* Partners. Write the name and domain exactly as below, everywhere.
+         `includedWith` is the list of ERJ products whose buyers receive the
+         benefit automatically, with no second payment: Foundation Training,
+         and Get Your Dream Job Offer because it contains Foundation Training.
+         Single stages and the Self-Learn Pack do NOT include it. The days are
+         counted from the day the participant activates, not the day they pay;
+         the activation deadline is stated in the welcome email. */
+      partners: {
+        mentorine: {
+          name: 'The Mentorine School',
+          domain: 'thementorineschool.com',
+          url: 'https://thementorineschool.com/',
+          login: 'https://thementorineschool.com/login.html',
+          benefitDays: 90,
+          clockStarts: 'activation',
+          includedWith: ['foundation', 'dreamjob'],
+          scope: 'One self-study career track: its roadmap, available courses and practical exercises.'
+        }
+      },
 
       /* Published credits. A credit is never called a discount, and a
          credit that is not listed here does not exist \u2014 which is the

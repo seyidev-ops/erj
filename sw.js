@@ -2,7 +2,7 @@
    EVERYTHING REMOTE JOB — SERVICE WORKER
    Cache-first for app shell, network-first for fonts
 ═══════════════════════════════════════════════════════ */
-const CACHE = 'erj-site-20260929a';
+const CACHE = 'erj-site-20261004a';
 const OFFLINE = '/offline.html';
 
 /* SHELL is what a first-time visitor pays for before anything renders. It had
@@ -24,7 +24,7 @@ const SHELL = [
   '/capacityscan/cap.css?v=20260928c',
   '/capacityscan/bank.js?v=20260922a',
   '/capacityscan/report-pdf.js?v=20260928c',
-  '/capacityscan/cap.js?v=20260928c',
+  '/capacityscan/cap.js?v=20261004a',
   '/blog/index.html',
   '/free.html',
   '/starthere.html',
@@ -39,7 +39,7 @@ const SHELL = [
   '/diagnose/report-pdf.js?v=20260911a',
   '/diagnose/index.html',
   '/erj-capture.js?v=20260911a',
-  '/erj-config.js?v=20260928a',
+  '/erj-config.js?v=20261004a',
   '/product.css?v=20260924a',
   '/manifest.json',
   '/erj-mark-dark-128.png',
@@ -51,7 +51,7 @@ const SHELL = [
   '/fonts/inter-300.woff2',
   '/fonts/inter-400.woff2',
   '/fonts/inter-500.woff2',
-  '/erj-cart.js?v=20260929a',
+  '/erj-cart.js?v=20261004a',
   '/shop/book.webp',
   '/shop/cvpass.webp',
   '/shop/dfy7.webp',
@@ -60,6 +60,7 @@ const SHELL = [
   '/shop/inner.webp',
   '/shop/placement.webp',
   '/shop/selflearn-foundation.webp',
+  '/shop/careerdev.webp',
   '/shop/stage1.webp',
   '/shop/stage2.webp',
   '/shop/stage3.webp',

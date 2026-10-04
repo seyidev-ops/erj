@@ -71,11 +71,11 @@ The Cohort 12 instalment window runs from 5 October to Saturday 24 October 2026,
 
 Any page still advertising an open instalment window after that date is stale and must be corrected.
 
-> **Note for future cohorts:** the ₦50,000 reservation mechanic used by the previous cohort has been retired. ₦50,000 on the current store is the Done-For-You 7-day service — a different product entirely. Do not reintroduce reservation copy at that figure.
+> **Note for future cohorts:** the ₦50,000 reservation mechanic used by the previous cohort has been retired. ₦50,000 on the current store is the price of two unrelated products, the Done-For-You 7-day service and Career Development — Self-Study. Do not reintroduce reservation copy at that figure.
 
-## The store — fourteen doors
+## The store — fifteen doors
 
-`register.html` presents the full catalogue with a basket, in three groups: **DIY — Do It Yourself** (the books, The CV Engine, the Self-Learn Pack), **DWY — Done With You** (the live Foundation Training courses, Stages 1–4 individually or all four together, and the Inner Circle 1:1) and **DFY — Done For You** (CV Fix, Done-For-You 7 Days, the Placement Engine and Get Your Dream Job Offer). A buyer can add several items or buy any one outright. Every price is a one-time payment unless the product states otherwise.
+`register.html` presents the full catalogue with a basket, in three groups: **DIY — Do It Yourself** (the books, The CV Engine, the Self-Learn Pack, Career Development — Self-Study), **DWY — Done With You** (the live Foundation Training courses, Stages 1–4 individually or all four together, and the Inner Circle 1:1) and **DFY — Done For You** (CV Fix, Done-For-You 7 Days, the Placement Engine and Get Your Dream Job Offer). A buyer can add several items or buy any one outright. Every price is a one-time payment unless the product states otherwise.
 
 | Door | Price | Part addressed |
 |------|-------|----------------|
@@ -85,6 +85,7 @@ Any page still advertising an open instalment window after that date is stale an
 | CV Fix — one CV, one field | ₦30,000 | Representation — the same work, done for you once |
 | The Self-Learn Pack — Stages 1–4 | ₦35,000 | Capacity and Representation |
 | Done-For-You, 7 Days | ₦50,000 | Supply and Aim |
+| Career Development — Self-Study | ₦50,000 | Capacity — one self-study career track at The Mentorine School, 90 days from activation |
 | Stage 1 — Remote Mindset Blueprint | ₦70,000 | Capacity |
 | Stage 3 — Async Communication Mastery | ₦70,000 | Capacity |
 | Stage 4 — Start Your Remote Career | ₦100,000 | Representation and Aim |
@@ -106,6 +107,27 @@ The full **₦35,000** paid for the Self-Learn Pack is credited against Remote J
 - Always described as a **credit**, never as a discount
 
 This is published on the Self-Learn card, the Self-Learn product page and the comparison page. It is not a concession offered privately during a negotiation.
+
+## Partnership — The Mentorine School
+
+Write the partner exactly as **The Mentorine School — thementorineschool.com**. The details live in `erj-config.js` under `canon.partners.mentorine`.
+
+There are two routes:
+
+| Route | Payment | Delivery |
+|---|---|---|
+| Remote Job Foundation Training, Stages 1–4 | The Foundation fee; the benefit is included | ERJ training plus 90-day access to one self-study career track |
+| Career Development — Self-Study | ₦50,000, separately | The track the buyer chooses, through the learning portal at The Mentorine School |
+
+- **Who gets the included benefit:** everyone who pays for Foundation Training, and Get Your Dream Job Offer buyers because that bundle contains Foundation Training. Single stages and the Self-Learn Pack do not include it.
+- **The assessment decides the use, not the eligibility.** A capacity gap gets assigned learning and practical work; sufficient capacity means ERJ prioritises the other gaps and the access stays available.
+- **Scope:** one self-study track with its roadmap, available courses and practical exercises. Live mentoring and certificates are not promised; list them only if that is decided.
+- **Clock:** 90 days from activation. The welcome email states the activation deadline; the portal shows the real expiry date.
+- **Flow:** product chosen → registration details (name, email, target role, track where applicable) → payment → Registrar verifies → unique access code tied to the person, track and duration → activation email (portal link, code, first task) → participant activates. Foundation participants are never asked for a second payment; ERJ assigns their track after assessment.
+- **Ownership:** ERJ owns Foundation enrolment, the assessment and next steps. The Mentorine School owns track access and materials. Both keep one shared record of payment verification, assigned track, code issue, activation and expiry.
+- **Distinct from the Self-Learn Pack:** Career Development builds the skills of the role; Self-Learn teaches ERJ's remote-job process.
+- **Where it appears:** the Foundation Training page (`#careerdev`, beside pricing, with its FAQ), the store card (`register.html#careerdev`, with the track picker; the card's choice travels into the basket and the WhatsApp confirmation), "How payment works", the participant dashboard, the home FAQ, the comparison page, and the Capacity Audit's below-threshold result where a matching track exists.
+- **Open:** Career Development has no Paystack link yet, so it is paid by transfer and confirmed on the official line. Add a Paystack link to canon when one exists.
 
 ## Commercial rules the site must keep true
 
@@ -134,7 +156,7 @@ The site is a static HTML/CSS/JavaScript website hosted on **GitHub Pages** with
 
 - `/` — main website
 - `/starthere.html` — first-contact routing gateway, the default cold-traffic destination
-- `/register.html` — the store: fourteen doors, basket, enrolment
+- `/register.html` — the store: fifteen doors, basket, enrolment
 - `/free.html` — the free layer in one place
 - `/diagnose/` — the five-part Job Search Diagnostic and branded PDF result
 - `/capacityscan/` — the Capacity Audit: fourteen role families, ten questions, scored out of ten, runs entirely in the browser. **The gate for the other four fingers.**

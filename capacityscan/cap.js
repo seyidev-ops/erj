@@ -378,6 +378,18 @@
     }
     box.appendChild(acts);
     box.appendChild(el('p', 'csc-note', esc(nextLine)));
+    /* A paid route to build the skill, offered only below the threshold and
+       only where The Mentorine School actually has a matching track. The free
+       route stays first. '' = several tracks fit, so nothing is preselected. */
+    var CD_TRACK = { admin:'Virtual Assistant', support:'Customer Support Specialist', marketing:'Digital Marketer',
+      writing:'Copywriter', data:'Data Analyst', dev:'', pm:'Project Manager', design:'', product:'Product Manager' };
+    if (!b.pass && r.fam && CD_TRACK.hasOwnProperty(r.fam.id)) {
+      var t = CD_TRACK[r.fam.id];
+      box.appendChild(el('p', 'csc-note',
+        'Want a structured way to build it? <a href="../register.html' + (t ? '?track=' + encodeURIComponent(t) : '') +
+        '#careerdev">Career Development — Self-Study</a> gives you ' + (t ? 'the ' + esc(t) + ' track' : 'a career track of your choice') +
+        ' at The Mentorine School for 90 days: a roadmap, courses and practical exercises. It is paid; the free route above is not.'));
+    }
 
     var nav = el('div', 'csc-nav');
     var redo = el('button', 'csc-back', 'Retake for the same role');

@@ -498,6 +498,21 @@ a.ml-status.open:hover { background: var(--electric); color:#fff; }
 .toast.info    { border-left: 3px solid var(--electric); }
 .toast.unlock  { border-left: 3px solid var(--amber); }
 
+/* Career development, included — The Mentorine School */
+.cd-panel{border:1px solid var(--border);border-left:3px solid var(--accent);background:var(--card);border-radius:16px;
+  padding:1.4rem 1.6rem;margin-bottom:2rem;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:1.2rem;align-items:center;}
+.cd-k{font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:.35rem;}
+.cd-h{font-family:var(--font-d);font-size:1.12rem;font-weight:800;color:var(--ink);margin-bottom:.4rem;}
+.cd-p{font-size:.84rem;color:var(--ink-soft);line-height:1.6;margin:0;}
+.cd-p b{color:var(--ink);font-weight:600;}
+.cd-steps{margin:.6rem 0 0;padding-left:1.1rem;font-size:.8rem;color:var(--ink-soft);line-height:1.6;}
+.cd-acts{display:flex;flex-direction:column;gap:.5rem;min-width:220px;}
+.cd-btn{display:block;text-align:center;padding:.65rem 1rem;border-radius:10px;font-size:.82rem;font-weight:700;text-decoration:none;
+  background:var(--accent2,#FF5722);color:#fff;border:1px solid var(--accent2,#FF5722);}
+.cd-btn.ghost{background:transparent;color:var(--ink);border-color:var(--border);}
+.cd-btn:hover{opacity:.9;}
+@media(max-width:760px){.cd-panel{grid-template-columns:1fr;padding:1.1rem;}.cd-acts{min-width:0;}}
+
 /* Pending access banner */
 .pending-banner {
   background: rgba(245,158,11,0.07);
@@ -1074,6 +1089,23 @@ function cohortLabelFor(session, rec){
 
 </div>
 </div>
+<!-- CAREER DEVELOPMENT, INCLUDED (The Mentorine School) -->
+<section class="cd-panel" id="cdPanel" aria-label="Career development included with Foundation Training">
+<div>
+<div class="cd-k">Included with Foundation Training</div>
+<div class="cd-h">90 days of career development at The Mentorine School</div>
+<p class="cd-p">Foundation Training participants receive one self-study career track at no additional cost: its roadmap, courses and practical exercises. <b>You do not pay again to claim it.</b></p>
+<ol class="cd-steps">
+<li>Complete your assessment. We assign your track from it.</li>
+<li>Watch for your activation email: portal link, access code and first task.</li>
+<li>Activate before the deadline in that email. Your 90 days start then, and the portal shows your expiry date.</li>
+</ol>
+</div>
+<div class="cd-acts">
+<a class="cd-btn" id="cdAsk" href="https://wa.me/2348032925957" rel="noopener" target="_blank">Ask about my track</a>
+<a class="cd-btn ghost" href="https://thementorineschool.com/login.html" rel="noopener" target="_blank">Open The Mentorine School</a>
+</div>
+</section>
 <!-- PENDING ACCESS BANNER (shown when no stages are unlocked beyond stage1) -->
 <div class="pending-banner" id="pendingBanner">
 <div class="pb-icon">🔐</div>
@@ -2511,6 +2543,15 @@ window.addEventListener('offline', () => { document.body.classList.add('offline'
 </script>
 <!-- ===== /Unified Theme Control ===== -->
 <script defer="" src="erj-passcode.js?v=20260928a"></script>
+<script defer="" src="erj-config.js?v=20261004a"></script>
+<script>
+/* The claim message lives in ERJ_CONFIG.messages.careerdevIncluded. */
+document.addEventListener('DOMContentLoaded', function () {
+  var a = document.getElementById('cdAsk'), c = window.ERJ_CONFIG;
+  if (a && c && c.messages && c.messages.careerdevIncluded)
+    a.href = 'https://wa.me/' + c.whatsapp + '?text=' + encodeURIComponent(c.messages.careerdevIncluded);
+});
+</script>
 <script src="erj-private-protection.js?v=20260911a"></script>
 </body>
 </html>

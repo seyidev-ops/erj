@@ -98,6 +98,37 @@
   .parity span{font-size:0.85rem;color:var(--ink-soft);font-weight:300;}
   .parity em{color:var(--accent);font-style:normal;font-weight:600;}
   @media (max-width:900px){.track-grid{grid-template-columns:1fr;}}
+
+  /* ── career development, included (The Mentorine School) ──
+     The benefit sits beside the enrolment decision, not in the deliverables
+     grid: the 16 deliverables are ERJ's own work and stay verbatim. */
+  .cdv-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.3rem;align-items:stretch;}
+  .cdv-card{background:var(--card);border:1px solid var(--card-line);border-radius:18px;padding:2rem 1.8rem;display:flex;flex-direction:column;gap:1.1rem;}
+  .cdv-card.feature{border-color:var(--accent);}
+  .cdv-k{font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);font-weight:600;}
+  .cdv-card h3{font-size:1.3rem;line-height:1.2;margin:0;}
+  .cdv-row{border-top:1px solid var(--card-line);padding-top:1rem;}
+  .cdv-row b{display:block;font-family:var(--font-display);font-size:0.98rem;color:var(--ink);margin-bottom:0.3rem;}
+  .cdv-row p{font-size:0.92rem;color:var(--ink-soft);font-weight:300;line-height:1.6;margin:0;}
+  .cdv-steps{list-style:none;counter-reset:cdv;display:flex;flex-direction:column;gap:0.7rem;margin:0;padding:0;}
+  .cdv-steps li{counter-increment:cdv;display:grid;grid-template-columns:1.9rem 1fr;gap:0.6rem;font-size:0.92rem;color:var(--ink-soft);line-height:1.55;}
+  .cdv-steps li::before{content:counter(cdv);width:1.6rem;height:1.6rem;border-radius:50%;border:1px solid var(--accent);color:var(--accent);
+    font-size:0.75rem;font-weight:600;display:flex;align-items:center;justify-content:center;margin-top:0.05rem;}
+  .cdv-steps li b{color:var(--ink);font-weight:600;}
+  .cdv-faq{margin-top:2rem;border-top:1px solid var(--line);}
+  .cdv-faq details{border-bottom:1px solid var(--line);}
+  .cdv-faq summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:1fr auto;gap:1rem;align-items:center;
+    padding:1.15rem 0;font-family:var(--font-display);font-weight:700;font-size:1.02rem;color:var(--ink);}
+  .cdv-faq summary::-webkit-details-marker{display:none;}
+  .cdv-faq summary::after{content:'+';font-size:1.35rem;font-weight:400;color:var(--accent);transition:transform .3s var(--ease);}
+  .cdv-faq details[open] summary::after{transform:rotate(45deg);}
+  .cdv-faq summary:hover{color:var(--accent);}
+  .cdv-faq .a{padding:0 0 1.25rem;font-size:0.94rem;color:var(--ink-soft);font-weight:300;line-height:1.7;max-width:66ch;margin:0;}
+  .cdv-faq .a a{color:var(--accent);text-decoration:none;font-weight:500;}
+  .cdv-faq .a strong{color:var(--ink);font-weight:600;}
+  .cdv-partner{margin-top:1.4rem;font-size:0.82rem;color:var(--ink-faint);}
+  .cdv-partner a{color:var(--accent);text-decoration:none;}
+  @media (max-width:860px){.cdv-grid{grid-template-columns:1fr;}}
 </style>
 <link href="https://everythingremotejob.com/foundationtraining/" rel="canonical"/>
 <meta content="en_NG" property="og:locale"/>
@@ -128,6 +159,7 @@
   {label:'The 4 stages',href:'#stages'},
   {label:'Choose your class',href:'#tracks'},
   {label:'Local vs global',href:'#roi'},
+  {label:'Career development, included',href:'#careerdev'},
   {label:'Pricing',href:'#pricing'}
 ]};</script>
 <main>
@@ -359,6 +391,46 @@
 </div>
 <p class="note reveal">Pick the track you can genuinely keep for the whole programme — attendance, not ambition, is what separates the people who finish. Not sure which fits? <a href="../diagnose/">Run the free diagnosis first →</a></p>
 </section>
+<!-- CAREER DEVELOPMENT, INCLUDED -->
+<section class="section-line wrap" id="careerdev">
+<p class="section-label"><span class="mark"></span> Included at no additional cost</p>
+<h2>Your Foundation Training includes <span>career development.</span></h2>
+<p class="section-sub">Enrol in Remote Job Foundation Training, Stages 1–4, and receive 90-day access to a selected self-study career track at The Mentorine School at no additional cost. Your assessment helps us identify the skills and practical work relevant to your target role.</p>
+<div class="cdv-grid">
+<div class="cdv-card reveal">
+<span class="cdv-k">Everyone receives it</span>
+<h3>Your assessment decides how you use it.</h3>
+<div class="cdv-row"><b>If Capacity is your gap</b><p>We assign the learning and practical work in your track that closes it, alongside the live stages.</p></div>
+<div class="cdv-row"><b>If your Capacity is already there</b><p>We put your time on the other gaps your assessment found. Your access at The Mentorine School stays open for further development.</p></div>
+</div>
+<div class="cdv-card feature reveal">
+<span class="cdv-k">What you receive</span>
+<ul class="flist">
+<li>One self-study career track at The Mentorine School, matched to your target role</li>
+<li>The track&rsquo;s roadmap, available courses and practical exercises</li>
+<li>90 days of access, counted from the day you activate, not the day you pay</li>
+<li>No second payment. You are never asked to pay to claim it</li>
+</ul>
+<span class="cdv-k">How it reaches you</span>
+<ol class="cdv-steps">
+<li><span><b>Enrol and pay</b> for Foundation Training, then send your receipt.</span></li>
+<li><span><b>Complete your assessment.</b> We assign your track from it.</span></li>
+<li><span><b>Receive your activation email</b> with the portal link, your access code and your first task.</span></li>
+<li><span><b>Activate.</b> Your 90 days start then, and the portal shows your expiry date.</span></li>
+</ol>
+</div>
+</div>
+<div class="cdv-faq reveal">
+<details><summary>Who receives the career-development access?</summary><p class="a">Everyone who registers and completes payment for <strong>Remote Job Foundation Training, Stages 1–4</strong>. That includes Get Your Dream Job Offer, which contains Foundation Training. Single stages bought one at a time and the Self-Learn Pack do not include it.</p></details>
+<details><summary>How long does it last, and when does it start?</summary><p class="a"><strong>90 days, from the day you activate.</strong> Your welcome email gives the date by which you need to activate, and the portal shows your actual expiry date once you do.</p></details>
+<details><summary>What exactly is included?</summary><p class="a">One self-study career track at The Mentorine School: its roadmap, the courses available in it and its practical exercises. You study it at your own pace inside their learning portal.</p></details>
+<details><summary>Do I choose the track myself?</summary><p class="a">We assign it after your assessment, matched to the role you are targeting. Tell us that role when you enrol. If your assessment shows your capacity is already sufficient, we focus on your other gaps first and the access remains available to you.</p></details>
+<details><summary>How do I activate it?</summary><p class="a">You do not register or pay anything at The Mentorine School. We send your access code in an activation email after your assessment. Open the portal link in that email, enter the code and start the first task.</p></details>
+<details><summary>Is this the same as the Self-Learn Pack?</summary><p class="a">No. The Self-Learn Pack teaches ERJ&rsquo;s remote-job process: the same four stages, worked alone. Career development builds the skills of the role itself, such as data analysis, design or customer support.</p></details>
+<details><summary>I am not enrolling in Foundation Training. Can I still get a track?</summary><p class="a">Yes. <strong>Career Development — Self-Study</strong> is sold separately at ₦50,000: you choose your track, pay, and receive your access code for 90 days. <a href="../register.html#careerdev">Choose your career track →</a></p></details>
+</div>
+<p class="cdv-partner reveal">Delivered in partnership with The Mentorine School · <a href="https://thementorineschool.com/" rel="noopener" target="_blank">thementorineschool.com</a></p>
+</section>
 <section class="section-line wrap" id="pricing">
 <p class="section-label">Investment</p>
 <h2>Choose how you <span>commit.</span></h2>
@@ -374,6 +446,7 @@
 <li>Lifetime cohort resources &amp; templates</li>
 <li>AI Fluency — prompt craft, AI-assisted output and the AI tools global teams now expect</li>
 <li>Full LMS portal access + priority support</li>
+<li>90-day career-development access at The Mentorine School, included. <a href="#careerdev" style="color:var(--accent);text-decoration:none;">How it works</a></li>
 </ul>
 <a class="btn-block btn-primary-ui btn-yes" href="../register.html#foundation"><span>Enroll All 4 Stages</span><span class="arrow-wrap"><span class="arrow">→</span></span></a>
 </div>
@@ -385,6 +458,7 @@
 <li>Lower upfront commitment, same teaching and same cohort</li>
 <li>AI Fluency is built into every stage</li>
 <li>Total if you take all four this way: ₦370,000</li>
+<li>Career-development access at The Mentorine School comes with the full programme, not with single stages</li>
 </ul>
 <a class="btn-block btn-more btn-secondary-ui" href="../register.html#stage1"><span>Start with Stage 1 — ₦70,000</span><span class="arrow-wrap"><span class="arrow">→</span></span></a>
 </div>
@@ -399,7 +473,7 @@
 <a class="btn-more btn-secondary-ui" href="../register.html#stage1"><span>See Single Stages</span><span class="arrow-wrap"><span class="arrow">→</span></span></a>
 </div>
 </div>
-<p class="note reveal">After payment, send your receipt on WhatsApp to confirm enrolment — your LMS login arrives within 24 hours. Not sure this is the right door? <a href="../diagnose/">Run the free diagnosis</a> or message <strong>AUDIT</strong> before you pay. Prefer a single stage or bank transfer? <a href="../register.html">See all options →</a></p>
+<p class="note reveal">After payment, send your receipt on WhatsApp to confirm enrolment — your LMS login arrives within 24 hours. Your activation email from The Mentorine School follows your assessment. Not sure this is the right door? <a href="../diagnose/">Run the free diagnosis</a> or message <strong>AUDIT</strong> before you pay. Prefer a single stage or bank transfer? <a href="../register.html">See all options →</a></p>
 </section>
 </main>
 <div aria-hidden="true" class="sticky-cta" id="stickyCta" inert="">
@@ -416,7 +490,7 @@
 <script src="../erj-theme.js?v=20260911a"></script>
 <script src="../erj-product.js?v=20260924c"></script>
 <script src="../erj-nav.js?v=20260925a"></script>
-<script src="../erj-config.js?v=20260928a"></script>
+<script src="../erj-config.js?v=20261004a"></script>
 <script src="../erj-capture.js?v=20260911a"></script>
 <script>if("serviceWorker" in navigator){window.addEventListener("load",function(){var go=function(){navigator.serviceWorker.register("/sw.js").then(function(reg){reg.update();}).catch(function(){});};if("requestIdleCallback" in window){requestIdleCallback(go,{timeout:3000});}else{setTimeout(go,1200);}});}</script>
 <script>
