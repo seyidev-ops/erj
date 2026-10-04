@@ -119,6 +119,50 @@
 }
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://everythingremotejob.com/"},{"@type":"ListItem","position":2,"name":"Your Starting Line","item":"https://everythingremotejob.com/starthere.html"},{"@type":"ListItem","position":3,"name":"From Intent to Offer","item":"https://everythingremotejob.com/fromintenttooffer/"}]}</script>
+<style id="bookFaq">
+/* ── "The questions people actually ask" ──
+   Each question is a card: numbered, spaced, with a plus that turns to a minus
+   and an answer that eases open. The answer is never hidden by CSS waiting
+   for a script — <details> does the opening, motion only moves it. */
+.fq{counter-reset:fq;display:flex;flex-direction:column;gap:.9rem;margin-top:1.8rem;max-width:860px;}
+.fq-row{counter-increment:fq;border:1px solid var(--card-line,var(--line));border-radius:18px;background:var(--card);
+  transition:border-color .3s var(--ease),box-shadow .3s var(--ease),transform .3s var(--ease);}
+.fq-row:hover{border-color:rgba(255,87,34,.5);transform:translateY(-2px);}
+.fq-row[open]{border-color:var(--accent);box-shadow:0 20px 50px rgba(255,87,34,.16);
+  background:radial-gradient(120% 140% at 0% 0%,rgba(255,87,34,.10),transparent 55%),var(--card);}
+.fq-row summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:1rem;align-items:center;
+  padding:1.2rem 1.35rem;}
+.fq-row summary::-webkit-details-marker{display:none;}
+.fq-row summary::marker{content:'';}
+.fq-row summary::before{content:counter(fq,decimal-leading-zero);font-family:var(--font-display);font-weight:800;font-size:.85rem;
+  color:var(--accent);width:2.3rem;height:2.3rem;border-radius:50%;border:1px solid rgba(255,87,34,.45);display:flex;align-items:center;justify-content:center;}
+.fq-row[open] summary::before{background:var(--accent);color:#fff;border-color:var(--accent);}
+.fq-q{font-family:var(--font-display);font-weight:700;font-size:clamp(1rem,1.6vw,1.12rem);line-height:1.4;color:var(--ink);}
+.fq-row:hover .fq-q{color:var(--accent);}
+.fq-ico{position:relative;width:2rem;height:2rem;border-radius:50%;background:rgba(255,87,34,.12);flex-shrink:0;transition:background .3s,transform .4s var(--ease);}
+.fq-ico::before,.fq-ico::after{content:'';position:absolute;left:50%;top:50%;width:12px;height:2px;border-radius:2px;background:var(--accent);transform:translate(-50%,-50%);transition:transform .35s var(--ease);}
+.fq-ico::after{transform:translate(-50%,-50%) rotate(90deg);}
+.fq-row[open] .fq-ico{background:var(--accent);transform:rotate(180deg);}
+.fq-row[open] .fq-ico::before,.fq-row[open] .fq-ico::after{background:#fff;}
+.fq-row[open] .fq-ico::after{transform:translate(-50%,-50%) rotate(0deg);}
+.fq-a{padding:0 1.35rem 1.4rem calc(1.35rem + 2.3rem + 1rem);display:flex;flex-direction:column;gap:.75rem;}
+.fq-a p{margin:0;font-size:.97rem;line-height:1.75;color:var(--ink-soft);font-weight:300;max-width:64ch;}
+.fq-a p b{color:var(--ink);font-weight:600;}
+.fq-a a{color:var(--accent);font-weight:600;text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1.5px;}
+@media (prefers-reduced-motion:no-preference){.fq-row[open] .fq-a{animation:fqIn .45s var(--ease);}}
+@keyframes fqIn{from{transform:translateY(-8px);}to{transform:none;}}
+.fq-ask{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:.8rem 1.4rem;margin-top:1.3rem;max-width:860px;
+  padding:1.1rem 1.35rem;border-radius:18px;text-decoration:none;color:var(--ink-soft);font-size:.92rem;
+  border:1px dashed rgba(13,140,79,.55);background:rgba(13,140,79,.07);transition:border-color .3s,transform .3s var(--ease);}
+.fq-ask b{color:var(--ink);font-weight:600;}
+.fq-ask:hover{border-style:solid;transform:translateY(-2px);}
+.fq-ask-go{font-weight:700;font-size:.85rem;color:#fff;background:#0D8C4F;border-radius:999px;padding:.55rem 1rem;white-space:nowrap;}
+@media (max-width:600px){
+  .fq-row summary{grid-template-columns:auto minmax(0,1fr) auto;gap:.7rem;padding:1rem;}
+  .fq-row summary::before{width:1.9rem;height:1.9rem;font-size:.75rem;}
+  .fq-a{padding:0 1rem 1.2rem 1rem;}
+}
+</style>
 <link href="../erj-alive.css?v=20261004a" rel="stylesheet"/>
 </head>
 <body>
@@ -254,12 +298,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <p class="section-label reveal"><span class="mark"></span>The questions people actually ask</p>
     <h2 class="reveal">Answered the way we would answer them <span>on WhatsApp.</span></h2>
     <div class="fq reveal">
-      <details class="fq-row"><summary><span class="fq-q">&ldquo;Is this the same as the Self-Learn Pack?&rdquo;</span><span class="fq-chev" aria-hidden="true">⌄</span></summary><div class="fq-a"><p>No. The book is the method, written to be read and executed on your own — one payment of ₦15,000, and it is yours.</p><p>The <a href="../selflearn/">Self-Learn Pack</a> at ₦35,000 is the training itself: twenty sessions, the workbooks, the rubrics and four finished deliverables. The book explains what to do and why; the pack walks you through building the assets.</p></div></details>
-      <details class="fq-row"><summary><span class="fq-q">&ldquo;Will this book get me a remote job?&rdquo;</span><span class="fq-chev" aria-hidden="true">⌄</span></summary><div class="fq-a"><p>No book can promise that, and this one says so on its copyright page. It gives you the method 446 professionals were trained on and over 382 were placed with. Whether it produces a result depends on your skill, your market and the work you actually do.</p><p>What it will do is stop you repairing the wrong thing for another six months.</p></div></details>
-      <details class="fq-row"><summary><span class="fq-q">&ldquo;I have already bought the Google Search ebook. Is this different?&rdquo;</span><span class="fq-chev" aria-hidden="true">⌄</span></summary><div class="fq-a"><p>Yes. <a href="../register.html#book">Google Search: Best Kept Open Secret</a> (₦5,000) is one skill — finding roles nobody else can see. That is the Supply part of the model, and Chapter 10 here covers it more briefly.</p><p>This book is the whole chain: intent, evidence, diagnosis, the repair for all five parts, the interview, the money and the first ninety days.</p></div></details>
-      <details class="fq-row"><summary><span class="fq-q">&ldquo;Are the prices in the book still correct?&rdquo;</span><span class="fq-chev" aria-hidden="true">⌄</span></summary><div class="fq-a"><p>They were correct at printing, September 2026. Where the book and this website disagree, <b>the website is correct</b> — that is stated inside the book too. <a href="../register.html">The store</a> always carries the live prices.</p></div></details>
-      <details class="fq-row"><summary><span class="fq-q">&ldquo;How do I get it after I pay?&rdquo;</span><span class="fq-chev" aria-hidden="true">⌄</span></summary><div class="fq-a"><p>Selar delivers the download immediately after payment and emails you a copy of the link. Nothing is shipped and nothing renews. If anything fails, message the official line and we will send it to you directly.</p></div></details>
+      <details class="fq-row" open><summary><span class="fq-q">&ldquo;Is this the same as the Self-Learn Pack?&rdquo;</span><span class="fq-ico" aria-hidden="true"></span></summary><div class="fq-a"><p>No. The book is the method, written to be read and executed on your own — one payment of ₦15,000, and it is yours.</p><p>The <a href="../selflearn/">Self-Learn Pack</a> at ₦35,000 is the training itself: twenty sessions, the workbooks, the rubrics and four finished deliverables. The book explains what to do and why; the pack walks you through building the assets.</p></div></details>
+      <details class="fq-row"><summary><span class="fq-q">&ldquo;Will this book get me a remote job?&rdquo;</span><span class="fq-ico" aria-hidden="true"></span></summary><div class="fq-a"><p>No book can promise that, and this one says so on its copyright page. It gives you the method 446 professionals were trained on and over 382 were placed with. Whether it produces a result depends on your skill, your market and the work you actually do.</p><p>What it will do is stop you repairing the wrong thing for another six months.</p></div></details>
+      <details class="fq-row"><summary><span class="fq-q">&ldquo;I have already bought the Google Search ebook. Is this different?&rdquo;</span><span class="fq-ico" aria-hidden="true"></span></summary><div class="fq-a"><p>Yes. <a href="../register.html#book">Google Search: Best Kept Open Secret</a> (₦5,000) is one skill — finding roles nobody else can see. That is the Supply part of the model, and Chapter 10 here covers it more briefly.</p><p>This book is the whole chain: intent, evidence, diagnosis, the repair for all five parts, the interview, the money and the first ninety days.</p></div></details>
+      <details class="fq-row"><summary><span class="fq-q">&ldquo;Are the prices in the book still correct?&rdquo;</span><span class="fq-ico" aria-hidden="true"></span></summary><div class="fq-a"><p>They were correct at printing, September 2026. Where the book and this website disagree, <b>the website is correct</b> — that is stated inside the book too. <a href="../register.html">The store</a> always carries the live prices.</p></div></details>
+      <details class="fq-row"><summary><span class="fq-q">&ldquo;How do I get it after I pay?&rdquo;</span><span class="fq-ico" aria-hidden="true"></span></summary><div class="fq-a"><p>Selar delivers the download immediately after payment and emails you a copy of the link. Nothing is shipped and nothing renews. If anything fails, message the official line and we will send it to you directly.</p></div></details>
     </div>
+    <a class="fq-ask reveal" href="https://wa.me/2348032925957?text=I%20have%20a%20question%20about%20the%20book%20From%20Intent%20to%20Offer%3A%20" rel="noopener" target="_blank"><span><b>Still have a question?</b> Ask it on WhatsApp and get the same straight answer.</span><span class="fq-ask-go">Ask on WhatsApp →</span></a>
   </section>
 
   <!-- BUY -->

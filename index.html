@@ -1345,6 +1345,21 @@ html[data-theme="day"] .timer-num{background-image:linear-gradient(160deg,#0A0A0
   .ha-offer{padding:1rem 1.05rem;}
   .ha-track span{font-size:.8rem;padding:0 1.2rem;}
 }
+
+/* ── Free shelf: heading full width, then the four free doors (2×2) beside
+   one photo that matches their height exactly. Replaces the old intro row,
+   which left a tall portrait floating beside two lines of text. ── */
+#free .fg-grid{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);gap:clamp(1.2rem,3vw,2.4rem);align-items:stretch;margin-top:.6rem;}
+#free .fg-main{display:flex;flex-direction:column;gap:1.2rem;}
+#free .free-lead{margin:0;max-width:56ch;font-size:1rem;}
+#free .fg-main .shelf{grid-template-columns:repeat(2,minmax(0,1fr));flex:1;}
+#free .fg-photo{position:relative;margin:0;max-width:none;height:100%;min-height:420px;}
+#free .fg-photo img{width:100%;height:100%;object-fit:cover;object-position:50% 22%;}
+#free .fg-badge{position:absolute;left:1rem;bottom:1rem;display:flex;align-items:baseline;gap:.55rem;padding:.6rem .95rem;border-radius:14px;
+  background:rgba(0,0,0,.72);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:#fff;border:1px solid rgba(255,255,255,.18);font-size:.8rem;}
+#free .fg-badge b{font-family:var(--font-display);font-size:1.7rem;font-weight:800;line-height:1;color:#3fd18b;}
+@media(max-width:900px){#free .fg-grid{grid-template-columns:1fr;}#free .fg-photo{min-height:0;height:auto;max-width:420px;}#free .fg-photo img{aspect-ratio:4/5;height:auto;}}
+@media(max-width:560px){#free .fg-main .shelf{grid-template-columns:1fr;}}
 </style>
 <link href="erj-alive.css?v=20261004a" rel="stylesheet"/>
 </head>
@@ -1502,12 +1517,9 @@ html[data-theme="day"] .timer-num{background-image:linear-gradient(160deg,#0A0A0
 <section class="wrap section-line" id="free">
 <div class="step"><span class="step-n">03</span><span class="step-l">Free For You</span></div>
 <h2 class="cost-h" style="margin-bottom:0.9rem;">You can get a long way without <em>paying us anything.</em></h2>
-<div class="free-intro">
+<div class="fg-grid">
+<div class="fg-main">
 <p class="free-lead">Genuinely free, and it stays free. No card, no expiring trial. Work through it properly and you may not need us at all — which is a good outcome too.</p>
-<figure class="free-shot reveal">
-<img alt="Oluwaseyi Ashiru at his desk, reaching out a hand in invitation" decoding="async" height="1100" loading="lazy" src="photo-seyi-invite.webp" width="880"/>
-</figure>
-</div>
 <div class="shelf">
 <a class="shelf-item reveal" href="cvscan/" id="cvscan" style="scroll-margin-top:100px;">
 <span class="shelf-kind">Instant · private</span>
@@ -1533,6 +1545,12 @@ html[data-theme="day"] .timer-num{background-image:linear-gradient(160deg,#0A0A0
 <p class="shelf-desc">Verified global roles open to Africans, posted continuously. No fees, no gatekeeping.</p>
 <span class="shelf-go">Join free <span class="a">→</span></span>
 </a>
+</div>
+</div>
+<figure class="free-shot fg-photo reveal">
+<img alt="Oluwaseyi Ashiru at his desk, reaching out a hand in invitation" decoding="async" height="1100" loading="lazy" src="photo-seyi-invite.webp" width="880"/>
+<figcaption class="fg-badge"><b>₦0</b><span>everything on this shelf</span></figcaption>
+</figure>
 </div>
 <p class="free-note">Why give it away? Because people who do not need us should not be paying us. <a href="free.html">See the whole free shelf →</a></p>
 </section>

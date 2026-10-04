@@ -98,6 +98,63 @@
   .parity span{font-size:0.85rem;color:var(--ink-soft);font-weight:300;}
   .parity em{color:var(--accent);font-style:normal;font-weight:600;}
   @media (max-width:900px){.track-grid{grid-template-columns:1fr;}}
+  /* ── the Five-Finger Model as a hand ──
+     One finger per part, thumb (Capacity) to little finger (Conversion), each
+     standing on its own card. No palm: the knuckle line is a glow, not a drawing.
+     Desktop: the fingers lift in a slow wave; hovering a card lights its finger.
+     Phones: each finger sits beside its card, static. */
+  .hf-hand{position:relative;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:clamp(.6rem,1.4vw,1rem);margin-top:2rem;}
+  .hf-col{display:grid;grid-template-rows:212px auto;align-items:stretch;}
+  .hf-finger{position:relative;align-self:end;justify-self:center;width:clamp(60px,60%,112px);
+    border-radius:999px 999px 16px 16px;
+    background:linear-gradient(180deg,#FFC46B 0%,#FF8A3D 22%,#FF5722 62%,rgba(255,87,34,.55) 100%);
+    box-shadow:inset 0 -14px 24px rgba(0,0,0,.18),inset 6px 0 12px rgba(255,255,255,.12),0 16px 34px rgba(255,87,34,.28);
+    transform-origin:50% 100%;transition:transform .45s var(--ease),box-shadow .45s var(--ease),filter .45s var(--ease);}
+  .hf-finger::before,.hf-finger::after{content:'';position:absolute;left:22%;right:22%;height:2px;border-radius:2px;background:rgba(120,30,0,.28);}
+  .hf-finger::before{top:42%;} .hf-finger::after{top:66%;}
+  .hf-nail{position:absolute;left:24%;right:24%;top:7%;height:20%;border-radius:999px 999px 10px 10px;background:linear-gradient(180deg,rgba(255,255,255,.55),rgba(255,255,255,.12));}
+  .hf-finger b{position:absolute;left:0;right:0;bottom:12%;text-align:center;font-family:var(--font-display);font-size:.78rem;font-weight:800;color:#fff;letter-spacing:.02em;}
+  .hf-thumb .hf-finger{height:118px;transform:rotate(-24deg) translateX(-14%);}
+  .hf-index .hf-finger{height:178px;transform:rotate(-5deg);}
+  .hf-middle .hf-finger{height:200px;}
+  .hf-ring .hf-finger{height:182px;transform:rotate(4deg);}
+  .hf-little .hf-finger{height:140px;transform:rotate(10deg);}
+  .hf-card{margin-top:1rem;position:relative;height:calc(100% - 1rem);}
+  .hf-card::after{content:'';position:absolute;left:50%;top:-1rem;width:2px;height:1rem;background:linear-gradient(180deg,rgba(255,87,34,.6),transparent);transform:translateX(-50%);}
+  .hf-col:hover .hf-finger{filter:brightness(1.12) saturate(1.1);box-shadow:inset 0 -14px 24px rgba(0,0,0,.18),0 0 0 3px rgba(255,196,107,.45),0 22px 48px rgba(255,87,34,.5);}
+  .hf-thumb:hover .hf-finger{transform:rotate(-14deg) translateX(-8%) translateY(-10px);}
+  .hf-index:hover .hf-finger{transform:rotate(-2deg) translateY(-12px);}
+  .hf-middle:hover .hf-finger{transform:translateY(-12px);}
+  .hf-ring:hover .hf-finger{transform:rotate(2deg) translateY(-12px);}
+  .hf-little:hover .hf-finger{transform:rotate(6deg) translateY(-12px);}
+  .hf-col:hover .hf-card{border-color:var(--accent);transform:translateY(-3px);box-shadow:0 18px 44px rgba(255,87,34,.16);}
+  .hf-knuckles{position:absolute;left:4%;right:4%;top:204px;height:18px;pointer-events:none;
+    background:radial-gradient(60% 100% at 50% 0%,rgba(255,87,34,.35),transparent 70%);filter:blur(6px);}
+  .hf-card .jmap-d{font-size:.8rem;}
+  @media (min-width:901px) and (prefers-reduced-motion:no-preference){
+    .hf-col .hf-finger b{transition:none;}
+    .hf-thumb .hf-finger{animation:hfWaveT 6s ease-in-out infinite;}
+    .hf-index .hf-finger{animation:hfWaveI 6s ease-in-out .25s infinite;}
+    .hf-middle .hf-finger{animation:hfWaveM 6s ease-in-out .5s infinite;}
+    .hf-ring .hf-finger{animation:hfWaveR 6s ease-in-out .75s infinite;}
+    .hf-little .hf-finger{animation:hfWaveL 6s ease-in-out 1s infinite;}
+    .hf-col:hover .hf-finger{animation:none;}
+  }
+  @keyframes hfWaveT{0%,70%,100%{transform:rotate(-24deg) translateX(-14%);}82%{transform:rotate(-18deg) translateX(-10%) translateY(-8px);}}
+  @keyframes hfWaveI{0%,70%,100%{transform:rotate(-5deg);}82%{transform:rotate(-3deg) translateY(-9px);}}
+  @keyframes hfWaveM{0%,70%,100%{transform:none;}82%{transform:translateY(-10px);}}
+  @keyframes hfWaveR{0%,70%,100%{transform:rotate(4deg);}82%{transform:rotate(2deg) translateY(-9px);}}
+  @keyframes hfWaveL{0%,70%,100%{transform:rotate(10deg);}82%{transform:rotate(7deg) translateY(-8px);}}
+  @media (max-width:900px){
+    .hf-hand{grid-template-columns:1fr;gap:.9rem;}
+    .hf-col{display:grid;grid-template-columns:44px minmax(0,1fr);grid-template-rows:auto;gap:.85rem;align-items:start;}
+    .hf-finger{width:40px;margin:0;align-self:start;}
+    .hf-thumb .hf-finger{height:64px;transform:rotate(-14deg);} .hf-index .hf-finger{height:90px;transform:none;}
+    .hf-middle .hf-finger{height:100px;} .hf-ring .hf-finger{height:92px;transform:none;} .hf-little .hf-finger{height:74px;transform:none;}
+    .hf-col:hover .hf-finger{transform:none;}
+    .hf-card{margin-top:0;height:auto;} .hf-card::after,.hf-knuckles{display:none;}
+    .hf-finger b{font-size:.7rem;}
+  }
 
   /* ── career development, included (The Mentorine School) ──
      The benefit sits beside the enrolment decision, not in the deliverables
@@ -305,34 +362,40 @@
 <!-- FIVE-FINGER MODEL -->
 <section class="section-line wrap" id="joints">
 <p class="section-label">The Model · Find The Problem, Fix It</p>
-<h2>Your search is a pipeline with <span>five parts.</span></h2>
-<p class="section-sub">Capacity → Supply → Representation → Aim → Conversion. An offer only comes out when all five hold. Foundation Training supports Capacity, Supply, Representation and Aim, and its Stage 4 interview and negotiation preparation also supports Conversion.</p>
-<div class="jmap">
-<div class="jmap-cell reveal">
-<div class="jmap-n">01 · CAPACITY</div>
+<h2>Five fingers. <span>One hand.</span></h2>
+<p class="section-sub">Your search works like a hand: Capacity, Supply, Representation, Aim and Conversion. An offer comes only when all five hold, and Foundation Training works on every one. Point at a finger to see what it does.</p>
+<div class="hf-hand" role="list">
+<div class="hf-col hf-thumb">
+<div class="hf-finger" aria-hidden="true"><i class="hf-nail"></i><b>01</b></div>
+<div class="jmap-cell hf-card"><div class="jmap-n">01 · CAPACITY</div>
 <div class="jmap-t">You can do the work</div>
-<p class="jmap-d">Stage 1 builds the remote operating system — deep work, daily KPIs, end-of-day reporting — and Stage 2 the digital toolkit a distributed team assumes you already run. This is the part no CV rewrite can fake.</p>
+<p class="jmap-d">Stage 1 builds the remote operating system — deep work, daily KPIs, end-of-day reporting — and Stage 2 the digital toolkit a distributed team assumes you already run. This is the part no CV rewrite can fake.</p></div>
 </div>
-<div class="jmap-cell reveal">
-<div class="jmap-n">02 · SUPPLY</div>
+<div class="hf-col hf-index">
+<div class="hf-finger" aria-hidden="true"><i class="hf-nail"></i><b>02</b></div>
+<div class="jmap-cell hf-card"><div class="jmap-n">02 · SUPPLY</div>
 <div class="jmap-t">You see the opportunities</div>
-<p class="jmap-d">The Remote Job Seekers Kit — named boards, companies and salary databases — is delivered the moment you pay, plus the free <a href="https://whatsapp.com/channel/0029Vaym4DE3mFY2wCrC713S" rel="noopener" target="_blank">Remote Jobs (Global+) channel</a>. You will never again wonder where the real roles are.</p>
+<p class="jmap-d">The Remote Job Seekers Kit — named boards, companies and salary databases — is delivered the moment you pay, plus the free <a href="https://whatsapp.com/channel/0029Vaym4DE3mFY2wCrC713S" rel="noopener" target="_blank">Remote Jobs (Global+) channel</a>. You will never again wonder where the real roles are.</p></div>
 </div>
-<div class="jmap-cell reveal">
-<div class="jmap-n">03 · REPRESENTATION</div>
+<div class="hf-col hf-middle">
+<div class="hf-finger" aria-hidden="true"><i class="hf-nail"></i><b>03</b></div>
+<div class="jmap-cell hf-card"><div class="jmap-n">03 · REPRESENTATION</div>
 <div class="jmap-t">Your signal exists &amp; parses</div>
-<p class="jmap-d">Stages 2–4 build every asset from scratch: ATS-readable CV, LinkedIn that recruiters find, portfolio, async writing samples and the STAR video — all AI-assisted, all yours to keep.</p>
+<p class="jmap-d">Stages 2–4 build every asset from scratch: ATS-readable CV, LinkedIn that recruiters find, portfolio, async writing samples and the STAR video — all AI-assisted, all yours to keep.</p></div>
 </div>
-<div class="jmap-cell reveal">
-<div class="jmap-n">04 · AIM</div>
+<div class="hf-col hf-ring">
+<div class="hf-finger" aria-hidden="true"><i class="hf-nail"></i><b>04</b></div>
+<div class="jmap-cell hf-card"><div class="jmap-n">04 · AIM</div>
 <div class="jmap-t">It reaches the right target</div>
-<p class="jmap-d">Stage 4 installs a weekly targeting and application system — which roles, which companies, which regions — powered by the SMART APPLY prompt, so effort goes where offers actually come from.</p>
+<p class="jmap-d">Stage 4 installs a weekly targeting and application system — which roles, which companies, which regions — powered by the SMART APPLY prompt, so effort goes where offers actually come from.</p></div>
 </div>
-<div class="jmap-cell reveal">
-<div class="jmap-n">05 · CONVERSION</div>
+<div class="hf-col hf-little">
+<div class="hf-finger" aria-hidden="true"><i class="hf-nail"></i><b>05</b></div>
+<div class="jmap-cell hf-card"><div class="jmap-n">05 · CONVERSION</div>
 <div class="jmap-t">Interest becomes an offer</div>
-<p class="jmap-d">Async communication mastery (Stage 3), interview coaching and salary negotiation turn replies into signed offers — and we hold this joint with you until you're hired.</p>
+<p class="jmap-d">Async communication mastery (Stage 3), interview coaching and salary negotiation turn replies into signed offers — and we hold this joint with you until you're hired.</p></div>
 </div>
+<div class="hf-knuckles" aria-hidden="true"></div>
 </div>
 </section>
 <!-- STAGES -->
