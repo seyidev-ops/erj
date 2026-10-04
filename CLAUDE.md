@@ -138,7 +138,12 @@ fails on any page naming a preview image that does not exist.
 - Scroll reveals: `.reveal` blocks are visible by default. Only
   `erj-product.js` hides one (class `.pre`) after measuring it off-screen.
   Never reintroduce CSS that hides content until JS un-hides it; that is
-  what caused the blank-page glitch. The same `.reveal` rules are inlined
+  what caused the blank-page glitch. Since October 2026 `.reveal.pre` only moves a
+  block (transform); it never sets opacity:0, and nothing may start at
+  opacity:0 waiting for a `forwards` animation. `validate-facts.py` check 12
+  fails the build if either comes back. Large animated layers (glows,
+  sweeps, drifting blobs) run on desktop widths only: on phones they starve
+  the GPU and Chrome paints blank tiles mid-scroll. The same `.reveal` rules are inlined
   in several root pages as well as `product.css`, so change them everywhere.
 - The store (`register.html`) is grouped DIY / DWY / DFY. A new product
   goes into the right group, and each card's `h3` is the product name.

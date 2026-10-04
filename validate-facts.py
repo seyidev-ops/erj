@@ -126,6 +126,8 @@ def main():
     allowed = set()
     for p in canon["products"]:
         allowed.add(p["naira"])
+        if p.get("valueNaira"):
+            allowed.add(p["valueNaira"])
         if p.get("wasNaira"):
             allowed.add(p["wasNaira"])
             allowed.add(p["wasNaira"] - p["naira"])
@@ -273,6 +275,23 @@ def main():
             if not os.path.exists(os.path.join(ROOT, img)):
                 fail("image", path, "%s does not exist" % img)
 
+    # ── 12. content is never hidden waiting for an animation ────────────
+    # The recurring "blank page while scrolling" bug: blocks started at
+    # opacity:0 and only appeared once a script or keyframe ran, so a fast
+    # scroll (or a slow phone) outran it and showed empty black/white space.
+    # Entrance motion may MOVE content; it may never make it invisible.
+    hide_rules = [
+        (re.compile(r"\.reveal\.pre\s*\{[^}]*opacity\s*:\s*0(?![.\d])"), ".reveal.pre sets opacity:0"),
+        (re.compile(r"opacity\s*:\s*0\s*;[^}]*animation\s*:[^;}]*\bforwards\b"), "element starts at opacity:0 until a forwards animation runs"),
+    ]
+    for path, raw in corpus:
+        if not (path.endswith(".html") or path.endswith(".css")) or is_archive(path):
+            continue
+        body = strip_comments(raw)
+        for rx, why in hide_rules:
+            if rx.search(body):
+                fail("hidden content", path, why + " — content must stay visible; animate transform only")
+
     if os.path.exists(os.path.join(ROOT, "blog", "blog.html")):
         fail("blog", "blog/blog.html", "misplaced upload — blog.html belongs at the site root")
 
@@ -283,7 +302,7 @@ def main():
         print("%sFAIL%s  %-16s %-34s %s" % (RED, OFF, check, path, detail))
 
     print()
-    print("%s%d files scanned · %d checks%s" % (DIM, len(corpus), 11, OFF))
+    print("%s%d files scanned · %d checks%s" % (DIM, len(corpus), 12, OFF))
     if failures:
         print("%s%d failure(s)%s — the site disagrees with erj-config.js canon." % (RED, len(failures), OFF))
         print("Fix the page, or change canon and let every surface follow.")

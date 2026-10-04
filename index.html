@@ -265,7 +265,7 @@ h3{font-family:var(--font-display);font-weight:700;letter-spacing:-0.01em;color:
    after it has measured that block as off-screen and taken responsibility for
    revealing it. If the script is slow, blocked or broken, nothing is hidden. */
 .reveal{transition:opacity .7s var(--ease),transform .7s var(--ease);}
-.reveal.pre{opacity:0;transform:translateY(16px);}
+.reveal.pre{transform:translateY(16px);}
 .reveal.in{opacity:1;transform:translateY(0);}
 
 @media (prefers-reduced-motion:reduce){
@@ -545,21 +545,21 @@ a.promo-tick{text-decoration:none;display:block;}
   .home-hero{padding-top:clamp(3rem,9vw,6rem);padding-bottom:clamp(2.5rem,6vw,4rem);}
   .kicker{display:inline-flex;align-items:center;gap:0.7rem;font-size:0.66rem;font-weight:500;
     letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);margin-bottom:2rem;
-    opacity:0;animation:rise 0.9s var(--ease) 0.1s forwards;}
+    animation:rise 0.9s var(--ease) 0.1s forwards;}
   .kicker .mark{width:22px;height:1px;background:var(--accent);}
   .ask{font-family:var(--font-display);font-size:clamp(2.7rem,8vw,5.2rem);font-weight:800;
     line-height:0.98;letter-spacing:-0.03em;color:var(--ink);margin-bottom:1.5rem;max-width:16ch;
-    opacity:0;animation:rise 1s var(--ease) 0.22s forwards;}
+    animation:rise 1s var(--ease) 0.22s forwards;}
   .ask em{font-style:normal;color:var(--accent);}
   .ask-sub{font-size:clamp(1.05rem,1.8vw,1.3rem);color:var(--ink-soft);line-height:1.6;font-weight:300;
-    max-width:50ch;margin-bottom:2.6rem;opacity:0;animation:rise 1s var(--ease) 0.32s forwards;}
-  .answers{display:flex;flex-wrap:wrap;gap:1rem;opacity:0;animation:rise 1s var(--ease) 0.42s forwards;}
+    max-width:50ch;margin-bottom:2.6rem;animation:rise 1s var(--ease) 0.32s forwards;}
+  .answers{display:flex;flex-wrap:wrap;gap:1rem;animation:rise 1s var(--ease) 0.42s forwards;}
   .btn-yes.pulse{position:relative;overflow:visible;}
   .btn-yes.pulse::after{content:'';position:absolute;inset:0;border-radius:100px;border:1px solid var(--accent);
     opacity:0;animation:pulseRing 2.6s var(--ease) infinite;pointer-events:none;}
   @keyframes pulseRing{0%{opacity:.5;transform:scale(1)}70%{opacity:0;transform:scale(1.12)}100%{opacity:0}}
   .scroll-hint{margin-top:3rem;font-size:0.66rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--ink-faint);
-    opacity:0;animation:rise 1.2s var(--ease) 0.6s forwards;}
+    animation:rise 1.2s var(--ease) 0.6s forwards;}
 
   /* path rows — RocketAir listing */
   .paths{display:flex;flex-direction:column;scroll-margin-top:90px;}
@@ -825,7 +825,7 @@ a.promo-tick{text-decoration:none;display:block;}
     transition:opacity .35s var(--ease);}
   .shelf-item:hover::after{opacity:0.5;}
 
-  @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes rise{from{transform:translateY(14px)}to{transform:translateY(0)}}
 
   /* ── proof bar (open loop under hero) ── */
   .proof{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);
@@ -1172,6 +1172,180 @@ a.promo-tick{text-decoration:none;display:block;}
 <style id="erjButtons">:root{--btn-ink-on-orange:#FFFFFF;--btn-orange:#FF5722;--btn-orange-ink-on-white:#AD350A;--btn-invert-surface:#FFFFFF;--btn-ease:cubic-bezier(0.22,1,0.36,1)}.btn-primary-ui,.btn-secondary-ui{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:.75rem;min-height:64px;padding:1rem 1.45rem;border-radius:999px;border:1px solid transparent;font-family:var(--font-body),'Inter',system-ui,sans-serif;font-size:1.18rem !important;font-weight:700 !important;letter-spacing:-0.01em;line-height:1.15;text-decoration:none;cursor:pointer;white-space:nowrap;transition:background-color .24s var(--btn-ease),color .24s var(--btn-ease),border-color .24s var(--btn-ease),box-shadow .24s var(--btn-ease),transform .24s var(--btn-ease)}.btn-primary-ui>span:first-child,.btn-secondary-ui>span:first-child{white-space:normal}.arrow-wrap{display:inline-flex;align-items:center;justify-content:center;width:2rem;height:2rem;flex:0 0 2rem;border-radius:999px;font-size:1rem;line-height:1;transition:background-color .24s var(--btn-ease),color .24s var(--btn-ease)}.btn-primary-ui .arrow,.btn-secondary-ui .arrow{display:inline-block;transition:transform .24s var(--btn-ease)}.btn-primary-ui:hover .arrow,.btn-secondary-ui:hover .arrow,.btn-primary-ui:focus-visible .arrow,.btn-secondary-ui:focus-visible .arrow{transform:translateX(4px)}.btn-primary-ui:hover .arrow.is-down,.btn-secondary-ui:hover .arrow.is-down,.btn-primary-ui:focus-visible .arrow.is-down,.btn-secondary-ui:focus-visible .arrow.is-down{transform:translateY(3px)}.btn-primary-ui{background:var(--btn-orange) !important;color:var(--btn-ink-on-orange) !important;border-color:var(--btn-orange) !important;box-shadow:0 10px 24px rgba(255,87,34,.18)}.btn-primary-ui .arrow-wrap{background:rgba(255,255,255,.16);color:var(--btn-ink-on-orange)}.btn-primary-ui:hover,.btn-primary-ui:focus-visible{background:var(--btn-invert-surface) !important;color:var(--btn-orange-ink-on-white) !important;border-color:var(--btn-orange) !important;transform:translateY(-2px);box-shadow:0 16px 34px rgba(255,87,34,.24)}.btn-primary-ui:hover .arrow-wrap,.btn-primary-ui:focus-visible .arrow-wrap{background:rgba(255,87,34,.14);color:var(--btn-orange-ink-on-white)}.btn-secondary-ui{background:var(--card,#FFFFFF) !important;color:var(--ink,#0A0A0A) !important;border-color:var(--line,rgba(10,10,10,.12)) !important;box-shadow:0 7px 18px rgba(0,0,0,.04)}.btn-secondary-ui .arrow-wrap{background:rgba(10,10,10,.06);color:inherit}html[data-theme="night"] .btn-secondary-ui .arrow-wrap{background:rgba(255,255,255,.10)}.btn-secondary-ui:hover,.btn-secondary-ui:focus-visible{background:var(--btn-orange) !important;color:var(--btn-ink-on-orange) !important;border-color:var(--btn-orange) !important;transform:translateY(-2px);box-shadow:0 16px 34px rgba(255,87,34,.22)}.btn-secondary-ui:hover .arrow-wrap,.btn-secondary-ui:focus-visible .arrow-wrap,html[data-theme="night"] .btn-secondary-ui:hover .arrow-wrap,html[data-theme="night"] .btn-secondary-ui:focus-visible .arrow-wrap{background:rgba(255,255,255,.18);color:var(--btn-ink-on-orange)}.fc-actions:has(.btn-secondary-ui:hover) .btn-primary-ui,.sl-actions:has(.btn-secondary-ui:hover) .btn-primary-ui,.answers:has(.btn-secondary-ui:hover) .btn-primary-ui,.hero-cta:has(.btn-secondary-ui:hover) .btn-primary-ui,.erj-actions:has(.btn-secondary-ui:hover) .btn-primary-ui,.rt-cta:has(.btn-secondary-ui:hover) .btn-primary-ui,.fc-actions:has(.btn-secondary-ui:focus-visible) .btn-primary-ui,.sl-actions:has(.btn-secondary-ui:focus-visible) .btn-primary-ui,.answers:has(.btn-secondary-ui:focus-visible) .btn-primary-ui,.hero-cta:has(.btn-secondary-ui:focus-visible) .btn-primary-ui,.erj-actions:has(.btn-secondary-ui:focus-visible) .btn-primary-ui,.rt-cta:has(.btn-secondary-ui:focus-visible) .btn-primary-ui{background:var(--btn-invert-surface) !important;color:var(--btn-orange-ink-on-white) !important;border-color:var(--btn-orange) !important;box-shadow:0 6px 16px rgba(0,0,0,.06)}.fc-actions:has(.btn-secondary-ui:hover) .btn-primary-ui .arrow-wrap,.sl-actions:has(.btn-secondary-ui:hover) .btn-primary-ui .arrow-wrap,.answers:has(.btn-secondary-ui:hover) .btn-primary-ui .arrow-wrap,.hero-cta:has(.btn-secondary-ui:hover) .btn-primary-ui .arrow-wrap,.erj-actions:has(.btn-secondary-ui:hover) .btn-primary-ui .arrow-wrap,.rt-cta:has(.btn-secondary-ui:hover) .btn-primary-ui .arrow-wrap{background:rgba(255,87,34,.14);color:var(--btn-orange-ink-on-white)}.btn-primary-ui:active{background:var(--btn-invert-surface) !important;color:var(--btn-orange-ink-on-white) !important;border-color:var(--btn-orange) !important}.btn-primary-ui:active .arrow-wrap{background:rgba(255,87,34,.14);color:var(--btn-orange-ink-on-white)}.btn-secondary-ui:active{background:var(--btn-orange) !important;color:var(--btn-ink-on-orange) !important;border-color:var(--btn-orange) !important}.btn-secondary-ui:active .arrow-wrap{background:rgba(255,255,255,.18);color:var(--btn-ink-on-orange)}.btn-primary-ui:active,.btn-secondary-ui:active{transform:translateY(0) scale(.985);box-shadow:none}@media (hover:none){.btn-primary-ui:hover{background:var(--btn-orange) !important;color:var(--btn-ink-on-orange) !important;border-color:var(--btn-orange) !important;transform:none}.btn-primary-ui:hover .arrow-wrap{background:rgba(255,255,255,.16);color:var(--btn-ink-on-orange)}.btn-secondary-ui:hover{background:var(--card,#FFFFFF) !important;color:var(--ink,#0A0A0A) !important;border-color:var(--line,rgba(10,10,10,.12)) !important;transform:none}.btn-secondary-ui:hover .arrow-wrap{background:rgba(10,10,10,.06);color:inherit}html[data-theme="night"] .btn-secondary-ui:hover .arrow-wrap{background:rgba(255,255,255,.10)}.btn-primary-ui:hover .arrow,.btn-secondary-ui:hover .arrow{transform:none}}.btn-primary-ui:focus-visible,.btn-secondary-ui:focus-visible{outline:2px solid var(--btn-orange);outline-offset:3px}.btn-primary-ui.btn-block,.btn-secondary-ui.btn-block{width:100%}.fc-actions,.sl-actions,.answers,.hero-cta,.erj-actions{display:flex;flex-wrap:wrap;gap:1rem;align-items:center}.btn-primary-ui.pulse::after{border-color:var(--btn-orange)}.btn-primary-ui.pulse:hover::after{opacity:0 !important;animation:none !important}@media(max-width:620px){.fc-actions,.sl-actions,.answers,.hero-cta,.erj-actions{flex-direction:column;align-items:stretch}.fc-actions>.btn-primary-ui,.fc-actions>.btn-secondary-ui,.sl-actions>.btn-primary-ui,.sl-actions>.btn-secondary-ui,.answers>.btn-primary-ui,.answers>.btn-secondary-ui,.hero-cta>.btn-primary-ui,.hero-cta>.btn-secondary-ui,.erj-actions>.btn-primary-ui,.erj-actions>.btn-secondary-ui{width:100%}.btn-primary-ui,.btn-secondary-ui{min-height:60px;padding:.85rem 1.05rem;gap:.5rem}.arrow-wrap{width:1.75rem;height:1.75rem;flex:0 0 1.75rem}}@media(prefers-reduced-motion:reduce){.btn-primary-ui,.btn-secondary-ui,.btn-primary-ui .arrow,.btn-secondary-ui .arrow,.arrow-wrap{transition:background-color .01ms,color .01ms,border-color .01ms}.btn-primary-ui:hover,.btn-secondary-ui:hover,.btn-primary-ui:active,.btn-secondary-ui:active{transform:none}.btn-primary-ui:hover .arrow,.btn-secondary-ui:hover .arrow{transform:none}.btn-primary-ui.pulse::after{animation:none;opacity:0}}@media(forced-colors:active){.btn-primary-ui,.btn-secondary-ui{border:1px solid ButtonText}}</style><link href="/favicon.ico" rel="icon" sizes="48x48 32x32 16x16"/>
 <link href="/favicon-96.png" rel="icon" sizes="96x96" type="image/png"/>
 <link href="/appletouchicon.png" rel="apple-touch-icon"/>
+<style id="homeAlive">
+/* ═══════════════════════════════════════════════════════════════
+   HOME · ALIVE LAYER
+   Motion and light on top of the existing page. Two hard rules,
+   learned the expensive way:
+     1. Nothing starts invisible. Motion moves things; it never hides
+        them (validate-facts.py check 12 enforces this).
+     2. Big animated layers are desktop-only. Phones get the same look,
+        static — a GPU short of memory paints blank tiles mid-scroll.
+   ERJ orange leads; Mentorine green (#0D8C4F) appears only where the
+   included career track is mentioned.
+   ═══════════════════════════════════════════════════════════════ */
+:root{--ha-o:#FF5722;--ha-o2:#FF8A3D;--ha-gold:#FFC46B;--ha-g:#0D8C4F;--ha-glass:rgba(255,255,255,.035);}
+html[data-theme="day"]{--ha-glass:rgba(255,255,255,.7);}
+
+/* scroll progress */
+.ha-progress{position:fixed;left:0;top:0;height:3px;width:100%;z-index:100000;transform-origin:0 50%;transform:scaleX(0);
+  background:linear-gradient(90deg,var(--ha-g),var(--ha-o) 35%,var(--ha-gold));pointer-events:none;}
+
+/* ── hero ── */
+.home-hero{position:relative;isolation:isolate;}
+.ha-aurora{position:absolute;z-index:-1;top:-90px;bottom:0;left:50%;width:100vw;transform:translateX(-50%);overflow:hidden;pointer-events:none;}
+.ha-aurora i{position:absolute;border-radius:50%;filter:blur(70px);opacity:.55;}
+.ha-aurora .a1{width:46vw;height:46vw;max-width:620px;max-height:620px;left:-8vw;top:-10%;background:radial-gradient(circle,rgba(255,87,34,.75),transparent 65%);}
+.ha-aurora .a2{width:40vw;height:40vw;max-width:560px;max-height:560px;right:-6vw;top:8%;background:radial-gradient(circle,rgba(255,170,60,.55),transparent 65%);}
+.ha-aurora .a3{width:34vw;height:34vw;max-width:460px;max-height:460px;left:38%;bottom:-18%;background:radial-gradient(circle,rgba(13,140,79,.45),transparent 65%);}
+html[data-theme="day"] .ha-aurora i{opacity:.32;}
+.ha-aurora::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,var(--paper,#000) 100%);}
+.ha-grid{display:grid;grid-template-columns:minmax(0,1.18fr) minmax(0,.82fr);gap:clamp(1.6rem,4vw,3.6rem);align-items:center;}
+.ha-copy .ask{font-size:clamp(2.5rem,5.6vw,4.6rem);}
+.ask em{background:linear-gradient(100deg,var(--ha-o) 0%,var(--ha-gold) 45%,var(--ha-o) 90%);background-size:220% 100%;
+  -webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;}
+html[data-theme="day"] .ask em{background-image:linear-gradient(100deg,#AD350A 0%,#E8470F 45%,#AD350A 90%);}
+
+/* offer stack */
+.ha-offers{display:flex;flex-direction:column;gap:.85rem;}
+.ha-offer{position:relative;display:flex;flex-direction:column;gap:.35rem;text-decoration:none;color:var(--ink);
+  padding:1.15rem 1.25rem 1.1rem;border-radius:18px;background:var(--ha-glass);border:1px solid var(--line);
+  backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+  transition:transform .35s var(--ease),border-color .35s var(--ease),box-shadow .35s var(--ease);}
+.ha-offer:hover,.ha-offer:focus-visible{transform:translateY(-4px);border-color:var(--ha-o);box-shadow:0 18px 44px rgba(255,87,34,.22);outline:none;}
+.ha-offer.is-hot{padding:1.4rem 1.4rem 1.25rem;border:1.5px solid transparent;
+  background:linear-gradient(var(--card),var(--card)) padding-box,linear-gradient(125deg,var(--ha-o),var(--ha-gold),var(--ha-g),var(--ha-o)) border-box;
+  background-size:100% 100%,300% 300%;box-shadow:0 22px 60px rgba(255,87,34,.20);}
+.ha-flag{align-self:flex-start;font-size:.58rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  padding:.3rem .7rem;border-radius:100px;color:var(--ha-o);border:1px solid rgba(255,87,34,.45);background:rgba(255,87,34,.08);}
+.is-hot .ha-flag{color:#fff;background:linear-gradient(90deg,var(--ha-o),#ff7a3d);border-color:transparent;}
+.is-free .ha-flag{color:#3fd18b;border-color:rgba(13,140,79,.55);background:rgba(13,140,79,.10);}
+html[data-theme="day"] .is-free .ha-flag{color:#0B6E3E;}
+html[data-theme="day"] .ha-flag{color:#AD350A;}
+html[data-theme="day"] .is-hot .ha-flag{color:#fff;}
+.ha-k{font-family:var(--font-display);font-size:1.12rem;font-weight:800;letter-spacing:-.01em;line-height:1.2;margin-top:.2rem;}
+.is-hot .ha-k{font-size:1.28rem;}
+.ha-line{font-size:.82rem;color:var(--ink-soft);line-height:1.55;font-weight:300;}
+.ha-price{display:flex;align-items:baseline;gap:.6rem;}
+.ha-price b{font-family:var(--font-display);font-size:2rem;font-weight:800;letter-spacing:-.03em;line-height:1;}
+.ha-price s{font-size:.9rem;color:var(--ink-faint);text-decoration-color:var(--ha-o);}
+.ha-bonus{display:flex;gap:.6rem;align-items:flex-start;font-size:.8rem;line-height:1.45;color:var(--ink);
+  padding:.6rem .75rem;border-radius:12px;background:rgba(13,140,79,.12);border:1px solid rgba(13,140,79,.4);}
+.ha-bonus b{color:#3fd18b;}
+html[data-theme="day"] .ha-bonus b{color:#0B6E3E;}
+.ha-gift{flex:0 0 1.35rem;height:1.35rem;border-radius:50%;background:var(--ha-g);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:.9rem;}
+.ha-clock{display:flex;align-items:center;gap:.45rem;font-size:.72rem;color:var(--ink-faint);font-variant-numeric:tabular-nums;}
+.ha-clock-l{text-transform:uppercase;letter-spacing:.14em;font-size:.58rem;margin-right:.2rem;}
+.ha-t{padding:.22rem .42rem;border-radius:7px;background:rgba(255,255,255,.05);border:1px solid var(--line);}
+.ha-t b{font-family:var(--font-display);font-size:.92rem;color:var(--ink);margin-right:1px;}
+.ha-clock.is-closed{display:none;}
+.ha-go{margin-top:.35rem;align-self:flex-start;display:inline-flex;align-items:center;gap:.45rem;font-size:.8rem;font-weight:700;
+  padding:.5rem .95rem;border-radius:100px;background:rgba(255,87,34,.12);color:var(--ha-o);border:1px solid rgba(255,87,34,.35);
+  transition:background .3s var(--ease),color .3s var(--ease);}
+html[data-theme="day"] .ha-go{color:#AD350A;}
+html[data-theme="day"] .is-hot .ha-go,html[data-theme="day"] .ha-offer:hover .ha-go{color:#fff;}
+.is-hot .ha-go{background:var(--ha-o);color:#fff;border-color:var(--ha-o);}
+.ha-offer:hover .ha-go{background:var(--ha-o);color:#fff;}
+.ha-go .a{transition:transform .3s var(--ease);}
+.ha-offer:hover .ha-go .a{transform:translateX(4px);}
+
+/* advantage ticker */
+.ha-ticker{position:relative;z-index:2;overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  background:linear-gradient(90deg,rgba(255,87,34,.10),rgba(255,196,107,.06),rgba(13,140,79,.10));padding:.95rem 0;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);}
+.ha-track{display:flex;width:max-content;gap:0;}
+.ha-track span{white-space:nowrap;font-size:.86rem;color:var(--ink-soft);padding:0 1.6rem;position:relative;}
+.ha-track span::after{content:'';position:absolute;right:-3px;top:50%;width:6px;height:6px;border-radius:50%;background:var(--ha-o);transform:translateY(-50%);}
+.ha-track em{font-style:normal;color:var(--ink);font-weight:600;}
+
+/* ── section numbers glow ── */
+.step-n{background:linear-gradient(135deg,var(--ha-o),var(--ha-gold));-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;}
+html[data-theme="day"] .step-n{background-image:linear-gradient(135deg,#AD350A,#E8470F);}
+
+/* ── proof bar ── */
+.proof{border-radius:20px;overflow:hidden;box-shadow:0 0 0 1px rgba(255,87,34,.25),0 24px 60px rgba(255,87,34,.10);}
+.proof-n{background:linear-gradient(120deg,var(--ink) 20%,var(--ha-o) 60%,var(--ha-gold));-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;}
+html[data-theme="day"] .proof-n{background-image:linear-gradient(120deg,#0A0A0A 20%,#AD350A 70%);}
+
+/* ── five parts: cards that respond ── */
+.joint{border-radius:16px;transition:background .3s var(--ease),transform .3s var(--ease);}
+.joint:hover{background:linear-gradient(100deg,rgba(255,87,34,.08),transparent 70%);transform:translateX(4px);}
+.joint-n{background:linear-gradient(160deg,var(--ha-o),var(--ha-gold));-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;opacity:.9;}
+html[data-theme="day"] .joint-n{background-image:linear-gradient(160deg,#AD350A,#E8470F);}
+.joint-fix a,.paths-lead a,.free-note a,.joints-close a{text-decoration:underline;text-decoration-color:rgba(255,87,34,.5);text-underline-offset:3px;text-decoration-thickness:1.5px;}
+.joint-fix a:hover,.joints-close a:hover{text-decoration-color:var(--ha-o);}
+
+/* ── free shelf: solid, lit cards with a FREE flag ── */
+.shelf-item{border-style:solid;background:var(--card);border-radius:18px;
+  background-image:radial-gradient(240px circle at var(--mx,50%) var(--my,-40%),rgba(255,87,34,.16),transparent 70%);}
+.shelf-item::before{content:'Free';position:absolute;top:.9rem;right:.9rem;font-size:.56rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;
+  color:#3fd18b;border:1px solid rgba(13,140,79,.55);background:rgba(13,140,79,.12);padding:.22rem .55rem;border-radius:100px;}
+html[data-theme="day"] .shelf-item::before{color:#0B6E3E;}
+.shelf-kind{padding-right:3.4rem;}
+.shelf-item:hover{transform:translateY(-5px);box-shadow:0 20px 48px rgba(255,87,34,.18);}
+.shelf-go{align-self:flex-start;padding:.45rem .9rem;border-radius:100px;border:1px solid rgba(255,87,34,.4);background:rgba(255,87,34,.10);font-weight:700;}
+.shelf-item:hover .shelf-go{background:var(--ha-o);color:#fff;border-color:var(--ha-o);}
+
+/* ── five routes: rungs as lit cards, the start rung flows ── */
+.rung{border-radius:20px;padding-left:1rem;padding-right:1rem;margin-bottom:.6rem;border:1px solid transparent;
+  background-image:radial-gradient(420px circle at var(--mx,50%) var(--my,-60%),rgba(255,87,34,.10),transparent 70%);
+  transition:background-color .3s var(--ease),border-color .3s var(--ease),transform .3s var(--ease),box-shadow .3s var(--ease);}
+.rung:first-of-type{border-top:1px solid transparent;}
+.rung:hover{border-color:rgba(255,87,34,.45);transform:translateY(-3px);box-shadow:0 18px 44px rgba(0,0,0,.25);}
+.rung.is-start{border:1.5px solid transparent;
+  background:linear-gradient(var(--card),var(--card)) padding-box,linear-gradient(125deg,var(--ha-o),var(--ha-gold),var(--ha-g),var(--ha-o)) border-box;
+  background-size:100% 100%,300% 300%;box-shadow:0 26px 70px rgba(255,87,34,.18);}
+.rung-go{padding:.55rem 1rem;border-radius:100px;background:rgba(255,87,34,.12);border:1px solid rgba(255,87,34,.4);font-weight:700;}
+.rung:hover .rung-go,.rung.is-start .rung-go{background:var(--ha-o);color:#fff;border-color:var(--ha-o);}
+.rung:not(.is-start):hover{background:radial-gradient(420px circle at var(--mx,50%) var(--my,-60%),rgba(255,87,34,.16),transparent 70%),var(--card);}
+.rung.is-start:hover{background:linear-gradient(var(--card),var(--card)) padding-box,linear-gradient(125deg,var(--ha-o),var(--ha-gold),var(--ha-g),var(--ha-o)) border-box;background-size:100% 100%,300% 300%;}
+.shelf-item:hover{background:radial-gradient(240px circle at var(--mx,50%) var(--my,-40%),rgba(255,87,34,.2),transparent 70%),var(--card);}
+.rung-bonus{display:inline-flex;margin-top:.8rem;font-size:.74rem;font-weight:600;line-height:1.4;color:#3fd18b;
+  padding:.38rem .75rem;border-radius:100px;background:rgba(13,140,79,.12);border:1px solid rgba(13,140,79,.45);}
+html[data-theme="day"] .rung-bonus{color:#0B6E3E;}
+
+/* ── story, pledge, final: warmth ── */
+.story{position:relative;border-radius:22px;box-shadow:0 0 0 1px rgba(255,87,34,.22),0 30px 70px rgba(255,87,34,.10);}
+.pledge{border-radius:26px;border:1px solid rgba(255,87,34,.4);
+  background:radial-gradient(110% 120% at 0% 0%,rgba(255,87,34,.22),transparent 55%),radial-gradient(90% 110% at 100% 100%,rgba(255,196,107,.16),transparent 60%),var(--card);}
+.pledge-h em,.final-h em{background:linear-gradient(100deg,var(--ha-o),var(--ha-gold));-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;}
+html[data-theme="day"] .pledge-h em,html[data-theme="day"] .final-h em{background-image:linear-gradient(100deg,#AD350A,#E8470F);}
+.final-cta{position:relative;isolation:isolate;border-radius:28px;padding:clamp(2rem,5vw,3.4rem);overflow:hidden;
+  background:radial-gradient(80% 100% at 50% 0%,rgba(255,87,34,.22),transparent 60%),var(--card);border:1px solid rgba(255,87,34,.35);}
+.timer-panel{border-color:rgba(255,87,34,.35);box-shadow:0 20px 60px rgba(255,87,34,.12);}
+.timer-num{background:linear-gradient(160deg,var(--ink),var(--ha-o));-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;}
+html[data-theme="day"] .timer-num{background-image:linear-gradient(160deg,#0A0A0A,#AD350A);}
+
+/* ── motion: desktop only, and never for reduced-motion ── */
+@media (min-width:900px) and (prefers-reduced-motion:no-preference){
+  .ha-aurora .a1{animation:haDrift1 18s ease-in-out infinite alternate;will-change:transform;}
+  .ha-aurora .a2{animation:haDrift2 22s ease-in-out infinite alternate;will-change:transform;}
+  .ha-aurora .a3{animation:haDrift3 26s ease-in-out infinite alternate;will-change:transform;}
+  .ask em{animation:haShine 7s linear infinite;}
+  .ha-offer.is-hot,.rung.is-start{animation:haFlow 7s linear infinite;}
+}
+@media (prefers-reduced-motion:no-preference){
+  .ha-track{animation:haTick 38s linear infinite;}
+  .ha-ticker:hover .ha-track{animation-play-state:paused;}
+}
+@keyframes haDrift1{to{transform:translate3d(10vw,6vh,0) scale(1.15);}}
+@keyframes haDrift2{to{transform:translate3d(-8vw,10vh,0) scale(.9);}}
+@keyframes haDrift3{to{transform:translate3d(-12vw,-8vh,0) scale(1.2);}}
+@keyframes haShine{to{background-position:-220% 0;}}
+@keyframes haFlow{to{background-position:0 0,300% 0;}}
+@keyframes haTick{to{transform:translateX(-50%);}}
+
+@media (max-width:960px){
+  .ha-grid{grid-template-columns:1fr;}
+  .ha-copy .ask{font-size:clamp(2.4rem,9vw,3.6rem);}
+  .ha-aurora i{filter:blur(50px);opacity:.45;}
+}
+@media (max-width:640px){
+  .rung{padding-left:.75rem;padding-right:.75rem;}
+  .ha-offer{padding:1rem 1.05rem;}
+  .ha-track span{font-size:.8rem;padding:0 1.2rem;}
+}
+</style>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -1183,6 +1357,9 @@ a.promo-tick{text-decoration:none;display:block;}
 <a class="promo-tick" href="#pledge" aria-label="We will not let you go until you're hired."><div class="promo-track">We will not let you go <em>until you're hired.</em></div></a>
 <!-- HERO -->
 <section class="wrap home-hero" id="promise" style="padding-top:clamp(2.5rem,6vw,4rem);">
+<div aria-hidden="true" class="ha-aurora"><i class="a1"></i><i class="a2"></i><i class="a3"></i></div>
+<div class="ha-grid">
+<div class="ha-copy">
 <div class="step"><span class="step-n">01</span><span class="step-l">What We Can Do For You</span></div>
 <h1 class="ask">Become <em>hireable and represented</em> for global remote work — from right where you are.</h1>
 <p class="ask-sub">You do not need to relocate. You need the capacity to do the work remotely, roles you are actually eligible for, career assets a global employer can read, an aimed search and the judgement to convert an offer. We are accountable for what we teach and build with you; we do not control the market's timing. <strong>Cohort 12 enrolment opens 5 October and closes 31 October.</strong></p>
@@ -1192,7 +1369,38 @@ a.promo-tick{text-decoration:none;display:block;}
 <p class="hero-dx"><a href="diagnose/">Free Diagnosis <span aria-hidden="true">→</span></a><span class="hero-dx-note">Ready now? 5 questions · 90 seconds</span></p>
 </div>
 <div class="scroll-hint">Refined after every cohort — here's the proof</div>
+</div>
+<aside aria-label="Open offers" class="ha-offers">
+<a class="ha-offer is-hot" href="foundationtraining/">
+<span class="ha-flag">Cohort 12 · Enrolment open</span>
+<span class="ha-k">Remote Job Foundation Training</span>
+<span class="ha-price"><b>₦250,000</b><s>₦370,000</s></span>
+<span class="ha-bonus"><span class="ha-gift" aria-hidden="true">+</span><span><b>Bonus:</b> a ₦150,000 career track at The Mentorine School, included</span></span>
+<span class="ha-clock" data-deadline="2026-10-31T20:00:00+01:00" data-no-evergreen=""><span class="ha-clock-l">Closes in</span><span class="ha-t"><b data-k="d">00</b>d</span><span class="ha-t"><b data-k="h">00</b>h</span><span class="ha-t"><b data-k="m">00</b>m</span><span class="ha-t"><b data-k="s">00</b>s</span></span>
+<span class="ha-go">See Foundation Training <span class="a">→</span></span>
+</a>
+<a class="ha-offer is-free" href="diagnose/">
+<span class="ha-flag">Free · 90 seconds</span>
+<span class="ha-k">Find the leak in your search</span>
+<span class="ha-line">Five questions tell you which of the five parts to fix first. You may not need to buy anything.</span>
+<span class="ha-go">Run the free diagnosis <span class="a">→</span></span>
+</a>
+<a class="ha-offer is-start" href="register.html#diy">
+<span class="ha-flag">Start tonight</span>
+<span class="ha-k">From ₦15,000, instant download</span>
+<span class="ha-line">The book, the CV Engine, the Self-Learn Pack at ₦35,000, or a career-skills track.</span>
+<span class="ha-go">Open the store <span class="a">→</span></span>
+</a>
+</aside>
+</div>
 </section>
+<!-- ADVANTAGE TICKER -->
+<div class="ha-ticker" role="region" aria-label="Why ERJ">
+<div class="ha-track">
+<span>Hard-currency pay — <em>USD · EUR · GBP</em></span><span>Work from <em>right where you are</em></span><span><em>382+</em> placed into global remote work</span><span>Marked and certified, <em>not a completion badge</em></span><span>Bonus: <em>₦150,000 career track</em> with Foundation Training</span><span>We will not let you go <em>until you're hired</em></span><span>Free diagnosis in <em>90 seconds</em></span>
+<span aria-hidden="true">Hard-currency pay — <em>USD · EUR · GBP</em></span><span aria-hidden="true">Work from <em>right where you are</em></span><span aria-hidden="true"><em>382+</em> placed into global remote work</span><span aria-hidden="true">Marked and certified, <em>not a completion badge</em></span><span aria-hidden="true">Bonus: <em>₦150,000 career track</em> with Foundation Training</span><span aria-hidden="true">We will not let you go <em>until you're hired</em></span><span aria-hidden="true">Free diagnosis in <em>90 seconds</em></span>
+</div>
+</div>
 <!-- FOUNDER WELCOME -->
 <span aria-hidden="true" id="about"></span>
 <!-- #about is the canonical anchor for "who runs this". The section keeps
@@ -1307,7 +1515,7 @@ a.promo-tick{text-decoration:none;display:block;}
 <span class="shelf-go">Scan my CV <span class="a">→</span></span>
 </a>
 <a class="shelf-item reveal" href="masterclass/">
-<span class="shelf-kind">Live · Sat 29 Aug</span>
+<span class="shelf-kind">Live · free on Zoom</span>
 <h3 class="shelf-title">Remote Job Application <em>Clinic</em></h3>
 <p class="shelf-desc">Bring your CV and one job advert. We find the leak live, free, on Zoom.</p>
 <span class="shelf-go">Register for the clinic <span class="a">→</span></span>
@@ -1372,6 +1580,7 @@ a.promo-tick{text-decoration:none;display:block;}
 <div class="rung-meta">
 <span>Stages 1–4</span><span>20 training days</span><span>Targets $500–$2,000/mo roles</span>
 </div>
+<span class="rung-bonus">+ ₦150,000 career track at The Mentorine School, included</span>
 </div>
 <div class="rung-buy">
 <div class="rung-price">₦250,000<s class="rung-was">₦370,000</s></div>
@@ -1550,7 +1759,7 @@ a.promo-tick{text-decoration:none;display:block;}
 <script defer="" src="erj-theme.js?v=20260911a"></script>
 <script defer="" src="erj-product.js?v=20260924c"></script>
 <script defer="" src="erj-nav.js?v=20260925a"></script>
-<script defer="" src="erj-config.js?v=20261004a"></script>
+<script defer="" src="erj-config.js?v=20261004b"></script>
 <script defer="" src="erj-capture.js?v=20260911a"></script>
 <script>if("serviceWorker" in navigator){window.addEventListener("load",function(){var go=function(){navigator.serviceWorker.register("/sw.js",{updateViaCache:"none"}).then(function(reg){reg.update();}).catch(function(){});};if("requestIdleCallback" in window){requestIdleCallback(go,{timeout:3000});}else{setTimeout(go,1200);}});}</script>
 <script>
@@ -1614,6 +1823,24 @@ a.promo-tick{text-decoration:none;display:block;}
   /* No initial paint(): reading scrollHeight here would force a layout of the
      whole document before the first pixel is on screen, and the answer is
      always the same — at the top of the page, the bar is empty. */
+})();
+</script>
+<script>
+/* Home alive layer: scroll progress + a cursor spotlight on cards (pointer
+   devices only). Purely decorative; nothing on the page depends on it. */
+(function(){
+  var bar=document.createElement('div'); bar.className='ha-progress'; bar.setAttribute('aria-hidden','true');
+  document.body.appendChild(bar);
+  var ticking=false;
+  function upd(){ticking=false;var h=document.documentElement.scrollHeight-innerHeight;bar.style.transform='scaleX('+(h>0?Math.min(1,scrollY/h):0)+')';}
+  addEventListener('scroll',function(){if(!ticking){ticking=true;requestAnimationFrame(upd);}},{passive:true});
+  upd();
+  if(!matchMedia('(hover:hover) and (pointer:fine)').matches)return;
+  document.querySelectorAll('.shelf-item,.rung').forEach(function(el){
+    el.addEventListener('pointermove',function(e){var r=el.getBoundingClientRect();
+      el.style.setProperty('--mx',(e.clientX-r.left)+'px');el.style.setProperty('--my',(e.clientY-r.top)+'px');});
+    el.addEventListener('pointerleave',function(){el.style.removeProperty('--mx');el.style.removeProperty('--my');});
+  });
 })();
 </script>
 </body>

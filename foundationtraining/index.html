@@ -36,7 +36,7 @@
   src:url('/fonts/inter-500.woff2') format('woff2');}
 </style>
 <noscript></noscript>
-<link href="../product.css?v=20260924a" rel="stylesheet"/>
+<link href="../product.css?v=20261004b" rel="stylesheet"/>
 <style>
   /* ── sticky mobile CTA ── */
   .sticky-cta{position:fixed;left:0;right:0;bottom:0;z-index:60;display:flex;align-items:center;justify-content:space-between;
@@ -143,7 +143,10 @@
     box-shadow:0 30px 80px rgba(255,87,34,.14),0 0 0 1px rgba(13,140,79,.18) inset;}
   .cdv-spot::before{content:'';position:absolute;inset:-40%;z-index:-1;pointer-events:none;
     background:conic-gradient(from 0deg,transparent 0 70%,rgba(255,87,34,.18) 80%,rgba(13,140,79,.22) 90%,transparent 100%);
-    animation:cdvSweep 14s linear infinite;}
+}
+  /* The sweep is a large rotating layer; phones get the static glow so the
+     GPU is never short of memory mid-scroll (blank tiles while flicking). */
+  @media (min-width:861px) and (prefers-reduced-motion:no-preference){.cdv-spot::before{animation:cdvSweep 14s linear infinite;will-change:transform;}}
   @keyframes cdvSweep{to{transform:rotate(360deg);}}
   .cdv-ribbon{position:absolute;top:1.1rem;left:50%;transform:translateX(-50%);z-index:3;white-space:nowrap;
     background:linear-gradient(90deg,#0D8C4F,#FF5722);color:#fff;font-size:.62rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
@@ -491,13 +494,13 @@
 <picture><source srcset="../shop/careerdev-mentorine.webp" type="image/webp"/><img alt="Career Development — Self-Study box from The Mentorine School: one career track of your choice, roadmap, courses and practical work, 90 days from the day you activate" height="900" loading="lazy" src="../shop/careerdev-mentorine.jpg" width="900"/></picture>
 </div>
 <div class="cdv-seal" aria-hidden="true"><b>FREE</b><span>with<br/>Foundation</span></div>
-<div class="cdv-worth"><b>₦50,000</b>value, included</div>
+<div class="cdv-worth"><b>₦150,000</b>value, included</div>
 </div>
 <div class="cdv-copy">
 <p class="section-label"><span class="mark"></span> Your career, built on both sides</p>
 <h2>Your Foundation Training includes <span>career development.</span></h2>
 <p class="cdv-lead">Enrol in Remote Job Foundation Training, Stages 1–4, and receive <strong>90-day access to a selected self-study career track at The Mentorine School at no additional cost.</strong> Your assessment helps us identify the skills and practical work relevant to your target role.</p>
-<div class="cdv-value"><s>₦50,000</s><b>Included</b><span>Career Development — Self-Study costs ₦50,000 bought on its own.</span></div>
+<div class="cdv-value"><s>₦150,000</s><b>Included</b><span>The standard Self-Study rate at The Mentorine School is ₦150,000. With Foundation Training it costs you nothing extra.</span></div>
 <ul class="cdv-chips">
 <li>One career track</li>
 <li>Roadmap, courses and practical work</li>
@@ -605,7 +608,7 @@
 <script src="../erj-theme.js?v=20260911a"></script>
 <script src="../erj-product.js?v=20260924c"></script>
 <script src="../erj-nav.js?v=20260925a"></script>
-<script src="../erj-config.js?v=20261004a"></script>
+<script src="../erj-config.js?v=20261004b"></script>
 <script src="../erj-capture.js?v=20260911a"></script>
 <script>if("serviceWorker" in navigator){window.addEventListener("load",function(){var go=function(){navigator.serviceWorker.register("/sw.js").then(function(reg){reg.update();}).catch(function(){});};if("requestIdleCallback" in window){requestIdleCallback(go,{timeout:3000});}else{setTimeout(go,1200);}});}</script>
 <script>
