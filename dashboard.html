@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html data-theme="night" lang="en">
+<html data-alive="lite" data-theme="night" lang="en">
 <head><meta charset="utf-8"/><script id="erjThemeBoot">/* Apply the saved theme before first paint. erj-theme.js loads deferred, so without this a day-theme visitor sees the night page first. */try{var d=document.documentElement,p=localStorage.getItem('rjt-theme');if(p==='system')p=window.matchMedia&&matchMedia('(prefers-color-scheme: light)').matches?'day':'night';if(p==='day'||p==='night')d.setAttribute('data-theme',p)}catch(e){}</script><style id="erjCanvasGuard">html{background:#000000}html[data-theme="day"]{background:#FAFAF8}</style>
 
 <meta content="#000000" id="metaThemeColor" name="theme-color"/>
@@ -962,6 +962,7 @@ function cohortLabelFor(session, rec){
   return (session && session.cohort) || (rec && rec.cohort) || enrollingCohortLabel();
 }
 </script>
+<link href="erj-alive.css?v=20261004a" rel="stylesheet"/>
 </head>
 <body>
 <!-- Portal app shell: this topbar + the sidebar are the ONLY navigation here.
@@ -2553,5 +2554,6 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 </script>
 <script src="erj-private-protection.js?v=20260911a"></script>
+<script defer="" src="erj-alive.js?v=20261004a"></script>
 </body>
 </html>

@@ -2,7 +2,7 @@
    EVERYTHING REMOTE JOB — SERVICE WORKER
    Cache-first for app shell, network-first for fonts
 ═══════════════════════════════════════════════════════ */
-const CACHE = 'erj-site-20261004c';
+const CACHE = 'erj-site-20261004d';
 const OFFLINE = '/offline.html';
 
 /* SHELL is what a first-time visitor pays for before anything renders. It had
@@ -30,17 +30,25 @@ const SHELL = [
   '/starthere.html',
   '/erj-nav.js?v=20260925a',
   '/erj-track.js?v=20260911a',
-  '/founder-oluwaseyi.webp',
+  '/photo-seyi-suit.webp',
+  '/photo-seyi-invite.webp',
+  '/photo-seyi-welcome.webp',
+  '/photo-seyi-thumbsup.webp',
+  '/photo-seyi-typing.webp',
+  '/photo-seyi-desk.webp',
+  '/photo-seyi-headset.webp',
   '/erj-theme.js?v=20260911a',
   '/erj-product.js?v=20260924c',
   '/erj-passcode.js?v=20260928a',
-  '/erj-schema.js?v=20260928c',
+  '/erj-schema.js?v=20261004a',
   '/diagnose/dx.js?v=20260911a',
   '/diagnose/report-pdf.js?v=20260911a',
   '/diagnose/index.html',
   '/erj-capture.js?v=20260911a',
   '/erj-config.js?v=20261004b',
   '/product.css?v=20261004b',
+  '/erj-alive.css?v=20261004a',
+  '/erj-alive.js?v=20261004a',
   '/manifest.json',
   '/erj-mark-dark-128.png',
   '/erj-mark-light-128.png',

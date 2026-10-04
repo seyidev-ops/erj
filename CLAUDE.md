@@ -107,7 +107,8 @@ fails on any page naming a preview image that does not exist.
   `erj-nav.js`, `erj-theme.js`, `erj-track.js`, `erj-capture.js`,
   `erj-product.js`, `erj-schema.js`, `erj-cart.js`, `erj-passcode.js`,
   `erj-ascend.js`, `erj-private-protection.js`, `product.css`,
-  `erj-buttons.css`.
+  `erj-buttons.css`, and the site-wide visual layer `erj-alive.css` +
+  `erj-alive.js` (loaded last on every page except `blog/**`).
 - Third-party code is vendored (`cvscan/vendor/`, `cvbuilder/vendor/`); don't
   add CDN dependencies for app logic.
 - `blog/<slug>/index.html`: static, canonical post pages. `blog.html` is the
@@ -145,6 +146,15 @@ fails on any page naming a preview image that does not exist.
   sweeps, drifting blobs) run on desktop widths only: on phones they starve
   the GPU and Chrome paints blank tiles mid-scroll. The same `.reveal` rules are inlined
   in several root pages as well as `product.css`, so change them everywhere.
+- The alive layer (`erj-alive.css/.js`) adds a scroll progress bar, a
+  drifting light behind each page's first section, glowing accent words in
+  `h1/h2 em`, lit and tilted photo frames, and hover feedback on cards.
+  Portals and tools carry `<html data-alive="lite">` (no hero light). It is
+  decorative only: no page may depend on it. New pages get the same two
+  tags before `</head>` and `</body>`.
+- Photos of the founder are `photo-seyi-<pose>.webp` (suit, welcome, invite,
+  thumbsup, typing, headset, desk). A new photo gets a new name; delete the
+  file it replaces so no residue ships.
 - The store (`register.html`) is grouped DIY / DWY / DFY. A new product
   goes into the right group, and each card's `h3` is the product name.
 - WhatsApp prefill text lives in `ERJ_CONFIG.messages`; don't inline new

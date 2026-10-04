@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html data-theme="night" lang="en">
+<html data-alive="lite" data-theme="night" lang="en">
 <head><meta charset="utf-8"/><script id="erjThemeBoot">/* Apply the saved theme before first paint. erj-theme.js loads deferred, so without this a day-theme visitor sees the night page first. */try{var d=document.documentElement,p=localStorage.getItem('rjt-theme');if(p==='system')p=window.matchMedia&&matchMedia('(prefers-color-scheme: light)').matches?'day':'night';if(p==='day'||p==='night')d.setAttribute('data-theme',p)}catch(e){}</script><style id="erjCanvasGuard">html{background:#000000}html[data-theme="day"]{background:#FAFAF8}</style>
 
 <link href="manifest.json" rel="manifest"/>
@@ -287,6 +287,7 @@ html[data-theme="day"] .nav,html[data-theme="day"] nav{background:var(--bg)!impo
 </meta></meta></meta><link href="/favicon.ico" rel="icon" sizes="48x48 32x32 16x16"/>
 <link href="/favicon-96.png" rel="icon" sizes="96x96" type="image/png"/>
 <link href="/appletouchicon.png" rel="apple-touch-icon"/>
+<link href="erj-alive.css?v=20261004a" rel="stylesheet"/>
 </head>
 <body>
 <div id="erjNavMount"></div>
@@ -1153,5 +1154,6 @@ renderStudents();
 </script>
 <!-- ===== /Unified Theme Control ===== -->
 <script defer="" src="erj-nav.js?v=20260925a"></script>
+<script defer="" src="erj-alive.js?v=20261004a"></script>
 </body>
 </html>

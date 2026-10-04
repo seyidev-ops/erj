@@ -59,7 +59,7 @@
       "jobTitle": "Lead Facilitator",
       "description": "Founder and Lead Facilitator of Everything Remote Job. Has trained professionals into globally competitive remote roles since 2013.",
       "url": "https://everythingremotejob.com/#about",
-      "image": "https://everythingremotejob.com/founder-oluwaseyi.jpg",
+      "image": "https://everythingremotejob.com/photo-seyi-suit.jpg",
       "worksFor": {
         "@id": "https://everythingremotejob.com/#organization"
       },
