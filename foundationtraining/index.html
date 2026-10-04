@@ -127,6 +127,92 @@
   .cdv-faq .a a{color:var(--accent);text-decoration:none;font-weight:500;}
   .cdv-faq .a strong{color:var(--ink);font-weight:600;}
   .cdv-partner{margin-top:1.4rem;font-size:0.82rem;color:var(--ink-faint);}
+
+  /* ── the bonus spotlight ──
+     The included Mentorine track is the offer people should see and want,
+     so it gets the page's one showpiece panel: the product box on a lit
+     stage, a value line, and its own enrol button. ERJ orange meets
+     Mentorine green (#0D8C4F) — the two brands, in one frame. */
+  .cdv-spot{position:relative;overflow:hidden;isolation:isolate;border-radius:28px;margin:0 0 2.4rem;
+    padding:clamp(1.6rem,4vw,3.2rem);display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(1.6rem,4vw,3.4rem);align-items:center;
+    background:
+      radial-gradient(120% 90% at 0% 0%,rgba(13,140,79,.30),transparent 55%),
+      radial-gradient(90% 80% at 100% 100%,rgba(255,87,34,.28),transparent 60%),
+      var(--card);
+    border:1px solid rgba(255,87,34,.55);
+    box-shadow:0 30px 80px rgba(255,87,34,.14),0 0 0 1px rgba(13,140,79,.18) inset;}
+  .cdv-spot::before{content:'';position:absolute;inset:-40%;z-index:-1;pointer-events:none;
+    background:conic-gradient(from 0deg,transparent 0 70%,rgba(255,87,34,.18) 80%,rgba(13,140,79,.22) 90%,transparent 100%);
+    animation:cdvSweep 14s linear infinite;}
+  @keyframes cdvSweep{to{transform:rotate(360deg);}}
+  .cdv-ribbon{position:absolute;top:1.1rem;left:50%;transform:translateX(-50%);z-index:3;white-space:nowrap;
+    background:linear-gradient(90deg,#0D8C4F,#FF5722);color:#fff;font-size:.62rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+    padding:.42rem 1.05rem;border-radius:100px;box-shadow:0 8px 22px rgba(255,87,34,.28);}
+  .cdv-stage{position:relative;margin:1.4rem 0 0;}
+  .cdv-plate{position:relative;border-radius:22px;background:#fdfdfb;padding:clamp(.6rem,2vw,1.1rem);
+    box-shadow:0 26px 60px rgba(0,0,0,.35),0 0 0 6px rgba(255,255,255,.05);transform:rotate(-2.2deg);
+    transition:transform .5s var(--ease);}
+  .cdv-spot:hover .cdv-plate{transform:rotate(0) translateY(-6px) scale(1.015);}
+  .cdv-plate img{display:block;width:100%;height:auto;border-radius:14px;animation:cdvFloat 6s ease-in-out infinite;}
+  @keyframes cdvFloat{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
+  .cdv-seal{position:absolute;top:-14px;right:-10px;z-index:2;width:118px;height:118px;border-radius:50%;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+    background:#FF5722;color:#fff;transform:rotate(12deg);box-shadow:0 14px 30px rgba(255,87,34,.45);
+    border:3px dashed rgba(255,255,255,.75);outline:6px solid #FF5722;}
+  .cdv-seal b{font-family:var(--font-display);font-size:1.6rem;font-weight:800;line-height:1;letter-spacing:-.02em;}
+  .cdv-seal span{font-size:.56rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;line-height:1.35;margin-top:.25rem;}
+  .cdv-worth{position:absolute;left:-6px;bottom:-14px;z-index:2;background:#0D8C4F;color:#fff;border-radius:12px;
+    padding:.55rem .85rem;font-size:.72rem;line-height:1.3;box-shadow:0 12px 26px rgba(13,140,79,.4);transform:rotate(-3deg);}
+  .cdv-worth b{display:block;font-family:var(--font-display);font-size:1.15rem;font-weight:800;}
+  .cdv-copy .section-label{margin-bottom:1rem;}
+  .cdv-copy h2{margin-bottom:1rem;font-size:clamp(1.9rem,3.4vw,2.7rem);}
+  .cdv-copy .cdv-lead{font-size:clamp(1rem,1.5vw,1.12rem);color:var(--ink-soft);font-weight:300;line-height:1.7;margin:0 0 1.2rem;max-width:56ch;}
+  .cdv-copy .cdv-lead strong{color:var(--ink);font-weight:600;}
+  .cdv-value{display:flex;align-items:baseline;flex-wrap:wrap;gap:.35rem .9rem;margin:0 0 1.3rem;padding:.9rem 1.1rem;border-radius:14px;
+    background:rgba(13,140,79,.10);border:1px solid rgba(13,140,79,.35);}
+  .cdv-value s{color:var(--ink-faint);font-size:1.05rem;text-decoration-color:#FF5722;text-decoration-thickness:2px;}
+  .cdv-value b{font-family:var(--font-display);font-size:1.7rem;font-weight:800;color:var(--ink);letter-spacing:-.02em;}
+  .cdv-value span{font-size:.82rem;color:var(--ink-soft);}
+  .cdv-chips{display:flex;flex-wrap:wrap;gap:.5rem;margin:0 0 1.6rem;padding:0;list-style:none;}
+  .cdv-chips li{font-size:.8rem;color:var(--ink);border:1px solid var(--card-line);background:rgba(255,255,255,.03);border-radius:100px;padding:.45rem .85rem;}
+  .cdv-chips li::before{content:'\2713';color:#FF5722;font-weight:700;margin-right:.4rem;}
+  .cdv-spot .hero-cta{margin:0;}
+  .cdv-spot .cdv-fine{font-size:.76rem;color:var(--ink-faint);margin:1rem 0 0;}
+  /* hero teaser: the offer is visible before the first scroll */
+  .cdv-tease{display:inline-flex;align-items:center;gap:.75rem;margin-top:1.3rem;padding:.45rem 1rem .45rem .45rem;border-radius:100px;
+    text-decoration:none;color:var(--ink);font-size:.86rem;line-height:1.35;background:var(--card);
+    border:1px solid rgba(13,140,79,.55);box-shadow:0 10px 28px rgba(13,140,79,.18);transition:transform .3s var(--ease),border-color .3s var(--ease);}
+  .cdv-tease:hover{transform:translateY(-2px);border-color:#FF5722;}
+  .cdv-tease img{width:46px;height:46px;border-radius:12px;object-fit:contain;background:#fdfdfb;padding:2px;flex-shrink:0;}
+  .cdv-tease b{color:#FF5722;}
+  html[data-theme="day"] .cdv-tease b,html[data-theme="day"] .cdv-chips li::before{color:#AD350A;}
+  @media (max-width:860px){
+    .cdv-spot{grid-template-columns:1fr;padding-top:4.6rem;}
+    .cdv-ribbon{top:1.2rem;font-size:.56rem;letter-spacing:.16em;}
+    .cdv-stage{max-width:420px;margin:0 auto;width:100%;}
+    .cdv-seal{width:96px;height:96px;right:-4px;}
+    .cdv-seal b{font-size:1.3rem;}
+  }
+  @media (prefers-reduced-motion:reduce){.cdv-spot::before,.cdv-plate img{animation:none;}.cdv-plate{transform:none;}}
+
+  /* ── stage box shots, alternating sides ── */
+  .stage.has-shot{grid-template-columns:auto minmax(0,1fr) clamp(190px,24vw,280px);gap:clamp(1.2rem,3vw,2.4rem);align-items:center;}
+  .stage.has-shot.flip{grid-template-columns:auto clamp(190px,24vw,280px) minmax(0,1fr);}
+  .stage.has-shot .stage-body{grid-column:2;grid-row:1;}
+  .stage.has-shot .stage-shot{grid-column:3;grid-row:1;}
+  .stage.has-shot.flip .stage-shot{grid-column:2;grid-row:1;}
+  .stage.has-shot.flip .stage-body{grid-column:3;grid-row:1;}
+  .stage-shot{margin:0;border-radius:18px;background:#fdfdfb;padding:.5rem;box-shadow:0 18px 44px rgba(0,0,0,.28);
+    transform:rotate(2deg);transition:transform .45s var(--ease),box-shadow .45s var(--ease);}
+  .stage.has-shot.flip .stage-shot{transform:rotate(-2deg);}
+  .stage.has-shot:hover .stage-shot{transform:rotate(0) translateY(-6px) scale(1.03);box-shadow:0 26px 60px rgba(255,87,34,.22);}
+  .stage-shot img{display:block;width:100%;height:auto;border-radius:12px;}
+  @media (max-width:760px){
+    .stage.has-shot,.stage.has-shot.flip{grid-template-columns:auto minmax(0,1fr);align-items:start;}
+    .stage.has-shot .stage-shot,.stage.has-shot.flip .stage-shot{grid-column:1 / -1;grid-row:auto;order:-1;width:min(220px,62%);margin:0 auto .4rem;}
+    .stage.has-shot .stage-body,.stage.has-shot.flip .stage-body{grid-column:2;grid-row:auto;}
+  }
+  @media (prefers-reduced-motion:reduce){.stage-shot,.stage.has-shot.flip .stage-shot{transform:none;}}
   .cdv-partner a{color:var(--accent);text-decoration:none;}
   @media (max-width:860px){.cdv-grid{grid-template-columns:1fr;}}
 </style>
@@ -175,6 +261,7 @@
 <a class="btn-primary-ui btn-yes" href="#pricing"><span>See Cohort 12 Pricing</span><span class="arrow-wrap"><span class="arrow">→</span></span></a>
 <a class="btn-more btn-secondary-ui" href="../diagnose/"><span>Not Sure? Run the Free Diagnosis</span><span class="arrow-wrap"><span class="arrow">→</span></span></a>
 </div>
+<a class="cdv-tease" href="#careerdev"><img alt="" height="46" loading="eager" src="../shop/careerdev-mentorine.webp" width="46"/><span><b>Bonus included:</b> 90 days of career development at The Mentorine School →</span></a>
 </div>
 <figure class="hero-photo">
 <img alt="A young Nigerian professional at his laptop, celebrating a remote offer" decoding="async" height="417" loading="eager" src="../photo-remote-win.webp" width="626"/>
@@ -249,9 +336,10 @@
 <p class="section-label">The Build · Stages 1–4</p>
 <h2>Four stages. Twenty days. <span>A hiring-ready you.</span></h2>
 <p class="section-sub">Four 5-day sprints. Every day ends with a real deliverable.</p>
-<div class="stage reveal">
+<div class="stage reveal has-shot">
 <div class="stage-num">01</div>
-<div>
+<figure class="stage-shot"><picture><source srcset="../shop/stage1.webp" type="image/webp"/><img alt="Stage 1 — Remote Mindset Blueprint box" height="900" loading="lazy" src="../shop/stage1.jpg" width="900"/></picture></figure>
+<div class="stage-body">
 <h3>Remote Mindset Blueprint</h3>
 <div class="stage-tag">5 Days · Foundation</div>
 <ul class="stage-list">
@@ -263,9 +351,10 @@
 <div class="stage-deliverable"><strong>Deliverable</strong>Your Personal Remote Operating System — calendar blocks, KPI sheet, Pomodoro tracker, EOD template.</div>
 </div>
 </div>
-<div class="stage reveal">
+<div class="stage reveal has-shot flip">
 <div class="stage-num">02</div>
-<div>
+<figure class="stage-shot"><picture><source srcset="../shop/stage2.webp" type="image/webp"/><img alt="Stage 2 — The Digital Toolkit box" height="900" loading="lazy" src="../shop/stage2.jpg" width="900"/></picture></figure>
+<div class="stage-body">
 <h3>The Digital Toolkit</h3>
 <div class="stage-tag">5 Days · Tools</div>
 <ul class="stage-list">
@@ -278,9 +367,10 @@
 <div class="stage-deliverable"><strong>Deliverable</strong>The Integrated Sprint — PM board with 5 task cards, linked doc, and a 2-min cloud-recorded walkthrough.</div>
 </div>
 </div>
-<div class="stage reveal">
+<div class="stage reveal has-shot">
 <div class="stage-num">03</div>
-<div>
+<figure class="stage-shot"><picture><source srcset="../shop/stage3.webp" type="image/webp"/><img alt="Stage 3 — Async Communication Mastery box" height="900" loading="lazy" src="../shop/stage3.jpg" width="900"/></picture></figure>
+<div class="stage-body">
 <h3>Async Communication Mastery</h3>
 <div class="stage-tag">5 Days · Communication</div>
 <ul class="stage-list">
@@ -292,9 +382,10 @@
 <div class="stage-deliverable"><strong>Deliverable</strong>5 Professional Communication Assets — ready to deploy from day one of a remote role.</div>
 </div>
 </div>
-<div class="stage reveal">
+<div class="stage reveal has-shot flip">
 <div class="stage-num">04</div>
-<div>
+<figure class="stage-shot"><picture><source srcset="../shop/stage4.webp" type="image/webp"/><img alt="Stage 4 — Start Your Remote Career box" height="900" loading="lazy" src="../shop/stage4.jpg" width="900"/></picture></figure>
+<div class="stage-body">
 <h3>Start Your Remote Career</h3>
 <div class="stage-tag">5 Days · Career Launch</div>
 <ul class="stage-list">
@@ -393,10 +484,34 @@
 </section>
 <!-- CAREER DEVELOPMENT, INCLUDED -->
 <section class="section-line wrap" id="careerdev">
-<p class="section-label"><span class="mark"></span> Included at no additional cost</p>
+<div class="cdv-spot reveal">
+<span class="cdv-ribbon">Bonus · Included with your enrolment</span>
+<div class="cdv-stage">
+<div class="cdv-plate">
+<picture><source srcset="../shop/careerdev-mentorine.webp" type="image/webp"/><img alt="Career Development — Self-Study box from The Mentorine School: one career track of your choice, roadmap, courses and practical work, 90 days from the day you activate" height="900" loading="lazy" src="../shop/careerdev-mentorine.jpg" width="900"/></picture>
+</div>
+<div class="cdv-seal" aria-hidden="true"><b>FREE</b><span>with<br/>Foundation</span></div>
+<div class="cdv-worth"><b>₦50,000</b>value, included</div>
+</div>
+<div class="cdv-copy">
+<p class="section-label"><span class="mark"></span> Your career, built on both sides</p>
 <h2>Your Foundation Training includes <span>career development.</span></h2>
-<p class="section-sub">Enrol in Remote Job Foundation Training, Stages 1–4, and receive 90-day access to a selected self-study career track at The Mentorine School at no additional cost. Your assessment helps us identify the skills and practical work relevant to your target role.</p>
-<div class="cdv-grid">
+<p class="cdv-lead">Enrol in Remote Job Foundation Training, Stages 1–4, and receive <strong>90-day access to a selected self-study career track at The Mentorine School at no additional cost.</strong> Your assessment helps us identify the skills and practical work relevant to your target role.</p>
+<div class="cdv-value"><s>₦50,000</s><b>Included</b><span>Career Development — Self-Study costs ₦50,000 bought on its own.</span></div>
+<ul class="cdv-chips">
+<li>One career track</li>
+<li>Roadmap, courses and practical work</li>
+<li>90 days from the day you activate</li>
+<li>No second payment</li>
+</ul>
+<div class="hero-cta">
+<a class="btn-primary-ui btn-yes" href="../register.html#foundation"><span>Enrol and Claim Your Track</span><span class="arrow-wrap"><span class="arrow">→</span></span></a>
+<a class="btn-more btn-secondary-ui" href="#cdv-how"><span>How It Works</span><span class="arrow-wrap"><span class="arrow is-down">↓</span></span></a>
+</div>
+<p class="cdv-fine">Delivered in partnership with The Mentorine School. Included with Foundation Training and Get Your Dream Job Offer; not with single stages.</p>
+</div>
+</div>
+<div class="cdv-grid" id="cdv-how">
 <div class="cdv-card reveal">
 <span class="cdv-k">Everyone receives it</span>
 <h3>Your assessment decides how you use it.</h3>
