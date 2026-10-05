@@ -1,156 +1,73 @@
 <!DOCTYPE html>
-
 <html data-alive="lite" data-theme="night" lang="en">
-<head><meta charset="utf-8"/><script id="erjThemeBoot">/* Apply the saved theme before first paint. erj-theme.js loads deferred, so without this a day-theme visitor sees the night page first. */try{var d=document.documentElement,p=localStorage.getItem('rjt-theme');if(p==='system')p=window.matchMedia&&matchMedia('(prefers-color-scheme: light)').matches?'day':'night';if(p==='day'||p==='night')d.setAttribute('data-theme',p)}catch(e){}</script><style id="erjCanvasGuard">html{background:#000000}html[data-theme="day"]{background:#FAFAF8}</style>
-
-<link href="manifest.json" rel="manifest"/>
-<meta content="#FAFAF8" media="(prefers-color-scheme: light)" name="theme-color"/>
-<meta content="#000000" media="(prefers-color-scheme: dark)" name="theme-color"/>
-<meta content="#000000" id="metaThemeColor" name="theme-color"/>
+<head>
+<meta charset="utf-8"/>
+<script>/* Saved theme before first paint. */try{var d=document.documentElement,p=localStorage.getItem('rjt-theme');if(p==='system')p=matchMedia('(prefers-color-scheme: light)').matches?'day':'night';if(p==='day'||p==='night')d.setAttribute('data-theme',p)}catch(e){}</script>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Offline | ERJ Training</title>
-<link rel="preload" href="/fonts/space-grotesk-var.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/fonts/inter-300.woff2" as="font" type="font/woff2" crossorigin>
-<style id="erjFonts">
-/* Self-hosted, subset to the characters this site renders. Same family names
-   as the Google versions, so nothing downstream changes. swap matches what
-   Google's stylesheet set: text paints in the fallback, then upgrades. */
-@font-face{font-family:'Space Grotesk';font-style:normal;font-weight:300 800;font-display:swap;
-  src:url('/fonts/space-grotesk-var.woff2') format('woff2-variations'),
-      url('/fonts/space-grotesk-var.woff2') format('woff2');}
-@font-face{font-family:'Inter';font-style:normal;font-weight:300;font-display:swap;
-  src:url('/fonts/inter-300.woff2') format('woff2');}
-@font-face{font-family:'Inter';font-style:normal;font-weight:400;font-display:swap;
-  src:url('/fonts/inter-400.woff2') format('woff2');}
-@font-face{font-family:'Inter';font-style:normal;font-weight:500;font-display:swap;
-  src:url('/fonts/inter-500.woff2') format('woff2');}
-</style>
-<noscript></noscript>
+<meta content="noindex" name="robots"/>
+<meta content="#000000" name="theme-color"/>
+<title>No connection · Everything Remote Job</title>
+<!--
+  The page the service worker shows when the network genuinely fails and the
+  requested page is not in its cache. It must render with NO network at all,
+  so everything is inline: no stylesheet, no nav script, no font request.
+  The logo is the real mark (precached in sw.js), never a redrawn one.
+-->
 <style>
-*{box-sizing:border-box;margin:0;padding:0;}
-:root{--paper:#000000;--ink:#FFFFFF;--ink-soft:#A1A1A1;--ink-faint:#858585;--accent:#FF5722;--line:rgba(255,255,255,0.10);}
-html[data-theme="day"]{--paper:#FAFAF8;--ink:#0A0A0A;--ink-soft:#52514C;--ink-faint:#6E6C65;--accent:#AD350A;--accent-btn:#FF5722;--accent-text:#AD350A;--line:rgba(10,10,10,0.12);}
-body{background:var(--paper);color:var(--ink);font-family:'Inter',system-ui,sans-serif;font-weight:300;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:2rem;-webkit-font-smoothing:antialiased;transition:background .4s ease,color .3s ease;}
-.wrap{max-width:420px;}
-.badge{display:inline-flex;align-items:center;gap:9px;font-size:0.7rem;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:2rem;}
-.badge .mark{width:20px;height:1px;background:var(--accent);}
-h1{font-family:'Space Grotesk',system-ui,sans-serif;font-size:2.4rem;font-weight:800;letter-spacing:-0.03em;margin-bottom:1rem;}
-p{color:var(--ink-soft);font-size:0.95rem;line-height:1.7;margin-bottom:2rem;}
-.btn{display:inline-flex;align-items:center;gap:9px;background:var(--accent);color:#fff;padding:0.9rem 2rem;border-radius:100px;text-decoration:none;font-weight:500;font-size:0.9rem;border:1px solid var(--accent);transition:all 0.3s cubic-bezier(0.22,1,0.36,1);}
-.btn:hover{filter:brightness(1.08);transform:translateY(-2px);}
-.hint{margin-top:1.5rem;font-size:0.78rem;color:var(--ink-faint);}
+@font-face{font-family:'Space Grotesk';font-weight:300 800;font-display:swap;src:url('/fonts/space-grotesk-var.woff2') format('woff2')}
+@font-face{font-family:'Inter';font-weight:300;font-display:swap;src:url('/fonts/inter-300.woff2') format('woff2')}
+@font-face{font-family:'Inter';font-weight:500;font-display:swap;src:url('/fonts/inter-500.woff2') format('woff2')}
+:root{--paper:#000;--card:#0d0d0d;--ink:#fff;--soft:#A1A1A1;--faint:#858585;--line:rgba(255,255,255,.12);--accent:#FF5722}
+html[data-theme="day"]{--paper:#FAFAF8;--card:#fff;--ink:#0A0A0A;--soft:#52514C;--faint:#6E6C65;--line:rgba(10,10,10,.12);--accent:#AD350A}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--paper)}
+body{color:var(--ink);font-family:'Inter',system-ui,sans-serif;font-weight:300;min-height:100vh;display:flex;flex-direction:column}
+.top{display:flex;align-items:center;justify-content:space-between;padding:14px clamp(16px,4vw,32px);border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);font-family:'Space Grotesk',system-ui,sans-serif;font-weight:700;font-size:1.05rem;letter-spacing:-.01em}
+.brand img{width:34px;height:34px}
+.brand em{font-style:italic;color:var(--accent)}
+.m-day{display:none}
+html[data-theme="day"] .m-day{display:block}
+html[data-theme="day"] .m-night{display:none}
+main{flex:1;display:flex;align-items:center;justify-content:center;text-align:center;padding:48px 20px;position:relative;overflow:hidden}
+main::before{content:'';position:absolute;width:520px;height:520px;max-width:120vw;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,87,34,.22),transparent 65%);filter:blur(40px);z-index:0}
+.box{position:relative;z-index:1;max-width:460px}
+.k{display:inline-flex;align-items:center;gap:10px;font-size:.68rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:var(--accent);margin-bottom:18px}
+.k::before{content:'';width:24px;height:1px;background:var(--accent)}
+.dot{width:10px;height:10px;border-radius:50%;background:var(--accent);display:inline-block;margin-right:2px;animation:p 1.6s ease-in-out infinite}
+@keyframes p{50%{transform:scale(.6)}}
+h1{font-family:'Space Grotesk',system-ui,sans-serif;font-size:clamp(2rem,8vw,2.6rem);font-weight:800;letter-spacing:-.03em;line-height:1.05;margin-bottom:14px}
+p{color:var(--soft);line-height:1.7;font-size:1rem}
+.acts{display:flex;flex-direction:column;gap:10px;margin:28px auto 0;max-width:320px}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;min-height:54px;border-radius:999px;font:600 1.05rem 'Inter',system-ui,sans-serif;text-decoration:none;cursor:pointer;border:1px solid transparent}
+.btn.pri{background:#FF5722;color:#fff;box-shadow:0 12px 30px rgba(255,87,34,.3)}
+.btn.sec{background:var(--card);color:var(--ink);border-color:var(--line)}
+.note{margin-top:22px;font-size:.82rem;color:var(--faint)}
+.note a{color:var(--accent)}
+@media (prefers-reduced-motion:reduce){.dot{animation:none}}
 </style>
-<meta content="https://everythingremotejob.com/preview-portal.jpg" property="og:image">
-<meta content="1200" property="og:image:width"/>
-<meta content="630" property="og:image:height"/>
-<meta content="website" property="og:type">
-<meta content="Everything Remote Job" property="og:site_name">
-<meta content="summary_large_image" name="twitter:card">
-<meta content="https://everythingremotejob.com/preview-portal.jpg" name="twitter:image">
-<style id="erjHideLegacy">#themeDropdown,.theme-drop,.theme-drop-menu,#themeMenu,#erjTheme{display:none !important;}</style>
-<meta content="noindex,nofollow" name="robots"/>
-</meta></meta></meta></meta></meta><link href="/favicon.ico" rel="icon" sizes="48x48 32x32 16x16"/>
-<link href="/favicon-96.png" rel="icon" sizes="96x96" type="image/png"/>
-<link href="/appletouchicon.png" rel="apple-touch-icon"/>
-<link href="erj-alive.css?v=20261004a" rel="stylesheet"/>
 </head>
 <body>
-<div id="erjNavMount"></div>
-<script>window.ERJ_NAV={active:'home'};</script>
-<div class="wrap">
-<div class="badge"><span class="mark"></span> No Connection</div>
-<h1>You're offline</h1>
-<p>It looks like you've lost your internet connection. Your progress and downloaded materials are still available.</p>
-<a class="btn" href="/dashboard.html">← Back to Dashboard</a>
-<p class="hint">Once you're back online, the app will sync automatically.</p>
-</div>
+<header class="top">
+  <a class="brand" href="/"><img class="m-night" src="/erj-mark-dark-128.png" alt="" width="34" height="34"/><img class="m-day" src="/erj-mark-light-128.png" alt="" width="34" height="34"/><span>Everything <em>RemoteJob</em></span></a>
+</header>
+<main>
+  <div class="box">
+    <div class="k"><span class="dot" aria-hidden="true"></span> No connection</div>
+    <h1>This page could not load.</h1>
+    <p>Your phone lost the connection for a moment. Nothing is wrong with the site. When the signal is back, this page reloads by itself.</p>
+    <div class="acts">
+      <button class="btn pri" id="retry" type="button">Try again</button>
+      <a class="btn sec" href="/">Go to the home page</a>
+    </div>
+    <p class="note">Enrolled? Your <a href="/dashboard.html">participant dashboard</a> is here once you are back online.<br/>Still stuck? WhatsApp +234 803 292 5957.</p>
+  </div>
+</main>
 <script>
-(function(){var s=localStorage.getItem('rjt-theme');if(s&&s!=='system')document.documentElement.setAttribute('data-theme',s==='night'?'night':'day');else if(s==='system')document.documentElement.setAttribute('data-theme',window.matchMedia('(prefers-color-scheme: light)').matches?'day':'night');else document.documentElement.setAttribute('data-theme','night');})();
+document.getElementById('retry').addEventListener('click',function(){location.reload()});
+/* Reload by itself the moment the connection returns. */
+addEventListener('online',function(){location.reload()});
 </script>
-<script id="erjPWA">
-(function(){
-  // Register service worker (enables offline + install criteria)
-  if('serviceWorker' in navigator){
-    window.addEventListener("load",function(){var go=function(){navigator.serviceWorker.register('sw.js').then(function(reg){reg.update();}).catch(function(){});};if("requestIdleCallback" in window){requestIdleCallback(go,{timeout:3000});}else{setTimeout(go,1200);}});
-  }
-  // Capture install prompt
-  var deferred=null, btn=null;
-  function makeBtn(){
-    if(btn) return btn;
-    btn=document.createElement('button');
-    btn.id='erjInstallBtn';
-    btn.textContent='⤓ Install App';
-    btn.style.cssText='position:fixed;left:16px;bottom:16px;z-index:980;display:none;align-items:center;gap:7px;background:var(--accent-btn,#FF5722);color:#14110E;border:none;border-radius:10px;padding:9px 14px;font-weight:700;font-family:Inter,system-ui,sans-serif;font-size:.8rem;font-weight:600;cursor:pointer;box-shadow:0 4px 18px rgba(0,0,0,.18);';
-    btn.addEventListener('click',async function(){
-      if(!deferred) return;
-      deferred.prompt();
-      try{ await deferred.userChoice; }catch(e){}
-      deferred=null; btn.style.display='none';
-    });
-    document.body.appendChild(btn);
-    return btn;
-  }
-  window.addEventListener('beforeinstallprompt',function(e){
-    e.preventDefault(); deferred=e; makeBtn().style.display='inline-flex';
-  });
-  window.addEventListener('appinstalled',function(){ if(btn) btn.style.display='none'; deferred=null; });
-  // iOS Safari: no beforeinstallprompt — show a hint button that explains Add to Home Screen
-  var isIOS=/iphone|ipad|ipod/i.test(navigator.userAgent);
-  var standalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
-  if(isIOS && !standalone){
-    window.addEventListener('load',function(){
-      var b=makeBtn(); b.textContent='⤓ Add to Home Screen'; b.style.display='inline-flex';
-      b.addEventListener('click',function(){ alert('To install: tap the Share icon, then “Add to Home Screen”.'); });
-    });
-  }
-})();
-</script>
-<!-- ===== Unified Theme Control (Day / System / Night) — header based ===== -->
-<script id="erjThemeJS">
-(function(){
-  var KEY='rjt-theme', html=document.documentElement;
-  var ICON={day:'☀️',night:'🌙',system:'💻'};
-  var NEXT={day:'system',system:'night',night:'day'};   // cycle order
-  var TITLE={day:'Theme: Day (tap for System)',system:'Theme: System (tap for Night)',night:'Theme: Night (tap for Day)'};
-  function sys(){return window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'night':'day';}
-  function bar(resolved){
-    var m=document.getElementById('metaThemeColor')||document.querySelector('meta[name="theme-color"]:not([media])');
-    if(!m){m=document.createElement('meta');m.name='theme-color';m.id='metaThemeColor';document.head.appendChild(m);}
-    m.setAttribute('content', resolved==='night'?'#000000':'#FAFAF8');
-  }
-  function curPref(){ var p=localStorage.getItem(KEY); return ICON[p]?p:'night'; }
-  function apply(pref){
-    if(!ICON[pref]) pref='system';
-    var resolved = pref==='system'? sys() : pref;
-    html.setAttribute('data-theme', resolved);
-    localStorage.setItem(KEY, pref);
-    bar(resolved);
-    // update every in-header theme button on the page
-    document.querySelectorAll('[data-erj-theme-btn], #themeToggle, #themeBtn').forEach(function(btn){
-      btn.textContent = ICON[pref];
-      btn.setAttribute('title', TITLE[pref]);
-      btn.setAttribute('aria-label', TITLE[pref]);
-    });
-  }
-  window.erjApplyTheme=apply;
-  function wire(btn){
-    if(!btn || btn.__erjWired) return; btn.__erjWired=true;
-    // strip any legacy onclick and clone to drop old listeners
-    btn.removeAttribute('onclick');
-    var fresh=btn.cloneNode(true); btn.parentNode.replaceChild(fresh,btn);
-    fresh.addEventListener('click',function(e){ e.preventDefault(); e.stopPropagation(); apply(NEXT[curPref()]); });
-    fresh.style.cursor='pointer';
-  }
-  function wireAll(){ document.querySelectorAll('[data-erj-theme-btn], #themeToggle, #themeBtn').forEach(wire); }
-  if(window.matchMedia){window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change',function(){if(curPref()==='system')apply('system');});}
-  if(document.readyState!=='loading'){ wireAll(); apply(curPref()); }
-  else document.addEventListener('DOMContentLoaded',function(){ wireAll(); apply(curPref()); });
-  // re-apply after a tick in case header is injected late
-  setTimeout(function(){ wireAll(); apply(curPref()); }, 300);
-})();
-</script>
-<!-- ===== /Unified Theme Control ===== -->
-<script defer="" src="erj-nav.js?v=20260925a"></script>
-<script defer="" src="erj-alive.js?v=20261004a"></script>
 </body>
 </html>

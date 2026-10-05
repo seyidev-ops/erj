@@ -2,7 +2,7 @@
    EVERYTHING REMOTE JOB — SERVICE WORKER
    Cache-first for app shell, network-first for fonts
 ═══════════════════════════════════════════════════════ */
-const CACHE = 'erj-site-20261004d';
+const CACHE = 'erj-site-20261005a';
 const OFFLINE = '/offline.html';
 
 /* SHELL is what a first-time visitor pays for before anything renders. It had
@@ -12,6 +12,7 @@ const OFFLINE = '/offline.html';
    time they are actually requested, they just no longer compete with first
    paint. Anything a cold visitor genuinely needs offline stays here. */
 const SHELL = [
+  '/offline.html',
   '/index.html',
   '/register.html',
   '/foundationtraining/index.html',
@@ -77,18 +78,19 @@ const SHELL = [
 ];
 
 self.addEventListener('install', e => {
-  // First-ever install (no worker before us): take over straight away — there is
-  // no page mid-read to disturb. An UPDATE must NOT skipWaiting: doing so swaps
-  // the controller under a page someone is reading, which is what produced the
-  // white-out mid-scroll. The new worker activates the next time every tab of
-  // the site is closed. HTML is network-first anyway, so nobody sees stale copy.
-  const firstInstall = !self.registration.active;
+  // Every new worker takes over as soon as it has cached the shell, on first
+  // install AND on update. Waiting for every tab to close (the old rule) meant
+  // phones and the installed app kept running an outdated worker for weeks,
+  // still serving its old offline page with the old logo. Taking over is safe:
+  // the mid-scroll white-out came from the page reloading itself when the
+  // controller changed (and from clients.navigate()), and both are gone. The
+  // new worker simply answers the next request; nothing on screen is reloaded.
   e.waitUntil(
     caches.open(CACHE)
       .then(c => Promise.all(
         SHELL.map(u => c.add(new Request(u, { cache: 'reload' })).catch(function(){ return null; }))
       ))
-      .then(() => firstInstall ? self.skipWaiting() : undefined)
+      .then(() => self.skipWaiting())
   );
 });
 
@@ -155,6 +157,9 @@ self.addEventListener('fetch', e => {
   if (isHTML) {
     e.respondWith(
       fetch(e.request)
+        // A phone that drops signal for a second should not land on the
+        // offline page: try once more before falling back.
+        .catch(() => new Promise(r => setTimeout(r, 1200)).then(() => fetch(e.request)))
         .then(res => {
           if (res && res.status === 200) {
             const clone = res.clone();

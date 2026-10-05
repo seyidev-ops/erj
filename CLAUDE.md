@@ -89,6 +89,12 @@ Debugger and LinkedIn's Post Inspector to re-scrape the page. The Action
 repoints uploaded pages that still name an old suffixed card, and the validator
 fails on any page naming a preview image that does not exist.
 
+Every new `sw.js` calls `skipWaiting()` once its shell is cached, so an
+update takes over on the next request. Never add a `controllerchange` reload
+or `clients.navigate()`: those, not the take-over, caused the white-out.
+`offline.html` is self-contained (inline styles, real logo files) and
+precached; keep it free of shared scripts so it renders with no network.
+
 `sw.js` also has `PRIVATE_PATHS` (never cached) and `NO_SW_HOSTS`
 (analytics bypass). Add new private pages to `PRIVATE_PATHS`.
 
