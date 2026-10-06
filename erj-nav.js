@@ -55,6 +55,7 @@
                 { label: 'Capacity Audit', href: 'capacityscan/', keys: ['capacityscan'] },
                 { label: 'Remote CV Scan', href: 'cvscan/', keys: ['cvscan'] },
                 { label: 'Free Live Masterclass / Clinic', href: 'masterclass/', keys: ['masterclass'] },
+                { label: 'Remote Job Board', href: 'jobs/', keys: ['jobboard'] },
                 { label: 'Remote Jobs (Global+)', href: WA_CHANNEL, external: true }
             ]
         },

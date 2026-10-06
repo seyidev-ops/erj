@@ -61,7 +61,15 @@ def is_archive(path):
 
 def is_outcome_page(path):
     """Pages that quote member salaries and offers rather than ERJ prices."""
-    return path in OUTCOME_PAGES or path.startswith("blog/")
+    return path in OUTCOME_PAGES or path.startswith("blog/") or is_job_board(path)
+
+
+def is_job_board(path):
+    """The job board (jobs/) republishes employers' own listings: their pay in
+    naira, their job titles. Those are third-party text, not ERJ claims, so
+    price, cohort and retired-term drift there only warns. The one-phone-line
+    check still applies in full."""
+    return path.startswith("jobs/")
 
 # Any line carrying this marker is exempt from every check.
 ESCAPE = "canon-ok"
@@ -148,7 +156,7 @@ def main():
         for term in retired:
             for line in body.splitlines():
                 if term.lower() in line.lower() and ESCAPE not in line:
-                    (warn if is_archive(path) else fail)(
+                    (warn if is_archive(path) or is_job_board(path) else fail)(
                         "retired term", path, '"%s" must not appear anywhere' % term)
                     break
 
@@ -178,7 +186,7 @@ def main():
     # ── 4. the cohort in play is the cohort in canon ────────────────────
     current = canon["cohort"]["number"]
     for path, raw in corpus:
-        if path == DEFINITION or path in PORTAL or is_archive(path):
+        if path == DEFINITION or path in PORTAL or is_archive(path) or is_job_board(path):
             continue
         for line in raw.splitlines():
             if ESCAPE in line:
@@ -204,7 +212,7 @@ def main():
     labels = [p["label"] for p in canon["model"]["parts"]]
     downstream = [l for l in labels if l != "Capacity"]
     for path, raw in corpus:
-        if path == DEFINITION or not path.endswith(".html") or path in PORTAL:
+        if path == DEFINITION or not path.endswith(".html") or path in PORTAL or is_job_board(path):
             continue
         # case-sensitive: these are the published labels, not css class names
         if all(re.search(r"\b%s\b" % l, raw) for l in downstream):

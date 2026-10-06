@@ -1,0 +1,71 @@
+{
+ "_readme": "Settings for the job board engine (jobboard.py). Edit on GitHub and commit; the next morning's run uses them.",
+ "phone": "+2348032925957",
+ "sheet_window_days": 2,
+ "max_age_days": 30,
+ "max_age_unknown_days": 21,
+ "feed_max_age_days": 3,
+ "feed_max_new_per_day": 40,
+ "feed_max_per_company": 4,
+ "blocked_domains": [
+  "himalayas.app",
+  "dailyremote.com",
+  "jobgether.com",
+  "remote4africa.com",
+  "jobberman.com",
+  "upwork.com"
+ ],
+ "title_exclude": "\\b(nurse|driver|warehouse|forklift|on-?site only)\\b",
+ "company_names": {
+  "Scale Army Careers": "Scale Army",
+  "g2i": "G2i",
+  "M-KOPA": "M-KOPA",
+  "trust-wallet": "Trust Wallet",
+  "kraken.com": "Kraken",
+  "the-global-talent-co": "The Global Talent Co",
+  "hirehangar": "Hire Hangar",
+  "weloglobal": "Welocalize",
+  "binance": "Binance",
+  "getwingapp": "Wing Assistant",
+  "assist-world": "Assist World",
+  "finagra": "Finagra",
+  "tem": "Tem",
+  "aghanim": "Aghanim"
+ },
+ "feeds": {
+  "enabled": true,
+  "remotive": true,
+  "jobicy": true,
+  "greenhouse": [
+   "moniepoint@eu",
+   "alpaca",
+   "alu",
+   "canonical",
+   "givedirectly",
+   "okx",
+   "techstars57",
+   "primexbt"
+  ],
+  "lever": [
+   "weloglobal",
+   "binance",
+   "getwingapp",
+   "assist-world"
+  ],
+  "ashby": [
+   "Scale Army Careers",
+   "M-KOPA",
+   "g2i",
+   "hirehangar",
+   "the-global-talent-co",
+   "trust-wallet",
+   "kraken.com",
+   "finagra",
+   "tem",
+   "aghanim"
+  ],
+  "breezy": [
+   "20four7va"
+  ]
+ }
+}

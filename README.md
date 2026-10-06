@@ -191,6 +191,35 @@ The site is a static HTML/CSS/JavaScript website hosted on **GitHub Pages** with
 
 `erj-theme.js` · `erj-nav.js` · `erj-product.js` · `erj-config.js` · `erj-capture.js` · `erj-schema.js` · `erj-cart.js` · `erj-facts.js` · `erj-passcode.js` · `erj-ascend.js` · `erj-track.js` · `erj-private-protection.js` · `product.css` · `erj-buttons.css` · `sw.js` · `manifest.json`
 
+## Remote Job Board (`/jobs/`)
+
+A public board of remote roles open to Nigeria, each written in the ERJ
+channel post format with a **Copy post** button. It runs itself:
+
+- **Every morning at 06:20 WAT** `.github/workflows/jobboard.yml` runs
+  `python3 jobboard.py daily`: imports sheets dropped into `jobs/inbox/`,
+  pulls new roles from the public feeds and employer job boards listed in
+  `jobs/data/config.json`, re-opens every live apply link, takes down closed
+  and expired roles, and rebuilds `jobs/index.html`. The run report is in the
+  Actions log.
+- **Only Nigeria-eligible roles publish.** A feed role needs its location to
+  name Nigeria, Africa or worldwide (bare "Remote" is not enough) and no
+  country restriction in the description. Sheet rows need a clear yes in the
+  eligibility column and a Live / Closing soon status.
+- **A role comes off** when its deadline passes, its page closes, it is 30
+  days past its posting date, or 21 days past its last check if the posting
+  date is unknown.
+- **Sheets:** upload to `jobs/inbox/`; rows dated today or yesterday are
+  taken. Name a file `..._ALL.xlsx` to import every eligible row. Blank
+  template: `jobs/ERJ_Job_Board_Upload_Template.xlsx`. The Master, All Fields
+  and monthly search sheets work as they are.
+- **Take one role down by hand:** `python3 jobboard.py remove <id or apply URL>`
+  (the id is the card's `#job-…` anchor).
+- Sign-up-to-apply boards and search-result pages are never used (list in
+  `config.json` → `blocked_domains`). `validate-facts.py` treats `jobs/` as
+  third-party text: employer pay in naira only warns; the one-phone-line check
+  still applies, and `jobboard.py` strips phone numbers from employer text.
+
 ## Blog publishing
 
 `sitemap.xml` is maintained by `generate-sitemap.py`: every post at `blog/<slug>/index.html` whose `datePublished` has arrived (WAT) is listed, and deleted, noindexed or future-dated posts are left out. The GitHub Action in `.github/workflows/sitemap.yml` runs it on every push to `main` and daily at 00:05 WAT, and commits the result. Nobody needs to edit the sitemap by hand for a blog post.

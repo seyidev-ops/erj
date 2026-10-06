@@ -46,6 +46,8 @@
       /* Career Development \u2014 Self-Study (register.html#careerdev). {track} is the buyer's choice. */
       careerdev: 'CAREER DEVELOPMENT \u2014 SELF-STUDY\n\nTrack: {track}\nFull name:\nEmail:\nTarget role:\n\nI am paying by transfer to Business Play Ltd and will send the receipt here. Please issue my access code for The Mentorine School once payment is verified.',
       /* Foundation participants claiming the included access (dashboard.html). No payment is asked for. */
+      /* Remote Job Board (jobs/): the 'Unsure you qualify? Ask ERJ' link on each card. */
+      jobBoard: 'Hello ERJ \u2014 I saw this role on the job board and I am not sure I qualify.\n\nRole: {title}\nCompany: {company}\nLink: {url}\n\nI will send my CV here. Please check the requirements with me.',
       careerdevIncluded: 'MENTORINE ACCESS\n\nI am enrolled in Foundation Training and I am ready for my included career-development access at The Mentorine School.\n\nFull name:\nEmail:\nTarget role:\nAssessment done: yes / not yet'
     },
 

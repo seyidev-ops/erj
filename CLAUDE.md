@@ -165,6 +165,10 @@ precached; keep it free of shared scripts so it renders with no network.
   goes into the right group, and each card's `h3` is the product name.
 - WhatsApp prefill text lives in `ERJ_CONFIG.messages`; don't inline new
   copies in pages.
+- The job board (`jobs/index.html`) is generated: the block between
+  `<!--JOBS:START-->` and `<!--JOBS:END-->` is rewritten by `jobboard.py`
+  from `jobs/data/listings.json`. Edit the page chrome freely; edit listings
+  through the data, the inbox or `jobboard.py remove`, never by hand.
 - Blog posts are scheduled by date (Africa/Lagos, WAT). Each post has one
   conversion job (diagnose, CV scan, Clinic, AUDIT, a named product).
 

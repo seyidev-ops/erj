@@ -1,0 +1,69 @@
+name: Job board
+
+# Keeps /jobs/ fresh with no one at a keyboard.
+# Every morning at 06:20 WAT (and whenever a sheet is dropped into
+# jobs/inbox/, the settings change, or you press "Run workflow" in the
+# Actions tab) it:
+#   1. imports sheets in jobs/inbox/ (rows dated today or yesterday)
+#   2. pulls new Nigeria-eligible roles from the feeds in jobs/data/config.json
+#   3. re-opens every live apply link and takes down closed roles
+#   4. removes expired roles and rebuilds jobs/index.html
+# The run report (what was added, closed, turned away and why) is in the
+# Actions log for each run.
+
+on:
+  schedule:
+    - cron: "20 5 * * *"   # 06:20 WAT
+  push:
+    branches: [main]
+    paths:
+      - "jobs/inbox/**"
+      - "jobs/data/config.json"
+      - "jobboard.py"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: jobboard
+  cancel-in-progress: false
+
+jobs:
+  board:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install the sheet reader
+        run: pip install openpyxl
+
+      - name: Update the board
+        run: python3 jobboard.py daily
+
+      - name: Validate facts
+        run: python3 validate-facts.py
+
+      - name: Commit if anything changed
+        run: |
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "board already current"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A jobs sitemap.xml
+          git commit -m "Job board: daily update"
+          for i in 1 2 3; do
+            git pull --rebase origin main && git push && exit 0
+            sleep 5
+          done
+          exit 1
