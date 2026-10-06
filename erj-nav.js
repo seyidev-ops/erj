@@ -25,7 +25,6 @@
     const base = typeof cfg.base === 'string' ? cfg.base : '';
     const onPage = Array.isArray(cfg.onPage) ? cfg.onPage : [];
     const P = (href) => /^(https?:|mailto:|tel:|#|\/)/.test(href) ? href : base + href;
-    const WA_CHANNEL = 'https://whatsapp.com/channel/0029Vaym4DE3mFY2wCrC713S';
     /* ── The five items. Each group's title is itself the link to its
           page; the chevron opens the sub-menu. Titles only — detail lives
           on the Your Starting Line and Free For You pages. ── */
@@ -55,8 +54,7 @@
                 { label: 'Capacity Audit', href: 'capacityscan/', keys: ['capacityscan'] },
                 { label: 'Remote CV Scan', href: 'cvscan/', keys: ['cvscan'] },
                 { label: 'Free Live Masterclass / Clinic', href: 'masterclass/', keys: ['masterclass'] },
-                { label: 'Remote Job Board', href: 'jobs/', keys: ['jobboard'] },
-                { label: 'Remote Jobs (Global+)', href: WA_CHANNEL, external: true }
+                { label: 'Remote Job Board', href: 'jobs/', keys: ['jobboard'] }
             ]
         },
         { key: 'stories', label: 'Success Stories', href: 'testimonials.html', keys: ['stories', 'jobs'] },
