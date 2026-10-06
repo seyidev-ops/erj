@@ -477,6 +477,33 @@
    "direct": true,
    "closed": "2026-10-06",
    "closed_reason": "employer page closed"
+  },
+  {
+   "id": "c51f3143a7",
+   "title": "Head of Financial Planning & Analysis",
+   "company": "Canonical",
+   "region": "Home Based - Americas; Home based - EMEA; Office Based - London, UK / Home Based - Americas / Home Based - EMEA / Office Based - London, UK",
+   "type": "Contract",
+   "experience": "Not stated",
+   "salary": "USD 2,000 per year",
+   "bullets": [
+    "MBA or equivalent combination of professional certifications and experience",
+    "Previous experience as a subject matter expert in Financial Planning & Analysis",
+    "Experience with Business Intelligence reporting, CRM and ERP systems"
+   ],
+   "apply": "https://job-boards.greenhouse.io/canonical/jobs/8142970",
+   "posted": "2026-10-05",
+   "deadline": null,
+   "checked": "2026-10-06",
+   "added": "2026-10-06",
+   "source": "Greenhouse",
+   "origin": "feed",
+   "ats_id": "8142970",
+   "why": "Open worldwide with no country exclusion, so you can apply from Nigeria, and pays in foreign currency (USD 2,000 per year). Contract work: a fast way to earn a first remote reference.",
+   "direct": true,
+   "family": "Finance & Accounting",
+   "closed": "2026-10-06",
+   "closed_reason": "removed by hand"
   }
  ]
 }

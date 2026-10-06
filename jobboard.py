@@ -429,7 +429,8 @@ def bullets_from_html(desc, limit=4):
     out = []
     for it in items:
         it = tidy_item(it)
-        if len(it) < 8 or it.lower() in (o.lower() for o in out):
+        if len(it) < 8 or it.lower() in (o.lower() for o in out) or re.fullmatch(
+                r"(eligibility |minimum |key )?(requirements?|qualifications?|skills|responsibilities)", it, re.I):
             continue
         out.append(it)
         if len(out) == limit:
@@ -571,11 +572,18 @@ def location_ok(location, desc=""):
         if re.search(OTHER_COUNTRIES, loc) and not re.search(r"worldwide|anywhere", loc):
             return False, "location names other countries"
         return True, ""
-    if loc in ("remote", "fully remote", "100% remote", "remote-first", "", "emea", "remote - emea", "remote (emea)") or "emea" in loc:
+    if "emea" in loc:
+        # EMEA covers Nigeria on a map, not always on a payroll: it needs Nigeria or Africa named.
+        if re.search(OTHER_COUNTRIES + r"|americas|london", loc.replace("emea", "")):
+            return False, "location lists other regions alongside EMEA"
+        if re.search(r"\b(nigeria|africa)\b", body, re.I) and not re.search(r"south africa", body, re.I):
+            return True, ""
+        return False, "location says EMEA without naming Nigeria or Africa"
+    if loc in ("remote", "fully remote", "100% remote", "remote-first", ""):
         if re.search(r"\b(nigeria|africa)\b", body, re.I) or re.search(
                 r"\b(work from anywhere|anywhere in the world|worldwide|from any country|location[- ]independent)\b", body, re.I):
             return True, ""
-        return False, "location only says remote / EMEA; no country rule stated"
+        return False, "location only says remote; no country rule stated"
     return False, f"location is {clean(location)[:60]}"
 
 
