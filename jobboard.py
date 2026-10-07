@@ -446,8 +446,10 @@ def why_line(j):
         parts.append("Open to candidates in Nigeria by name")
     elif "africa" in region:
         parts.append("Open across Africa, Nigeria included")
-    else:
+    elif re.search(r"worldwide|anywhere|global|all countries|any country", region):
         parts.append("Open worldwide with no country exclusion, so you can apply from Nigeria")
+    else:
+        parts.append("Open to remote applicants in Nigeria")
     sal = j["salary"]
     if sal and sal != "Undisclosed" and MONEY.search(sal):
         if re.search(r"\$|usd|£|€", sal, re.I):
@@ -524,8 +526,24 @@ OTHER_COUNTRIES = (r"kenya|ghana|zambia|uganda|jamaica|caribbean|south africa|\b
                    r"brazil|mexico|australia|germany|france|spain|portugal|egypt|morocco|rwanda|tanzania|ethiopia|"
                    r"myanmar|burmese|vietnam|indonesia|thailand|japan|korea|china|turkey|poland|romania|ukraine|"
                    r"argentina|colombia|chile|peru|ireland|netherlands|italy|sweden|new zealand|singapore|malaysia|"
-                   r"israel|uae|dubai|saudi|qatar|"
+                   r"israel|uae|dubai|saudi|qatar|mauritius|seychelles|madagascar|mozambique|angola|sudan|somalia|tunisia|"
+                   r"algeria|libya|benin|togo|mali\b|burkina|liberia|sierra leone|gambia|lesotho|eswatini|congo|drc\b|gabon|"
                    r"zimbabwe|botswana|malawi|senegal|ivory coast|côte|pakistan|bangladesh|apac|asia")
+
+
+def region_open_to_nigeria(region):
+    """A region that names a country other than Nigeria must also say Nigeria,
+    Africa-wide or worldwide. 'Mauritius remote' fails; 'Kenya, Nigeria, South Africa' passes."""
+    r = clean(region).lower()
+    if re.search(r"restriction (is )?(not )?stated|not stated|unconfirmed|per board|per listing", r):
+        return False  # silence on country is not the employer opening the role to Nigeria
+    if not r or re.search(r"nigeria|lagos|abuja|worldwide|anywhere|global|all countries|any country", r):
+        return True
+    if re.search(OTHER_COUNTRIES, r):
+        return False
+    if re.search(r"\bafrica\b", r) and not re.search(r"south africa|other african", r):
+        return True
+    return not re.search(r"\b(only|based|residents?)\b", r)
 
 
 def sheet_eligible(text):
@@ -713,8 +731,10 @@ def row_to_listing(tab, hm, vals, links, cfg, source_name):
         ok, why = location_ok(region)
         if not ok:
             return None, why
-    if loc and "region" in hm and not re.search(r"nigeria|worldwide|africa", loc, re.I):
+    if loc and "region" in hm and not re.match(r"\W*(nigeria|worldwide|africa\s*[—-]\s*multi|global|anywhere)", loc, re.I):
         return None, f"filed under {loc}"
+    if not region_open_to_nigeria(region):
+        return None, f"region names another country ({region[:60]})"
     if blocked(apply, cfg) and domain(apply) not in cfg.get("sheet_allowed_domains", []):
         return None, f"sign-up-to-apply board ({domain(apply)})"
     if search_page(apply):
