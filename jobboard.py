@@ -774,6 +774,7 @@ def row_to_listing(tab, hm, vals, links, cfg, source_name):
         "posted": posted.isoformat() if posted else None,
         "deadline": deadline.isoformat() if deadline else None,
         "checked": checked.isoformat() if checked else None,
+        "listed": (checked or today()).isoformat(),
         "source": dash(g("found")) or source_name, "origin": "sheet",
     }
     return j, None
@@ -1025,7 +1026,7 @@ def cmd_fetch(cfg, log):
             "bullets": bullets_from_html(desc),
             "apply": apply, "posted": posted.isoformat(),
             "deadline": x["deadline"].isoformat() if x.get("deadline") else None,
-            "checked": t0.isoformat(), "added": t0.isoformat(),
+            "checked": t0.isoformat(), "added": t0.isoformat(), "listed": t0.isoformat(),
             "source": x["source"], "origin": "feed", "ats_id": x.get("ats_id"),
         }
         finalise(j, cfg)
@@ -1126,13 +1127,19 @@ def cmd_check(cfg, log):
     print(f"check: {len(states)} checked, {len(log['closed'])} closed, {unknown} could not be read (kept)")
 
 
+def board_date(j):
+    """The date a card shows and sorts by: when the employer posted it, else when it
+    first went on the board. The daily link check never moves it."""
+    return j.get("posted") or j.get("listed") or j["added"]
+
+
 def expiry(j, cfg):
     """The day a listing comes off the board."""
     if j.get("deadline"):
         return dt.date.fromisoformat(j["deadline"])
     if j.get("posted"):
         return dt.date.fromisoformat(j["posted"]) + dt.timedelta(days=cfg["max_age_days"])
-    return dt.date.fromisoformat(j.get("checked") or j["added"]) + dt.timedelta(days=cfg["max_age_unknown_days"])
+    return dt.date.fromisoformat(j.get("listed") or j["added"]) + dt.timedelta(days=cfg["max_age_unknown_days"])
 
 
 def cmd_expire(cfg, log):
@@ -1182,7 +1189,7 @@ def e(s):
 
 def card(j, cfg):
     pd_ = dt.date.fromisoformat(j["posted"]) if j.get("posted") else None
-    ld = pd_ or dt.date.fromisoformat(j.get("checked") or j["added"])
+    ld = dt.date.fromisoformat(board_date(j))
     when = ("Posted " if pd_ else "Listed ") + f"{ld.day} {ld.strftime('%b')}"
     dl = ""
     if j.get("deadline"):
@@ -1221,7 +1228,7 @@ def render(cfg):
     live = load(F_LIVE, {"listings": []})["listings"]
     t0 = today()
     live = [j for j in live if expiry(j, cfg) >= t0]
-    key = lambda j: (j.get("posted") or j.get("checked") or j["added"], j.get("added", ""))
+    key = lambda j: (board_date(j), j.get("added", ""))
     live.sort(key=key, reverse=True)
     cards = "\n".join(card(j, cfg) for j in live)
     payload = {j["id"]: {"t": copy_text(j, cfg), "title": j["title"], "company": j["company"]} for j in live}
