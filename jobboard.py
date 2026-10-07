@@ -522,6 +522,9 @@ def classify(title):
 OTHER_COUNTRIES = (r"kenya|ghana|zambia|uganda|jamaica|caribbean|south africa|\bsa\b|canada|\bus\b|usa|united states|"
                    r"\buk\b|united kingdom|europe|\beu\b|mauritius|namibia|cameroon|india|philippines|latam|"
                    r"brazil|mexico|australia|germany|france|spain|portugal|egypt|morocco|rwanda|tanzania|ethiopia|"
+                   r"myanmar|burmese|vietnam|indonesia|thailand|japan|korea|china|turkey|poland|romania|ukraine|"
+                   r"argentina|colombia|chile|peru|ireland|netherlands|italy|sweden|new zealand|singapore|malaysia|"
+                   r"israel|uae|dubai|saudi|qatar|"
                    r"zimbabwe|botswana|malawi|senegal|ivory coast|côte|pakistan|bangladesh|apac|asia")
 
 
@@ -547,7 +550,9 @@ POSITIVE = re.compile(
     r"nigeria|lagos|abuja|africa|emea \(incl(uding)? africa\))\b", re.I)
 NEGATIVE = re.compile(
     r"(\b(us|u\.s\.|usa|united states|uk|u\.k\.|united kingdom|canada|eu|europe|european|latam|philippines|india|"
-    r"australia|germany|brazil|mexico)[- ]?(only|based|residents?|citizens?)\b"
+    r"australia|germany|brazil|mexico)[- ]?(only|residents? only|citizens? only|based (candidates|applicants|residents|talent) only)\b"
+    r"|(open|available) (only )?to (candidates|applicants|residents) (in|of|from) (the\s+)?(us|usa|united states|uk|canada|europe|eu|latam|philippines|india)\b"
+    r"|(candidates|applicants) must (be|reside|live) (located |based )?in (the\s+)?(us|usa|united states|uk|canada|europe|eu|latam|philippines|india)\b"
     r"|must (be|reside|live|be located|be based)\s+(in|within)\s+(the\s+)?(us|u\.s\.|usa|united states|uk|united kingdom|canada|europe|eu|latam|india|philippines|australia|brazil|mexico)"
     r"|authori[sz]ed to work in (the\s+)?(us|u\.s\.|usa|united states|uk|united kingdom|canada|eu|europe)"
     r"|(us|u\.s\.) work authori[sz]ation|right to work in the uk|w-?2 (employee|only)|\bsecurity clearance\b"
@@ -555,7 +560,13 @@ NEGATIVE = re.compile(
     r"|only (hire|accept|consider)[^.]{0,40}(in|from) (the\s+)?(us|usa|united states|uk|canada|europe|eu|latam))", re.I)
 
 
-def location_ok(location, desc=""):
+GLOBAL_PROOF = re.compile(
+    r"\b(hire (globally|worldwide|anywhere|internationally)|work from anywhere|anywhere in the world|from any country|"
+    r"open to (candidates|applicants|talent) (from |in )?(anywhere|any country|all countries|worldwide)|"
+    r"fully distributed|location[- ]independent|globally distributed|nigeria|africa)\b", re.I)
+
+
+def location_ok(location, desc="", strict=False):
     """Feed listings: the employer's own location text must open the role to Nigeria,
     and the description must not shut it. 'Remote' on its own never counts."""
     loc = clean(location).lower()
@@ -571,6 +582,8 @@ def location_ok(location, desc=""):
     if re.search(r"worldwide|anywhere|global|international|all countries|any location", loc):
         if re.search(OTHER_COUNTRIES, loc) and not re.search(r"worldwide|anywhere", loc):
             return False, "location names other countries"
+        if strict and not GLOBAL_PROOF.search(body):
+            return False, "board says worldwide but the employer's text never says so"
         return True, ""
     if "emea" in loc:
         # EMEA covers Nigeria on a map, not always on a payroll: it needs Nigeria or Africa named.
@@ -592,10 +605,10 @@ def location_ok(location, desc=""):
 HEAD = {
     "title": ("role", "job title", "title", "position"),
     "company": ("company", "employer", "organisation", "organization"),
-    "region": ("remote geography", "remote region", "geography", "region"),
+    "region": ("remote geography", "remote region", "who can apply", "geography", "region"),
     "location": ("location",),
     "eligible": ("nigeria eligible", "eligible"),
-    "experience": ("experience",),
+    "experience": ("experience", "level"),
     "jtype": ("job type", "type"),
     "reqs": ("key requirements", "recurring requirements", "requirements", "looking for"),
     "salary": ("pay", "salary", "compensation"),
@@ -606,7 +619,7 @@ HEAD = {
     "found": ("found on", "source"),
     "status": ("status",),
     "checked": ("checked",),
-    "notes": ("notes", "why excluded if excluded", "why excluded", "why"),
+    "notes": ("notes", "note", "why excluded if excluded", "why excluded", "why"),
     "why": ("why it made the board",),
     "family": ("job family", "field", "category"),
     "b1": ("looking for 1", "bullet 1"), "b2": ("looking for 2", "bullet 2"),
@@ -689,7 +702,7 @@ def row_to_listing(tab, hm, vals, links, cfg, source_name):
     if not apply.startswith("http") and "@" not in apply:
         return None, "no apply link"
     status = dash(g("status")).lower()
-    if status and not (status.startswith("live") or status.startswith("closing soon") or status == "open"):
+    if status and not (status.startswith("live") or status.startswith("closing soon") or status.startswith("open")):
         return None, f"status: {dash(g('status'))}"
     loc = dash(g("location"))
     region = dash(g("region")) or loc
@@ -702,7 +715,7 @@ def row_to_listing(tab, hm, vals, links, cfg, source_name):
             return None, why
     if loc and "region" in hm and not re.search(r"nigeria|worldwide|africa", loc, re.I):
         return None, f"filed under {loc}"
-    if blocked(apply, cfg):
+    if blocked(apply, cfg) and domain(apply) not in cfg.get("sheet_allowed_domains", []):
         return None, f"sign-up-to-apply board ({domain(apply)})"
     if search_page(apply):
         return None, "search results page, not a single job"
@@ -803,6 +816,9 @@ def get_json(url, timeout=30):
     req = urllib.request.Request(url, headers={"User-Agent": UA, "Accept": "application/json"})
     with urllib.request.urlopen(req, timeout=timeout) as r:
         return json.loads(r.read().decode("utf-8", "replace"))
+
+
+AGGREGATORS = {"Remotive", "Jobicy"}
 
 
 def feed_remotive(cfg):
@@ -958,11 +974,13 @@ def cmd_fetch(cfg, log):
         jid = make_id(apply, title, x.get("company"))
         if jid in have:
             continue
-        ok, why = location_ok(x.get("location"), x.get("desc"))
+        ok, why = location_ok(x.get("location"), x.get("desc"), strict=x["source"] in AGGREGATORS)
         if ok and (blocked(apply, cfg) or search_page(apply)):
             ok, why = False, "sign-up-to-apply board"
         if ok and re.search(r"\b(" + OTHER_COUNTRIES + r")\b", title, re.I) and not re.search(r"nigeria|africa|worldwide|global", title, re.I):
             ok, why = False, "title names another country or region"
+        if ok and re.search(r"\b(english to|to english)\b", title, re.I) and not re.search(r"yoruba|igbo|hausa|pidgin|french", title, re.I):
+            ok, why = False, "translation role for another language"
         if ok and re.search(cfg["title_exclude"], title, re.I):
             ok, why = False, "outside the board's scope"
         if x.get("deadline") and x["deadline"] < t0:

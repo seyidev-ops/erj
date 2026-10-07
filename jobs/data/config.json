@@ -1,5 +1,5 @@
 {
- "_readme": "Settings for the job board engine (jobboard.py). Edit on GitHub and commit; the next morning's run uses them.",
+ "_readme": "Settings for the job board engine (jobboard.py). blocked_domains: sign-up-to-apply boards never used. sheet_allowed_domains: boards you chose to allow in your own uploaded sheets. Edit on GitHub and commit; the next run uses them.",
  "phone": "+2348032925957",
  "sheet_window_days": 2,
  "max_age_days": 30,
@@ -13,7 +13,11 @@
   "jobgether.com",
   "remote4africa.com",
   "jobberman.com",
-  "upwork.com"
+  "upwork.com",
+  "jobicy.com"
+ ],
+ "sheet_allowed_domains": [
+  "himalayas.app"
  ],
  "title_exclude": "\\b(nurse|driver|warehouse|forklift|on-?site only)\\b",
  "company_names": {
@@ -35,7 +39,7 @@
  "feeds": {
   "enabled": true,
   "remotive": true,
-  "jobicy": true,
+  "jobicy": false,
   "greenhouse": [
    "moniepoint@eu",
    "alpaca",
