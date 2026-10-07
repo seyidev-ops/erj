@@ -209,6 +209,11 @@ channel post format with a **Copy post** button. It runs itself:
 - **A role comes off** when its deadline passes, its page closes, it is 30
   days past its posting date, or 21 days past its last check if the posting
   date is unknown.
+- **Sources pulled daily:** Remotive, the Greenhouse / Lever / Ashby /
+  Breezy / Workable boards listed in `config.json`, and micro1 through ERJ's
+  referral code (`feeds.micro1.referral_code`), so every micro1 apply link
+  credits ERJ. micro1 roles needing another language, a foreign licence or
+  on-site work are skipped; at most 12 new micro1 roles a day.
 - **Sheets:** upload to `jobs/inbox/`; rows dated today or yesterday are
   taken. Name a file `..._ALL.xlsx` to import every eligible row. Blank
   template: `jobs/ERJ_Job_Board_Upload_Template.xlsx`. The Master, All Fields

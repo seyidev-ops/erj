@@ -34,7 +34,14 @@
   "assist-world": "Assist World",
   "finagra": "Finagra",
   "tem": "Tem",
-  "aghanim": "Aghanim"
+  "aghanim": "Aghanim",
+  "hercules": "Hercules",
+  "Clera": "Clera",
+  "bjakcareer": "Bjak",
+  "centreforeffectivealtruism": "Centre for Effective Altruism",
+  "supabase": "Supabase",
+  "jobgether": "Jobgether partner",
+  "micro1": "micro1"
  },
  "feeds": {
   "enabled": true,
@@ -54,7 +61,8 @@
    "weloglobal",
    "binance",
    "getwingapp",
-   "assist-world"
+   "assist-world",
+   "jobgether"
   ],
   "ashby": [
    "Scale Army Careers",
@@ -66,10 +74,26 @@
    "kraken.com",
    "finagra",
    "tem",
-   "aghanim"
+   "aghanim",
+   "hercules",
+   "Clera",
+   "bjakcareer",
+   "centreforeffectivealtruism",
+   "supabase"
   ],
   "breezy": [
    "20four7va"
-  ]
+  ],
+  "workable": [
+   "bask-health-1",
+   "atleanworld"
+  ],
+  "micro1": {
+   "referral_code": "d3605f74-92f0-4f1c-b8e2-4ab757bffc26"
+  }
+ },
+ "company_daily_caps": {
+  "micro1": 12,
+  "Jobgether partner": 6
  }
 }

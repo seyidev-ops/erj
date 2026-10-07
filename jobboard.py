@@ -539,10 +539,10 @@ def region_open_to_nigeria(region):
         return False  # silence on country is not the employer opening the role to Nigeria
     if not r or re.search(r"nigeria|lagos|abuja|worldwide|anywhere|global|all countries|any country", r):
         return True
+    if re.search(r"\bafrica\b", r.replace("south africa", "")) and not re.search(r"other african", r):
+        return True
     if re.search(OTHER_COUNTRIES, r):
         return False
-    if re.search(r"\bafrica\b", r) and not re.search(r"south africa|other african", r):
-        return True
     return not re.search(r"\b(only|based|residents?)\b", r)
 
 
@@ -927,6 +927,65 @@ def feed_breezy(slug):
         }
 
 
+MICRO1_FAMILY = {
+    "law": "Legal", "software-engineering": "Tech & IT", "ai-machine-learning": "Tech & IT", "robotics": "Tech & IT",
+    "applied-engineering": "Tech & IT", "cybersecurity": "Tech & IT", "data-analysis": "Data & Product",
+    "sciences-research": "Data & Product", "finance": "Finance & Accounting", "business-operations": "Executive & Operations",
+    "sales-marketing": "Marketing & Creative", "arts-design": "Marketing & Creative", "education": "Tutoring & Teaching",
+    "humanities": "Tutoring & Teaching", "language-audio": "Tutoring & Teaching",
+}
+FOREIGN_LANGUAGE = re.compile(
+    r"\b(korean|japanese|chinese|mandarin|cantonese|hindi|bengali|urdu|arabic|hebrew|turkish|russian|ukrainian|polish|"
+    r"german|dutch|swedish|norwegian|danish|finnish|italian|spanish|portuguese|vietnamese|thai|indonesian|malay|tagalog|"
+    r"filipino|greek|czech|romanian|hungarian|persian|farsi|swahili|amharic|zulu|afrikaans|tamil|telugu|marathi|gujarati|"
+    r"punjabi|burmese|khmer|lao|nepali|sinhala|serbian|croatian|bulgarian|slovak)\b", re.I)
+LICENSED = re.compile(r"\b(attorney|litigator|bar[- ]admitted|licensed|board[- ]certified|cpa\b|us gov|government)\b", re.I)
+
+
+def feed_micro1(code):
+    """micro1 jobs straight from the public list behind ERJ's referral page. Every apply
+    link carries the referral code, so applications are credited to ERJ automatically."""
+    page, seen = 1, 0
+    while True:
+        d = get_json(f"https://prod-api.micro1.ai/api/v1/job/portal/referral/{code}/jobs?page={page}&limit=100")
+        rows = d.get("data") or []
+        for x in rows:
+            hr = x.get("ideal_hourly_rate") or {}
+            sal = fmt_money(hr.get("min"), hr.get("max"), "USD", "hour") if hr else ""
+            if not sal and x.get("ideal_yearly_compensation"):
+                yc = x["ideal_yearly_compensation"]
+                sal = fmt_money(yc.get("min"), yc.get("max"), "USD", "year")
+            skills = [clean(k) for k in (x.get("skills") or []) if clean(k)]
+            yield {
+                "title": x.get("job_name"), "company": "micro1",
+                "location": "Remote — worldwide (micro1 global expert network)",
+                "location_type": x.get("location_type"),
+                "desc": "", "skills": skills[:4], "domain": x.get("domain_slug"),
+                "type": job_type(x.get("engagement_type") or "") or "Contract",
+                "salary": sal, "posted": parse_date(x.get("date_posted")),
+                "apply": x.get("apply_url"), "source": "micro1 (ERJ referral)", "ats_id": x.get("job_id"),
+                "openings": x.get("no_of_openings"),
+            }
+        seen += len(rows)
+        if not rows or seen >= (d.get("total") or 0):
+            break
+        page += 1
+
+
+def feed_workable(slug):
+    d = get_json(f"https://apply.workable.com/api/v1/widget/accounts/{slug}?details=true")
+    for x in d.get("jobs", []):
+        locs = x.get("locations") or [{"country": x.get("country"), "city": x.get("city")}]
+        where = " / ".join(clean(", ".join(v for v in (l.get("city"), l.get("country")) if v)) for l in locs)
+        remote = str(x.get("telecommuting")).lower() == "true"
+        yield {
+            "title": x.get("title"), "company": d.get("name") or slug,
+            "location": ("Remote — " if remote else "") + where, "desc": x.get("description") or "",
+            "type": job_type(x.get("employment_type")), "posted": parse_date(x.get("published_on") or x.get("created_at")),
+            "apply": x.get("url") or x.get("shortlink"), "source": "Workable", "remote": remote,
+        }
+
+
 def iter_feeds(cfg, log):
     f = cfg["feeds"]
     jobs = []
@@ -944,6 +1003,10 @@ def iter_feeds(cfg, log):
         plan.append((f"ashby:{b}", lambda n=b: feed_ashby(n)))
     for b in f.get("breezy", []):
         plan.append((f"breezy:{b}", lambda n=b: feed_breezy(n)))
+    for b in f.get("workable", []):
+        plan.append((f"workable:{b}", lambda n=b: feed_workable(n)))
+    if (f.get("micro1") or {}).get("referral_code"):
+        plan.append(("micro1", lambda c=f["micro1"]["referral_code"]: feed_micro1(c)))
 
     def run(item):
         name, fn = item
@@ -1002,6 +1065,15 @@ def cmd_fetch(cfg, log):
             ok, why = False, "title names another country or region"
         if ok and re.search(r"\b(english to|to english)\b", title, re.I) and not re.search(r"yoruba|igbo|hausa|pidgin|french", title, re.I):
             ok, why = False, "translation role for another language"
+        if ok and x.get("source", "").startswith("micro1"):
+            if x.get("location_type") in ("hybrid", "onsite", "on-site"):
+                ok, why = False, "micro1 role is not fully remote"
+            elif FOREIGN_LANGUAGE.search(title):
+                ok, why = False, "needs another language"
+            elif LICENSED.search(title):
+                ok, why = False, "needs a licence or clearance from another country"
+        if ok and x.get("source") == "Workable" and not x.get("remote"):
+            ok, why = False, "Workable role is not remote"
         if ok and re.search(cfg["title_exclude"], title, re.I):
             ok, why = False, "outside the board's scope"
         if x.get("deadline") and x["deadline"] < t0:
@@ -1014,7 +1086,8 @@ def cmd_fetch(cfg, log):
         if k in have_keys:
             continue
         per_co[company] = per_co.get(company, 0) + 1
-        if per_co[company] > cfg.get("feed_max_per_company", 4):
+        cap = cfg.get("company_daily_caps", {}).get(company, cfg.get("feed_max_per_company", 4))
+        if per_co[company] > cap:
             continue
         desc = x.get("desc") or page_description(apply)
         j = {
@@ -1023,12 +1096,15 @@ def cmd_fetch(cfg, log):
             "type": x.get("type") or job_type(title, html_text(desc)[:600]),
             "experience": experience_from(desc, x.get("level", "")),
             "salary": x.get("salary") or salary_from(desc),
-            "bullets": bullets_from_html(desc),
+            "bullets": x.get("skills") or bullets_from_html(desc),
             "apply": apply, "posted": posted.isoformat(),
             "deadline": x["deadline"].isoformat() if x.get("deadline") else None,
             "checked": t0.isoformat(), "added": t0.isoformat(), "listed": t0.isoformat(),
             "source": x["source"], "origin": "feed", "ats_id": x.get("ats_id"),
+            "family": MICRO1_FAMILY.get(x.get("domain") or "", ""),
         }
+        if x.get("openings"):
+            j["bullets"] = (j["bullets"] + [f"{x['openings']} openings"])[:4]
         finalise(j, cfg)
         live["listings"].append(j)
         have.add(jid); have_keys.add(k)
@@ -1050,6 +1126,15 @@ CLOSED_TEXT = re.compile(
     r"listing (has )?expired|vacancy (has )?(closed|expired))", re.I)
 
 
+_MICRO1_CACHE = {}
+
+
+def micro1_ids(code):
+    if code not in _MICRO1_CACHE:
+        _MICRO1_CACHE[code] = {x["ats_id"] for x in feed_micro1(code)}
+    return _MICRO1_CACHE[code]
+
+
 def ats_open_ids(j):
     """For ATS links, ask the board API whether the job is still listed."""
     u = j["apply"]
@@ -1068,6 +1153,9 @@ def ats_open_ids(j):
             slug = urllib.parse.unquote(m.group(1))
             ids = {x["id"] for x in get_json(f"https://api.ashbyhq.com/posting-api/job-board/{urllib.parse.quote(slug)}")["jobs"]}
             return m.group(2) in ids
+        m = re.search(r"jobs\.micro1\.ai/post/([0-9a-f-]{36})\?referralCode=([0-9a-f-]{36})", u)
+        if m:
+            return m.group(1) in micro1_ids(m.group(2))
         m = re.search(r"https?://([^.]+)\.breezy\.hr/p/([0-9a-f]+)", u)
         if m:
             return m.group(2) in {x["id"] for x in get_json(f"https://{m.group(1)}.breezy.hr/json")}
