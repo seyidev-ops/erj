@@ -1047,13 +1047,19 @@ def cmd_fetch(cfg, log):
     have = {j["id"] for j in live["listings"]} | {j["id"] for j in archive["listings"]}
     have_keys = {dupe_key(j["title"], j["company"]) for j in live["listings"]}
     t0 = today()
-    added, turned, per_co = 0, {}, {}
-    for x in iter_feeds(cfg, log):
+    added, turned = 0, {}
+    per_co = {}
+    for j in live["listings"]:
+        if j.get("added") == t0.isoformat() and j.get("origin") == "feed":
+            per_co[j["company"]] = per_co.get(j["company"], 0) + 1
+    feed = sorted(iter_feeds(cfg, log), key=lambda x: x.get("posted") or dt.date.min, reverse=True)
+    for x in feed:
         title, apply = clean(x.get("title")), clean(x.get("apply"))
         if not title or not apply:
             continue
         posted = x.get("posted")
-        if not posted or (t0 - posted).days > cfg["feed_max_age_days"]:
+        max_age = cfg.get("company_max_age_days", {}).get(company_name(x.get("company"), cfg), cfg["feed_max_age_days"])
+        if not posted or (t0 - posted).days > max_age:
             continue  # feeds carry old evergreen posts; only fresh roles go on the board
         jid = make_id(apply, title, x.get("company"))
         if jid in have:

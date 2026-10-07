@@ -95,5 +95,8 @@
  "company_daily_caps": {
   "micro1": 10,
   "Jobgether partner": 6
+ },
+ "company_max_age_days": {
+  "micro1": 30
  }
 }
