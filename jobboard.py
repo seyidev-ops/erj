@@ -268,7 +268,7 @@ def parse_date(s, ref=None):
     if m and m.group(2)[:3].lower() in MONTHS:
         d, mon, y = int(m.group(1)), MONTHS[m.group(2)[:3].lower()], m.group(3)
     else:
-        m = re.search(r"([A-Za-z]{3,9})\.?\s+(\d{1,2})(?:st|nd|rd|th)?,?\s*(\d{4})?", t)
+        m = re.search(r"([A-Za-z]{3,9})\.?\s+(\d{1,2})(?!\d)(?:st|nd|rd|th)?,?\s*(\d{4})?", t)
         if not (m and m.group(1)[:3].lower() in MONTHS):
             return None
         mon, d, y = MONTHS[m.group(1)[:3].lower()], int(m.group(2)), m.group(3)
@@ -541,9 +541,11 @@ def region_open_to_nigeria(region):
     r = clean(region).lower()
     if re.search(r"restriction (is )?(not )?stated|not stated|unconfirmed|per board|per listing", r):
         return False  # silence on country is not the employer opening the role to Nigeria
+    if re.search(r"other african|one african|single african|an african country", r) and "nigeria" not in r:
+        return False  # one unnamed African country is not Nigeria
     if not r or re.search(r"nigeria|lagos|abuja|worldwide|anywhere|global|all countries|any country", r):
         return True
-    if re.search(r"\bafrica\b", r.replace("south africa", "")) and not re.search(r"other african", r):
+    if re.search(r"\bafrica\b|african continent|anywhere in africa|across africa", r.replace("south africa", "")) and not re.search(r"other african", r):
         return True
     if re.search(OTHER_COUNTRIES, r):
         return False
@@ -592,6 +594,8 @@ def location_ok(location, desc="", strict=False):
     """Feed listings: the employer's own location text must open the role to Nigeria,
     and the description must not shut it. 'Remote' on its own never counts."""
     loc = clean(location).lower()
+    # "(US preferred)" is a preference, not a restriction; "any country not under sanctions" is worldwide.
+    loc = re.sub(r"\(?\b[\w ,./]+ preferred\)?", "", loc).strip(" ,;")
     body = html_text(desc)[:20000]
     if NEGATIVE.search(body) or NEGATIVE.search(loc):
         return False, "description restricts the country"
@@ -599,9 +603,9 @@ def location_ok(location, desc="", strict=False):
         return True, ""
     if "south africa" in loc and not re.search(r"\bafrica\b(?!.*south)", loc.replace("south africa", "")):
         return False, "location is South Africa"
-    if re.search(r"\bafrica\b", loc):
+    if re.search(r"\bafrica\b|african continent|anywhere in africa|across africa", loc):
         return True, ""
-    if re.search(r"worldwide|anywhere|global|international|all countries|any location", loc):
+    if re.search(r"worldwide|anywhere|global|international|all countries|any country|any location", loc):
         if re.search(OTHER_COUNTRIES, loc) and not re.search(r"worldwide|anywhere", loc):
             return False, "location names other countries"
         if strict and not GLOBAL_PROOF.search(body):
