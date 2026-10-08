@@ -1264,13 +1264,30 @@ def expiry(j, cfg):
     return dt.date.fromisoformat(j.get("listed") or j["added"]) + dt.timedelta(days=cfg["max_age_unknown_days"])
 
 
+OPEN_WORDS = re.compile(r"nigeria|nigerian|lagos|abuja|africa|worldwide|anywhere|global|any country|all countries|"
+                        r"international", re.I)
+
+
+def region_names_nigeria_or_africa(j):
+    """The last gate before the page: a role's region must name Nigeria, Africa or worldwide,
+    and must pass the country rule. Silence ('Remote') never qualifies, whatever the source."""
+    r = j.get("region") or ""
+    return bool(OPEN_WORDS.search(r)) and region_open_to_nigeria(r)
+
+
 def cmd_expire(cfg, log):
     live = load(F_LIVE, {"listings": []})
     archive = load(F_ARCHIVE, {"listings": []})
     t0 = today()
     keep = []
     for j in live["listings"]:
-        if expiry(j, cfg) < t0:
+        if not region_names_nigeria_or_africa(j):
+            j["closed"] = t0.isoformat()
+            j["closed_reason"] = "region does not confirm Nigeria or Africa"
+            archive["listings"].append(j)
+            log.setdefault("not_eligible", []).append(f"{j['title']} — {j['company']}")
+            print(f"expire: taken off (not confirmed for Nigeria/Africa): {j['title']} — {j['company']}")
+        elif expiry(j, cfg) < t0:
             j["closed"] = t0.isoformat()
             j["closed_reason"] = "deadline passed" if j.get("deadline") else "older than the board's age limit"
             archive["listings"].append(j)
