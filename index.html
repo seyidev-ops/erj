@@ -1493,6 +1493,42 @@ html[data-theme="day"] .pf-bubble{background:#DCF8C6;border-color:#bfe8a3;}
 @media(max-width:1000px){.fps{grid-template-columns:repeat(2,minmax(0,1fr));}.fp:last-child{grid-column:1/-1;}}
 @media(max-width:700px){.pr-how-row{grid-template-columns:1fr;}}
 @media(max-width:520px){.fps{grid-template-columns:1fr;}.fp:last-child{grid-column:auto;}}
+/* ── how we carry you: a three-step relay ── */
+.cy{margin-top:1.8rem;padding:clamp(1.3rem,3vw,1.9rem);border-radius:20px;text-align:left;position:relative;overflow:hidden;
+  background:radial-gradient(600px circle at 0% 0%,rgba(255,87,34,.12),transparent 60%),var(--card);border:1px solid rgba(255,87,34,.35);}
+.cy-head{display:flex;flex-direction:column;gap:.35rem;margin-bottom:1.4rem;}
+.cy-label{font-size:.64rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);}
+.cy-h{font-family:var(--font-display);font-size:clamp(1.25rem,2.6vw,1.6rem);font-weight:800;letter-spacing:-.01em;color:var(--ink);line-height:1.2;}
+.cy-h em{font-style:normal;color:var(--accent);}
+.cy-track{position:relative;list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;}
+.cy-rail{position:absolute;left:1.55rem;right:calc((100% - 2rem) / 3 - 1.55rem);top:1.55rem;height:2px;background:var(--line);overflow:hidden;border-radius:2px;}
+.cy-rail i{position:absolute;inset:0;background:linear-gradient(90deg,transparent,var(--accent),transparent);transform:translateX(-100%);animation:cyRun 3.2s cubic-bezier(.45,0,.2,1) infinite;}
+@keyframes cyRun{to{transform:translateX(100%)}}
+.cy-step{position:relative;display:flex;flex-direction:column;gap:.3rem;}
+.cy-ico{position:relative;z-index:1;width:3.1rem;height:3.1rem;border-radius:50%;display:grid;place-items:center;margin-bottom:.5rem;
+  background:var(--card);border:2px solid var(--accent);color:var(--accent);box-shadow:0 0 0 6px var(--card);transition:transform .3s;}
+.cy-step:hover .cy-ico{transform:scale(1.08) rotate(-6deg);}
+.cy-step:nth-child(4) .cy-ico{background:var(--accent);color:#fff;}
+.cy-k{font-size:.62rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-faint);}
+.cy-t{font-family:var(--font-display);font-size:1.08rem;font-weight:800;color:var(--ink);}
+.cy-p{display:inline-block;align-self:flex-start;font-size:.74rem;font-weight:700;color:var(--accent);padding:.2rem .6rem;border-radius:100px;background:rgba(255,87,34,.1);}
+.cy-d{font-size:.86rem;line-height:1.55;color:var(--ink-soft);}
+.cy-go{display:inline-flex;align-items:center;gap:.6rem;margin-top:1.5rem;padding:.75rem 1.2rem .75rem 1.3rem;border-radius:100px;border:1.5px solid var(--accent);
+  color:var(--accent);font-weight:700;font-size:.95rem;text-decoration:none;transition:background .25s,color .25s,transform .25s;}
+.cy-go:hover{background:var(--accent-btn,#FF5722);color:#fff;transform:translateY(-2px);}
+.cy-go-a{display:inline-grid;place-items:center;width:1.6rem;height:1.6rem;border-radius:50%;background:rgba(255,87,34,.14);animation:cyBob 1.8s ease-in-out infinite;}
+.cy-go:hover .cy-go-a{background:rgba(255,255,255,.2);}
+@keyframes cyBob{0%,100%{transform:translateY(0)}50%{transform:translateY(3px)}}
+@media(max-width:760px){
+  .cy-track{grid-template-columns:1fr;gap:1.3rem;}
+  .cy-rail{display:none;}
+  .cy-step:not(:last-child)::before{content:'';position:absolute;left:calc(1.55rem - 1px);top:3.1rem;bottom:-1.3rem;width:2px;background:linear-gradient(180deg,var(--accent),var(--line));}
+  .cy-step{padding-left:4.2rem;min-height:3.1rem;}
+  .cy-ico{position:absolute;left:0;top:0;margin:0;}
+  .cy-go{width:100%;justify-content:center;}
+}
+@keyframes cyRunV{to{transform:translateY(100%)}}
+@media(prefers-reduced-motion:reduce){.cy-rail i,.cy-go-a{animation:none;}}
 /* ── story, pledge, final: warmth ── */
 .story{position:relative;border-radius:22px;box-shadow:0 0 0 1px rgba(255,87,34,.22),0 30px 70px rgba(255,87,34,.10);}
 .pledge{border-radius:26px;border:1px solid rgba(255,87,34,.4);
@@ -1771,14 +1807,10 @@ html[data-theme="day"] .timer-num{background-image:linear-gradient(160deg,#0A0A0
 <h2 class="pledge-h">We will not let you go until you're <em>hired.</em></h2>
 <p class="pledge-p">Every remote job search runs on the same five parts, the <strong>ERJ Five-Finger Model</strong>. When it stops producing offers, the problem usually starts at one of them. We find which one, fix it with you, and stay until the offer is signed.</p>
 <div class="fps" id="joints" style="scroll-margin-top:90px"><div class="fp reveal"><div class="fp-top"><span class="fp-n">01</span><span class="fp-t">Capacity</span></div><p class="fp-q">Can you already do the job itself?</p><p class="fp-h">We check the skill and the remote work habits first, and build what is missing before anything else.</p></div><div class="fp reveal"><div class="fp-top"><span class="fp-n">02</span><span class="fp-t">Supply</span></div><p class="fp-q">Are you finding enough real jobs you can apply for from here?</p><p class="fp-h">We put real roles you are eligible for in front of you, so you stop applying to jobs you were never allowed to get.</p></div><div class="fp reveal"><div class="fp-top"><span class="fp-n">03</span><span class="fp-t">Representation</span></div><p class="fp-q">Do your CV and LinkedIn show employers what you can do?</p><p class="fp-h">We rebuild your CV, LinkedIn and proof of work until a stranger can see your value in thirty seconds.</p></div><div class="fp reveal"><div class="fp-top"><span class="fp-n">04</span><span class="fp-t">Aim</span></div><p class="fp-q">Are you applying to the jobs most likely to hire you?</p><p class="fp-h">We point every application at companies that can hire and pay someone where you live.</p></div><div class="fp reveal"><div class="fp-top"><span class="fp-n">05</span><span class="fp-t">Conversion</span></div><p class="fp-q">Do your interviews turn into job offers?</p><p class="fp-h">We rehearse the interview and the money conversation with you until offers follow.</p></div></div>
-<div class="pr-how">
-<div class="pr-how-k">How we carry you</div>
-<div class="pr-how-row">
-<div><b>We fix it with you</b><span>Foundation Training: live classes, your work marked, a certificate.</span></div>
-<div><b>We run it for you</b><span>Job Application: we source, tailor and apply on your behalf.</span></div>
-<div><b>We stay with you</b><span>The Inner Circle and the community, through interviews and your first months in the job.</span></div>
-</div>
-<a class="pr-how-go" href="#paths">Compare the routes <span aria-hidden="true">↓</span></a>
+<div class="cy">
+<div class="cy-head"><span class="cy-label">How we carry you</span><h3 class="cy-h">From the first fix to the <em>signed offer.</em></h3></div>
+<ol class="cy-track"><span class="cy-rail" aria-hidden="true"><i></i></span><li class="cy-step"><span class="cy-ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span><span class="cy-k">Step 1 · With you</span><b class="cy-t">We fix it with you</b><span class="cy-p">Foundation Training</span><span class="cy-d">Live classes, your work marked, a certificate.</span></li><li class="cy-step"><span class="cy-ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg></span><span class="cy-k">Step 2 · For you</span><b class="cy-t">We run it for you</b><span class="cy-p">Job Application</span><span class="cy-d">We source, tailor and apply on your behalf.</span></li><li class="cy-step"><span class="cy-ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></span><span class="cy-k">Step 3 · Beside you</span><b class="cy-t">We stay with you</b><span class="cy-p">The Inner Circle</span><span class="cy-d">Interviews, the offer and your first months in the job.</span></li></ol>
+<a class="cy-go" href="#paths"><span>Compare the routes</span><span class="cy-go-a" aria-hidden="true">↓</span></a>
 </div>
 <p class="pledge-fine">Not sure which part is yours? <a href="diagnose/">Five questions will tell you</a>. What we promise is persistence, never a date: no placement, timeline or salary is guaranteed.</p>
 </div>
