@@ -112,7 +112,7 @@
             n: '03', name: 'Representation', tag: 'How your CV and LinkedIn present you', ask: 'Do your CV and LinkedIn show employers what you can do?', law: 'If your CV can\u2019t be read, you were never really in the running.',
             verdict: 'You are real and competent, and the document representing you is not readable \u2014 by software first, by a stranger second. Total silence almost always means you were never actually read. This is the fastest of the five to fix.',
             free: {
-                text: 'Run the free 10-Point CV Self-Scan. It takes ninety seconds, runs entirely on your own device, and shows exactly which points you default on.',
+                text: 'Run the free Remote CV Self-Scan. It takes ninety seconds, runs entirely on your own device, and shows exactly which points you default on.',
                 href: '../cvscan/', label: 'Score my CV free'
             },
             paid: {

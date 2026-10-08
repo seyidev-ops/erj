@@ -160,7 +160,7 @@ The site is a static HTML/CSS/JavaScript website hosted on **GitHub Pages** with
 - `/free.html` — the free layer in one place
 - `/diagnose/` — the five-part Job Search Diagnostic and branded PDF result
 - `/capacityscan/` — the Capacity Audit: fourteen role families, ten questions, scored out of ten, runs entirely in the browser. **The gate for the other four fingers.**
-- `/cvscan/` — the 10-Point CV Self-Scan, runs entirely in the browser
+- `/cvscan/` — the Remote CV Self-Scan, runs entirely in the browser
 - `/cvbuilder/` — the CV Engine
 - `/fromintenttooffer/` — *From Intent to Offer*, the book
 - `/launch/` — the book launch: a free live Zoom session, with a Register Free button to the Zoom registration

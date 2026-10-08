@@ -1475,6 +1475,24 @@ html[data-theme="day"] .pf-bubble{background:#DCF8C6;border-color:#bfe8a3;}
 .jc-go:hover{text-decoration:underline;}
 @media(max-width:1000px){.jcs{grid-template-columns:repeat(2,minmax(0,1fr));}.jc:last-child{grid-column:1/-1;}}
 @media(max-width:520px){.jcs{grid-template-columns:1fr;}.jc:last-child{grid-column:auto;}}
+/* ── merged promise: five parts + how we carry you ── */
+.fps{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:.7rem;margin-top:2rem;text-align:left;}
+.fp{display:flex;flex-direction:column;gap:.45rem;padding:1rem;border-radius:14px;border:1px solid var(--line);background:var(--paper,transparent);}
+.fp-top{display:flex;align-items:baseline;gap:.5rem;}
+.fp-n{font-family:var(--font-display);font-weight:800;font-size:.72rem;letter-spacing:.14em;color:var(--accent);}
+.fp-t{font-family:var(--font-display);font-weight:800;font-size:.9rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink);}
+.fp-q{font-family:var(--font-display);font-weight:700;font-size:.92rem;line-height:1.35;color:var(--accent);}
+.fp-h{font-size:.84rem;line-height:1.55;color:var(--ink-soft);}
+.pr-how{margin-top:1.6rem;padding:1.2rem;border-radius:16px;border:1px dashed rgba(255,87,34,.45);text-align:left;}
+.pr-how-k{font-size:.64rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:.8rem;}
+.pr-how-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;}
+.pr-how-row b{display:block;font-family:var(--font-display);font-size:1rem;font-weight:800;color:var(--ink);}
+.pr-how-row span{font-size:.84rem;color:var(--ink-soft);line-height:1.5;}
+.pr-how-go{display:inline-block;margin-top:.9rem;font-size:.84rem;font-weight:700;color:var(--accent);text-decoration:none;}
+.pledge-fine a{color:var(--accent);font-weight:600;}
+@media(max-width:1000px){.fps{grid-template-columns:repeat(2,minmax(0,1fr));}.fp:last-child{grid-column:1/-1;}}
+@media(max-width:700px){.pr-how-row{grid-template-columns:1fr;}}
+@media(max-width:520px){.fps{grid-template-columns:1fr;}.fp:last-child{grid-column:auto;}}
 /* ── story, pledge, final: warmth ── */
 .story{position:relative;border-radius:22px;box-shadow:0 0 0 1px rgba(255,87,34,.22),0 30px 70px rgba(255,87,34,.10);}
 .pledge{border-radius:26px;border:1px solid rgba(255,87,34,.4);
@@ -1539,7 +1557,7 @@ html[data-theme="day"] .timer-num{background-image:linear-gradient(160deg,#0A0A0
 <noscript><iframe height="0" src="https://www.googletagmanager.com/ns.html?id=GTM-NMFHS59B" style="display:none;visibility:hidden" width="0"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 <div id="erjNavMount"></div>
-<script>window.ERJ_NAV={active:'home',tourTitle:'A quick tour — or jump anywhere',tourSkip:{label:'Explore the ERJ ecosystem',href:'#pledge'},onPage:[{label:'What We Can Do For You',href:'#promise',sub:'Become hireable, represented and aimed at global employers — from right where you are'},{label:'Proof It Works',href:'#story',sub:'Documented outcomes and case studies'},{label:'The Promise',href:'#pledge',sub:'One system that stays with you until you are hired'},{label:'Find The Problem · Fix It',href:'#joints',sub:'See which part of your job search is stopping replies, and how to fix it'},{label:'Free For You',href:'#free',sub:'The CV scan, the clinic, the blog and the job board — all free'},{label:'Explore the ERJ Routes',href:'#paths',sub:'Five ways in, from a book to full support'},{label:'Before You Decide',href:'#faq',sub:'The questions everyone asks first'},{label:'Join Cohort 12',href:'#enrol',sub:'Why Foundation Training is the surest way in · enrolment closes Sat 31 Oct'}]};</script>
+<script>window.ERJ_NAV={active:'home',tourTitle:'A quick tour — or jump anywhere',tourSkip:{label:'Explore the ERJ ecosystem',href:'#pledge'},onPage:[{label:'What We Can Do For You',href:'#promise',sub:'Become hireable, represented and aimed at global employers — from right where you are'},{label:'Proof It Works',href:'#story',sub:'Documented outcomes and case studies'},{label:'The Promise',href:'#pledge',sub:'The five parts of every search, and how we carry you through them'},{label:'Free For You',href:'#free',sub:'The CV scan, the clinic, the blog and the job board — all free'},{label:'Explore the ERJ Routes',href:'#paths',sub:'Five ways in, from a book to full support'},{label:'Before You Decide',href:'#faq',sub:'The questions everyone asks first'},{label:'Join Cohort 12',href:'#enrol',sub:'Why Foundation Training is the surest way in · enrolment closes Sat 31 Oct'}]};</script>
 <main>
 <a class="promo-tick" href="#pledge" aria-label="We will not let you go until you're hired."><div class="promo-track">We will not let you go <em>until you're hired.</em></div></a>
 <!-- HERO -->
@@ -1746,34 +1764,28 @@ html[data-theme="day"] .timer-num{background-image:linear-gradient(160deg,#0A0A0
 })();
 </script>
 </section>
-<!-- THE PROMISE · the whole ERJ system -->
+<!-- THE PROMISE · the Five-Finger Model and how we carry you -->
 <section class="wrap section-line" id="pledge">
 <div class="pledge reveal">
 <span class="pledge-tag"><span class="pledge-dot"></span> 03 · The Promise</span>
 <h2 class="pledge-h">We will not let you go until you're <em>hired.</em></h2>
-<p class="pledge-p">Everything Remote Job is not a course you finish and forget. It is <strong>one connected system</strong>: free tools that find what is holding you back, training that fixes it, fresh roles every morning, people who apply alongside you, and a community that stays with you after the offer.</p>
-<ol class="sys">
-<li class="sys-step"><a href="diagnose/"><span class="sys-n">01</span><span class="sys-t">Find what is <em>holding you back</em></span><span class="sys-d">The free diagnosis and CV Self-Scan show what is stopping employers from replying.</span><span class="sys-go">Diagnose free <span class="a">→</span></span></a></li>
-<li class="sys-step"><a href="#paths"><span class="sys-n">02</span><span class="sys-t">Fix it at your <em>pace</em></span><span class="sys-d">The book, the Self-Learn Pack or live Foundation Training, at the pace that suits you.</span><span class="sys-go">See the routes <span class="a">→</span></span></a></li>
-<li class="sys-step"><a href="jobs/"><span class="sys-n">03</span><span class="sys-t">Aim at real <em>roles</em></span><span class="sys-d">The Remote Job Board: new roles every morning, each one open to Nigeria or Africa.</span><span class="sys-go">Open the board <span class="a">→</span></span></a></li>
-<li class="sys-step"><a href="jobapplication/"><span class="sys-n">04</span><span class="sys-t">Apply with <em>backup</em></span><span class="sys-d">We source and apply with you, or for you, with weekly check-ins.</span><span class="sys-go">Get application help <span class="a">→</span></span></a></li>
-<li class="sys-step"><a href="innercircle/"><span class="sys-n">05</span><span class="sys-t">Get hired, then <em>stay</em> hired</span><span class="sys-d">Interview coaching, the community and support through your first months in the role.</span><span class="sys-go">Meet the Inner Circle <span class="a">→</span></span></a></li>
-</ol>
-<p class="pledge-fine">What we promise is persistence, never a date. We do not guarantee a placement, a timeline or a salary. We guarantee we keep going with you.</p>
+<p class="pledge-p">Every remote job search runs on the same five parts, the <strong>ERJ Five-Finger Model</strong>. When it stops producing offers, the problem usually starts at one of them. We find which one, fix it with you, and stay until the offer is signed.</p>
+<div class="fps" id="joints" style="scroll-margin-top:90px"><div class="fp reveal"><div class="fp-top"><span class="fp-n">01</span><span class="fp-t">Capacity</span></div><p class="fp-q">Can you already do the job itself?</p><p class="fp-h">We check the skill and the remote work habits first, and build what is missing before anything else.</p></div><div class="fp reveal"><div class="fp-top"><span class="fp-n">02</span><span class="fp-t">Supply</span></div><p class="fp-q">Are you finding enough real jobs you can apply for from here?</p><p class="fp-h">We put real roles you are eligible for in front of you, so you stop applying to jobs you were never allowed to get.</p></div><div class="fp reveal"><div class="fp-top"><span class="fp-n">03</span><span class="fp-t">Representation</span></div><p class="fp-q">Do your CV and LinkedIn show employers what you can do?</p><p class="fp-h">We rebuild your CV, LinkedIn and proof of work until a stranger can see your value in thirty seconds.</p></div><div class="fp reveal"><div class="fp-top"><span class="fp-n">04</span><span class="fp-t">Aim</span></div><p class="fp-q">Are you applying to the jobs most likely to hire you?</p><p class="fp-h">We point every application at companies that can hire and pay someone where you live.</p></div><div class="fp reveal"><div class="fp-top"><span class="fp-n">05</span><span class="fp-t">Conversion</span></div><p class="fp-q">Do your interviews turn into job offers?</p><p class="fp-h">We rehearse the interview and the money conversation with you until offers follow.</p></div></div>
+<div class="pr-how">
+<div class="pr-how-k">How we carry you</div>
+<div class="pr-how-row">
+<div><b>We fix it with you</b><span>Foundation Training: live classes, your work marked, a certificate.</span></div>
+<div><b>We run it for you</b><span>Job Application: we source, tailor and apply on your behalf.</span></div>
+<div><b>We stay with you</b><span>The Inner Circle and the community, through interviews and your first months in the job.</span></div>
 </div>
-</section>
-<!-- COST OF INACTION -->
-<!-- FIVE-FINGER MODEL · ONE WEAK POINT -->
-<section class="wrap section-line" id="joints">
-<div class="step"><span class="step-n">04</span><span class="step-l">Find The Problem · Fix It</span></div>
-<h2 class="cost-h" style="margin-bottom:0.9rem;">Find The Problem. <em>Fix It.</em></h2>
-<p class="paths-lead">Every remote job search runs on the same five parts, the ERJ Five-Finger Model. When it stops producing offers, the problem usually starts at <b>one</b> of them.</p>
-<div class="jcs"><div class="jc reveal"><span class="jc-n">01</span><div class="jc-t">Capacity</div><p class="jc-a">Can you already do the job itself?</p><a class="jc-go" href="capacityscan/">Run the Capacity Audit <span aria-hidden="true">→</span></a></div><div class="jc reveal"><span class="jc-n">02</span><div class="jc-t">Supply</div><p class="jc-a">Are you finding enough real jobs you can apply for from here?</p><a class="jc-go" href="jobs/">Use the Remote Job Board <span aria-hidden="true">→</span></a></div><div class="jc reveal"><span class="jc-n">03</span><div class="jc-t">Representation</div><p class="jc-a">Do your CV and LinkedIn show employers what you can do?</p><a class="jc-go" href="cvscan/">Scan your CV free <span aria-hidden="true">→</span></a></div><div class="jc reveal"><span class="jc-n">04</span><div class="jc-t">Aim</div><p class="jc-a">Are you applying to the jobs most likely to hire you?</p><a class="jc-go" href="foundationtraining/">Learn to aim in Foundation Training <span aria-hidden="true">→</span></a></div><div class="jc reveal"><span class="jc-n">05</span><div class="jc-t">Conversion</div><p class="jc-a">Do your interviews turn into job offers?</p><a class="jc-go" href="blog/12-remote-interview-questions-you-will-be-asked-and-how-to-answer-each/">Read the interview guide <span aria-hidden="true">→</span></a></div></div>
-<p class="joints-close reveal"><b>Not sure which one is yours?</b> <a href="diagnose/">Five questions, ninety seconds, and you will know which part to fix first →</a></p>
+<a class="pr-how-go" href="#paths">Compare the routes <span aria-hidden="true">↓</span></a>
+</div>
+<p class="pledge-fine">Not sure which part is yours? <a href="diagnose/">Five questions will tell you</a>. What we promise is persistence, never a date: no placement, timeline or salary is guaranteed.</p>
+</div>
 </section>
 <!-- FREE SHELF -->
 <section class="wrap section-line" id="free">
-<div class="step"><span class="step-n">05</span><span class="step-l">Free For You</span></div>
+<div class="step"><span class="step-n">04</span><span class="step-l">Free For You</span></div>
 <h2 class="cost-h" style="margin-bottom:0.9rem;">You can get a long way without <em>paying us anything.</em></h2>
 <div class="fg-grid">
 <div class="fg-main">
@@ -1781,8 +1793,8 @@ html[data-theme="day"] .timer-num{background-image:linear-gradient(160deg,#0A0A0
 <div class="shelf">
 <a class="shelf-item reveal" href="cvscan/" id="cvscan" style="scroll-margin-top:100px;">
 <span class="shelf-kind">Instant · private</span>
-<h3 class="shelf-title">10-Point CV <em>Self-Scan</em></h3>
-<p class="shelf-desc">Score your CV out of 10 in under a minute. Runs on your own device — nothing uploads.</p>
+<h3 class="shelf-title">Remote CV <em>Self-Scan</em></h3>
+<p class="shelf-desc">See how your CV reads to a remote employer, in under a minute. Private: nothing uploads.</p>
 <span class="shelf-go">Scan my CV <span class="a">→</span></span>
 </a>
 <a class="shelf-item reveal" href="masterclass/">
@@ -1814,7 +1826,7 @@ html[data-theme="day"] .timer-num{background-image:linear-gradient(160deg,#0A0A0
 </section>
 <!-- THE LADDER -->
 <section class="wrap section-line" id="paths">
-<div class="step"><span class="step-n">06</span><span class="step-l">Explore the ERJ Routes</span></div>
+<div class="step"><span class="step-n">05</span><span class="step-l">Explore the ERJ Routes</span></div>
 <h2 class="cost-h" style="margin-bottom:0.9rem;">Five routes. Choose only after you know <em>why.</em></h2>
 <p class="paths-lead">Do not compare prices until you know why — <a href="diagnose/" style="color:var(--accent);font-weight:600;">run the free diagnosis first</a>. Every price and product sits together in <a href="register.html" style="color:var(--accent);font-weight:600;">the store</a>.</p>
 <div class="ladder">
@@ -1902,7 +1914,7 @@ html[data-theme="day"] .timer-num{background-image:linear-gradient(160deg,#0A0A0
 
 <!-- FAQ / OBJECTIONS -->
 <section class="wrap section-line" id="faq">
-<div class="step"><span class="step-n">07</span><span class="step-l">Before You Decide</span></div>
+<div class="step"><span class="step-n">06</span><span class="step-l">Before You Decide</span></div>
 <h2 class="cost-h" style="margin-bottom:1.6rem;">The questions everyone asks <em>first.</em></h2>
 <div class="faq reveal">
 <details>
@@ -1942,7 +1954,7 @@ html[data-theme="day"] .timer-num{background-image:linear-gradient(160deg,#0A0A0
 <!-- DIAGNOSIS · DECISION POINT -->
 <!-- JOIN COHORT 12 · why Foundation Training, one countdown, one action -->
 <section class="wrap section-line" id="enrol">
-<div class="step"><span class="step-n">08</span><span class="step-l">Join Cohort 12</span></div>
+<div class="step"><span class="step-n">07</span><span class="step-l">Join Cohort 12</span></div>
 <div class="ft-close reveal">
 <div class="ft-why">
 <h2 class="cost-h">Why Foundation Training is our <em>surest way in.</em></h2>

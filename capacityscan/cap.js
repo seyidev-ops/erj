@@ -282,7 +282,7 @@
       : { title: 'Keep your edge current', body: 'No gaps showed up. Keep producing real work in this role so your evidence stays recent.' };
     return [
       { title: 'Find the next weak point — run the free diagnosis', body: 'Capacity is cleared, so the question moves downstream: can you find enough suitable work, can employers read you, are you aiming correctly, and do you convert interest into offers? The diagnosis names the earliest one that is failing.' },
-      { title: 'Check how you are represented', body: 'Run the free 10-Point CV Self-Scan. Capacity you cannot show on paper is capacity an employer never sees.' },
+      { title: 'Check how you are represented', body: 'Run the free Remote CV Self-Scan. Capacity you cannot show on paper is capacity an employer never sees.' },
       gapStep
     ];
   }
