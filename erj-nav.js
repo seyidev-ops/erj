@@ -3,12 +3,11 @@
    ERJ UNIFIED NAVIGATION
 
    FIVE top-level items, everywhere:
-     Home · Your Starting Line ▾ · Free For You ▾ ·
+     Home ▾ · How We Help ▾ · Free For You ▾ ·
      Success Stories · Register
-   Categories expand as accordions. The page you are ON is
-   never listed as a plain standalone link — it renders as a
-   "You are here" block carrying that page's section anchors,
-   inside its own category.
+   Every dropdown shows the same list on every page; the current
+   page is marked inside it. A page's own sections live in its
+   in-page tour and the side arrows, never in the main menu.
 
    Each page sets, BEFORE this script loads:
      window.ERJ_NAV = {
@@ -31,17 +30,19 @@
     const MENU = [
         {
             key: 'home', label: 'Home', href: 'index.html', keys: ['home'], children: [
-                { label: 'Meet Your Facilitator', href: 'index.html#facilitator' },
-                { label: 'Find The Problem · Fix It', href: 'index.html#joints' },
+                { label: 'What We Can Do For You', href: 'index.html#promise' },
                 { label: 'Proof It Works', href: 'index.html#story' },
                 { label: 'The Promise', href: 'index.html#pledge' },
-                { label: 'FAQ', href: 'index.html#faq' }
+                { label: 'Free For You', href: 'index.html#free' },
+                { label: 'Explore the ERJ Routes', href: 'index.html#paths' },
+                { label: 'Before You Decide', href: 'index.html#faq' },
+                { label: 'Join Cohort 12', href: 'index.html#enrol' }
             ]
         },
         {
-            key: 'g-start', label: 'Your Starting Line', href: 'starthere.html', keys: ['startline'], children: [
+            key: 'g-help', label: 'How We Help', href: 'index.html#paths', keys: [], children: [
                 { label: 'From Intent to Offer', href: 'fromintenttooffer/', keys: ['book'] },
-                { label: 'CV Builder', href: 'cvbuilder.html', keys: ['cvpass'] },
+                { label: 'CV Engine', href: 'cvbuilder.html', keys: ['cvpass'] },
                 { label: 'Self-Learn Pack', href: 'selflearn/', keys: ['selflearn'] },
                 { label: 'Foundation Training', href: 'foundationtraining/', keys: ['mastery'] },
                 { label: 'Job Application', href: 'jobapplication/', keys: ['remote'] },
@@ -49,12 +50,15 @@
             ]
         },
         {
-            key: 'g-free', label: 'Free For You', href: 'free.html', keys: ['free', 'blog'], children: [
+            /* No href: the title opens the list. free.html stays live as a
+               page we share directly, but is not a menu destination. */
+            key: 'g-free', label: 'Free For You', keys: [], children: [
                 { label: 'What\u2019s Holding You Back?', href: 'diagnose/', keys: ['diagnose'] },
                 { label: 'Capacity Audit', href: 'capacityscan/', keys: ['capacityscan'] },
-                { label: 'Remote CV Scan', href: 'cvscan/', keys: ['cvscan'] },
-                { label: 'Free Live Masterclass / Clinic', href: 'masterclass/', keys: ['masterclass'] },
-                { label: 'Remote Job Board', href: 'jobs/', keys: ['jobboard'] }
+                { label: 'Remote CV Self-Scan', href: 'cvscan/', keys: ['cvscan'] },
+                { label: 'Remote Job Board', href: 'jobs/', keys: ['jobboard'] },
+                { label: 'Free Live Clinic', href: 'masterclass/', keys: ['masterclass'] },
+                { label: 'Blog', href: 'blog.html', keys: ['blog'] }
             ]
         },
         { key: 'stories', label: 'Success Stories', href: 'testimonials.html', keys: ['stories', 'jobs'] },
@@ -194,7 +198,8 @@
         '@media(max-width:400px){.erj-nav{gap:0.5rem;padding-left:0.85rem;padding-right:0.85rem;}',
         '.erj-brand{flex-shrink:1;min-width:0;font-size:0.9rem;gap:7px;overflow:hidden;white-space:nowrap;letter-spacing:-0.3px;}',
         '.erj-brand img{width:26px;height:26px;}.erj-right{gap:0.3rem;}.erj-icon{width:36px;height:36px;}}',
-        '@media(prefers-reduced-motion:reduce){.erj-panel,.erj-scrim,.erj-chev,.erj-bar-chev{transition:none;}}'
+        '@media(prefers-reduced-motion:reduce){.erj-panel,.erj-scrim,.erj-chev,.erj-bar-chev{transition:none;}}',
+        '.erj-toggle{background:none;border:0;font-family:inherit;line-height:inherit;color:inherit;cursor:pointer;text-align:left;-webkit-appearance:none;appearance:none;}'
     ].join('');
     const style = document.createElement('style');
     style.id = 'erjNavCSS';
@@ -203,16 +208,6 @@
     /* ── render helpers ── */
     const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;');
     const extAttr = (c) => (c.external ? ' target="_blank" rel="noopener"' : '');
-    /* The page's own section anchors. Rendered UNDER whichever title is the
-       current location — the title itself is the "you are here", so there is
-       never a duplicate label repeating it. */
-    function anchorList(cls) {
-        if (!onPage.length)
-            return '';
-        return '<div class="' + cls + '">' +
-            onPage.map(a => '<a href="' + P(a.href) + '">' + esc(a.label) + '</a>').join('') +
-            '</div>';
-    }
     /* ── DESKTOP BAR ── */
     function buildBar() {
         return MENU.map(top => {
@@ -221,15 +216,15 @@
             const isCurrent = selfCurrent || childCurrent;
             let html = '<div class="erj-bar-item' + (isCurrent ? ' is-current' : '') +
                 '" data-bar="' + top.key + '">' +
-                '<a class="erj-bar-link" href="' + P(top.href || '#') + '"' +
-                (selfCurrent ? ' aria-current="page"' : '') + '>' + esc(top.label) + '</a>';
+                (top.href
+                    ? '<a class="erj-bar-link" href="' + P(top.href) + '"' + (selfCurrent ? ' aria-current="page"' : '') + '>' + esc(top.label) + '</a>'
+                    : '<button type="button" class="erj-bar-link erj-toggle" data-toggle>' + esc(top.label) + '</button>');
             if (top.children) {
-                const drop = selfCurrent
-                    ? anchorList('erj-drop-anchors') /* on its own page: sections only */
-                    : top.children.map(c => '<a href="' + P(c.href) + '"' + extAttr(c) +
+                /* The same list on every page: a dropdown never swaps its
+                   contents for the current page's sections. */
+                const drop = top.children.map(c => '<a href="' + P(c.href) + '"' + extAttr(c) +
                         (matches(c.keys) ? ' class="is-current" aria-current="page"' : '') + '>' +
-                        esc(c.label) + '</a>').join('') +
-                        (childCurrent ? anchorList('erj-drop-anchors') : '');
+                        esc(c.label) + '</a>').join('');
                 html += '<button type="button" class="erj-bar-chev" aria-label="Open ' + esc(top.label) +
                     ' menu" aria-expanded="false">\u25BC</button><div class="erj-drop">' + drop + '</div>';
             }
@@ -270,7 +265,7 @@
         const cur = matches(c.keys);
         return '<a class="erj-sub-item' + (cur ? ' is-current' : '') + '" href="' + P(c.href) + '"' +
             extAttr(c) + (cur ? ' aria-current="page"' : '') + '>' + esc(c.label) + '</a>' +
-            (cur ? anchorList('erj-anchors') : '');
+            '';
     }
     function buildItems() {
         if (IS_PORTAL) {
@@ -281,18 +276,16 @@
             const selfCurrent = matches(top.keys);
             const childCurrent = !!top.children && top.children.some(c => matches(c.keys));
             const isCurrent = selfCurrent || childCurrent;
-            const link = '<a class="erj-link" href="' + P(top.href || '#') + '"' +
-                (selfCurrent ? ' aria-current="page"' : '') + '>' + esc(top.label) + '</a>';
+            const link = top.href
+                ? '<a class="erj-link" href="' + P(top.href) + '"' + (selfCurrent ? ' aria-current="page"' : '') + '>' + esc(top.label) + '</a>'
+                : '<button type="button" class="erj-link erj-toggle" data-toggle>' + esc(top.label) + '</button>';
             if (!top.children) {
-                return '<div class="erj-item' + (selfCurrent ? ' is-current' : '') + '">' + link +
-                    (selfCurrent ? anchorList('erj-anchors') : '') + '</div>';
+                return '<div class="erj-item' + (selfCurrent ? ' is-current' : '') + '">' + link + '</div>';
             }
             /* Group: title links to its page, chevron opens the sub-menu.
                When the group's OWN page is current, its anchors sit directly
                under the title; when a child is current, they sit under that child. */
-            const kids = selfCurrent
-                ? anchorList('erj-anchors') /* on its own page: sections only */
-                : top.children.map(childRow).join(''); /* elsewhere: the child pages */
+            const kids = top.children.map(childRow).join(''); /* the same list on every page */
             return '<div class="erj-item' + (isCurrent ? ' open' : '') +
                 (selfCurrent ? ' is-current' : '') + '" data-group="' + top.key + '">' +
                 '<div class="erj-row">' + link +
@@ -391,6 +384,17 @@
         document.addEventListener('click', e => {
             if (!nav.contains(e.target))
                 closeBar();
+        });
+        /* A title with no page of its own opens its list. */
+        document.querySelectorAll('.erj-toggle[data-toggle]').forEach(t => {
+            t.addEventListener('click', e => {
+                e.preventDefault();
+                e.stopPropagation();
+                const host = t.closest('.erj-bar-item, .erj-item');
+                const chev = host && host.querySelector('.erj-bar-chev, .erj-chev');
+                if (chev)
+                    chev.click();
+            });
         });
         nav.querySelectorAll('.erj-drop a').forEach(a => a.addEventListener('click', closeBar));
         document.addEventListener('keydown', e => {
