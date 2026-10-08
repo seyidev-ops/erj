@@ -6983,6 +6983,60 @@
    "id": "f081016fe6",
    "added": "2026-10-08",
    "direct": true
+  },
+  {
+   "id": "7a423faed7",
+   "title": "Marketing Designer (Fractional, 2-3 days/week)",
+   "company": "Jobgether partner",
+   "region": "Nigeria",
+   "type": "Contract",
+   "experience": "4+ years",
+   "salary": "Undisclosed",
+   "bullets": [
+    "Own and evolve the company’s design system by auditing existing materials, identifying opportunities for improvement",
+    "Design and develop landing pages and website sections in Webflow, taking projects from concept through to live publication",
+    "Build and maintain a scalable sales presentation system in PowerPoint and Google Slides, including one-pagers, case studies, battlecards",
+    "Produce high-quality advertising and social media creatives across LinkedIn, paid social, and display channels"
+   ],
+   "apply": "https://jobs.lever.co/jobgether/a2aca029-2005-45d3-8e93-0ef0b856091c",
+   "posted": "2026-10-08",
+   "deadline": null,
+   "checked": "2026-10-08",
+   "added": "2026-10-08",
+   "listed": "2026-10-08",
+   "source": "Lever",
+   "origin": "feed",
+   "ats_id": "a2aca029-2005-45d3-8e93-0ef0b856091c",
+   "family": "Marketing & Creative",
+   "why": "Open to candidates in Nigeria by name. Contract work: a fast way to earn a first remote reference.",
+   "direct": true
+  },
+  {
+   "id": "430384e417",
+   "title": "QA Lead",
+   "company": "Trust Wallet",
+   "region": "Remote - Global",
+   "type": "Full-Time",
+   "experience": "10+ years",
+   "salary": "Undisclosed",
+   "bullets": [
+    "Over 10 years of experience in software quality assurance, including significant experience in senior or technical leadership positions",
+    "Proven experience leading, mentoring, and developing QA engineers in a fast-paced Agile environment",
+    "Strong hands-on experience designing and implementing test strategies for mobile applications, web applications, backend services, and APIs",
+    "Strong expertise in test automation tools and frameworks such as Appium, Selenium, or equivalent technologies"
+   ],
+   "apply": "https://jobs.ashbyhq.com/trust-wallet/c29f1da7-9c89-4950-bee5-ad490708ace1",
+   "posted": "2026-10-08",
+   "deadline": null,
+   "checked": "2026-10-08",
+   "added": "2026-10-08",
+   "listed": "2026-10-08",
+   "source": "Ashby",
+   "origin": "feed",
+   "ats_id": "c29f1da7-9c89-4950-bee5-ad490708ace1",
+   "family": "Tech & IT",
+   "why": "Open worldwide with no country exclusion, so you can apply from Nigeria. You apply directly on the employer's own page.",
+   "direct": true
   }
  ]
 }
