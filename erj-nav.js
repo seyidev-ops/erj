@@ -34,13 +34,13 @@
                 { label: 'Proof It Works', href: 'index.html#story' },
                 { label: 'The Promise', href: 'index.html#pledge' },
                 { label: 'Free For You', href: 'index.html#free' },
-                { label: 'Explore the ERJ Routes', href: 'index.html#paths' },
+                { label: 'How We Help', href: 'index.html#paths' },
                 { label: 'Before You Decide', href: 'index.html#faq' },
                 { label: 'Join Cohort 12', href: 'index.html#enrol' }
             ]
         },
         {
-            key: 'g-help', label: 'How We Help', href: 'index.html#paths', keys: [], children: [
+            key: 'g-help', label: 'How We Help', keys: [], children: [
                 { label: 'From Intent to Offer', href: 'fromintenttooffer/', keys: ['book'] },
                 { label: 'CV Engine', href: 'cvbuilder.html', keys: ['cvpass'] },
                 { label: 'Self-Learn Pack', href: 'selflearn/', keys: ['selflearn'] },

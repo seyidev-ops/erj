@@ -2,7 +2,7 @@
    EVERYTHING REMOTE JOB — SERVICE WORKER
    Cache-first for app shell, network-first for fonts
 ═══════════════════════════════════════════════════════ */
-const CACHE = 'erj-site-20261008c';
+const CACHE = 'erj-site-20261008d';
 const OFFLINE = '/offline.html';
 
 /* SHELL is what a first-time visitor pays for before anything renders. It had
@@ -29,7 +29,7 @@ const SHELL = [
   '/blog/index.html',
   '/free.html',
   '/starthere.html',
-  '/erj-nav.js?v=20261008c',
+  '/erj-nav.js?v=20261008d',
   '/erj-track.js?v=20260911a',
   '/photo-seyi-suit.webp',
   '/photo-seyi-invite.webp',
