@@ -39,7 +39,7 @@
     messages: {
       scan: 'Hello ERJ \u2014 I just scored {score}/10 on the free CV self-scan.\n\nThe points I did not clear: {defaults}\n\nPlease send me the fix list for my score.',
       scanClear: 'Hello ERJ \u2014 I scored {score}/10 on the free CV self-scan and cleared all ten points.\n\nMy CV is not the reason I am not getting interviews. Where should I look next?',
-      channel: 'AUDIT\n\nI am on the ERJ free job channel and I have been applying for remote roles.\n\nTarget role:\nApplications in the last 30 days:\nInterviews in the last 30 days:\nCV/LinkedIn: I will attach or paste it here.\n\nPlease tell me which part of my search is leaking and what I should fix first.',
+      channel: 'AUDIT\n\nI am on the ERJ free job channel and I have been applying for remote roles.\n\nTarget role:\nApplications in the last 30 days:\nInterviews in the last 30 days:\nCV/LinkedIn: I will attach or paste it here.\n\nPlease tell me which part of my search is breaking down and what I should fix first.',
       diagnose: 'AUDIT\n\nMy diagnostic says: {joint} \u2014 {law}\n\nTarget role:\nApplications in the last 30 days:\nInterviews in the last 30 days:\nCV/LinkedIn: I will attach or paste it here.\n\nMy diagnostic answers: {answer}\n\nPlease tell me what I should fix first. If I do not need a paid ERJ service, please tell me that too.',
       blog: 'Hello ERJ \u2014 I have been reading the blog and I want to sort out my job hunt properly. Where do I start?',
       capacity: 'Hello ERJ \u2014 I would like one of the placement engagements. Are there still places open this month?',

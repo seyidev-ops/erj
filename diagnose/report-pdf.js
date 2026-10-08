@@ -40,13 +40,19 @@
     var logoW=250, logoH=Math.max(40,logoW*(imgH/imgW));
     c.push('q '+logoW+' 0 0 '+logoH+' 54 755 cm /Im1 Do Q');
     text('JOB SEARCH DIAGNOSTIC REPORT',54,715,20,true,false);
-    text('Find your leak. Fix the earliest failing point first.',54,692,10,true,true);
+    text('Find what is holding you back. Fix the earliest weak point first.',54,692,10,true,true);
     rule(674);
 
     y=648;
-    block('PRIMARY LEAK',{size:8,bold:true,orange:true,after:12});
+    block('WHAT IS HOLDING YOU BACK MOST',{size:8,bold:true,orange:true,after:12});
     block((report.number?report.number+' - ':'')+(report.joint||''),{size:24,bold:true,max:42,leading:27,after:2});
+    if(report.ask) block('In plain words: '+report.ask,{size:11,bold:true,orange:true,max:78,leading:15,after:4});
     block(report.law||'',{size:11,bold:true,max:78,leading:15,after:7});
+    if(report.evidence&&report.evidence.length){
+      block('WHY WE THINK SO',{size:8,bold:true,orange:true,after:4});
+      report.evidence.forEach(function(e){block('- '+e,{size:9,max:96,leading:12});});
+      y-=8;
+    }
     block(report.verdict||'',{size:10,max:90,leading:14,after:11});
 
     block('HOW YOUR ANSWERS FELL',{size:8,bold:true,orange:true,after:4});
@@ -61,13 +67,13 @@
       y-=17;
     });
     y-=3;
-    block('A close second is normal. Fix the earliest leak first; an upstream failure can make later readings unreliable.',{size:8,max:92,leading:11,after:10});
+    block('A close second is normal. Fix the earliest weak point first; an upstream failure can make later readings unreliable.',{size:8,max:92,leading:11,after:10});
 
     block('WHAT I WOULD DO NOW',{size:8,bold:true,orange:true,after:4});
     block((report.actions&&report.actions[0])||'Fix the earliest failing point before increasing application volume.',{size:10,max:90,leading:14,after:11});
 
     block('GET A FREE HUMAN REVIEW',{size:8,bold:true,orange:true,after:4});
-    block('The quiz identifies the joint. A human review can tell you what to fix first in your actual search.',{size:10,max:90,leading:14,after:4});
+    block('The quiz names the weak point. A human review can tell you what to fix first in your actual search.',{size:10,max:90,leading:14,after:4});
     block('Message ERJ with AUDIT and include: target role, applications in the last 30 days, interviews in the last 30 days, and your CV or LinkedIn profile.',{size:10,bold:true,max:90,leading:14,after:7});
     block('WhatsApp: +234 803 292 5957',{size:9,bold:true,orange:true,max:70});
 

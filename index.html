@@ -305,7 +305,7 @@ h1,h2,h3,h4,.ask,.cost-h,.rung-title,.shelf-title,.fb-title,.pledge-h,.joint-t,.
   overflow-wrap:break-word; word-break:normal; hyphens:none;
 }
 
-/* ── FIVE-FINGER MODEL · ONE LEAK ─────────────────────────
+/* ── FIVE-FINGER MODEL · ONE WEAK POINT ─────────────────────────
    Full rows (.joints) for the home page; compact strip (.jmap)
    for the product and register pages. The part labels live in
    the markup and in erj-config.js canon, never here. */
@@ -321,6 +321,7 @@ h1,h2,h3,h4,.ask,.cost-h,.rung-title,.shelf-title,.fb-title,.pledge-h,.joint-t,.
 .joint-t{font-family:var(--font-display);font-weight:800;letter-spacing:0.16em;
   font-size:clamp(0.95rem,2.4vw,1.05rem);text-transform:uppercase;color:var(--ink);}
 .joint-law{color:var(--ink-soft);margin-top:0.3rem;font-size:0.95rem;}
+.joint-ask{margin-top:0.35rem;font-family:var(--font-display);font-weight:700;font-size:1.02rem;color:var(--accent);line-height:1.35;}
 .joint-leak{margin-top:0.8rem;font-size:0.88rem;color:var(--ink-soft);line-height:1.6;}
 .joint-leak b{color:var(--ink);font-weight:600;}
 .joint-fix{margin-top:0.55rem;font-size:0.88rem;line-height:1.7;}
@@ -406,7 +407,7 @@ h1,h2,h3,h4,.ask,.cost-h,.rung-title,.shelf-title,.fb-title,.pledge-h,.joint-t,.
    every page. Only the /diagnose/ page styles live below.
    ════════════════════════════════════════════════════════════════ */
 
-/* ── FIND YOUR LEAK · the diagnostic ─────────────────────────── */
+/* ── FIND WHAT IS HOLDING YOU BACK · the diagnostic ─────────────────────────── */
 .dx{margin-top:2rem;background:var(--card);border:1px solid var(--card-line);border-radius:2px;
   overflow:hidden;}
 .dx-progress{height:3px;background:var(--line-soft);}
@@ -1511,7 +1512,7 @@ html[data-theme="day"] .timer-num{background-image:linear-gradient(160deg,#0A0A0
 </div>
 </section>
 <!-- COST OF INACTION -->
-<!-- FIVE-FINGER MODEL · ONE LEAK -->
+<!-- FIVE-FINGER MODEL · ONE WEAK POINT -->
 <section class="wrap section-line" id="joints">
 <div class="step"><span class="step-n">03</span><span class="step-l">Find The Problem · Fix It</span></div>
 <h2 class="cost-h" style="margin-bottom:0.9rem;">Find The Problem. <em>Fix It.</em></h2>
@@ -1521,6 +1522,7 @@ html[data-theme="day"] .timer-num{background-image:linear-gradient(160deg,#0A0A0
 <div class="joint-n">01</div>
 <div>
 <div class="joint-t">Capacity</div>
+<p class="joint-ask">Can you already do the job itself?</p>
 <p class="joint-law">You can't be hired for work you can't yet do.</p>
 <p class="joint-fix"><span class="fx">Measure it free</span><a href="capacityscan/">Run the Capacity Audit</a> — ten questions about the work itself, scored out of ten. If the skill is not there yet it will tell you to build that first and buy nothing. If it is, Stages 1 and 2 of <a href="foundationtraining/">Foundation Training</a> build the remote half.</p>
 </div>
@@ -1529,6 +1531,7 @@ html[data-theme="day"] .timer-num{background-image:linear-gradient(160deg,#0A0A0
 <div class="joint-n">02</div>
 <div>
 <div class="joint-t">Supply</div>
+<p class="joint-ask">Are you finding enough real jobs you can apply for from here?</p>
 <p class="joint-law">You can't apply for a job you never saw.</p>
 <p class="joint-fix"><span class="fx">Fix it free</span><a href="https://whatsapp.com/channel/0029Vaym4DE3mFY2wCrC713S" rel="noopener" target="_blank">Join the Remote Jobs (Global+) channel on WhatsApp</a> — real, verified roles open to Africans, posted continuously — and <a href="blog.html">read the blog's scam-check and sourcing guides</a>.</p>
 </div>
@@ -1537,6 +1540,7 @@ html[data-theme="day"] .timer-num{background-image:linear-gradient(160deg,#0A0A0
 <div class="joint-n">03</div>
 <div>
 <div class="joint-t">Representation</div>
+<p class="joint-ask">Do your CV and LinkedIn show employers what you can do?</p>
 <p class="joint-law">If your CV can't be read, you were never really in the running.</p>
 <p class="joint-fix"><span class="fx">Fix it</span><a href="cvscan/">Run the free 10-Point CV Self-Scan</a> to see what is wrong in a minute, then <a href="foundationtraining/">build every asset properly in Foundation Training</a> — ATS CV, LinkedIn, portfolio, async writing.</p>
 </div>
@@ -1545,6 +1549,7 @@ html[data-theme="day"] .timer-num{background-image:linear-gradient(160deg,#0A0A0
 <div class="joint-n">04</div>
 <div>
 <div class="joint-t">Aim</div>
+<p class="joint-ask">Are you applying to the jobs most likely to hire you?</p>
 <p class="joint-law">Applying everywhere isn't the same as applying where you'd get hired.</p>
 <p class="joint-fix"><span class="fx">Fix it</span>Foundation Training installs a <a href="foundationtraining/">weekly targeting and application system</a>; or have the aiming <a href="jobapplication/">done for you by the placement engine</a>, which sources and sends on your behalf for a month.</p>
 </div>
@@ -1553,6 +1558,7 @@ html[data-theme="day"] .timer-num{background-image:linear-gradient(160deg,#0A0A0
 <div class="joint-n">05</div>
 <div>
 <div class="joint-t">Conversion</div>
+<p class="joint-ask">Do your interviews turn into job offers?</p>
 <p class="joint-law">Interviews don't pay you. A signed offer does.</p>
 <p class="joint-fix"><span class="fx">Fix it</span><a href="foundationtraining/">Interview and salary-negotiation coaching inside Foundation Training</a>, taken further in the <a href="innercircle/">Inner Circle residency</a> — and it is our promise that we hold this joint with you <b>until you're hired</b>.</p>
 </div>
@@ -1802,7 +1808,7 @@ html[data-theme="day"] .timer-num{background-image:linear-gradient(160deg,#0A0A0
 <script defer="" src="erj-theme.js?v=20260911a"></script>
 <script defer="" src="erj-product.js?v=20260924c"></script>
 <script defer="" src="erj-nav.js?v=20261006b"></script>
-<script defer="" src="erj-config.js?v=20261006a"></script>
+<script defer="" src="erj-config.js?v=20261008a"></script>
 <script defer="" src="erj-capture.js?v=20260911a"></script>
 <script>if("serviceWorker" in navigator){window.addEventListener("load",function(){var go=function(){navigator.serviceWorker.register("/sw.js",{updateViaCache:"none"}).then(function(reg){reg.update();}).catch(function(){});};if("requestIdleCallback" in window){requestIdleCallback(go,{timeout:3000});}else{setTimeout(go,1200);}});}</script>
 <script>

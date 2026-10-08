@@ -2,7 +2,7 @@
    EVERYTHING REMOTE JOB — SERVICE WORKER
    Cache-first for app shell, network-first for fonts
 ═══════════════════════════════════════════════════════ */
-const CACHE = 'erj-site-20261006b';
+const CACHE = 'erj-site-20261008a';
 const OFFLINE = '/offline.html';
 
 /* SHELL is what a first-time visitor pays for before anything renders. It had
@@ -25,7 +25,7 @@ const SHELL = [
   '/capacityscan/cap.css?v=20260928c',
   '/capacityscan/bank.js?v=20260922a',
   '/capacityscan/report-pdf.js?v=20260928c',
-  '/capacityscan/cap.js?v=20261004a',
+  '/capacityscan/cap.js?v=20261008a',
   '/blog/index.html',
   '/free.html',
   '/starthere.html',
@@ -42,11 +42,11 @@ const SHELL = [
   '/erj-product.js?v=20260924c',
   '/erj-passcode.js?v=20260928a',
   '/erj-schema.js?v=20261004a',
-  '/diagnose/dx.js?v=20260911a',
-  '/diagnose/report-pdf.js?v=20260911a',
+  '/diagnose/dx.js?v=20261008a',
+  '/diagnose/report-pdf.js?v=20261008a',
   '/diagnose/index.html',
   '/erj-capture.js?v=20260911a',
-  '/erj-config.js?v=20261006a',
+  '/erj-config.js?v=20261008a',
   '/product.css?v=20261004b',
   '/erj-alive.css?v=20261004a',
   '/erj-alive.js?v=20261004a',

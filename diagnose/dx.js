@@ -1,11 +1,11 @@
 "use strict";
 /* ═══════════════════════════════════════════════════════════════
-   FIND YOUR LEAK · five-part diagnostic  (dx.ts)
+   FIND WHAT IS HOLDING YOU BACK · five-part diagnostic  (dx.ts)
    Compile: tsc diagnose/dx.ts --target es2017 --strict --lib es2017,dom
 
    Five questions, weighted. Each answer adds to one or two parts;
    the highest total wins, with an explicit tie-break that prefers
-   the EARLIEST joint in the pipe — because a leak upstream makes
+   the EARLIEST joint in the pipe — because a weak point upstream makes
    every downstream reading unreliable. Someone who cannot find
    real roles has no meaningful conversion data yet.
 
@@ -17,6 +17,7 @@
     'use strict';
     const QUESTIONS = [
         {
+            topic: 'whether you can do the work today',
             q: 'Thinking about the remote roles you want \u2014 could you do the job itself today, without training first?',
             why: 'This is the one question people skip. A CV rewrite cannot close a skill gap, and no amount of applying fixes work you cannot yet deliver.',
             answers: [
@@ -27,6 +28,7 @@
             ]
         },
         {
+            topic: 'how many real roles you found last month',
             q: 'In the last month, how many remote roles have you found that you were genuinely eligible for?',
             why: 'Eligible means the company can actually pay someone in your country \u2014 not just that the advert said \u201Cremote\u201D.',
             answers: [
@@ -37,6 +39,7 @@
             ]
         },
         {
+            topic: 'replies to your last twenty applications',
             q: 'Of your last twenty applications, how many got any reply at all \u2014 even a rejection?',
             why: 'Total silence and a stream of rejections mean completely different things. Silence usually means you were never read.',
             answers: [
@@ -47,6 +50,7 @@
             ]
         },
         {
+            topic: 'how you choose which roles to apply to',
             q: 'How do you choose which roles to apply to?',
             why: 'This separates effort from aim. A good document sent in the wrong direction produces exactly the same silence as a bad one.',
             answers: [
@@ -57,6 +61,7 @@
             ]
         },
         {
+            topic: 'what happens when you meet an employer',
             q: 'When you get in front of a human \u2014 a call, an interview, a real conversation \u2014 what usually happens?',
             why: 'A CV cannot hire you. It buys about twenty minutes. What happens in those minutes is a separate, learnable skill.',
             answers: [
@@ -70,7 +75,7 @@
     const ORDER = ['capacity', 'supply', 'representation', 'aim', 'conversion'];
     const JOINTS = {
         capacity: {
-            n: '01', name: 'Capacity', law: 'You can\u2019t be hired for work you can\u2019t yet do.',
+            n: '01', name: 'Capacity', tag: 'Being able to do the work', ask: 'Can you already do the job itself?', law: 'You can\u2019t be hired for work you can\u2019t yet do.',
             verdict: 'The gap here is the work itself, not the paperwork \u2014 either the skill the role needs, or the habits that let someone trust you to deliver it unsupervised. This is the honest place to start, because a rewritten CV cannot close it and applying harder will only produce faster rejections. It is also the most fixable, and nobody sees you learning it.',
             free: {
                 text: 'Measure it before you spend anything. The free Capacity Audit asks ten questions about the work itself \u2014 not your CV \u2014 and scores it out of ten against the role family you are targeting. It is the gate for the other four parts, and it will tell you plainly if no ERJ product is the right purchase this month.',
@@ -87,11 +92,11 @@
             ]
         },
         supply: {
-            n: '02', name: 'Supply', law: 'You can\u2019t apply for a job you never saw.',
+            n: '02', name: 'Supply', tag: 'Finding real jobs you can apply for', ask: 'Are you finding enough real jobs you can apply for from here?', law: 'You can\u2019t apply for a job you never saw.',
             verdict: 'You are not seeing enough real, eligible roles to have a job search yet. Everything downstream \u2014 your CV, your aim, your interviews \u2014 is being judged on far too little evidence. Fix this one first and the rest becomes measurable.',
             free: {
-                text: 'Join the free Remote Jobs (Global+) channel on WhatsApp. Verified roles, open to Africans, posted continuously \u2014 and the blog\u2019s scam-check guides so you can tell a live listing from a fossil.',
-                href: 'https://whatsapp.com/channel/0029Vaym4DE3mFY2wCrC713S', label: 'Join the free job board'
+                text: 'Use the free Remote Job Board. New roles go up every morning, and every one is open to someone living in Nigeria or Africa, so you stop wasting applications on jobs you were never allowed to get.',
+                href: '../jobs/', label: 'Open the free job board'
             },
             paid: {
                 text: 'If sourcing, tailoring and submitting applications is the part you cannot keep up with, ERJ can run that work for you. The Done-For-You Application Service finds verified roles, tailors the application to the opportunity and submits on your behalf.',
@@ -104,7 +109,7 @@
             ]
         },
         representation: {
-            n: '03', name: 'Representation', law: 'If your CV can\u2019t be read, you were never really in the running.',
+            n: '03', name: 'Representation', tag: 'How your CV and LinkedIn present you', ask: 'Do your CV and LinkedIn show employers what you can do?', law: 'If your CV can\u2019t be read, you were never really in the running.',
             verdict: 'You are real and competent, and the document representing you is not readable \u2014 by software first, by a stranger second. Total silence almost always means you were never actually read. This is the fastest of the five to fix.',
             free: {
                 text: 'Run the free 10-Point CV Self-Scan. It takes ninety seconds, runs entirely on your own device, and shows exactly which points you default on.',
@@ -121,7 +126,7 @@
             ]
         },
         aim: {
-            n: '04', name: 'Aim', law: 'Applying everywhere isn\u2019t the same as applying where you\u2019d get hired.',
+            n: '04', name: 'Aim', tag: 'Applying to the right jobs', ask: 'Are you applying to the jobs most likely to hire you?', law: 'Applying everywhere isn\u2019t the same as applying where you\u2019d get hired.',
             verdict: 'Your effort is not the problem \u2014 your direction is. Applications sent is a measure of effort, not of aim, and a big number with no replies is evidence of a problem rather than proof of trying. There is no feedback loop in job hunting, so the lesson never arrives on its own.',
             free: {
                 text: 'Start a one-page tracker tonight: date, company, role, source, whether they can hire across borders, what you tailored, what came back. After thirty rows, patterns appear that no advice could have given you.',
@@ -138,8 +143,8 @@
             ]
         },
         conversion: {
-            n: '05', name: 'Conversion', law: 'Interviews don\u2019t pay you. A signed offer does.',
-            verdict: 'Here is the good news hiding in your answers: your CV is working and your aim is close enough to get you into rooms. The hard parts are already fixed. What is leaking is the twenty minutes after the document \u2014 and that is the most learnable part of the whole process.',
+            n: '05', name: 'Conversion', tag: 'Turning interviews into offers', ask: 'Do your interviews turn into job offers?', law: 'Interviews don\u2019t pay you. A signed offer does.',
+            verdict: 'Here is the good news hiding in your answers: your CV is working and your aim is close enough to get you into rooms. The hard parts are already fixed. What is slipping is the twenty minutes after the document \u2014 and that is the most learnable part of the whole process.',
             free: {
                 text: 'Write your answer to the question that ends most remote interviews \u2014 \u201Chow do you work when nobody is watching?\u201D \u2014 as a description of your system, not a list of adjectives. Four sentences, tonight, before anyone asks.',
                 href: '../blog.html', label: 'Read the interview guides'
@@ -158,6 +163,7 @@
     /* ── state ───────────────────────────────────────────────── */
     const scores = { capacity: 0, supply: 0, representation: 0, aim: 0, conversion: 0 };
     const chosen = [];
+    const picked = [];
     let step = 0;
     const stepEl = document.getElementById('dxStep');
     const barEl = document.getElementById('dxBar');
@@ -196,6 +202,7 @@
                     scores[k] += a.weight[k] || 0;
                 });
                 chosen[step] = a.label;
+                picked[step] = a;
                 step++;
                 if (step >= QUESTIONS.length) {
                     renderResult();
@@ -211,6 +218,7 @@
             back.addEventListener('click', () => {
                 step--;
                 const prev = QUESTIONS[step].answers.find(a => a.label === chosen[step]);
+                picked[step] = undefined;
                 if (prev) {
                     Object.keys(prev.weight).forEach(k => {
                         scores[k] -= prev.weight[k] || 0;
@@ -221,7 +229,7 @@
         }
     }
     function winner() {
-        // highest score; ties resolve UPSTREAM — an early leak makes
+        // highest score; ties resolve UPSTREAM — an early weak point makes
         // every later reading unreliable, so fix the earliest one first.
         let best = 'capacity';
         let bestScore = -1;
@@ -238,11 +246,19 @@
         const key = winner();
         const j = JOINTS[key];
         const total = ORDER.reduce((s, k) => s + scores[k], 0) || 1;
-        const scoreData = ORDER.map(k => ({ name: JOINTS[k].name, pct: Math.round((scores[k] / total) * 100) }));
+        const scoreData = ORDER.map(k => ({ name: JOINTS[k].name, tag: JOINTS[k].tag, pct: Math.round((scores[k] / total) * 100) }));
+        /* Show the person their own answers that point here, so the result reads
+           as something they recognise rather than a label to take on trust. */
+        const strongest = Math.max(0, ...picked.map(a => (a && a.weight[key]) || 0));
+        const evidence = QUESTIONS.map((q, i) => ({ q: q, a: picked[i] }))
+            .filter(x => x.a && (x.a.weight[key] || 0) >= (strongest >= 2 ? 2 : 1))
+            .sort((x, y) => (y.a.weight[key] || 0) - (x.a.weight[key] || 0))
+            .slice(0, 3)
+            .map(x => 'Asked about ' + x.q.topic + ', you said: \u201C' + x.a.label + '\u201D');
         const bars = scoreData.map(row => {
             const k = ORDER.find(x => JOINTS[x].name === row.name);
             return '<div class="dxs-row' + (k === key ? ' is-win' : '') + '">' +
-                '<span class="dxs-l">' + row.name + '</span>' +
+                '<span class="dxs-l">' + row.name + '<small>' + esc(row.tag) + '</small></span>' +
                 '<span class="dxs-t"><span style="width:' + row.pct + '%"></span></span>' +
                 '<span class="dxs-p">' + row.pct + '%</span></div>';
         }).join('');
@@ -258,11 +274,14 @@
             '<div class="dxr-head">' +
                 '<div class="dxr-n">' + j.n + '</div>' +
                 '<div>' +
-                '<div class="section-label"><span class="mark"></span>Your primary leak</div>' +
+                '<div class="section-label"><span class="mark"></span>What is holding you back most</div>' +
                 '<h2 class="dxr-name">' + j.name + '</h2>' +
+                '<p class="dxr-plain">In plain words: <b>' + esc(j.ask) + '</b> Right now, this is the part most likely to be stopping you.</p>' +
                 '<p class="dxr-law">' + esc(j.law) + '</p>' +
                 '</div>' +
                 '</div>' +
+                (evidence.length ? '<div class="dxr-why"><div class="dxr-k">Why we think so</div><ul>' +
+                    evidence.map(e => '<li>' + esc(e) + '</li>').join('') + '</ul></div>' : '') +
                 '<p class="dxr-verdict">' + esc(j.verdict) + '</p>' +
                 /* More than one part can be weak at once, so the result names the
                    EARLIEST one worth acting on and points at the breakdown
@@ -272,7 +291,7 @@
 
                 '<div class="cap-read dxr-send dxr-human">' +
                 '<div class="cr-k">Get your free human review</div>' +
-                '<p><strong>The quiz identifies the joint. A human needs to see your actual search to tell you what to fix first.</strong> ' +
+                '<p><strong>The quiz names the weak point. A human needs to see your actual search to tell you what to fix first.</strong> ' +
                 'Send this result to ERJ with four details: your target role, applications in the last 30 days, interviews in the last 30 days, and your CV or LinkedIn profile.</p>' +
                 '<div class="cr-actions">' +
                 '<a class="cap-btn" id="dxAudit" href="' + waHref + '" target="_blank" rel="noopener">' +
@@ -283,7 +302,7 @@
                 '</div>' +
 
                 '<div class="dxr-scores"><div class="dxs-k">How your answers fell</div>' + bars +
-                '<p class="dxs-note">A second point close behind is normal. Fix the earliest leak first: an upstream failure can make every later reading unreliable.</p></div>' +
+                '<p class="dxs-note">A second point close behind is normal. Fix the earliest weak point first: an upstream failure can make every later reading unreliable.</p></div>' +
                 '<div class="dxr-tonight"><div class="dxr-k">One useful step before we reply</div><ol><li>' + esc(j.tonight[0]) + '</li></ol></div>' +
                 '<div class="dxr-doors">' +
                 '<div class="dxr-door"><div class="dxr-door-k">Free door</div><p>' + esc(j.free.text) + '</p>' +
@@ -310,6 +329,8 @@
                     window.ERJDiagnosticPDF.download({
                         number: j.n,
                         joint: j.name,
+                        ask: j.ask,
+                        evidence: evidence,
                         law: j.law,
                         verdict: j.verdict,
                         scores: scoreData,
@@ -330,6 +351,7 @@
             redo.addEventListener('click', () => {
                 ORDER.forEach(k => { scores[k] = 0; });
                 chosen.length = 0;
+                picked.length = 0;
                 step = 0;
                 resultEl.setAttribute('hidden', '');
                 resultEl.innerHTML = '';

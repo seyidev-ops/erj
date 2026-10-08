@@ -132,7 +132,7 @@ There are two routes:
 ## Commercial rules the site must keep true
 
 - **Diagnosis before prescription.** The register page is never the first thing a cold visitor is sent to.
-- **The smallest correct door.** Where a free route closes the leak, the site says so.
+- **The smallest correct door.** Where a free route fixes the weak point, the site says so.
 - **No guaranteed placement and no guaranteed timeline.** ERJ is accountable for the work it sells. The public promise is persistence — *we will not let you go until you're hired* — never a date.
 - **Never estimate an undisclosed salary, and never estimate eligibility.**
 - **Remote does not mean Nigeria-eligible.** Any job surface states eligibility explicitly.
