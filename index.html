@@ -620,6 +620,19 @@ a.promo-tick{text-decoration:none;display:block;}
     .sys-step:last-child{grid-column:1/-1;}}
   @media(max-width:520px){.sys{grid-template-columns:1fr;} .sys-step:last-child{grid-column:auto;}}
 
+  /* join cohort: why + countdown + action */
+  .ft-close{display:grid;grid-template-columns:1.25fr 1fr;gap:clamp(1.6rem,4vw,3rem);align-items:start;margin-top:1rem;}
+  .ft-lede{color:var(--ink-soft);line-height:1.7;margin:0.9rem 0 1.4rem;max-width:58ch;}
+  .ft-list{list-style:none;margin:0;padding:0;display:grid;gap:0.75rem;}
+  .ft-list li{position:relative;padding:0.95rem 1rem 0.95rem 1.25rem;border:1px solid var(--line);border-radius:14px;background:var(--card);}
+  .ft-list li::before{content:'';position:absolute;left:0;top:0.9rem;bottom:0.9rem;width:3px;border-radius:2px;background:var(--accent);}
+  .ft-list b{display:block;font-family:var(--font-display);font-weight:700;color:var(--ink);font-size:0.98rem;}
+  .ft-list span{display:block;margin-top:0.25rem;font-size:0.88rem;color:var(--ink-soft);line-height:1.6;}
+  .ft-act{position:sticky;top:96px;}
+  .ft-btns{display:flex;flex-direction:column;gap:0.7rem;margin-top:1rem;}
+  .ft-btns a{justify-content:center;}
+  .ft-note{margin-top:0.9rem;text-align:center;font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-faint);}
+  @media(max-width:900px){.ft-close{grid-template-columns:1fr;} .ft-act{position:static;}}
   /* countdown */
   .timers{max-width:460px;margin:0 auto;}
   .timers-head{font-size:0.66rem;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:var(--ink-faint);
@@ -1386,7 +1399,7 @@ html[data-theme="day"] .timer-num{background-image:linear-gradient(160deg,#0A0A0
 <noscript><iframe height="0" src="https://www.googletagmanager.com/ns.html?id=GTM-NMFHS59B" style="display:none;visibility:hidden" width="0"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 <div id="erjNavMount"></div>
-<script>window.ERJ_NAV={active:'home',tourTitle:'A quick tour — or jump anywhere',tourSkip:{label:'Explore the ERJ ecosystem',href:'#facilitator'},onPage:[{label:'What We Can Do For You',href:'#promise',sub:'Become hireable, represented and aimed at global employers — from right where you are'},{label:'Meet Your Facilitator',href:'#facilitator',sub:'Why this system exists, in his own words'},{label:'The Promise',href:'#pledge',sub:'One system that stays with you until you are hired'},{label:'Find The Problem · Fix It',href:'#joints',sub:'The pipeline model — find where yours is leaking'},{label:'Your Starting Line',href:'starthere.html',sub:'A simple place to begin, whether you are new or already applying'},{label:'Free For You',href:'#free',sub:'The CV scan, the clinic, the blog and the job board — all free'},{label:'Proof It Works',href:'#story',sub:'Documented outcomes and case studies'},{label:'Before You Decide',href:'#faq',sub:'The questions everyone asks first'},{label:'Still Unsure? Free Diagnosis',href:'#start',sub:'Five questions to show what needs attention first'},{label:'Cohort 12',href:'#timers',sub:'Enrolment closes Saturday 31 October · 8:00 PM WAT'}]};</script>
+<script>window.ERJ_NAV={active:'home',tourTitle:'A quick tour — or jump anywhere',tourSkip:{label:'Explore the ERJ ecosystem',href:'#pledge'},onPage:[{label:'What We Can Do For You',href:'#promise',sub:'Become hireable, represented and aimed at global employers — from right where you are'},{label:'The Promise',href:'#pledge',sub:'One system that stays with you until you are hired'},{label:'Find The Problem · Fix It',href:'#joints',sub:'See which part of your job search is stopping replies, and how to fix it'},{label:'Free For You',href:'#free',sub:'The CV scan, the clinic, the blog and the job board — all free'},{label:'Explore the ERJ Routes',href:'#paths',sub:'Five ways in, from a book to full support'},{label:'Proof It Works',href:'#story',sub:'Documented outcomes and case studies'},{label:'Before You Decide',href:'#faq',sub:'The questions everyone asks first'},{label:'Join Cohort 12',href:'#enrol',sub:'Why Foundation Training is the surest way in · enrolment closes Sat 31 Oct'}]};</script>
 <main>
 <a class="promo-tick" href="#pledge" aria-label="We will not let you go until you're hired."><div class="promo-track">We will not let you go <em>until you're hired.</em></div></a>
 <!-- HERO -->
@@ -1415,8 +1428,8 @@ html[data-theme="day"] .timer-num{background-image:linear-gradient(160deg,#0A0A0
 </a>
 <a class="ha-offer is-free" href="diagnose/">
 <span class="ha-flag">Free · 90 seconds</span>
-<span class="ha-k">Find the leak in your search</span>
-<span class="ha-line">Five questions tell you which of the five parts to fix first. You may not need to buy anything.</span>
+<span class="ha-k">Find what is holding you back</span>
+<span class="ha-line">Five quick questions show what is stopping employers from replying, and what to fix first. You may not need to buy anything.</span>
 <span class="ha-go">Run the free diagnosis <span class="a">→</span></span>
 </a>
 <a class="ha-offer is-start" href="register.html#diy">
@@ -1488,7 +1501,7 @@ html[data-theme="day"] .timer-num{background-image:linear-gradient(160deg,#0A0A0
 <h2 class="pledge-h">We will not let you go until you're <em>hired.</em></h2>
 <p class="pledge-p">Everything Remote Job is not a course you finish and forget. It is <strong>one connected system</strong>: free tools that find what is holding you back, training that fixes it, fresh roles every morning, people who apply alongside you, and a community that stays with you after the offer.</p>
 <ol class="sys">
-<li class="sys-step"><a href="diagnose/"><span class="sys-n">01</span><span class="sys-t">Find the <em>leak</em></span><span class="sys-d">The free diagnostic and CV Self-Scan show what is stopping replies.</span><span class="sys-go">Diagnose free <span class="a">→</span></span></a></li>
+<li class="sys-step"><a href="diagnose/"><span class="sys-n">01</span><span class="sys-t">Find what is <em>holding you back</em></span><span class="sys-d">The free diagnosis and CV Self-Scan show what is stopping employers from replying.</span><span class="sys-go">Diagnose free <span class="a">→</span></span></a></li>
 <li class="sys-step"><a href="#paths"><span class="sys-n">02</span><span class="sys-t">Fix it at your <em>pace</em></span><span class="sys-d">The book, the Self-Learn Pack or live Foundation Training, at the pace that suits you.</span><span class="sys-go">See the routes <span class="a">→</span></span></a></li>
 <li class="sys-step"><a href="jobs/"><span class="sys-n">03</span><span class="sys-t">Aim at real <em>roles</em></span><span class="sys-d">The Remote Job Board: new roles every morning, each one open to Nigeria or Africa.</span><span class="sys-go">Open the board <span class="a">→</span></span></a></li>
 <li class="sys-step"><a href="jobapplication/"><span class="sys-n">04</span><span class="sys-t">Apply with <em>backup</em></span><span class="sys-d">We source and apply with you, or for you, with weekly check-ins.</span><span class="sys-go">Get application help <span class="a">→</span></span></a></li>
@@ -1525,7 +1538,7 @@ html[data-theme="day"] .timer-num{background-image:linear-gradient(160deg,#0A0A0
 <div>
 <div class="joint-t">Representation</div>
 <p class="joint-law">If your CV can't be read, you were never really in the running.</p>
-<p class="joint-fix"><span class="fx">Fix it</span><a href="cvscan/">Run the free 10-Point CV Self-Scan</a> to see the leak in a minute, then <a href="foundationtraining/">build every asset properly in Foundation Training</a> — ATS CV, LinkedIn, portfolio, async writing.</p>
+<p class="joint-fix"><span class="fx">Fix it</span><a href="cvscan/">Run the free 10-Point CV Self-Scan</a> to see what is wrong in a minute, then <a href="foundationtraining/">build every asset properly in Foundation Training</a> — ATS CV, LinkedIn, portfolio, async writing.</p>
 </div>
 </div>
 <div class="joint reveal">
@@ -1564,7 +1577,7 @@ html[data-theme="day"] .timer-num{background-image:linear-gradient(160deg,#0A0A0
 <a class="shelf-item reveal" href="masterclass/">
 <span class="shelf-kind">Live · free on Zoom</span>
 <h3 class="shelf-title">Remote Job Application <em>Clinic</em></h3>
-<p class="shelf-desc">Bring your CV and one job advert. We find the leak live, free, on Zoom.</p>
+<p class="shelf-desc">Bring your CV and one job advert. We find what is holding you back, live and free on Zoom.</p>
 <span class="shelf-go">Register for the clinic <span class="a">→</span></span>
 </a>
 <a class="shelf-item reveal" href="blog.html" id="blog" style="scroll-margin-top:100px;">
@@ -1741,52 +1754,37 @@ html[data-theme="day"] .timer-num{background-image:linear-gradient(160deg,#0A0A0
 </div>
 </section>
 <!-- DIAGNOSIS · DECISION POINT -->
-<section class="wrap section-line first-contact" id="start">
-<div class="first-contact-grid">
-<div>
-<p class="section-label"><span class="mark"></span> Still unsure where to start?</p>
-<h2>Start your remote job search <em>with clarity.</em></h2>
-<p class="fc-lede">You have seen the options. If you are still not sure which one is yours, find out before you pay. Whether you are just beginning, applying without replies, or getting interviews without offers, start by seeing what needs attention first. Five questions. About 90 seconds. One clear starting point.</p>
-<div class="fc-actions">
-<a class="btn-yes btn-primary-ui" href="diagnose/"><span>Find My Starting Point — Free</span><span class="arrow-wrap"><span class="arrow">→</span></span></a>
-<a class="btn-more btn-secondary-ui" href="#paths"><span>View Training Options</span><span class="arrow-wrap"><span class="arrow">↑</span></span></a>
+<!-- JOIN COHORT 12 · why Foundation Training, one countdown, one action -->
+<section class="wrap section-line" id="enrol">
+<div class="step"><span class="step-n">08</span><span class="step-l">Join Cohort 12</span></div>
+<div class="ft-close reveal">
+<div class="ft-why">
+<h2 class="cost-h">Why Foundation Training is our <em>surest way in.</em></h2>
+<p class="ft-lede">Most people do not fail at remote job hunting for lack of ability. They fail because they are working alone, without feedback, with a CV and profile no employer can read. Foundation Training fixes that in one place.</p>
+<ul class="ft-list">
+<li><b>Taught live, not left to you.</b><span>A facilitator takes you through all four stages over 20 training days, so you are never guessing what to do next.</span></li>
+<li><b>Your work is checked, not just watched.</b><span>Your CV, portfolio and interview answers are marked against what global employers look for, and you finish with a certificate.</span></li>
+<li><b>Built around your day.</b><span>Three class times: an early class, an after-work class, and one for people whose weekdays are full.</span></li>
+<li><b>It does not end at the last class.</b><span>A career-skills track at The Mentorine School is included, and you keep the community, job leads and check-ins until you are hired.</span></li>
+</ul>
 </div>
-<p class="fc-note"><strong>You May Not Need To Buy Anything.</strong> If your best next step is something you can fix yourself, we will show you that first.</p>
-</div>
-<div class="fc-proof-card" aria-label="What to expect">
-<div class="fc-proof-row"><b>5 Questions</b><span>See which part of your search needs attention first.</span></div>
-<div class="fc-proof-row"><b>Instant Result</b><span>Know what to work on before your next move.</span></div>
-<div class="fc-proof-row"><b>Practical Next Step</b><span>Leave with one action you can take immediately.</span></div>
-<div class="fc-proof-row"><b>Optional Human Review</b><span>Send your result to ERJ if you want another set of eyes.</span></div>
-</div>
-</div>
-</section>
-<!-- FINAL CTA -->
-<!-- COUNTDOWN -->
-<section class="wrap section-line" id="timers">
-<div class="timers">
-<div class="timers-head" data-lbl="">Enrolment Closes In</div>
-<div class="timer-panel reveal">
-<div class="timer-for">Remote Job Foundation Training</div>
-<div class="timer-wrap" data-closed-label="Enrolment Has Closed" data-deadline="2026-10-31T20:00:00+01:00">
+<div class="ft-act">
+<div class="timer-panel">
+<div class="timer-cohort">Cohort 12 · enrolment closes in</div>
+<div class="timer-wrap" data-closed-label="Enrolment Has Closed" data-deadline="2026-10-31T20:00:00+01:00" data-no-evergreen="">
 <div class="timer-block"><div class="timer-num" data-k="d">00</div><div class="timer-lbl">Days</div></div>
 <div class="timer-block"><div class="timer-num" data-k="h">00</div><div class="timer-lbl">Hrs</div></div>
 <div class="timer-block"><div class="timer-num" data-k="m">00</div><div class="timer-lbl">Min</div></div>
 <div class="timer-block"><div class="timer-num" data-k="s">00</div><div class="timer-lbl">Sec</div></div>
 </div>
-<div class="timer-date">Opens Mon, 5 October · closes <strong>Sat, 31 October 2026 · 8:00 PM WAT</strong> · cohort begins Mon, 2 November · 8:00 PM WAT</div>
+<div class="timer-date">Closes <strong>Sat 31 Oct 2026, 8:00 PM WAT</strong> · classes begin Mon 2 Nov</div>
 </div>
-</div>
-</section>
-<section class="wrap section-line" id="enrol">
-<div class="final-cta reveal">
-<h2 class="final-h">Enrolment closes <em>31 October.</em> Cohort 12 begins 2 November. Will you be in it?</h2>
-<p class="final-p">If you need the full live build and can give the programme the work it requires, Cohort 12 is the current door. If you are not sure, do not guess — run the free diagnosis and message <strong>AUDIT</strong> before you pay.</p>
-<div class="answers">
+<div class="ft-btns">
 <a class="btn-primary-ui btn-yes pulse" href="register.html"><span>Register Now</span><span class="arrow-wrap"><span class="arrow">→</span></span></a>
-<a class="btn-more btn-secondary-ui" href="diagnose/"><span>Run the Free Diagnosis First</span><span class="arrow-wrap"><span class="arrow">→</span></span></a>
+<a class="btn-more btn-secondary-ui" href="foundationtraining/"><span>See The Full Programme</span><span class="arrow-wrap"><span class="arrow">→</span></span></a>
 </div>
-<div class="final-note">Enrolment open now · Secured by Paystack · Our promise applies</div>
+<p class="ft-note">Secured by Paystack · Our promise applies</p>
+</div>
 </div>
 </section>
 </main>
