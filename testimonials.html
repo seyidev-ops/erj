@@ -388,6 +388,12 @@ html[data-theme="day"] .nav,html[data-theme="day"] nav{background:var(--bg)!impo
 @media(max-width:860px){.amb{grid-template-columns:1fr;}.amb-r{order:-1;}.amb-orbit{width:180px;}}
 @media(max-width:620px){.amb-btn{width:100%;justify-content:center;font-size:.95rem;padding:.95rem 1rem;text-align:center;}}
 @media(prefers-reduced-motion:reduce){.amb-orbit,.amb-core,.amb-p,.lb-row,.lb-live i{animation:none;}}
+.ts-wrap.dfy-sec{padding-top:clamp(3rem,7vw,5rem);padding-bottom:clamp(3.5rem,8vw,6rem);}
+.ts-wrap.amb-sec{padding-top:clamp(3rem,7vw,5rem);padding-bottom:clamp(3.5rem,8vw,6rem);margin-bottom:clamp(1.5rem,4vw,3rem);}
+.amb-steps{grid-template-columns:repeat(3,minmax(0,1fr));}
+.amb-steps li{padding:.7rem .8rem .7rem 2.9rem;}
+@media(max-width:860px){.amb-r{display:none;}}
+@media(max-width:620px){.amb-steps{grid-template-columns:1fr;}}
 </style>
 <style id="erjHideLegacy">#themeDropdown,.theme-drop,.theme-drop-menu,#themeMenu,#erjTheme{display:none !important;}</style>
 <link href="https://everythingremotejob.com/testimonials.html" rel="canonical"/>
@@ -639,19 +645,18 @@ html[data-theme="day"] .nav,html[data-theme="day"] nav{background:var(--bg)!impo
 <div class="dfy-head">
 <h2 class="dfy-h">Every story above started the same way: <em>seeing a role they were eligible for.</em></h2>
 <div class="dfy-head-r">
-<p class="dfy-sub">Not with a course, not with a payment &mdash; with a job advert from a company that could legally pay someone in their country. That is the part most searches never fix, and it is the part that costs nothing.</p>
-<p class="dfy-sub">Our Remote Job Board carries new remote roles every morning, each one open to Nigeria or Africa. Check each listing&rsquo;s hiring geography, requirements and deadline before you apply.</p>
+<p class="dfy-sub">Not a course or a payment: a job advert from a company that could legally pay someone in their country. That part costs nothing.</p>
 </div>
 </div>
 <div class="lb reveal" id="lbBoard">
 <div class="lb-top">
-<div class="lb-id"><span class="lb-live"><i></i>Live · updated every morning</span><h3 class="lb-title">The Remote Job Board</h3><p class="lb-sub">Every role open to someone living in Nigeria or Africa. Closed and expired roles come off on their own.</p></div>
+<div class="lb-id"><span class="lb-live"><i></i>Live · updated every morning</span><h3 class="lb-title">The Remote Job Board</h3><p class="lb-sub">Every role open to Nigeria or Africa. Expired roles come off on their own.</p></div>
 <div class="lb-stats"><div><b id="lbCount">250+</b><span>live roles</span></div><div><b id="lbNew">New</b><span>in the last 2 days</span></div><div><b id="lbFields">12</b><span>job fields</span></div></div>
 </div>
 <div class="lb-feed" id="lbFeed" aria-live="polite">
 <a class="lb-row" href="jobs/"><span class="lb-dot is-new"></span><span class="lb-r-t">Today's roles are on the board</span><span class="lb-r-c">Open it to browse by field</span><span class="lb-go">→</span></a>
 </div>
-<ul class="lb-perks"><li>Hiring geography on every listing</li><li>Scam adverts filtered out</li><li>Browse by field or search by tool</li><li>Also on our free WhatsApp channel</li><li>No fee, no email, no card</li></ul>
+<ul class="lb-perks"><li>Hiring geography on every listing</li><li>Scam adverts filtered out</li><li>No fee, no email, no card</li></ul>
 <div class="lb-cta"><a class="btn-primary-ui" href="jobs/"><span>Open The Job Board</span><span class="arrow-wrap"><span class="arrow">→</span></span></a><a class="lb-alt" href="https://whatsapp.com/channel/0029Vaym4DE3mFY2wCrC713S" rel="noopener" target="_blank">Get roles on WhatsApp instead →</a></div>
 </div>
 <script>
@@ -689,15 +694,14 @@ html[data-theme="day"] .nav,html[data-theme="day"] nav{background:var(--bg)!impo
 <div class="amb reveal">
 <div class="amb-l">
 <div class="dfy-label"><span class="mark"></span>Become an ERJ ambassador</div>
-<h2 class="amb-h">Know people who keep asking how to work remotely? <em>Send them here, and get rewarded.</em></h2>
-<p class="amb-text">ERJ ambassadors share the free tools, the job board and our programmes with the people around them: WhatsApp groups, LinkedIn, campus, church, alumni and professional circles. When someone you refer enrols, you are rewarded. It suits community leaders, lecturers, HR people, career coaches and anyone ERJ has already helped.</p>
-<ol class="amb-steps"><li><b>Message us on WhatsApp</b><span>Tap the button and send the short note it fills in.</span></li><li><b>Hear how it works</b><span>What you share, how ambassadors are rewarded and how referrals are tracked.</span></li><li><b>Start sharing</b><span>Begin with the free tools. Nobody you refer is pushed to buy anything.</span></li></ol>
+<h2 class="amb-h">Know someone who wants to work remotely? <em>Send them here. Get rewarded.</em></h2>
+<p class="amb-text">Share ERJ’s free tools, job board and programmes with your groups and circles. When someone you refer enrols, you are rewarded.</p>
+<ol class="amb-steps"><li><b>Message us on WhatsApp</b></li><li><b>Hear how rewards work</b></li><li><b>Start sharing</b></li></ol>
 <a class="amb-btn" data-wa-msg="ambassador" href="https://wa.me/2348032925957" rel="noopener" target="_blank"><svg viewBox="0 0 24 24" aria-hidden="true" width="20" height="20" fill="currentColor"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.39-1.47-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.07c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.7.63.71.22 1.36.2 1.87.12.57-.09 1.76-.72 2-1.41.25-.7.25-1.29.18-1.41-.08-.13-.27-.2-.57-.35M12.05 21.79h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88 2.64 0 5.12 1.03 6.99 2.9a9.83 9.83 0 0 1 2.89 7c0 5.45-4.44 9.88-9.88 9.88"/></svg><span>Chat Us To Become An Ambassador</span></a>
-<p class="amb-note">The same official ERJ line as everywhere on this site. No fee to join.</p>
+<p class="amb-note">No fee to join.</p>
 </div>
 <div class="amb-r" aria-hidden="true">
 <div class="amb-orbit"><span class="amb-core">ERJ</span><span class="amb-p amb-p1">👩🏾‍💼</span><span class="amb-p amb-p2">👨🏿‍🎓</span><span class="amb-p amb-p3">👩🏽‍💻</span><span class="amb-p amb-p4">👨🏾‍🏫</span></div>
-<p class="amb-cap">One message in the right group can change someone’s year.</p>
 </div>
 </div>
 </section>
