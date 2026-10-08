@@ -196,7 +196,7 @@ The site is a static HTML/CSS/JavaScript website hosted on **GitHub Pages** with
 A public board of remote roles open to Nigeria, each written in the ERJ
 channel post format with a **Copy post** button. It runs itself:
 
-- **Every morning at 06:20 WAT** `.github/workflows/jobboard.yml` runs
+- **Every morning (first attempt 04:13 WAT, retries 05:37 and 07:47)** `.github/workflows/jobboard.yml` runs
   `python3 jobboard.py daily`: imports sheets dropped into `jobs/inbox/`,
   pulls new roles from the public feeds and employer job boards listed in
   `jobs/data/config.json`, re-opens every live apply link, takes down closed

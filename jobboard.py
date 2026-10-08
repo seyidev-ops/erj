@@ -833,10 +833,29 @@ def cmd_inbox(cfg):
 
 # ─────────────────────────────────────────────────────────────── feeds
 
-def get_json(url, timeout=30):
-    req = urllib.request.Request(url, headers={"User-Agent": UA, "Accept": "application/json"})
-    with urllib.request.urlopen(req, timeout=timeout) as r:
-        return json.loads(r.read().decode("utf-8", "replace"))
+BROWSER_UA = ("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 "
+              "(KHTML, like Gecko) Chrome/126.0 Safari/537.36")
+
+
+def get_json(url, timeout=30, tries=3):
+    """GET JSON, retrying twice: one slow or refused answer should not empty a source for the day."""
+    headers = {"User-Agent": BROWSER_UA, "Accept": "application/json, text/plain, */*"}
+    if "micro1.ai" in url:
+        headers.update({"Origin": "https://refer.micro1.ai", "Referer": "https://refer.micro1.ai/", "x-custom-lang": "en"})
+    last = None
+    for n in range(tries):
+        try:
+            req = urllib.request.Request(url, headers=headers)
+            with urllib.request.urlopen(req, timeout=timeout) as r:
+                return json.loads(r.read().decode("utf-8", "replace"))
+        except urllib.error.HTTPError as e:
+            last = e
+            if e.code in (400, 401, 404, 410):
+                break
+        except Exception as e:  # timeouts, resets
+            last = e
+        __import__("time").sleep(4 * (n + 1))
+    raise last
 
 
 AGGREGATORS = {"Remotive", "Jobicy"}
@@ -939,7 +958,8 @@ FOREIGN_LANGUAGE = re.compile(
     r"german|dutch|swedish|norwegian|danish|finnish|italian|spanish|portuguese|vietnamese|thai|indonesian|malay|tagalog|"
     r"filipino|greek|czech|romanian|hungarian|persian|farsi|swahili|amharic|zulu|afrikaans|tamil|telugu|marathi|gujarati|"
     r"punjabi|burmese|khmer|lao|nepali|sinhala|serbian|croatian|bulgarian|slovak)\b", re.I)
-LICENSED = re.compile(r"\b(attorney|litigator|bar[- ]admitted|licensed|board[- ]certified|cpa\b|us gov|government)\b", re.I)
+LICENSED = re.compile(r"\b(attorney|litigator|bar[- ]admitted|licensed|board[- ]certified|cpa\b|us gov|government|federal|"
+                      r"(british|american|australian|canadian|irish|scottish) english)\b", re.I)
 
 
 def feed_micro1(code):
@@ -1377,6 +1397,25 @@ def cmd_build(cfg, check=False):
 
 # ──────────────────────────────────────────────────────────────── main
 
+def write_summary(log):
+    """One-paragraph report used as the Action's commit message, so every run's
+    result is readable in the repo history."""
+    adds = log.get("added") or []
+    micro = sum("micro1" in a for a in adds)
+    errs = [f"{k}: {v}" for k, v in (log.get("feeds") or {}).items() if not str(v).endswith("listings read")]
+    lines = [f"Job board: daily update — {len(adds)} added ({micro} micro1), "
+             f"{len(log.get('closed') or [])} closed, {len(log.get('expired') or [])} expired"]
+    if errs:
+        lines += ["", "Feed errors:"] + [f"- {e}" for e in errs]
+    feeds = log.get("feeds") or {}
+    if "micro1" in feeds:
+        lines += ["", f"micro1: {feeds['micro1']}"]
+    path = os.environ.get("JOBBOARD_SUMMARY")
+    if path:
+        with open(path, "w", encoding="utf-8") as f:
+            f.write("\n".join(lines) + "\n")
+
+
 def print_log(log):
     """The run report goes to the Action log (Actions tab), not into the repo."""
     print("── run report ──")
@@ -1406,6 +1445,7 @@ def main(argv):
         cmd_expire(cfg, log)
         cmd_build(cfg)
         print_log(log)
+        write_summary(log)
     elif cmd == "import":
         if len(argv) < 3:
             sys.exit("usage: jobboard.py import FILE.xlsx [--all]")

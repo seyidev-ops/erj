@@ -1,7 +1,7 @@
 name: Job board
 
 # Keeps /jobs/ fresh with no one at a keyboard.
-# Every morning at 06:20 WAT (and whenever a sheet is dropped into
+# Every morning from about 04:15 WAT (and whenever a sheet is dropped into
 # jobs/inbox/, the settings change, or you press "Run workflow" in the
 # Actions tab) it:
 #   1. imports sheets in jobs/inbox/ (rows dated today or yesterday)
@@ -13,7 +13,13 @@ name: Job board
 
 on:
   schedule:
-    - cron: "20 5 * * *"   # 06:20 WAT
+    # GitHub starts scheduled runs late when it is busy (hours, at peak times),
+    # so the board is attempted three times each morning at off-peak minutes.
+    # Repeat runs the same day are harmless: listings are never added twice and
+    # the micro1 quota counts what was already added today.
+    - cron: "13 3 * * *"   # 04:13 WAT
+    - cron: "37 4 * * *"   # 05:37 WAT
+    - cron: "47 6 * * *"   # 07:47 WAT
   push:
     branches: [main]
     paths:
@@ -47,6 +53,8 @@ jobs:
         run: pip install openpyxl
 
       - name: Update the board
+        env:
+          JOBBOARD_SUMMARY: ${{ runner.temp }}/jobboard-summary.txt
         run: python3 jobboard.py daily
 
       - name: Validate facts
@@ -61,7 +69,11 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -A jobs sitemap.xml
-          git commit -m "Job board: daily update"
+          if [ -s "$RUNNER_TEMP/jobboard-summary.txt" ]; then
+            git commit -F "$RUNNER_TEMP/jobboard-summary.txt"
+          else
+            git commit -m "Job board: daily update"
+          fi
           for i in 1 2 3; do
             git pull --rebase origin main && git push && exit 0
             sleep 5
