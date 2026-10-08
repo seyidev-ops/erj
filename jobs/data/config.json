@@ -48,7 +48,6 @@
   "remotive": true,
   "jobicy": false,
   "greenhouse": [
-   "moniepoint@eu",
    "alpaca",
    "alu",
    "canonical",
@@ -89,7 +88,8 @@
    "atleanworld"
   ],
   "micro1": {
-   "referral_code": "d3605f74-92f0-4f1c-b8e2-4ab757bffc26"
+   "referral_code": "d3605f74-92f0-4f1c-b8e2-4ab757bffc26",
+   "note": "micro1 refuses GitHub's servers (403), so its roles are added by the daily scheduled task with: python3 jobboard.py micro1-import <saved pages>. The Action still tries it."
   }
  },
  "company_daily_caps": {

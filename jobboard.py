@@ -17,6 +17,10 @@ Commands (run from the repo root):
   python3 jobboard.py build              # expire old rows and re-render jobs/index.html
   python3 jobboard.py build --check      # CI: fail if jobs/index.html is out of date
   python3 jobboard.py remove ID|URL      # take one listing down by hand
+  python3 jobboard.py micro1-import P1.json [P2.json ...]
+                                         # add today's micro1 roles from saved pages of
+                                         # micro1's referral job list (used by the scheduled
+                                         # task, because micro1 refuses GitHub's servers)
 
 Data lives in jobs/data/:
   config.json    settings: date window, age limits, blocked sites, feeds, ATS boards
@@ -1465,6 +1469,17 @@ def main(argv):
             cmd_build(cfg, check=True)
         else:
             cmd_expire(cfg, log); cmd_build(cfg)
+    elif cmd == "micro1-import":
+        pages = [json.load(open(f, encoding="utf-8")) for f in argv[2:]]
+        rows = [x for p in pages for x in (p.get("data") or [])]
+        global get_json
+        get_json = lambda url, timeout=30, tries=3: {"data": rows, "total": len(rows)}
+        only = dict(cfg, feeds={"micro1": cfg["feeds"]["micro1"]})
+        cmd_fetch(only, log)
+        cmd_expire(cfg, log)
+        cmd_build(cfg)
+        print_log(log)
+        write_summary(log)
     elif cmd == "remove":
         cmd_remove(argv[2]); cmd_build(cfg)
     else:

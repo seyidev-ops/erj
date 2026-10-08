@@ -212,7 +212,9 @@ channel post format with a **Copy post** button. It runs itself:
 - **Sources pulled daily:** Remotive, the Greenhouse / Lever / Ashby /
   Breezy / Workable boards listed in `config.json`, and micro1 through ERJ's
   referral code (`feeds.micro1.referral_code`), so every micro1 apply link
-  credits ERJ. micro1 roles needing another language, a foreign licence or
+  credits ERJ. micro1 refuses GitHub's servers, so a daily Claude scheduled
+  task (05:55 WAT) fetches its list and runs `jobboard.py micro1-import`.
+  micro1 roles needing another language, a foreign licence or
   on-site work are skipped; 10 micro1 roles a day (newest first, topped up from roles up to 30 days old when fewer are new).
 - **Sheets:** upload to `jobs/inbox/`; rows dated today or yesterday are
   taken. Name a file `..._ALL.xlsx` to import every eligible row. Blank
