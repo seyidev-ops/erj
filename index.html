@@ -1381,6 +1381,90 @@ html[data-theme="day"] .erj-bonus-k{color:#0B6E3E;}
 .rung-gate-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);animation:prPulse 2.4s ease-in-out infinite;}
 .rung .erj-bonus{margin-top:.9rem;max-width:34rem;}
 
+/* ── Proof It Works: live message + story spotlight ── */
+.pf-h{margin-bottom:.8rem;}
+.pf-lead{max-width:60ch;color:var(--ink-soft);line-height:1.7;margin:0 0 1.8rem;}
+.pf-stage{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(1rem,3vw,1.8rem);align-items:stretch;}
+.pf-msg{position:relative;display:flex;flex-direction:column;gap:1rem;padding:1.4rem;border-radius:22px;
+  background:linear-gradient(160deg,rgba(13,140,79,.14),rgba(13,140,79,.03) 55%),var(--card);border:1px solid rgba(13,140,79,.35);}
+.pf-msg-top{display:flex;align-items:center;gap:.75rem;}
+.pf-msg-top b{display:block;font-family:var(--font-display);font-size:.98rem;color:var(--ink);}
+.pf-msg-top div>span{font-size:.74rem;color:var(--ink-faint);}
+.pf-msg-ava{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;flex:0 0 42px;background:#0D8C4F;color:#fff;font-weight:800;font-family:var(--font-display);}
+.pf-msg-live{margin-left:auto;display:inline-flex;align-items:center;gap:.4rem;font-size:.62rem!important;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#3fd18b!important;}
+html[data-theme="day"] .pf-msg-live{color:#0B6E3E!important;}
+.pf-msg-live i{width:7px;height:7px;border-radius:50%;background:#25D366;box-shadow:0 0 0 0 rgba(37,211,102,.6);animation:pfPing 2s infinite;}
+@keyframes pfPing{0%{box-shadow:0 0 0 0 rgba(37,211,102,.55)}70%{box-shadow:0 0 0 9px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
+.pf-bubble{position:relative;align-self:flex-start;max-width:96%;padding:1rem 1.1rem 1.5rem;border-radius:4px 18px 18px 18px;
+  background:rgba(37,211,102,.12);border:1px solid rgba(37,211,102,.28);animation:pfFloat 6s ease-in-out infinite;}
+html[data-theme="day"] .pf-bubble{background:#DCF8C6;border-color:#bfe8a3;}
+.pf-bubble p{font-size:clamp(1rem,1.6vw,1.12rem);line-height:1.6;color:var(--ink);}
+.pf-bubble strong{color:var(--accent);}
+.pf-tick{position:absolute;right:.7rem;bottom:.35rem;font-size:.72rem;color:#34B7F1;letter-spacing:-.1em;}
+@keyframes pfFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+.pf-react{display:flex;gap:.35rem;margin-top:-.4rem;}
+.pf-react span{display:grid;place-items:center;width:2rem;height:2rem;border-radius:50%;background:var(--card);border:1px solid var(--line);font-size:1rem;
+  animation:pfPop 3.6s ease-in-out infinite;}
+.pf-react span:nth-child(2){animation-delay:.4s}.pf-react span:nth-child(3){animation-delay:.8s}
+@keyframes pfPop{0%,70%,100%{transform:scale(1)}80%{transform:scale(1.22) rotate(-8deg)}}
+.pf-msg-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem;margin-top:auto;}
+.pf-msg-stats div{padding:.7rem .65rem;border-radius:12px;background:var(--card);border:1px solid var(--line);}
+.pf-msg-stats b{display:block;font-family:var(--font-display);font-size:1.25rem;font-weight:800;color:var(--accent);line-height:1.1;}
+.pf-msg-stats span{font-size:.72rem;color:var(--ink-soft);line-height:1.35;}
+.pf-msg-note{font-size:.7rem;color:var(--ink-faint);}
+.pf-spot{position:relative;display:flex;flex-direction:column;min-width:0;padding:1.2rem 1.3rem 1.4rem;border-radius:22px;background:var(--card);
+  border:1.5px solid transparent;background:linear-gradient(var(--card),var(--card)) padding-box,linear-gradient(125deg,#FF5722,#FFC46B,#0D8C4F,#FF5722) border-box;
+  box-shadow:0 26px 60px rgba(255,87,34,.14);}
+.pf-chips{display:flex;gap:.45rem;overflow-x:auto;scrollbar-width:none;padding-bottom:.2rem;}
+.pf-chips::-webkit-scrollbar{display:none;}
+.pf-chip{flex:0 0 auto;display:inline-flex;align-items:center;gap:.4rem;padding:.3rem .7rem .3rem .3rem;border-radius:100px;border:1px solid var(--line);
+  background:transparent;color:var(--ink-soft);font:inherit;font-size:.78rem;font-weight:600;cursor:pointer;transition:background .25s,color .25s,border-color .25s;}
+.pf-chip span{width:1.5rem;height:1.5rem;border-radius:50%;display:grid;place-items:center;background:var(--line);color:var(--ink);font-size:.7rem;font-weight:800;}
+.pf-chip:hover{border-color:var(--accent);color:var(--ink);}
+.pf-chip.is-on{background:var(--accent);border-color:var(--accent);color:#fff;}
+.pf-chip.is-on span{background:#fff;color:#C2410C;}
+.pf-bar{height:3px;border-radius:3px;background:var(--line);margin:.8rem 0 1rem;overflow:hidden;}
+.pf-bar i{display:block;height:100%;background:var(--accent);transform:scaleX(0);transform-origin:left;}
+.pf-slides{position:relative;flex:1;}
+.pf-slide{display:none;}
+.pf-slide.is-on{display:block;animation:pfIn .55s cubic-bezier(.22,1,.36,1);}
+@keyframes pfIn{from{transform:translateX(18px)}to{transform:none}}
+.pf-who{display:flex;align-items:center;gap:.7rem;}
+.pf-ava{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(135deg,#FF5722,#FF8A3D);color:#fff;font-family:var(--font-display);font-weight:800;font-size:1.1rem;}
+.pf-who b{display:block;font-weight:800;font-family:var(--font-display);font-size:1.15rem;color:var(--ink);}
+.pf-who div>span{font-size:.8rem;color:var(--ink-soft);}
+.pf-delta{display:flex;align-items:center;flex-wrap:wrap;gap:.6rem .8rem;margin:1.1rem 0 .9rem;}
+.pf-was{font-size:.9rem;color:var(--ink-faint);text-decoration:line-through;text-decoration-color:rgba(255,87,34,.6);}
+.pf-arrow{position:relative;width:46px;height:2px;background:var(--line);overflow:hidden;border-radius:2px;}
+.pf-arrow i{position:absolute;inset:0;background:var(--accent);transform:translateX(-100%);animation:pfRun 1.8s cubic-bezier(.22,1,.36,1) infinite;}
+@keyframes pfRun{60%,100%{transform:translateX(100%)}}
+.pf-now{font-family:var(--font-display);font-weight:800;font-size:clamp(2rem,4.4vw,2.7rem);letter-spacing:-.03em;line-height:1;color:var(--ink);}
+.pf-now small{font-size:.8rem;font-weight:600;color:var(--ink-soft);letter-spacing:0;margin-left:.3rem;}
+.pf-held{display:inline-block;font-size:.8rem;color:var(--ink-soft);padding:.35rem .7rem;border-radius:100px;background:rgba(255,87,34,.08);border:1px solid rgba(255,87,34,.25);}
+.pf-held b{color:var(--accent);}
+.pf-held span{color:var(--ink-faint);}
+.pf-chg{margin:.9rem 0 .7rem;font-size:.95rem;line-height:1.65;color:var(--ink);}
+.pf-q{margin:0;padding-left:.9rem;border-left:3px solid var(--accent);font-size:.9rem;font-style:italic;color:var(--ink-soft);line-height:1.6;}
+.pf-more{display:inline-flex;gap:.4rem;margin-top:1rem;font-size:.84rem;font-weight:700;color:var(--accent);text-decoration:none;}
+.pf-more:hover{text-decoration:underline;}
+.pf-next{display:flex;align-items:center;justify-content:space-between;gap:1.2rem 2rem;flex-wrap:wrap;margin-top:1.6rem;padding:1.3rem 1.4rem;border-radius:18px;
+  border:1px dashed rgba(255,87,34,.45);background:rgba(255,87,34,.05);}
+.pf-next b{display:block;font-family:var(--font-display);font-size:1.15rem;color:var(--ink);}
+.pf-next b em{font-style:normal;color:var(--accent);}
+.pf-next>div:first-child>span{font-size:.86rem;color:var(--ink-soft);}
+.pf-next-btns{display:flex;gap:.7rem;flex-wrap:wrap;}
+.pf-fine{margin-top:.8rem;font-size:.72rem;color:var(--ink-faint);}
+.amb-strip{display:flex;align-items:center;gap:1rem;margin-top:1.6rem;padding:1rem 1.2rem;border-radius:16px;background:var(--card);border:1px solid var(--line);}
+.amb-ico{font-size:1.5rem;}
+.amb-strip b{display:block;font-family:var(--font-display);font-size:.98rem;color:var(--ink);}
+.amb-strip div>span{font-size:.82rem;color:var(--ink-soft);line-height:1.5;}
+.amb-go{margin-left:auto;flex:0 0 auto;display:inline-flex;gap:.4rem;align-items:center;padding:.6rem 1rem;border-radius:100px;background:#25D366;color:#063;font-weight:700;font-size:.84rem;text-decoration:none;transition:transform .25s;}
+.amb-go:hover{transform:translateY(-2px);}
+@media(max-width:900px){.pf-stage{grid-template-columns:1fr;}}
+@media(max-width:620px){.pf-next-btns{width:100%;flex-direction:column;}.pf-next-btns a{width:100%;}
+  .amb-strip{flex-wrap:wrap;}.amb-go{margin-left:0;width:100%;justify-content:center;}}
+@media(prefers-reduced-motion:reduce){.pf-bubble,.pf-react span,.pf-arrow i,.pf-msg-live i{animation:none;}.pf-slide.is-on{animation:none;}}
+
 /* ── story, pledge, final: warmth ── */
 .story{position:relative;border-radius:22px;box-shadow:0 0 0 1px rgba(255,87,34,.22),0 30px 70px rgba(255,87,34,.10);}
 .pledge{border-radius:26px;border:1px solid rgba(255,87,34,.4);
@@ -1745,30 +1829,113 @@ html[data-theme="day"] .timer-num{background-image:linear-gradient(160deg,#0A0A0
 <!-- TRANSFORMATION STORY -->
 <section class="wrap section-line" id="story">
 <div class="step"><span class="step-n">06</span><span class="step-l">Proof It Works</span></div>
-<div class="story reveal">
-<div class="story-main">
-<p class="story-quote">“<span class="hl">I landed my first remote job</span> — I'm now with an agency on Upwork. I just thought to let you know immediately I did confirm this. And I'm already at second-interview stage for another role I applied to.”</p>
-<div class="story-meta">
-<div class="story-ava">JB</div>
-<div>
-<div class="story-name">Joseph B.</div>
-<div class="story-role">Hired remotely · now working with an agency on Upwork</div>
+<h2 class="cost-h pf-h">They started where you are. <em>Here is what changed.</em></h2>
+<p class="pf-lead">Same country, same power cuts, same doubts. None of them got luckier. Each one found what was holding them back, fixed that one thing, and kept going.</p>
+<div class="pf-stage">
+<div class="pf-msg reveal" aria-label="A message a Cohort member sent to ERJ">
+<div class="pf-msg-top"><span class="pf-msg-ava">JB</span><div><b>Joseph B.</b><span>Cohort member · message to ERJ</span></div><span class="pf-msg-live"><i></i>Real message</span></div>
+<div class="pf-bubble"><p>“<strong>I landed my first remote job</strong> — I'm now with an agency on Upwork. I just thought to let you know immediately I did confirm this. And I'm already at second-interview stage for another role I applied to.”</p><span class="pf-tick">✓✓</span></div>
+<div class="pf-react" aria-hidden="true"><span>🎉</span><span>🙌</span><span>🔥</span></div>
+<div class="pf-msg-stats"><div><b>1st</b><span>remote job landed</span></div><div><b>2nd</b><span>role already interviewing</span></div><div><b>While</b><span>juggling exams, work and ministry</span></div></div>
+<p class="pf-msg-note">Shared with permission. Name abbreviated for privacy.</p>
+</div>
+<div class="pf-spot reveal" aria-roledescription="carousel" aria-label="Member stories">
+<div class="pf-chips" role="tablist"><button class="pf-chip is-on" type="button" data-i="0" aria-label="Chidi’s story"><span>C</span>Chidi</button><button class="pf-chip" type="button" data-i="1" aria-label="Ngozi’s story"><span>N</span>Ngozi</button><button class="pf-chip" type="button" data-i="2" aria-label="Tunde’s story"><span>T</span>Tunde</button><button class="pf-chip" type="button" data-i="3" aria-label="Amara’s story"><span>A</span>Amara</button><button class="pf-chip" type="button" data-i="4" aria-label="Kemi’s story"><span>K</span>Kemi</button><button class="pf-chip" type="button" data-i="5" aria-label="Blessing’s story"><span>B</span>Blessing</button><button class="pf-chip" type="button" data-i="6" aria-label="Uche’s story"><span>U</span>Uche</button><button class="pf-chip" type="button" data-i="7" aria-label="Taiwo’s story"><span>T</span>Taiwo</button><button class="pf-chip" type="button" data-i="8" aria-label="Sarah’s story"><span>S</span>Sarah</button></div>
+<div class="pf-bar" aria-hidden="true"><i></i></div>
+<div class="pf-slides" aria-live="polite"><article class="pf-slide is-on" data-i="0" id="pf-chidi">
+<div class="pf-who"><span class="pf-ava">C</span><div><b>Chidi</b><span>Backend Engineer · Port Harcourt</span></div></div>
+<div class="pf-delta"><span class="pf-was">~$310/mo</span><span class="pf-arrow" aria-hidden="true"><i></i></span><span class="pf-now">$54,000<small>/year</small></span></div>
+<p class="pf-held">What was holding Chidi back: <b>Aim</b> <span>(applying to the right jobs)</span></p>
+<p class="pf-chg">Stopped applying to companies that could not hire him and aimed at ones that could. Two offers by week 7.</p>
+<blockquote class="pf-q">“Same skills in week 1 as in week 7. What changed was aiming every action at companies already willing to hire him.”</blockquote>
+<a class="pf-more" href="testimonials.html#story-chidi">Read Chidi’s full story <span aria-hidden="true">→</span></a>
+</article><article class="pf-slide" data-i="1" id="pf-ngozi">
+<div class="pf-who"><span class="pf-ava">N</span><div><b>Ngozi</b><span>Retail Supervisor → Customer Success · Enugu</span></div></div>
+<div class="pf-delta"><span class="pf-was">~$115/mo</span><span class="pf-arrow" aria-hidden="true"><i></i></span><span class="pf-now">$2,100<small>/month</small></span></div>
+<p class="pf-held">What was holding Ngozi back: <b>Representation</b> <span>(how the CV spoke for them)</span></p>
+<p class="pf-chg">No degree. Named her four years of customer work properly and backed it with numbers. Offer in six weeks.</p>
+<blockquote class="pf-q">“Nobody asked about my degree. Every single person asked how I handle an angry customer at 11pm, and I had four years of answers.”</blockquote>
+<a class="pf-more" href="testimonials.html#story-ngozi">Read Ngozi’s full story <span aria-hidden="true">→</span></a>
+</article><article class="pf-slide" data-i="2" id="pf-tunde">
+<div class="pf-who"><span class="pf-ava">T</span><div><b>Tunde</b><span>Data Analyst · Lagos</span></div></div>
+<div class="pf-delta"><span class="pf-was">2 final rounds lost</span><span class="pf-arrow" aria-hidden="true"><i></i></span><span class="pf-now">$46,800<small>/year</small></span></div>
+<p class="pf-held">What was holding Tunde back: <b>Conversion</b> <span>(turning interviews into offers)</span></p>
+<p class="pf-chg">His CV was fine. Two weeks of interview practice fixed the part that was actually costing him offers.</p>
+<blockquote class="pf-q">“I rewrote my CV four times for a problem that was never in my CV.”</blockquote>
+<a class="pf-more" href="testimonials.html#story-tunde">Read Tunde’s full story <span aria-hidden="true">→</span></a>
+</article><article class="pf-slide" data-i="3" id="pf-amara">
+<div class="pf-who"><span class="pf-ava">A</span><div><b>Amara</b><span>Operations Manager → Remote Ops · Abuja</span></div></div>
+<div class="pf-delta"><span class="pf-was">~$1,380/yr</span><span class="pf-arrow" aria-hidden="true"><i></i></span><span class="pf-now">$38,400<small>/year</small></span></div>
+<p class="pf-held">What was holding Amara back: <b>Representation</b> <span>(how the CV spoke for them)</span></p>
+<p class="pf-chg">Two young children, 90 minutes a day. Turned real work wins into proof employers could read. Offer in nine weeks.</p>
+<blockquote class="pf-q">“Not exceptional talent or luck — 90 minutes a day, applied consistently, in the right direction.”</blockquote>
+<a class="pf-more" href="testimonials.html#story-amara">Read Amara’s full story <span aria-hidden="true">→</span></a>
+</article><article class="pf-slide" data-i="4" id="pf-kemi">
+<div class="pf-who"><span class="pf-ava">K</span><div><b>Kemi</b><span>English Teacher → Technical Writer · Ibadan</span></div></div>
+<div class="pf-delta"><span class="pf-was">~$1,180/yr</span><span class="pf-arrow" aria-hidden="true"><i></i></span><span class="pf-now">$58,000<small>/year</small></span></div>
+<p class="pf-held">What was holding Kemi back: <b>Capacity</b> <span>(being able to do the work)</span></p>
+<p class="pf-chg">Built the skill first, then the evidence: open-source documentation, paid projects, then a full-time UK offer.</p>
+<blockquote class="pf-q">“The 14 months felt very long while I was in them. Looking back, it was the shortest path.”</blockquote>
+<a class="pf-more" href="testimonials.html#story-kemi">Read Kemi’s full story <span aria-hidden="true">→</span></a>
+</article><article class="pf-slide" data-i="5" id="pf-blessing">
+<div class="pf-who"><span class="pf-ava">B</span><div><b>Blessing</b><span>NGO Coordinator → Remote PM · Lagos</span></div></div>
+<div class="pf-delta"><span class="pf-was">312 applications, 0 replies</span><span class="pf-arrow" aria-hidden="true"><i></i></span><span class="pf-now">$56,000<small>/year</small></span></div>
+<p class="pf-held">What was holding Blessing back: <b>Representation</b> <span>(how the CV spoke for them)</span></p>
+<p class="pf-chg">Her CV spoke NGO language to tech recruiters. Same experience, translated. Signed in week 8.</p>
+<blockquote class="pf-q">“The 312 applications were not wasted. They taught me exactly what was not working.”</blockquote>
+<a class="pf-more" href="testimonials.html#story-blessing">Read Blessing’s full story <span aria-hidden="true">→</span></a>
+</article><article class="pf-slide" data-i="6" id="pf-uche">
+<div class="pf-who"><span class="pf-ava">U</span><div><b>Uche</b><span>Finance Manager · Lagos · 42</span></div></div>
+<div class="pf-delta"><span class="pf-was">~$4,700/yr</span><span class="pf-arrow" aria-hidden="true"><i></i></span><span class="pf-now">$71,000<small>/year</small></span></div>
+<p class="pf-held">What was holding Uche back: <b>Aim</b> <span>(applying to the right jobs)</span></p>
+<p class="pf-chg">A quiet search while still employed: private portfolio, direct outreach, interviews before work.</p>
+<blockquote class="pf-q">“Being 42 was not the obstacle I thought it was.”</blockquote>
+<a class="pf-more" href="testimonials.html#story-uche">Read Uche’s full story <span aria-hidden="true">→</span></a>
+</article><article class="pf-slide" data-i="7" id="pf-taiwo">
+<div class="pf-who"><span class="pf-ava">T</span><div><b>Taiwo</b><span>UX Designer · Abuja</span></div></div>
+<div class="pf-delta"><span class="pf-was">$38,000 offered</span><span class="pf-arrow" aria-hidden="true"><i></i></span><span class="pf-now">$52,000<small>accepted</small></span></div>
+<p class="pf-held">What was holding Taiwo back: <b>Conversion</b> <span>(turning interviews into offers)</span></p>
+<p class="pf-chg">One offer, no leverage, one honest negotiation email. Accepted without a counter.</p>
+<blockquote class="pf-q">“The email took 25 minutes to write.”</blockquote>
+<a class="pf-more" href="testimonials.html#story-taiwo">Read Taiwo’s full story <span aria-hidden="true">→</span></a>
+</article><article class="pf-slide" data-i="8" id="pf-sarah">
+<div class="pf-who"><span class="pf-ava">S</span><div><b>Sarah</b><span>Social Media &amp; Marketing</span></div></div>
+<div class="pf-delta"><span class="pf-was">$48,000 in-office</span><span class="pf-arrow" aria-hidden="true"><i></i></span><span class="pf-now">$72,000<small>/year remote</small></span></div>
+<p class="pf-held">What was holding Sarah back: <b>Representation</b> <span>(how the CV spoke for them)</span></p>
+<p class="pf-chg">Five months, one interview. Rebuilt the CV around numbers, added a portfolio, wrote to 12 companies directly. Three offers.</p>
+<blockquote class="pf-q">“I didn’t know if it would work. Now I can’t believe I spent 5 months doing it the other way.”</blockquote>
+<a class="pf-more" href="testimonials.html#story-sarah">Read Sarah’s full story <span aria-hidden="true">→</span></a>
+</article></div>
 </div>
 </div>
+<div class="pf-next reveal">
+<div><b>Which one is holding <em>you</em> back?</b><span>Five questions, about ninety seconds. Then you will know which of these stories is closest to yours.</span></div>
+<div class="pf-next-btns"><a class="btn-primary-ui btn-yes" href="diagnose/"><span>Find What Is Holding Me Back</span><span class="arrow-wrap"><span class="arrow">→</span></span></a><a class="btn-secondary-ui btn-more" href="testimonials.html"><span>Read Every Story</span><span class="arrow-wrap"><span class="arrow">→</span></span></a></div>
 </div>
-<div class="story-stats">
-<div class="story-stat"><div class="n">1st</div><div class="l">Remote job landed — Upwork agency</div></div>
-<div class="story-stat"><div class="n">2nd</div><div class="l">Already interviewing for the next role</div></div>
-<div class="story-stat"><div class="n">∞</div><div class="l">While juggling exams, work &amp; ministry</div></div>
-</div>
-</div>
-<p class="note reveal" style="margin-top:1.4rem;">A real message from a Cohort member, shared with permission. Names abbreviated for privacy.</p>
-<div class="mini-ts">
-<div class="mini-t reveal"><p>“<strong>The 312 applications were not wasted.</strong> They taught me exactly what was not working. The 8 weeks taught me what was.”</p><div class="who">Cohort member · Placed</div></div>
-<div class="mini-t reveal"><p>“Not exceptional talent or luck — <strong>90 minutes a day</strong>, applied consistently, in the right direction. The constraints don't disqualify you.”</p><div class="who">Cohort member · Placed</div></div>
-<div class="mini-t reveal"><p>“A one-page PDF that <strong>looked like work — not a job application</strong> — changed the response rate most.”</p><div class="who">Cohort member · Placed</div></div>
-</div>
-<a class="more-stories reveal" href="testimonials.html">Read more member stories <span>→</span></a>
+<p class="pf-fine">Documented individual journeys, not typical or guaranteed results. The work is yours; the market sets the timing.</p>
+<div class="amb-strip reveal"><span class="amb-ico" aria-hidden="true">🤝</span><div><b>Know people who need this? Become an ERJ ambassador.</b><span>Share the free tools, the job board and our programmes with your network, and get rewarded when people you refer enrol.</span></div><a class="amb-go" data-wa-msg="ambassador" href="https://wa.me/2348032925957" rel="noopener" target="_blank">Ask on WhatsApp <span aria-hidden="true">→</span></a></div>
+<script>
+(function(){
+  var root=document.getElementById('story'); if(!root) return;
+  var slides=[].slice.call(root.querySelectorAll('.pf-slide')), chips=[].slice.call(root.querySelectorAll('.pf-chip'));
+  var bar=root.querySelector('.pf-bar i'), spot=root.querySelector('.pf-spot'), cur=0, timer=null, DUR=6500;
+  var still=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function show(i){ cur=(i+slides.length)%slides.length;
+    slides.forEach(function(s,k){s.classList.toggle('is-on',k===cur);});
+    chips.forEach(function(c,k){c.classList.toggle('is-on',k===cur);c.setAttribute('aria-selected',k===cur);});
+    var c=chips[cur]; if(c&&c.parentNode) c.parentNode.scrollTo({left:c.offsetLeft-c.parentNode.clientWidth/2+c.clientWidth/2,behavior:'smooth'});
+    if(bar){bar.style.transition='none';bar.style.transform='scaleX(0)';void bar.offsetWidth;
+      if(!still){bar.style.transition='transform '+DUR+'ms linear';bar.style.transform='scaleX(1)';}} }
+  function play(){ stop(); if(still) return; timer=setInterval(function(){show(cur+1);},DUR); }
+  function stop(){ if(timer) clearInterval(timer); timer=null; }
+  chips.forEach(function(c){c.addEventListener('click',function(){show(+c.dataset.i);play();});});
+  spot.addEventListener('mouseenter',stop); spot.addEventListener('mouseleave',play);
+  spot.addEventListener('focusin',stop);
+  var x0=null; spot.addEventListener('touchstart',function(e){x0=e.touches[0].clientX;stop();},{passive:true});
+  spot.addEventListener('touchend',function(e){ if(x0===null) return; var dx=e.changedTouches[0].clientX-x0; if(Math.abs(dx)>40) show(cur+(dx<0?1:-1)); x0=null; play(); });
+  if('IntersectionObserver' in window){ new IntersectionObserver(function(es){es.forEach(function(e){ e.isIntersecting?(show(cur),play()):stop(); });},{threshold:.25}).observe(spot); } else { show(0); play(); }
+})();
+</script>
 </section>
 <!-- FAQ / OBJECTIONS -->
 <section class="wrap section-line" id="faq">
@@ -1858,7 +2025,7 @@ html[data-theme="day"] .timer-num{background-image:linear-gradient(160deg,#0A0A0
 <script defer="" src="erj-theme.js?v=20260911a"></script>
 <script defer="" src="erj-product.js?v=20260924c"></script>
 <script defer="" src="erj-nav.js?v=20261006b"></script>
-<script defer="" src="erj-config.js?v=20261008a"></script>
+<script defer="" src="erj-config.js?v=20261008b"></script>
 <script defer="" src="erj-capture.js?v=20260911a"></script>
 <script>if("serviceWorker" in navigator){window.addEventListener("load",function(){var go=function(){navigator.serviceWorker.register("/sw.js",{updateViaCache:"none"}).then(function(reg){reg.update();}).catch(function(){});};if("requestIdleCallback" in window){requestIdleCallback(go,{timeout:3000});}else{setTimeout(go,1200);}});}</script>
 <script>
@@ -1943,5 +2110,6 @@ html[data-theme="day"] .timer-num{background-image:linear-gradient(160deg,#0A0A0
 })();
 </script>
 <script defer="" src="erj-alive.js?v=20261004a"></script>
+<script>document.addEventListener("DOMContentLoaded",function(){var C=window.ERJ_CONFIG;if(!C||!C.messages)return;document.querySelectorAll("[data-wa-msg]").forEach(function(a){var t=C.messages[a.getAttribute("data-wa-msg")];if(t)a.href="https://wa.me/"+C.whatsapp+"?text="+encodeURIComponent(t);});});</script>
 </body>
 </html>

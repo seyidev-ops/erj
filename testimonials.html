@@ -327,6 +327,67 @@ html[data-theme="day"] .nav,html[data-theme="day"] nav{background:var(--bg)!impo
 .ts-evidence-note{font-size:.68rem;line-height:1.5;color:var(--muted2);margin-top:.7rem;}
 @media(min-width:760px){.ts-ev-grid{grid-template-columns:1fr 1fr;}}
 
+
+/* ── live job board (testimonials) ── */
+.lb{max-width:980px;margin:0 auto;padding:clamp(1.3rem,3vw,2rem);border-radius:22px;border:1.5px solid transparent;
+  background:linear-gradient(var(--card),var(--card)) padding-box,linear-gradient(125deg,#3FB950,#FFC46B,#FF5722,#3FB950) border-box;box-shadow:0 26px 60px rgba(63,185,80,.10);}
+.lb-top{display:flex;justify-content:space-between;align-items:flex-end;gap:1.2rem 2rem;flex-wrap:wrap;}
+.lb-live{display:inline-flex;align-items:center;gap:.45rem;font-size:.62rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--green-text,#3FB950);}
+.lb-live i{width:8px;height:8px;border-radius:50%;background:#25D366;animation:lbPing 2s infinite;}
+@keyframes lbPing{0%{box-shadow:0 0 0 0 rgba(37,211,102,.55)}70%{box-shadow:0 0 0 9px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
+.lb-title{font-family:var(--fd);font-size:clamp(1.5rem,3.4vw,2rem);font-weight:800;letter-spacing:-.02em;color:var(--text);margin:.35rem 0 .3rem;}
+.lb-sub{font-size:.88rem;color:var(--muted);max-width:46ch;line-height:1.6;}
+.lb-stats{display:flex;gap:.6rem;}
+.lb-stats div{min-width:5.6rem;padding:.7rem .8rem;border-radius:14px;border:1px solid var(--border);text-align:center;}
+.lb-stats b{display:block;font-family:var(--fd);font-size:1.6rem;font-weight:800;color:var(--accent);font-variant-numeric:tabular-nums;line-height:1.1;}
+.lb-stats span{font-size:.68rem;color:var(--muted);}
+.lb-feed{display:flex;flex-direction:column;gap:.45rem;margin:1.3rem 0 1.1rem;}
+.lb-row{display:grid;grid-template-columns:auto minmax(0,1fr) auto auto;grid-template-areas:"d t n g" "d c n g";align-items:center;gap:.05rem .8rem;padding:.75rem .9rem;border-radius:14px;
+  border:1px solid var(--border);text-decoration:none;color:var(--text);background:var(--paper);animation:lbIn .6s cubic-bezier(.22,1,.36,1) both;animation-delay:var(--d,0ms);
+  transition:transform .25s,border-color .25s;}
+.lb-row:hover{transform:translateX(4px);border-color:var(--accent);}
+@keyframes lbIn{from{transform:translateY(12px)}to{transform:none}}
+.lb-dot{grid-area:d;width:9px;height:9px;border-radius:50%;background:var(--border);}
+.lb-dot.is-new{background:#25D366;box-shadow:0 0 0 4px rgba(37,211,102,.15);}
+.lb-r-t{grid-area:t;font-family:var(--fd);font-weight:700;font-size:.95rem;line-height:1.3;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.lb-r-c{grid-area:c;font-size:.76rem;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.lb-new{grid-area:n;font-size:.6rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:var(--accent-btn,#FF5722);padding:.2rem .5rem;border-radius:100px;}
+.lb-go{grid-area:g;color:var(--accent);font-weight:700;}
+.lb-perks{list-style:none;padding:0;margin:0 0 1.3rem;display:flex;flex-wrap:wrap;gap:.45rem;}
+.lb-perks li{font-size:.76rem;color:var(--text);padding:.35rem .7rem;border-radius:100px;border:1px solid var(--border);}
+.lb-perks li::before{content:'✓ ';color:var(--green-text,#3FB950);font-weight:800;}
+.lb-cta{display:flex;align-items:center;gap:1rem 1.4rem;flex-wrap:wrap;}
+.lb-alt{font-size:.86rem;font-weight:600;color:var(--accent);text-decoration:none;}
+.lb-alt:hover{text-decoration:underline;}
+@media(max-width:620px){.lb-stats{width:100%;}.lb-stats div{flex:1;min-width:0;}.lb-cta .btn-primary-ui{width:100%;}}
+/* ── ambassador ── */
+.amb-sec{padding:clamp(3rem,7vw,5rem) 0;border-top:1px solid var(--border2);}
+.amb{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:clamp(1.5rem,4vw,3rem);align-items:center;max-width:1040px;margin:0 auto;}
+.amb-h{font-family:var(--fd);font-size:clamp(1.6rem,4vw,2.4rem);font-weight:800;letter-spacing:-.02em;line-height:1.15;color:var(--text);margin:.6rem 0 .9rem;}
+.amb-h em{font-style:normal;color:var(--accent);}
+.amb-text{font-size:.95rem;color:var(--muted);line-height:1.7;max-width:60ch;}
+.amb-steps{list-style:none;counter-reset:a;padding:0;margin:1.3rem 0 1.4rem;display:grid;gap:.6rem;}
+.amb-steps li{counter-increment:a;position:relative;padding:.75rem .9rem .75rem 3.1rem;border-radius:14px;border:1px solid var(--border);background:var(--card);}
+.amb-steps li::before{content:counter(a);position:absolute;left:.85rem;top:50%;transform:translateY(-50%);width:1.6rem;height:1.6rem;border-radius:50%;display:grid;place-items:center;
+  background:var(--accent-btn,#FF5722);color:#fff;font-family:var(--fd);font-weight:800;font-size:.8rem;}
+.amb-steps b{display:block;font-family:var(--fd);font-size:.95rem;color:var(--text);}
+.amb-steps span{font-size:.82rem;color:var(--muted);}
+.amb-btn{display:inline-flex;align-items:center;gap:.6rem;padding:1rem 1.4rem;border-radius:100px;background:#25D366;color:#053B1C;font-weight:800;text-decoration:none;font-size:1.02rem;
+  box-shadow:0 12px 30px rgba(37,211,102,.25);transition:transform .25s;}
+.amb-btn:hover{transform:translateY(-2px);}
+.amb-note{margin-top:.7rem;font-size:.74rem;color:var(--muted2);}
+.amb-r{display:flex;flex-direction:column;align-items:center;gap:1.6rem;overflow:hidden;padding:1.8rem 0 .4rem;min-width:0;}
+.amb-sec{overflow:hidden;}
+.amb-orbit{position:relative;width:min(240px,62vw);aspect-ratio:1;border-radius:50%;border:1px dashed rgba(255,87,34,.45);animation:ambSpin 28s linear infinite;}
+.amb-core{position:absolute;left:50%;top:50%;width:5rem;height:5rem;margin:-2.5rem 0 0 -2.5rem;border-radius:50%;display:grid;place-items:center;
+  background:var(--accent-btn,#FF5722);color:#fff;font-family:var(--fd);font-weight:800;font-size:1.1rem;animation:ambSpin 28s linear infinite reverse;}
+.amb-p{position:absolute;display:grid;place-items:center;width:3.2rem;height:3.2rem;border-radius:50%;background:var(--card);border:1px solid var(--border);font-size:1.5rem;animation:ambSpin 28s linear infinite reverse;}
+.amb-p1{top:-1.6rem;left:calc(50% - 1.6rem);}.amb-p2{bottom:-1.6rem;left:calc(50% - 1.6rem);}.amb-p3{left:-1.6rem;top:calc(50% - 1.6rem);}.amb-p4{right:-1.6rem;top:calc(50% - 1.6rem);}
+@keyframes ambSpin{to{transform:rotate(360deg)}}
+.amb-cap{font-size:.84rem;color:var(--muted);text-align:center;max-width:24ch;}
+@media(max-width:860px){.amb{grid-template-columns:1fr;}.amb-r{order:-1;}.amb-orbit{width:180px;}}
+@media(max-width:620px){.amb-btn{width:100%;justify-content:center;}}
+@media(prefers-reduced-motion:reduce){.amb-orbit,.amb-core,.amb-p,.lb-row,.lb-live i{animation:none;}}
 </style>
 <style id="erjHideLegacy">#themeDropdown,.theme-drop,.theme-drop-menu,#themeMenu,#erjTheme{display:none !important;}</style>
 <link href="https://everythingremotejob.com/testimonials.html" rel="canonical"/>
@@ -353,7 +414,7 @@ html[data-theme="day"] .nav,html[data-theme="day"] nav{background:var(--bg)!impo
 <!-- End Google Tag Manager (noscript) -->
 <!-- NAV -->
 <div id="erjNavMount"></div>
-<script>window.ERJ_NAV={active:'stories',onPage:[{label:'Success stories',href:'#stories'},{label:'Free job board',href:'#jobboard'},{label:'Register for Cohort 12',href:'register.html'}]};</script>
+<script>window.ERJ_NAV={active:'stories',onPage:[{label:'Success stories',href:'#stories'},{label:'Free job board',href:'#jobboard'},{label:'Become an ambassador',href:'#ambassador'},{label:'Register for Cohort 12',href:'register.html'}]};</script>
 <main>
 <!-- ══ SUCCESS STORIES ══ -->
 <section class="ts-wrap" id="stories">
@@ -363,7 +424,7 @@ html[data-theme="day"] .nav,html[data-theme="day"] nav{background:var(--bg)!impo
 <p class="ts-sub">Documented journeys with the numbers, the timeline, the before-and-after change, the interview or offer milestone, and the exact work that moved the search forward.</p>
 </div>
 <div class="ts-grid">
-<article class="ts-card">
+<article class="ts-card" id="story-chidi">
 <div class="ts-tag"><span class="mark"></span>7-Week Repositioning</div>
 <div class="ts-name">Chidi</div>
 <div class="ts-role">Backend Engineer · Port Harcourt · 29</div>
@@ -383,7 +444,7 @@ html[data-theme="day"] .nav,html[data-theme="day"] nav{background:var(--bg)!impo
 <p class="ts-evidence-note">Only details already published in this case study are shown here. Calendar dates, invitation screenshots and original message screenshots should be added only from the participant's verified source files; none are invented on this page.</p>
 </details>
 </article>
-<article class="ts-card">
+<article class="ts-card" id="story-kemi">
 <div class="ts-tag"><span class="mark"></span>14-Month Career Pivot</div>
 <div class="ts-name">Kemi</div>
 <div class="ts-role">English Teacher → Technical Writer · Ibadan · 34</div>
@@ -403,7 +464,7 @@ html[data-theme="day"] .nav,html[data-theme="day"] nav{background:var(--bg)!impo
 <p class="ts-evidence-note">Only details already published in this case study are shown here. Calendar dates, invitation screenshots and original message screenshots should be added only from the participant's verified source files; none are invented on this page.</p>
 </details>
 </article>
-<article class="ts-card">
+<article class="ts-card" id="story-taiwo">
 <div class="ts-tag"><span class="mark"></span>Negotiation Win · +$14,000</div>
 <div class="ts-name">Taiwo</div>
 <div class="ts-role">UX Designer · Abuja · 27</div>
@@ -423,7 +484,7 @@ html[data-theme="day"] .nav,html[data-theme="day"] nav{background:var(--bg)!impo
 <p class="ts-evidence-note">Only details already published in this case study are shown here. Calendar dates, invitation screenshots and original message screenshots should be added only from the participant's verified source files; none are invented on this page.</p>
 </details>
 </article>
-<article class="ts-card">
+<article class="ts-card" id="story-blessing">
 <div class="ts-tag"><span class="mark"></span>8-Week Turnaround</div>
 <div class="ts-name">Blessing</div>
 <div class="ts-role">NGO Project Coordinator → Remote PM · Lagos · 31</div>
@@ -443,7 +504,7 @@ html[data-theme="day"] .nav,html[data-theme="day"] nav{background:var(--bg)!impo
 <p class="ts-evidence-note">Only details already published in this case study are shown here. Calendar dates, invitation screenshots and original message screenshots should be added only from the participant's verified source files; none are invented on this page.</p>
 </details>
 </article>
-<article class="ts-card">
+<article class="ts-card" id="story-marcus">
 <div class="ts-tag"><span class="mark"></span>23 Days · +$18,500</div>
 <div class="ts-name">Marcus</div>
 <div class="ts-role">Content Strategist · 31</div>
@@ -463,7 +524,7 @@ html[data-theme="day"] .nav,html[data-theme="day"] nav{background:var(--bg)!impo
 <p class="ts-evidence-note">Only details already published in this case study are shown here. Calendar dates, invitation screenshots and original message screenshots should be added only from the participant's verified source files; none are invented on this page.</p>
 </details>
 </article>
-<article class="ts-card">
+<article class="ts-card" id="story-amara">
 <div class="ts-tag"><span class="mark"></span>9 Weeks · 90 Minutes a Day</div>
 <div class="ts-name">Amara</div>
 <div class="ts-role">Operations Manager → Remote Ops Coordinator · Abuja · 35</div>
@@ -483,7 +544,7 @@ html[data-theme="day"] .nav,html[data-theme="day"] nav{background:var(--bg)!impo
 <p class="ts-evidence-note">Only details already published in this case study are shown here. Calendar dates, invitation screenshots and original message screenshots should be added only from the participant's verified source files; none are invented on this page.</p>
 </details>
 </article>
-<article class="ts-card">
+<article class="ts-card" id="story-uche">
 <div class="ts-tag"><span class="mark"></span>Employed &amp; Discreet · 11 Weeks</div>
 <div class="ts-name">Uche</div>
 <div class="ts-role">Finance Manager · Lagos · 42</div>
@@ -503,7 +564,7 @@ html[data-theme="day"] .nav,html[data-theme="day"] nav{background:var(--bg)!impo
 <p class="ts-evidence-note">Only details already published in this case study are shown here. Calendar dates, invitation screenshots and original message screenshots should be added only from the participant's verified source files; none are invented on this page.</p>
 </details>
 </article>
-<article class="ts-card">
+<article class="ts-card" id="story-ngozi">
 <div class="ts-tag"><span class="mark"></span>No Degree · 6 Weeks</div>
 <div class="ts-name">Ngozi</div>
 <div class="ts-role">Retail Supervisor → Remote Customer Success · Enugu · 26</div>
@@ -523,7 +584,7 @@ html[data-theme="day"] .nav,html[data-theme="day"] nav{background:var(--bg)!impo
 <p class="ts-evidence-note">Only details already published in this case study are shown here. Calendar dates, invitation screenshots and original message screenshots should be added only from the participant's verified source files; none are invented on this page.</p>
 </details>
 </article>
-<article class="ts-card">
+<article class="ts-card" id="story-tunde">
 <div class="ts-tag"><span class="mark"></span>Two Final-Round Rejections · Then the Offer</div>
 <div class="ts-name">Tunde</div>
 <div class="ts-role">Data Analyst · Lagos · 30</div>
@@ -541,6 +602,26 @@ html[data-theme="day"] .nav,html[data-theme="day"] nav{background:var(--bg)!impo
 <div class="ts-ev" style="grid-column:1/-1"><div class="ts-ev-k">Participant statement</div><div class="ts-message">“I rewrote my CV four times for a problem that was never in my CV. The thing that was broken took two weeks of practice to fix.”</div></div>
 </div>
 <p class="ts-evidence-note">Only details already published in this case study are shown here. Calendar dates, invitation screenshots and original message screenshots should be added only from the participant's verified source files; none are invented on this page.</p>
+</details>
+</article>
+<article class="ts-card" id="story-sarah">
+<div class="ts-tag"><span class="mark"></span>6 Weeks · 0 → 3 Offers</div>
+<div class="ts-name">Sarah</div>
+<div class="ts-role">Social Media &amp; Marketing · from in-office to remote</div>
+<div class="ts-delta"><span class="ts-was">$48,000 in-office</span><span class="ts-now">$72,000</span><span class="ts-per">/year · fully flexible remote</span></div>
+<p class="ts-body">Sixty applications a month for five months, and exactly one interview. She was sure the market was the problem. It was not. Her CV dated from 2019 and listed duties, her LinkedIn was set to private, and every application went through a job board. We rebuilt the CV so <strong>every bullet carried a number</strong>, built a three-page portfolio in a day, and wrote to 12 remote-first companies directly. Seven opened, four booked calls, three made offers.</p>
+<p class="ts-quote">"I didn't know if it would work. Now I can't believe I spent 5 months doing it the other way."</p>
+<details class="ts-evidence">
+<summary><span>Open the evidence trail</span><span>Timeline · before/after · interviews · ERJ work</span></summary>
+<div class="ts-ev-grid">
+<div class="ts-ev"><div class="ts-ev-k">Date / timeline</div><p>Five months of applying at about 60 roles a month produced one interview. After the reset: <strong>six weeks</strong> to three offers.</p></div>
+<div class="ts-ev"><div class="ts-ev-k">Before</div><p>CV last updated in 2019 and written as job duties; generic cover letters; LinkedIn set to private; no portfolio; job boards only.</p></div>
+<div class="ts-ev"><div class="ts-ev-k">After</div><p>Achievement-led CV, for example <strong>“Grew LinkedIn following by 340% in 4 months, generating 12 qualified leads in Q3.”</strong> A three-page portfolio with before/after numbers.</p></div>
+<div class="ts-ev"><div class="ts-ev-k">Interview / offer evidence</div><p>12 direct messages, 7 opened, 4 discovery calls, 3 offers. Published outcome: <strong>$72,000/year</strong>, up from $48,000 in-office.</p></div>
+<div class="ts-ev" style="grid-column:1/-1"><div class="ts-ev-k">What ERJ specifically changed</div><p>Diagnosed Representation and Aim (her Capacity was never the problem); rewrote the CV around measurable results; built portfolio proof; replaced job-board volume with 12 researched, personalised approaches; prepared remote-specific interview answers.</p></div>
+<div class="ts-ev" style="grid-column:1/-1"><div class="ts-ev-k">Participant statement</div><div class="ts-message">“I didn't know if it would work. Now I can't believe I spent 5 months doing it the other way.”</div></div>
+</div>
+<p class="ts-evidence-note">Only details already published in this case study are shown here, as first set out on the ERJ blog. Calendar dates and original message screenshots should be added only from the participant's verified source files; none are invented on this page.</p>
 </details>
 </article>
 </div>
@@ -562,30 +643,65 @@ html[data-theme="day"] .nav,html[data-theme="day"] nav{background:var(--bg)!impo
 <p class="dfy-sub">Our Remote Job Board carries new remote roles every morning, each one open to Nigeria or Africa. Check each listing&rsquo;s hiring geography, requirements and deadline before you apply.</p>
 </div>
 </div>
-<div class="dfy-grid dfy-grid-solo">
-<a class="dfy-free" href="jobs/">
-<span class="dfy-free-tag"><span class="dfy-free-dot"></span> 100% Free &middot; No Payment</span>
-<div class="dfy-free-head">
-<div>
-<div class="dfy-free-title">Remote Job Board</div>
-<div class="dfy-free-meta">Updated every morning &middot; every role open to Nigeria or Africa</div>
+<div class="lb reveal" id="lbBoard">
+<div class="lb-top">
+<div class="lb-id"><span class="lb-live"><i></i>Live · updated every morning</span><h3 class="lb-title">The Remote Job Board</h3><p class="lb-sub">Every role open to someone living in Nigeria or Africa. Closed and expired roles come off on their own.</p></div>
+<div class="lb-stats"><div><b id="lbCount">250+</b><span>live roles</span></div><div><b id="lbNew">New</b><span>in the last 2 days</span></div><div><b id="lbFields">12</b><span>job fields</span></div></div>
 </div>
-<span class="dfy-free-live"><span class="dfy-free-dot"></span> Posting now</span>
+<div class="lb-feed" id="lbFeed" aria-live="polite">
+<a class="lb-row" href="jobs/"><span class="lb-dot is-new"></span><span class="lb-r-t">Today's roles are on the board</span><span class="lb-r-c">Open it to browse by field</span><span class="lb-go">→</span></a>
 </div>
-<p class="dfy-free-sub">Remote opportunities for African professionals, checked before they are posted. The same channel the people above were reading while they were still deciding.</p>
-<ul class="dfy-free-list">
-<li>Hiring geography stated on every listing, so you know who can pay you</li>
-<li>Requirements and deadlines noted where the employer states them</li>
-<li>Scam adverts filtered out before you ever see them</li>
-<li>Also sent to our free WhatsApp channel &mdash; nothing to install, nothing to log into</li>
-<li>No fee, no email, no card, and no upsell inside the channel</li>
-<li>Closed and expired roles come off automatically</li>
-</ul>
-<span class="dfy-free-cta">Open the job board &rarr;</span>
-</a>
+<ul class="lb-perks"><li>Hiring geography on every listing</li><li>Scam adverts filtered out</li><li>Browse by field or search by tool</li><li>Also on our free WhatsApp channel</li><li>No fee, no email, no card</li></ul>
+<div class="lb-cta"><a class="btn-primary-ui" href="jobs/"><span>Open The Job Board</span><span class="arrow-wrap"><span class="arrow">→</span></span></a><a class="lb-alt" href="https://whatsapp.com/channel/0029Vaym4DE3mFY2wCrC713S" rel="noopener" target="_blank">Get roles on WhatsApp instead →</a></div>
 </div>
+<script>
+(function(){
+  var feed=document.getElementById('lbFeed'); if(!feed||!window.fetch||!window.DOMParser) return;
+  var still=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function esc(x){return String(x||'').replace(/[&<>"]/g,function(m){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m];});}
+  function count(el,n){ if(!el) return; if(still){el.textContent=n;return;} var t0=null;
+    function step(ts){ t0=t0||ts; var k=Math.min(1,(ts-t0)/1100); el.textContent=Math.round(n*(1-Math.pow(1-k,3))); if(k<1) requestAnimationFrame(step); }
+    requestAnimationFrame(step); }
+  fetch('jobs/',{cache:'no-cache'}).then(function(r){return r.ok?r.text():Promise.reject();}).then(function(t){
+    var d=new DOMParser().parseFromString(t,'text/html'), data={};
+    try{ data=JSON.parse((d.getElementById('jbData')||{}).textContent||'{}'); }catch(e){}
+    var cards=[].slice.call(d.querySelectorAll('.jb-card')); if(!cards.length) return;
+    var y=new Date(Date.now()-864e5).toISOString().slice(0,10);
+    var fresh=cards.filter(function(c){return (c.getAttribute('data-date')||'')>=y;});
+    var fams={}; cards.forEach(function(c){fams[c.getAttribute('data-family')]=1;});
+    count(document.getElementById('lbCount'),cards.length);
+    count(document.getElementById('lbNew'),fresh.length);
+    count(document.getElementById('lbFields'),Object.keys(fams).length);
+    var pick=(fresh.length>=5?fresh:cards).slice(0,6);
+    feed.innerHTML=pick.map(function(c,i){
+      var id=c.getAttribute('data-id'), j=data[id]||{}, isNew=(c.getAttribute('data-date')||'')>=y;
+      return '<a class="lb-row" style="--d:'+(i*90)+'ms" href="jobs/#job-'+esc(id)+'"><span class="lb-dot'+(isNew?' is-new':'')+'"></span>'+
+        '<span class="lb-r-t">'+esc(j.title||'Remote role')+'</span><span class="lb-r-c">'+esc(j.company||'')+' · '+esc(c.getAttribute('data-family')||'')+'</span>'+
+        (isNew?'<span class="lb-new">New</span>':'')+'<span class="lb-go">→</span></a>';
+    }).join('');
+  }).catch(function(){});
+})();
+</script>
 <p class="dfy-more">Roles reaching you and still no replies? Then supply is not your weak point. <a href="diagnose/">Find which of the five parts is</a> &mdash; five questions, about ninety seconds, no payment and no email.</p>
 </section>
+<!-- ══ AFFILIATE AMBASSADOR ══ -->
+<section class="ts-wrap amb-sec" id="ambassador">
+<div class="amb reveal">
+<div class="amb-l">
+<div class="dfy-label"><span class="mark"></span>Become an ERJ ambassador</div>
+<h2 class="amb-h">Know people who keep asking how to work remotely? <em>Send them here, and get rewarded.</em></h2>
+<p class="amb-text">ERJ ambassadors share the free tools, the job board and our programmes with the people around them: WhatsApp groups, LinkedIn, campus, church, alumni and professional circles. When someone you refer enrols, you are rewarded. It suits community leaders, lecturers, HR people, career coaches and anyone ERJ has already helped.</p>
+<ol class="amb-steps"><li><b>Message us on WhatsApp</b><span>Tap the button and send the short note it fills in.</span></li><li><b>Hear how it works</b><span>What you share, how ambassadors are rewarded and how referrals are tracked.</span></li><li><b>Start sharing</b><span>Begin with the free tools. Nobody you refer is pushed to buy anything.</span></li></ol>
+<a class="amb-btn" data-wa-msg="ambassador" href="https://wa.me/2348032925957" rel="noopener" target="_blank"><svg viewBox="0 0 24 24" aria-hidden="true" width="20" height="20" fill="currentColor"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.39-1.47-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.07c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.7.63.71.22 1.36.2 1.87.12.57-.09 1.76-.72 2-1.41.25-.7.25-1.29.18-1.41-.08-.13-.27-.2-.57-.35M12.05 21.79h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88 2.64 0 5.12 1.03 6.99 2.9a9.83 9.83 0 0 1 2.89 7c0 5.45-4.44 9.88-9.88 9.88"/></svg><span>Chat Us To Become An Ambassador</span></a>
+<p class="amb-note">The same official ERJ line as everywhere on this site. No fee to join.</p>
+</div>
+<div class="amb-r" aria-hidden="true">
+<div class="amb-orbit"><span class="amb-core">ERJ</span><span class="amb-p amb-p1">👩🏾‍💼</span><span class="amb-p amb-p2">👨🏿‍🎓</span><span class="amb-p amb-p3">👩🏽‍💻</span><span class="amb-p amb-p4">👨🏾‍🏫</span></div>
+<p class="amb-cap">One message in the right group can change someone’s year.</p>
+</div>
+</div>
+</section>
+
 <!-- ===== Unified Theme Control (Day / System / Night) — header based ===== -->
 <script id="erjThemeJS">
 (function(){
@@ -632,7 +748,7 @@ html[data-theme="day"] .nav,html[data-theme="day"] nav{background:var(--bg)!impo
 </script>
 <!-- ===== /Unified Theme Control ===== -->
 <script defer="" src="erj-nav.js?v=20261006b"></script>
-<script defer="" src="erj-config.js?v=20261008a"></script>
+<script defer="" src="erj-config.js?v=20261008b"></script>
 <script defer="" src="erj-capture.js?v=20260911a"></script>
 <!-- ══ WHATSAPP TOGGLE ══ -->
 <div class="wa-card" id="waCard">
@@ -664,5 +780,6 @@ html[data-theme="day"] .nav,html[data-theme="day"] nav{background:var(--bg)!impo
 </footer>
 <script defer="" src="erj-schema.js?v=20261004a"></script>
 <script defer="" src="erj-alive.js?v=20261004a"></script>
+<script>document.addEventListener("DOMContentLoaded",function(){var C=window.ERJ_CONFIG;if(!C||!C.messages)return;document.querySelectorAll("[data-wa-msg]").forEach(function(a){var t=C.messages[a.getAttribute("data-wa-msg")];if(t)a.href="https://wa.me/"+C.whatsapp+"?text="+encodeURIComponent(t);});});</script>
 </body>
 </html>
