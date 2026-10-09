@@ -636,6 +636,36 @@ a.promo-tick{text-decoration:none;display:block;}
   .p-buy:hover{color:var(--accent);}
 .p-titlelink{color:inherit;text-decoration:none;}
 .p-titlelink:hover{color:var(--accent);}
+  /* ── shareable product links: register.html#<card id> ── */
+  .p-share{display:inline-flex;align-items:center;justify-content:center;gap:.4rem;align-self:center;
+    background:none;border:0;color:var(--ink-soft);font:inherit;font-size:.8rem;font-weight:600;cursor:pointer;
+    padding:.35rem .7rem;border-radius:100px;transition:color .2s,background .2s;}
+  .p-share svg{width:15px;height:15px;}
+  .p-share:hover{color:var(--accent);background:var(--line-soft);}
+  .pcard.p-here{animation:pHere 1.4s var(--ease) 3;border-color:var(--accent);}
+  @keyframes pHere{0%{box-shadow:0 0 0 0 rgba(255,87,34,.55)}70%{box-shadow:0 0 0 14px rgba(255,87,34,0)}100%{box-shadow:0 0 0 0 rgba(255,87,34,0)}}
+  .ps-scrim{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:1200;display:none;}
+  .ps{position:fixed;left:50%;bottom:0;transform:translate(-50%,105%);z-index:1201;width:min(440px,100%);
+    background:var(--card);color:var(--ink);border:1px solid var(--card-line);border-radius:20px 20px 0 0;
+    padding:1.3rem 1.3rem calc(1.3rem + env(safe-area-inset-bottom));transition:transform .32s var(--ease);visibility:hidden;}
+  .ps.open{transform:translate(-50%,0);visibility:visible;}
+  .ps-scrim.open{display:block;}
+  @media(min-width:700px){.ps{bottom:auto;top:50%;border-radius:20px;transform:translate(-50%,-40%) scale(.96);}
+    .ps.open{transform:translate(-50%,-50%);}}
+  .ps-k{font-size:.62rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:0 0 .35rem;}
+  .ps-t{font-family:var(--font-display);font-size:1.15rem;font-weight:700;line-height:1.25;margin:0 2rem .2rem 0;}
+  .ps-p{font-size:.85rem;color:var(--ink-soft);margin:0 0 1rem;}
+  .ps-x{position:absolute;top:.8rem;right:.8rem;width:2.2rem;height:2.2rem;border-radius:50%;border:1px solid var(--line);
+    background:none;color:var(--ink);font-size:1.2rem;line-height:1;cursor:pointer;}
+  .ps-url{display:flex;gap:.5rem;align-items:center;padding:.6rem .8rem;border:1px solid var(--line);border-radius:12px;
+    font-size:.78rem;color:var(--ink-soft);margin-bottom:.9rem;overflow:hidden;}
+  .ps-url span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0;}
+  .ps-btns{display:grid;gap:.55rem;}
+  .ps-btns a,.ps-btns button{display:flex;align-items:center;justify-content:center;gap:.5rem;padding:.85rem 1rem;border-radius:100px;
+    font:inherit;font-size:.95rem;font-weight:700;text-decoration:none;cursor:pointer;border:1px solid var(--line);background:none;color:var(--ink);}
+  .ps-btns .ps-wa{background:#25D366;border-color:#25D366;color:#053B1C;}
+  .ps-btns svg{width:18px;height:18px;}
+  @media(prefers-reduced-motion:reduce){.pcard.p-here{animation:none;box-shadow:0 0 0 3px rgba(255,87,34,.6);}.ps{transition:none;}}
   .store-foot{margin-top:2.4rem;font-size:0.85rem;line-height:1.7;color:var(--ink-soft);font-weight:300;
     text-align:center;max-width:600px;margin-left:auto;margin-right:auto;}
   .store-foot strong{color:var(--ink);font-weight:500;}
@@ -1149,6 +1179,70 @@ html[data-theme="day"] .cvp-reg{background:#fff;}
     sync();
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot); else boot();
+})();
+</script>
+<div class="ps-scrim" id="psScrim"></div>
+<div class="ps" id="psSheet" role="dialog" aria-modal="true" aria-labelledby="psTitle">
+<button class="ps-x" id="psX" type="button" aria-label="Close">&times;</button>
+<p class="ps-k">Share this product</p><p class="ps-t" id="psTitle"></p><p class="ps-p" id="psPrice"></p>
+<div class="ps-url"><span id="psUrl"></span></div>
+<div class="ps-btns"><a class="ps-wa" id="psWa" href="#" rel="noopener" target="_blank"><svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.39-1.47-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.07c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.7.63.71.22 1.36.2 1.87.12.57-.09 1.76-.72 2-1.41.25-.7.25-1.29.18-1.41-.08-.13-.27-.2-.57-.35M12.05 21.79h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88 2.64 0 5.12 1.03 6.99 2.9a9.83 9.83 0 0 1 2.89 7c0 5.45-4.44 9.88-9.88 9.88"/></svg>Share on WhatsApp</a><button id="psCopy" type="button">Copy link</button><button id="psMore" type="button" hidden>More ways to share</button></div>
+</div>
+<script>
+/* Shareable product links. Every card keeps its place in its DIY / DWY / DFY
+   group; the link is just register.html#<card id>. Opening one scrolls to that
+   card and rings it so the buyer sees which product was meant. */
+(function () {
+  var BASE = 'https://everythingremotejob.com/register.html';
+  var ICON = '<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg>';
+  function $(id) { return document.getElementById(id); }
+  function txt(el) { return el ? el.textContent.replace(/\s+/g, ' ').trim() : ''; }
+  var sheet = $('psSheet'), scrim = $('psScrim'), cur = null, last = null;
+  function info(card) {
+    var b = card.querySelector('.p-body'), url = BASE;
+    var sel = card.querySelector('select');
+    if (sel && sel.value) url += '?track=' + encodeURIComponent(sel.value);
+    url += '#' + card.id;
+    return { title: txt(b.querySelector('.p-title')), hook: txt(b.querySelector('.p-hook')) || txt(b.querySelector('.p-line')),
+             price: txt(b.querySelector('.p-amount')), url: url };
+  }
+  function open(card, btn) {
+    cur = info(card); last = btn;
+    $('psTitle').textContent = cur.title; $('psPrice').textContent = cur.price + (cur.hook ? ' \u00b7 ' + cur.hook : '');
+    $('psUrl').textContent = cur.url.replace('https://', '');
+    var msg = cur.title + (cur.hook ? '\n' + cur.hook : '') + '\n' + cur.price + '\n\nSee it here: ' + cur.url;
+    $('psWa').href = 'https://wa.me/?text=' + encodeURIComponent(msg);
+    $('psCopy').textContent = 'Copy link';
+    sheet.classList.add('open'); scrim.classList.add('open'); $('psX').focus();
+  }
+  function close() { sheet.classList.remove('open'); scrim.classList.remove('open'); if (last) last.focus(); }
+  $('psX').addEventListener('click', close); scrim.addEventListener('click', close);
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && sheet.classList.contains('open')) close(); });
+  $('psCopy').addEventListener('click', function () {
+    var b = this, done = function () { b.textContent = 'Link copied \u2713'; };
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(cur.url).then(done, function () { prompt('Copy this link', cur.url); });
+    else { window.prompt('Copy this link', cur.url); }
+  });
+  if (navigator.share) {
+    $('psMore').hidden = false;
+    $('psMore').addEventListener('click', function () { navigator.share({ title: cur.title, text: cur.title + ' \u2014 ' + cur.price, url: cur.url }).catch(function () {}); });
+  }
+  [].forEach.call(document.querySelectorAll('.pcard[id] .p-acts'), function (acts) {
+    var card = acts.closest('.pcard'), b = document.createElement('button');
+    b.type = 'button'; b.className = 'p-share'; b.innerHTML = ICON + '<span>Share this product</span>';
+    b.setAttribute('aria-label', 'Share ' + txt(card.querySelector('.p-title')));
+    b.addEventListener('click', function () { open(card, b); });
+    acts.appendChild(b);
+  });
+  function here() {
+    var id = location.hash.slice(1), card = id && document.getElementById(id);
+    if (!card || !card.classList.contains('pcard')) return;
+    card.classList.remove('p-here'); void card.offsetWidth; card.classList.add('p-here');
+    setTimeout(function () { card.scrollIntoView({ block: 'start' }); }, 250);
+    setTimeout(function () { card.classList.remove('p-here'); }, 4500);
+  }
+  window.addEventListener('hashchange', here);
+  if (document.readyState === 'complete') here(); else window.addEventListener('load', here);
 })();
 </script>
 <script defer="" src="erj-product.js?v=20260924c"></script>
