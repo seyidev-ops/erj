@@ -1352,6 +1352,62 @@
    "direct": true,
    "closed": "2026-10-08",
    "closed_reason": "employer page closed"
+  },
+  {
+   "title": "Social Media Video Editor",
+   "company": "Content Mindset",
+   "region": "Worldwide — all countries",
+   "type": "Contract",
+   "experience": "Mid-level",
+   "salary": "$25/edit + $10 weekly bonus",
+   "bullets": [
+    "Premiere Pro",
+    "Fast turnarounds",
+    "Fluent English"
+   ],
+   "why": "Open worldwide with no country exclusion, so you can apply from Nigeria, and pays in foreign currency ($25/edit + $10 weekly bonus).",
+   "apply": "https://himalayas.app/companies/content-mindset/jobs/social-media-video-editor",
+   "family": "Marketing & Creative",
+   "posted": "2026-09-09",
+   "deadline": "2026-10-08",
+   "checked": "2026-10-07",
+   "source": "ERJ research",
+   "origin": "sheet",
+   "id": "52a20bed93",
+   "added": "2026-10-07",
+   "direct": false,
+   "listed": "2026-10-07",
+   "closed": "2026-10-09",
+   "closed_reason": "deadline passed"
+  },
+  {
+   "id": "a5215b3c78",
+   "title": "Physics Expert (PhD / Postdoc)",
+   "company": "micro1",
+   "region": "Remote — worldwide (micro1 global expert network)",
+   "type": "Contract",
+   "experience": "Not stated",
+   "salary": "$100 – $200 / hour",
+   "bullets": [
+    "Physics Mastery",
+    "Written Technical Communication",
+    "Technical Problem-Solving Depth",
+    "Mathematical & Computational Fluency"
+   ],
+   "apply": "https://jobs.micro1.ai/post/d65941c5-6aff-4e80-b3d6-4f56c9aede18?referralCode=d3605f74-92f0-4f1c-b8e2-4ab757bffc26&utm_source=referral&utm_medium=share&utm_campaign=job_referral",
+   "posted": "2026-09-08",
+   "deadline": null,
+   "checked": "2026-10-08",
+   "added": "2026-10-07",
+   "listed": "2026-10-07",
+   "source": "micro1 (ERJ referral)",
+   "origin": "feed",
+   "ats_id": "d65941c5-6aff-4e80-b3d6-4f56c9aede18",
+   "family": "Data & Product",
+   "why": "Open worldwide with no country exclusion, so you can apply from Nigeria, and pays in foreign currency ($100 – $200 / hour). Contract work: a fast way to earn a first remote reference.",
+   "direct": false,
+   "closed": "2026-10-09",
+   "closed_reason": "older than the board's age limit"
   }
  ]
 }
