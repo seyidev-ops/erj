@@ -1,12 +1,12 @@
 {
- "_readme": "Settings for the job board engine (jobboard.py). blocked_domains: sign-up-to-apply boards never used. sheet_allowed_domains: boards you chose to allow in your own uploaded sheets. Edit on GitHub and commit; the next run uses them.",
+ "_readme": "Settings for the job board engine (jobboard.py). blocked_domains: sign-up-to-apply boards never used. sheet_allowed_domains: boards you chose to allow in your own uploaded sheets. Edit on GitHub and commit; the next run uses them. Caps (feed_max_new_per_day, feed_max_per_company, company_daily_caps) are off: null or missing means every eligible role goes up. sheet_window_days null means every eligible row of an uploaded sheet goes up.",
  "phone": "+2348032925957",
- "sheet_window_days": 2,
+ "sheet_window_days": null,
  "max_age_days": 30,
  "max_age_unknown_days": 21,
  "feed_max_age_days": 3,
- "feed_max_new_per_day": 40,
- "feed_max_per_company": 4,
+ "feed_max_new_per_day": null,
+ "feed_max_per_company": null,
  "blocked_domains": [
   "himalayas.app",
   "dailyremote.com",
@@ -41,7 +41,19 @@
   "centreforeffectivealtruism": "Centre for Effective Altruism",
   "supabase": "Supabase",
   "jobgether": "Jobgether partner",
-  "micro1": "micro1"
+  "micro1": "micro1",
+  "alxafrica": "ALX Africa",
+  "automatticcareers": "Automattic",
+  "moniepoint": "Moniepoint",
+  "remotasks": "Remotasks",
+  "brainbaselabs": "Brainbase",
+  "oyster": "Oyster",
+  "talentpop": "TalentPop",
+  "atlasbrands": "AtlasBrands",
+  "minerva-project": "Minerva",
+  "social-discovery-ventures": "Social Discovery Group",
+  "gigmos": "Gigmo",
+  "openfn": "OpenFn"
  },
  "feeds": {
   "enabled": true,
@@ -54,7 +66,11 @@
    "givedirectly",
    "okx",
    "techstars57",
-   "primexbt"
+   "primexbt",
+   "alxafrica",
+   "automatticcareers",
+   "moniepoint",
+   "remotasks"
   ],
   "lever": [
    "weloglobal",
@@ -78,24 +94,30 @@
    "Clera",
    "bjakcareer",
    "centreforeffectivealtruism",
-   "supabase"
+   "supabase",
+   "brainbaselabs",
+   "oyster",
+   "talentpop"
   ],
   "breezy": [
-   "20four7va"
+   "20four7va",
+   "atlasbrands",
+   "minerva-project",
+   "social-discovery-ventures"
   ],
   "workable": [
    "bask-health-1",
-   "atleanworld"
+   "atleanworld",
+   "gigmos",
+   "openfn"
   ],
   "micro1": {
    "referral_code": "d3605f74-92f0-4f1c-b8e2-4ab757bffc26",
-   "note": "micro1 refuses GitHub's servers (403), so its roles are added by the daily scheduled task with: python3 jobboard.py micro1-import <saved pages>. The Action still tries it."
+   "note": "micro1 roles now come in through the ERJ search sheets (micro1 Referral tab), which keep the referral code on every link. Set fetch to true to have the Action try micro1's API directly (it refuses GitHub's servers with 403).",
+   "fetch": false
   }
  },
- "company_daily_caps": {
-  "micro1": 10,
-  "Jobgether partner": 6
- },
+ "company_daily_caps": {},
  "company_max_age_days": {
   "micro1": 30
  }

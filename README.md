@@ -196,7 +196,7 @@ The site is a static HTML/CSS/JavaScript website hosted on **GitHub Pages** with
 A public board of remote roles open to Nigeria, each written in the ERJ
 channel post format with a **Copy post** button. It runs itself:
 
-- **Every morning (first attempt 04:13 WAT, retries 05:37 and 07:47)** `.github/workflows/jobboard.yml` runs
+- **Four times a day (around 6am, 8am, 2pm and 8pm WAT)** `.github/workflows/jobboard.yml` runs
   `python3 jobboard.py daily`: imports sheets dropped into `jobs/inbox/`,
   pulls new roles from the public feeds and employer job boards listed in
   `jobs/data/config.json`, re-opens every live apply link, takes down closed
@@ -209,17 +209,20 @@ channel post format with a **Copy post** button. It runs itself:
 - **A role comes off** when its deadline passes, its page closes, it is 30
   days past its posting date, or 21 days past its last check if the posting
   date is unknown.
-- **Sources pulled daily:** Remotive, the Greenhouse / Lever / Ashby /
-  Breezy / Workable boards listed in `config.json`, and micro1 through ERJ's
-  referral code (`feeds.micro1.referral_code`), so every micro1 apply link
-  credits ERJ. micro1 refuses GitHub's servers, so a daily Claude scheduled
-  task (05:55 WAT) fetches its list and runs `jobboard.py micro1-import`.
-  micro1 roles needing another language, a foreign licence or
-  on-site work are skipped; 10 micro1 roles a day (newest first, topped up from roles up to 30 days old when fewer are new).
-- **Sheets:** upload to `jobs/inbox/`; rows dated today or yesterday are
-  taken. Name a file `..._ALL.xlsx` to import every eligible row. Blank
-  template: `jobs/ERJ_Job_Board_Upload_Template.xlsx`. The Master, All Fields
-  and monthly search sheets work as they are.
+- **Sources pulled on every run:** Remotive and the Greenhouse / Lever / Ashby /
+  Breezy / Workable company boards listed in `config.json`, all free public
+  APIs (no Firecrawl). There is no daily cap: every eligible new role goes up.
+  Add a company by putting its board name in the right list in `config.json`.
+- **micro1** roles come in through the ERJ search sheets (the micro1 Referral
+  tab), whose links already carry ERJ's referral code. micro1's API refuses
+  GitHub's servers, so the Action does not call it (`feeds.micro1.fetch` is
+  false). The old daily Firecrawl task for micro1 is switched off.
+  micro1 roles needing another language, a foreign licence or on-site work
+  are skipped.
+- **Sheets:** upload to `jobs/inbox/`; every eligible row is taken (the ERJ
+  sheets carry new roles only). Blank template:
+  `jobs/ERJ_Job_Board_Upload_Template.xlsx`. The Master, All Fields, monthly
+  and dated search sheets work as they are.
 - **Take one role down by hand:** `python3 jobboard.py remove <id or apply URL>`
   (the id is the card's `#job-…` anchor).
 - Sign-up-to-apply boards and search-result pages are never used (list in

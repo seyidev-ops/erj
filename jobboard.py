@@ -8,7 +8,7 @@ not-eligible roles never feature.
 
 Commands (run from the repo root):
 
-  python3 jobboard.py daily              # what the GitHub Action runs every morning:
+  python3 jobboard.py daily              # what the GitHub Action runs at 6am, 8am, 2pm and 8pm WAT:
                                          # inbox -> fetch -> check -> build
   python3 jobboard.py import FILE.xlsx   # add rows from one sheet (--all = ignore the date window)
   python3 jobboard.py inbox              # import every sheet dropped in jobs/inbox/
@@ -28,9 +28,9 @@ Data lives in jobs/data/:
   archive.json   closed / expired listings, kept so feeds never re-add them
 
 Sheets: drop an .xlsx or .csv into jobs/inbox/ (GitHub: Add file > Upload files).
-The run that starts on upload imports the rows dated today or yesterday (WAT)
-and moves the file to jobs/inbox/done/. Name a file ..._ALL.xlsx to import
-every eligible row regardless of date (a backfill). The three ERJ sheet layouts in use (Master, All-Fields,
+The run that starts on upload imports every eligible row (the ERJ sheets already
+carry new roles only; set sheet_window_days in config.json to a number to accept
+only rows dated within that many days) and moves the file to jobs/inbox/done/. The three ERJ sheet layouts in use (Master, All-Fields,
 monthly October-style) are recognised by their headers, as is the simple
 board template jobs/ERJ_Job_Board_Upload_Template.xlsx.
 
@@ -1033,7 +1033,7 @@ def iter_feeds(cfg, log):
         plan.append((f"breezy:{b}", lambda n=b: feed_breezy(n)))
     for b in f.get("workable", []):
         plan.append((f"workable:{b}", lambda n=b: feed_workable(n)))
-    if (f.get("micro1") or {}).get("referral_code"):
+    if (f.get("micro1") or {}).get("fetch") and f["micro1"].get("referral_code"):
         plan.append(("micro1", lambda c=f["micro1"]["referral_code"]: feed_micro1(c)))
 
     def run(item):
@@ -1120,8 +1120,8 @@ def cmd_fetch(cfg, log):
         if k in have_keys:
             continue
         per_co[company] = per_co.get(company, 0) + 1
-        cap = cfg.get("company_daily_caps", {}).get(company, cfg.get("feed_max_per_company", 4))
-        if per_co[company] > cap:
+        cap = cfg.get("company_daily_caps", {}).get(company, cfg.get("feed_max_per_company"))
+        if cap is not None and per_co[company] > cap:  # no cap set = take every eligible role
             continue
         desc = x.get("desc") or page_description(apply)
         j = {
@@ -1144,7 +1144,7 @@ def cmd_fetch(cfg, log):
         have.add(jid); have_keys.add(k)
         added += 1
         log["added"].append(f"{title} — {company} ({x['source']})")
-        if added >= cfg["feed_max_new_per_day"]:
+        if cfg.get("feed_max_new_per_day") is not None and added >= cfg["feed_max_new_per_day"]:
             break
     log["turned_away"] = turned
     save(F_LIVE, live)

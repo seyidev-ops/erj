@@ -1,25 +1,26 @@
 name: Job board
 
 # Keeps /jobs/ fresh with no one at a keyboard.
-# Every morning from about 04:15 WAT (and whenever a sheet is dropped into
-# jobs/inbox/, the settings change, or you press "Run workflow" in the
-# Actions tab) it:
-#   1. imports sheets in jobs/inbox/ (rows dated today or yesterday)
-#   2. pulls new Nigeria-eligible roles from the feeds in jobs/data/config.json
+# Four times a day (6am, 8am, 2pm and 8pm WAT), whenever a sheet is dropped
+# into jobs/inbox/, the settings change, or you press "Run workflow" in the
+# Actions tab, it:
+#   1. imports every eligible row of the sheets in jobs/inbox/
+#   2. pulls new Nigeria-eligible roles from the company boards in
+#      jobs/data/config.json (no daily cap: every eligible role goes up)
 #   3. re-opens every live apply link and takes down closed roles
 #   4. removes expired roles and rebuilds jobs/index.html
-# The run report (what was added, closed, turned away and why) is in the
-# Actions log for each run.
+# No Firecrawl here: every source is a free public API. The run report
+# (what was added, closed, turned away and why) is in the Actions log.
 
 on:
   schedule:
-    # GitHub starts scheduled runs late when it is busy (hours, at peak times),
-    # so the board is attempted three times each morning at off-peak minutes.
-    # Repeat runs the same day are harmless: listings are never added twice and
-    # the micro1 quota counts what was already added today.
-    - cron: "13 3 * * *"   # 04:13 WAT
-    - cron: "37 4 * * *"   # 05:37 WAT
-    - cron: "47 6 * * *"   # 07:47 WAT
+    # Cron is UTC (WAT = UTC+1). Each run is set 12 minutes early because
+    # GitHub starts scheduled runs late when it is busy, and runs on the hour
+    # are the most delayed. Repeat runs are harmless: nothing is added twice.
+    - cron: "48 4 * * *"    # 05:48 WAT -> board updated around 6am
+    - cron: "48 6 * * *"    # 07:48 WAT -> around 8am
+    - cron: "48 12 * * *"   # 13:48 WAT -> around 2pm
+    - cron: "48 18 * * *"   # 19:48 WAT -> around 8pm
   push:
     branches: [main]
     paths:
