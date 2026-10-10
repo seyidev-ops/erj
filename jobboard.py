@@ -654,9 +654,24 @@ HEAD = {
 SKIP_TABS = re.compile(r"summary|request|excluded|archive|readme|how to|instructions|rules", re.I)
 
 
-def map_header(cells):
+MICRO1_TAB = re.compile(r"micro1", re.I)
+MICRO1_REGION = "Remote — worldwide (micro1 global expert network)"
+# micro1 tab "Field" text -> board family (first match wins)
+MICRO1_FIELD_FAMILY = [
+    (r"financ|account|trad|quant|rates", "Finance & Accounting"), (r"\blaw|legal", "Legal"),
+    (r"teach|tutor|educat|language", "Tutoring & Teaching"),
+    (r"creative|design|film|sound|video prod|media|\bart\b|\bartist|music", "Marketing & Creative"),
+    (r"engineer|software|develop|code|coding|tech|cyber|robot|game", "Tech & IT"),
+    (r"data|ai\b|annotat|label|evaluat|research|science", "Data & Product"),
+    (r"business|operation|admin", "Executive & Operations"),
+]
+
+
+def map_header(cells, need_company=True):
     labels = [clean(c).lower() for c in cells]
-    if not ("role" in labels or "job title" in labels or "title" in labels) or not any("company" in l for l in labels):
+    if not ("role" in labels or "job title" in labels or "title" in labels):
+        return None
+    if need_company and not any("company" in l for l in labels):
         return None
     col = {}
     # Exact names first so 'why it made the board' is not taken by 'why'.
@@ -700,7 +715,8 @@ def read_rows(path):
         for row in ws.iter_rows():
             vals = [c.value for c in row]
             if hm is None:
-                hm = map_header(vals)
+                # The micro1 Referral tab has no Company column: every row is micro1.
+                hm = map_header(vals, need_company=not MICRO1_TAB.search(ws.title))
                 continue
             links = [(c.hyperlink.target if c.hyperlink is not None else None) for c in row]
             yield ws.title, hm, vals, links
@@ -712,6 +728,13 @@ def row_to_listing(tab, hm, vals, links, cfg, source_name):
     if not title or len(title) < 3 or title.lower().startswith(("no qualifying", "▸", "add ")):
         return None, None
     company = dash(g("company"))
+    is_micro1 = bool(MICRO1_TAB.search(tab)) and not company
+    if is_micro1:
+        company = "micro1"
+        if FOREIGN_LANGUAGE.search(title):
+            return None, "needs another language"
+        if LICENSED.search(title):
+            return None, "needs a licence or clearance from another country"
     if not company:
         return None, None
     reasons = []
@@ -731,7 +754,7 @@ def row_to_listing(tab, hm, vals, links, cfg, source_name):
     if status and not (status.startswith("live") or status.startswith("closing soon") or status.startswith("open")):
         return None, f"status: {dash(g('status'))}"
     loc = dash(g("location"))
-    region = dash(g("region")) or loc
+    region = dash(g("region")) or loc or (MICRO1_REGION if is_micro1 else "")
     if "eligible" in hm:
         if not sheet_eligible(g("eligible")):
             return None, f"eligibility not confirmed ({dash(g('eligible'))})"
@@ -767,7 +790,7 @@ def row_to_listing(tab, hm, vals, links, cfg, source_name):
         experience = ""
     reqs = dash(g("reqs"))
     salary = dash(g("salary")) or salary_from(reqs, notes)
-    if salary.lower() in ("not stated", "not disclosed", "competitive"):
+    if salary.lower() in ("not stated", "not disclosed", "not specified", "competitive"):
         salary = ""
     bullets = [dash(g(k)) for k in ("b1", "b2", "b3", "b4") if dash(g(k))] or bullets_from_text(reqs)
     howto = dash(g("howto"))
@@ -775,6 +798,8 @@ def row_to_listing(tab, hm, vals, links, cfg, source_name):
         bullets.append("How to apply: " + howto[0].lower() + howto[1:])
     fam = dash(g("family"))
     family = fam if fam in FAMILIES else TAB_FAMILY.get(tab.strip().lower(), "")
+    if is_micro1 and not family:
+        family = next((f for pat, f in MICRO1_FIELD_FAMILY if re.search(pat, f"{fam} {title}", re.I)), "Data & Product")
     j = {
         "title": title, "company": company, "region": region,
         "type": jt, "experience": experience, "salary": salary, "bullets": bullets,
