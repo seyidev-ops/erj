@@ -201,8 +201,15 @@ def norm_url(u):
     return urllib.parse.urlunsplit((p.scheme.lower() or "https", p.netloc.lower(), path, urllib.parse.urlencode(q), ""))
 
 
+# Links that open one referral page for every role (micro1 referral list, Mercor
+# referral link). Several roles share the link, so the title is part of their id.
+SHARED_REFERRAL = re.compile(r"refer\.micro1\.ai/referral|t\.mercor\.com/|work\.mercor\.com/?(\?|$)", re.I)
+
+
 def make_id(apply, title, company):
     key = norm_url(apply) or (clean(title).lower() + "|" + clean(company).lower())
+    if key and SHARED_REFERRAL.search(key):
+        key += "|" + clean(title).lower()
     return hashlib.sha1(key.lower().encode()).hexdigest()[:10]
 
 
@@ -500,6 +507,7 @@ def finalise(j, cfg):
         m = MONEY.search(b)
         return bool(m) and len(m.group(0)) >= 0.45 * len(b)
     j["bullets"] = [b for b in (j.get("bullets") or []) if b and not pay_only(b)][:4] or ["Full requirements are on the employer's page"]
+    j["apply"] = mercor_referral(j["apply"], cfg)
     d = domain(j["apply"])
     j["direct"] = bool(re.search(r"greenhouse|lever\.co|ashbyhq|breezy|workable|smartrecruiters|bamboohr|recruitee|rippling|polymer|zohorecruit|teamtailor|careers", d))
     if not j.get("why"):
@@ -656,6 +664,18 @@ SKIP_TABS = re.compile(r"summary|request|excluded|archive|readme|how to|instruct
 
 MICRO1_TAB = re.compile(r"micro1", re.I)
 MICRO1_REGION = "Remote — worldwide (micro1 global expert network)"
+MERCOR_TAB = re.compile(r"mercor", re.I)
+MERCOR_REGION = "Remote — worldwide (Mercor expert network)"
+
+
+def mercor_referral(apply, cfg):
+    """Every Mercor link goes out through ERJ's Mercor referral link (config feeds.mercor),
+    so sign-ups are credited to ERJ. Links that already carry a referral are kept."""
+    ref = clean(((cfg.get("feeds") or {}).get("mercor") or {}).get("referral_link"))
+    a = clean(apply)
+    if not ref or "mercor.com" not in domain(a) or "t.mercor.com" in domain(a) or re.search(r"[?&]ref(erral)?(code)?=", a, re.I):
+        return a
+    return ref
 # micro1 tab "Field" text -> board family (first match wins)
 MICRO1_FIELD_FAMILY = [
     (r"financ|account|trad|quant|rates", "Finance & Accounting"), (r"\blaw|legal", "Legal"),
@@ -716,7 +736,8 @@ def read_rows(path):
             vals = [c.value for c in row]
             if hm is None:
                 # The micro1 Referral tab has no Company column: every row is micro1.
-                hm = map_header(vals, need_company=not MICRO1_TAB.search(ws.title))
+                # The micro1 and Mercor referral tabs have no Company column.
+                hm = map_header(vals, need_company=not (MICRO1_TAB.search(ws.title) or MERCOR_TAB.search(ws.title)))
                 continue
             links = [(c.hyperlink.target if c.hyperlink is not None else None) for c in row]
             yield ws.title, hm, vals, links
@@ -729,8 +750,12 @@ def row_to_listing(tab, hm, vals, links, cfg, source_name):
         return None, None
     company = dash(g("company"))
     is_micro1 = bool(MICRO1_TAB.search(tab)) and not company
-    if is_micro1:
-        company = "micro1"
+    is_mercor = bool(MERCOR_TAB.search(tab)) and not company
+    if is_mercor:
+        company = "Mercor"
+    if is_micro1 or is_mercor:
+        if is_micro1:
+            company = "micro1"
         if FOREIGN_LANGUAGE.search(title):
             return None, "needs another language"
         if LICENSED.search(title):
@@ -748,13 +773,16 @@ def row_to_listing(tab, hm, vals, links, cfg, source_name):
                 apply = links[k]
                 break
     apply = clean(apply)
+    if is_mercor and not apply:
+        apply = clean(((cfg.get("feeds") or {}).get("mercor") or {}).get("referral_link"))
+    apply = mercor_referral(apply, cfg)
     if not apply.startswith("http") and "@" not in apply:
         return None, "no apply link"
     status = dash(g("status")).lower()
     if status and not (status.startswith("live") or status.startswith("closing soon") or status.startswith("open")):
         return None, f"status: {dash(g('status'))}"
     loc = dash(g("location"))
-    region = dash(g("region")) or loc or (MICRO1_REGION if is_micro1 else "")
+    region = dash(g("region")) or loc or (MICRO1_REGION if is_micro1 else MERCOR_REGION if is_mercor else "")
     if "eligible" in hm:
         if not sheet_eligible(g("eligible")):
             return None, f"eligibility not confirmed ({dash(g('eligible'))})"
@@ -798,7 +826,7 @@ def row_to_listing(tab, hm, vals, links, cfg, source_name):
         bullets.append("How to apply: " + howto[0].lower() + howto[1:])
     fam = dash(g("family"))
     family = fam if fam in FAMILIES else TAB_FAMILY.get(tab.strip().lower(), "")
-    if is_micro1 and not family:
+    if (is_micro1 or is_mercor) and not family:
         family = next((f for pat, f in MICRO1_FIELD_FAMILY if re.search(pat, f"{fam} {title}", re.I)), "Data & Product")
     j = {
         "title": title, "company": company, "region": region,
@@ -1107,7 +1135,7 @@ def cmd_fetch(cfg, log):
             per_co[j["company"]] = per_co.get(j["company"], 0) + 1
     feed = sorted(iter_feeds(cfg, log), key=lambda x: x.get("posted") or dt.date.min, reverse=True)
     for x in feed:
-        title, apply = clean(x.get("title")), clean(x.get("apply"))
+        title, apply = clean(x.get("title")), mercor_referral(x.get("apply"), cfg)
         if not title or not apply:
             continue
         posted = x.get("posted")
@@ -1465,8 +1493,9 @@ def write_summary(log):
     result is readable in the repo history."""
     adds = log.get("added") or []
     micro = sum("micro1" in a for a in adds)
+    merc = sum("Mercor" in a for a in adds)
     errs = [f"{k}: {v}" for k, v in (log.get("feeds") or {}).items() if not str(v).endswith("listings read")]
-    lines = [f"Job board: daily update — {len(adds)} added ({micro} micro1), "
+    lines = [f"Job board: daily update — {len(adds)} added ({micro} micro1, {merc} Mercor), "
              f"{len(log.get('closed') or [])} closed, {len(log.get('expired') or [])} expired"]
     if errs:
         lines += ["", "Feed errors:"] + [f"- {e}" for e in errs]
