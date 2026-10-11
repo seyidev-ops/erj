@@ -53,7 +53,30 @@
   "minerva-project": "Minerva",
   "social-discovery-ventures": "Social Discovery Group",
   "gigmos": "Gigmo",
-  "openfn": "OpenFn"
+  "openfn": "OpenFn",
+  "xai": "SpaceXAI (xAI)",
+  "utilityprofit": "UtilityProfit",
+  "rws": "RWS TrainAI",
+  "vrchat": "VRChat",
+  "lilt-production": "LILT",
+  "careerswift.ai": "Careerswift",
+  "SKELAR": "SKELAR",
+  "Spirio": "Spirio",
+  "gismart": "Gismart",
+  "omniscient": "Omniscient",
+  "simplestudy": "SimpleStudy",
+  "renmoney": "Renmoney",
+  "huzzle": "Huzzle",
+  "helium-health": "Helium Health",
+  "gramian": "Gramian Consulting Group",
+  "bothmade": "Bothmade",
+  "chemin": "Chemin",
+  "sweat-pants-agency": "Sweat Pants Agency",
+  "tyk-technologies": "Tyk",
+  "canonical": "Canonical",
+  "alpaca": "Alpaca",
+  "givedirectly": "GiveDirectly",
+  "20four7va": "20four7VA"
  },
  "feeds": {
   "enabled": true,
@@ -70,14 +93,18 @@
    "alxafrica",
    "automatticcareers",
    "moniepoint",
-   "remotasks"
+   "remotasks",
+   "xai",
+   "utilityprofit"
   ],
   "lever": [
    "weloglobal",
    "binance",
    "getwingapp",
    "assist-world",
-   "jobgether"
+   "jobgether",
+   "rws",
+   "vrchat"
   ],
   "ashby": [
    "Scale Army Careers",
@@ -97,7 +124,14 @@
    "supabase",
    "brainbaselabs",
    "oyster",
-   "talentpop"
+   "talentpop",
+   "lilt-production",
+   "careerswift.ai",
+   "SKELAR",
+   "Spirio",
+   "gismart",
+   "omniscient",
+   "simplestudy"
   ],
   "breezy": [
    "20four7va",
@@ -109,16 +143,30 @@
    "bask-health-1",
    "atleanworld",
    "gigmos",
-   "openfn"
+   "openfn",
+   "renmoney",
+   "huzzle",
+   "helium-health",
+   "gramian",
+   "bothmade",
+   "chemin",
+   "sweat-pants-agency",
+   "tyk-technologies"
   ],
   "micro1": {
    "referral_code": "d3605f74-92f0-4f1c-b8e2-4ab757bffc26",
    "note": "micro1 roles now come in through the ERJ search sheets (micro1 Referral tab), which keep the referral code on every link. Set fetch to true to have the Action try micro1's API directly (it refuses GitHub's servers with 403).",
    "fetch": false
+  },
+  "mercor": {
+   "referral_link": "https://t.mercor.com/HzWIQ",
+   "note": "Every Mercor role on the board and in ERJ sheets must link through this referral link. Mercor roles come in through the ERJ search sheets (Mercor tab) unless jobboard.py adds a Mercor fetcher.",
+   "fetch": false
   }
  },
  "company_daily_caps": {},
  "company_max_age_days": {
-  "micro1": 30
+  "micro1": 30,
+  "mercor": 30
  }
 }
