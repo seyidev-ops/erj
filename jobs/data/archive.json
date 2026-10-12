@@ -1932,6 +1932,35 @@
    "direct": true,
    "closed": "2026-10-12",
    "closed_reason": "employer page closed"
+  },
+  {
+   "id": "7edab3804d",
+   "title": "Packaging Officer",
+   "company": "Moniepoint",
+   "region": "Lagos, Nigeria / Moniepoint Headquaters",
+   "type": "Not stated",
+   "experience": "Not stated",
+   "salary": "$250",
+   "bullets": [
+    "Attention to detail and process discipline",
+    "Familiarity with inventory or device tracking systems",
+    "Ability to follow structured workflows",
+    "Good written and verbal communication skills"
+   ],
+   "apply": "https://job-boards.eu.greenhouse.io/moniepoint/jobs/4960552101",
+   "posted": "2026-10-10",
+   "deadline": null,
+   "checked": "2026-10-12",
+   "added": "2026-10-11",
+   "listed": "2026-10-11",
+   "source": "Greenhouse",
+   "origin": "feed",
+   "ats_id": "4960552101",
+   "family": "Executive & Operations",
+   "why": "Open to candidates in Nigeria by name, and pays in foreign currency ($250). You apply directly on the employer's own page.",
+   "direct": true,
+   "closed": "2026-10-12",
+   "closed_reason": "employer page closed"
   }
  ]
 }
