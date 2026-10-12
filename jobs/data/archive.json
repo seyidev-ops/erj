@@ -1877,6 +1877,61 @@
    "direct": false,
    "closed": "2026-10-12",
    "closed_reason": "older than the board's age limit"
+  },
+  {
+   "title": "Product Auditor",
+   "company": "Moniepoint",
+   "region": "Remote, Lagos, Nigeria",
+   "type": "Not stated",
+   "experience": "Mid (3-5+ yrs)",
+   "salary": "Not listed",
+   "bullets": [
+    "3-5+ yrs product/systems audit",
+    "Advanced SQL",
+    "Payments & reconciliation knowledge"
+   ],
+   "why": "Open to candidates in Nigeria by name. You apply directly on the employer's own page.",
+   "apply": "https://job-boards.eu.greenhouse.io/moniepoint/jobs/4821858101",
+   "family": "Finance & Accounting",
+   "posted": null,
+   "deadline": null,
+   "checked": "2026-10-12",
+   "listed": "2026-10-10",
+   "source": "ERJ research",
+   "origin": "sheet",
+   "id": "90a5ed8578",
+   "added": "2026-10-10",
+   "direct": true,
+   "closed": "2026-10-12",
+   "closed_reason": "employer page closed"
+  },
+  {
+   "id": "950cd52ed4",
+   "title": "Lead Marketing Analyst",
+   "company": "Social Discovery Group",
+   "region": "Worldwide / Poland / Serbia / Georgia / Armenia",
+   "type": "Full-Time",
+   "experience": "3+ years",
+   "salary": "$5000",
+   "bullets": [
+    "Experience with Python or R for data analysis and statistical modeling",
+    "Experience building automated reporting and analytics workflows",
+    "Experience with marketing experimentation frameworks and incrementality measurement"
+   ],
+   "apply": "https://social-discovery-ventures.breezy.hr/p/f7ee1d06faee01-lead-marketing-analyst",
+   "posted": "2026-10-09",
+   "deadline": null,
+   "checked": "2026-10-12",
+   "added": "2026-10-10",
+   "listed": "2026-10-10",
+   "source": "Breezy",
+   "origin": "feed",
+   "ats_id": "f7ee1d06faee01",
+   "family": "Marketing & Creative",
+   "why": "Open worldwide with no country exclusion, so you can apply from Nigeria, and pays in foreign currency ($5000). You apply directly on the employer's own page.",
+   "direct": true,
+   "closed": "2026-10-12",
+   "closed_reason": "employer page closed"
   }
  ]
 }
