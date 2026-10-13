@@ -1404,7 +1404,7 @@ def card(j, cfg):
     src = e(j.get("source") or "")
     chk = dt.date.fromisoformat(j["checked"]) if j.get("checked") else None
     chk_txt = f" · Link checked {chk.day} {chk.strftime('%b')}" if chk else ""
-    return f'''<article class="jb-card" id="job-{j["id"]}" data-id="{j["id"]}" data-family="{e(j["family"])}" data-date="{ld.isoformat()}" data-q="{e((j["title"] + " " + j["company"] + " " + j["family"] + " " + " ".join(j["bullets"])).lower())}">
+    return f'''<article class="jb-card" id="job-{j["id"]}" data-id="{j["id"]}" data-family="{e(j["family"])}" data-date="{ld.isoformat()}" data-added="{j["added"]}" data-q="{e((j["title"] + " " + j["company"] + " " + j["family"] + " " + " ".join(j["bullets"])).lower())}">
 <header class="jb-head"><span class="jb-fam"><i aria-hidden="true">{FAMILY_ICON.get(j["family"], "💼")}</i>{e(j["family"])}</span><span class="jb-when"><time datetime="{ld.isoformat()}">{when}</time>{dl}</span></header>
 <h3 class="jb-title"><span class="jb-e" aria-hidden="true">👨🏽‍💻</span>{e(j["title"])}</h3>
 <dl class="jb-meta">
@@ -1431,7 +1431,9 @@ def render(cfg):
     live = load(F_LIVE, {"listings": []})["listings"]
     t0 = today()
     live = [j for j in live if expiry(j, cfg) >= t0]
-    key = lambda j: (board_date(j), j.get("added", ""))
+    # Newest on the site first: a role added today sits under "Today" even if the
+    # employer posted it earlier (the card still says "Posted 12 Oct").
+    key = lambda j: (j.get("added", ""), board_date(j))
     live.sort(key=key, reverse=True)
     cards = "\n".join(card(j, cfg) for j in live)
     payload = {j["id"]: {"t": copy_text(j, cfg), "title": j["title"], "company": j["company"]} for j in live}

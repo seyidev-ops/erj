@@ -206,6 +206,7 @@ channel post format with a **Copy post** button. It runs itself:
   name Nigeria, Africa or worldwide (bare "Remote" is not enough) and no
   country restriction in the description. Sheet rows need a clear yes in the
   eligibility column and a Live / Closing soon status.
+- **Today on the board** means the day a role went onto the site: cards are grouped and sorted by that day and marked New for two days, while each card still shows the employer's own date ("Posted 12 Oct").
 - **A role comes off** when its deadline passes, its page closes, it is 30
   days past its posting date, or 21 days past its last check if the posting
   date is unknown.

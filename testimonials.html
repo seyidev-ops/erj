@@ -677,14 +677,14 @@ html[data-theme="day"]{--wa:#E8470F;}
     try{ data=JSON.parse((d.getElementById('jbData')||{}).textContent||'{}'); }catch(e){}
     var cards=[].slice.call(d.querySelectorAll('.jb-card')); if(!cards.length) return;
     var y=new Date(Date.now()-864e5).toISOString().slice(0,10);
-    var fresh=cards.filter(function(c){return (c.getAttribute('data-date')||'')>=y;});
+    var fresh=cards.filter(function(c){return (c.getAttribute('data-added')||c.getAttribute('data-date')||'')>=y;});
     var fams={}; cards.forEach(function(c){fams[c.getAttribute('data-family')]=1;});
     count(document.getElementById('lbCount'),cards.length);
     count(document.getElementById('lbNew'),fresh.length);
     count(document.getElementById('lbFields'),Object.keys(fams).length);
     var pick=(fresh.length>=5?fresh:cards).slice(0,6);
     feed.innerHTML=pick.map(function(c,i){
-      var id=c.getAttribute('data-id'), j=data[id]||{}, isNew=(c.getAttribute('data-date')||'')>=y;
+      var id=c.getAttribute('data-id'), j=data[id]||{}, isNew=(c.getAttribute('data-added')||c.getAttribute('data-date')||'')>=y;
       return '<a class="lb-row" style="--d:'+(i*90)+'ms" href="jobs/#job-'+esc(id)+'"><span class="lb-dot'+(isNew?' is-new':'')+'"></span>'+
         '<span class="lb-r-t">'+esc(j.title||'Remote role')+'</span><span class="lb-r-c">'+esc(j.company||'')+' · '+esc(c.getAttribute('data-family')||'')+'</span>'+
         (isNew?'<span class="lb-new">New</span>':'')+'<span class="lb-go">→</span></a>';
