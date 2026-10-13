@@ -8339,33 +8339,6 @@
    "direct": true
   },
   {
-   "id": "c3d8661dfe",
-   "title": "Senior Data Engineer (Cloud)",
-   "company": "Social Discovery Group",
-   "region": "Poland, worldwide",
-   "type": "Full-Time",
-   "experience": "3+ years",
-   "salary": "$5000",
-   "bullets": [
-    "REMOTE OPPORTUNITY to work full-time",
-    "The initial pay level or pay range for this role will be shared with candidates during the recruitment process",
-    "Bonuses up to $5000 for recommending successful applicants for positions in the company",
-    "50% payment for professional training, international conferences, and meetings"
-   ],
-   "apply": "https://social-discovery-ventures.breezy.hr/p/fde0f2b5b78301-senior-data-engineer-cloud",
-   "posted": "2026-10-07",
-   "deadline": null,
-   "checked": "2026-10-13",
-   "added": "2026-10-10",
-   "listed": "2026-10-10",
-   "source": "Breezy",
-   "origin": "feed",
-   "ats_id": "fde0f2b5b78301",
-   "family": "Data & Product",
-   "why": "Open worldwide with no country exclusion, so you can apply from Nigeria, and pays in foreign currency ($5000). You apply directly on the employer's own page.",
-   "direct": true
-  },
-  {
    "title": "Video Data Annotator",
    "company": "micro1",
    "region": "Remote — worldwide (micro1 global expert network)",
@@ -9008,6 +8981,60 @@
    "ats_id": "88724c8f-49d2-4c9e-8f0e-783d855ad2a9",
    "family": "Sales & Accounts",
    "why": "Open to candidates in Nigeria by name. You apply directly on the employer's own page.",
+   "direct": true
+  },
+  {
+   "id": "134ddafa79",
+   "title": "Senior Full-Stack Product Engineer | Node.js, AI-Native (Boosters R&D)",
+   "company": "Jobgether partner",
+   "region": "Nigeria",
+   "type": "Full-Time",
+   "experience": "4+ years",
+   "salary": "Undisclosed",
+   "bullets": [
+    "Lead the development of product features throughout the entire lifecycle, from ideation and design to implementation, release",
+    "Research market trends, analyze competitors, identify opportunities, and propose innovative features that improve user acquisition",
+    "Build and maintain robust backend services using Node.js and TypeScript",
+    "Collaborate with the Tech Lead on software architecture, system design, and technical decisions that support product scalability"
+   ],
+   "apply": "https://jobs.lever.co/jobgether/495194ef-4933-4730-bfff-2311b5758124",
+   "posted": "2026-10-13",
+   "deadline": null,
+   "checked": "2026-10-13",
+   "added": "2026-10-13",
+   "listed": "2026-10-13",
+   "source": "Lever",
+   "origin": "feed",
+   "ats_id": "495194ef-4933-4730-bfff-2311b5758124",
+   "family": "Tech & IT",
+   "why": "Open to candidates in Nigeria by name. You apply directly on the employer's own page.",
+   "direct": true
+  },
+  {
+   "id": "ae6de254c0",
+   "title": "Affiliate Manager (AI Product)",
+   "company": "Social Discovery Group",
+   "region": "Worldwide / Warsaw, PL / Belgrade, RS / Tbilisi, GE / Yerevan, AM",
+   "type": "Full-Time",
+   "experience": "2+ years",
+   "salary": "Undisclosed",
+   "bullets": [
+    "At least 2 years of experience in full-cycle affiliate account management: onboarding, creative/landing page setup, tracking setup, scaling",
+    "Understanding of CPA, CPL, CPS, RevShare and Hybrid models, channel economics, traffic quality and fraud risks",
+    "Technical literacy in tracking, pixels, postback/S2S, attribution, and basic API usage",
+    "Partner pipeline/CRM management and database hygiene"
+   ],
+   "apply": "https://social-discovery-ventures.breezy.hr/p/a254b666fed401-affiliate-manager-ai-product",
+   "posted": "2026-10-13",
+   "deadline": null,
+   "checked": "2026-10-13",
+   "added": "2026-10-13",
+   "listed": "2026-10-13",
+   "source": "Breezy",
+   "origin": "feed",
+   "ats_id": "a254b666fed401",
+   "family": "Executive & Operations",
+   "why": "Open worldwide with no country exclusion, so you can apply from Nigeria. You apply directly on the employer's own page.",
    "direct": true
   }
  ]
