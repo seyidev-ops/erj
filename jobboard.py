@@ -8,7 +8,7 @@ not-eligible roles never feature.
 
 Commands (run from the repo root):
 
-  python3 jobboard.py daily              # what the GitHub Action runs at 6am, 8am, 2pm and 8pm WAT:
+  python3 jobboard.py daily              # what the GitHub Action runs at about 6am and 8pm WAT:
                                          # inbox -> fetch -> check -> build
   python3 jobboard.py import FILE.xlsx   # add rows from one sheet (--all = ignore the date window)
   python3 jobboard.py inbox              # import every sheet dropped in jobs/inbox/
