@@ -76,7 +76,9 @@
   "canonical": "Canonical",
   "alpaca": "Alpaca",
   "givedirectly": "GiveDirectly",
-  "20four7va": "20four7VA"
+  "20four7va": "20four7VA",
+  "todoist-inc": "Todoist (Doist)",
+  "epoch-ai": "Epoch AI"
  },
  "feeds": {
   "enabled": true,
@@ -104,7 +106,8 @@
    "assist-world",
    "jobgether",
    "rws",
-   "vrchat"
+   "vrchat",
+   "epoch-ai"
   ],
   "ashby": [
    "Scale Army Careers",
@@ -131,7 +134,8 @@
    "Spirio",
    "gismart",
    "omniscient",
-   "simplestudy"
+   "simplestudy",
+   "todoist-inc"
   ],
   "breezy": [
    "20four7va",
