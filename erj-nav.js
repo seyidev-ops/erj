@@ -2,9 +2,9 @@
 /* ═══════════════════════════════════════════════════════
    ERJ UNIFIED NAVIGATION
 
-   FIVE top-level items, everywhere:
-     Home ▾ · How We Help ▾ · Free For You ▾ ·
-     Success Stories · Register
+   SEVEN top-level items, everywhere:
+     Home ▾ · Remote Jobs · How We Help ▾ (free and paid, by DIY / DWY / DFY) ·
+     Success Stories · Register · Blog
    Every dropdown shows the same list on every page; the current
    page is marked inside it. A page's own sections live in its
    in-page tour and the side arrows, never in the main menu.
@@ -48,23 +48,25 @@
             key: 'jobs', label: 'Remote Jobs', href: 'jobs/', keys: ['jobboard'], live: true
         },
         {
-            key: 'g-help', label: 'How We Help', keys: [], children: [
+            /* One door for every way we help, free and paid, grouped by how the
+               work gets done. Menu only: every link is the page's existing URL. */
+            key: 'g-help', label: 'How We Help', keys: [], mega: true, children: [
+                { heading: 'Do it yourself', sub: 'You do the work' },
+                { label: 'What\u2019s Holding You Back?', href: 'diagnose/', keys: ['diagnose'], free: true },
+                { label: 'Capacity Audit', href: 'capacityscan/', keys: ['capacityscan'], free: true },
+                { label: 'CV Scan', href: 'cvscan/', keys: ['cvscan'], free: true },
                 { label: 'From Intent to Offer', href: 'fromintenttooffer/', keys: ['book'] },
                 { label: 'CV Engine', href: 'cvbuilder.html', keys: ['cvpass'] },
                 { label: 'Self-Learn Pack', href: 'selflearn/', keys: ['selflearn'] },
+                { heading: 'Done with you', sub: 'We do it together' },
+                { label: 'Free Live Clinic', href: 'masterclass/', keys: ['masterclass'], free: true },
                 { label: 'Foundation Training', href: 'foundationtraining/', keys: ['mastery'] },
+                { label: 'Inner Circle', href: 'innercircle/', keys: ['inner'] },
+                { heading: 'Done for you', sub: 'We do it for you' },
+                { label: 'Remote Job Board', href: 'jobs/', keys: [], free: true },
+                { label: 'CV Fix', href: 'register.html#cvfix', keys: [] },
                 { label: 'Job Application', href: 'jobapplication/', keys: ['remote'] },
-                { label: 'Inner Circle', href: 'innercircle/', keys: ['inner'] }
-            ]
-        },
-        {
-            /* No href: the title opens the list. free.html stays live as a
-               page we share directly, but is not a menu destination. */
-            key: 'g-free', label: 'Free For You', keys: [], children: [
-                { label: 'What\u2019s Holding You Back?', href: 'diagnose/', keys: ['diagnose'] },
-                { label: 'Capacity Audit', href: 'capacityscan/', keys: ['capacityscan'] },
-                { label: 'CV Scan', href: 'cvscan/', keys: ['cvscan'] },
-                { label: 'Free Live Clinic', href: 'masterclass/', keys: ['masterclass'] }
+                { all: true, label: 'Compare the three ways', href: 'index.html#paths' }
             ]
         },
         { key: 'stories', label: 'Success Stories', href: 'testimonials.html', keys: ['stories', 'jobs'] },
@@ -213,6 +215,18 @@
         '@media(prefers-reduced-motion:reduce){.erj-live{animation:none;}}',
         '.erj-toggle{background:none;border:0;font-family:inherit;line-height:inherit;color:inherit;cursor:pointer;text-align:left;-webkit-appearance:none;appearance:none;}',
         /* a group title in the drawer is a button, not a link: give it the same type as every other title */
+        '.erj-free{display:inline-block;margin-left:.45rem;padding:.08rem .42rem;border-radius:999px;font-size:.6rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;vertical-align:middle;color:#1FAF55;border:1px solid rgba(31,175,85,.45);background:rgba(31,175,85,.1);}',
+        'html[data-theme="day"] .erj-free{color:#0B6E3E;}',
+        '.erj-h{padding:.55rem .7rem .3rem;}.erj-h b{display:block;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--enAccent);}',
+        '.erj-h small{display:block;font-size:.72rem;color:var(--enFaint);margin-top:.1rem;}',
+        '.erj-drop.erj-mega{position:fixed;top:calc(var(--erj-nav-h,65px) - 2px);left:50%;transform:translateX(-50%);min-width:0;width:min(760px,94vw);padding:.6rem;}',
+        '.erj-mega-cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.3rem;}',
+        '.erj-col{padding:.2rem;border-radius:10px;}.erj-col+.erj-col{border-left:1px solid var(--enLine);}',
+        '.erj-mega a{white-space:normal;}',
+        '.erj-mega-foot{border-top:1px solid var(--enLine);margin-top:.4rem;padding-top:.4rem;}',
+        '.erj-drop a.erj-all,.erj-sub-item.erj-all{color:var(--enAccent);font-weight:700;}',
+        '.erj-kh{padding:.75rem .65rem .25rem;}.erj-kh b{display:block;font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--enAccent);}',
+        '.erj-kh small{display:block;font-size:.72rem;color:var(--enFaint);}',
         '.erj-link.erj-toggle{font-family:var(--font-display,"Space Grotesk",system-ui,sans-serif);font-size:1.14rem;font-weight:600;letter-spacing:-0.3px;}'
     ].join('');
     const style = document.createElement('style');
@@ -223,6 +237,20 @@
     const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;');
     const LIVE = '<span class="erj-live" aria-hidden="true"></span>';
     const extAttr = (c) => (c.external ? ' target="_blank" rel="noopener"' : '');
+    const FREE = '<span class="erj-free">Free</span>';
+    function dropItem(c) {
+        if (c.heading) return '<div class="erj-h"><b>' + esc(c.heading) + '</b>' + (c.sub ? '<small>' + esc(c.sub) + '</small>' : '') + '</div>';
+        const cur = matches(c.keys);
+        return '<a href="' + P(c.href) + '"' + extAttr(c) + ' class="' + (c.all ? 'erj-all' : '') + (cur ? ' is-current' : '') + '"' +
+            (cur ? ' aria-current="page"' : '') + '>' + esc(c.label) + (c.free ? FREE : '') + (c.all ? ' \u2192' : '') + '</a>';
+    }
+    function megaDrop(kids) {
+        /* split on headings into columns; a trailing "all" link spans the foot */
+        const cols = []; let foot = '';
+        kids.forEach(c => { if (c.all) { foot = dropItem(c); return; } if (c.heading || !cols.length) cols.push([]); cols[cols.length - 1].push(c); });
+        return '<div class="erj-mega-cols">' + cols.map(col => '<div class="erj-col">' + col.map(dropItem).join('') + '</div>').join('') + '</div>' +
+            (foot ? '<div class="erj-mega-foot">' + foot + '</div>' : '');
+    }
     /* ── DESKTOP BAR ── */
     function buildBar() {
         return MENU.map(top => {
@@ -237,11 +265,9 @@
             if (top.children) {
                 /* The same list on every page: a dropdown never swaps its
                    contents for the current page's sections. */
-                const drop = top.children.map(c => '<a href="' + P(c.href) + '"' + extAttr(c) +
-                        (matches(c.keys) ? ' class="is-current" aria-current="page"' : '') + '>' +
-                        esc(c.label) + '</a>').join('');
+                const drop = top.mega ? megaDrop(top.children) : top.children.map(dropItem).join('');
                 html += '<button type="button" class="erj-bar-chev" aria-label="Open ' + esc(top.label) +
-                    ' menu" aria-expanded="false">\u25BC</button><div class="erj-drop">' + drop + '</div>';
+                    ' menu" aria-expanded="false">\u25BC</button><div class="erj-drop' + (top.mega ? ' erj-mega' : '') + '">' + drop + '</div>';
             }
             return html + '</div>';
         }).join('');
@@ -277,6 +303,9 @@
     }
     /* ── MOBILE DRAWER ── */
     function childRow(c) {
+        if (c.heading) return '<div class="erj-kh"><b>' + esc(c.heading) + '</b>' + (c.sub ? '<small>' + esc(c.sub) + '</small>' : '') + '</div>';
+        if (c.free || c.all) return '<a class="erj-sub-item' + (c.all ? ' erj-all' : '') + (matches(c.keys) ? ' is-current' : '') + '" href="' + P(c.href) + '">' +
+            esc(c.label) + (c.free ? FREE : '') + (c.all ? ' \u2192' : '') + '</a>';
         const cur = matches(c.keys);
         return '<a class="erj-sub-item' + (cur ? ' is-current' : '') + '" href="' + P(c.href) + '"' +
             extAttr(c) + (cur ? ' aria-current="page"' : '') + '>' + esc(c.label) + '</a>' +
