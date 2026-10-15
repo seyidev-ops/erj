@@ -1399,6 +1399,25 @@ html[data-theme="day"] .is-hot .ha-go,html[data-theme="day"] .ha-offer:hover .ha
 .is-start .ha-go{text-decoration:none;}
 @media(prefers-reduced-motion:reduce){.st-track{animation:none;}.st-shelf{overflow-x:auto;}}
 .ha-offer:hover .ha-go .a{transform:translateX(4px);}
+/* 02 · the start-tonight shelf now runs vertically down the side (desktop only) */
+.home-hero .ha-grid{grid-template-columns:minmax(0,1fr) clamp(220px,22vw,270px);align-items:stretch;}
+.ha-solo{position:relative;}
+.ha-solo .ha-offer.is-start{height:100%;max-height:640px;padding:1rem .9rem .9rem;display:flex;flex-direction:column;border-radius:22px;}
+.ha-solo .ha-offer.is-start:hover{transform:none;}
+.ha-solo .ha-k{font-size:1.02rem;}
+.ha-solo .ha-line{display:none;}
+.ha-solo .st-shelf{flex:1 1 auto;min-height:340px;margin:.6rem -.9rem .4rem;contain:none;
+  -webkit-mask-image:linear-gradient(180deg,transparent,#000 9%,#000 91%,transparent);mask-image:linear-gradient(180deg,transparent,#000 9%,#000 91%,transparent);}
+.ha-solo .st-track{position:absolute;left:0;right:0;top:0;flex-direction:column;width:auto;padding:.4rem .9rem;gap:.7rem;animation:stRise 38s linear infinite;}
+.ha-solo .st-tile{flex:0 0 auto;display:grid;grid-template-columns:64px minmax(0,1fr);grid-template-rows:auto auto 1fr;column-gap:.7rem;align-items:start;}
+.ha-solo .st-img{grid-row:1/4;width:64px;}
+.ha-solo .st-name{margin-top:0;font-size:.8rem;}
+.ha-solo .st-line{font-size:.68rem;}
+.ha-solo .st-price{font-size:.84rem;padding-top:.15rem;}
+.ha-solo .st-tile:hover{transform:translateX(-3px);}
+@keyframes stRise{to{transform:translateY(calc(-50% - .35rem));}}
+@media(prefers-reduced-motion:reduce){.ha-solo .st-track{animation:none;position:static;}.ha-solo .st-shelf{overflow-y:auto;}}
+@media(max-width:860px){.home-hero .ha-grid{grid-template-columns:1fr;}.ha-solo{display:none;}}
 /* 07 · How We Help: three ways, each opens to its options. No prices here. */
 .hw{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;align-items:start;}
 .hw-card{position:relative;border:1px solid var(--line);border-radius:22px;background:var(--card);overflow:hidden;isolation:isolate;
@@ -1447,6 +1466,8 @@ html[data-theme="day"] .hw-item{background:#fff;}
 html[data-theme="day"] .hw-tag,html[data-theme="day"] .hw-more,html[data-theme="day"] .hw-open{color:#AD350A;}
 html[data-theme="day"] .hw-open{border-color:#E8470F;}
 html[data-theme="day"] .hw-card:hover .hw-open,html[data-theme="day"] .hw-card[open] .hw-open{background:#E8470F;color:#fff;}
+.hw-card.is-call{animation:hwCall 1.4s ease-out 3;}
+@keyframes hwCall{0%{box-shadow:0 0 0 0 rgba(255,87,34,.6)}70%{box-shadow:0 0 0 16px rgba(255,87,34,0)}100%{box-shadow:0 0 0 0 rgba(255,87,34,0)}}
 .hw-foot{display:flex;flex-wrap:wrap;align-items:center;gap:1rem 1.6rem;margin-top:1.6rem;}
 .hw-note{font-size:.88rem;color:var(--ink-soft);}
 .hw-note a{color:var(--accent);font-weight:600;}
@@ -1488,12 +1509,7 @@ html[data-theme="day"] .pm-row:hover,html[data-theme="day"] .pm-row.is-lit{backg
 @keyframes haPing{0%{box-shadow:0 0 0 0 rgba(63,209,139,.6)}80%,100%{box-shadow:0 0 0 9px rgba(63,209,139,0)}}
 .ha-copy .ask-sub{max-width:46ch;}
 .ha-solo .ha-offer.is-start{padding:1.5rem 1.4rem 1.3rem;border-color:rgba(255,87,34,.45);box-shadow:0 22px 60px rgba(255,87,34,.16);}
-.ha-solo .ha-k{font-size:clamp(1.3rem,2.2vw,1.6rem);}
 .ha-solo .ha-line{font-size:.9rem;}
-.ha-solo .st-tile{flex-basis:10rem;}
-.ha-solo .st-name{font-size:.84rem;}
-.ha-solo .st-price{font-size:.95rem;}
-@media(max-width:860px){.ha-solo .st-tile{flex-basis:8.8rem;}}
 
 
 /* advantage ticker */
@@ -1843,7 +1859,7 @@ html[data-theme="day"] .timer-num{background-image:linear-gradient(160deg,#0A0A0
 <aside aria-label="Start tonight" class="ha-offers ha-solo">
 
 <div class="ha-offer is-start">
-<span class="ha-flag">Start tonight · instant access</span>
+<span class="ha-flag">Instant access</span>
 <span class="ha-k">Start tonight, from ₦5,000</span>
 <span class="ha-line">Books, tools and self-paced training you can open within the hour. No cohort, no waiting.</span>
 <div class="st-shelf" aria-label="Instant-access products"><div class="st-track"><a class="st-tile" href="register.html#intentbook"><span class="st-img"><picture><source srcset="shop/intentbook-centred.webp" type="image/webp"/><img alt="From Intent to Offer" src="shop/intentbook-centred.jpg" width="900" height="900" loading="lazy" decoding="async"/></picture></span><span class="st-name">From Intent to Offer</span><span class="st-line">The whole method, as a book</span><span class="st-price">₦15,000</span></a><a class="st-tile" href="register.html#cvpass"><span class="st-img"><picture><source srcset="shop/cvpass.webp" type="image/webp"/><img alt="The CV Engine" src="shop/cvpass.jpg" width="900" height="900" loading="lazy" decoding="async"/></picture></span><span class="st-name">The CV Engine</span><span class="st-line">Rebuild your CV, scored live</span><span class="st-price">₦5,000/mo</span></a><a class="st-tile" href="register.html#book"><span class="st-img"><picture><source srcset="shop/book.webp" type="image/webp"/><img alt="Google Search: Best Kept Open Secret" src="shop/book.jpg" width="900" height="900" loading="lazy" decoding="async"/></picture></span><span class="st-name">Google Search: Best Kept Open Secret</span><span class="st-line">Find roles before the boards</span><span class="st-price">₦5,000</span></a><a class="st-tile" href="register.html#selflearn"><span class="st-img"><picture><source srcset="shop/selflearn-foundation.webp" type="image/webp"/><img alt="The Self-Learn Pack" src="shop/selflearn-foundation.jpg" width="900" height="900" loading="lazy" decoding="async"/></picture></span><span class="st-name">The Self-Learn Pack</span><span class="st-line">All four stages, self-paced</span><span class="st-price">₦35,000</span></a><a class="st-tile" href="register.html#careerdev"><span class="st-img"><picture><source srcset="shop/careerdev-mentorine.webp" type="image/webp"/><img alt="Career Development — Self-Study" src="shop/careerdev-mentorine.jpg" width="900" height="900" loading="lazy" decoding="async"/></picture></span><span class="st-name">Career Development — Self-Study</span><span class="st-line">A skills track for your role</span><span class="st-price">₦50,000</span></a><a class="st-tile" href="register.html#intentbook" aria-hidden="true" tabindex="-1"><span class="st-img"><picture><source srcset="shop/intentbook-centred.webp" type="image/webp"/><img alt="" src="shop/intentbook-centred.jpg" width="900" height="900" loading="lazy" decoding="async"/></picture></span><span class="st-name">From Intent to Offer</span><span class="st-line">The whole method, as a book</span><span class="st-price">₦15,000</span></a><a class="st-tile" href="register.html#cvpass" aria-hidden="true" tabindex="-1"><span class="st-img"><picture><source srcset="shop/cvpass.webp" type="image/webp"/><img alt="" src="shop/cvpass.jpg" width="900" height="900" loading="lazy" decoding="async"/></picture></span><span class="st-name">The CV Engine</span><span class="st-line">Rebuild your CV, scored live</span><span class="st-price">₦5,000/mo</span></a><a class="st-tile" href="register.html#book" aria-hidden="true" tabindex="-1"><span class="st-img"><picture><source srcset="shop/book.webp" type="image/webp"/><img alt="" src="shop/book.jpg" width="900" height="900" loading="lazy" decoding="async"/></picture></span><span class="st-name">Google Search: Best Kept Open Secret</span><span class="st-line">Find roles before the boards</span><span class="st-price">₦5,000</span></a><a class="st-tile" href="register.html#selflearn" aria-hidden="true" tabindex="-1"><span class="st-img"><picture><source srcset="shop/selflearn-foundation.webp" type="image/webp"/><img alt="" src="shop/selflearn-foundation.jpg" width="900" height="900" loading="lazy" decoding="async"/></picture></span><span class="st-name">The Self-Learn Pack</span><span class="st-line">All four stages, self-paced</span><span class="st-price">₦35,000</span></a><a class="st-tile" href="register.html#careerdev" aria-hidden="true" tabindex="-1"><span class="st-img"><picture><source srcset="shop/careerdev-mentorine.webp" type="image/webp"/><img alt="" src="shop/careerdev-mentorine.jpg" width="900" height="900" loading="lazy" decoding="async"/></picture></span><span class="st-name">Career Development — Self-Study</span><span class="st-line">A skills track for your role</span><span class="st-price">₦50,000</span></a></div></div>
@@ -2289,12 +2305,14 @@ var rows=l.querySelectorAll('.pm-row');var io=new IntersectionObserver(function(
 rows.forEach(function(r,i){setTimeout(function(){r.classList.add('is-lit');setTimeout(function(){r.classList.remove('is-lit')},900);},400+i*650);});},{threshold:.5});io.observe(l);})();
 </script>
 <script>
-/* 07 · a link like index.html#help-dfy opens that way and scrolls to it; the button text follows open/closed */
-(function(){var cards=document.querySelectorAll('.hw-card');if(!cards.length)return;
+/* 07 · every way starts closed and opens only when tapped; one open at a time.
+   A link like index.html#help-dfy scrolls to that way and makes it glow, still closed. */
+(function(){var cards=[].slice.call(document.querySelectorAll('.hw-card'));if(!cards.length)return;
 function sync(c){var t=c.querySelector('.hw-open-t');if(t)t.textContent=c.open?t.getAttribute('data-open'):t.getAttribute('data-closed');}
-cards.forEach(function(c){c.addEventListener('toggle',function(){sync(c);});});
-function fromHash(){var h=location.hash;if(!/^#help-(diy|dwy|dfy)$/.test(h))return;var c=document.querySelector(h);if(!c)return;c.open=true;sync(c);
-setTimeout(function(){c.scrollIntoView({block:'start'});},60);}
+cards.forEach(function(c){c.open=false;sync(c);c.addEventListener('toggle',function(){sync(c);if(c.open)cards.forEach(function(o){if(o!==c&&o.open)o.open=false;});});});
+window.addEventListener('pageshow',function(){cards.forEach(function(c){c.open=false;sync(c);});});
+function fromHash(){var h=location.hash;if(!/^#help-(diy|dwy|dfy)$/.test(h))return;var c=document.querySelector(h);if(!c)return;
+setTimeout(function(){c.scrollIntoView({block:'center'});c.classList.remove('is-call');void c.offsetWidth;c.classList.add('is-call');},60);}
 fromHash();window.addEventListener('hashchange',fromHash);})();
 </script>
 </body>
