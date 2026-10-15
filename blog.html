@@ -572,8 +572,7 @@ h1 strong,h1 em{ -webkit-text-fill-color:currentColor!important;background:none!
 <svg viewbox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" x2="16.65" y1="21" y2="16.65"></line></svg>
 <input autocomplete="off" enterkeyhint="search" id="searchInput" oninput="filterPosts()" placeholder="Search: CV, LinkedIn, interviews, salary…" type="search"/>
 </div>
-<nav class="bx-switch" aria-label="Blog views"><a class="on" href="blog.html" aria-current="page">Latest &amp; search</a><a href="blog/">Every post by month</a></nav>
-<div class="bx-chips" id="bxChips"><span><b id="bxCount">200+</b> free posts</span><span><b>7</b> topics</span><span>Written by <b>Oluwaseyi Ashiru</b></span></div>
+
 </div>
 <aside class="bx-start" aria-label="Free tools to start with">
 <div class="bx-start-k">Start here · free</div>
@@ -587,6 +586,7 @@ h1 strong,h1 em{ -webkit-text-fill-color:currentColor!important;background:none!
 <div class="page">
 <!-- LEFT / MAIN: posts (100% width on mobile, 1fr on desktop) -->
 <div class="page-content">
+<nav class="bx-switch" aria-label="Blog views"><button type="button" class="on" data-view="latest">Latest</button><button type="button" data-view="month">Every post by month</button></nav>
 <div class="cats erj-pre" id="catBar"></div>
 <div class="erj-pre" id="featuredSlot"></div>
 <div class="grid erj-pre" id="grid"></div>
@@ -639,7 +639,7 @@ h1 strong,h1 em{ -webkit-text-fill-color:currentColor!important;background:none!
 <div class="toast-w" id="toastW"><div class="toast" id="toastEl"></div></div>
 </main>
 <footer class="foot wrap">
-<nav class="foot-links"><a href="index.html">Home</a><a href="starthere.html">Your Starting Line</a><a href="free.html">Free For You</a><a href="blog.html">Blog</a><a href="blog/">Blog Archive</a><a href="register.html">Register</a><a href="login.html">Participant Login</a></nav>
+<nav class="foot-links"><a href="index.html">Home</a><a href="starthere.html">Your Starting Line</a><a href="free.html">Free For You</a><a href="blog.html">Blog</a><a href="register.html">Register</a><a href="login.html">Participant Login</a></nav>
 <div class="erj-rights-line" role="note" style="max-width:900px;margin:1rem auto 0;padding-top:.85rem;border-top:1px solid rgba(127,127,127,.18);font-size:.72rem;line-height:1.6;letter-spacing:.02em;text-align:center;color:#8A8A86;">© 2026 Business Play Limited · Everything Remote Job. Built for <span style="color:var(--accent,#FF5722)">global career scale.</span> All rights reserved. ERJ frameworks, curriculum and paid resources are not licensed for redistribution. <a href="terms.html" style="color:var(--accent,#FF5722);text-decoration:none">Terms</a> · <a href="privacy.html" style="color:var(--accent,#FF5722);text-decoration:none">Privacy</a></div>
 </footer>
 <script>
@@ -3708,7 +3708,7 @@ const CC={
   'Industry News':   {bg:'rgba(248,81,73,.12)',  c:'#F85149'},
 };
 const PER=7; /* seven posts + one house card = an even grid */
-let cat='All', page=1, curPost=null, month='';
+let cat='All', page=1, curPost=null, month='', view=(new URLSearchParams(location.search).get('view')==='month'?'month':'latest');
 
 /* ─── DATA ─── */
 /* ── Sync ALL seeds (incl. drafts) into localStorage so blog-admin.html can see and manage them ──
@@ -3857,9 +3857,8 @@ function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g
 /* ─── CATEGORIES ─── */
 function renderCats(){
   const ap=allPosts(), n=c=>c==='All'?ap.length:ap.filter(p=>p.category===c).length;
-  document.getElementById('catBar').innerHTML=CATS.map(c=>`<button class="cat-pill${c===cat?' on':''}" onclick="setCat('${c}')">${c}<span class="cat-n">${n(c)}</span></button>`).join('')
+  document.getElementById('catBar').innerHTML=CATS.map(c=>`<button class="cat-pill${c===cat?' on':''}" onclick="setCat('${c}')">${c}</button>`).join('')
     +(month?`<button class="cat-pill bx-month on" onclick="setMonth('')">${fmtMonth(month)} ✕</button>`:'');
-  const bc=document.getElementById('bxCount'); if(bc) bc.textContent=ap.length;
 }
 function setCat(c){cat=c;page=1;renderCats();renderPosts();}
 function fmtMonth(k){const [y,m]=k.split('-');return new Date(+y,+m-1,1).toLocaleDateString('en-US',{year:'numeric',month:'long'});}
@@ -3876,8 +3875,22 @@ function promoHTML(i){const p=PROMOS[i%PROMOS.length];return `<a class="bx-promo
 function filterPosts(){page=1;renderPosts();}
 
 /* ─── POSTS ─── */
+const CEM={'Job Search':'🎯','Productivity':'⚡','Announcements':'📣','Success Stories':'🏆','CV & LinkedIn':'📄','Industry News':'📰'};
+function setView(v){view=v;page=1;document.querySelectorAll('.bx-switch [data-view]').forEach(b=>{const on=b.dataset.view===v;b.classList.toggle('on',on);b.setAttribute('aria-pressed',on);});renderPosts();
+  try{const u=new URL(location.href);if(v==='month')u.searchParams.set('view','month');else u.searchParams.delete('view');history.replaceState(null,'',u);}catch(e){}}
+function renderMonths(all){
+  document.getElementById('grid').classList.add('is-months');
+  const groups={};all.forEach(p=>{const k=(p.date||'').slice(0,7);(groups[k]=groups[k]||[]).push(p);});
+  const keys=Object.keys(groups).sort().reverse();
+  document.getElementById('featuredSlot').innerHTML='';document.getElementById('pager').innerHTML='';
+  const jump=`<nav class="bm-jump" aria-label="Jump to month">${keys.map(k=>`<a href="#bm-${k}">${fmtMonth(k)}</a>`).join('')}</nav>`;
+  document.getElementById('grid').innerHTML=keys.length?jump+keys.map(k=>`<section class="bm-mon"><h2 id="bm-${k}">${fmtMonth(k)}<span>${groups[k].length} posts</span></h2><div class="bm-list">${groups[k].map(p=>`<a class="bm-item" href="${postHref(p.id)}"><span class="bm-i" aria-hidden="true">${CEM[p.category]||'📝'}</span><b>${p.title}</b><small>${fmtD(p.date)} · ${p.category} · ${p.readTime} min</small></a>`).join('')}</div></section>`).join(''):'<div class="empty"><strong>No articles found</strong></div>';
+  document.querySelectorAll('.erj-pre').forEach(el=>el.classList.remove('erj-pre'));
+}
 function renderPosts(){
   const all=filtered(), q=document.getElementById('searchInput').value.trim();
+  if(view==='month'){renderMonths(all);return;}
+  document.getElementById('grid').classList.remove('is-months');
   const showF=cat==='All'&&page===1&&!q;
   const feat=showF?all.find(p=>p.featured):null;
   const rest=feat?all.filter(p=>p.id!==feat.id):all;
@@ -4313,10 +4326,13 @@ function checkURLParam(){
 
 /* ─── INIT ─── */
 (function init(){
+  document.querySelectorAll('.bx-switch [data-view]').forEach(b=>b.addEventListener('click',()=>setView(b.dataset.view)));
+  if(view==='month')document.querySelectorAll('.bx-switch [data-view]').forEach(b=>b.classList.toggle('on',b.dataset.view==='month'));
   renderCats();
   renderPosts();
   renderSidebar();
   checkURLParam();
+  if(/^#bm-/.test(location.hash)){const t=document.querySelector(location.hash);if(t)setTimeout(()=>t.scrollIntoView(),60);}
 })();
 </script>
 <!-- float animation -->
@@ -4355,9 +4371,6 @@ html[data-theme="day"] .bx-aur i{opacity:.28;}
 .bx-sub b{color:var(--txt);font-weight:600;}
 .bx-hero .srch{margin:1.2rem 0 0;max-width:520px;}
 .bx-hero .srch input{padding:.95rem 1rem .95rem 2.6rem;border-radius:14px;font-size:.95rem;}
-.bx-chips{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1rem;}
-.bx-chips span{font-size:.74rem;color:var(--muted);padding:.38rem .75rem;border-radius:999px;border:1px solid var(--border);background:var(--bg3);}
-.bx-chips b{color:var(--txt);}
 .bx-start{display:flex;flex-direction:column;gap:.6rem;align-self:center;}
 .bx-start-k{font-size:.62rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#3fd18b;}
 html[data-theme="day"] .bx-start-k{color:#0B6E3E;}
@@ -4376,15 +4389,30 @@ html[data-theme="day"] .bx-start-k{color:#0B6E3E;}
 @media(min-width:900px){.bx-hero{padding:64px 5% 56px;}.bx-hero-in{grid-template-columns:minmax(0,1.25fr) minmax(300px,.75fr);gap:3rem;align-items:center;}}
 
 .bx-switch{display:inline-flex;padding:4px;border-radius:999px;border:1px solid var(--border);background:var(--bg3);margin-top:1rem;}
-.bx-switch a{padding:.45rem 1rem;border-radius:999px;font-size:.8rem;font-weight:700;color:var(--muted);text-decoration:none;}
-.bx-switch a.on{background:#FF5722;color:#fff;}
-html[data-theme="day"] .bx-switch a.on{background:#E8470F;}
-.bx-switch a:not(.on):hover{color:var(--txt);}
+.bx-switch{margin:0 0 .4rem;}
+.bx-switch button{padding:.5rem 1.05rem;border-radius:999px;border:0;background:transparent;font:inherit;font-size:.82rem;font-weight:700;color:var(--muted);cursor:pointer;}
+.bx-switch button.on{background:#FF5722;color:#fff;}
+html[data-theme="day"] .bx-switch button.on{background:#E8470F;}
+.bx-switch button:not(.on):hover{color:var(--txt);}
+.grid.is-months{display:block!important;}
+.bm-jump{display:flex;flex-wrap:wrap;gap:.45rem;margin:.2rem 0 1.2rem;}
+.bm-jump a{font-size:.78rem;padding:.38rem .8rem;border-radius:999px;border:1px solid var(--border);color:var(--muted);text-decoration:none;transition:border-color .25s,color .25s,transform .25s;}
+.bm-jump a:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px);}
+.bm-mon{margin-bottom:1.6rem;}
+.bm-mon h2{font-family:var(--fd);font-size:1.15rem;font-weight:800;margin:0 0 .7rem;display:flex;align-items:baseline;gap:.6rem;scroll-margin-top:130px;}
+.bm-mon h2 span{font-size:.72rem;font-weight:500;color:var(--muted2);}
+.bm-list{display:grid;gap:.55rem;}
+@media(min-width:640px){.bm-list{grid-template-columns:repeat(2,minmax(0,1fr));}}
+.bm-item{display:grid;grid-template-columns:2.5rem minmax(0,1fr);grid-template-rows:auto auto;column-gap:.8rem;align-items:center;padding:.9rem 1rem;border-radius:16px;
+  border:1px solid var(--border2);background:var(--card);text-decoration:none;color:var(--txt);transition:transform .3s cubic-bezier(.22,1,.36,1),border-color .3s,box-shadow .3s;}
+.bm-item:hover{transform:translateX(5px);border-color:var(--accent);box-shadow:0 14px 34px rgba(255,87,34,.12);}
+.bm-i{grid-row:1/3;width:2.5rem;height:2.5rem;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.15rem;background:linear-gradient(135deg,rgba(255,87,34,.2),rgba(255,196,107,.08));transition:transform .35s;}
+.bm-item:hover .bm-i{transform:rotate(-8deg) scale(1.08);}
+.bm-item b{font-family:var(--fd);font-size:.9rem;line-height:1.3;}
+.bm-item small{font-size:.7rem;color:var(--muted2);margin-top:.15rem;}
 /* categories with counts, sticky on scroll */
 .cats{position:sticky;top:63px;z-index:20;background:var(--bg);padding:10px 0 8px;margin-bottom:12px;}
 .cat-pill{gap:.45rem;}
-.cat-n{font-size:.66rem;font-weight:700;padding:.08rem .42rem;border-radius:999px;background:var(--border2);color:var(--muted);}
-.cat-pill.on .cat-n{background:rgba(0,0,0,.22);color:#fff;}
 .cat-pill:hover{border-color:var(--accent);color:var(--txt);}
 
 /* featured: split, big, alive */
@@ -4517,7 +4545,7 @@ html[data-theme="day"] .bx-promo{background:linear-gradient(140deg,#E8470F,#AD35
 })();
 </script>
 <script src="erj-theme.js?v=20260911a"></script>
-<script defer="" src="erj-nav.js?v=20261015e"></script>
+<script defer="" src="erj-nav.js?v=20261015f"></script>
 <script defer="" src="erj-config.js?v=20261015a"></script>
 <script defer="" src="erj-capture.js?v=20260911a"></script>
 <script defer="" src="erj-schema.js?v=20261004a"></script>

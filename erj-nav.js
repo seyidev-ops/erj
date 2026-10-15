@@ -64,12 +64,12 @@
                 { label: 'What\u2019s Holding You Back?', href: 'diagnose/', keys: ['diagnose'] },
                 { label: 'Capacity Audit', href: 'capacityscan/', keys: ['capacityscan'] },
                 { label: 'CV Scan', href: 'cvscan/', keys: ['cvscan'] },
-                { label: 'Free Live Clinic', href: 'masterclass/', keys: ['masterclass'] },
-                { label: 'Blog', href: 'blog.html', keys: ['blog'] }
+                { label: 'Free Live Clinic', href: 'masterclass/', keys: ['masterclass'] }
             ]
         },
         { key: 'stories', label: 'Success Stories', href: 'testimonials.html', keys: ['stories', 'jobs'] },
-        { key: 'pricing', label: 'Register', href: 'register.html', keys: ['pricing'] }
+        { key: 'pricing', label: 'Register', href: 'register.html', keys: ['pricing'] },
+        { key: 'blog', label: 'Blog', href: 'blog.html', keys: ['blog'] }
     ];
     /* Admin-side menu: the surfaces NOT open to the public live here,
        and only here — Surge Console, the gated CV Engine, the consoles. */
@@ -158,6 +158,8 @@
         '.erj-nav{min-height:63px;}',
         '@media(min-width:980px){.erj-nav{min-height:65px;}}',
         '@media(min-width:980px){.erj-bar{display:flex;}.erj-burger{display:none;}}',
+        /* seven items: tighten between 980 and 1240 so the bar never spills */
+        '@media(min-width:980px) and (max-width:1240px){.erj-nav{gap:.5rem;padding-left:1rem;padding-right:1rem;}.erj-bar{margin-right:.2rem;gap:0;}.erj-bar-link{padding:.55rem .42rem;font-size:.8rem;}.erj-bar-chev{padding-right:.15rem;min-width:18px;}.erj-brand{font-size:.9rem;gap:7px;}}',
         /* ── MOBILE DRAWER (<980px) ── */
         '.erj-panel{position:fixed;top:0;right:0;bottom:0;width:min(86vw,380px);z-index:1100;',
         'background:var(--enPaper);border-left:1px solid var(--enLine);box-shadow:-16px 0 50px rgba(0,0,0,0.22);',
@@ -209,7 +211,9 @@
         '.erj-live{display:inline-block;width:7px;height:7px;margin-left:.45rem;border-radius:50%;background:#25D366;vertical-align:middle;animation:erjLive 2s infinite;}',
         '@keyframes erjLive{0%{box-shadow:0 0 0 0 rgba(37,211,102,.55)}70%{box-shadow:0 0 0 7px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}',
         '@media(prefers-reduced-motion:reduce){.erj-live{animation:none;}}',
-        '.erj-toggle{background:none;border:0;font-family:inherit;line-height:inherit;color:inherit;cursor:pointer;text-align:left;-webkit-appearance:none;appearance:none;}'
+        '.erj-toggle{background:none;border:0;font-family:inherit;line-height:inherit;color:inherit;cursor:pointer;text-align:left;-webkit-appearance:none;appearance:none;}',
+        /* a group title in the drawer is a button, not a link: give it the same type as every other title */
+        '.erj-link.erj-toggle{font-family:var(--font-display,"Space Grotesk",system-ui,sans-serif);font-size:1.14rem;font-weight:600;letter-spacing:-0.3px;}'
     ].join('');
     const style = document.createElement('style');
     style.id = 'erjNavCSS';

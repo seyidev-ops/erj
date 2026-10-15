@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 
 <html data-theme="night" lang="en">
-<head><meta charset="utf-8"/><script id="erjThemeBoot">/* Apply the saved theme before first paint. erj-theme.js loads deferred, so without this a day-theme visitor sees the night page first. */try{var d=document.documentElement,p=localStorage.getItem('rjt-theme');if(p==='system')p=window.matchMedia&&matchMedia('(prefers-color-scheme: light)').matches?'day':'night';if(p==='day'||p==='night')d.setAttribute('data-theme',p)}catch(e){}</script><style id="erjCanvasGuard">html{background:#000000}html[data-theme="day"]{background:#FAFAF8}</style>
+<head><meta charset="utf-8"/><script id="erjArchiveMerge">/* The archive now lives inside the blog ("Every post by month"). This page stays
+   as a plain list for search engines and readers without JavaScript. */
+try{location.replace('../blog.html?view=month'+(location.hash||'').replace(/^#m/,'#bm-'))}catch(e){}</script>
+<script id="erjThemeBoot">/* Apply the saved theme before first paint. erj-theme.js loads deferred, so without this a day-theme visitor sees the night page first. */try{var d=document.documentElement,p=localStorage.getItem('rjt-theme');if(p==='system')p=window.matchMedia&&matchMedia('(prefers-color-scheme: light)').matches?'day':'night';if(p==='day'||p==='night')d.setAttribute('data-theme',p)}catch(e){}</script><style id="erjCanvasGuard">html{background:#000000}html[data-theme="day"]{background:#FAFAF8}</style>
 
 <!-- Meta Pixel + Google Tag Manager -->
 <script async="" src="../erj-track.js?v=20260911a"></script>
@@ -268,7 +271,7 @@ footer .erj-rights-line a{color:var(--accent);text-decoration:none;border-bottom
 </aside>
 </main>
 <footer class="wrap">
-<nav><a href="../">Home</a><a href="../starthere.html">Your Starting Line</a><a href="../free.html">Free For You</a><a href="../blog.html">Blog</a><a href="./">Blog Archive</a><a href="../register.html">Register</a><a href="../login.html">Participant Login</a></nav>
+<nav><a href="../">Home</a><a href="../starthere.html">Your Starting Line</a><a href="../free.html">Free For You</a><a href="../blog.html">Blog</a><a href="../register.html">Register</a><a href="../login.html">Participant Login</a></nav>
 <div class="erj-rights-line" role="note" style="max-width:900px;margin:1rem auto 0;padding-top:.85rem;border-top:1px solid rgba(127,127,127,.18);font-size:.72rem;line-height:1.6;letter-spacing:.02em;text-align:center;color:#8A8A86;">© 2026 Business Play Limited · Everything Remote Job. Built for <span style="color:var(--accent,#FF5722)">global career scale.</span> All rights reserved. ERJ frameworks, curriculum and paid resources are not licensed for redistribution. <a href="../terms.html" style="color:var(--accent,#FF5722);text-decoration:none">Terms</a> · <a href="../privacy.html" style="color:var(--accent,#FF5722);text-decoration:none">Privacy</a></div>
 </footer>
 <script>
@@ -309,7 +312,7 @@ footer .erj-rights-line a{color:var(--accent);text-decoration:none;border-bottom
 })();
 </script>
 <script defer="" src="../erj-theme.js?v=20260911a"></script>
-<script defer="" src="../erj-nav.js?v=20261015e"></script>
+<script defer="" src="../erj-nav.js?v=20261015f"></script>
 <script defer="" src="../erj-config.js?v=20261015a"></script>
 <script defer="" src="post.js?v=20261015a"></script>
 </body></html>
