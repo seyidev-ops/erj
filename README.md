@@ -163,7 +163,7 @@ The site is a static HTML/CSS/JavaScript website hosted on **GitHub Pages** with
 - `/cvscan/` — the CV Scan, runs entirely in the browser
 - `/cvbuilder/` — the CV Engine
 - `/fromintenttooffer/` — *From Intent to Offer*, the book
-- `/launch/` — the book launch: a free live Zoom session, with a Register Free button to the Zoom registration
+- `/launch/` — the September 2026 book launch has passed; the page now forwards to `/fromintenttooffer/` (kept so shared links still work, `noindex`, not in the sitemap)
 - `/selflearn/` — the self-paced Stages 1–4 pack
 - `/foundationtraining/` — live Foundation Training
 - `/jobapplication/` — Done-For-You application and placement services
