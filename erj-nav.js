@@ -63,7 +63,7 @@
             key: 'g-free', label: 'Free For You', keys: [], children: [
                 { label: 'What\u2019s Holding You Back?', href: 'diagnose/', keys: ['diagnose'] },
                 { label: 'Capacity Audit', href: 'capacityscan/', keys: ['capacityscan'] },
-                { label: 'Remote CV Scan', href: 'cvscan/', keys: ['cvscan'] },
+                { label: 'CV Scan', href: 'cvscan/', keys: ['cvscan'] },
                 { label: 'Free Live Clinic', href: 'masterclass/', keys: ['masterclass'] },
                 { label: 'Blog', href: 'blog.html', keys: ['blog'] }
             ]

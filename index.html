@@ -1092,6 +1092,7 @@ a.promo-tick{text-decoration:none;display:block;}
   .ep-cur i{font-style:normal;color:var(--accent);-webkit-text-fill-color:var(--accent);}
   .ep-cur{background:none;-webkit-text-fill-color:initial;color:var(--ink);}
   .ep-cur span{display:inline-block;background:linear-gradient(120deg,var(--ink) 10%,#FF5722 60%,#FFC46B);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;}
+  html[data-theme="day"] .ep-cur{background:none;}
   html[data-theme="day"] .ep-cur span{background-image:linear-gradient(120deg,#0A0A0A 15%,#AD350A 70%);}
   @media(prefers-reduced-motion:no-preference){.ep.is-on .ep-cur span{animation:epHop 3.6s ease-in-out infinite;}
     .ep.is-on .ep-cur span:nth-of-type(2){animation-delay:.25s}.ep.is-on .ep-cur span:nth-of-type(3){animation-delay:.5s}}
@@ -1955,7 +1956,7 @@ html[data-theme="day"] .jt{--jt-o:#E8470F;--jt-line:rgba(20,17,14,.12);--jt-card
 <div class="shelf">
 <a class="shelf-item reveal" href="cvscan/" id="cvscan" style="scroll-margin-top:100px;">
 <span class="shelf-kind">Instant · private</span>
-<h3 class="shelf-title">Remote CV <em>Scan</em></h3>
+<h3 class="shelf-title">CV <em>Scan</em></h3>
 <p class="shelf-desc">See how your CV reads to a remote employer, in under a minute. Private: nothing uploads.</p>
 <span class="shelf-go">Scan my CV <span class="a">→</span></span>
 </a>
@@ -2181,7 +2182,7 @@ html[data-theme="day"] .jt{--jt-o:#E8470F;--jt-line:rgba(20,17,14,.12);--jt-card
 </a>
 <script defer="" src="erj-theme.js?v=20260911a"></script>
 <script defer="" src="erj-product.js?v=20260924c"></script>
-<script defer="" src="erj-nav.js?v=20261015d"></script>
+<script defer="" src="erj-nav.js?v=20261015e"></script>
 <script defer="" src="erj-config.js?v=20261008b"></script>
 <script defer="" src="erj-capture.js?v=20260911a"></script>
 <script>if("serviceWorker" in navigator){window.addEventListener("load",function(){var go=function(){navigator.serviceWorker.register("/sw.js",{updateViaCache:"none"}).then(function(reg){reg.update();}).catch(function(){});};if("requestIdleCallback" in window){requestIdleCallback(go,{timeout:3000});}else{setTimeout(go,1200);}});}</script>
