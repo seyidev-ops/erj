@@ -30,10 +30,11 @@
     const MENU = [
         {
             key: 'home', label: 'Home', href: 'index.html', keys: ['home'], children: [
+                { label: 'Start Here · Quick Tour', href: 'index.html#tour' },
                 { label: 'What We Can Do For You', href: 'index.html#promise' },
-                { label: 'Live Remote Jobs', href: 'index.html#jobs-live' },
-                { label: 'Proof It Works', href: 'index.html#story' },
                 { label: 'The Promise', href: 'index.html#pledge' },
+                { label: 'Live Remote Jobs', href: 'index.html#jobs-live' },
+                { label: 'Proof It Works', href: 'index.html#facilitator' },
                 { label: 'Free For You', href: 'index.html#free' },
                 { label: 'How We Help', href: 'index.html#paths' },
                 { label: 'Before You Decide', href: 'index.html#faq' },
@@ -446,10 +447,12 @@
         const hosts = document.querySelectorAll('[data-erj-tour]');
         if (!hosts.length || !onPage.length)
             return;
-        const title = cfg.tourTitle || 'On this page';
-        let html = '<div class="f-tour-t">' + title + '</div><div class="f-stops">';
-        onPage.forEach((st, i) => {
-            const no = i + 1 < 10 ? '0' + (i + 1) : '' + (i + 1);
+        const title = cfg.tourTitle === '' ? '' : (cfg.tourTitle || 'On this page');
+        const first = cfg.tourStart || 1;
+        let html = (title ? '<div class="f-tour-t">' + title + '</div>' : '') + '<div class="f-stops">';
+        onPage.filter(st => !st.tourSelf).forEach((st, i) => {
+            const n = i + first;
+            const no = n < 10 ? '0' + n : '' + n;
             html += '<a class="f-stop" href="' + st.href + '" data-tour-target="' + st.href + '">' +
                 '<span class="no">' + no + '</span><span class="lbl">' + st.label +
                 (st.sub ? '<small>' + st.sub + '</small>' : '') +
@@ -536,14 +539,24 @@
                 'background:var(--card,#111);color:var(--ink,#fff);cursor:pointer;display:flex;align-items:center;justify-content:center;' +
                 'box-shadow:0 6px 20px rgba(0,0,0,.28);transition:transform .25s,border-color .25s,opacity .3s;padding:0;opacity:.55;}' +
                 '.erj-tournav:hover button,.erj-tournav button:focus-visible{opacity:1;}' +
-                '.erj-tournav button:hover{transform:scale(1.08);border-color:var(--accent,#FF5722);opacity:1;}' +
+                '.erj-tournav button:not(.erj-tournext):hover{transform:scale(1.08);border-color:var(--accent,#FF5722);opacity:1;}' +
                 '.erj-tournav button:focus-visible{outline:2px solid var(--accent,#FF5722);outline-offset:2px;}' +
                 '.erj-tournav button svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;}' +
                 '.erj-tournav button[disabled]{opacity:.16;cursor:default;transform:none;}' +
                 '@media(max-width:768px){.erj-tournav{gap:0.4rem;left:0.5rem;}' +
                 '.erj-tournav button{width:33px;height:33px;box-shadow:0 4px 14px rgba(0,0,0,.24);}' +
                 '.erj-tournav button svg{width:13px;height:13px;}}' +
-                '@media(max-width:380px){.erj-tournav{display:none;}}';
+                '@media(max-width:380px){.erj-tournav{display:none;}}' +
+                /* "Next · <stop>" pill beside the down arrow: says where the arrow goes. */
+                '.erj-tournav button.erj-tournext{width:auto;height:auto;opacity:1;justify-content:flex-start;position:absolute;left:calc(100% + .5rem);bottom:2px;display:inline-flex;align-items:center;gap:.4rem;max-width:min(60vw,320px);' +
+                'padding:.42rem .8rem .42rem .55rem;border-radius:100px;border:0;background:var(--accent-btn,#FF5722);color:#fff;font-family:inherit;font-size:.74rem;font-weight:700;line-height:1.2;cursor:pointer;' +
+                'box-shadow:0 10px 26px rgba(255,87,34,.35);white-space:nowrap;visibility:hidden;transform:translateX(-10px) scale(.96);transition:transform .35s cubic-bezier(.22,1,.36,1),visibility 0s .35s;}' +
+                '.erj-tournav .erj-tournext b{overflow:hidden;text-overflow:ellipsis;}' +
+                '.erj-tournav .erj-tournext i{font-style:normal;font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;opacity:.85;}' +
+                '.erj-tournav button.erj-tournext.on{visibility:visible;transform:none;transition:transform .35s cubic-bezier(.22,1,.36,1),visibility 0s;}' +
+                '.erj-tournav button.is-hint{opacity:1;border-color:var(--accent,#FF5722);animation:erjHint 1.8s ease-out infinite;}' +
+                '@keyframes erjHint{0%{box-shadow:0 0 0 0 rgba(255,87,34,.6)}75%{box-shadow:0 0 0 12px rgba(255,87,34,0)}100%{box-shadow:0 0 0 0 rgba(255,87,34,0)}}' +
+                '@media(prefers-reduced-motion:reduce){.erj-tournav button.is-hint{animation:none;}.erj-tournext{transition:none;}}';
         document.head.appendChild(css);
         const box = document.createElement('div');
         box.className = 'erj-tournav';
@@ -553,9 +566,32 @@
                 '<svg viewBox="0 0 24 24"><polyline points="6 15 12 9 18 15"></polyline></svg></button>' +
                 '<button type="button" data-dir="1" aria-label="Next section" title="Next section">' +
                 '<svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg></button>';
+        const labels = nav.onPage
+            .filter(s => s && s.href && s.href.charAt(0) === '#' && document.querySelector(s.href))
+            .map(s => s.label);
+        const pill = document.createElement('button');
+        pill.type = 'button';
+        pill.className = 'erj-tournext';
+        pill.setAttribute('aria-label', 'Go to the next section');
+        pill.innerHTML = '<i>Next</i><b></b>';
+        box.appendChild(pill);
         document.body.appendChild(box);
         const upBtn = box.children[0];
         const downBtn = box.children[1];
+        /* the down arrow glows until it has been used once */
+        let hinted = false;
+        try { hinted = localStorage.getItem('erj-tour-used') === '1'; } catch (e) { /* noop */ }
+        if (!hinted) downBtn.classList.add('is-hint');
+        const used = () => { downBtn.classList.remove('is-hint'); try { localStorage.setItem('erj-tour-used', '1'); } catch (e) { /* noop */ } };
+        let pillTimer = 0;
+        const showNext = (idx) => {
+            const nxt = labels[idx + 1];
+            if (!nxt) { pill.classList.remove('on'); return; }
+            pill.querySelector('b').textContent = nxt;
+            pill.classList.add('on');
+            clearTimeout(pillTimer);
+            pillTimer = setTimeout(() => pill.classList.remove('on'), 2600);
+        };
         const OFFSET = 84;
         const reduced = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
         /* Cached: this ran getBoundingClientRect() for every stop on every scroll
@@ -563,6 +599,8 @@
         let _tops = null;
         const tops = () => (_tops || (_tops = stops.map(el => el.getBoundingClientRect().top + window.pageYOffset - OFFSET)));
         window.addEventListener('resize', () => { _tops = null; }, { passive: true });
+        /* images and fonts move sections after the first measurement: measure again */
+        window.addEventListener('load', () => { _tops = null; setTimeout(() => { _tops = null; }, 1500); }, { once: true });
         const currentIndex = () => {
             const y = window.pageYOffset;
             const t = tops();
@@ -587,7 +625,9 @@
                 return;
             }
             _measured = true;
-            downBtn.disabled = currentIndex() >= stops.length - 1;
+            const ci = currentIndex();
+            downBtn.disabled = ci >= stops.length - 1;
+            if (!atTop) showNext(ci);
         };
         const go = (dir) => {
             const idx = currentIndex();
@@ -607,7 +647,10 @@
             setTimeout(sync, 350);
         };
         upBtn.addEventListener('click', () => go(-1));
-        downBtn.addEventListener('click', () => go(1));
+        downBtn.addEventListener('click', () => { used(); go(1); });
+        pill.addEventListener('click', () => { used(); go(1); });
+        /* any link into the page tour (e.g. "Start the tour") counts as starting it */
+        document.addEventListener('click', e => { const a = e.target.closest && e.target.closest('#htStart,.f-stop'); if (a) used(); });
         let ticking = false;
         window.addEventListener('scroll', () => {
             if (ticking)

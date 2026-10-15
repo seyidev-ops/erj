@@ -1023,6 +1023,51 @@ a.promo-tick{text-decoration:none;display:block;}
   .f-verify{margin:-1.2rem 0 1.8rem;font-size:0.78rem;}
   .f-verify a{color:var(--ink-faint);text-decoration:none;border-bottom:1px solid var(--card-line);transition:color .3s,border-color .3s;}
   .f-verify a:hover{color:var(--accent);border-bottom-color:var(--accent);}
+  /* ══ 01 · START HERE — the page in eight stops. Alive, but nothing is ever
+     hidden: stops pop in with transform only, and the big moving pieces are
+     desktop only (phones paint blank tiles otherwise). ══ */
+  .ht{padding-top:clamp(1.6rem,4vw,2.6rem);padding-bottom:clamp(.6rem,2vw,1.2rem);}
+  .ht-in{position:relative;border-radius:26px;padding:clamp(1.3rem,3.6vw,2.4rem);overflow:hidden;isolation:isolate;
+    border:1px solid rgba(255,87,34,.35);
+    background:radial-gradient(70% 90% at 0% 0%,rgba(255,87,34,.16),transparent 60%),radial-gradient(60% 80% at 100% 100%,rgba(13,140,79,.14),transparent 60%),var(--card);}
+  .ht-head{max-width:760px;}
+  .ht-h{font-family:var(--font-display);font-size:clamp(1.6rem,4.2vw,2.6rem);font-weight:800;letter-spacing:-.02em;line-height:1.1;margin:.2rem 0 .6rem;}
+  .ht-p{font-size:clamp(.92rem,1.4vw,1.02rem);color:var(--ink-soft);line-height:1.6;margin:0 0 1.4rem;}
+  .ht-p b{color:var(--ink);}
+  .ht .f-stops{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.7rem;}
+  .ht .f-stop{display:flex;flex-direction:column;align-items:flex-start;gap:.35rem;padding:1rem 1rem 1.05rem;border-radius:16px;
+    border:1px solid var(--line);background:var(--bg,#000);text-decoration:none;color:var(--ink);overflow:hidden;
+    animation:htPop .6s cubic-bezier(.22,1,.36,1) both;transition:transform .3s var(--ease),border-color .3s,box-shadow .3s;}
+  .ht .f-stop::before{display:none;}
+  .ht .f-stop::after{content:'';position:absolute;inset:0;pointer-events:none;
+    background:linear-gradient(105deg,transparent 30%,rgba(255,196,107,.18) 50%,transparent 70%);transform:translateX(-120%);transition:transform .7s var(--ease);}
+  .ht .f-stop:hover{transform:translateY(-5px);border-color:var(--accent);box-shadow:0 18px 40px rgba(255,87,34,.18);padding-left:1rem;background:var(--bg,#000);}
+  .ht .f-stop:hover::after{transform:translateX(120%);}
+  .ht .f-stop .no{font-family:var(--font-display);font-size:1.7rem;font-weight:800;line-height:1;letter-spacing:-.03em;
+    background:linear-gradient(135deg,#FF5722,#FFC46B);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;}
+  .ht .f-stop .lbl{font-family:var(--font-display);font-weight:700;font-size:1rem;line-height:1.25;}
+  .ht .f-stop .lbl small{display:block;font-family:var(--font-body);font-weight:400;font-size:.78rem;color:var(--ink-soft);margin-top:.3rem;line-height:1.45;}
+  .ht .f-stop .go{position:absolute;top:1rem;right:1rem;color:var(--accent);transition:transform .3s var(--ease);}
+  .ht .f-stop:hover .go{transform:translate(3px,3px) rotate(45deg);}
+  .ht .f-stop.is-here{border-color:var(--accent);background:var(--bg,#000);padding-left:1rem;}
+  /* the first stop invites the first tap */
+  .ht .f-stop:first-child{border-color:rgba(255,87,34,.6);}
+  @media(prefers-reduced-motion:no-preference){.ht .f-stop:first-child{animation:htPop .6s cubic-bezier(.22,1,.36,1) both,htCall 2.4s ease-out 1.2s infinite;}}
+  .ht .f-stop:nth-child(2){animation-delay:.06s}.ht .f-stop:nth-child(3){animation-delay:.12s}.ht .f-stop:nth-child(4){animation-delay:.18s}
+  .ht .f-stop:nth-child(5){animation-delay:.24s}.ht .f-stop:nth-child(6){animation-delay:.30s}.ht .f-stop:nth-child(7){animation-delay:.36s}.ht .f-stop:nth-child(8){animation-delay:.42s}
+  @keyframes htPop{from{transform:translateY(18px) scale(.96);}to{transform:none;}}
+  @keyframes htCall{0%{box-shadow:0 0 0 0 rgba(255,87,34,.55)}70%{box-shadow:0 0 0 12px rgba(255,87,34,0)}100%{box-shadow:0 0 0 0 rgba(255,87,34,0)}}
+  .ht-cta{display:flex;flex-wrap:wrap;align-items:center;gap:1rem 1.6rem;margin-top:1.5rem;}
+  .ht-skip{font-size:.88rem;font-weight:600;color:var(--accent);text-decoration:none;}
+  .ht-skip:hover{text-decoration:underline;}
+  html[data-theme="day"] .ht .f-stop,html[data-theme="day"] .ht .f-stop:hover,html[data-theme="day"] .ht .f-stop.is-here{background:#fff;}
+  @media(max-width:900px){.ht .f-stops{grid-template-columns:repeat(2,minmax(0,1fr));}}
+  @media(max-width:560px){
+    .ht .f-stop{padding:.8rem .8rem .85rem;gap:.25rem;}
+    .ht .f-stop .no{font-size:1.35rem;}.ht .f-stop .lbl{font-size:.9rem;}
+    .ht .f-stop .lbl small{display:none;}.ht .f-stop .go{top:.8rem;right:.8rem;}
+    .ht-cta .btn-primary-ui{width:100%;}}
+  @media(prefers-reduced-motion:reduce){.ht .f-stop,.ht .f-stop:first-child{animation:none;}.ht .f-stop::after{display:none;}}
   .f-tour{border-top:1px solid var(--line);padding-top:1.3rem;}
   .f-tour-t{font-size:0.62rem;font-weight:500;letter-spacing:0.22em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:0.9rem;}
   .f-stops{display:grid;grid-template-columns:1fr;gap:0.1rem;}
@@ -1597,7 +1642,7 @@ html[data-theme="day"] .timer-num{background-image:linear-gradient(160deg,#0A0A0
 <noscript><iframe height="0" src="https://www.googletagmanager.com/ns.html?id=GTM-NMFHS59B" style="display:none;visibility:hidden" width="0"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 <div id="erjNavMount"></div>
-<script>window.ERJ_NAV={active:'home',tourTitle:'A quick tour — or jump anywhere',tourSkip:{label:'Explore the ERJ ecosystem',href:'#pledge'},onPage:[{label:'What We Can Do For You',href:'#promise',sub:'Become hireable, represented and aimed at global employers — from right where you are'},{label:'Live Remote Jobs',href:'#jobs-live',sub:'Real roles open to Nigeria, by field — and whether you are ready for them'},{label:'Proof It Works',href:'#story',sub:'Documented outcomes and case studies'},{label:'The Promise',href:'#pledge',sub:'The five parts of every search, and how we carry you through them'},{label:'Free For You',href:'#free',sub:'The CV scan, the clinic, the blog and the job board — all free'},{label:'How We Help',href:'#paths',sub:'Six ways in, from a book to full support'},{label:'Before You Decide',href:'#faq',sub:'The questions everyone asks first'},{label:'Join Cohort 12',href:'#enrol',sub:'Why Foundation Training is the surest way in · enrolment closes Sat 31 Oct'}]};</script>
+<script>window.ERJ_NAV={active:'home',tourTitle:'',tourStart:2,onPage:[{label:'Start Here',href:'#tour',sub:'The whole page in eight stops',tourSelf:true},{label:'What We Can Do For You',href:'#promise',sub:'Become hireable and represented for global remote work'},{label:'The Promise',href:'#pledge',sub:'The five parts of every search, and how we fix each one'},{label:'Live Remote Jobs',href:'#jobs-live',sub:'The supply fix: real roles open to Nigeria, by field'},{label:'Proof It Works',href:'#facilitator',sub:'Who is behind this, and what changed for people like you'},{label:'Free For You',href:'#free',sub:'The diagnosis, the CV scan, the clinic and the blog'},{label:'How We Help',href:'#paths',sub:'Six ways in, from a book to full support'},{label:'Before You Decide',href:'#faq',sub:'The questions everyone asks first'},{label:'Join Cohort 12',href:'#enrol',sub:'Enrolment closes Sat 31 Oct'}]};</script>
 <main>
 <!-- ADVANTAGE TICKER -->
 <div class="ha-ticker ha-ticker-top" role="region" aria-label="Why ERJ">
@@ -1607,11 +1652,27 @@ html[data-theme="day"] .timer-num{background-image:linear-gradient(160deg,#0A0A0
 </div>
 </div>
 <!-- HERO -->
+<!-- 01 · START HERE: the whole page in eight stops (rendered from ERJ_NAV.onPage) -->
+<section class="wrap ht" id="tour">
+<div class="ht-in">
+<div class="ht-head">
+<div class="step"><span class="step-n">01</span><span class="step-l">Start Here · Your Quick Tour</span></div>
+<h2 class="ht-h">New here? <em>The whole page in eight stops.</em></h2>
+<p class="ht-p">Tap any stop to jump straight to it, or press <b>Start the tour</b> and follow the arrows on the left of your screen. Each one takes you to the next stop.</p>
+</div>
+<div class="ht-tour" data-erj-tour=""></div>
+<div class="ht-cta">
+<a class="btn-primary-ui pulse" href="#promise" id="htStart"><span>Start the tour</span><span class="arrow-wrap"><span class="arrow is-down">↓</span></span></a>
+<a class="ht-skip" href="#enrol">Already decided? Skip to Join Cohort 12 →</a>
+</div>
+</div>
+</section>
+
 <section class="wrap home-hero" id="promise" style="padding-top:clamp(2.5rem,6vw,4rem);">
 <div aria-hidden="true" class="ha-aurora"><i class="a1"></i><i class="a2"></i><i class="a3"></i></div>
 <div class="ha-grid">
 <div class="ha-copy">
-<div class="step"><span class="step-n">01</span><span class="step-l">What We Can Do For You</span></div>
+<div class="step"><span class="step-n">02</span><span class="step-l">What We Can Do For You</span></div>
 <h1 class="ask">Become <em>hireable and represented</em> for global remote work — from right where you are.</h1>
 <p class="ask-sub">You do not need to relocate. You need the skill, roles you are eligible for, assets an employer can read, an aimed search and the judgement to close. We build those with you; the market sets the timing. <strong>Cohort 12 enrolment is open now and closes Saturday 31 October.</strong></p>
 <div class="answers">
@@ -1648,8 +1709,32 @@ html[data-theme="day"] .timer-num{background-image:linear-gradient(160deg,#0A0A0
 </div>
 </section>
 
-<!-- ══ LIVE JOB BOARD (generated counts, see jobboard.py) ══ -->
-<section class="wrap" id="jobs-live" style="padding-top:0;padding-bottom:0;">
+<!-- FOUNDER WELCOME -->
+<span aria-hidden="true" id="about"></span>
+<!-- #about is the canonical anchor for "who runs this". The section keeps
+       id="facilitator" so existing links still resolve. -->
+
+<!-- TRANSFORMATION STORY -->
+
+<!-- THE PROMISE · the Five-Finger Model and how we carry you -->
+<section class="wrap section-line" id="pledge">
+<div class="pledge reveal">
+<span class="pledge-tag"><span class="pledge-dot"></span> 03 · The Promise</span>
+<h2 class="pledge-h">We will not let you go until you're <em>hired.</em></h2>
+<p class="pledge-p">Every remote job search runs on the same five parts, the <strong>ERJ Five-Finger Model</strong>. When it stops producing offers, the problem usually starts at one of them. We find which one, fix it with you, and stay until the offer is signed.</p>
+<div class="fps" id="joints" style="scroll-margin-top:90px"><div class="fp reveal"><div class="fp-top"><span class="fp-n">01</span><span class="fp-t">Capacity</span></div><p class="fp-q">Can you already do the job itself?</p><p class="fp-h">We check the skill and the remote work habits first, and build what is missing before anything else.</p></div><div class="fp reveal"><div class="fp-top"><span class="fp-n">02</span><span class="fp-t">Supply</span></div><p class="fp-q">Are you finding enough real jobs you can apply for from here?</p><p class="fp-h">We put real roles you are eligible for in front of you, so you stop applying to jobs you were never allowed to get.</p></div><div class="fp reveal"><div class="fp-top"><span class="fp-n">03</span><span class="fp-t">Representation</span></div><p class="fp-q">Do your CV and LinkedIn show employers what you can do?</p><p class="fp-h">We rebuild your CV, LinkedIn and proof of work until a stranger can see your value in thirty seconds.</p></div><div class="fp reveal"><div class="fp-top"><span class="fp-n">04</span><span class="fp-t">Aim</span></div><p class="fp-q">Are you applying to the jobs most likely to hire you?</p><p class="fp-h">We point every application at companies that can hire and pay someone where you live.</p></div><div class="fp reveal"><div class="fp-top"><span class="fp-n">05</span><span class="fp-t">Conversion</span></div><p class="fp-q">Do your interviews turn into job offers?</p><p class="fp-h">We rehearse the interview and the money conversation with you until offers follow.</p></div></div>
+<div class="cy">
+<div class="cy-head"><span class="cy-label">How we carry you</span><h3 class="cy-h">From the first fix to the <em>signed offer.</em></h3></div>
+<ol class="cy-track"><span class="cy-rail" aria-hidden="true"><i></i></span><li class="cy-step"><span class="cy-ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span><span class="cy-k">Step 1 · With you</span><b class="cy-t">We fix it with you</b><span class="cy-p">Foundation Training</span><span class="cy-d">Live classes, your work marked, a certificate.</span></li><li class="cy-step"><span class="cy-ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg></span><span class="cy-k">Step 2 · For you</span><b class="cy-t">We run it for you</b><span class="cy-p">Job Application</span><span class="cy-d">We source, tailor and apply on your behalf.</span></li><li class="cy-step"><span class="cy-ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></span><span class="cy-k">Step 3 · Beside you</span><b class="cy-t">We stay with you</b><span class="cy-p">The Inner Circle</span><span class="cy-d">Interviews, the offer and your first months in the job.</span></li></ol>
+<a class="cy-go" href="#paths"><span>Compare the routes</span><span class="cy-go-a" aria-hidden="true">↓</span></a>
+</div>
+<p class="pledge-fine">Not sure which part is yours? <a href="diagnose/">Five questions will tell you</a>. What we promise is persistence, never a date: no placement, timeline or salary is guaranteed.</p>
+</div>
+</section>
+
+<!-- 04 · LIVE JOBS: supply, the second part, fixed for free (counts written by jobboard.py) -->
+<section class="wrap section-line" id="jobs-live">
+<div class="step"><span class="step-n">04</span><span class="step-l">Live Remote Jobs · The Supply Fix</span></div>
 <!--JOBTEASE:START ctx=home-->
 <style>
 .jt{--jt-o:#FF5722;--jt-line:rgba(255,255,255,.12);--jt-card:rgba(255,255,255,.035);--jt-mut:rgba(255,255,255,.66);position:relative;overflow:hidden;border:1px solid var(--jt-line);border-radius:22px;padding:clamp(1.3rem,3.4vw,2.2rem);margin:clamp(1.8rem,4vw,2.6rem) 0;background:radial-gradient(120% 140% at 100% 0,rgba(255,87,34,.14),transparent 55%),var(--jt-card);text-align:left;}
@@ -1688,12 +1773,10 @@ html[data-theme="day"] .jt{--jt-o:#E8470F;--jt-line:rgba(20,17,14,.12);--jt-card
 </aside>
 <!--JOBTEASE:END-->
 </section>
-<!-- FOUNDER WELCOME -->
-<span aria-hidden="true" id="about"></span>
-<!-- #about is the canonical anchor for "who runs this". The section keeps
-       id="facilitator" so existing links still resolve. -->
+
+<!-- 05 · PROOF: who is behind this, the numbers, then the stories -->
 <section class="wrap section-line" id="facilitator" style="padding-top:clamp(2.4rem,6vw,4rem);padding-bottom:clamp(1.6rem,4vw,2.4rem);">
-<p class="section-label"><span class="mark"></span> A word from your facilitator</p>
+<div class="step"><span class="step-n">05</span><span class="step-l">Proof It Works · A Word From Your Facilitator</span></div>
 <div class="founder">
 <div class="f-frame reveal">
 <span class="f-tick tl"></span><span class="f-tick br"></span>
@@ -1713,11 +1796,9 @@ html[data-theme="day"] .jt{--jt-o:#E8470F;--jt-line:rgba(20,17,14,.12);--jt-card
 <p class="f-note">I built Everything Remote Job for one person: the capable African professional the global market keeps overlooking — not for lack of skill, but for lack of a system. <strong>You are not the problem.</strong> The way you were taught to present yourself and search is.</p>
 <p class="f-sign">— Oluwaseyi<span>Lead Facilitator, Everything Remote Job · Business Play Ltd · Training professionals into global roles since 2013</span></p>
 <p class="f-verify"><a href="https://www.linkedin.com/in/seyiashiru" rel="noopener me" target="_blank">Oluwaseyi Ashiru on LinkedIn →</a></p>
-<div class="f-tour" data-erj-tour=""></div>
 </div>
 </div>
 </section>
-<!-- PROOF BAR -->
 <section class="wrap" id="proof" style="padding-top:0;">
 <div class="proof reveal">
 <div class="proof-cell">
@@ -1734,9 +1815,7 @@ html[data-theme="day"] .jt{--jt-o:#E8470F;--jt-line:rgba(20,17,14,.12);--jt-card
 </div>
 </div>
 </section>
-<!-- TRANSFORMATION STORY -->
 <section class="wrap section-line" id="story">
-<div class="step"><span class="step-n">02</span><span class="step-l">Proof It Works</span></div>
 <h2 class="cost-h pf-h">They started where you are. <em>Here is what changed.</em></h2>
 <p class="pf-lead">Same country, same power cuts, same doubts. None of them got luckier. Each one found what was holding them back, fixed that one thing, and kept going.</p>
 <div class="pf-stage">
@@ -1845,24 +1924,9 @@ html[data-theme="day"] .jt{--jt-o:#E8470F;--jt-line:rgba(20,17,14,.12);--jt-card
 })();
 </script>
 </section>
-<!-- THE PROMISE · the Five-Finger Model and how we carry you -->
-<section class="wrap section-line" id="pledge">
-<div class="pledge reveal">
-<span class="pledge-tag"><span class="pledge-dot"></span> 03 · The Promise</span>
-<h2 class="pledge-h">We will not let you go until you're <em>hired.</em></h2>
-<p class="pledge-p">Every remote job search runs on the same five parts, the <strong>ERJ Five-Finger Model</strong>. When it stops producing offers, the problem usually starts at one of them. We find which one, fix it with you, and stay until the offer is signed.</p>
-<div class="fps" id="joints" style="scroll-margin-top:90px"><div class="fp reveal"><div class="fp-top"><span class="fp-n">01</span><span class="fp-t">Capacity</span></div><p class="fp-q">Can you already do the job itself?</p><p class="fp-h">We check the skill and the remote work habits first, and build what is missing before anything else.</p></div><div class="fp reveal"><div class="fp-top"><span class="fp-n">02</span><span class="fp-t">Supply</span></div><p class="fp-q">Are you finding enough real jobs you can apply for from here?</p><p class="fp-h">We put real roles you are eligible for in front of you, so you stop applying to jobs you were never allowed to get.</p></div><div class="fp reveal"><div class="fp-top"><span class="fp-n">03</span><span class="fp-t">Representation</span></div><p class="fp-q">Do your CV and LinkedIn show employers what you can do?</p><p class="fp-h">We rebuild your CV, LinkedIn and proof of work until a stranger can see your value in thirty seconds.</p></div><div class="fp reveal"><div class="fp-top"><span class="fp-n">04</span><span class="fp-t">Aim</span></div><p class="fp-q">Are you applying to the jobs most likely to hire you?</p><p class="fp-h">We point every application at companies that can hire and pay someone where you live.</p></div><div class="fp reveal"><div class="fp-top"><span class="fp-n">05</span><span class="fp-t">Conversion</span></div><p class="fp-q">Do your interviews turn into job offers?</p><p class="fp-h">We rehearse the interview and the money conversation with you until offers follow.</p></div></div>
-<div class="cy">
-<div class="cy-head"><span class="cy-label">How we carry you</span><h3 class="cy-h">From the first fix to the <em>signed offer.</em></h3></div>
-<ol class="cy-track"><span class="cy-rail" aria-hidden="true"><i></i></span><li class="cy-step"><span class="cy-ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span><span class="cy-k">Step 1 · With you</span><b class="cy-t">We fix it with you</b><span class="cy-p">Foundation Training</span><span class="cy-d">Live classes, your work marked, a certificate.</span></li><li class="cy-step"><span class="cy-ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg></span><span class="cy-k">Step 2 · For you</span><b class="cy-t">We run it for you</b><span class="cy-p">Job Application</span><span class="cy-d">We source, tailor and apply on your behalf.</span></li><li class="cy-step"><span class="cy-ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></span><span class="cy-k">Step 3 · Beside you</span><b class="cy-t">We stay with you</b><span class="cy-p">The Inner Circle</span><span class="cy-d">Interviews, the offer and your first months in the job.</span></li></ol>
-<a class="cy-go" href="#paths"><span>Compare the routes</span><span class="cy-go-a" aria-hidden="true">↓</span></a>
-</div>
-<p class="pledge-fine">Not sure which part is yours? <a href="diagnose/">Five questions will tell you</a>. What we promise is persistence, never a date: no placement, timeline or salary is guaranteed.</p>
-</div>
-</section>
 <!-- FREE SHELF -->
 <section class="wrap section-line" id="free">
-<div class="step"><span class="step-n">04</span><span class="step-l">Free For You</span></div>
+<div class="step"><span class="step-n">06</span><span class="step-l">Free For You</span></div>
 <h2 class="cost-h" style="margin-bottom:0.9rem;">You can get a long way without <em>paying us anything.</em></h2>
 <div class="fg-grid">
 <div class="fg-main">
@@ -1903,7 +1967,7 @@ html[data-theme="day"] .jt{--jt-o:#E8470F;--jt-line:rgba(20,17,14,.12);--jt-card
 </section>
 <!-- THE LADDER -->
 <section class="wrap section-line" id="paths">
-<div class="step"><span class="step-n">05</span><span class="step-l">How We Help</span></div>
+<div class="step"><span class="step-n">07</span><span class="step-l">How We Help</span></div>
 <h2 class="cost-h" style="margin-bottom:0.9rem;">Six ways we help. Choose only after you know <em>why.</em></h2>
 <p class="paths-lead">Do not compare prices until you know why — <a href="diagnose/" style="color:var(--accent);font-weight:600;">run the free diagnosis first</a>. Every price and product sits together in <a href="register.html" style="color:var(--accent);font-weight:600;">the store</a>.</p>
 <div class="ladder">
@@ -2006,7 +2070,7 @@ html[data-theme="day"] .jt{--jt-o:#E8470F;--jt-line:rgba(20,17,14,.12);--jt-card
 
 <!-- FAQ / OBJECTIONS -->
 <section class="wrap section-line" id="faq">
-<div class="step"><span class="step-n">06</span><span class="step-l">Before You Decide</span></div>
+<div class="step"><span class="step-n">08</span><span class="step-l">Before You Decide</span></div>
 <h2 class="cost-h" style="margin-bottom:1.6rem;">The questions everyone asks <em>first.</em></h2>
 <div class="faq reveal">
 <details>
@@ -2046,7 +2110,7 @@ html[data-theme="day"] .jt{--jt-o:#E8470F;--jt-line:rgba(20,17,14,.12);--jt-card
 <!-- DIAGNOSIS · DECISION POINT -->
 <!-- JOIN COHORT 12 · why Foundation Training, one countdown, one action -->
 <section class="wrap section-line" id="enrol">
-<div class="step"><span class="step-n">07</span><span class="step-l">Join Cohort 12</span></div>
+<div class="step"><span class="step-n">09</span><span class="step-l">Join Cohort 12</span></div>
 <div class="ft-close reveal">
 <div class="ft-why">
 <h2 class="cost-h">Why Foundation Training is our <em>surest way in.</em></h2>
