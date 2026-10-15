@@ -425,7 +425,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border2);padding:16px 16
 .foot a{color:var(--muted);text-decoration:none;border-bottom:1px solid var(--border2);transition:color .3s;}
 .foot a:hover{color:var(--accent);}
 footer a{color:var(--glow);text-decoration:none;}
-.fade-in{opacity:0;transform:translateY(9px);transition:opacity .4s ease,transform .4s ease;}
+.fade-in{transform:translateY(9px);transition:transform .45s cubic-bezier(.22,1,.36,1);}
 .fade-in.v{opacity:1;transform:none;}
 .toast-w{position:fixed;bottom:calc(14px + var(--sab));left:50%;transform:translateX(-50%);z-index:9999;pointer-events:none;max-width:calc(100vw - 28px);}
 .toast{background:var(--bg2);border:1px solid var(--border);border-radius:9px;padding:9px 14px;font-size:.76rem;color:var(--txt);box-shadow:var(--sh2);opacity:0;transition:opacity .3s;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
@@ -561,13 +561,25 @@ h1 strong,h1 em{ -webkit-text-fill-color:currentColor!important;background:none!
 </div>
 </div>
 <!-- ─── HERO ─── -->
-<section class="hero">
-<div class="h-badge"><span class="h-dot"></span>Remote Work Insights</div>
+<section class="hero bx-hero">
+<div aria-hidden="true" class="bx-aur"><i class="b1"></i><i class="b2"></i><i class="b3"></i></div>
+<div class="bx-hero-in">
+<div class="bx-hero-copy">
+<div class="h-badge"><span class="h-dot"></span>New post every day · free to read</div>
 <h1>The <span>Remote Job</span> Blog</h1>
-<p>Guides, success stories, and strategies to land global remote roles from Africa. Everything here is free. If you are not yet sure what is broken in your search, <a href="starthere.html" style="color:var(--accent);font-weight:600;text-decoration:none;">start with the diagnosis before choosing a product</a>.</p>
+<p class="bx-sub">Read one post. <b>Fix one thing in your search.</b> Guides, honest answers and real stories for professionals in Africa going after global remote roles.</p>
 <div class="srch">
 <svg viewbox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" x2="16.65" y1="21" y2="16.65"></line></svg>
-<input autocomplete="off" enterkeyhint="search" id="searchInput" oninput="filterPosts()" placeholder="Search articles…" type="search"/>
+<input autocomplete="off" enterkeyhint="search" id="searchInput" oninput="filterPosts()" placeholder="Search: CV, LinkedIn, interviews, salary…" type="search"/>
+</div>
+<div class="bx-chips" id="bxChips"><span><b id="bxCount">200+</b> free posts</span><span><b>7</b> topics</span><span>Written by <b>Oluwaseyi Ashiru</b></span></div>
+</div>
+<aside class="bx-start" aria-label="Free tools to start with">
+<div class="bx-start-k">Start here · free</div>
+<a class="bx-tool" href="diagnose/"><span class="bx-tool-i" aria-hidden="true">🩺</span><span class="bx-tool-t"><b>Find what is holding you back</b><small>5 questions · 90 seconds</small></span><span class="bx-tool-a" aria-hidden="true">→</span></a>
+<a class="bx-tool" href="cvscan/"><span class="bx-tool-i" aria-hidden="true">📄</span><span class="bx-tool-t"><b>CV Scan</b><small>Your CV scored out of ten, on your device</small></span><span class="bx-tool-a" aria-hidden="true">→</span></a>
+<a class="bx-tool" href="jobs/"><span class="bx-tool-i" aria-hidden="true"><i class="bx-live"></i></span><span class="bx-tool-t"><b>Live remote jobs</b><small>Open to Nigeria and Africa, checked twice a day</small></span><span class="bx-tool-a" aria-hidden="true">→</span></a>
+</aside>
 </div>
 </section>
 <!-- ─── MAIN CONTENT ─── -->
@@ -580,7 +592,7 @@ h1 strong,h1 em{ -webkit-text-fill-color:currentColor!important;background:none!
 <div class="pager erj-pre" id="pager"></div>
 <!-- Mobile sidebar accordion -->
 <button class="mob-sb-btn" id="mobSbBtn" onclick="toggleMobSb()">
-<span>📌 Resources &amp; Archive</span>
+<span>📌 Browse by month &amp; topic</span>
 <span id="mobSbArrow">▾</span>
 </button>
 <div class="mob-sb-body" id="mobSbBody">
@@ -594,6 +606,21 @@ h1 strong,h1 em{ -webkit-text-fill-color:currentColor!important;background:none!
 </div>
 </aside>
 </div>
+<!-- ─── HOW WE HELP + CLOSE ─── -->
+<section class="bx-ways" aria-labelledby="bxWaysH">
+<div class="bx-ways-in">
+<div class="bx-ways-head"><span class="bx-k">When reading is not enough</span><h2 id="bxWaysH">Three ways we help you <span>get hired.</span></h2></div>
+<div class="bx-ways-row">
+<a class="bx-way" href="index.html#help-diy"><span class="bx-way-i" aria-hidden="true">📘</span><span class="bx-way-k">You do the work</span><b>Do it yourself</b><small>Books, tools and self-paced training, ready tonight.</small><span class="bx-way-go">See the options →</span></a>
+<a class="bx-way is-main" href="index.html#help-dwy"><span class="bx-way-i" aria-hidden="true">🤝</span><span class="bx-way-k">We do it together</span><b>Done with you</b><small>Live classes, your work marked, a team beside you.</small><span class="bx-way-go">See the options →</span></a>
+<a class="bx-way" href="index.html#help-dfy"><span class="bx-way-i" aria-hidden="true">🚀</span><span class="bx-way-k">We do it for you</span><b>Done for you</b><small>Our team rebuilds, searches and applies while you work.</small><span class="bx-way-go">See the options →</span></a>
+</div>
+<div class="bx-close">
+<div><b>Cohort 12 of Foundation Training is enrolling.</b><span>Twenty training days, live and marked, with a certificate at the end.</span></div>
+<div class="bx-close-btns"><a class="btn-primary-ui" href="foundationtraining/"><span>See Foundation Training</span><span class="arrow-wrap"><span class="arrow">→</span></span></a><a class="bx-close-alt" href="diagnose/">Not sure yet? Take the free diagnosis →</a></div>
+</div>
+</div>
+</section>
 <!-- ─── ARTICLE OVERLAY ─── -->
 <div class="overlay" id="overlay">
 <div class="article" id="artWrap">
@@ -3679,8 +3706,8 @@ const CC={
   'CV & LinkedIn':   {bg:'rgba(57,197,187,.12)', c:'#39C5BB'},
   'Industry News':   {bg:'rgba(248,81,73,.12)',  c:'#F85149'},
 };
-const PER=6;
-let cat='All', page=1, curPost=null;
+const PER=7; /* seven posts + one house card = an even grid */
+let cat='All', page=1, curPost=null, month='';
 
 /* ─── DATA ─── */
 /* ── Sync ALL seeds (incl. drafts) into localStorage so blog-admin.html can see and manage them ──
@@ -3813,7 +3840,7 @@ function allPosts(){
 function filtered(){
   const q=document.getElementById('searchInput').value.trim().toLowerCase();
   return allPosts().filter(p=>{
-    const cOk=cat==='All'||p.category===cat;
+    const cOk=(cat==='All'||p.category===cat)&&(!month||(p.date||'').slice(0,7)===month);
     const qOk=!q||p.title.toLowerCase().includes(q)||p.excerpt.toLowerCase().includes(q)||(p.tags||[]).some(t=>t.includes(q));
     return cOk&&qOk;
   });
@@ -3828,9 +3855,23 @@ function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g
 
 /* ─── CATEGORIES ─── */
 function renderCats(){
-  document.getElementById('catBar').innerHTML=CATS.map(c=>`<button class="cat-pill${c===cat?' on':''}" onclick="setCat('${c}')">${c}</button>`).join('');
+  const ap=allPosts(), n=c=>c==='All'?ap.length:ap.filter(p=>p.category===c).length;
+  document.getElementById('catBar').innerHTML=CATS.map(c=>`<button class="cat-pill${c===cat?' on':''}" onclick="setCat('${c}')">${c}<span class="cat-n">${n(c)}</span></button>`).join('')
+    +(month?`<button class="cat-pill bx-month on" onclick="setMonth('')">${fmtMonth(month)} ✕</button>`:'');
+  const bc=document.getElementById('bxCount'); if(bc) bc.textContent=ap.length;
 }
 function setCat(c){cat=c;page=1;renderCats();renderPosts();}
+function fmtMonth(k){const [y,m]=k.split('-');return new Date(+y,+m-1,1).toLocaleDateString('en-US',{year:'numeric',month:'long'});}
+function setMonth(k){month=k;page=1;renderCats();renderPosts();renderSidebar();const c=document.getElementById('catBar');if(c&&k)window.scrollTo({top:c.getBoundingClientRect().top+scrollY-80,behavior:'smooth'});}
+/* One house card in every page of posts: what ERJ does, never a price. */
+const PROMOS=[
+ {k:'Done with you · Cohort 12 enrolling',t:'Remote Job Foundation Training',d:'Twenty training days, live classes, your work marked by a person, a certificate at the end.',h:'foundationtraining/',g:'See the programme'},
+ {k:'Free · live on Zoom',t:'The Application Clinic',d:'Bring your CV and one job advert you want. We find where the search is breaking and what to fix first.',h:'masterclass/',g:'Register free'},
+ {k:'Free · checked twice a day',t:'The Remote Job Board',d:'Every role is open to someone living in Nigeria or Africa. No fee, no email, no sign-up.',h:'jobs/',g:'See today’s jobs'},
+ {k:'Do it yourself',t:'The CV Engine',d:'Rebuild your CV against the ten-point rubric with a live score, and export a real .docx.',h:'cvbuilder.html',g:'See the CV Engine'},
+ {k:'Done for you',t:'We run the search for you',d:'Our team tailors your CV for one field and applies to verified roles on your behalf.',h:'jobapplication/',g:'See done-for-you'},
+ {k:'Do it yourself',t:'From Intent to Offer',d:'The whole ERJ method as a book. Every chapter ends with one task to do.',h:'fromintenttooffer/',g:'See the book'}];
+function promoHTML(i){const p=PROMOS[i%PROMOS.length];return `<a class="bx-promo" href="${p.h}"><span class="bx-promo-k">${p.k}</span><b>${p.t}</b><span class="bx-promo-d">${p.d}</span><span class="bx-promo-go">${p.g} →</span></a>`;}
 function filterPosts(){page=1;renderPosts();}
 
 /* ─── POSTS ─── */
@@ -3849,7 +3890,7 @@ function renderPosts(){
     fs.innerHTML=`<a class="feat-card fade-in" href="${postHref(feat.id)}" onclick="openPost('${feat.id}');return false;">
       <div class="feat-img" style="background:${feat.grad}">
         <span style="animation:fl 3s ease-in-out infinite;display:block">${feat.emoji}</span>
-        <span class="feat-lbl">⭐ FEATURED</span>
+        <span class="feat-lbl">⭐ LATEST PICK</span><span class="bx-ring r1"></span><span class="bx-ring r2"></span>
       </div>
       <div class="feat-body">
         <div class="feat-cat" style="color:${cc.c}">${feat.category}</div>
@@ -3860,6 +3901,7 @@ function renderPosts(){
           <span>📅 ${fmtD(feat.date)}</span>
           <span>⏱️ ${feat.readTime} min</span>
         </div>
+        <span class="bx-read">Read the post →</span>
       </div>
     </a>`;
   } else {fs.innerHTML='';}
@@ -3869,7 +3911,7 @@ function renderPosts(){
   if(!paged.length){
     grid.innerHTML=`<div class="empty"><div class="ei">📭</div><strong>No articles found</strong><br><span style="font-size:.82rem;color:var(--muted2)">Try a different category or search term.</span></div>`;
   } else {
-    grid.innerHTML=paged.map(p=>{
+    const cards=paged.map(p=>{
       const cc=CC[p.category]||{bg:'rgba(255,87,34,.12)',c:'#FF5722'};
       return `<a class="post-card fade-in" href="${postHref(p.id)}" onclick="openPost('${p.id}');return false;">
         <div class="pc-img" style="background:${p.grad}">${p.emoji}</div>
@@ -3883,13 +3925,21 @@ function renderPosts(){
           </div>
         </div>
       </a>`;
-    }).join('');
+    });
+    if(cards.length>=3) cards.splice(Math.min(4,cards.length),0,promoHTML(page-1));
+    grid.innerHTML=cards.join('');
   }
 
   /* pagination */
-  document.getElementById('pager').innerHTML=pages>1
-    ?Array.from({length:pages},(_,i)=>`<button class="pg-btn${i+1===page?' on':''}" onclick="goPage(${i+1})">${i+1}</button>`).join('')
-    :'';
+  /* a short pager: first, last, the pages around this one, and previous / next */
+  let pg='';
+  if(pages>1){
+    const want=new Set([1,pages,page-1,page,page+1].filter(n=>n>=1&&n<=pages));let last=0;
+    pg+=`<button class="pg-btn pg-step" ${page===1?'disabled':''} onclick="goPage(${page-1})">← Newer</button>`;
+    [...want].sort((a,b)=>a-b).forEach(n=>{if(n-last>1)pg+='<span class="pg-gap">…</span>';pg+=`<button class="pg-btn${n===page?' on':''}" onclick="goPage(${n})">${n}</button>`;last=n;});
+    pg+=`<button class="pg-btn pg-step" ${page===pages?'disabled':''} onclick="goPage(${page+1})">Older →</button>`;
+  }
+  document.getElementById('pager').innerHTML=pg;
 
   /* The reserved first-paint space has done its job — let the sections size
      to whatever is actually in them from here on. */
@@ -3911,7 +3961,7 @@ function sidebarHTML(){
     months[k]={l,n:((months[k]?months[k].n:0)||0)+1};
   });
   const arch=Object.entries(months).sort((a,b)=>b[0].localeCompare(a[0]))
-    .map(([,v])=>`<li class="arch-item"><span class="arch-m">${v.l}</span><span class="arch-n">${v.n}</span></li>`).join('');
+    .map(([k,v])=>`<li class="arch-item${k===month?' on':''}" role="button" tabindex="0" onclick="setMonth('${k}')" onkeydown="if(event.key==='Enter')setMonth('${k}')"><span class="arch-m">${v.l}</span><span class="arch-n">${v.n}</span></li>`).join('');
   const tags={};
   posts.forEach(p=>(p.tags||[]).forEach(t=>tags[t]=(tags[t]||0)+1));
   const tagH=Object.entries(tags).sort((a,b)=>b[1]-a[1]).slice(0,18)
@@ -3929,7 +3979,8 @@ function sidebarHTML(){
       <div class="sb-cta-h">Not sure what to fix first?</div>
       <p>Do not choose a product from the sidebar. Find the first weak point, then take the smallest correct next step.</p>
       <a href="starthere.html">Go to Your Starting Line →</a>
-    </div>`;
+    </div>
+    <a class="sb-ft" href="foundationtraining/"><span class="sb-ft-k">Cohort 12 · enrolling now</span><b>Foundation Training</b><span>Live, marked, certified. The surest way in.</span><span class="sb-ft-go">See the programme →</span></a>`;
 }
 function renderSidebar(){
   const h=sidebarHTML();
@@ -4283,6 +4334,134 @@ html[data-theme="day"] .nav,html[data-theme="day"] nav{background:var(--bg)!impo
    and tighter padding instead. */
 .btn-yes,.btn-pay,.btn-block,.fi-go,.r-go,.dfy-btn,.cvp-btn,.ts-cta-btn{white-space:nowrap;}
 @media(max-width:520px){.btn-yes,.btn-pay{padding-left:1.25rem;padding-right:1.25rem;gap:0.45rem;}}
+</style>
+<style id="blogAlive">
+/* ═══ Blog, alive (Oct 2026). Transform-only motion; big moving light on desktop only. ═══ */
+.bx-hero{text-align:left;padding:34px 16px 28px;isolation:isolate;}
+.bx-hero::before{display:none;}
+.bx-aur{position:absolute;inset:0;z-index:-1;overflow:hidden;pointer-events:none;}
+.bx-aur i{position:absolute;border-radius:50%;filter:blur(60px);opacity:.5;}
+.bx-aur .b1{width:420px;height:420px;left:-120px;top:-160px;background:radial-gradient(circle,rgba(255,87,34,.7),transparent 65%);}
+.bx-aur .b2{width:380px;height:380px;right:-120px;top:-60px;background:radial-gradient(circle,rgba(255,170,60,.45),transparent 65%);}
+.bx-aur .b3{width:320px;height:320px;left:40%;bottom:-220px;background:radial-gradient(circle,rgba(13,140,79,.4),transparent 65%);}
+html[data-theme="day"] .bx-aur i{opacity:.28;}
+@media(min-width:900px) and (prefers-reduced-motion:no-preference){
+  .bx-aur .b1{animation:bxDrift 16s ease-in-out infinite alternate;}.bx-aur .b2{animation:bxDrift 20s ease-in-out -6s infinite alternate-reverse;}}
+@keyframes bxDrift{to{transform:translate(80px,50px) scale(1.15);}}
+.bx-hero-in{max-width:1140px;margin:0 auto;display:grid;gap:22px;}
+.bx-hero h1{font-size:clamp(2rem,7vw,3.6rem);letter-spacing:-.03em;line-height:1.02;margin:.7rem 0 .7rem;}
+.bx-sub{font-size:clamp(.95rem,1.6vw,1.12rem)!important;max-width:52ch;padding:0!important;}
+.bx-sub b{color:var(--txt);font-weight:600;}
+.bx-hero .srch{margin:1.2rem 0 0;max-width:520px;}
+.bx-hero .srch input{padding:.95rem 1rem .95rem 2.6rem;border-radius:14px;font-size:.95rem;}
+.bx-chips{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1rem;}
+.bx-chips span{font-size:.74rem;color:var(--muted);padding:.38rem .75rem;border-radius:999px;border:1px solid var(--border);background:var(--bg3);}
+.bx-chips b{color:var(--txt);}
+.bx-start{display:flex;flex-direction:column;gap:.6rem;align-self:center;}
+.bx-start-k{font-size:.62rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#3fd18b;}
+html[data-theme="day"] .bx-start-k{color:#0B6E3E;}
+.bx-tool{display:flex;align-items:center;gap:.85rem;padding:.9rem 1rem;border-radius:16px;border:1px solid var(--border);background:var(--card);
+  text-decoration:none;color:var(--txt);transition:transform .3s cubic-bezier(.22,1,.36,1),border-color .3s,box-shadow .3s;}
+.bx-tool:hover{transform:translateX(6px);border-color:var(--accent);box-shadow:0 14px 34px rgba(255,87,34,.16);}
+.bx-tool-i{flex:0 0 2.6rem;height:2.6rem;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.25rem;background:rgba(255,87,34,.12);}
+.bx-tool-t{flex:1;display:flex;flex-direction:column;gap:.15rem;min-width:0;}
+.bx-tool-t b{font-family:var(--fd);font-size:.95rem;}
+.bx-tool-t small{font-size:.74rem;color:var(--muted);line-height:1.4;}
+.bx-tool-a{color:var(--accent);font-weight:700;transition:transform .3s;}
+.bx-tool:hover .bx-tool-a{transform:translateX(4px);}
+.bx-live{width:12px;height:12px;border-radius:50%;background:#3fd18b;box-shadow:0 0 0 0 rgba(63,209,139,.6);}
+@media(prefers-reduced-motion:no-preference){.bx-live{animation:bxPing 2s ease-out infinite;}}
+@keyframes bxPing{0%{box-shadow:0 0 0 0 rgba(63,209,139,.6)}80%,100%{box-shadow:0 0 0 12px rgba(63,209,139,0)}}
+@media(min-width:900px){.bx-hero{padding:64px 5% 56px;}.bx-hero-in{grid-template-columns:minmax(0,1.25fr) minmax(300px,.75fr);gap:3rem;align-items:center;}}
+
+/* categories with counts, sticky on scroll */
+.cats{position:sticky;top:63px;z-index:20;background:var(--bg);padding:10px 0 8px;margin-bottom:12px;}
+.cat-pill{gap:.45rem;}
+.cat-n{font-size:.66rem;font-weight:700;padding:.08rem .42rem;border-radius:999px;background:var(--border2);color:var(--muted);}
+.cat-pill.on .cat-n{background:rgba(0,0,0,.22);color:#fff;}
+.cat-pill:hover{border-color:var(--accent);color:var(--txt);}
+
+/* featured: split, big, alive */
+.feat-card{border-color:rgba(255,87,34,.4);border-radius:22px;transition:transform .35s cubic-bezier(.22,1,.36,1),box-shadow .35s;}
+.feat-card:hover{transform:translateY(-4px);box-shadow:0 26px 60px rgba(255,87,34,.18);}
+.feat-img{height:190px;font-size:4.2rem;}
+.feat-img>span:first-child{position:relative;z-index:2;}
+.bx-ring{position:absolute;left:50%;top:50%;border:1px solid rgba(255,87,34,.35);border-radius:50%;transform:translate(-50%,-50%);}
+.bx-ring.r1{width:130px;height:130px;}.bx-ring.r2{width:210px;height:210px;border-color:rgba(255,196,107,.22);}
+@media(prefers-reduced-motion:no-preference){.bx-ring.r1{animation:bxRing 4s ease-in-out infinite;}.bx-ring.r2{animation:bxRing 4s ease-in-out -2s infinite;}}
+@keyframes bxRing{50%{transform:translate(-50%,-50%) scale(1.12);}}
+.feat-body{padding:18px;}
+.feat-title{font-size:clamp(1.1rem,2.4vw,1.5rem);}
+.feat-exc{font-size:.86rem;}
+.bx-read{display:inline-flex;margin-top:.9rem;padding:.55rem 1rem;border-radius:999px;background:var(--accent-btn,#FF5722);color:#fff;font-weight:700;font-size:.84rem;}
+@media(min-width:700px){a.feat-card{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);}.feat-img{height:auto;min-height:260px;}.feat-body{padding:26px;align-self:center;}}
+
+/* post cards */
+.post-card{border-radius:18px;transition:transform .35s cubic-bezier(.22,1,.36,1),border-color .3s,box-shadow .35s;position:relative;}
+.post-card:hover{transform:translateY(-5px);border-color:rgba(255,87,34,.5);box-shadow:0 20px 44px rgba(255,87,34,.14);}
+.post-card::after{content:'Read →';position:absolute;right:12px;top:12px;font-size:.68rem;font-weight:700;color:#fff;background:var(--accent-btn,#FF5722);padding:.25rem .6rem;border-radius:999px;transform:translateY(-6px) scale(.9);transition:transform .3s;visibility:hidden;}
+.post-card:hover::after{visibility:visible;transform:none;}
+.pc-img{height:110px;font-size:2.6rem;}
+.pc-img{transition:letter-spacing .3s;}
+.post-card:hover .pc-img{letter-spacing:0;}
+.pc-title{font-size:.95rem;}
+.grid>*:nth-child(2){transition-delay:.05s}.grid>*:nth-child(3){transition-delay:.1s}.grid>*:nth-child(4){transition-delay:.15s}.grid>*:nth-child(5){transition-delay:.2s}.grid>*:nth-child(6){transition-delay:.25s}.grid>*:nth-child(7){transition-delay:.3s}
+
+/* the house card inside the grid */
+.bx-promo{display:flex;flex-direction:column;gap:.5rem;padding:1.3rem 1.2rem;border-radius:18px;text-decoration:none;color:#fff;position:relative;overflow:hidden;
+  background:linear-gradient(140deg,#FF5722,#C2380B 70%);box-shadow:0 18px 44px rgba(255,87,34,.25);transition:transform .35s cubic-bezier(.22,1,.36,1);}
+.bx-promo::before{content:'';position:absolute;width:220px;height:220px;right:-70px;top:-90px;border-radius:50%;background:radial-gradient(circle,rgba(255,220,150,.45),transparent 65%);}
+.bx-promo:hover{transform:translateY(-5px) rotate(-.4deg);}
+.bx-promo-k{font-size:.6rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;opacity:.9;}
+.bx-promo b{font-family:var(--fd);font-size:1.3rem;line-height:1.15;letter-spacing:-.01em;}
+.bx-promo-d{font-size:.84rem;line-height:1.55;opacity:.95;}
+.bx-promo-go{margin-top:auto;align-self:flex-start;padding:.5rem .95rem;border-radius:999px;background:#fff;color:#AD350A;font-weight:700;font-size:.82rem;}
+html[data-theme="day"] .bx-promo{background:linear-gradient(140deg,#E8470F,#AD350A 75%);}
+
+/* pager */
+.pg-gap{color:var(--muted2);padding:0 .2rem;align-self:center;}
+.pg-step{padding-left:.9rem!important;padding-right:.9rem!important;width:auto!important;}
+.pg-btn[disabled]{visibility:hidden;}
+
+/* sidebar */
+.arch-item{cursor:pointer;border-radius:8px;transition:background .2s,padding .2s;}
+.arch-item:hover,.arch-item.on{background:rgba(255,87,34,.08);padding-left:.4rem;}
+.arch-item.on .arch-m{color:var(--accent);font-weight:700;}
+.sb-ft{display:flex;flex-direction:column;gap:.35rem;margin-top:12px;padding:1.1rem;border-radius:16px;text-decoration:none;color:var(--txt);
+  border:1.5px solid var(--accent);background:linear-gradient(160deg,rgba(255,87,34,.14),transparent 70%);transition:transform .3s;}
+.sb-ft:hover{transform:translateY(-3px);}
+.sb-ft-k{font-size:.58rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);}
+.sb-ft b{font-family:var(--fd);font-size:1.1rem;}
+.sb-ft span:not(.sb-ft-k):not(.sb-ft-go){font-size:.8rem;color:var(--muted);}
+.sb-ft-go{font-size:.8rem;font-weight:700;color:var(--accent);}
+
+/* three ways band + close */
+.bx-ways{padding:48px 16px 56px;border-top:1px solid var(--border2);margin-top:28px;position:relative;overflow:hidden;
+  background:radial-gradient(60% 80% at 0% 0%,rgba(255,87,34,.10),transparent 60%),radial-gradient(50% 70% at 100% 100%,rgba(13,140,79,.08),transparent 60%);}
+.bx-ways-in{max-width:1140px;margin:0 auto;}
+.bx-k{font-size:.62rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);}
+.bx-ways h2{font-family:var(--fd);font-size:clamp(1.6rem,4vw,2.5rem);font-weight:800;letter-spacing:-.02em;line-height:1.1;margin:.5rem 0 1.4rem;}
+.bx-ways-row{display:grid;gap:.8rem;}
+.bx-way{display:flex;flex-direction:column;gap:.35rem;padding:1.3rem;border-radius:20px;border:1px solid var(--border);background:var(--card);text-decoration:none;color:var(--txt);
+  transition:transform .35s cubic-bezier(.22,1,.36,1),border-color .3s,box-shadow .35s;}
+.bx-way:hover{transform:translateY(-5px);border-color:var(--accent);box-shadow:0 20px 46px rgba(255,87,34,.16);}
+.bx-way.is-main{border-color:rgba(255,87,34,.55);}
+.bx-way-i{font-size:1.6rem;transition:transform .4s;}
+.bx-way:hover .bx-way-i{transform:rotate(-10deg) scale(1.1);}
+.bx-way-k{font-size:.6rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-top:.3rem;}
+.bx-way b{font-family:var(--fd);font-size:1.35rem;letter-spacing:-.01em;}
+.bx-way small{font-size:.84rem;color:var(--muted);line-height:1.5;}
+.bx-way-go{margin-top:.5rem;font-size:.82rem;font-weight:700;color:var(--accent);}
+.bx-close{margin-top:1.4rem;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem 1.6rem;padding:1.3rem 1.4rem;border-radius:20px;
+  border:1px solid rgba(255,87,34,.45);background:var(--card);}
+.bx-close>div:first-child{display:flex;flex-direction:column;gap:.25rem;max-width:52ch;}
+.bx-close b{font-family:var(--fd);font-size:1.1rem;}
+.bx-close>div:first-child span{font-size:.86rem;color:var(--muted);}
+.bx-close-btns{display:flex;flex-wrap:wrap;align-items:center;gap:.8rem 1.2rem;}
+.bx-close-alt{font-size:.86rem;font-weight:600;color:var(--accent);text-decoration:none;}
+.bx-close-alt:hover{text-decoration:underline;}
+@media(min-width:760px){.bx-ways-row{grid-template-columns:repeat(3,minmax(0,1fr));}.bx-ways{padding:64px 5% 72px;}}
+@media(prefers-reduced-motion:reduce){.bx-ring,.bx-live{animation:none!important;}}
 </style>
 <script id="erjPWA">
 (function(){
