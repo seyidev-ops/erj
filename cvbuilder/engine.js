@@ -5,7 +5,7 @@
    storage beyond this device's localStorage. That is deliberate: people
    paste salary history and personal contact details into this thing.
 
-   The scorer implements the SAME ten points as the public CV Self-Scan,
+   The scorer implements the SAME ten points as the public CV Scan,
    so a document built here and then run through that tool agrees with
    itself. If the scan rubric ever changes, change CHECKS below to match.
 
@@ -173,7 +173,7 @@ function load() {
 }
 
 /* ─────────────────────── THE TEN CHECKS ───────────────────────
-   Same rubric as the public CV Self-Scan. Each returns:
+   Same rubric as the public CV Scan. Each returns:
      st  'pass' | 'part' | 'fail'
      why what to do about it, in one sentence
 ─────────────────────────────────────────────────────────────── */

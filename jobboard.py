@@ -598,6 +598,25 @@ GLOBAL_PROOF = re.compile(
     r"fully distributed|location[- ]independent|globally distributed|nigeria|africa)\b", re.I)
 
 
+EN_WORDS = {"the", "and", "to", "of", "with", "for", "in", "you", "your", "a", "is", "on", "or", "we", "will", "our",
+            "are", "be", "as", "this", "an", "role", "work", "team", "experience"}
+
+
+def not_english(*parts):
+    """True when an advert is written in another language (the board is read in English).
+    Two signals: mostly non-Latin letters (Cyrillic, Arabic, Chinese...), or Latin text with
+    almost none of the commonest English words."""
+    t = " ".join(html_text(p) if p and "<" in str(p) else str(p or "") for p in parts)
+    letters = [c for c in t if c.isalpha()]
+    if len(letters) < 40:
+        return False
+    latin = sum(1 for c in letters if c < "\u0250")
+    if latin / len(letters) < 0.8:
+        return True
+    words = re.findall(r"[a-z']+", t.lower())
+    return len(words) >= 30 and sum(w in EN_WORDS for w in words) / len(words) < 0.04
+
+
 def location_ok(location, desc="", strict=False):
     """Feed listings: the employer's own location text must open the role to Nigeria,
     and the description must not shut it. 'Remote' on its own never counts."""
@@ -792,6 +811,8 @@ def row_to_listing(tab, hm, vals, links, cfg, source_name):
             return None, why
     if loc and "region" in hm and not re.match(r"\W*(nigeria|worldwide|africa\s*[—-]\s*multi|global|anywhere)", loc, re.I):
         return None, f"filed under {loc}"
+    if not_english(title, dash(g("reqs")), dash(g("notes"))):
+        return None, "advert is not in English"
     if not region_open_to_nigeria(region):
         return None, f"region names another country ({region[:60]})"
     if blocked(apply, cfg) and domain(apply) not in cfg.get("sheet_allowed_domains", []):
@@ -1161,6 +1182,8 @@ def cmd_fetch(cfg, log):
                 ok, why = False, "needs a licence or clearance from another country"
         if ok and x.get("source") == "Workable" and not x.get("remote"):
             ok, why = False, "Workable role is not remote"
+        if ok and not_english(title, x.get("desc"), " ".join(x.get("skills") or [])):
+            ok, why = False, "advert is not in English"
         if ok and re.search(cfg["title_exclude"], title, re.I):
             ok, why = False, "outside the board's scope"
         if x.get("deadline") and x["deadline"] < t0:

@@ -62,8 +62,7 @@
             key: 'g-free', label: 'Free For You', keys: [], children: [
                 { label: 'What\u2019s Holding You Back?', href: 'diagnose/', keys: ['diagnose'] },
                 { label: 'Capacity Audit', href: 'capacityscan/', keys: ['capacityscan'] },
-                { label: 'Remote CV Self-Scan', href: 'cvscan/', keys: ['cvscan'] },
-                { label: 'Remote Job Board', href: 'jobs/', keys: ['jobboard'] },
+                { label: 'Remote CV Scan', href: 'cvscan/', keys: ['cvscan'] },
                 { label: 'Free Live Clinic', href: 'masterclass/', keys: ['masterclass'] },
                 { label: 'Blog', href: 'blog.html', keys: ['blog'] }
             ]
@@ -80,7 +79,7 @@
         { label: 'Blog Admin', href: 'blog-admin.html' },
         { label: 'Surge Console', href: 'erj-surge-console.html' },
         { label: 'CV Engine · gated', href: 'cvbuilder/' },
-        { label: 'CV Self-Scan · public tool', href: 'cvscan/' },
+        { label: 'CV Scan · public tool', href: 'cvscan/' },
         { label: 'Back to Website', href: 'index.html' }
     ];
     const IS_PORTAL = !!cfg.portal;

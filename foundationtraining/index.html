@@ -44,6 +44,10 @@
     background:rgba(0,0,0,0.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
     border-top:1px solid var(--line);transform:translateY(110%);transition:transform .4s var(--ease);}
   html[data-theme="day"] .sticky-cta{background:rgba(250,250,248,0.92);}
+  /* A frosted fixed bar repaints everything behind it on every scroll frame; on
+     phones that is the blank flash. Solid on small screens. */
+  @media (max-width:860px){.sticky-cta{backdrop-filter:none;-webkit-backdrop-filter:none;background:rgba(0,0,0,0.97);}
+    html[data-theme="day"] .sticky-cta{background:rgba(250,250,248,0.98);}}
   .sticky-cta{visibility:hidden;}
   .sticky-cta.show{transform:translateY(0);visibility:visible;}
   .sticky-cta .s-txt{font-size:0.76rem;letter-spacing:0.01em;text-transform:none;color:var(--ink-soft);line-height:1.25;min-width:0;flex:1;}
@@ -203,8 +207,8 @@
 }
   /* The sweep is a large rotating layer; phones get the static glow so the
      GPU is never short of memory mid-scroll (blank tiles while flicking). */
-  @media (min-width:861px) and (prefers-reduced-motion:no-preference){.cdv-spot::before{animation:cdvSweep 14s linear infinite;will-change:transform;}}
-  @keyframes cdvSweep{to{transform:rotate(360deg);}}
+  /* The sweep used to rotate; a large spinning layer on a page this long is what
+     left blank patches mid-scroll. It now stays still: same glow, no repaint. */
   .cdv-ribbon{position:absolute;top:1.1rem;left:50%;transform:translateX(-50%);z-index:3;white-space:nowrap;
     background:linear-gradient(90deg,#0D8C4F,#FF5722);color:#fff;font-size:.62rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
     padding:.42rem 1.05rem;border-radius:100px;box-shadow:0 8px 22px rgba(255,87,34,.28);}
@@ -213,8 +217,7 @@
     box-shadow:0 26px 60px rgba(0,0,0,.35),0 0 0 6px rgba(255,255,255,.05);transform:rotate(-2.2deg);
     transition:transform .5s var(--ease);}
   .cdv-spot:hover .cdv-plate{transform:rotate(0) translateY(-6px) scale(1.015);}
-  .cdv-plate img{display:block;width:100%;height:auto;border-radius:14px;animation:cdvFloat 6s ease-in-out infinite;}
-  @keyframes cdvFloat{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
+  .cdv-plate img{display:block;width:100%;height:auto;border-radius:14px;}
   .cdv-seal{position:absolute;top:-14px;right:-10px;z-index:2;width:118px;height:118px;border-radius:50%;
     display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
     background:#FF5722;color:#fff;transform:rotate(12deg);box-shadow:0 14px 30px rgba(255,87,34,.45);
@@ -237,7 +240,21 @@
   .cdv-chips li{font-size:.8rem;color:var(--ink);border:1px solid var(--card-line);background:rgba(255,255,255,.03);border-radius:100px;padding:.45rem .85rem;}
   .cdv-chips li::before{content:'\2713';color:#FF5722;font-weight:700;margin-right:.4rem;}
   .cdv-spot .hero-cta{margin:0;}
-  .cdv-spot .cdv-fine{font-size:.76rem;color:var(--ink-faint);margin:1rem 0 0;}
+  .cdv-spot .cdv-fine{font-size:.76rem;color:var(--ink-faint);margin:0;}
+  /* Balanced on desktop: heading across the top, image and write-up side by
+     side with the write-up centred, the two buttons spread left and right. */
+  .cdv-spot{grid-template-areas:"head head" "stage copy" "cta cta" "fine fine";row-gap:clamp(1.2rem,2.6vw,2rem);padding-top:clamp(3.6rem,6vw,4.6rem);}
+  #impact .stat-row{justify-content:space-between;margin-top:clamp(1.6rem,4vw,2.4rem);padding:clamp(1.6rem,4vw,2.2rem) 0;border-bottom:1px solid var(--line);}
+  @media (max-width:620px){#impact .stat-row{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem 1rem;}}
+  .cdv-head{grid-area:head;text-align:center;}
+  .cdv-head .section-label{justify-content:center;margin-bottom:.8rem;}
+  .cdv-head h2{margin:0 auto;max-width:22ch;font-size:clamp(1.9rem,3.6vw,2.9rem);}
+  .cdv-stage{grid-area:stage;}
+  .cdv-copy{grid-area:copy;text-align:center;}
+  .cdv-copy .cdv-lead{margin-left:auto;margin-right:auto;}
+  .cdv-value,.cdv-chips{justify-content:center;}
+  .cdv-cta{grid-area:cta;justify-content:space-between;}
+  .cdv-spot .cdv-fine{grid-area:fine;text-align:center;}
   /* hero teaser: the offer is visible before the first scroll */
   .cdv-tease{display:inline-flex;align-items:center;gap:.75rem;margin-top:1.3rem;padding:.45rem 1rem .45rem .45rem;border-radius:100px;
     text-decoration:none;color:var(--ink);font-size:.86rem;line-height:1.35;background:var(--card);
@@ -247,7 +264,8 @@
   .cdv-tease b{color:#FF5722;}
   html[data-theme="day"] .cdv-tease b,html[data-theme="day"] .cdv-chips li::before{color:#AD350A;}
   @media (max-width:860px){
-    .cdv-spot{grid-template-columns:1fr;padding-top:4.6rem;}
+    .cdv-spot{grid-template-columns:1fr;grid-template-areas:"head" "stage" "copy" "cta" "fine";padding-top:4.6rem;}
+    .cdv-cta{justify-content:center;}
     .cdv-ribbon{top:1.2rem;font-size:.56rem;letter-spacing:.16em;}
     .cdv-stage{max-width:420px;margin:0 auto;width:100%;}
     .cdv-seal{width:96px;height:96px;right:-4px;}
@@ -328,12 +346,6 @@
 <img alt="Oluwaseyi Ashiru, Lead Facilitator, giving a thumbs-up at his laptop" decoding="async" height="1100" loading="eager" src="../photo-seyi-thumbsup.webp" width="880"/>
 </figure>
 </div>
-<div class="stat-row stats-counter" id="ftImpact">
-<div><div class="stat-num" data-count="446" data-suffix="+">446+</div><div class="stat-lbl">Professionals trained</div></div>
-<div><div class="stat-num" data-count="382" data-suffix="+">382+</div><div class="stat-lbl">Professionals placed</div></div>
-<div><div class="stat-num" data-count="16">16</div><div class="stat-lbl">Assets built live</div></div>
-<div><div class="stat-num" data-count="100" data-suffix="%">100%</div><div class="stat-lbl">Hiring focus</div></div>
-</div>
 </section>
 
 <section class="wrap" id="jobs-live">
@@ -367,9 +379,9 @@ html[data-theme="day"] .jt{--jt-o:#E8470F;--jt-line:rgba(20,17,14,.12);--jt-card
 </style>
 <aside class="jt" aria-labelledby="jt-foundation">
 <p class="jt-k"><i aria-hidden="true"></i>Live &middot; Remote Job Board</p>
-<h2 id="jt-foundation">This is what you are training for: <em>349 live roles open to Nigeria.</em></h2>
+<h2 id="jt-foundation">This is what you are training for: <em>347 live roles open to Nigeria.</em></h2>
 <p class="jt-p">The roles are already there. The twenty days are about being the person they hire. Pick your field and look.</p>
-<div class="jt-fs"><a class="jt-f" href="../jobs/?field=Marketing%20%26%20Creative#board"><i aria-hidden="true">🎨</i><b>Marketing &amp; Creative</b><span>64 roles · <em>4 new</em></span></a><a class="jt-f" href="../jobs/?field=Tech%20%26%20IT#board"><i aria-hidden="true">💻</i><b>Tech &amp; IT</b><span>62 roles · <em>3 new</em></span></a><a class="jt-f" href="../jobs/?field=Executive%20%26%20Operations#board"><i aria-hidden="true">⚙️</i><b>Executive &amp; Operations</b><span>56 roles · <em>4 new</em></span></a><a class="jt-f" href="../jobs/?field=Virtual%20Assistant%20%26%20Admin#board"><i aria-hidden="true">🗂️</i><b>Virtual Assistant &amp; Admin</b><span>52 roles · <em>9 new</em></span></a><a class="jt-f" href="../jobs/?field=Data%20%26%20Product#board"><i aria-hidden="true">📊</i><b>Data &amp; Product</b><span>36 roles · <em>2 new</em></span></a><a class="jt-f" href="../jobs/?field=Finance%20%26%20Accounting#board"><i aria-hidden="true">🧾</i><b>Finance &amp; Accounting</b><span>23 roles · <em>1 new</em></span></a><a class="jt-f" href="../jobs/?field=Sales%20%26%20Accounts#board"><i aria-hidden="true">📈</i><b>Sales &amp; Accounts</b><span>17 roles</span></a><a class="jt-f" href="../jobs/?field=Customer%20Service%20%26%20Success#board"><i aria-hidden="true">🎧</i><b>Customer Service &amp; Success</b><span>14 roles · <em>1 new</em></span></a></div>
+<div class="jt-fs"><a class="jt-f" href="../jobs/?field=Marketing%20%26%20Creative#board"><i aria-hidden="true">🎨</i><b>Marketing &amp; Creative</b><span>64 roles · <em>4 new</em></span></a><a class="jt-f" href="../jobs/?field=Tech%20%26%20IT#board"><i aria-hidden="true">💻</i><b>Tech &amp; IT</b><span>62 roles · <em>3 new</em></span></a><a class="jt-f" href="../jobs/?field=Executive%20%26%20Operations#board"><i aria-hidden="true">⚙️</i><b>Executive &amp; Operations</b><span>55 roles · <em>3 new</em></span></a><a class="jt-f" href="../jobs/?field=Virtual%20Assistant%20%26%20Admin#board"><i aria-hidden="true">🗂️</i><b>Virtual Assistant &amp; Admin</b><span>52 roles · <em>9 new</em></span></a><a class="jt-f" href="../jobs/?field=Data%20%26%20Product#board"><i aria-hidden="true">📊</i><b>Data &amp; Product</b><span>36 roles · <em>2 new</em></span></a><a class="jt-f" href="../jobs/?field=Finance%20%26%20Accounting#board"><i aria-hidden="true">🧾</i><b>Finance &amp; Accounting</b><span>23 roles · <em>1 new</em></span></a><a class="jt-f" href="../jobs/?field=Sales%20%26%20Accounts#board"><i aria-hidden="true">📈</i><b>Sales &amp; Accounts</b><span>17 roles</span></a><a class="jt-f" href="../jobs/?field=Customer%20Service%20%26%20Success#board"><i aria-hidden="true">🎧</i><b>Customer Service &amp; Success</b><span>13 roles</span></a></div>
 <p class="jt-ready"><span aria-hidden="true">💡</span><span>Seeing the roles is <b>supply</b>. Being the person they hire is <b>capacity</b>: if you cannot yet show you can do the work, <a href="../foundationtraining/">Foundation Training</a> builds it, and <a href="../capacityscan/">the free Capacity Audit</a> tells you where you stand.</span></p>
 <div class="jt-cta"><a href="../jobs/">See the roles by field &rarr;</a><a href="#pricing">Enrol in Cohort 12 &rarr;</a></div>
 </aside>
@@ -589,10 +601,24 @@ html[data-theme="day"] .jt{--jt-o:#E8470F;--jt-line:rgba(20,17,14,.12);--jt-card
 </div>
 <p class="note reveal">Pick the track you can genuinely keep for the whole programme — attendance, not ambition, is what separates the people who finish. Not sure which fits? <a href="../diagnose/">Run the free diagnosis first →</a></p>
 </section>
+
+<!-- PROOF NUMBERS -->
+<section class="wrap" id="impact">
+<div class="stat-row stats-counter" id="ftImpact">
+<div><div class="stat-num" data-count="446" data-suffix="+">446+</div><div class="stat-lbl">Professionals trained</div></div>
+<div><div class="stat-num" data-count="382" data-suffix="+">382+</div><div class="stat-lbl">Professionals placed</div></div>
+<div><div class="stat-num" data-count="16">16</div><div class="stat-lbl">Assets built live</div></div>
+<div><div class="stat-num" data-count="100" data-suffix="%">100%</div><div class="stat-lbl">Hiring focus</div></div>
+</div>
+</section>
 <!-- CAREER DEVELOPMENT, INCLUDED -->
 <section class="section-line wrap" id="careerdev">
 <div class="cdv-spot reveal">
 <span class="cdv-ribbon">Bonus · Included with your enrolment</span>
+<div class="cdv-head">
+<p class="section-label"><span class="mark"></span> Your career, built on both sides</p>
+<h2>Your Foundation Training includes <span>career development.</span></h2>
+</div>
 <div class="cdv-stage">
 <div class="cdv-plate">
 <picture><source srcset="../shop/careerdev-mentorine.webp" type="image/webp"/><img alt="Career Development — Self-Study box from The Mentorine School: one career track of your choice, roadmap, courses and practical work, 90 days from the day you activate" height="900" loading="lazy" src="../shop/careerdev-mentorine.jpg" width="900"/></picture>
@@ -601,8 +627,6 @@ html[data-theme="day"] .jt{--jt-o:#E8470F;--jt-line:rgba(20,17,14,.12);--jt-card
 <div class="cdv-worth"><b>₦150,000</b>value, included</div>
 </div>
 <div class="cdv-copy">
-<p class="section-label"><span class="mark"></span> Your career, built on both sides</p>
-<h2>Your Foundation Training includes <span>career development.</span></h2>
 <p class="cdv-lead">Enrol in Remote Job Foundation Training, Stages 1–4, and receive <strong>90-day access to a selected self-study career track at The Mentorine School at no additional cost.</strong> Your assessment helps us identify the skills and practical work relevant to your target role.</p>
 <div class="cdv-value"><s>₦150,000</s><b>Included</b><span>The standard Self-Study rate at The Mentorine School is ₦150,000. With Foundation Training it costs you nothing extra.</span></div>
 <ul class="cdv-chips">
@@ -611,12 +635,12 @@ html[data-theme="day"] .jt{--jt-o:#E8470F;--jt-line:rgba(20,17,14,.12);--jt-card
 <li>90 days from the day you activate</li>
 <li>No second payment</li>
 </ul>
-<div class="hero-cta">
+</div>
+<div class="hero-cta cdv-cta">
 <a class="btn-primary-ui btn-yes" href="../register.html#foundation"><span>Enrol and Claim Your Track</span><span class="arrow-wrap"><span class="arrow">→</span></span></a>
 <a class="btn-more btn-secondary-ui" href="#cdv-how"><span>How It Works</span><span class="arrow-wrap"><span class="arrow is-down">↓</span></span></a>
 </div>
 <p class="cdv-fine">Delivered in partnership with The Mentorine School. Included with Foundation Training and Get Your Dream Job Offer; not with single stages.</p>
-</div>
 </div>
 <div class="cdv-grid" id="cdv-how">
 <div class="cdv-card reveal">
@@ -711,7 +735,7 @@ html[data-theme="day"] .jt{--jt-o:#E8470F;--jt-line:rgba(20,17,14,.12);--jt-card
 </a>
 <script src="../erj-theme.js?v=20260911a"></script>
 <script src="../erj-product.js?v=20260924c"></script>
-<script src="../erj-nav.js?v=20261015a"></script>
+<script src="../erj-nav.js?v=20261015b"></script>
 <script src="../erj-config.js?v=20261008b"></script>
 <script src="../erj-capture.js?v=20260911a"></script>
 <script>if("serviceWorker" in navigator){window.addEventListener("load",function(){var go=function(){navigator.serviceWorker.register("/sw.js").then(function(reg){reg.update();}).catch(function(){});};if("requestIdleCallback" in window){requestIdleCallback(go,{timeout:3000});}else{setTimeout(go,1200);}});}</script>
