@@ -31,6 +31,7 @@
         {
             key: 'home', label: 'Home', href: 'index.html', keys: ['home'], children: [
                 { label: 'What We Can Do For You', href: 'index.html#promise' },
+                { label: 'Live Remote Jobs', href: 'index.html#jobs-live' },
                 { label: 'Proof It Works', href: 'index.html#story' },
                 { label: 'The Promise', href: 'index.html#pledge' },
                 { label: 'Free For You', href: 'index.html#free' },
@@ -38,6 +39,12 @@
                 { label: 'Before You Decide', href: 'index.html#faq' },
                 { label: 'Join Cohort 12', href: 'index.html#enrol' }
             ]
+        },
+        {
+            /* The job board is a door of its own, not only an item under Free:
+               supply is the second of the five parts and the first thing many
+               visitors come for. The green dot says it is live. */
+            key: 'jobs', label: 'Remote Jobs', href: 'jobs/', keys: ['jobboard'], live: true
         },
         {
             key: 'g-help', label: 'How We Help', keys: [], children: [
@@ -199,6 +206,9 @@
         '.erj-brand{flex-shrink:1;min-width:0;font-size:0.9rem;gap:7px;overflow:hidden;white-space:nowrap;letter-spacing:-0.3px;}',
         '.erj-brand img{width:26px;height:26px;}.erj-right{gap:0.3rem;}.erj-icon{width:36px;height:36px;}}',
         '@media(prefers-reduced-motion:reduce){.erj-panel,.erj-scrim,.erj-chev,.erj-bar-chev{transition:none;}}',
+        '.erj-live{display:inline-block;width:7px;height:7px;margin-left:.45rem;border-radius:50%;background:#25D366;vertical-align:middle;animation:erjLive 2s infinite;}',
+        '@keyframes erjLive{0%{box-shadow:0 0 0 0 rgba(37,211,102,.55)}70%{box-shadow:0 0 0 7px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}',
+        '@media(prefers-reduced-motion:reduce){.erj-live{animation:none;}}',
         '.erj-toggle{background:none;border:0;font-family:inherit;line-height:inherit;color:inherit;cursor:pointer;text-align:left;-webkit-appearance:none;appearance:none;}'
     ].join('');
     const style = document.createElement('style');
@@ -207,6 +217,7 @@
     document.head.appendChild(style);
     /* ── render helpers ── */
     const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;');
+    const LIVE = '<span class="erj-live" aria-hidden="true"></span>';
     const extAttr = (c) => (c.external ? ' target="_blank" rel="noopener"' : '');
     /* ── DESKTOP BAR ── */
     function buildBar() {
@@ -217,7 +228,7 @@
             let html = '<div class="erj-bar-item' + (isCurrent ? ' is-current' : '') +
                 '" data-bar="' + top.key + '">' +
                 (top.href
-                    ? '<a class="erj-bar-link" href="' + P(top.href) + '"' + (selfCurrent ? ' aria-current="page"' : '') + '>' + esc(top.label) + '</a>'
+                    ? '<a class="erj-bar-link" href="' + P(top.href) + '"' + (selfCurrent ? ' aria-current="page"' : '') + '>' + esc(top.label) + (top.live ? LIVE : '') + '</a>'
                     : '<button type="button" class="erj-bar-link erj-toggle" data-toggle>' + esc(top.label) + '</button>');
             if (top.children) {
                 /* The same list on every page: a dropdown never swaps its
@@ -277,7 +288,7 @@
             const childCurrent = !!top.children && top.children.some(c => matches(c.keys));
             const isCurrent = selfCurrent || childCurrent;
             const link = top.href
-                ? '<a class="erj-link" href="' + P(top.href) + '"' + (selfCurrent ? ' aria-current="page"' : '') + '>' + esc(top.label) + '</a>'
+                ? '<a class="erj-link" href="' + P(top.href) + '"' + (selfCurrent ? ' aria-current="page"' : '') + '>' + esc(top.label) + (top.live ? LIVE : '') + '</a>'
                 : '<button type="button" class="erj-link erj-toggle" data-toggle>' + esc(top.label) + '</button>';
             if (!top.children) {
                 return '<div class="erj-item' + (selfCurrent ? ' is-current' : '') + '">' + link + '</div>';

@@ -1427,6 +1427,99 @@ def card(j, cfg):
 </article>'''
 
 
+
+# ─────────────────────────────────────────── job board teaser on other pages
+# A short advert for the board on the main pages, between
+# <!--JOBTEASE:START ctx=...--> and <!--JOBTEASE:END-->. It leads with fields
+# (not individual jobs) and with readiness: seeing roles is supply, being hired
+# for them is capacity. Rewritten on every board run so the counts stay live.
+TEASE_PAGES = ["index.html", "testimonials.html", "register.html", "foundationtraining/index.html"]
+TEASE_COPY = {
+    "home": ("{n} remote roles open to Nigeria, live right now.", "Are you ready for them?",
+             "Every role is checked twice a day and taken down when it closes. Start with your field.",
+             ("Open the job board", "jobs/"), ("Get ready for these roles", "foundationtraining/")),
+    "stories": ("The roles in these stories are still being posted.", "{n} are live today.",
+                "Same board, same rule: every role is open to someone living in Nigeria. Pick your field.",
+                ("Open the job board", "jobs/"), ("Get ready for these roles", "foundationtraining/")),
+    "register": ("Not sure what you are getting ready for?", "See the {n} roles live today.",
+                 "Pick your field and read three adverts. Then choose the door that closes the gap between you and them.",
+                 ("Open the job board", "jobs/"), ("Find what is holding you back", "diagnose/")),
+    "foundation": ("This is what you are training for:", "{n} live roles open to Nigeria.",
+                   "The roles are already there. The twenty days are about being the person they hire. Pick your field and look.",
+                   ("See the roles by field", "jobs/"), ("Enrol in Cohort 12", "#pricing")),
+}
+TEASE_CSS = """<style>
+.jt{--jt-o:#FF5722;--jt-line:rgba(255,255,255,.12);--jt-card:rgba(255,255,255,.035);--jt-mut:rgba(255,255,255,.66);position:relative;overflow:hidden;border:1px solid var(--jt-line);border-radius:22px;padding:clamp(1.3rem,3.4vw,2.2rem);margin:clamp(1.8rem,4vw,2.6rem) 0;background:radial-gradient(120% 140% at 100% 0,rgba(255,87,34,.14),transparent 55%),var(--jt-card);text-align:left;}
+html[data-theme="day"] .jt{--jt-o:#E8470F;--jt-line:rgba(20,17,14,.12);--jt-card:#fff;--jt-mut:#52514C;}
+.jt-k{display:inline-flex;align-items:center;gap:.5rem;font:700 .64rem/1 'Inter',system-ui,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--jt-o);margin:0 0 .9rem;}
+.jt-k i{width:8px;height:8px;border-radius:50%;background:#25D366;animation:jtPing 2s infinite;}
+@keyframes jtPing{0%{box-shadow:0 0 0 0 rgba(37,211,102,.55)}70%{box-shadow:0 0 0 9px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
+.jt h2{font-family:'Space Grotesk',system-ui,sans-serif;font-size:clamp(1.45rem,3.6vw,2.2rem);font-weight:800;letter-spacing:-.02em;line-height:1.15;margin:0 0 .6rem;}
+.jt h2 em{font-style:normal;color:var(--jt-o);display:block;}
+.jt-p{color:var(--jt-mut);font-size:.95rem;line-height:1.6;margin:0 0 1.2rem;max-width:56ch;}
+.jt-fs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.55rem;margin:0 0 1.3rem;}
+@media(max-width:860px){.jt-fs{grid-template-columns:repeat(2,minmax(0,1fr));}}
+.jt-f{display:grid;grid-template-columns:auto 1fr;grid-template-areas:"i n" "i c";column-gap:.6rem;align-items:center;padding:.75rem .85rem;border:1px solid var(--jt-line);border-radius:14px;text-decoration:none;color:inherit;background:var(--jt-card);transition:transform .25s,border-color .25s;}
+.jt-f:hover{transform:translateY(-2px);border-color:var(--jt-o);}
+.jt-f i{grid-area:i;font-style:normal;font-size:1.35rem;}
+.jt-f b{grid-area:n;font-size:.86rem;line-height:1.25;font-weight:700;}
+.jt-f span{grid-area:c;font-size:.74rem;color:var(--jt-mut);}
+.jt-f span em{font-style:normal;color:#25D366;font-weight:700;}
+.jt-ready{display:flex;gap:.8rem;align-items:flex-start;padding:.9rem 1rem;border-radius:14px;border:1px dashed var(--jt-line);margin:0 0 1.2rem;font-size:.9rem;line-height:1.55;}
+.jt-ready b{color:var(--jt-o);}
+.jt-ready a{color:inherit;font-weight:700;text-decoration:underline;text-decoration-color:var(--jt-o);text-underline-offset:3px;}
+.jt-cta{display:flex;flex-wrap:wrap;gap:.6rem;}
+.jt-cta a{display:inline-flex;align-items:center;gap:.45rem;padding:.85rem 1.25rem;border-radius:100px;font-weight:700;font-size:.95rem;text-decoration:none;border:1px solid var(--jt-line);color:inherit;transition:transform .25s;}
+.jt-cta a:first-child{background:var(--jt-o);border-color:var(--jt-o);color:#fff;}
+.jt-cta a:hover{transform:translateY(-2px);}
+@media(max-width:560px){.jt-f{grid-template-columns:1fr;grid-template-areas:"i" "n" "c";row-gap:.25rem;padding:.8rem;}.jt-f i{font-size:1.25rem;}.jt-cta a{flex:1 1 100%;justify-content:center;}}
+@media(prefers-reduced-motion:reduce){.jt-k i{animation:none;}.jt-f,.jt-cta a{transition:none;}}
+</style>"""
+
+
+def teaser_html(live, ctx, base):
+    t0 = today()
+    recent = {t0.isoformat(), (t0 - dt.timedelta(days=1)).isoformat()}
+    counts, new = {}, {}
+    for j in live:
+        counts[j["family"]] = counts.get(j["family"], 0) + 1
+        if j.get("added") in recent:
+            new[j["family"]] = new.get(j["family"], 0) + 1
+    top = sorted(counts, key=lambda f: -counts[f])[:8]
+    n = len(live)
+    h1, h2, lede, a1, a2 = TEASE_COPY[ctx]
+    href = lambda h: h if h.startswith("#") else base + h
+    tiles = "".join(
+        f'<a class="jt-f" href="{base}jobs/?field={urllib.parse.quote(f)}#board"><i aria-hidden="true">{FAMILY_ICON.get(f, "💼")}</i>'
+        f'<b>{e(f)}</b><span>{counts[f]} role{"s" if counts[f] != 1 else ""}'
+        + (f' · <em>{new[f]} new</em>' if new.get(f) else "") + '</span></a>' for f in top)
+    return (f'<!--JOBTEASE:START ctx={ctx}-->\n{TEASE_CSS}\n'
+            f'<aside class="jt" aria-labelledby="jt-{ctx}">\n'
+            f'<p class="jt-k"><i aria-hidden="true"></i>Live &middot; Remote Job Board</p>\n'
+            f'<h2 id="jt-{ctx}">{e(h1.format(n=n))} <em>{e(h2.format(n=n))}</em></h2>\n'
+            f'<p class="jt-p">{e(lede)}</p>\n<div class="jt-fs">{tiles}</div>\n'
+            f'<p class="jt-ready"><span aria-hidden="true">💡</span><span>Seeing the roles is <b>supply</b>. Being the person they hire is <b>capacity</b>: '
+            f'if you cannot yet show you can do the work, <a href="{base}foundationtraining/">Foundation Training</a> builds it, '
+            f'and <a href="{base}capacityscan/">the free Capacity Audit</a> tells you where you stand.</span></p>\n'
+            f'<div class="jt-cta"><a href="{href(a1[1])}">{e(a1[0])} &rarr;</a><a href="{href(a2[1])}">{e(a2[0])} &rarr;</a></div>\n'
+            f'</aside>\n<!--JOBTEASE:END-->')
+
+
+def update_teasers(live):
+    for rel in TEASE_PAGES:
+        path = os.path.join(ROOT, rel)
+        if not os.path.exists(path):
+            continue
+        base = "../" * rel.count("/")
+        with open(path, encoding="utf-8") as f:
+            page = f.read()
+        out = re.sub(r"<!--JOBTEASE:START ctx=(\w+)-->.*?<!--JOBTEASE:END-->",
+                     lambda m: teaser_html(live, m.group(1), base), page, flags=re.S)
+        if out != page:
+            with open(path, "w", encoding="utf-8") as f:
+                f.write(out)
+
+
 def render(cfg):
     live = load(F_LIVE, {"listings": []})["listings"]
     t0 = today()
@@ -1485,6 +1578,8 @@ def cmd_build(cfg, check=False):
         with open(PAGE, "w", encoding="utf-8") as f:
             f.write(out)
         touch_sitemap()
+    t0 = today()
+    update_teasers([j for j in load(F_LIVE, {"listings": []})["listings"] if expiry(j, cfg) >= t0])
     print(f"build: {n} live listings rendered")
 
 

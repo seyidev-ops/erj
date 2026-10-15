@@ -61,6 +61,34 @@
 <link href="/favicon-96.png" rel="icon" sizes="96x96" type="image/png"/>
 <link href="/appletouchicon.png" rel="apple-touch-icon"/>
 <style id="erjJobBoard">
+/* ── More than a job board: the five parts, and what ERJ does about each ── */
+.jb-ready{padding:clamp(2rem,5vw,3.4rem) 0;border-top:1px solid var(--line);}
+.jb-ready h2{font-family:var(--font-display);font-size:clamp(1.6rem,4vw,2.5rem);font-weight:800;letter-spacing:-.02em;line-height:1.12;margin:.4rem 0 .7rem;}
+.jb-ready h2 em{font-style:normal;color:var(--accent);}
+.jb-ready-lede{color:var(--ink-soft,var(--muted));max-width:60ch;line-height:1.6;margin:0 0 1.6rem;}
+.jb-steps{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:.8rem;}
+.jb-step{position:relative;display:flex;flex-direction:column;gap:.55rem;padding:1.1rem 1rem 1.15rem;border:1px solid var(--line);border-radius:18px;background:var(--card);transition:transform .3s var(--ease),border-color .3s;}
+.jb-step:hover{transform:translateY(-4px);border-color:var(--accent);}
+.jb-step.is-here{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent) inset;}
+.jb-step-k{font-family:var(--font-display);font-size:.66rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);}
+.jb-step h3{font-family:var(--font-display);font-size:1.02rem;font-weight:700;line-height:1.3;margin:0;}
+.jb-step p{font-size:.84rem;line-height:1.55;color:var(--ink-soft,var(--muted));margin:0;}
+.jb-step-a{margin-top:auto;display:flex;flex-direction:column;gap:.35rem;padding-top:.4rem;}
+.jb-step-a a{font-size:.82rem;font-weight:700;color:var(--ink);text-decoration:none;display:flex;justify-content:space-between;gap:.4rem;padding:.45rem .6rem;border-radius:10px;border:1px solid var(--line);}
+.jb-step-a a:first-child{background:var(--accent-btn,#FF5722);border-color:var(--accent-btn,#FF5722);color:#fff;}
+.jb-step-a a:hover{border-color:var(--accent);}
+.jb-step-a a span{font-weight:400;opacity:.8;white-space:nowrap;}
+.jb-here{position:absolute;top:-.6rem;right:.8rem;font-size:.6rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;background:#25D366;color:#053B1C;padding:.2rem .55rem;border-radius:100px;}
+@media(max-width:980px){.jb-steps{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:minmax(250px,78%);overflow-x:auto;scroll-snap-type:x mandatory;padding:.7rem 2px 1rem;margin:0 calc(-1*var(--gutter,16px));padding-left:var(--gutter,16px);padding-right:var(--gutter,16px);}
+  .jb-step{scroll-snap-align:start;}}
+/* ERJ help cards between the listings */
+.jb-promo{grid-column:1/-1;display:flex;align-items:center;gap:1rem;flex-wrap:wrap;padding:1rem 1.2rem;border-radius:16px;border:1px dashed var(--accent);
+  background:linear-gradient(110deg,rgba(255,87,34,.10),transparent 70%);}
+.jb-promo i{font-style:normal;font-size:1.5rem;}
+.jb-promo p{flex:1;min-width:220px;margin:0;font-size:.92rem;line-height:1.5;}
+.jb-promo p b{font-family:var(--font-display);display:block;font-size:1rem;}
+.jb-promo a{font-weight:700;font-size:.9rem;color:#fff;background:var(--accent-btn,#FF5722);padding:.65rem 1rem;border-radius:100px;text-decoration:none;white-space:nowrap;}
+@media(prefers-reduced-motion:reduce){.jb-step{transition:none;}}
 /* ── Remote Job Board. Each card is the ERJ channel post, set as a page. ──
    Motion moves things; it never hides them (validate-facts check 12). */
 .jb-hero{padding-top:clamp(2.2rem,5.5vw,4.4rem);padding-bottom:clamp(1.4rem,3vw,2.2rem);}
@@ -290,14 +318,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 <a class="skip-link" href="#board">Skip to the jobs</a>
 <div id="erjNavMount"></div>
-<script>window.ERJ_NAV={active:'jobboard',base:'../',onPage:[{label:'Browse By Field',href:'#fields',sub:'Jump straight to your kind of role'},{label:'Live Roles',href:'#board',sub:'Open to Nigeria · checked every morning'},{label:'Share The Board',href:'#share',sub:'Send it to someone job-hunting'},{label:'Not Hearing Back?',href:'#next',sub:'Find where your search is breaking down'}]};</script>
+<script>window.ERJ_NAV={active:'jobboard',base:'../',onPage:[{label:'Browse By Field',href:'#fields',sub:'Jump straight to your kind of role'},{label:'Get Ready For Them',href:'#ready',sub:'What we do when you find a role you want'},{label:'Live Roles',href:'#board',sub:'Open to Nigeria · checked twice a day'},{label:'Share The Board',href:'#share',sub:'Send it to someone job-hunting'},{label:'Not Hearing Back?',href:'#next',sub:'Find where your search is breaking down'}]};</script>
 
 <main>
   <section class="jb-hero">
     <div class="wrap">
       <p class="jb-live"><span class="jb-dot" aria-hidden="true"></span>Live board<time id="jbUpdated" datetime="2026-10-15">15 Oct 2026</time></p>
       <h1>Remote jobs you can apply for <em>from Nigeria.</em></h1>
-      <p class="lede">Every role here is open to someone living in Nigeria and set out in the same format as our WhatsApp channel. New roles go up every morning; closed and expired ones come off on their own.</p>
+      <p class="lede">Every role here is open to someone living in Nigeria, checked twice a day, and taken down when it closes. And when you find one you want, <a href="#ready">we help you get ready for it</a>.</p>
       <div class="jb-stats">
         <div class="jb-stat"><b id="jbCount" data-count>348</b><span>live roles</span></div>
         <div class="jb-stat is-accent"><b id="jbNewCount">0</b><span>new in 2 days</span></div>
@@ -315,6 +343,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="wrap">
       <div class="jb-browse-h"><h2 id="jbBrowseH">Browse by field</h2><span>Tap a field to see its roles</span></div>
       <div id="jbCatMount"></div>
+    </div>
+  </section>
+
+
+  <section class="jb-ready" id="ready" aria-labelledby="jbReadyH">
+    <div class="wrap">
+      <p class="section-label">More than a job board</p>
+      <h2 id="jbReadyH">Found a role you want? <em>Here is how we help you get it.</em></h2>
+      <p class="jb-ready-lede">Every remote job search runs on five parts. This board fixes one of them. If one of the other four is what is holding you back, here is what we do about it, starting with what is free.</p>
+      <div class="jb-steps"><article class="jb-step"><span class="jb-step-k">01 · Capacity</span><h3>“I see the roles, but I’m not sure I can do them yet.”</h3><p>You can’t be hired for work you can’t yet do. Foundation Training builds the skills and remote work habits live, marked by a person. Cohort 12 is enrolling now.</p><div class="jb-step-a"><a href="../foundationtraining/">Foundation Training</a><a href="../selflearn/">Self-Learn Pack<span>&#8358;35,000</span></a><a href="../capacityscan/">Capacity Audit<span>Free</span></a></div></article><article class="jb-step is-here"><span class="jb-here">You are here</span><span class="jb-step-k">02 · Supply</span><h3>“I can never find roles that can hire me from here.”</h3><p>You’re in the right place: every role on this board is open to Nigeria. To find more on your own, learn the search. Short of time? We apply for you.</p><div class="jb-step-a"><a href="../register.html#book">Search book<span>&#8358;5,000</span></a><a href="../jobapplication/">Done-For-You<span>&#8358;50,000</span></a></div></article><article class="jb-step"><span class="jb-step-k">03 · Representation</span><h3>“I apply and hear nothing back.”</h3><p>Usually the CV is not being read, by software or by a person. Scan it free, rebuild it yourself, or let us fix it for one field.</p><div class="jb-step-a"><a href="../cvscan/">Remote CV Self-Scan<span>Free</span></a><a href="../cvbuilder.html">CV Engine<span>&#8358;5,000/month</span></a><a href="../register.html#cvfix">CV Fix<span>&#8358;30,000</span></a></div></article><article class="jb-step"><span class="jb-step-k">04 · Aim</span><h3>“I apply everywhere and nothing lands.”</h3><p>Applying everywhere isn’t the same as applying where you’d get hired. Find the one part that is holding you back, then the one target that fits you.</p><div class="jb-step-a"><a href="../diagnose/">Find what is holding you back<span>Free</span></a><a href="../fromintenttooffer/">From Intent to Offer<span>&#8358;15,000</span></a></div></article><article class="jb-step"><span class="jb-step-k">05 · Conversion</span><h3>“I get interviews, but no offers.”</h3><p>Interviews don’t pay you; a signed offer does. Bring a real application to the free live Clinic, or work the last metre one-to-one with us.</p><div class="jb-step-a"><a href="../masterclass/">Free Application Clinic<span>Free</span></a><a href="../innercircle/">The Inner Circle<span>1:1</span></a></div></article></div>
     </div>
   </section>
 
@@ -7696,6 +7734,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </section>
 </main>
 
+<template id="jbPromos">
+<aside class="jb-promo"><i aria-hidden="true">🧱</i><p><b>Reading roles you can’t quite do yet?</b>That’s capacity, and it is fixable. Foundation Training builds it live, marked by a person.</p><a href="../foundationtraining/">See Foundation Training →</a></aside>
+<aside class="jb-promo"><i aria-hidden="true">📄</i><p><b>Applying and hearing nothing back?</b>Your CV may not be getting read. Score it free in under a minute, on your own device.</p><a href="../cvscan/">Scan my CV free →</a></aside>
+<aside class="jb-promo"><i aria-hidden="true">🧭</i><p><b>Not sure which of these you should apply for?</b>Five questions, about ninety seconds, and you will know what is holding your search back.</p><a href="../diagnose/">Find what is holding me back →</a></aside>
+<aside class="jb-promo"><i aria-hidden="true">⏱️</i><p><b>Found roles but no time to apply?</b>Our team runs a seven-day job hunt in your field and applies for you.</p><a href="../jobapplication/">See Done-For-You →</a></aside>
+<aside class="jb-promo"><i aria-hidden="true">🎤</i><p><b>Getting interviews but no offers?</b>Bring one real application to the free live Clinic and see what to fix first.</p><a href="../masterclass/">See the free Clinic →</a></aside>
+</template>
 <div class="jb-sheet" id="jbSheet" hidden role="dialog" aria-modal="true" aria-labelledby="jbSheetT">
   <div class="jb-sheet-in">
     <div class="jb-sheet-h"><div><b id="jbSheetT">Share this job</b><span id="jbSheetS"></span></div><button class="jb-x" type="button" id="jbSheetX" aria-label="Close">×</button></div>
@@ -7723,7 +7768,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </a>
 
 <script src="../erj-theme.js?v=20260911a"></script>
-<script src="../erj-nav.js?v=20261008d"></script>
+<script src="../erj-nav.js?v=20261015a"></script>
 <script src="../erj-config.js?v=20261008b"></script>
 <script>
 /* Job board: fields, filters, date groups, share, ticker. Every card is
@@ -7771,7 +7816,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   /* filtering + day groups */
   function render(){
-    [].slice.call(grid.querySelectorAll('.jb-day')).forEach(function(x){x.remove();});
+    [].slice.call(grid.querySelectorAll('.jb-day,.jb-promo')).forEach(function(x){x.remove();});
     var shown=0,match=0,last='',perDay={};
     cards.forEach(function(c){
       var ok=!c._gone&&(!fam||c.getAttribute('data-family')===fam)&&(!onlyNew||c._new)&&(!term||c.getAttribute('data-q').indexOf(term)>-1);
@@ -7781,6 +7826,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           h.textContent=label(d);grid.insertBefore(h,c);last=d;}}
     });
     [].slice.call(grid.querySelectorAll('.jb-day')).forEach(function(h){var n=perDay[h.getAttribute('data-d')];if(n){var em=document.createElement('em');em.textContent=n+(n===1?' role':' roles');h.appendChild(em);}});
+    /* one ERJ help card after every twelfth visible role, rotating through the five parts */
+    var tpl=document.getElementById('jbPromos'),pr=tpl?[].slice.call(tpl.content.children):[];
+    if(pr.length){var vis=cards.filter(function(c){return !c.classList.contains('jb-hide');}),k=0;
+      for(var i=12;i<vis.length;i+=12){var el=pr[k++%pr.length].cloneNode(true);grid.insertBefore(el,vis[i]);}}
     more.classList.toggle('jb-hide',match<=shown);more.textContent='Show more roles ('+(match-shown)+' left)';
     none.classList.toggle('jb-hide',match>0);
     result.textContent=(fam||term||onlyNew)?(match+(match===1?' role matches':' roles match')+(fam?' in '+fam:'')):'';
@@ -7852,6 +7901,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   var cb=$('jbCopyBoard');if(cb)cb.addEventListener('click',function(){copy(location.origin+location.pathname);say('Board link copied ✓');});
 
   render();
+  /* ?field=Tech%20%26%20IT from the job board adverts on other pages */
+  try{var pf=new URLSearchParams(location.search).get('field');if(pf&&document.querySelector('.jb-cat[data-fam="'+pf.replace(/"/g,'')+'"]'))setFam(pf,true);}catch(e){}
   var h=location.hash&&document.getElementById(location.hash.slice(1));
   if(h&&h.classList.contains('jb-card')){limit=cards.length;render();h.classList.add('is-target');h.classList.remove('jb-rise');setTimeout(function(){h.scrollIntoView({block:'start'});},60);}
   window.addEventListener('hashchange',function(){var x=location.hash&&document.getElementById(location.hash.slice(1));if(x&&x.classList.contains('jb-card')){if(x.classList.contains('jb-hide')){fam='';term='';q.value='';onlyNew=false;limit=cards.length;setFam('');}x.classList.add('is-target');x.classList.remove('jb-rise');x.scrollIntoView({block:'start',behavior:reduce?'auto':'smooth'});}});

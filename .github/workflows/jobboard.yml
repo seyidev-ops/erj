@@ -67,7 +67,7 @@ jobs:
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A jobs sitemap.xml
+          git add -A jobs sitemap.xml index.html testimonials.html register.html foundationtraining/index.html
           if [ -s "$RUNNER_TEMP/jobboard-summary.txt" ]; then
             git commit -F "$RUNNER_TEMP/jobboard-summary.txt"
           else

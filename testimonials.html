@@ -325,38 +325,6 @@ html[data-theme="day"] .nav,html[data-theme="day"] nav{background:var(--bg)!impo
 @media(min-width:760px){.ts-ev-grid{grid-template-columns:1fr 1fr;}}
 
 
-/* ── live job board (testimonials) ── */
-.lb{max-width:980px;margin:0 auto;padding:clamp(1.3rem,3vw,2rem);border-radius:22px;border:1.5px solid transparent;
-  background:linear-gradient(var(--card),var(--card)) padding-box,linear-gradient(125deg,#3FB950,#FFC46B,#FF5722,#3FB950) border-box;box-shadow:0 26px 60px rgba(63,185,80,.10);}
-.lb-top{display:flex;justify-content:space-between;align-items:flex-end;gap:1.2rem 2rem;flex-wrap:wrap;}
-.lb-live{display:inline-flex;align-items:center;gap:.45rem;font-size:.62rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--green-text,#3FB950);}
-.lb-live i{width:8px;height:8px;border-radius:50%;background:#25D366;animation:lbPing 2s infinite;}
-@keyframes lbPing{0%{box-shadow:0 0 0 0 rgba(37,211,102,.55)}70%{box-shadow:0 0 0 9px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
-.lb-title{font-family:var(--fd);font-size:clamp(1.5rem,3.4vw,2rem);font-weight:800;letter-spacing:-.02em;color:var(--text);margin:.35rem 0 .3rem;}
-.lb-sub{font-size:.88rem;color:var(--muted);max-width:46ch;line-height:1.6;}
-.lb-stats{display:flex;gap:.6rem;}
-.lb-stats div{min-width:5.6rem;padding:.7rem .8rem;border-radius:14px;border:1px solid var(--border);text-align:center;}
-.lb-stats b{display:block;font-family:var(--fd);font-size:1.6rem;font-weight:800;color:var(--accent);font-variant-numeric:tabular-nums;line-height:1.1;}
-.lb-stats span{font-size:.68rem;color:var(--muted);}
-.lb-feed{display:flex;flex-direction:column;gap:.45rem;margin:1.3rem 0 1.1rem;}
-.lb-row{display:grid;grid-template-columns:auto minmax(0,1fr) auto auto;grid-template-areas:"d t n g" "d c n g";align-items:center;gap:.05rem .8rem;padding:.75rem .9rem;border-radius:14px;
-  border:1px solid var(--border);text-decoration:none;color:var(--text);background:var(--paper);animation:lbIn .6s cubic-bezier(.22,1,.36,1) both;animation-delay:var(--d,0ms);
-  transition:transform .25s,border-color .25s;}
-.lb-row:hover{transform:translateX(4px);border-color:var(--accent);}
-@keyframes lbIn{from{transform:translateY(12px)}to{transform:none}}
-.lb-dot{grid-area:d;width:9px;height:9px;border-radius:50%;background:var(--border);}
-.lb-dot.is-new{background:#25D366;box-shadow:0 0 0 4px rgba(37,211,102,.15);}
-.lb-r-t{grid-area:t;font-family:var(--fd);font-weight:700;font-size:.95rem;line-height:1.3;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
-.lb-r-c{grid-area:c;font-size:.76rem;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
-.lb-new{grid-area:n;font-size:.6rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:var(--accent-btn,#FF5722);padding:.2rem .5rem;border-radius:100px;}
-.lb-go{grid-area:g;color:var(--accent);font-weight:700;}
-.lb-perks{list-style:none;padding:0;margin:0 0 1.3rem;display:flex;flex-wrap:wrap;gap:.45rem;}
-.lb-perks li{font-size:.76rem;color:var(--text);padding:.35rem .7rem;border-radius:100px;border:1px solid var(--border);}
-.lb-perks li::before{content:'✓ ';color:var(--green-text,#3FB950);font-weight:800;}
-.lb-cta{display:flex;align-items:center;gap:1rem 1.4rem;flex-wrap:wrap;}
-.lb-alt{font-size:.86rem;font-weight:600;color:var(--accent);text-decoration:none;}
-.lb-alt:hover{text-decoration:underline;}
-@media(max-width:620px){.lb-stats{width:100%;}.lb-stats div{flex:1;min-width:0;}.lb-cta .btn-primary-ui{width:100%;}}
 /* ── ambassador ── */
 .amb-sec{padding-top:clamp(3rem,7vw,5rem);padding-bottom:clamp(3rem,7vw,5rem);border-top:1px solid var(--border2);}
 .amb{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:clamp(1.5rem,4vw,3rem);align-items:center;max-width:1040px;margin:0 auto;}
@@ -384,7 +352,7 @@ html[data-theme="day"] .nav,html[data-theme="day"] nav{background:var(--bg)!impo
 .amb-cap{font-size:.84rem;color:var(--muted);text-align:center;max-width:24ch;}
 @media(max-width:860px){.amb{grid-template-columns:1fr;}.amb-r{order:-1;}.amb-orbit{width:180px;}}
 @media(max-width:620px){.amb-btn{width:100%;justify-content:center;font-size:.95rem;padding:.95rem 1rem;text-align:center;}}
-@media(prefers-reduced-motion:reduce){.amb-orbit,.amb-core,.amb-p,.lb-row,.lb-live i{animation:none;}}
+@media(prefers-reduced-motion:reduce){.amb-orbit,.amb-core,.amb-p{animation:none;}}
 .ts-wrap.dfy-sec{padding-top:clamp(3rem,7vw,5rem);padding-bottom:clamp(3.5rem,8vw,6rem);}
 .ts-wrap.amb-sec{padding-top:clamp(3rem,7vw,5rem);padding-bottom:clamp(3.5rem,8vw,6rem);margin-bottom:clamp(1.5rem,4vw,3rem);}
 .amb-steps{grid-template-columns:repeat(3,minmax(0,1fr));}
@@ -645,54 +613,44 @@ html[data-theme="day"]{--wa:#E8470F;}
 </div>
 </section>
 <!-- ══ DONE-FOR-YOU · 7 DAYS ══ -->
-<section class="ts-wrap dfy-sec" id="jobboard">
-<div class="dfy-label"><span class="mark"></span>Free · No payment, ever</div>
-<div class="dfy-head">
-<h2 class="dfy-h">Every story above started the same way: <em>seeing a role they were eligible for.</em></h2>
-<div class="dfy-head-r">
-<p class="dfy-sub">Not a course or a payment: a job advert from a company that could legally pay someone in their country. That part costs nothing.</p>
-</div>
-</div>
-<div class="lb reveal" id="lbBoard">
-<div class="lb-top">
-<div class="lb-id"><span class="lb-live"><i></i>Live · updated every morning</span><h3 class="lb-title">The Remote Job Board</h3><p class="lb-sub">Every role open to Nigeria or Africa. Expired roles come off on their own.</p></div>
-<div class="lb-stats"><div><b id="lbCount">250+</b><span>live roles</span></div><div><b id="lbNew">New</b><span>in the last 2 days</span></div><div><b id="lbFields">12</b><span>job fields</span></div></div>
-</div>
-<div class="lb-feed" id="lbFeed" aria-live="polite">
-<a class="lb-row" href="jobs/"><span class="lb-dot is-new"></span><span class="lb-r-t">Today's roles are on the board</span><span class="lb-r-c">Open it to browse by field</span><span class="lb-go">→</span></a>
-</div>
-<ul class="lb-perks"><li>Hiring geography on every listing</li><li>Scam adverts filtered out</li><li>No fee, no email, no card</li></ul>
-<div class="lb-cta"><a class="btn-primary-ui" href="jobs/"><span>Open The Job Board</span><span class="arrow-wrap"><span class="arrow">→</span></span></a><a class="lb-alt" href="https://whatsapp.com/channel/0029Vaym4DE3mFY2wCrC713S" rel="noopener" target="_blank">Get roles on WhatsApp instead →</a></div>
-</div>
-<script>
-(function(){
-  var feed=document.getElementById('lbFeed'); if(!feed||!window.fetch||!window.DOMParser) return;
-  var still=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
-  function esc(x){return String(x||'').replace(/[&<>"]/g,function(m){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m];});}
-  function count(el,n){ if(!el) return; if(still){el.textContent=n;return;} var t0=null;
-    function step(ts){ t0=t0||ts; var k=Math.min(1,(ts-t0)/1100); el.textContent=Math.round(n*(1-Math.pow(1-k,3))); if(k<1) requestAnimationFrame(step); }
-    requestAnimationFrame(step); }
-  fetch('jobs/',{cache:'no-cache'}).then(function(r){return r.ok?r.text():Promise.reject();}).then(function(t){
-    var d=new DOMParser().parseFromString(t,'text/html'), data={};
-    try{ data=JSON.parse((d.getElementById('jbData')||{}).textContent||'{}'); }catch(e){}
-    var cards=[].slice.call(d.querySelectorAll('.jb-card')); if(!cards.length) return;
-    var y=new Date(Date.now()-864e5).toISOString().slice(0,10);
-    var fresh=cards.filter(function(c){return (c.getAttribute('data-added')||c.getAttribute('data-date')||'')>=y;});
-    var fams={}; cards.forEach(function(c){fams[c.getAttribute('data-family')]=1;});
-    count(document.getElementById('lbCount'),cards.length);
-    count(document.getElementById('lbNew'),fresh.length);
-    count(document.getElementById('lbFields'),Object.keys(fams).length);
-    var pick=(fresh.length>=5?fresh:cards).slice(0,6);
-    feed.innerHTML=pick.map(function(c,i){
-      var id=c.getAttribute('data-id'), j=data[id]||{}, isNew=(c.getAttribute('data-added')||c.getAttribute('data-date')||'')>=y;
-      return '<a class="lb-row" style="--d:'+(i*90)+'ms" href="jobs/#job-'+esc(id)+'"><span class="lb-dot'+(isNew?' is-new':'')+'"></span>'+
-        '<span class="lb-r-t">'+esc(j.title||'Remote role')+'</span><span class="lb-r-c">'+esc(j.company||'')+' · '+esc(c.getAttribute('data-family')||'')+'</span>'+
-        (isNew?'<span class="lb-new">New</span>':'')+'<span class="lb-go">→</span></a>';
-    }).join('');
-  }).catch(function(){});
-})();
-</script>
-<p class="dfy-more">Roles reaching you and still no replies? Then supply is not your weak point. <a href="diagnose/">Find which of the five parts is</a> &mdash; five questions, about ninety seconds, no payment and no email.</p>
+<section class="ts-wrap" id="jobboard" style="padding-top:clamp(1.5rem,4vw,2.5rem);padding-bottom:clamp(1.5rem,4vw,2.5rem);">
+<!--JOBTEASE:START ctx=stories-->
+<style>
+.jt{--jt-o:#FF5722;--jt-line:rgba(255,255,255,.12);--jt-card:rgba(255,255,255,.035);--jt-mut:rgba(255,255,255,.66);position:relative;overflow:hidden;border:1px solid var(--jt-line);border-radius:22px;padding:clamp(1.3rem,3.4vw,2.2rem);margin:clamp(1.8rem,4vw,2.6rem) 0;background:radial-gradient(120% 140% at 100% 0,rgba(255,87,34,.14),transparent 55%),var(--jt-card);text-align:left;}
+html[data-theme="day"] .jt{--jt-o:#E8470F;--jt-line:rgba(20,17,14,.12);--jt-card:#fff;--jt-mut:#52514C;}
+.jt-k{display:inline-flex;align-items:center;gap:.5rem;font:700 .64rem/1 'Inter',system-ui,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--jt-o);margin:0 0 .9rem;}
+.jt-k i{width:8px;height:8px;border-radius:50%;background:#25D366;animation:jtPing 2s infinite;}
+@keyframes jtPing{0%{box-shadow:0 0 0 0 rgba(37,211,102,.55)}70%{box-shadow:0 0 0 9px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
+.jt h2{font-family:'Space Grotesk',system-ui,sans-serif;font-size:clamp(1.45rem,3.6vw,2.2rem);font-weight:800;letter-spacing:-.02em;line-height:1.15;margin:0 0 .6rem;}
+.jt h2 em{font-style:normal;color:var(--jt-o);display:block;}
+.jt-p{color:var(--jt-mut);font-size:.95rem;line-height:1.6;margin:0 0 1.2rem;max-width:56ch;}
+.jt-fs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.55rem;margin:0 0 1.3rem;}
+@media(max-width:860px){.jt-fs{grid-template-columns:repeat(2,minmax(0,1fr));}}
+.jt-f{display:grid;grid-template-columns:auto 1fr;grid-template-areas:"i n" "i c";column-gap:.6rem;align-items:center;padding:.75rem .85rem;border:1px solid var(--jt-line);border-radius:14px;text-decoration:none;color:inherit;background:var(--jt-card);transition:transform .25s,border-color .25s;}
+.jt-f:hover{transform:translateY(-2px);border-color:var(--jt-o);}
+.jt-f i{grid-area:i;font-style:normal;font-size:1.35rem;}
+.jt-f b{grid-area:n;font-size:.86rem;line-height:1.25;font-weight:700;}
+.jt-f span{grid-area:c;font-size:.74rem;color:var(--jt-mut);}
+.jt-f span em{font-style:normal;color:#25D366;font-weight:700;}
+.jt-ready{display:flex;gap:.8rem;align-items:flex-start;padding:.9rem 1rem;border-radius:14px;border:1px dashed var(--jt-line);margin:0 0 1.2rem;font-size:.9rem;line-height:1.55;}
+.jt-ready b{color:var(--jt-o);}
+.jt-ready a{color:inherit;font-weight:700;text-decoration:underline;text-decoration-color:var(--jt-o);text-underline-offset:3px;}
+.jt-cta{display:flex;flex-wrap:wrap;gap:.6rem;}
+.jt-cta a{display:inline-flex;align-items:center;gap:.45rem;padding:.85rem 1.25rem;border-radius:100px;font-weight:700;font-size:.95rem;text-decoration:none;border:1px solid var(--jt-line);color:inherit;transition:transform .25s;}
+.jt-cta a:first-child{background:var(--jt-o);border-color:var(--jt-o);color:#fff;}
+.jt-cta a:hover{transform:translateY(-2px);}
+@media(max-width:560px){.jt-f{grid-template-columns:1fr;grid-template-areas:"i" "n" "c";row-gap:.25rem;padding:.8rem;}.jt-f i{font-size:1.25rem;}.jt-cta a{flex:1 1 100%;justify-content:center;}}
+@media(prefers-reduced-motion:reduce){.jt-k i{animation:none;}.jt-f,.jt-cta a{transition:none;}}
+</style>
+<aside class="jt" aria-labelledby="jt-stories">
+<p class="jt-k"><i aria-hidden="true"></i>Live &middot; Remote Job Board</p>
+<h2 id="jt-stories">The roles in these stories are still being posted. <em>348 are live today.</em></h2>
+<p class="jt-p">Same board, same rule: every role is open to someone living in Nigeria. Pick your field.</p>
+<div class="jt-fs"><a class="jt-f" href="jobs/?field=Marketing%20%26%20Creative#board"><i aria-hidden="true">🎨</i><b>Marketing &amp; Creative</b><span>63 roles · <em>3 new</em></span></a><a class="jt-f" href="jobs/?field=Tech%20%26%20IT#board"><i aria-hidden="true">💻</i><b>Tech &amp; IT</b><span>61 roles · <em>2 new</em></span></a><a class="jt-f" href="jobs/?field=Executive%20%26%20Operations#board"><i aria-hidden="true">⚙️</i><b>Executive &amp; Operations</b><span>55 roles · <em>3 new</em></span></a><a class="jt-f" href="jobs/?field=Virtual%20Assistant%20%26%20Admin#board"><i aria-hidden="true">🗂️</i><b>Virtual Assistant &amp; Admin</b><span>52 roles · <em>9 new</em></span></a><a class="jt-f" href="jobs/?field=Data%20%26%20Product#board"><i aria-hidden="true">📊</i><b>Data &amp; Product</b><span>36 roles · <em>2 new</em></span></a><a class="jt-f" href="jobs/?field=Finance%20%26%20Accounting#board"><i aria-hidden="true">🧾</i><b>Finance &amp; Accounting</b><span>23 roles · <em>1 new</em></span></a><a class="jt-f" href="jobs/?field=Sales%20%26%20Accounts#board"><i aria-hidden="true">📈</i><b>Sales &amp; Accounts</b><span>17 roles</span></a><a class="jt-f" href="jobs/?field=Customer%20Service%20%26%20Success#board"><i aria-hidden="true">🎧</i><b>Customer Service &amp; Success</b><span>15 roles · <em>1 new</em></span></a></div>
+<p class="jt-ready"><span aria-hidden="true">💡</span><span>Seeing the roles is <b>supply</b>. Being the person they hire is <b>capacity</b>: if you cannot yet show you can do the work, <a href="foundationtraining/">Foundation Training</a> builds it, and <a href="capacityscan/">the free Capacity Audit</a> tells you where you stand.</span></p>
+<div class="jt-cta"><a href="jobs/">Open the job board &rarr;</a><a href="foundationtraining/">Get ready for these roles &rarr;</a></div>
+</aside>
+<!--JOBTEASE:END-->
 </section>
 <!-- ══ AFFILIATE AMBASSADOR ══ -->
 <section class="ts-wrap amb-sec" id="ambassador">
@@ -756,7 +714,7 @@ html[data-theme="day"]{--wa:#E8470F;}
 })();
 </script>
 <!-- ===== /Unified Theme Control ===== -->
-<script defer="" src="erj-nav.js?v=20261008d"></script>
+<script defer="" src="erj-nav.js?v=20261015a"></script>
 <script defer="" src="erj-config.js?v=20261008b"></script>
 <script defer="" src="erj-capture.js?v=20260911a"></script>
 <a class="wa-float" href="https://wa.me/2348032925957" rel="noopener" target="_blank" title="Chat on WhatsApp">
