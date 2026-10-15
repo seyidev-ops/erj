@@ -552,6 +552,7 @@
                 'padding:.42rem .8rem .42rem .55rem;border-radius:100px;border:0;background:var(--accent-btn,#FF5722);color:#fff;font-family:inherit;font-size:.74rem;font-weight:700;line-height:1.2;cursor:pointer;' +
                 'box-shadow:0 10px 26px rgba(255,87,34,.35);white-space:nowrap;visibility:hidden;transform:translateX(-10px) scale(.96);transition:transform .35s cubic-bezier(.22,1,.36,1),visibility 0s .35s;}' +
                 '.erj-tournav .erj-tournext b{overflow:hidden;text-overflow:ellipsis;}' +
+                '.erj-tournav .erj-tournext img{width:26px;height:26px;border-radius:50%;object-fit:cover;border:2px solid #fff;margin:-.2rem 0 -.2rem -.3rem;flex:none;}' +
                 '.erj-tournav .erj-tournext i{font-style:normal;font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;opacity:.85;}' +
                 '.erj-tournav button.erj-tournext.on{visibility:visible;transform:none;transition:transform .35s cubic-bezier(.22,1,.36,1),visibility 0s;}' +
                 '.erj-tournav button.is-hint{opacity:1;border-color:var(--accent,#FF5722);animation:erjHint 1.8s ease-out infinite;}' +
@@ -573,7 +574,8 @@
         pill.type = 'button';
         pill.className = 'erj-tournext';
         pill.setAttribute('aria-label', 'Go to the next section');
-        pill.innerHTML = '<i>Next</i><b></b>';
+        /* Seyi, the facilitator, points the way: the tour feels guided, not mechanical */
+        pill.innerHTML = '<img src="' + (nav.base || '') + 'photo-seyi-face.webp" alt="" width="26" height="26" decoding="async"><i>Next</i><b></b>';
         box.appendChild(pill);
         document.body.appendChild(box);
         const upBtn = box.children[0];
