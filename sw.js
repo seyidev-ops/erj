@@ -2,7 +2,7 @@
    EVERYTHING REMOTE JOB — SERVICE WORKER
    Cache-first for app shell, network-first for fonts
 ═══════════════════════════════════════════════════════ */
-const CACHE = 'erj-site-20261015h';
+const CACHE = 'erj-site-20261015i';
 const OFFLINE = '/offline.html';
 
 /* SHELL is what a first-time visitor pays for before anything renders. It had
@@ -155,11 +155,15 @@ self.addEventListener('fetch', e => {
     (e.request.headers.get('accept') || '').includes('text/html');
 
   if (isHTML) {
+    // cache:'no-cache' makes the browser re-check with the server every time
+    // (a cheap 304 when nothing changed), so a page published minutes ago is
+    // never served from the browser's 10-minute HTTP cache.
+    const fresh = () => fetch(e.request, { cache: 'no-cache' });
     e.respondWith(
-      fetch(e.request)
+      fresh()
         // A phone that drops signal for a second should not land on the
         // offline page: try once more before falling back.
-        .catch(() => new Promise(r => setTimeout(r, 1200)).then(() => fetch(e.request)))
+        .catch(() => new Promise(r => setTimeout(r, 1200)).then(fresh))
         .then(res => {
           if (res && res.status === 200) {
             const clone = res.clone();
