@@ -587,6 +587,9 @@
                 '.erj-tournav .erj-tournext img{width:26px;height:26px;border-radius:50%;object-fit:cover;border:2px solid #fff;margin:-.2rem 0 -.2rem -.3rem;flex:none;}' +
                 '.erj-tournav .erj-tournext i{font-style:normal;font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;opacity:.85;}' +
                 '.erj-tournav button.erj-tournext.on{visibility:visible;transform:none;transition:transform .35s cubic-bezier(.22,1,.36,1),visibility 0s;}' +
+                /* phones: see-through, and it tucks back into the arrow (slide + fade) instead of snapping off */
+                '@media(max-width:768px){.erj-tournav button.erj-tournext{background:rgba(255,87,34,.8);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);box-shadow:0 6px 18px rgba(255,87,34,.25);opacity:0;transform:translateX(-18px) scale(.9);transition:transform .4s cubic-bezier(.22,1,.36,1),opacity .4s ease,visibility 0s .4s;}' +
+                '.erj-tournav button.erj-tournext.on{opacity:1;transform:none;transition:transform .35s cubic-bezier(.22,1,.36,1),opacity .25s ease,visibility 0s;}}' +
                 '.erj-tournav button.is-hint{opacity:1;border-color:var(--accent,#FF5722);animation:erjHint 1.8s ease-out infinite;}' +
                 '@keyframes erjHint{0%{box-shadow:0 0 0 0 rgba(255,87,34,.6)}75%{box-shadow:0 0 0 12px rgba(255,87,34,0)}100%{box-shadow:0 0 0 0 rgba(255,87,34,0)}}' +
                 '@media(prefers-reduced-motion:reduce){.erj-tournav button.is-hint{animation:none;}.erj-tournext{transition:none;}}';
@@ -617,14 +620,25 @@
         try { hinted = localStorage.getItem('erj-tour-used') === '1'; } catch (e) { /* noop */ }
         if (!hinted) downBtn.classList.add('is-hint');
         const used = () => { downBtn.classList.remove('is-hint'); try { localStorage.setItem('erj-tour-used', '1'); } catch (e) { /* noop */ } };
-        let pillTimer = 0;
-        const showNext = (idx) => {
+        let pillTimer = 0, settleTimer = 0, lastShown = -2;
+        /* Phones: the pill would sit over the text, so it waits until scrolling
+           settles, shows only when the section has changed, and leaves after 1.8s.
+           Desktop keeps it beside the arrows for 2.6s, in the empty margin. */
+        const small = window.matchMedia ? window.matchMedia('(max-width:768px)') : { matches: false };
+        const reveal = (idx) => {
             const nxt = labels[idx + 1];
             if (!nxt) { pill.classList.remove('on'); return; }
             pill.querySelector('b').textContent = nxt;
             pill.classList.add('on');
+            lastShown = idx;
             clearTimeout(pillTimer);
-            pillTimer = setTimeout(() => pill.classList.remove('on'), 2600);
+            pillTimer = setTimeout(() => pill.classList.remove('on'), small.matches ? 1800 : 2600);
+        };
+        const showNext = (idx) => {
+            if (!small.matches) { reveal(idx); return; }
+            pill.classList.remove('on');
+            clearTimeout(settleTimer);
+            settleTimer = setTimeout(() => { if (idx !== lastShown) reveal(idx); }, 260);
         };
         const OFFSET = 84;
         const reduced = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
