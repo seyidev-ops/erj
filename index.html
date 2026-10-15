@@ -1399,6 +1399,36 @@ html[data-theme="day"] .is-hot .ha-go,html[data-theme="day"] .ha-offer:hover .ha
 .is-start .ha-go{text-decoration:none;}
 @media(prefers-reduced-motion:reduce){.st-track{animation:none;}.st-shelf{overflow-x:auto;}}
 .ha-offer:hover .ha-go .a{transform:translateX(4px);}
+/* 03 · The Promise, as one readable table: part · question · fix */
+.pm{margin:clamp(1.6rem,4vw,2.4rem) 0;text-align:left;}
+.pm-head,.pm-row{display:grid;grid-template-columns:3.2rem minmax(9rem,1fr) minmax(0,1.5fr) minmax(0,1.9fr);gap:0 1.2rem;align-items:center;}
+.pm-head{padding:0 1.2rem .6rem;font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-faint);}
+.pm-head span:first-child{grid-column:1/3;}
+.pm-list{list-style:none;margin:0;padding:0;border:1px solid var(--line);border-radius:18px;overflow:hidden;position:relative;}
+.pm-row{position:relative;padding:1.05rem 1.2rem;border-top:1px solid var(--line);transition:background .3s;}
+.pm-row:first-child{border-top:none;}
+.pm-row::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(180deg,#FF5722,#FFC46B);transform:scaleY(0);transform-origin:top;transition:transform .4s cubic-bezier(.22,1,.36,1);}
+.pm-row:hover{background:rgba(255,87,34,.07);}
+.pm-row:hover::before,.pm-row.is-lit::before{transform:scaleY(1);}
+.pm-row.is-lit{background:rgba(255,87,34,.06);}
+.pm-n{font-family:var(--font-display);font-weight:800;font-size:1.5rem;letter-spacing:-.03em;line-height:1;
+  background:linear-gradient(135deg,#FF5722,#FFC46B);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;}
+.pm-t{font-family:var(--font-display);font-weight:800;font-size:1.05rem;color:var(--ink);}
+.pm-q{font-size:.92rem;color:var(--ink);font-weight:500;line-height:1.4;}
+.pm-f{display:flex;gap:.5rem;font-size:.88rem;color:var(--ink-soft);line-height:1.45;}
+.pm-f i{font-style:normal;color:var(--accent);transition:transform .3s;}
+.pm-row:hover .pm-f i,.pm-row.is-lit .pm-f i{transform:translateX(4px);}
+html[data-theme="day"] .pm-n{background-image:linear-gradient(135deg,#E8470F,#AD350A);}
+html[data-theme="day"] .pm-row:hover,html[data-theme="day"] .pm-row.is-lit{background:rgba(232,71,15,.06);}
+@media(max-width:760px){
+  .pm-head{display:none;}
+  .pm-row{grid-template-columns:2.4rem minmax(0,1fr);gap:.15rem .7rem;padding:.95rem 1rem;}
+  .pm-n{grid-row:1/4;align-self:start;font-size:1.3rem;padding-top:.1rem;}
+  .pm-t{font-size:.98rem;}
+  .pm-q{font-size:.88rem;}
+  .pm-f{font-size:.84rem;}}
+/* the carry track: titles and products only */
+.pledge .cy-k,.pledge .cy-d{display:none;}
 /* 02 · one line, one button, one shelf */
 .ha-free{margin:1rem 0 0;display:flex;align-items:center;gap:.5rem;font-size:.82rem;color:var(--ink-faint);}
 .ha-free i{width:8px;height:8px;border-radius:50%;background:#3fd18b;box-shadow:0 0 0 0 rgba(63,209,139,.6);}
@@ -1779,14 +1809,17 @@ html[data-theme="day"] .timer-num{background-image:linear-gradient(160deg,#0A0A0
 <div class="pledge reveal">
 <span class="pledge-tag"><span class="pledge-dot"></span> 03 · The Promise</span>
 <h2 class="pledge-h">We will not let you go until you're <em>hired.</em></h2>
-<p class="pledge-p">Every remote job search runs on the same five parts, the <strong>ERJ Five-Finger Model</strong>. When it stops producing offers, the problem usually starts at one of them. We find which one, fix it with you, and stay until the offer is signed.</p>
-<div class="fps" id="joints" style="scroll-margin-top:90px"><div class="fp reveal"><div class="fp-top"><span class="fp-n">01</span><span class="fp-t">Capacity</span></div><p class="fp-q">Can you already do the job itself?</p><p class="fp-h">We check the skill and the remote work habits first, and build what is missing before anything else.</p></div><div class="fp reveal"><div class="fp-top"><span class="fp-n">02</span><span class="fp-t">Supply</span></div><p class="fp-q">Are you finding enough real jobs you can apply for from here?</p><p class="fp-h">We put real roles you are eligible for in front of you, so you stop applying to jobs you were never allowed to get.</p></div><div class="fp reveal"><div class="fp-top"><span class="fp-n">03</span><span class="fp-t">Representation</span></div><p class="fp-q">Do your CV and LinkedIn show employers what you can do?</p><p class="fp-h">We rebuild your CV, LinkedIn and proof of work until a stranger can see your value in thirty seconds.</p></div><div class="fp reveal"><div class="fp-top"><span class="fp-n">04</span><span class="fp-t">Aim</span></div><p class="fp-q">Are you applying to the jobs most likely to hire you?</p><p class="fp-h">We point every application at companies that can hire and pay someone where you live.</p></div><div class="fp reveal"><div class="fp-top"><span class="fp-n">05</span><span class="fp-t">Conversion</span></div><p class="fp-q">Do your interviews turn into job offers?</p><p class="fp-h">We rehearse the interview and the money conversation with you until offers follow.</p></div></div>
+<p class="pledge-p">Every job search has five parts. When offers stop, one of them is broken. <strong>We find it, fix it with you, and stay until you sign.</strong></p>
+<div class="pm" id="joints" style="scroll-margin-top:90px">
+<div class="pm-head" aria-hidden="true"><span>The ERJ Five-Finger Model</span><span>Ask yourself</span><span>What we do</span></div>
+<ol class="pm-list"><li class="pm-row"><span class="pm-n">01</span><b class="pm-t">Capacity</b><span class="pm-q">Can you do the job?</span><span class="pm-f"><i aria-hidden="true">→</i>We build the skill and the remote habits first.</span></li><li class="pm-row"><span class="pm-n">02</span><b class="pm-t">Supply</b><span class="pm-q">Are you finding jobs open to you?</span><span class="pm-f"><i aria-hidden="true">→</i>We bring you real roles you are eligible for.</span></li><li class="pm-row"><span class="pm-n">03</span><b class="pm-t">Representation</b><span class="pm-q">Do your CV and LinkedIn show it?</span><span class="pm-f"><i aria-hidden="true">→</i>We rebuild them until a stranger sees it in 30 seconds.</span></li><li class="pm-row"><span class="pm-n">04</span><b class="pm-t">Aim</b><span class="pm-q">Are you applying where you can be hired?</span><span class="pm-f"><i aria-hidden="true">→</i>We aim you at employers who hire and pay from here.</span></li><li class="pm-row"><span class="pm-n">05</span><b class="pm-t">Conversion</b><span class="pm-q">Do interviews turn into offers?</span><span class="pm-f"><i aria-hidden="true">→</i>We rehearse the interview and the pay talk with you.</span></li></ol>
+</div>
 <div class="cy">
 <div class="cy-head"><span class="cy-label">How we carry you</span><h3 class="cy-h">From the first fix to the <em>signed offer.</em></h3></div>
 <ol class="cy-track"><span class="cy-rail" aria-hidden="true"><i></i></span><li class="cy-step"><span class="cy-ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span><span class="cy-k">Step 1 · With you</span><b class="cy-t">We fix it with you</b><span class="cy-p">Foundation Training</span><span class="cy-d">Live classes, your work marked, a certificate.</span></li><li class="cy-step"><span class="cy-ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg></span><span class="cy-k">Step 2 · For you</span><b class="cy-t">We run it for you</b><span class="cy-p">Job Application</span><span class="cy-d">We source, tailor and apply on your behalf.</span></li><li class="cy-step"><span class="cy-ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></span><span class="cy-k">Step 3 · Beside you</span><b class="cy-t">We stay with you</b><span class="cy-p">The Inner Circle</span><span class="cy-d">Interviews, the offer and your first months in the job.</span></li></ol>
 <a class="cy-go" href="#paths"><span>Compare the routes</span><span class="cy-go-a" aria-hidden="true">↓</span></a>
 </div>
-<p class="pledge-fine">Not sure which part is yours? <a href="diagnose/">Five questions will tell you</a>. What we promise is persistence, never a date: no placement, timeline or salary is guaranteed.</p>
+<p class="pledge-fine">Not sure which part is yours? <a href="diagnose/">Five questions will tell you</a>. We promise persistence, not a date: no placement, timeline or salary is guaranteed.</p>
 </div>
 </section>
 
@@ -2276,6 +2309,13 @@ var io=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isInte
 if(calm)return;ep.querySelectorAll('[data-count]').forEach(function(n){var end=+n.getAttribute('data-count'),suf=n.getAttribute('data-suffix')||'',t0=null,d=1400;
 function f(t){if(!t0)t0=t;var p=Math.min(1,(t-t0)/d);n.textContent=Math.round(end*(1-Math.pow(1-p,3)))+suf;if(p<1)requestAnimationFrame(f);}
 requestAnimationFrame(f);});});},{threshold:.4});io.observe(ep);})();
+</script>
+<script>
+/* 03 · light the five parts one after another, once, when the table is on screen */
+(function(){var l=document.querySelector('.pm-list');if(!l||!('IntersectionObserver' in window))return;
+if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+var rows=l.querySelectorAll('.pm-row');var io=new IntersectionObserver(function(es){if(!es[0].isIntersecting)return;io.disconnect();
+rows.forEach(function(r,i){setTimeout(function(){r.classList.add('is-lit');setTimeout(function(){r.classList.remove('is-lit')},900);},400+i*650);});},{threshold:.5});io.observe(l);})();
 </script>
 </body>
 </html>
