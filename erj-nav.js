@@ -647,6 +647,9 @@
         let _tops = null;
         const tops = () => (_tops || (_tops = stops.map(el => el.getBoundingClientRect().top + window.pageYOffset - OFFSET)));
         window.addEventListener('resize', () => { _tops = null; }, { passive: true });
+        /* sections that render lazily (content-visibility) change height as they
+           come near the screen: forget the measurements whenever the page grows */
+        if ('ResizeObserver' in window) new ResizeObserver(() => { _tops = null; }).observe(document.body);
         /* images and fonts move sections after the first measurement: measure again */
         window.addEventListener('load', () => { _tops = null; setTimeout(() => { _tops = null; }, 1500); }, { once: true });
         const currentIndex = () => {
@@ -691,7 +694,17 @@
                 sync();
                 return;
             }
+            _tops = null;
             window.scrollTo({ top: tops()[next], behavior: reduced ? 'auto' : 'smooth' });
+            /* land exactly: if sections above finished rendering on the way down,
+               the target moved, so settle onto it once the scroll is done */
+            const target = stops[next];
+            setTimeout(() => {
+                _tops = null;
+                const off = target.getBoundingClientRect().top - OFFSET;
+                if (Math.abs(off) > 24) window.scrollBy({ top: off, behavior: 'auto' });
+                sync();
+            }, reduced ? 60 : 900);
             setTimeout(sync, 350);
         };
         upBtn.addEventListener('click', () => go(-1));
