@@ -17,7 +17,7 @@
         "width": 512,
         "height": 512
       },
-      "description": "Everything Remote Job trains and places African professionals into globally competitive, dollar-paying remote roles.",
+      "description": "Everything Remote Job, by Business Play Ltd, helps professionals in Nigeria and across Africa go from job seeker to working for clients in the UK, the US and beyond, right from where they are.",
       "parentOrganization": {
         "@type": "Organization",
         "name": "Business Play Limited"
