@@ -95,7 +95,7 @@
             n: '02', name: 'Supply', tag: 'Finding real jobs you can apply for', ask: 'Are you finding enough real jobs you can apply for from here?', law: 'You can\u2019t apply for a job you never saw.',
             verdict: 'You are not seeing enough real, eligible roles to have a job search yet. Everything downstream \u2014 your CV, your aim, your interviews \u2014 is being judged on far too little evidence. Fix this one first and the rest becomes measurable.',
             free: {
-                text: 'Use the free Remote Job Board. New roles go up every morning, and every one is open to someone living in Nigeria or Africa, so you stop wasting applications on jobs you were never allowed to get.',
+                text: 'Use the free Remote Job Board. New roles go up twice a day, and every one is open to someone living in Nigeria or Africa, so you stop wasting applications on jobs you were never allowed to get.',
                 href: '../jobs/', label: 'Open the free job board'
             },
             paid: {

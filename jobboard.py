@@ -1555,7 +1555,7 @@ def render(cfg):
     payload = {j["id"]: {"t": copy_text(j, cfg), "title": j["title"], "company": j["company"]} for j in live}
     fams = [f for f in FAMILIES if any(j["family"] == f for j in live)]
     counts = {f: sum(1 for j in live if j["family"] == f) for f in fams}
-    empty = '<p class="jb-empty">No live roles right now. New ones are added every morning.</p>' if not live else ""
+    empty = '<p class="jb-empty">No live roles right now. New ones are added twice a day.</p>' if not live else ""
     data = json.dumps(payload, ensure_ascii=False).replace("</", "<\\/")
     tiles = "".join(
         f'<button class="jb-cat" type="button" data-fam="{e(f)}"><span class="jb-cat-i" aria-hidden="true">{FAMILY_ICON.get(f, "💼")}</span>'
