@@ -1399,6 +1399,58 @@ html[data-theme="day"] .is-hot .ha-go,html[data-theme="day"] .ha-offer:hover .ha
 .is-start .ha-go{text-decoration:none;}
 @media(prefers-reduced-motion:reduce){.st-track{animation:none;}.st-shelf{overflow-x:auto;}}
 .ha-offer:hover .ha-go .a{transform:translateX(4px);}
+/* 07 · How We Help: three ways, each opens to its options. No prices here. */
+.hw{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;align-items:start;}
+.hw-card{position:relative;border:1px solid var(--line);border-radius:22px;background:var(--card);overflow:hidden;isolation:isolate;
+  transition:border-color .3s,box-shadow .3s,transform .3s var(--ease);scroll-margin-top:90px;}
+.hw-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#FF5722,#FFC46B);transform:scaleX(.18);transform-origin:left;transition:transform .5s var(--ease);}
+.hw-card:hover::before,.hw-card[open]::before{transform:scaleX(1);}
+.hw-card::after{content:'';position:absolute;z-index:-1;width:220px;height:220px;right:-80px;top:-90px;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,87,34,.22),transparent 65%);transition:transform .6s var(--ease);}
+.hw-card:hover{transform:translateY(-4px);border-color:rgba(255,87,34,.55);box-shadow:0 22px 50px rgba(255,87,34,.14);}
+.hw-card:hover::after{transform:translate(-20px,20px) scale(1.15);}
+.hw-card[open]{border-color:var(--accent);box-shadow:0 22px 50px rgba(255,87,34,.16);transform:none;}
+.hw-dwy{border-color:rgba(255,87,34,.5);}
+.hw-sum{list-style:none;cursor:pointer;display:flex;flex-direction:column;align-items:flex-start;gap:.45rem;padding:1.6rem 1.5rem 1.4rem;}
+.hw-sum::-webkit-details-marker{display:none;}
+.hw-sum:focus-visible{outline:2px solid var(--accent);outline-offset:-4px;border-radius:22px;}
+.hw-ico{width:3.1rem;height:3.1rem;border-radius:16px;display:flex;align-items:center;justify-content:center;color:#fff;
+  background:linear-gradient(135deg,#FF5722,#FF8A3D);box-shadow:0 12px 26px rgba(255,87,34,.3);transition:transform .4s var(--ease);margin-bottom:.4rem;}
+.hw-card:hover .hw-ico{transform:rotate(-8deg) scale(1.06);}
+.hw-tag{font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);font-weight:600;}
+.hw-name{font-family:var(--font-display);font-weight:800;font-size:clamp(1.45rem,2.6vw,1.9rem);letter-spacing:-.02em;line-height:1.1;color:var(--ink);}
+.hw-line{font-size:.9rem;color:var(--ink-soft);line-height:1.55;}
+.hw-open{margin-top:.6rem;display:inline-flex;align-items:center;gap:.55rem;padding:.5rem .6rem .5rem 1rem;border-radius:999px;
+  border:1px solid var(--accent);color:var(--accent);font-weight:700;font-size:.84rem;transition:background .3s,color .3s;}
+.hw-chev{display:inline-flex;align-items:center;justify-content:center;width:1.5rem;height:1.5rem;border-radius:50%;background:rgba(255,87,34,.15);transition:transform .35s var(--ease);}
+.hw-card:hover .hw-open,.hw-card[open] .hw-open{background:var(--accent-btn,#FF5722);color:#fff;}
+.hw-card[open] .hw-chev{transform:rotate(180deg);background:rgba(255,255,255,.2);}
+@media(prefers-reduced-motion:no-preference){.hw-card:not([open]) .hw-chev{animation:hwNudge 2.2s ease-in-out infinite;}}
+@keyframes hwNudge{0%,60%,100%{transform:none}75%{transform:translateY(3px)}}
+.hw-list{list-style:none;margin:0;padding:0 1rem 1rem;display:flex;flex-direction:column;gap:.55rem;}
+.hw-item{display:flex;flex-direction:column;gap:.6rem;padding:1rem 1rem .95rem;border-radius:16px;border:1px solid var(--line);background:var(--bg,#000);
+  transition:border-color .3s,transform .3s var(--ease);}
+.hw-item:hover{border-color:rgba(255,87,34,.55);transform:translateX(3px);}
+@media(prefers-reduced-motion:no-preference){.hw-card[open] .hw-item{animation:hwIn .45s cubic-bezier(.22,1,.36,1) both;}
+  .hw-card[open] .hw-item:nth-child(2){animation-delay:.06s}.hw-card[open] .hw-item:nth-child(3){animation-delay:.12s}
+  .hw-card[open] .hw-item:nth-child(4){animation-delay:.18s}.hw-card[open] .hw-item:nth-child(5){animation-delay:.24s}}
+@keyframes hwIn{from{transform:translateY(10px)}to{transform:none}}
+.hw-item-t{display:flex;flex-direction:column;gap:.3rem;}
+.hw-item-t b{font-family:var(--font-display);font-size:.98rem;font-weight:700;color:var(--ink);line-height:1.3;}
+.hw-item-t span{font-size:.84rem;color:var(--ink-soft);line-height:1.5;}
+.hw-item-t .hw-badge{align-self:flex-start;font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:#fff;
+  background:linear-gradient(90deg,#FF5722,#FF7A3D);padding:.2rem .55rem;border-radius:999px;line-height:1.4;}
+.hw-more{align-self:flex-start;font-size:.82rem;font-weight:700;color:var(--accent);text-decoration:none;display:inline-flex;gap:.35rem;}
+.hw-more span{transition:transform .3s var(--ease);}
+.hw-more:hover span{transform:translateX(4px);}
+html[data-theme="day"] .hw-item{background:#fff;}
+html[data-theme="day"] .hw-tag,html[data-theme="day"] .hw-more,html[data-theme="day"] .hw-open{color:#AD350A;}
+html[data-theme="day"] .hw-open{border-color:#E8470F;}
+html[data-theme="day"] .hw-card:hover .hw-open,html[data-theme="day"] .hw-card[open] .hw-open{background:#E8470F;color:#fff;}
+.hw-foot{display:flex;flex-wrap:wrap;align-items:center;gap:1rem 1.6rem;margin-top:1.6rem;}
+.hw-note{font-size:.88rem;color:var(--ink-soft);}
+.hw-note a{color:var(--accent);font-weight:600;}
+@media(max-width:900px){.hw{grid-template-columns:1fr;}.hw-sum{padding:1.3rem 1.2rem 1.2rem;}}
 /* 03 · The Promise, as one readable table: part · question · fix */
 .pm{margin:clamp(1.6rem,4vw,2.4rem) 0;text-align:left;}
 .pm-head,.pm-row{display:grid;grid-template-columns:3.2rem minmax(9rem,1fr) minmax(0,1.5fr) minmax(0,1.9fr);gap:0 1.2rem;align-items:center;}
@@ -1733,7 +1785,7 @@ html[data-theme="day"] .timer-num{background-image:linear-gradient(160deg,#0A0A0
 <noscript><iframe height="0" src="https://www.googletagmanager.com/ns.html?id=GTM-NMFHS59B" style="display:none;visibility:hidden" width="0"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 <div id="erjNavMount"></div>
-<script>window.ERJ_NAV={active:'home',tourTitle:'',tourStart:2,onPage:[{label:'Start Here',href:'#tour',sub:'A welcome, and the page in eight stops',tourSelf:true},{label:'What We Can Do For You',href:'#promise',sub:'Become hireable and represented for global remote work'},{label:'The Promise',href:'#pledge',sub:'The five parts of every search, and how we fix each one'},{label:'Live Remote Jobs',href:'#jobs-live',sub:'The supply fix: real roles open to Nigeria, by field'},{label:'Proof It Works',href:'#story',sub:'What changed for people who started where you are'},{label:'Free For You',href:'#free',sub:'The diagnosis, the CV scan, the clinic and the blog'},{label:'How We Help',href:'#paths',sub:'Six ways in, from a book to full support'},{label:'Before You Decide',href:'#faq',sub:'The questions everyone asks first'},{label:'Join Cohort 12',href:'#enrol',sub:'Our record so far, and enrolment closes Sat 31 Oct'}]};</script>
+<script>window.ERJ_NAV={active:'home',tourTitle:'',tourStart:2,onPage:[{label:'Start Here',href:'#tour',sub:'A welcome, and the page in eight stops',tourSelf:true},{label:'What We Can Do For You',href:'#promise',sub:'Become hireable and represented for global remote work'},{label:'The Promise',href:'#pledge',sub:'The five parts of every search, and how we fix each one'},{label:'Live Remote Jobs',href:'#jobs-live',sub:'The supply fix: real roles open to Nigeria, by field'},{label:'Proof It Works',href:'#story',sub:'What changed for people who started where you are'},{label:'Free For You',href:'#free',sub:'The diagnosis, the CV scan, the clinic and the blog'},{label:'How We Help',href:'#paths',sub:'Do it yourself, with us, or for you'},{label:'Before You Decide',href:'#faq',sub:'The questions everyone asks first'},{label:'Join Cohort 12',href:'#enrol',sub:'Our record so far, and enrolment closes Sat 31 Oct'}]};</script>
 <main>
 <!-- ADVANTAGE TICKER -->
 <div class="ha-ticker ha-ticker-top" role="region" aria-label="Why ERJ">
@@ -2022,104 +2074,23 @@ html[data-theme="day"] .jt{--jt-o:#E8470F;--jt-line:rgba(20,17,14,.12);--jt-card
 <!-- THE LADDER -->
 <section class="wrap section-line" id="paths">
 <div class="step"><span class="step-n">07</span><span class="step-l">How We Help</span></div>
-<h2 class="cost-h" style="margin-bottom:0.9rem;">Six ways we help. Choose only after you know <em>why.</em></h2>
-<p class="paths-lead">Do not compare prices until you know why — <a href="diagnose/" style="color:var(--accent);font-weight:600;">run the free diagnosis first</a>. Every price and product sits together in <a href="register.html" style="color:var(--accent);font-weight:600;">the store</a>.</p>
-<div class="ladder">
-<a class="rung reveal" href="fromintenttooffer/">
-<span class="rung-n">01</span>
-<div class="rung-body">
-<span class="rung-who"><b>If this is you:</b> you want the whole method in your hands tonight, and you would rather read it and do it yourself before you spend more.</span>
-<h3 class="rung-title">How to Get a Remote Job: <em>From Intent to Offer</em></h3>
-<div class="rung-meta">
-<span>The book</span><span>18 chapters · 6 appendices</span><span>Instant download</span>
+<h2 class="cost-h" style="margin-bottom:0.9rem;">Three ways we help. <em>Pick how you want to work.</em></h2>
+<p class="paths-lead">Do it yourself, do it with us, or let us do it for you. Open any one to see what is inside. Not sure which fits? <a href="diagnose/" style="color:var(--accent);font-weight:600;">The free diagnosis will tell you</a>.</p>
+<div class="hw">
+<details class="hw-card hw-diy" id="help-diy">
+<summary class="hw-sum"><span class="hw-ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></span><span class="hw-tag">You do the work</span><span class="hw-name">Do it yourself</span><span class="hw-line">Our method, books and tools in your hands. Best if you have the time and want to move at your own pace.</span><span class="hw-open"><span class="hw-open-t" data-closed="See the 5 options" data-open="Hide the options">See the 5 options</span><span class="hw-chev" aria-hidden="true">↓</span></span></summary>
+<ul class="hw-list"><li class="hw-item"><div class="hw-item-t"><b>Google Search: Best Kept Open Secret</b><span>Find roles before they reach the job boards, with search operators and AI prompts.</span></div><a class="hw-more" href="register.html#book">Learn more <span aria-hidden="true">→</span></a></li><li class="hw-item"><div class="hw-item-t"><b>How to Get a Remote Job: From Intent to Offer</b><span>The whole method as a book. Every chapter ends with one task.</span></div><a class="hw-more" href="fromintenttooffer/">Learn more <span aria-hidden="true">→</span></a></li><li class="hw-item"><div class="hw-item-t"><b>The CV Engine</b><span>Rebuild your CV against the ten-point rubric, scored live as you write.</span></div><a class="hw-more" href="cvbuilder.html">Learn more <span aria-hidden="true">→</span></a></li><li class="hw-item"><div class="hw-item-t"><b>The Self-Learn Pack</b><span>All four stages of the curriculum, worked at your own pace.</span></div><a class="hw-more" href="selflearn/">Learn more <span aria-hidden="true">→</span></a></li><li class="hw-item"><div class="hw-item-t"><b>Career Development — Self-Study</b><span>A skills track for your chosen career at The Mentorine School.</span></div><a class="hw-more" href="register.html#careerdev">Learn more <span aria-hidden="true">→</span></a></li></ul>
+</details>
+<details class="hw-card hw-dwy" id="help-dwy">
+<summary class="hw-sum"><span class="hw-ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span><span class="hw-tag">We do it together</span><span class="hw-name">Done with you</span><span class="hw-line">Live teaching, your work marked, and a team beside you. Best if you want feedback and someone to keep you moving.</span><span class="hw-open"><span class="hw-open-t" data-closed="See the 3 options" data-open="Hide the options">See the 3 options</span><span class="hw-chev" aria-hidden="true">↓</span></span></summary>
+<ul class="hw-list"><li class="hw-item"><div class="hw-item-t"><b>Remote Job Foundation Training</b><span class="hw-badge">Most people start here</span><span>Live classes over 20 training days, your work marked, a certificate at the end.</span></div><a class="hw-more" href="foundationtraining/">Learn more <span aria-hidden="true">→</span></a></li><li class="hw-item"><div class="hw-item-t"><b>One stage at a time</b><span>Take the four Foundation stages one by one, in the order you need them.</span></div><a class="hw-more" href="register.html#dwy">Learn more <span aria-hidden="true">→</span></a></li><li class="hw-item"><div class="hw-item-t"><b>The Inner Circle</b><span>Private one-to-one for the last stretch: interviews, negotiation and the offer.</span></div><a class="hw-more" href="innercircle/">Learn more <span aria-hidden="true">→</span></a></li></ul>
+</details>
+<details class="hw-card hw-dfy" id="help-dfy">
+<summary class="hw-sum"><span class="hw-ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg></span><span class="hw-tag">We do it for you</span><span class="hw-name">Done for you</span><span class="hw-line">Our team does the work while you get on with your week. Best if you are ready to be hired and short on hours.</span><span class="hw-open"><span class="hw-open-t" data-closed="See the 4 options" data-open="Hide the options">See the 4 options</span><span class="hw-chev" aria-hidden="true">↓</span></span></summary>
+<ul class="hw-list"><li class="hw-item"><div class="hw-item-t"><b>CV Fix</b><span>We rebuild one CV for one field, ATS-safe, and send it back in 72 hours.</span></div><a class="hw-more" href="register.html#cvfix">Learn more <span aria-hidden="true">→</span></a></li><li class="hw-item"><div class="hw-item-t"><b>Done-For-You, 7 Days</b><span>We find verified roles in one field and apply to them for you over seven days.</span></div><a class="hw-more" href="jobapplication/">Learn more <span aria-hidden="true">→</span></a></li><li class="hw-item"><div class="hw-item-t"><b>Done-For-You Placement Engine</b><span>We build your assets, then apply for you every week for a month, with a written report.</span></div><a class="hw-more" href="jobapplication/">Learn more <span aria-hidden="true">→</span></a></li><li class="hw-item"><div class="hw-item-t"><b>Get Your Dream Job Offer</b><span>Foundation Training with you, then placement run for you, end to end.</span></div><a class="hw-more" href="register.html#dreamjob">Learn more <span aria-hidden="true">→</span></a></li></ul>
+</details>
 </div>
-</div>
-<div class="rung-buy">
-<div class="rung-price">₦15,000</div>
-<span class="rung-alt">one payment · every chapter ends with one task</span>
-<span class="rung-go">Get the book <span class="a">→</span></span>
-</div>
-</a>
-<a class="rung reveal" href="cvbuilder.html">
-<span class="rung-n">02</span>
-<div class="rung-body">
-<span class="rung-who"><b>If this is you:</b> you are qualified and hearing nothing, and you want the tool that rebuilds your CV, not a course.</span>
-<h3 class="rung-title">The <em>CV Engine</em></h3>
-<div class="rung-meta">
-<span>Tool</span><span>Unlimited rebuilds</span><span>Real .docx out</span>
-</div>
-</div>
-<div class="rung-buy">
-<div class="rung-price">₦5,000</div>
-<span class="rung-alt">a month · cancel any time</span>
-<span class="rung-go">See the CV Engine <span class="a">→</span></span>
-</div>
-</a>
-<a class="rung reveal" href="selflearn/">
-<span class="rung-n">03</span>
-<div class="rung-body">
-<span class="rung-who"><b>If this is you:</b> you want the whole curriculum today, you will genuinely work it alone, and a start date is the thing standing in your way.</span>
-<h3 class="rung-title">The Self-Learn <em>Pack</em></h3>
-<div class="rung-meta">
-<span>Stages 1–4</span><span>Self-paced</span><span>Instant download</span>
-</div>
-</div>
-<div class="rung-buy">
-<div class="rung-price">₦35,000</div>
-<span class="rung-alt">one payment · no certificate</span>
-<span class="rung-go">Get the pack <span class="a">→</span></span>
-</div>
-</a>
-<a class="rung is-start reveal" href="foundationtraining/">
-<span class="rung-n">04</span>
-<div class="rung-body">
-<span class="start-badge">Most people start here</span>
-<span class="rung-who"><b>If this is you:</b> you can do real work, but nothing you own would convince a stranger of it in thirty seconds.</span>
-<h3 class="rung-title">Remote Job <em>Foundation Training</em></h3>
-<div class="rung-meta">
-<span>Stages 1–4</span><span>20 training days</span><span>Live, marked, certified</span><span>Targets $500–$2,000/mo roles</span>
-</div>
-<span class="erj-bonus"><span class="erj-bonus-i" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7"/><path d="M7.5 8a2.5 2.5 0 0 1 0-5C10 3 12 8 12 8s2-5 4.5-5a2.5 2.5 0 0 1 0 5"/></svg></span><span class="erj-bonus-t"><span class="erj-bonus-k">Bonus · included free</span><b>A ₦150,000 career track at The Mentorine School</b><small>90 days, matched to your target role. No second payment.</small></span></span>
-</div>
-<div class="rung-buy">
-<div class="rung-price">₦250,000</div>
-<span class="rung-was-line"><s>₦370,000</s> if bought stage by stage</span>
-<span class="rung-alt">Or one stage at a time, from ₦70,000</span>
-<span class="rung-gate"><span class="rung-gate-dot"></span>Cohort 12 closes Sat 31 Oct, 8:00 PM WAT</span>
-<span class="rung-go">Start here <span class="a">→</span></span>
-</div>
-</a>
-<a class="rung reveal" href="jobapplication/">
-<span class="rung-n">05</span>
-<div class="rung-body">
-<span class="rung-who"><b>If this is you:</b> you are already employable and properly represented — what you do not have is the bandwidth to run the search.</span>
-<h3 class="rung-title">Job <em>Application DFY</em></h3>
-<div class="rung-meta">
-<span>Stage 5</span><span>Done for you</span><span>Weekly written report</span>
-</div>
-</div>
-<div class="rung-buy">
-<div class="rung-price">₦300,000</div>
-<span class="rung-alt">a month · or from ₦50,000 for the job hunt &amp; application, 7 days</span>
-<span class="rung-go">See the system <span class="a">→</span></span>
-</div>
-</a>
-<a class="rung reveal" href="innercircle/">
-<span class="rung-n">06</span>
-<div class="rung-body">
-<span class="rung-who"><b>If this is you:</b> you are stable and skilled, and what you are actually missing is a room — peers, a place to test a negotiation, leads before they go public.</span>
-<h3 class="rung-title">The Inner <em>Circle</em></h3>
-<div class="rung-meta">
-<span>Stages 6–12</span><span>Private 1:1</span><span>Admission verified first</span>
-</div>
-</div>
-<div class="rung-buy">
-<div class="rung-price">₦250,000</div>
-<span class="rung-alt">private 1:1 · one payment · by application</span>
-<span class="rung-go">Apply <span class="a">→</span></span>
-</div>
-</a>
-</div>
+<div class="hw-foot"><a class="btn-secondary-ui hw-store" href="register.html"><span>See every offer in one place</span><span class="arrow-wrap"><span class="arrow">→</span></span></a><span class="hw-note">When you are ready to commit, <a href="#enrol">talk to us</a>.</span></div>
 </section>
 
 <!-- FAQ / OBJECTIONS -->
@@ -2316,6 +2287,15 @@ requestAnimationFrame(f);});});},{threshold:.4});io.observe(ep);})();
 if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)return;
 var rows=l.querySelectorAll('.pm-row');var io=new IntersectionObserver(function(es){if(!es[0].isIntersecting)return;io.disconnect();
 rows.forEach(function(r,i){setTimeout(function(){r.classList.add('is-lit');setTimeout(function(){r.classList.remove('is-lit')},900);},400+i*650);});},{threshold:.5});io.observe(l);})();
+</script>
+<script>
+/* 07 · a link like index.html#help-dfy opens that way and scrolls to it; the button text follows open/closed */
+(function(){var cards=document.querySelectorAll('.hw-card');if(!cards.length)return;
+function sync(c){var t=c.querySelector('.hw-open-t');if(t)t.textContent=c.open?t.getAttribute('data-open'):t.getAttribute('data-closed');}
+cards.forEach(function(c){c.addEventListener('toggle',function(){sync(c);});});
+function fromHash(){var h=location.hash;if(!/^#help-(diy|dwy|dfy)$/.test(h))return;var c=document.querySelector(h);if(!c)return;c.open=true;sync(c);
+setTimeout(function(){c.scrollIntoView({block:'start'});},60);}
+fromHash();window.addEventListener('hashchange',fromHash);})();
 </script>
 </body>
 </html>
