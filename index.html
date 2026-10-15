@@ -1418,6 +1418,90 @@ html[data-theme="day"] .is-hot .ha-go,html[data-theme="day"] .ha-offer:hover .ha
 @keyframes stRise{to{transform:translateY(calc(-50% - .35rem));}}
 @media(prefers-reduced-motion:reduce){.ha-solo .st-track{animation:none;position:static;}.ha-solo .st-shelf{overflow-y:auto;}}
 @media(max-width:860px){.home-hero .ha-grid{grid-template-columns:1fr;}.ha-solo{display:none;}}
+/* 06 · How We Help: two shelves (₦0 and go-further) across the same three ways.
+   Without JS both shelves show; with JS one shows and the cards flip on switch. Transform-only motion. */
+.hs-anchor{position:relative;top:-90px;display:block;height:0;}
+.hs-top{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:clamp(1.2rem,4vw,3rem);align-items:center;margin-bottom:clamp(1.4rem,3vw,2rem);}
+.hs-intro .cost-h{margin-bottom:.8rem;}
+.hs-lead{font-size:clamp(1rem,1.5vw,1.1rem);color:var(--ink-soft);line-height:1.7;max-width:54ch;margin:0 0 1.4rem;}
+.hs-lead a{color:var(--accent);font-weight:600;}
+.hs-switch{position:relative;display:inline-grid;grid-template-columns:1fr 1fr;padding:6px;border-radius:999px;border:1px solid rgba(255,87,34,.45);background:var(--card);isolation:isolate;
+  box-shadow:0 16px 40px rgba(255,87,34,.14);}
+.hs-switch button{position:relative;z-index:1;border:0;background:transparent;font:inherit;font-family:var(--font-display);font-weight:700;font-size:clamp(.9rem,1.6vw,1.02rem);
+  color:var(--ink-soft);padding:.85rem clamp(1rem,2.4vw,1.6rem);border-radius:999px;cursor:pointer;white-space:nowrap;transition:color .35s;}
+.hs-switch button b{color:#3fd18b;font-weight:800;margin-right:.15rem;transition:color .35s;}
+.hs-switch button.on{color:#fff;}
+.hs-switch button.on b{color:#fff;}
+.hs-switch button i{font-style:normal;display:inline-block;transition:transform .3s;}
+.hs-switch button:hover i{transform:translateX(3px);}
+.hs-pill{position:absolute;z-index:0;top:6px;bottom:6px;left:6px;width:calc(50% - 6px);border-radius:999px;transition:transform .45s cubic-bezier(.22,1,.36,1),background .45s;
+  background:linear-gradient(135deg,#0D8C4F,#1FAF55);box-shadow:0 8px 22px rgba(31,175,85,.35);}
+.hs[data-on="go"] .hs-pill{transform:translateX(100%);background:linear-gradient(135deg,#FF5722,#FF8A3D);box-shadow:0 8px 22px rgba(255,87,34,.4);}
+@media(prefers-reduced-motion:no-preference){.hs:not(.was-switched) .hs-switch button[data-shelf="go"] i{animation:hsNudge 1.8s ease-in-out infinite;}}
+@keyframes hsNudge{0%,60%,100%{transform:none}75%{transform:translateX(5px)}}
+.hs-photo{position:relative;margin:0;border-radius:22px;overflow:hidden;border:1px solid var(--line);aspect-ratio:5/4;background:var(--card);}
+.hs-ph{position:absolute;inset:0;}
+.hs-ph img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 22%;}
+.hs-plate{position:absolute;left:1rem;bottom:1rem;display:flex;align-items:baseline;gap:.55rem;padding:.6rem .95rem;border-radius:14px;
+  background:rgba(0,0,0,.72);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);color:#fff;font-size:.8rem;}
+.hs-plate b{font-family:var(--font-display);font-size:1.7rem;font-weight:800;line-height:1;color:#3fd18b;}
+.hs-plate.is-go b{font-size:1.05rem;color:#FFB089;}
+.hs-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;align-items:start;perspective:1400px;}
+.hs-card{position:relative;border-radius:22px;border:1px solid var(--line);background:var(--card);overflow:hidden;isolation:isolate;scroll-margin-top:90px;
+  transition:border-color .4s,box-shadow .4s;}
+.hs-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#0D8C4F,#3fd18b);transition:background .4s;}
+.hs[data-on="go"] .hs-card::before{background:linear-gradient(90deg,#FF5722,#FFC46B);}
+.hs-card::after{content:'';position:absolute;z-index:-1;width:240px;height:240px;right:-90px;top:-110px;border-radius:50%;
+  background:radial-gradient(circle,rgba(31,175,85,.18),transparent 65%);transition:background .4s,transform .6s;}
+.hs[data-on="go"] .hs-card::after{background:radial-gradient(circle,rgba(255,87,34,.22),transparent 65%);}
+.hs-card:hover{border-color:rgba(255,87,34,.5);box-shadow:0 22px 50px rgba(255,87,34,.12);}
+.hs-card:hover::after{transform:translate(-20px,20px) scale(1.15);}
+.hs-card.is-call{animation:hsCall 1.4s ease-out 3;}
+@keyframes hsCall{0%{box-shadow:0 0 0 0 rgba(255,87,34,.6)}70%{box-shadow:0 0 0 16px rgba(255,87,34,0)}100%{box-shadow:0 0 0 0 rgba(255,87,34,0)}}
+.hs-ch{padding:1.4rem 1.3rem .9rem;display:flex;flex-direction:column;align-items:flex-start;gap:.35rem;}
+.hs-ico{width:2.9rem;height:2.9rem;border-radius:15px;display:flex;align-items:center;justify-content:center;color:#fff;margin-bottom:.35rem;
+  background:linear-gradient(135deg,#0D8C4F,#1FAF55);box-shadow:0 10px 24px rgba(31,175,85,.3);transition:background .4s,box-shadow .4s,transform .4s;}
+.hs[data-on="go"] .hs-ico{background:linear-gradient(135deg,#FF5722,#FF8A3D);box-shadow:0 10px 24px rgba(255,87,34,.3);}
+.hs-card:hover .hs-ico{transform:rotate(-8deg) scale(1.06);}
+.hs-k{font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;font-weight:700;color:var(--accent);}
+.hs-name{font-family:var(--font-display);font-weight:800;font-size:clamp(1.35rem,2.4vw,1.75rem);letter-spacing:-.02em;line-height:1.1;margin:0;color:var(--ink);}
+.hs-line{font-size:.86rem;color:var(--ink-soft);line-height:1.5;margin:0;}
+.hs-list{display:flex;flex-direction:column;gap:.5rem;padding:0 .9rem 1rem;}
+.hs-lh{font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--ink-faint);padding:.4rem .35rem .1rem;}
+.js-hs .hs-lh{display:none;}
+.js-hs .hs-list{display:none;}
+.js-hs[data-on="free"] .hs-list[data-shelf="free"],.js-hs[data-on="go"] .hs-list[data-shelf="go"]{display:flex;}
+.js-hs .hs-ph{display:none;}
+.js-hs[data-on="free"] .hs-ph[data-shelf="free"],.js-hs[data-on="go"] .hs-ph[data-shelf="go"]{display:block;}
+.hs-ph[data-shelf="go"]{z-index:1;}
+.hs-item{display:flex;flex-direction:column;gap:.3rem;padding:.85rem .95rem;border-radius:15px;border:1px solid var(--line);background:var(--paper,#000);text-decoration:none;color:var(--ink);
+  transition:transform .3s cubic-bezier(.22,1,.36,1),border-color .3s;}
+.hs-item:hover{transform:translateX(4px);border-color:var(--accent);}
+.hs-it{display:flex;flex-wrap:wrap;align-items:center;gap:.4rem;}
+.hs-it b{font-family:var(--font-display);font-weight:700;font-size:.95rem;line-height:1.3;}
+.hs-free{font-size:.56rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:.12rem .45rem;border-radius:999px;color:#1FAF55;border:1px solid rgba(31,175,85,.45);background:rgba(31,175,85,.1);}
+.hs-badge{font-size:.56rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.15rem .5rem;border-radius:999px;color:#fff;background:linear-gradient(90deg,#FF5722,#FF7A3D);}
+.hs-id{font-size:.82rem;color:var(--ink-soft);line-height:1.5;}
+.hs-more{font-size:.78rem;font-weight:700;color:var(--accent);}
+.hs-more i{font-style:normal;display:inline-block;transition:transform .3s;}
+.hs-item:hover .hs-more i{transform:translateX(4px);}
+/* the flip: each card turns over as the shelf changes (transform only, never hidden) */
+@media(prefers-reduced-motion:no-preference){
+  .hs.flip .hs-card{animation:hsFlip .6s cubic-bezier(.22,1,.36,1) both;}
+  .hs.flip .hs-card:nth-child(2){animation-delay:.08s}.hs.flip .hs-card:nth-child(3){animation-delay:.16s}
+  .hs.flip .hs-ph{animation:hsPh .6s cubic-bezier(.22,1,.36,1) both;}}
+@keyframes hsFlip{0%{transform:rotateY(-14deg) translateY(10px) scale(.97)}100%{transform:none}}
+@keyframes hsPh{0%{transform:scale(1.06) translateX(14px)}100%{transform:none}}
+.hs-foot{display:flex;flex-wrap:wrap;align-items:center;gap:1rem 1.6rem;margin-top:1.6rem;}
+.hs-note{font-size:.86rem;color:var(--ink-soft);max-width:60ch;line-height:1.6;}
+.hs-note a{color:var(--accent);font-weight:600;}
+html[data-theme="day"] .hs-item{background:#fff;}
+html[data-theme="day"] .hs-free{color:#0B6E3E;}
+html[data-theme="day"] .hs-k,html[data-theme="day"] .hs-more{color:#AD350A;}
+html[data-theme="day"] .hs-switch button:not(.on) b{color:#0B6E3E;}
+@media(max-width:980px){.hs-grid{grid-template-columns:1fr;}}
+@media(max-width:760px){.hs-top{grid-template-columns:1fr;}.hs-photo{order:-1;aspect-ratio:4/3;}.hs-switch{display:grid;width:100%;}
+  .hs-switch button{padding:.8rem .6rem;font-size:.9rem;}}
 /* 07 · How We Help: three ways, each opens to its options. No prices here. */
 .hw{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;align-items:start;}
 .hw-card{position:relative;border:1px solid var(--line);border-radius:22px;background:var(--card);overflow:hidden;isolation:isolate;
@@ -1764,7 +1848,7 @@ html[data-theme="day"] .timer-num{background-image:linear-gradient(160deg,#0A0A0
 <noscript><iframe height="0" src="https://www.googletagmanager.com/ns.html?id=GTM-NMFHS59B" style="display:none;visibility:hidden" width="0"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 <div id="erjNavMount"></div>
-<script>window.ERJ_NAV={active:'home',tourTitle:'',tourStart:2,onPage:[{label:'Start Here',href:'#tour',sub:'A welcome, and the page in eight stops',tourSelf:true},{label:'What We Can Do For You',href:'#promise',sub:'Become hireable and represented for global remote work'},{label:'The Promise',href:'#pledge',sub:'The five parts of every search, and how we fix each one'},{label:'Live Remote Jobs',href:'#jobs-live',sub:'The supply fix: real roles open to Nigeria, by field'},{label:'Proof It Works',href:'#story',sub:'What changed for people who started where you are'},{label:'Free For You',href:'#free',sub:'The diagnosis, the CV scan, the clinic and the blog'},{label:'How We Help',href:'#paths',sub:'Do it yourself, with us, or for you'},{label:'Before You Decide',href:'#faq',sub:'The questions everyone asks first'},{label:'Join Cohort 12',href:'#enrol',sub:'Our record so far, and enrolment closes Sat 31 Oct'}]};</script>
+<script>window.ERJ_NAV={active:'home',tourTitle:'',tourStart:2,onPage:[{label:'Start Here',href:'#tour',sub:'A welcome, and the page in seven stops',tourSelf:true},{label:'What We Can Do For You',href:'#promise',sub:'Become hireable and represented for global remote work'},{label:'The Promise',href:'#pledge',sub:'The five parts of every search, and how we fix each one'},{label:'Live Remote Jobs',href:'#jobs-live',sub:'The supply fix: real roles open to Nigeria, by field'},{label:'Proof It Works',href:'#story',sub:'What changed for people who started where you are'},{label:'How We Help',href:'#help',sub:'Start free, go further when you are ready'},{label:'Before You Decide',href:'#faq',sub:'The questions everyone asks first'},{label:'Join Cohort 12',href:'#enrol',sub:'Our record so far, and enrolment closes Sat 31 Oct'}]};</script>
 <main>
 <!-- ADVANTAGE TICKER -->
 <div class="ha-ticker ha-ticker-top" role="region" aria-label="Why ERJ">
@@ -2004,72 +2088,49 @@ html[data-theme="day"] .jt{--jt-o:#E8470F;--jt-line:rgba(20,17,14,.12);--jt-card
 })();
 </script>
 </section>
-<!-- FREE SHELF -->
-<section class="wrap section-line" id="free">
-<div class="step"><span class="step-n">06</span><span class="step-l">Free For You</span></div>
-<h2 class="cost-h" style="margin-bottom:0.9rem;">You can get a long way without <em>paying us anything.</em></h2>
-<div class="fg-grid">
-<div class="fg-main">
-<p class="free-lead">Genuinely free, and it stays free. No card, no expiring trial. Work through it properly and you may not need us at all — which is a good outcome too.</p>
-<div class="shelf">
-<a class="shelf-item reveal" href="cvscan/" id="cvscan" style="scroll-margin-top:100px;">
-<span class="shelf-kind">Instant · private</span>
-<h3 class="shelf-title">CV <em>Scan</em></h3>
-<p class="shelf-desc">See how your CV reads to a remote employer, in under a minute. Private: nothing uploads.</p>
-<span class="shelf-go">Scan my CV <span class="a">→</span></span>
-</a>
-<a class="shelf-item reveal" href="masterclass/">
-<span class="shelf-kind">Live · free on Zoom</span>
-<h3 class="shelf-title">Remote Job Application <em>Clinic</em></h3>
-<p class="shelf-desc">Bring your CV and one job advert. We find what is holding you back, live and free on Zoom.</p>
-<span class="shelf-go">Register for the clinic <span class="a">→</span></span>
-</a>
-<a class="shelf-item reveal" href="blog.html" id="blog" style="scroll-margin-top:100px;">
-<span class="shelf-kind">Daily · no account</span>
-<h3 class="shelf-title">The Remote Career <em>Blog</em></h3>
-<p class="shelf-desc">Plain-English guidance published daily — scams, ATS CVs, portfolios, pay, interviews.</p>
-<span class="shelf-go">Read the blog <span class="a">→</span></span>
-</a>
-<a class="shelf-item reveal" href="jobs/" id="jobboard" style="scroll-margin-top:100px;">
-<span class="shelf-kind">Every morning · open to all</span>
-<h3 class="shelf-title">Remote Job <em>Board</em></h3>
-<p class="shelf-desc">New roles every morning, each one open to someone in Nigeria or Africa. No fees, no gatekeeping.</p>
-<span class="shelf-go">Open the board <span class="a">→</span></span>
-</a>
+<!-- HOW WE HELP · one section, two shelves: free and go-further, each by DIY / DWY / DFY -->
+<section class="wrap section-line hs" id="help">
+<span aria-hidden="true" class="hs-anchor" id="free"></span><span aria-hidden="true" class="hs-anchor" id="paths"></span><span aria-hidden="true" class="hs-anchor" id="cvscan"></span><span aria-hidden="true" class="hs-anchor" id="blog"></span><span aria-hidden="true" class="hs-anchor" id="jobboard"></span>
+<div class="step"><span class="step-n">06</span><span class="step-l">How We Help</span></div>
+<div class="hs-top">
+<div class="hs-intro">
+<h2 class="cost-h">Start free. <em>Go further when you’re ready.</em></h2>
+<p class="hs-lead">Three ways we help: you do it, we do it with you, or we do it for you. Every way starts on the free shelf. Not sure which fits? <a href="diagnose/">The free diagnosis will tell you</a>.</p>
+<div class="hs-switch" role="group" aria-label="Choose a shelf"><span class="hs-pill" aria-hidden="true"></span><button type="button" class="on" data-shelf="free" aria-pressed="true"><b>₦0</b> Free shelf</button><button type="button" data-shelf="go" aria-pressed="false">Go-further shelf <i aria-hidden="true">→</i></button></div>
 </div>
-</div>
-<figure class="free-shot fg-photo reveal">
-<img alt="Oluwaseyi Ashiru at his desk, reaching out a hand in invitation" decoding="async" height="1100" loading="lazy" src="photo-seyi-invite.webp" width="880"/>
-<figcaption class="fg-badge"><b>₦0</b><span>everything on this shelf</span></figcaption>
+<figure class="hs-photo">
+<div class="hs-ph" data-shelf="free"><img alt="Oluwaseyi Ashiru at his desk, reaching out a hand in invitation" decoding="async" height="1100" loading="lazy" src="photo-seyi-invite.webp" width="880"/><figcaption class="hs-plate"><b>₦0</b><span>everything on this shelf</span></figcaption></div>
+<div class="hs-ph" data-shelf="go"><img alt="Oluwaseyi Ashiru at his desk giving a thumbs-up" decoding="async" height="1100" loading="lazy" src="photo-seyi-thumbsup.webp" width="880"/><figcaption class="hs-plate is-go"><b>Ready when you are</b><span>we go further with you</span></figcaption></div>
 </figure>
 </div>
-<p class="free-note">Why give it away? Because people who do not need us should not be paying us. <a href="free.html">See the whole free shelf →</a></p>
-</section>
-<!-- THE LADDER -->
-<section class="wrap section-line" id="paths">
-<div class="step"><span class="step-n">07</span><span class="step-l">How We Help</span></div>
-<h2 class="cost-h" style="margin-bottom:0.9rem;">Three ways we help. <em>Pick how you want to work.</em></h2>
-<p class="paths-lead">Do it yourself, do it with us, or let us do it for you. Open any one to see what is inside. Not sure which fits? <a href="diagnose/" style="color:var(--accent);font-weight:600;">The free diagnosis will tell you</a>.</p>
-<div class="hw">
-<details class="hw-card hw-diy" id="help-diy">
-<summary class="hw-sum"><span class="hw-ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></span><span class="hw-tag">You do the work</span><span class="hw-name">Do it yourself</span><span class="hw-line">Our method, books and tools in your hands. Best if you have the time and want to move at your own pace.</span><span class="hw-open"><span class="hw-open-t" data-closed="See the 5 options" data-open="Hide the options">See the 5 options</span><span class="hw-chev" aria-hidden="true">↓</span></span></summary>
-<ul class="hw-list"><li class="hw-item"><div class="hw-item-t"><b>Google Search: Best Kept Open Secret</b><span>Find roles before they reach the job boards, with search operators and AI prompts.</span></div><a class="hw-more" href="register.html#book">Learn more <span aria-hidden="true">→</span></a></li><li class="hw-item"><div class="hw-item-t"><b>How to Get a Remote Job: From Intent to Offer</b><span>The whole method as a book. Every chapter ends with one task.</span></div><a class="hw-more" href="fromintenttooffer/">Learn more <span aria-hidden="true">→</span></a></li><li class="hw-item"><div class="hw-item-t"><b>The CV Engine</b><span>Rebuild your CV against the ten-point rubric, scored live as you write.</span></div><a class="hw-more" href="cvbuilder.html">Learn more <span aria-hidden="true">→</span></a></li><li class="hw-item"><div class="hw-item-t"><b>The Self-Learn Pack</b><span>All four stages of the curriculum, worked at your own pace.</span></div><a class="hw-more" href="selflearn/">Learn more <span aria-hidden="true">→</span></a></li><li class="hw-item"><div class="hw-item-t"><b>Career Development — Self-Study</b><span>A skills track for your chosen career at The Mentorine School.</span></div><a class="hw-more" href="register.html#careerdev">Learn more <span aria-hidden="true">→</span></a></li></ul>
-</details>
-<details class="hw-card hw-dwy" id="help-dwy">
-<summary class="hw-sum"><span class="hw-ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span><span class="hw-tag">We do it together</span><span class="hw-name">Done with you</span><span class="hw-line">Live teaching, your work marked, and a team beside you. Best if you want feedback and someone to keep you moving.</span><span class="hw-open"><span class="hw-open-t" data-closed="See the 3 options" data-open="Hide the options">See the 3 options</span><span class="hw-chev" aria-hidden="true">↓</span></span></summary>
-<ul class="hw-list"><li class="hw-item"><div class="hw-item-t"><b>Remote Job Foundation Training</b><span class="hw-badge">Most people start here</span><span>Live classes over 20 training days, your work marked, a certificate at the end.</span></div><a class="hw-more" href="foundationtraining/">Learn more <span aria-hidden="true">→</span></a></li><li class="hw-item"><div class="hw-item-t"><b>One stage at a time</b><span>Take the four Foundation stages one by one, in the order you need them.</span></div><a class="hw-more" href="register.html#dwy">Learn more <span aria-hidden="true">→</span></a></li><li class="hw-item"><div class="hw-item-t"><b>The Inner Circle</b><span>Private one-to-one for the last stretch: interviews, negotiation and the offer.</span></div><a class="hw-more" href="innercircle/">Learn more <span aria-hidden="true">→</span></a></li></ul>
-</details>
-<details class="hw-card hw-dfy" id="help-dfy">
-<summary class="hw-sum"><span class="hw-ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg></span><span class="hw-tag">We do it for you</span><span class="hw-name">Done for you</span><span class="hw-line">Our team does the work while you get on with your week. Best if you are ready to be hired and short on hours.</span><span class="hw-open"><span class="hw-open-t" data-closed="See the 4 options" data-open="Hide the options">See the 4 options</span><span class="hw-chev" aria-hidden="true">↓</span></span></summary>
-<ul class="hw-list"><li class="hw-item"><div class="hw-item-t"><b>CV Fix</b><span>We rebuild one CV for one field, ATS-safe, and send it back in 72 hours.</span></div><a class="hw-more" href="register.html#cvfix">Learn more <span aria-hidden="true">→</span></a></li><li class="hw-item"><div class="hw-item-t"><b>Done-For-You, 7 Days</b><span>We find verified roles in one field and apply to them for you over seven days.</span></div><a class="hw-more" href="jobapplication/">Learn more <span aria-hidden="true">→</span></a></li><li class="hw-item"><div class="hw-item-t"><b>Done-For-You Placement Engine</b><span>We build your assets, then apply for you every week for a month, with a written report.</span></div><a class="hw-more" href="jobapplication/">Learn more <span aria-hidden="true">→</span></a></li><li class="hw-item"><div class="hw-item-t"><b>Get Your Dream Job Offer</b><span>Foundation Training with you, then placement run for you, end to end.</span></div><a class="hw-more" href="register.html#dreamjob">Learn more <span aria-hidden="true">→</span></a></li></ul>
-</details>
+<div class="hs-grid">
+<article class="hs-card" id="help-diy">
+<div class="hs-ch"><span class="hs-ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></span><span class="hs-k">You do the work</span><h3 class="hs-name">Do it yourself</h3><p class="hs-line">Our method and tools in your hands, at your own pace.</p></div>
+<div class="hs-list" data-shelf="free"><span class="hs-lh">On the ₦0 shelf</span><a class="hs-item" href="diagnose/"><span class="hs-it"><b>What’s Holding You Back?</b><span class="hs-free">Free</span></span><span class="hs-id">Five questions show what is stopping replies, and what to fix first.</span><span class="hs-more">Learn more <i aria-hidden="true">→</i></span></a><a class="hs-item" href="capacityscan/"><span class="hs-it"><b>Capacity Audit</b><span class="hs-free">Free</span></span><span class="hs-id">Ten questions on the work itself, scored privately out of ten.</span><span class="hs-more">Learn more <i aria-hidden="true">→</i></span></a><a class="hs-item" href="cvscan/"><span class="hs-it"><b>CV Scan</b><span class="hs-free">Free</span></span><span class="hs-id">Your CV scored against ten points, right on your device.</span><span class="hs-more">Learn more <i aria-hidden="true">→</i></span></a><a class="hs-item" href="blog.html"><span class="hs-it"><b>The Blog</b><span class="hs-free">Free</span></span><span class="hs-id">A plain-English post every day on the search, CVs, interviews and pay.</span><span class="hs-more">Learn more <i aria-hidden="true">→</i></span></a></div>
+<div class="hs-list" data-shelf="go"><span class="hs-lh">On the go-further shelf</span><a class="hs-item" href="register.html#book"><span class="hs-it"><b>Google Search: Best Kept Open Secret</b></span><span class="hs-id">Find roles before they reach the job boards.</span><span class="hs-more">Learn more <i aria-hidden="true">→</i></span></a><a class="hs-item" href="fromintenttooffer/"><span class="hs-it"><b>From Intent to Offer</b></span><span class="hs-id">The whole method as a book. Every chapter ends with one task.</span><span class="hs-more">Learn more <i aria-hidden="true">→</i></span></a><a class="hs-item" href="cvbuilder.html"><span class="hs-it"><b>The CV Engine</b></span><span class="hs-id">Rebuild your CV against the ten-point rubric, scored live.</span><span class="hs-more">Learn more <i aria-hidden="true">→</i></span></a><a class="hs-item" href="selflearn/"><span class="hs-it"><b>The Self-Learn Pack</b></span><span class="hs-id">All four stages of the curriculum, worked at your own pace.</span><span class="hs-more">Learn more <i aria-hidden="true">→</i></span></a><a class="hs-item" href="register.html#careerdev"><span class="hs-it"><b>Career Development — Self-Study</b></span><span class="hs-id">A skills track for your career at The Mentorine School.</span><span class="hs-more">Learn more <i aria-hidden="true">→</i></span></a></div>
+</article>
+<article class="hs-card" id="help-dwy">
+<div class="hs-ch"><span class="hs-ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span><span class="hs-k">We do it together</span><h3 class="hs-name">Done with you</h3><p class="hs-line">Live teaching, your work checked, a team beside you.</p></div>
+<div class="hs-list" data-shelf="free"><span class="hs-lh">On the ₦0 shelf</span><a class="hs-item" href="masterclass/"><span class="hs-it"><b>Free Live Clinic</b><span class="hs-free">Free</span></span><span class="hs-id">Bring your CV and one advert. We find what to fix first, live on Zoom.</span><span class="hs-more">Learn more <i aria-hidden="true">→</i></span></a><a class="hs-item" href="https://wa.me/2348032925957" rel="noopener" target="_blank" data-wa-msg="blog"><span class="hs-it"><b>Ask us on WhatsApp</b><span class="hs-free">Free</span></span><span class="hs-id">Tell us where you are stuck. A person reads it and replies.</span><span class="hs-more">Message us <i aria-hidden="true">→</i></span></a></div>
+<div class="hs-list" data-shelf="go"><span class="hs-lh">On the go-further shelf</span><a class="hs-item" href="foundationtraining/"><span class="hs-it"><b>Remote Job Foundation Training</b><span class="hs-badge">Most people start here</span></span><span class="hs-id">Live classes over 20 training days, your work marked, a certificate.</span><span class="hs-more">Learn more <i aria-hidden="true">→</i></span></a><a class="hs-item" href="register.html#dwy"><span class="hs-it"><b>One stage at a time</b></span><span class="hs-id">Take the four Foundation stages one by one.</span><span class="hs-more">Learn more <i aria-hidden="true">→</i></span></a><a class="hs-item" href="innercircle/"><span class="hs-it"><b>The Inner Circle</b></span><span class="hs-id">Private one-to-one for interviews, negotiation and the offer.</span><span class="hs-more">Learn more <i aria-hidden="true">→</i></span></a></div>
+</article>
+<article class="hs-card" id="help-dfy">
+<div class="hs-ch"><span class="hs-ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg></span><span class="hs-k">We do it for you</span><h3 class="hs-name">Done for you</h3><p class="hs-line">Our team does the work while you get on with your week.</p></div>
+<div class="hs-list" data-shelf="free"><span class="hs-lh">On the ₦0 shelf</span><a class="hs-item" href="jobs/"><span class="hs-it"><b>Remote Job Board</b><span class="hs-free">Free</span></span><span class="hs-id">We find and check roles open to Nigeria and Africa, twice a day, so you do not have to.</span><span class="hs-more">Learn more <i aria-hidden="true">→</i></span></a></div>
+<div class="hs-list" data-shelf="go"><span class="hs-lh">On the go-further shelf</span><a class="hs-item" href="register.html#cvfix"><span class="hs-it"><b>CV Fix</b></span><span class="hs-id">We rebuild one CV for one field, ATS-safe, in 72 hours.</span><span class="hs-more">Learn more <i aria-hidden="true">→</i></span></a><a class="hs-item" href="jobapplication/"><span class="hs-it"><b>Done-For-You, 7 Days</b></span><span class="hs-id">We find verified roles in one field and apply for you over seven days.</span><span class="hs-more">Learn more <i aria-hidden="true">→</i></span></a><a class="hs-item" href="jobapplication/"><span class="hs-it"><b>Done-For-You Placement Engine</b></span><span class="hs-id">We build your assets, then apply for you every week for a month.</span><span class="hs-more">Learn more <i aria-hidden="true">→</i></span></a><a class="hs-item" href="register.html#dreamjob"><span class="hs-it"><b>Get Your Dream Job Offer</b></span><span class="hs-id">Foundation Training with you, then placement run for you.</span><span class="hs-more">Learn more <i aria-hidden="true">→</i></span></a></div>
+</article>
 </div>
-<div class="hw-foot"><a class="btn-secondary-ui hw-store" href="register.html"><span>See every offer in one place</span><span class="arrow-wrap"><span class="arrow">→</span></span></a><span class="hw-note">When you are ready to commit, <a href="#enrol">talk to us</a>.</span></div>
+<div class="hs-foot"><a class="btn-secondary-ui" href="register.html"><span>See every offer in one place</span><span class="arrow-wrap"><span class="arrow">→</span></span></a><span class="hs-note">When you are ready to commit, <a href="#enrol">talk to us</a>. Why give so much away? Because people who do not need us should not be paying us.</span></div>
 </section>
+
+<!-- FREE SHELF -->
+
+<!-- THE LADDER -->
+
 
 <!-- FAQ / OBJECTIONS -->
 <section class="wrap section-line" id="faq">
-<div class="step"><span class="step-n">08</span><span class="step-l">Before You Decide</span></div>
+<div class="step"><span class="step-n">07</span><span class="step-l">Before You Decide</span></div>
 <h2 class="cost-h" style="margin-bottom:1.6rem;">The questions everyone asks <em>first.</em></h2>
 <div class="faq reveal">
 <details>
@@ -2109,7 +2170,7 @@ html[data-theme="day"] .jt{--jt-o:#E8470F;--jt-line:rgba(20,17,14,.12);--jt-card
 <!-- DIAGNOSIS · DECISION POINT -->
 <!-- JOIN COHORT 12 · why Foundation Training, one countdown, one action -->
 <section class="wrap section-line" id="enrol">
-<div class="step"><span class="step-n">09</span><span class="step-l">Join Cohort 12</span></div>
+<div class="step"><span class="step-n">08</span><span class="step-l">Join Cohort 12</span></div>
 <div class="ep reveal" aria-label="Our record so far">
 <div class="ep-cell"><div class="ep-n" data-count="382" data-suffix="+">382+</div><div class="ep-l">Professionals placed into global remote work</div></div>
 <div class="ep-cell"><div class="ep-n ep-cur"><span>USD</span><i>·</i><span>EUR</span><i>·</i><span>GBP</span></div><div class="ep-l">Hard-currency salaries, not naira ceilings</div></div>
@@ -2159,7 +2220,7 @@ html[data-theme="day"] .jt{--jt-o:#E8470F;--jt-line:rgba(20,17,14,.12);--jt-card
 </a>
 <script defer="" src="erj-theme.js?v=20260911a"></script>
 <script defer="" src="erj-product.js?v=20260924c"></script>
-<script defer="" src="erj-nav.js?v=20261015g"></script>
+<script defer="" src="erj-nav.js?v=20261015h"></script>
 <script defer="" src="erj-config.js?v=20261015a"></script>
 <script defer="" src="erj-capture.js?v=20260911a"></script>
 <script>if("serviceWorker" in navigator){window.addEventListener("load",function(){var go=function(){navigator.serviceWorker.register("/sw.js",{updateViaCache:"none"}).then(function(reg){reg.update();}).catch(function(){});};if("requestIdleCallback" in window){requestIdleCallback(go,{timeout:3000});}else{setTimeout(go,1200);}});}</script>
@@ -2271,6 +2332,19 @@ cards.forEach(function(c){c.open=false;sync(c);c.addEventListener('toggle',funct
 window.addEventListener('pageshow',function(){cards.forEach(function(c){c.open=false;sync(c);});});
 function fromHash(){var h=location.hash;if(!/^#help-(diy|dwy|dfy)$/.test(h))return;var c=document.querySelector(h);if(!c)return;
 setTimeout(function(){c.scrollIntoView({block:'center'});c.classList.remove('is-call');void c.offsetWidth;c.classList.add('is-call');},60);}
+fromHash();window.addEventListener('hashchange',fromHash);})();
+</script>
+<script>
+/* 06 · two shelves. Opens on ₦0. A link like index.html#help-dwy-go opens the
+   go-further shelf and scrolls to that way; #help-dwy keeps the free shelf. */
+(function(){var hs=document.getElementById('help');if(!hs)return;
+hs.classList.add('js-hs');hs.setAttribute('data-on','free');
+var btns=hs.querySelectorAll('.hs-switch button');
+function set(v,flip){hs.setAttribute('data-on',v);btns.forEach(function(b){var on=b.getAttribute('data-shelf')===v;b.classList.toggle('on',on);b.setAttribute('aria-pressed',on);});
+ if(flip){hs.classList.add('was-switched');hs.classList.remove('flip');void hs.offsetWidth;hs.classList.add('flip');}}
+btns.forEach(function(b){b.addEventListener('click',function(){var v=b.getAttribute('data-shelf');if(hs.getAttribute('data-on')!==v){set(v,true);try{if(window.erjTrack)erjTrack('ViewContent',{content_name:'Home shelf: '+v});}catch(e){}}});});
+function fromHash(){var m=/^#help-(diy|dwy|dfy)(-go)?$/.exec(location.hash);if(!m)return;if(m[2])set('go',false);var c=document.getElementById('help-'+m[1]);
+ if(c)setTimeout(function(){c.scrollIntoView({block:'center'});c.classList.remove('is-call');void c.offsetWidth;c.classList.add('is-call');},80);}
 fromHash();window.addEventListener('hashchange',fromHash);})();
 </script>
 </body>

@@ -35,8 +35,7 @@
                 { label: 'The Promise', href: 'index.html#pledge' },
                 { label: 'Live Remote Jobs', href: 'index.html#jobs-live' },
                 { label: 'Proof It Works', href: 'index.html#story' },
-                { label: 'Free For You', href: 'index.html#free' },
-                { label: 'How We Help', href: 'index.html#paths' },
+                { label: 'How We Help', href: 'index.html#help' },
                 { label: 'Before You Decide', href: 'index.html#faq' },
                 { label: 'Join Cohort 12', href: 'index.html#enrol' }
             ]
@@ -66,7 +65,7 @@
                 { label: 'Remote Job Board', href: 'jobs/', keys: [], free: true },
                 { label: 'CV Fix', href: 'register.html#cvfix', keys: [] },
                 { label: 'Job Application', href: 'jobapplication/', keys: ['remote'] },
-                { all: true, label: 'Compare the three ways', href: 'index.html#paths' }
+                { all: true, label: 'See both shelves on the home page', href: 'index.html#help' }
             ]
         },
         { key: 'stories', label: 'Success Stories', href: 'testimonials.html', keys: ['stories', 'jobs'] },
