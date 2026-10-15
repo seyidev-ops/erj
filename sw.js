@@ -155,15 +155,11 @@ self.addEventListener('fetch', e => {
     (e.request.headers.get('accept') || '').includes('text/html');
 
   if (isHTML) {
-    // cache:'no-cache' makes the browser re-check with the server every time
-    // (a cheap 304 when nothing changed), so a page published minutes ago is
-    // never served from the browser's 10-minute HTTP cache.
-    const fresh = () => fetch(e.request, { cache: 'no-cache' });
     e.respondWith(
-      fresh()
+      fetch(e.request)
         // A phone that drops signal for a second should not land on the
         // offline page: try once more before falling back.
-        .catch(() => new Promise(r => setTimeout(r, 1200)).then(fresh))
+        .catch(() => new Promise(r => setTimeout(r, 1200)).then(() => fetch(e.request)))
         .then(res => {
           if (res && res.status === 200) {
             const clone = res.clone();
