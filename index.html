@@ -1399,6 +1399,20 @@ html[data-theme="day"] .is-hot .ha-go,html[data-theme="day"] .ha-offer:hover .ha
 .is-start .ha-go{text-decoration:none;}
 @media(prefers-reduced-motion:reduce){.st-track{animation:none;}.st-shelf{overflow-x:auto;}}
 .ha-offer:hover .ha-go .a{transform:translateX(4px);}
+/* 02 · one line, one button, one shelf */
+.ha-free{margin:1rem 0 0;display:flex;align-items:center;gap:.5rem;font-size:.82rem;color:var(--ink-faint);}
+.ha-free i{width:8px;height:8px;border-radius:50%;background:#3fd18b;box-shadow:0 0 0 0 rgba(63,209,139,.6);}
+@media(prefers-reduced-motion:no-preference){.ha-free i{animation:haPing 2s ease-out infinite;}}
+@keyframes haPing{0%{box-shadow:0 0 0 0 rgba(63,209,139,.6)}80%,100%{box-shadow:0 0 0 9px rgba(63,209,139,0)}}
+.ha-copy .ask-sub{max-width:46ch;}
+.ha-solo .ha-offer.is-start{padding:1.5rem 1.4rem 1.3rem;border-color:rgba(255,87,34,.45);box-shadow:0 22px 60px rgba(255,87,34,.16);}
+.ha-solo .ha-k{font-size:clamp(1.3rem,2.2vw,1.6rem);}
+.ha-solo .ha-line{font-size:.9rem;}
+.ha-solo .st-tile{flex-basis:10rem;}
+.ha-solo .st-name{font-size:.84rem;}
+.ha-solo .st-price{font-size:.95rem;}
+@media(max-width:860px){.ha-solo .st-tile{flex-basis:8.8rem;}}
+
 
 /* advantage ticker */
 .ha-ticker{position:relative;z-index:2;overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
@@ -1737,30 +1751,15 @@ html[data-theme="day"] .timer-num{background-image:linear-gradient(160deg,#0A0A0
 <div class="ha-copy">
 <div class="step"><span class="step-n">02</span><span class="step-l">What We Can Do For You</span></div>
 <h1 class="ask">Become <em>hireable and represented</em> for global remote work — from right where you are.</h1>
-<p class="ask-sub">You do not need to relocate. You need the skill, roles you are eligible for, assets an employer can read, an aimed search and the judgement to close. We build those with you; the market sets the timing. <strong>Cohort 12 enrolment is open now and closes Saturday 31 October.</strong></p>
+<p class="ask-sub">You don’t need to relocate. We help you build the skill, find roles you’re eligible for, and present yourself so employers reply.</p>
 <div class="answers">
-<a class="btn-yes btn-primary-ui pulse" href="#enrol"><span>Show Me How</span><span class="arrow-wrap"><span class="arrow">→</span></span></a>
+<a class="btn-yes btn-primary-ui pulse" href="diagnose/"><span>Find What’s Holding Me Back</span><span class="arrow-wrap"><span class="arrow">→</span></span></a>
 <a class="btn-more btn-secondary-ui" href="#pledge"><span>Continue The Tour</span><span class="arrow-wrap"><span class="arrow is-down">↓</span></span></a>
-<p class="hero-dx"><a href="diagnose/">Free Diagnosis <span aria-hidden="true">→</span></a><span class="hero-dx-note">Ready now? 5 questions · 90 seconds</span></p>
 </div>
-<p class="hero-new">New here? <a href="starthere.html">Begin at Your Starting Line →</a></p>
-<div class="scroll-hint">Refined after every cohort — here's the proof</div>
+<p class="ha-free"><i aria-hidden="true"></i>The diagnosis is free · 5 questions · 90 seconds</p>
 </div>
-<aside aria-label="Open offers" class="ha-offers">
+<aside aria-label="Start tonight" class="ha-offers ha-solo">
 
-<a class="ha-offer is-free" href="diagnose/">
-<span class="ha-flag">Free · 90 seconds</span>
-<span class="ha-k">Find what is holding you back</span>
-<span class="ha-line">Five quick questions show what is stopping employers from replying, and what to fix first. You may not need to buy anything.</span>
-<span class="ha-go">Run the free diagnosis <span class="a">→</span></span>
-</a>
-<a class="ha-offer is-hot" href="foundationtraining/">
-<span class="ha-flag">Cohort 12 · Enrolment open</span>
-<span class="ha-k">Remote Job Foundation Training</span>
-<span class="ha-what">Live classes, your work marked, a certificate at the end, and a team that stays with you until you are hired.</span>
-<span class="ha-clock" data-deadline="2026-10-31T20:00:00+01:00" data-no-evergreen=""><span class="ha-clock-l">Enrolment closes in</span><span class="ha-t"><b data-k="d">00</b>d</span><span class="ha-t"><b data-k="h">00</b>h</span><span class="ha-t"><b data-k="m">00</b>m</span><span class="ha-t"><b data-k="s">00</b>s</span></span>
-<span class="ha-go">See Foundation Training <span class="a">→</span></span>
-</a>
 <div class="ha-offer is-start">
 <span class="ha-flag">Start tonight · instant access</span>
 <span class="ha-k">Start tonight, from ₦5,000</span>
