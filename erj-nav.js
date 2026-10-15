@@ -34,7 +34,7 @@
                 { label: 'What We Can Do For You', href: 'index.html#promise' },
                 { label: 'The Promise', href: 'index.html#pledge' },
                 { label: 'Live Remote Jobs', href: 'index.html#jobs-live' },
-                { label: 'Proof It Works', href: 'index.html#facilitator' },
+                { label: 'Proof It Works', href: 'index.html#story' },
                 { label: 'Free For You', href: 'index.html#free' },
                 { label: 'How We Help', href: 'index.html#paths' },
                 { label: 'Before You Decide', href: 'index.html#faq' },

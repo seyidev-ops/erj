@@ -1031,9 +1031,6 @@ a.promo-tick{text-decoration:none;display:block;}
     border:1px solid rgba(255,87,34,.35);
     background:radial-gradient(70% 90% at 0% 0%,rgba(255,87,34,.16),transparent 60%),radial-gradient(60% 80% at 100% 100%,rgba(13,140,79,.14),transparent 60%),var(--card);}
   .ht-head{max-width:760px;}
-  .ht-h{font-family:var(--font-display);font-size:clamp(1.6rem,4.2vw,2.6rem);font-weight:800;letter-spacing:-.02em;line-height:1.1;margin:.2rem 0 .6rem;}
-  .ht-p{font-size:clamp(.92rem,1.4vw,1.02rem);color:var(--ink-soft);line-height:1.6;margin:0 0 1.4rem;}
-  .ht-p b{color:var(--ink);}
   .ht .f-stops{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.7rem;}
   .ht .f-stop{display:flex;flex-direction:column;align-items:flex-start;gap:.35rem;padding:1rem 1rem 1.05rem;border-radius:16px;
     border:1px solid var(--line);background:var(--bg,#000);text-decoration:none;color:var(--ink);overflow:hidden;
@@ -1057,31 +1054,55 @@ a.promo-tick{text-decoration:none;display:block;}
   .ht .f-stop:nth-child(5){animation-delay:.24s}.ht .f-stop:nth-child(6){animation-delay:.30s}.ht .f-stop:nth-child(7){animation-delay:.36s}.ht .f-stop:nth-child(8){animation-delay:.42s}
   @keyframes htPop{from{transform:translateY(18px) scale(.96);}to{transform:none;}}
   @keyframes htCall{0%{box-shadow:0 0 0 0 rgba(255,87,34,.55)}70%{box-shadow:0 0 0 12px rgba(255,87,34,0)}100%{box-shadow:0 0 0 0 rgba(255,87,34,0)}}
-  /* the guide: Seyi, gesturing towards the stops */
-  .ht-top{display:grid;grid-template-columns:clamp(150px,22vw,250px) minmax(0,1fr);gap:clamp(1rem,3vw,2.2rem);align-items:end;margin-bottom:1.4rem;}
-  .ht-guide{position:relative;margin:0;align-self:stretch;}
-  .ht-guide::before{content:'';position:absolute;inset:12% 0 0 0;border-radius:22px 22px 22px 22px;
-    background:radial-gradient(80% 70% at 50% 100%,rgba(255,87,34,.45),transparent 70%),linear-gradient(160deg,rgba(255,196,107,.25),rgba(255,87,34,.08));}
-  .ht-guide img{position:relative;display:block;width:100%;height:100%;max-height:300px;object-fit:cover;object-position:62% 12%;
-    border-radius:22px;border:1px solid rgba(255,87,34,.45);box-shadow:0 22px 50px rgba(255,87,34,.22);animation:htGuide .9s cubic-bezier(.22,1,.36,1) both;}
+  /* the welcome: Seyi's framed photo + note, leading into the stops */
+  .ht-anchor{position:relative;top:-90px;display:block;height:0;}
+  .ht-top.founder{grid-template-columns:minmax(220px,330px) minmax(0,1fr);gap:clamp(1.6rem,4.5vw,3.6rem);align-items:center;margin-bottom:clamp(1.4rem,3vw,2rem);}
+  .ht-frame{max-width:330px;animation:htGuide .9s cubic-bezier(.22,1,.36,1) both;}
+  .ht-frame .f-photo img{aspect-ratio:4/5;object-fit:cover;object-position:60% 8%;}
+  .ht-head .f-hello{margin-top:.5rem;}
+  .ht-head .f-verify{margin-bottom:1.1rem;}
+  .ht-lead{position:relative;margin:0;padding:.95rem 1.1rem .95rem 1.2rem;border-radius:16px 16px 16px 4px;
+    border:1px solid rgba(255,87,34,.45);background:linear-gradient(120deg,rgba(255,87,34,.14),rgba(255,196,107,.06));
+    font-size:clamp(.9rem,1.35vw,1rem);color:var(--ink-soft);line-height:1.6;animation:htSay .7s cubic-bezier(.22,1,.36,1) .3s both;transform-origin:0 100%;}
+  .ht-lead b{color:var(--ink);}
+  .ht-lead-k{display:block;font-family:var(--font-display);font-weight:800;font-size:clamp(1.02rem,1.7vw,1.18rem);color:var(--ink);margin-bottom:.25rem;}
+  .ht-lead-k::after{content:'↓';display:inline-block;margin-left:.45rem;color:var(--accent);}
+  @media(prefers-reduced-motion:no-preference){.ht-lead-k::after{animation:htNudge 1.6s ease-in-out infinite;}}
   @keyframes htGuide{from{transform:translateX(-14px) rotate(-2deg);}to{transform:none;}}
-  .ht-say{position:relative;display:inline-block;margin:.2rem 0 .7rem;padding:.6rem .95rem;border-radius:16px 16px 16px 4px;
-    background:var(--accent-btn,#FF5722);color:#fff;font-weight:600;font-size:clamp(.9rem,1.4vw,1rem);line-height:1.35;
-    box-shadow:0 12px 28px rgba(255,87,34,.3);animation:htSay .7s cubic-bezier(.22,1,.36,1) .25s both;transform-origin:0 100%;}
-  .ht-say span{font-family:var(--font-display);font-weight:800;}
-  .ht-say::before{content:'';position:absolute;left:-7px;bottom:0;width:14px;height:14px;background:inherit;clip-path:polygon(100% 0,100% 100%,0 100%);}
-  @keyframes htSay{from{transform:scale(.6) translateY(8px);}to{transform:none;}}
-  .ht-top .ht-p{margin-bottom:0;}
+  @keyframes htSay{from{transform:scale(.92) translateY(8px);}to{transform:none;}}
+  @keyframes htNudge{0%,100%{transform:translateY(0)}50%{transform:translateY(4px)}}
   @media(max-width:700px){
-    .ht-top{grid-template-columns:96px minmax(0,1fr);align-items:start;gap:.9rem;}
-    .ht-guide img{height:132px;max-height:none;object-position:60% 10%;border-radius:18px;}
-    .ht-guide::before{border-radius:18px;}
-    .ht-top .ht-h{grid-column:1/-1;}
-    .ht-head{display:contents;}
-    .ht-head .step{grid-column:2;grid-row:1;align-self:start;margin:0;}
-    .ht-say{grid-column:2;grid-row:1;align-self:end;margin:0;}
-    .ht-top .ht-h,.ht-top .ht-p{grid-column:1/-1;}}
-  @media(prefers-reduced-motion:reduce){.ht-guide img,.ht-say{animation:none;}}
+    .ht-top.founder{grid-template-columns:1fr;gap:1.2rem;}
+    .ht-frame{max-width:230px;margin:0 auto 1.6rem;}
+    .ht-head .step{margin-top:.4rem;}}
+  @media(prefers-reduced-motion:reduce){.ht-frame,.ht-lead{animation:none;}}
+  /* 09 · the record, alive: numbers count up, a light runs across (desktop only) */
+  .ep{position:relative;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;margin:0 0 clamp(1.6rem,4vw,2.4rem);
+    border-radius:22px;overflow:hidden;isolation:isolate;background:rgba(255,87,34,.3);
+    box-shadow:0 0 0 1px rgba(255,87,34,.35),0 24px 60px rgba(255,87,34,.14);}
+  .ep-cell{position:relative;background:var(--card);padding:clamp(1.3rem,3vw,2rem) clamp(1rem,2.5vw,1.6rem);text-align:center;transition:transform .35s var(--ease),background .3s;}
+  .ep-cell::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#FF5722,#FFC46B);transform:scaleX(.25);transform-origin:left;transition:transform .5s var(--ease);}
+  .ep-cell:hover::before,.ep.is-on .ep-cell::before{transform:scaleX(1);}
+  .ep-cell:nth-child(2)::before{transition-delay:.15s}.ep-cell:nth-child(3)::before{transition-delay:.3s}
+  .ep-cell:hover{transform:translateY(-3px);}
+  .ep-n{font-family:var(--font-display);font-size:clamp(2rem,5vw,3rem);font-weight:800;letter-spacing:-.03em;line-height:1;font-variant-numeric:tabular-nums;
+    background:linear-gradient(120deg,var(--ink) 15%,#FF5722 55%,#FFC46B);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;}
+  html[data-theme="day"] .ep-n{background-image:linear-gradient(120deg,#0A0A0A 15%,#AD350A 70%);}
+  .ep-cur{font-size:clamp(1.5rem,3.6vw,2.2rem);display:flex;justify-content:center;align-items:center;gap:.3rem;}
+  .ep-cur i{font-style:normal;color:var(--accent);-webkit-text-fill-color:var(--accent);}
+  .ep-cur{background:none;-webkit-text-fill-color:initial;color:var(--ink);}
+  .ep-cur span{display:inline-block;background:linear-gradient(120deg,var(--ink) 10%,#FF5722 60%,#FFC46B);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;}
+  html[data-theme="day"] .ep-cur span{background-image:linear-gradient(120deg,#0A0A0A 15%,#AD350A 70%);}
+  @media(prefers-reduced-motion:no-preference){.ep.is-on .ep-cur span{animation:epHop 3.6s ease-in-out infinite;}
+    .ep.is-on .ep-cur span:nth-of-type(2){animation-delay:.25s}.ep.is-on .ep-cur span:nth-of-type(3){animation-delay:.5s}}
+  @keyframes epHop{0%,70%,100%{transform:none}78%{transform:translateY(-5px)}86%{transform:none}}
+  .ep-l{font-size:.78rem;color:var(--ink-soft);line-height:1.45;margin-top:.65rem;}
+  .ep-l b{color:var(--accent);font-weight:600;}
+  @media(min-width:861px) and (prefers-reduced-motion:no-preference){
+    .ep::after{content:'';position:absolute;top:0;bottom:0;left:-40%;width:30%;pointer-events:none;z-index:2;
+      background:linear-gradient(100deg,transparent,rgba(255,196,107,.16),transparent);animation:epRun 5.5s ease-in-out 1s infinite;}}
+  @keyframes epRun{0%{left:-40%}60%,100%{left:120%}}
+  @media(max-width:700px){.ep{grid-template-columns:1fr;}.ep-cell{padding:1.1rem 1rem;}}
   .ht-cta{display:flex;flex-wrap:wrap;align-items:center;gap:1rem 1.6rem;margin-top:1.5rem;}
   .ht-skip{font-size:.88rem;font-weight:600;color:var(--accent);text-decoration:none;}
   .ht-skip:hover{text-decoration:underline;}
@@ -1667,7 +1688,7 @@ html[data-theme="day"] .timer-num{background-image:linear-gradient(160deg,#0A0A0
 <noscript><iframe height="0" src="https://www.googletagmanager.com/ns.html?id=GTM-NMFHS59B" style="display:none;visibility:hidden" width="0"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 <div id="erjNavMount"></div>
-<script>window.ERJ_NAV={active:'home',tourTitle:'',tourStart:2,onPage:[{label:'Start Here',href:'#tour',sub:'The whole page in eight stops',tourSelf:true},{label:'What We Can Do For You',href:'#promise',sub:'Become hireable and represented for global remote work'},{label:'The Promise',href:'#pledge',sub:'The five parts of every search, and how we fix each one'},{label:'Live Remote Jobs',href:'#jobs-live',sub:'The supply fix: real roles open to Nigeria, by field'},{label:'Proof It Works',href:'#facilitator',sub:'Who is behind this, and what changed for people like you'},{label:'Free For You',href:'#free',sub:'The diagnosis, the CV scan, the clinic and the blog'},{label:'How We Help',href:'#paths',sub:'Six ways in, from a book to full support'},{label:'Before You Decide',href:'#faq',sub:'The questions everyone asks first'},{label:'Join Cohort 12',href:'#enrol',sub:'Enrolment closes Sat 31 Oct'}]};</script>
+<script>window.ERJ_NAV={active:'home',tourTitle:'',tourStart:2,onPage:[{label:'Start Here',href:'#tour',sub:'A welcome, and the page in eight stops',tourSelf:true},{label:'What We Can Do For You',href:'#promise',sub:'Become hireable and represented for global remote work'},{label:'The Promise',href:'#pledge',sub:'The five parts of every search, and how we fix each one'},{label:'Live Remote Jobs',href:'#jobs-live',sub:'The supply fix: real roles open to Nigeria, by field'},{label:'Proof It Works',href:'#story',sub:'What changed for people who started where you are'},{label:'Free For You',href:'#free',sub:'The diagnosis, the CV scan, the clinic and the blog'},{label:'How We Help',href:'#paths',sub:'Six ways in, from a book to full support'},{label:'Before You Decide',href:'#faq',sub:'The questions everyone asks first'},{label:'Join Cohort 12',href:'#enrol',sub:'Our record so far, and enrolment closes Sat 31 Oct'}]};</script>
 <main>
 <!-- ADVANTAGE TICKER -->
 <div class="ha-ticker ha-ticker-top" role="region" aria-label="Why ERJ">
@@ -1680,15 +1701,25 @@ html[data-theme="day"] .timer-num{background-image:linear-gradient(160deg,#0A0A0
 <!-- 01 · START HERE: the whole page in eight stops (rendered from ERJ_NAV.onPage) -->
 <section class="wrap ht" id="tour">
 <div class="ht-in">
-<div class="ht-top">
-<figure class="ht-guide">
-<picture><source srcset="photo-seyi-suit.webp" type="image/webp"/><img alt="Oluwaseyi Ashiru, Lead Facilitator, in a suit, welcoming you and pointing you to the tour" decoding="async" height="1100" src="photo-seyi-suit.jpg" width="880"/></picture>
-</figure>
+<span aria-hidden="true" class="ht-anchor" id="about"></span><span aria-hidden="true" class="ht-anchor" id="facilitator"></span>
+<div class="ht-top founder">
+<div class="f-frame ht-frame">
+<span class="f-tick tl"></span><span class="f-tick br"></span>
+<div class="f-photo">
+<picture><source srcset="photo-seyi-suit.webp" type="image/webp"/><img alt="Oluwaseyi Ashiru, Lead Facilitator of Everything Remote Job, in a suit, welcoming you and pointing you to the tour" decoding="async" height="1100" src="photo-seyi-suit.jpg" width="880"/></picture>
+</div>
+<div class="f-plate">
+<div class="n">Oluwaseyi Ashiru</div>
+<div class="r">Lead Facilitator · Everything Remote Job</div>
+</div>
+</div>
 <div class="ht-head">
 <div class="step"><span class="step-n">01</span><span class="step-l">Start Here · Your Quick Tour</span></div>
-<p class="ht-say"><span>Hi, I’m Seyi.</span> Let me show you around.</p>
-<h2 class="ht-h">New here? <em>The whole page in eight stops.</em></h2>
-<p class="ht-p">Tap any stop and I’ll take you straight there. Or press <b>Start the tour</b> and follow the arrow on the left of your screen: I’ll tell you what comes next as you go.</p>
+<h2 class="f-hello">New here? I’m glad <em>you’re here.</em></h2>
+<p class="f-note">I built Everything Remote Job for one person: the capable African professional the global market keeps overlooking — not for lack of skill, but for lack of a system. <strong>You are not the problem.</strong> The way you were taught to present yourself and search is.</p>
+<p class="f-sign">— Oluwaseyi<span>Lead Facilitator, Everything Remote Job · Business Play Ltd · Training professionals into global roles since 2013</span></p>
+<p class="f-verify"><a href="https://www.linkedin.com/in/seyiashiru" rel="noopener me" target="_blank">Oluwaseyi Ashiru on LinkedIn →</a></p>
+<p class="ht-lead"><span class="ht-lead-k">Let me take you through this page in a brief tour.</span> Tap any stop below and I’ll take you straight there, or press <b>Start the tour</b> and follow the arrow on the left of your screen: I’ll tell you what comes next as you go.</p>
 </div>
 </div>
 <div class="ht-tour" data-erj-tour=""></div>
@@ -1708,7 +1739,7 @@ html[data-theme="day"] .timer-num{background-image:linear-gradient(160deg,#0A0A0
 <p class="ask-sub">You do not need to relocate. You need the skill, roles you are eligible for, assets an employer can read, an aimed search and the judgement to close. We build those with you; the market sets the timing. <strong>Cohort 12 enrolment is open now and closes Saturday 31 October.</strong></p>
 <div class="answers">
 <a class="btn-yes btn-primary-ui pulse" href="#enrol"><span>Show Me How</span><span class="arrow-wrap"><span class="arrow">→</span></span></a>
-<a class="btn-more btn-secondary-ui" href="#facilitator"><span>Continue The Tour</span><span class="arrow-wrap"><span class="arrow is-down">↓</span></span></a>
+<a class="btn-more btn-secondary-ui" href="#pledge"><span>Continue The Tour</span><span class="arrow-wrap"><span class="arrow is-down">↓</span></span></a>
 <p class="hero-dx"><a href="diagnose/">Free Diagnosis <span aria-hidden="true">→</span></a><span class="hero-dx-note">Ready now? 5 questions · 90 seconds</span></p>
 </div>
 <p class="hero-new">New here? <a href="starthere.html">Begin at Your Starting Line →</a></p>
@@ -1740,10 +1771,6 @@ html[data-theme="day"] .timer-num{background-image:linear-gradient(160deg,#0A0A0
 </div>
 </section>
 
-<!-- FOUNDER WELCOME -->
-<span aria-hidden="true" id="about"></span>
-<!-- #about is the canonical anchor for "who runs this". The section keeps
-       id="facilitator" so existing links still resolve. -->
 
 <!-- TRANSFORMATION STORY -->
 
@@ -1806,47 +1833,10 @@ html[data-theme="day"] .jt{--jt-o:#E8470F;--jt-line:rgba(20,17,14,.12);--jt-card
 </section>
 
 <!-- 05 · PROOF: who is behind this, the numbers, then the stories -->
-<section class="wrap section-line" id="facilitator" style="padding-top:clamp(2.4rem,6vw,4rem);padding-bottom:clamp(1.6rem,4vw,2.4rem);">
-<div class="step"><span class="step-n">05</span><span class="step-l">Proof It Works · A Word From Your Facilitator</span></div>
-<div class="founder">
-<div class="f-frame reveal">
-<span class="f-tick tl"></span><span class="f-tick br"></span>
-<div class="f-photo">
-<picture>
-<source srcset="photo-seyi-welcome.webp" type="image/webp"/>
-<img alt="Oluwaseyi Ashiru, Lead Facilitator of Everything Remote Job, hand on heart in welcome" decoding="async" height="1100" loading="lazy" src="photo-seyi-welcome.webp" width="880"/>
-</picture>
-</div>
-<div class="f-plate">
-<div class="n">Oluwaseyi Ashiru</div>
-<div class="r">Lead Facilitator · Everything Remote Job</div>
-</div>
-</div>
-<div class="reveal">
-<h2 class="f-hello">Welcome. I'm glad <em>you're here.</em></h2>
-<p class="f-note">I built Everything Remote Job for one person: the capable African professional the global market keeps overlooking — not for lack of skill, but for lack of a system. <strong>You are not the problem.</strong> The way you were taught to present yourself and search is.</p>
-<p class="f-sign">— Oluwaseyi<span>Lead Facilitator, Everything Remote Job · Business Play Ltd · Training professionals into global roles since 2013</span></p>
-<p class="f-verify"><a href="https://www.linkedin.com/in/seyiashiru" rel="noopener me" target="_blank">Oluwaseyi Ashiru on LinkedIn →</a></p>
-</div>
-</div>
-</section>
-<section class="wrap" id="proof" style="padding-top:0;">
-<div class="proof reveal">
-<div class="proof-cell">
-<div class="proof-n">382+</div>
-<div class="proof-l">Professionals placed into global remote work</div>
-</div>
-<div class="proof-cell">
-<div class="proof-n">USD·EUR·GBP</div>
-<div class="proof-l">Hard-currency salaries, not naira ceilings</div>
-</div>
-<div class="proof-cell">
-<div class="proof-n">10</div>
-<div class="proof-l">Completed cohorts — Cohort 12 is enrolling now</div>
-</div>
-</div>
-</section>
+
+
 <section class="wrap section-line" id="story">
+<div class="step"><span class="step-n">05</span><span class="step-l">Proof It Works · What Changed For People Like You</span></div>
 <h2 class="cost-h pf-h">They started where you are. <em>Here is what changed.</em></h2>
 <p class="pf-lead">Same country, same power cuts, same doubts. None of them got luckier. Each one found what was holding them back, fixed that one thing, and kept going.</p>
 <div class="pf-stage">
@@ -2142,6 +2132,11 @@ html[data-theme="day"] .jt{--jt-o:#E8470F;--jt-line:rgba(20,17,14,.12);--jt-card
 <!-- JOIN COHORT 12 · why Foundation Training, one countdown, one action -->
 <section class="wrap section-line" id="enrol">
 <div class="step"><span class="step-n">09</span><span class="step-l">Join Cohort 12</span></div>
+<div class="ep reveal" aria-label="Our record so far">
+<div class="ep-cell"><div class="ep-n" data-count="382" data-suffix="+">382+</div><div class="ep-l">Professionals placed into global remote work</div></div>
+<div class="ep-cell"><div class="ep-n ep-cur"><span>USD</span><i>·</i><span>EUR</span><i>·</i><span>GBP</span></div><div class="ep-l">Hard-currency salaries, not naira ceilings</div></div>
+<div class="ep-cell"><div class="ep-n" data-count="10">10</div><div class="ep-l">Completed cohorts. <b>Cohort 12 is enrolling now</b></div></div>
+</div>
 <div class="ft-close reveal">
 <div class="ft-why">
 <h2 class="cost-h">Why Foundation Training is our <em>surest way in.</em></h2>
@@ -2186,7 +2181,7 @@ html[data-theme="day"] .jt{--jt-o:#E8470F;--jt-line:rgba(20,17,14,.12);--jt-card
 </a>
 <script defer="" src="erj-theme.js?v=20260911a"></script>
 <script defer="" src="erj-product.js?v=20260924c"></script>
-<script defer="" src="erj-nav.js?v=20261015c"></script>
+<script defer="" src="erj-nav.js?v=20261015d"></script>
 <script defer="" src="erj-config.js?v=20261008b"></script>
 <script defer="" src="erj-capture.js?v=20260911a"></script>
 <script>if("serviceWorker" in navigator){window.addEventListener("load",function(){var go=function(){navigator.serviceWorker.register("/sw.js",{updateViaCache:"none"}).then(function(reg){reg.update();}).catch(function(){});};if("requestIdleCallback" in window){requestIdleCallback(go,{timeout:3000});}else{setTimeout(go,1200);}});}</script>
@@ -2273,5 +2268,14 @@ html[data-theme="day"] .jt{--jt-o:#E8470F;--jt-line:rgba(20,17,14,.12);--jt-card
 </script>
 <script defer="" src="erj-alive.js?v=20261004a"></script>
 <script>document.addEventListener("DOMContentLoaded",function(){var C=window.ERJ_CONFIG;if(!C||!C.messages)return;document.querySelectorAll("[data-wa-msg]").forEach(function(a){var t=C.messages[a.getAttribute("data-wa-msg")];if(t)a.href="https://wa.me/"+C.whatsapp+"?text="+encodeURIComponent(t);});});</script>
+<script>
+/* 09 · count the record up once it is on screen. The real numbers are in the HTML first. */
+(function(){var ep=document.querySelector('.ep');if(!ep||!('IntersectionObserver' in window))return;
+var calm=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;io.disconnect();ep.classList.add('is-on');
+if(calm)return;ep.querySelectorAll('[data-count]').forEach(function(n){var end=+n.getAttribute('data-count'),suf=n.getAttribute('data-suffix')||'',t0=null,d=1400;
+function f(t){if(!t0)t0=t;var p=Math.min(1,(t-t0)/d);n.textContent=Math.round(end*(1-Math.pow(1-p,3)))+suf;if(p<1)requestAnimationFrame(f);}
+requestAnimationFrame(f);});});},{threshold:.4});io.observe(ep);})();
+</script>
 </body>
 </html>
