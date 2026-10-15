@@ -1057,6 +1057,31 @@ a.promo-tick{text-decoration:none;display:block;}
   .ht .f-stop:nth-child(5){animation-delay:.24s}.ht .f-stop:nth-child(6){animation-delay:.30s}.ht .f-stop:nth-child(7){animation-delay:.36s}.ht .f-stop:nth-child(8){animation-delay:.42s}
   @keyframes htPop{from{transform:translateY(18px) scale(.96);}to{transform:none;}}
   @keyframes htCall{0%{box-shadow:0 0 0 0 rgba(255,87,34,.55)}70%{box-shadow:0 0 0 12px rgba(255,87,34,0)}100%{box-shadow:0 0 0 0 rgba(255,87,34,0)}}
+  /* the guide: Seyi, gesturing towards the stops */
+  .ht-top{display:grid;grid-template-columns:clamp(150px,22vw,250px) minmax(0,1fr);gap:clamp(1rem,3vw,2.2rem);align-items:end;margin-bottom:1.4rem;}
+  .ht-guide{position:relative;margin:0;align-self:stretch;}
+  .ht-guide::before{content:'';position:absolute;inset:12% 0 0 0;border-radius:22px 22px 22px 22px;
+    background:radial-gradient(80% 70% at 50% 100%,rgba(255,87,34,.45),transparent 70%),linear-gradient(160deg,rgba(255,196,107,.25),rgba(255,87,34,.08));}
+  .ht-guide img{position:relative;display:block;width:100%;height:100%;max-height:300px;object-fit:cover;object-position:62% 12%;
+    border-radius:22px;border:1px solid rgba(255,87,34,.45);box-shadow:0 22px 50px rgba(255,87,34,.22);animation:htGuide .9s cubic-bezier(.22,1,.36,1) both;}
+  @keyframes htGuide{from{transform:translateX(-14px) rotate(-2deg);}to{transform:none;}}
+  .ht-say{position:relative;display:inline-block;margin:.2rem 0 .7rem;padding:.6rem .95rem;border-radius:16px 16px 16px 4px;
+    background:var(--accent-btn,#FF5722);color:#fff;font-weight:600;font-size:clamp(.9rem,1.4vw,1rem);line-height:1.35;
+    box-shadow:0 12px 28px rgba(255,87,34,.3);animation:htSay .7s cubic-bezier(.22,1,.36,1) .25s both;transform-origin:0 100%;}
+  .ht-say span{font-family:var(--font-display);font-weight:800;}
+  .ht-say::before{content:'';position:absolute;left:-7px;bottom:0;width:14px;height:14px;background:inherit;clip-path:polygon(100% 0,100% 100%,0 100%);}
+  @keyframes htSay{from{transform:scale(.6) translateY(8px);}to{transform:none;}}
+  .ht-top .ht-p{margin-bottom:0;}
+  @media(max-width:700px){
+    .ht-top{grid-template-columns:96px minmax(0,1fr);align-items:start;gap:.9rem;}
+    .ht-guide img{height:132px;max-height:none;object-position:60% 10%;border-radius:18px;}
+    .ht-guide::before{border-radius:18px;}
+    .ht-top .ht-h{grid-column:1/-1;}
+    .ht-head{display:contents;}
+    .ht-head .step{grid-column:2;grid-row:1;align-self:start;margin:0;}
+    .ht-say{grid-column:2;grid-row:1;align-self:end;margin:0;}
+    .ht-top .ht-h,.ht-top .ht-p{grid-column:1/-1;}}
+  @media(prefers-reduced-motion:reduce){.ht-guide img,.ht-say{animation:none;}}
   .ht-cta{display:flex;flex-wrap:wrap;align-items:center;gap:1rem 1.6rem;margin-top:1.5rem;}
   .ht-skip{font-size:.88rem;font-weight:600;color:var(--accent);text-decoration:none;}
   .ht-skip:hover{text-decoration:underline;}
@@ -1655,10 +1680,16 @@ html[data-theme="day"] .timer-num{background-image:linear-gradient(160deg,#0A0A0
 <!-- 01 · START HERE: the whole page in eight stops (rendered from ERJ_NAV.onPage) -->
 <section class="wrap ht" id="tour">
 <div class="ht-in">
+<div class="ht-top">
+<figure class="ht-guide">
+<picture><source srcset="photo-seyi-welcome.webp" type="image/webp"/><img alt="Oluwaseyi Ashiru, Lead Facilitator, welcoming you and pointing you to the tour" decoding="async" height="1100" src="photo-seyi-welcome.webp" width="880"/></picture>
+</figure>
 <div class="ht-head">
 <div class="step"><span class="step-n">01</span><span class="step-l">Start Here · Your Quick Tour</span></div>
+<p class="ht-say"><span>Hi, I’m Seyi.</span> Let me show you around.</p>
 <h2 class="ht-h">New here? <em>The whole page in eight stops.</em></h2>
-<p class="ht-p">Tap any stop to jump straight to it, or press <b>Start the tour</b> and follow the arrows on the left of your screen. Each one takes you to the next stop.</p>
+<p class="ht-p">Tap any stop and I’ll take you straight there. Or press <b>Start the tour</b> and follow the arrow on the left of your screen: I’ll tell you what comes next as you go.</p>
+</div>
 </div>
 <div class="ht-tour" data-erj-tour=""></div>
 <div class="ht-cta">
