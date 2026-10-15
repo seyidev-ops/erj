@@ -572,6 +572,7 @@ h1 strong,h1 em{ -webkit-text-fill-color:currentColor!important;background:none!
 <svg viewbox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" x2="16.65" y1="21" y2="16.65"></line></svg>
 <input autocomplete="off" enterkeyhint="search" id="searchInput" oninput="filterPosts()" placeholder="Search: CV, LinkedIn, interviews, salary…" type="search"/>
 </div>
+<nav class="bx-switch" aria-label="Blog views"><a class="on" href="blog.html" aria-current="page">Latest &amp; search</a><a href="blog/">Every post by month</a></nav>
 <div class="bx-chips" id="bxChips"><span><b id="bxCount">200+</b> free posts</span><span><b>7</b> topics</span><span>Written by <b>Oluwaseyi Ashiru</b></span></div>
 </div>
 <aside class="bx-start" aria-label="Free tools to start with">
@@ -3887,7 +3888,7 @@ function renderPosts(){
   const fs=document.getElementById('featuredSlot');
   if(feat){
     const cc=CC[feat.category]||{bg:'rgba(255,87,34,.12)',c:'#FF5722'};
-    fs.innerHTML=`<a class="feat-card fade-in" href="${postHref(feat.id)}" onclick="openPost('${feat.id}');return false;">
+    fs.innerHTML=`<a class="feat-card fade-in" href="${postHref(feat.id)}">
       <div class="feat-img" style="background:${feat.grad}">
         <span style="animation:fl 3s ease-in-out infinite;display:block">${feat.emoji}</span>
         <span class="feat-lbl">⭐ LATEST PICK</span><span class="bx-ring r1"></span><span class="bx-ring r2"></span>
@@ -3913,7 +3914,7 @@ function renderPosts(){
   } else {
     const cards=paged.map(p=>{
       const cc=CC[p.category]||{bg:'rgba(255,87,34,.12)',c:'#FF5722'};
-      return `<a class="post-card fade-in" href="${postHref(p.id)}" onclick="openPost('${p.id}');return false;">
+      return `<a class="post-card fade-in" href="${postHref(p.id)}">
         <div class="pc-img" style="background:${p.grad}">${p.emoji}</div>
         <div class="pc-body">
           <div class="pc-cat" style="color:${cc.c}">${p.category}</div>
@@ -4232,7 +4233,7 @@ function dismissPostNotif(e) {
 
 function openNotifPost() {
   if (!_notifPostId) return;
-  openPost(_notifPostId);
+  location.href=postHref(_notifPostId);
   dismissPostNotif();
 }
 
@@ -4307,7 +4308,7 @@ function pushNewPostNotif(post) {
 /* ─── URL param: open post directly ─── */
 function checkURLParam(){
   const p=new URLSearchParams(location.search).get('p');
-  if(p) setTimeout(()=>openPost(p),200);
+  if(p){ if(POST_SLUGS[p]) location.replace(postHref(p)); else setTimeout(()=>openPost(p),200); }
 }
 
 /* ─── INIT ─── */
@@ -4374,6 +4375,11 @@ html[data-theme="day"] .bx-start-k{color:#0B6E3E;}
 @keyframes bxPing{0%{box-shadow:0 0 0 0 rgba(63,209,139,.6)}80%,100%{box-shadow:0 0 0 12px rgba(63,209,139,0)}}
 @media(min-width:900px){.bx-hero{padding:64px 5% 56px;}.bx-hero-in{grid-template-columns:minmax(0,1.25fr) minmax(300px,.75fr);gap:3rem;align-items:center;}}
 
+.bx-switch{display:inline-flex;padding:4px;border-radius:999px;border:1px solid var(--border);background:var(--bg3);margin-top:1rem;}
+.bx-switch a{padding:.45rem 1rem;border-radius:999px;font-size:.8rem;font-weight:700;color:var(--muted);text-decoration:none;}
+.bx-switch a.on{background:#FF5722;color:#fff;}
+html[data-theme="day"] .bx-switch a.on{background:#E8470F;}
+.bx-switch a:not(.on):hover{color:var(--txt);}
 /* categories with counts, sticky on scroll */
 .cats{position:sticky;top:63px;z-index:20;background:var(--bg);padding:10px 0 8px;margin-bottom:12px;}
 .cat-pill{gap:.45rem;}
@@ -4512,7 +4518,7 @@ html[data-theme="day"] .bx-promo{background:linear-gradient(140deg,#E8470F,#AD35
 </script>
 <script src="erj-theme.js?v=20260911a"></script>
 <script defer="" src="erj-nav.js?v=20261015e"></script>
-<script defer="" src="erj-config.js?v=20261008b"></script>
+<script defer="" src="erj-config.js?v=20261015a"></script>
 <script defer="" src="erj-capture.js?v=20260911a"></script>
 <script defer="" src="erj-schema.js?v=20261004a"></script>
 <script defer="" src="erj-alive.js?v=20261004a"></script>

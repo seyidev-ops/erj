@@ -42,6 +42,9 @@
       channel: 'AUDIT\n\nI am on the ERJ free job channel and I have been applying for remote roles.\n\nTarget role:\nApplications in the last 30 days:\nInterviews in the last 30 days:\nCV/LinkedIn: I will attach or paste it here.\n\nPlease tell me which part of my search is breaking down and what I should fix first.',
       diagnose: 'AUDIT\n\nMy diagnostic says: {joint} \u2014 {law}\n\nTarget role:\nApplications in the last 30 days:\nInterviews in the last 30 days:\nCV/LinkedIn: I will attach or paste it here.\n\nMy diagnostic answers: {answer}\n\nPlease tell me what I should fix first. If I do not need a paid ERJ service, please tell me that too.',
       blog: 'Hello ERJ \u2014 I have been reading the blog and I want to sort out my job hunt properly. Where do I start?',
+      /* Blog post pages (blog/post.js): a reaction or a comment, sent to the official line. */
+      blogReact: 'Hello ERJ \u2014 I just read "{title}" on the blog.\n\nMy reaction: {reaction}\n\n{url}',
+      blogComment: 'BLOG COMMENT\n\nPost: {title}\n{url}\n\nMy comment: {comment}\n\nName (optional):',
       capacity: 'Hello ERJ \u2014 I would like one of the placement engagements. Are there still places open this month?',
       /* Career Development \u2014 Self-Study (register.html#careerdev). {track} is the buyer's choice. */
       careerdev: 'CAREER DEVELOPMENT \u2014 SELF-STUDY\n\nTrack: {track}\nFull name:\nEmail:\nTarget role:\n\nI am paying by transfer to Business Play Ltd and will send the receipt here. Please issue my access code for The Mentorine School once payment is verified.',
