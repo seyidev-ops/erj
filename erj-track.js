@@ -164,10 +164,13 @@
     var EVENTS = ['pointerdown','keydown','touchstart','wheel','scroll'];
     function go(){ EVENTS.forEach(function(e){ window.removeEventListener(e, go, true); }); flushDeferred(); }
     EVENTS.forEach(function(e){ window.addEventListener(e, go, {once:true, passive:true, capture:true}); });
-    if (typeof window.requestIdleCallback === 'function') { window.requestIdleCallback(go, {timeout:3000}); }
-    else { setTimeout(go, 2200); }
-    if (document.readyState === 'complete') setTimeout(go, 800);
-    else window.addEventListener('load', function(){ setTimeout(go, 800); }, {once:true});
+    /* Oct 2026: the tags no longer load on idle. They load on the first
+       scroll, tap or key, or 6 s after the page has loaded, whichever comes
+       first, so they never compete with the first view on a phone. Anyone who
+       scrolls is counted at once; only a visitor who leaves within ~6 s
+       without touching the page goes uncounted. */
+    if (document.readyState === 'complete') setTimeout(go, 6000);
+    else window.addEventListener('load', function(){ setTimeout(go, 6000); }, {once:true});
   })();
 
   /* ═══════════════════════════════════════════════════════════
