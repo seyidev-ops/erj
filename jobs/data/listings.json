@@ -6000,30 +6000,6 @@
    "direct": true
   },
   {
-   "title": "Senior Product Analyst (CX)",
-   "company": "Social Discovery Group",
-   "region": "\"Worldwide\" / \"Remote Worldwide\"",
-   "type": "Not stated",
-   "experience": "Senior",
-   "salary": "Not listed",
-   "bullets": [
-    "Maths/technical degree",
-    "Deep A/B-testing and product analytics experience"
-   ],
-   "why": "Open worldwide with no country exclusion, so you can apply from Nigeria. You apply directly on the employer's own page.",
-   "apply": "https://social-discovery-ventures.breezy.hr/p/56c7a78e089401-senior-product-analyst-cx",
-   "family": "Customer Service & Success",
-   "posted": "2026-10-07",
-   "deadline": null,
-   "checked": "2026-10-19",
-   "listed": "2026-10-10",
-   "source": "ERJ research",
-   "origin": "sheet",
-   "id": "01a46dc498",
-   "added": "2026-10-10",
-   "direct": true
-  },
-  {
    "title": "Legal Administrative Virtual Assistant — CPT-11320",
    "company": "20four7VA",
    "region": "Worldwide; \"REGION PREFERENCES: Any\"",
@@ -6275,31 +6251,6 @@
    "source": "ERJ research",
    "origin": "sheet",
    "id": "e94c6b21aa",
-   "added": "2026-10-10",
-   "direct": true
-  },
-  {
-   "title": "Head, Product Control & Accounting",
-   "company": "Moniepoint",
-   "region": "Remote, Nigeria",
-   "type": "Not stated",
-   "experience": "Head / Senior (8+ yrs PQE)",
-   "salary": "Not listed",
-   "bullets": [
-    "ACA/ACCA",
-    "Big 4 technical accounting",
-    "IFRS 9 & 15"
-   ],
-   "why": "Open to candidates in Nigeria by name. You apply directly on the employer's own page.",
-   "apply": "https://job-boards.eu.greenhouse.io/moniepoint/jobs/4889340101",
-   "family": "Finance & Accounting",
-   "posted": null,
-   "deadline": null,
-   "checked": "2026-10-19",
-   "listed": "2026-10-10",
-   "source": "ERJ research",
-   "origin": "sheet",
-   "id": "937ab7aead",
    "added": "2026-10-10",
    "direct": true
   },
@@ -10125,6 +10076,87 @@
    "id": "38c17dd2c2",
    "added": "2026-10-19",
    "direct": false
+  },
+  {
+   "id": "0e5b3a9e15",
+   "title": "Head of Customer Experience",
+   "company": "Jobgether partner",
+   "region": "Nigeria",
+   "type": "Full-Time",
+   "experience": "Not stated",
+   "salary": "Undisclosed",
+   "bullets": [
+    "Customer experience and team leadership",
+    "Customer service excellence",
+    "Scalable systems and processes",
+    "Customer support channels"
+   ],
+   "apply": "https://jobs.lever.co/jobgether/838b8d7d-7daa-40df-90cb-1a9feb68755a",
+   "posted": "2026-10-19",
+   "deadline": null,
+   "checked": "2026-10-19",
+   "added": "2026-10-19",
+   "listed": "2026-10-19",
+   "source": "Lever",
+   "origin": "feed",
+   "ats_id": "838b8d7d-7daa-40df-90cb-1a9feb68755a",
+   "family": "Customer Service & Success",
+   "why": "Open to candidates in Nigeria by name. You apply directly on the employer's own page.",
+   "direct": true
+  },
+  {
+   "id": "3c841006e7",
+   "title": "Product Owner (Matchmaking)",
+   "company": "Social Discovery Group",
+   "region": "Serbia, worldwide",
+   "type": "Full-Time",
+   "experience": "3+ years",
+   "salary": "$5000",
+   "bullets": [
+    "REMOTE OPPORTUNITY to work full-time",
+    "The initial pay level or pay range for this role will be shared with candidates during the recruitment process",
+    "Bonuses up to $5000 for recommending successful applicants for positions in the company",
+    "50% payment for professional training, international conferences, and meetings"
+   ],
+   "apply": "https://social-discovery-ventures.breezy.hr/p/8ae64331d11301-product-owner-matchmaking",
+   "posted": "2026-10-19",
+   "deadline": null,
+   "checked": "2026-10-19",
+   "added": "2026-10-19",
+   "listed": "2026-10-19",
+   "source": "Breezy",
+   "origin": "feed",
+   "ats_id": "8ae64331d11301",
+   "family": "Data & Product",
+   "why": "Open worldwide with no country exclusion, so you can apply from Nigeria, and pays in foreign currency ($5000). You apply directly on the employer's own page.",
+   "direct": true
+  },
+  {
+   "id": "346fd41a17",
+   "title": "Senior Marketing analyst",
+   "company": "Social Discovery Group",
+   "region": "Worldwide / Serbia / Poland / Georgia / Armenia",
+   "type": "Full-Time",
+   "experience": "3+ years",
+   "salary": "$5000",
+   "bullets": [
+    "Experience with A/B testing",
+    "Strong SQL skills: ability to independently work with large datasets, build complex analytical queries, and validate data quality",
+    "Strong knowledge of mathematical statistics and experimentation; ability to design validation/backtesting methodology",
+    "Strong understanding of performance marketing economics and metrics"
+   ],
+   "apply": "https://social-discovery-ventures.breezy.hr/p/42580a372e9501-senior-marketing-analyst",
+   "posted": "2026-10-19",
+   "deadline": null,
+   "checked": "2026-10-19",
+   "added": "2026-10-19",
+   "listed": "2026-10-19",
+   "source": "Breezy",
+   "origin": "feed",
+   "ats_id": "42580a372e9501",
+   "family": "Marketing & Creative",
+   "why": "Open worldwide with no country exclusion, so you can apply from Nigeria, and pays in foreign currency ($5000). You apply directly on the employer's own page.",
+   "direct": true
   }
  ]
 }
