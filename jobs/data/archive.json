@@ -4214,6 +4214,64 @@
    "direct": true,
    "closed": "2026-10-19",
    "closed_reason": "employer page closed"
+  },
+  {
+   "id": "fa82d7db26",
+   "title": "Product Manager, Corporate Actions",
+   "company": "Alpaca",
+   "region": "Remote - EMEA / Remote - EMEA",
+   "type": "Not stated",
+   "experience": "Not stated",
+   "salary": "$400",
+   "bullets": [
+    "Corporate Actions Domain Expertise",
+    "Product Management Experience",
+    "Clearing / Post-Trade Fluency",
+    "Cross-Functional Leadership"
+   ],
+   "apply": "https://job-boards.greenhouse.io/alpaca/jobs/6221638004",
+   "posted": "2026-10-19",
+   "deadline": null,
+   "checked": "2026-10-19",
+   "added": "2026-10-19",
+   "listed": "2026-10-19",
+   "source": "Greenhouse",
+   "origin": "feed",
+   "ats_id": "6221638004",
+   "family": "Data & Product",
+   "why": "Open to remote applicants in Nigeria, and pays in foreign currency ($400). You apply directly on the employer's own page.",
+   "direct": true,
+   "closed": "2026-10-19",
+   "closed_reason": "region does not confirm Nigeria or Africa"
+  },
+  {
+   "id": "e58c5e1eb1",
+   "title": "Freelance Senior Product Designer (Fractional)",
+   "company": "Clera",
+   "region": "remote",
+   "type": "Full-Time",
+   "experience": "5+ years",
+   "salary": "$100,000 to $120,000",
+   "bullets": [
+    "At least 5 years of digital product design experience, including work as a primary or sole designer at a startup",
+    "A portfolio showcasing shipped web app product work, strong craft, clarity, and thoughtful problem-solving",
+    "Deep Figma fluency, including product design and design system work",
+    "Experience designing end-to-end flows for products serving multiple audiences, and building design systems from scratch or at an early stage"
+   ],
+   "apply": "https://jobs.ashbyhq.com/Clera/416379f5-9788-4f6d-9477-dd76766eeac6",
+   "posted": "2026-10-19",
+   "deadline": null,
+   "checked": "2026-10-19",
+   "added": "2026-10-19",
+   "listed": "2026-10-19",
+   "source": "Ashby",
+   "origin": "feed",
+   "ats_id": "416379f5-9788-4f6d-9477-dd76766eeac6",
+   "family": "Marketing & Creative",
+   "why": "Open to remote applicants in Nigeria, and pays in foreign currency ($100,000 to $120,000). You apply directly on the employer's own page.",
+   "direct": true,
+   "closed": "2026-10-19",
+   "closed_reason": "region does not confirm Nigeria or Africa"
   }
  ]
 }
