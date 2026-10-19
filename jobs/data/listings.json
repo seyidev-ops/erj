@@ -874,33 +874,6 @@
    "listed": "2026-10-03"
   },
   {
-   "id": "fc0f0e4ef4",
-   "title": "Business Loan Processing Specialist",
-   "company": "20four7VA",
-   "region": "Worldwide",
-   "type": "Part-Time",
-   "experience": "Not stated",
-   "salary": "Undisclosed",
-   "bullets": [
-    "Previous experience processing SBA and SBA Express loans required",
-    "Experience processing working capital loans required",
-    "Experience processing business lines of credit required",
-    "Experience processing business credit cards preferred"
-   ],
-   "apply": "https://20four7va.breezy.hr/p/4cf990274eca-cpt-11317-business-loan-processing-specialist",
-   "posted": "2026-10-03",
-   "deadline": null,
-   "checked": "2026-10-19",
-   "added": "2026-10-06",
-   "source": "Breezy",
-   "origin": "feed",
-   "ats_id": "4cf990274eca",
-   "why": "Open worldwide with no country exclusion, so you can apply from Nigeria. Part-time, so it can sit beside a current job.",
-   "direct": true,
-   "family": "Executive & Operations",
-   "listed": "2026-10-03"
-  },
-  {
    "id": "1d1e90ea9f",
    "title": "Financial Services Appointment Setter",
    "company": "20four7VA",
@@ -6967,33 +6940,6 @@
    "direct": true
   },
   {
-   "id": "4b4844ce63",
-   "title": "Senior PHP/Laravel Developer with Infrastructure & DevOps Experience",
-   "company": "Jobgether partner",
-   "region": "Nigeria",
-   "type": "Full-Time",
-   "experience": "8+ years",
-   "salary": "Undisclosed",
-   "bullets": [
-    "Application Development and Maintenance",
-    "Architecture and Integrations",
-    "Code Quality and Testing",
-    "CI/CD and Deployment Automation"
-   ],
-   "apply": "https://jobs.lever.co/jobgether/2dbbf0c1-c14e-4cb9-8d74-4efcb983644a",
-   "posted": "2026-10-12",
-   "deadline": null,
-   "checked": "2026-10-19",
-   "added": "2026-10-12",
-   "listed": "2026-10-12",
-   "source": "Lever",
-   "origin": "feed",
-   "ats_id": "2dbbf0c1-c14e-4cb9-8d74-4efcb983644a",
-   "family": "Tech & IT",
-   "why": "Open to candidates in Nigeria by name. You apply directly on the employer's own page.",
-   "direct": true
-  },
-  {
    "id": "4881fa1af2",
    "title": "Content Lead",
    "company": "M-KOPA",
@@ -8047,33 +7993,6 @@
    "ats_id": "8274690",
    "family": "Volunteer & Internship",
    "why": "Open across Africa, Nigeria included. You apply directly on the employer's own page.",
-   "direct": true
-  },
-  {
-   "id": "13c0e632be",
-   "title": "AI Trainers Network - Bosnian",
-   "company": "Jobgether partner",
-   "region": "Nigeria",
-   "type": "Full-Time",
-   "experience": "Not stated",
-   "salary": "Undisclosed",
-   "bullets": [
-    "Annotating and labeling text, images, or audio to support AI model training",
-    "Evaluating search results, advertisements, and chatbot responses for quality, relevance, and accuracy",
-    "Creating, testing, and refining prompts to improve the performance of large language models",
-    "Reviewing content to ensure linguistic accuracy and cultural relevance for Bosnian-speaking audiences"
-   ],
-   "apply": "https://jobs.lever.co/jobgether/822c167b-9c67-4b89-adca-1842d29b09dc",
-   "posted": "2026-10-14",
-   "deadline": null,
-   "checked": "2026-10-19",
-   "added": "2026-10-14",
-   "listed": "2026-10-14",
-   "source": "Lever",
-   "origin": "feed",
-   "ats_id": "822c167b-9c67-4b89-adca-1842d29b09dc",
-   "family": "Data & Product",
-   "why": "Open to candidates in Nigeria by name. You apply directly on the employer's own page.",
    "direct": true
   },
   {
@@ -10183,6 +10102,31 @@
    "ats_id": "c659e2d77a53",
    "family": "Virtual Assistant & Admin",
    "why": "Open worldwide with no country exclusion, so you can apply from Nigeria. Part-time, so it can sit beside a current job.",
+   "direct": true
+  },
+  {
+   "id": "a0bda00804",
+   "title": "2D Designer",
+   "company": "VRChat",
+   "region": "Anywhere",
+   "type": "Contract",
+   "experience": "Not stated",
+   "salary": "$100",
+   "bullets": [
+    "Familiarity with VRChat or social VR",
+    "Experience making textures for real-time 3D, especially Unity"
+   ],
+   "apply": "https://jobs.lever.co/vrchat/81cee3d5-6a0b-4f88-9f09-357eef400239",
+   "posted": "2026-10-19",
+   "deadline": null,
+   "checked": "2026-10-19",
+   "added": "2026-10-19",
+   "listed": "2026-10-19",
+   "source": "Lever",
+   "origin": "feed",
+   "ats_id": "81cee3d5-6a0b-4f88-9f09-357eef400239",
+   "family": "Marketing & Creative",
+   "why": "Open worldwide with no country exclusion, so you can apply from Nigeria, and pays in foreign currency ($100). Contract work: a fast way to earn a first remote reference.",
    "direct": true
   }
  ]
