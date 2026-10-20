@@ -940,7 +940,29 @@ def get_json(url, timeout=30, tries=3):
     raise last
 
 
-AGGREGATORS = {"Remotive", "Jobicy"}
+AGGREGATORS = {"Remotive", "Jobicy", "We Work Remotely"}
+
+
+def feed_wwr(cfg):
+    """We Work Remotely's public RSS (free, no key). Each item carries a <region>;
+    the strict aggregator rule still decides, so only roles whose region names
+    the world, Africa or Nigeria get through."""
+    import xml.etree.ElementTree as ET
+    req = urllib.request.Request("https://weworkremotely.com/remote-jobs.rss",
+                                 headers={"User-Agent": BROWSER_UA, "Accept": "application/rss+xml, text/xml, */*"})
+    with urllib.request.urlopen(req, timeout=30) as r:
+        root = ET.fromstring(r.read())
+    for it in root.iter("item"):
+        g = lambda t: (it.findtext(t) or "").strip()
+        raw = html.unescape(g("title"))
+        company, _, title = raw.partition(": ")
+        if not title:
+            company, title = "", raw
+        yield {
+            "title": title, "company": company, "location": g("region"), "desc": g("description"),
+            "type": job_type(g("type")), "posted": parse_date(g("pubDate")), "apply": g("link"),
+            "source": "We Work Remotely", "category": g("category"),
+        }
 
 
 def feed_remotive(cfg):
@@ -1096,6 +1118,8 @@ def iter_feeds(cfg, log):
         plan.append(("Remotive", lambda: feed_remotive(cfg)))
     if f.get("jobicy"):
         plan.append(("Jobicy", lambda: feed_jobicy(cfg)))
+    if f.get("weworkremotely"):
+        plan.append(("We Work Remotely", lambda: feed_wwr(cfg)))
     for b in f.get("greenhouse", []):
         name, eu = (b[:-3], True) if b.endswith("@eu") else (b, False)
         plan.append((f"greenhouse:{b}", lambda n=name, e=eu: feed_greenhouse(n, e)))
