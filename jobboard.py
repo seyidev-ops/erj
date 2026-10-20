@@ -13,6 +13,7 @@ Commands (run from the repo root):
   python3 jobboard.py import FILE.xlsx   # add rows from one sheet (--all = ignore the date window)
   python3 jobboard.py inbox              # import every sheet dropped in jobs/inbox/
   python3 jobboard.py fetch              # pull the public job feeds in jobs/data/config.json
+  python3 jobboard.py direct             # swap job-board links for the employer's own link
   python3 jobboard.py check              # re-check every live link; close what has closed
   python3 jobboard.py build              # expire old rows and re-render jobs/index.html
   python3 jobboard.py build --check      # CI: fail if jobs/index.html is out of date
@@ -507,7 +508,7 @@ def finalise(j, cfg):
         m = MONEY.search(b)
         return bool(m) and len(m.group(0)) >= 0.45 * len(b)
     j["bullets"] = [b for b in (j.get("bullets") or []) if b and not pay_only(b)][:4] or ["Full requirements are on the employer's page"]
-    j["apply"] = mercor_referral(j["apply"], cfg)
+    j["apply"] = with_referral(j["apply"], cfg)
     d = domain(j["apply"])
     j["direct"] = bool(re.search(r"greenhouse|lever\.co|ashbyhq|breezy|workable|smartrecruiters|bamboohr|recruitee|rippling|polymer|zohorecruit|teamtailor|careers", d))
     if not j.get("why"):
@@ -1223,6 +1224,8 @@ def cmd_fetch(cfg, log):
         cap = cfg.get("company_daily_caps", {}).get(company, cfg.get("feed_max_per_company"))
         if cap is not None and per_co[company] > cap:  # no cap set = take every eligible role
             continue
+        if x.get("source") == "We Work Remotely":
+            apply = with_referral(direct_link(apply, cfg) or apply, cfg)
         desc = x.get("desc") or page_description(apply)
         j = {
             "id": jid, "title": title, "company": company,
@@ -1300,6 +1303,97 @@ def ats_open_ids(j):
     except Exception:
         return None
     return "n/a"
+
+
+ATS_HOSTS = re.compile(
+    r"greenhouse\.io|lever\.co|ashbyhq\.com|breezy\.hr|workable\.com|smartrecruiters\.com|bamboohr\.com|recruitee\.com|"
+    r"rippling\.com|teamtailor\.com|applytojob\.com|jobvite\.com|myworkdayjobs\.com|icims\.com|personio\.|pinpointhq\.com|"
+    r"manatal\.com|zohorecruit\.|freshteam\.com|workforcenow\.adp\.com|jazzhr\.com|dover\.com|wellfound\.com/l/|"
+    r"micro1\.ai|mercor\.com|typeform\.com|forms\.gle|docs\.google\.com/forms|tally\.so|airtable\.com/app", re.I)
+
+
+def direct_link(url, cfg):
+    """Read a job-board page and return the employer's own apply link, or None.
+    Used for boards that sit between the reader and the employer (sign-up walls,
+    aggregators), so a card always opens where the application actually happens."""
+    try:
+        req = urllib.request.Request(url, headers={"User-Agent": BROWSER_UA, "Accept": "text/html"})
+        with urllib.request.urlopen(req, timeout=25) as r:
+            body = r.read(600_000).decode("utf-8", "replace")
+    except Exception:
+        return None
+    here = domain(url)
+    found = []
+    for m in re.finditer(r'<a\b[^>]*href="(https?://[^"]+)"[^>]*>(.*?)</a>', body, re.I | re.S):
+        href, text = html.unescape(m.group(1)), html_text(m.group(2)).lower()
+        d = domain(href)
+        if not d or d == here or d.endswith("." + here) or blocked(href, cfg):
+            continue
+        if re.search(r"facebook|twitter|x\.com|linkedin\.com/(company|in|share)|instagram|youtube|whatsapp|t\.me|google\.com/maps", d + href, re.I):
+            continue
+        score = (2 if ATS_HOSTS.search(href) else 0) + (1 if "apply" in text or "apply" in href.lower() else 0)
+        if score:
+            found.append((score, href))
+    for m in re.finditer(r'"(?:applyUrl|apply_url|applicationUrl|externalApplyUrl|url)"\s*:\s*"(https?:[^"]+)"', body):
+        href = m.group(1).replace("\\/", "/")
+        if ATS_HOSTS.search(href) and domain(href) != here:
+            found.append((3, href))
+    if not found:
+        return None
+    href = sorted(found, key=lambda x: -x[0])[0][1]
+    return re.sub(r"([?&])(utm_[^=&]+|ref|source)=[^&]*&?", r"\1", href).rstrip("?&")
+
+
+def with_referral(apply, cfg):
+    """Every platform with a referral programme gets ERJ's referral on every link.
+    cfg["referrals"] maps a domain to either a fixed link (replaces the apply link,
+    as Mercor does) or a query parameter "name=value" added to the link."""
+    apply = mercor_referral(apply, cfg)
+    for dom, ref in (cfg.get("referrals") or {}).items():
+        if not ref or dom.startswith("_"):
+            continue
+        d = domain(apply)
+        if d == dom or d.endswith("." + dom):
+            if ref.startswith("http"):
+                return ref
+            k, _, v = ref.partition("=")
+            if k and v and not re.search(r"[?&]" + re.escape(k) + "=", apply):
+                return apply + ("&" if "?" in apply else "?") + k + "=" + urllib.parse.quote(v)
+    return apply
+
+
+def cmd_direct(cfg, log):
+    """Swap board links for the employer's own link; take down roles that stay
+    behind a sign-up wall. Runs before the link check."""
+    live = load(F_LIVE, {"listings": []})
+    archive = load(F_ARCHIVE, {"listings": []})
+    indirect = set(cfg.get("indirect_domains") or []) | set(cfg.get("sheet_allowed_domains") or [])
+    gated = set(cfg.get("gated_domains") or [])
+    todo = [j for j in live["listings"] if j["apply"].startswith("http") and
+            any(domain(j["apply"]) == b or domain(j["apply"]).endswith("." + b) for b in indirect | gated)]
+    with ThreadPoolExecutor(max_workers=6) as ex:
+        found = list(ex.map(lambda j: direct_link(j["apply"], cfg), todo))
+    t0 = today().isoformat()
+    swapped, down = 0, []
+    for j, href in zip(todo, found):
+        if href:
+            j["apply"] = with_referral(href, cfg)
+            j["direct"] = True
+            swapped += 1
+        elif any(domain(j["apply"]) == b or domain(j["apply"]).endswith("." + b) for b in gated):
+            j["closed"] = t0
+            j["closed_reason"] = "behind a sign-up wall, no direct employer link"
+            down.append(j)
+    if down:
+        ids = {id(j) for j in down}
+        live["listings"] = [j for j in live["listings"] if id(j) not in ids]
+        archive["listings"].extend(down)
+        log.setdefault("closed", []).extend(f"{j['title']} — {j['company']} (sign-up wall)" for j in down)
+    for j in live["listings"]:
+        j["apply"] = with_referral(j["apply"], cfg)
+    save(F_LIVE, live)
+    save(F_ARCHIVE, archive)
+    print(f"direct: {len(todo)} board links read, {swapped} swapped for the employer's link, {len(down)} taken down (sign-up wall)")
 
 
 def link_state(j):
@@ -1677,6 +1771,7 @@ def main(argv):
         log["inbox"] = cmd_inbox(cfg)
         if cfg["feeds"].get("enabled", True):
             cmd_fetch(cfg, log)
+        cmd_direct(cfg, log)
         cmd_check(cfg, log)
         cmd_expire(cfg, log)
         cmd_build(cfg)
@@ -1696,6 +1791,8 @@ def main(argv):
         cmd_fetch(cfg, log); cmd_build(cfg); print_log(log)
     elif cmd == "check":
         cmd_check(cfg, log); cmd_expire(cfg, log); cmd_build(cfg)
+    elif cmd == "direct":
+        cmd_direct(cfg, log); cmd_build(cfg)
     elif cmd == "build":
         if "--check" in argv:
             cmd_build(cfg, check=True)

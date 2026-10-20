@@ -1,5 +1,5 @@
 {
- "_readme": "Settings for the job board engine (jobboard.py). blocked_domains: sign-up-to-apply boards never used. sheet_allowed_domains: boards you chose to allow in your own uploaded sheets. Edit on GitHub and commit; the next run uses them. Caps (feed_max_new_per_day, feed_max_per_company, company_daily_caps) are off: null or missing means every eligible role goes up. sheet_window_days null means every eligible row of an uploaded sheet goes up.",
+ "_readme": "Settings for the job board engine (jobboard.py). blocked_domains: sign-up-to-apply boards never used. sheet_allowed_domains: boards you chose to allow in your own uploaded sheets. Edit on GitHub and commit; the next run uses them. Caps (feed_max_new_per_day, feed_max_per_company, company_daily_caps) are off: null or missing means every eligible role goes up. sheet_window_days null means every eligible row of an uploaded sheet goes up. indirect_domains: job boards between the reader and the employer; each run swaps their links for the employer's own apply link when the page shows one. gated_domains: sign-up-to-apply boards; a role is kept only if its direct employer link can be found, otherwise it comes down. referrals: domain to ERJ referral link or parameter, added to every matching apply link.",
  "phone": "+2348032925957",
  "sheet_window_days": null,
  "max_age_days": 30,
@@ -266,5 +266,22 @@
  "company_max_age_days": {
   "micro1": 30,
   "mercor": 30
+ },
+ "indirect_domains": [
+  "weworkremotely.com",
+  "remotive.com",
+  "hotnigerianjobs.com",
+  "myjobmag.com",
+  "jobnow.ng"
+ ],
+ "gated_domains": [
+  "himalayas.app",
+  "jobgether.com",
+  "dailyremote.com",
+  "remote4africa.com",
+  "jobberman.com"
+ ],
+ "referrals": {
+  "_note": "Domain -> ERJ referral. A full link replaces the apply link (like Mercor); 'name=value' is added to the link. micro1 and Mercor are set under feeds. Add more as ERJ joins referral programmes."
  }
 }
