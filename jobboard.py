@@ -690,13 +690,18 @@ MERCOR_REGION = "Remote — worldwide (Mercor expert network)"
 
 
 def mercor_referral(apply, cfg):
-    """Every Mercor link goes out through ERJ's Mercor referral link (config feeds.mercor),
-    so sign-ups are credited to ERJ. Links that already carry a referral are kept."""
-    ref = clean(((cfg.get("feeds") or {}).get("mercor") or {}).get("referral_link"))
+    """Mercor roles keep their own job page with ERJ's referral code added
+    (config feeds.mercor.referral_code), so the applicant lands on the role and
+    the sign-up is credited to ERJ. Links with no job page use referral_link."""
+    m = (cfg.get("feeds") or {}).get("mercor") or {}
+    ref, code = clean(m.get("referral_link")), clean(m.get("referral_code"))
     a = clean(apply)
-    if not ref or "mercor.com" not in domain(a) or "t.mercor.com" in domain(a) or re.search(r"[?&]ref(erral)?(code)?=", a, re.I):
+    if "mercor.com" not in domain(a) or "t.mercor.com" in domain(a) or re.search(r"[?&]ref(erral)?(code)?=", a, re.I):
         return a
-    return ref
+    if code and urllib.parse.urlparse(a).path.strip("/"):
+        return a + ("&" if "?" in a else "?") + "referralCode=" + urllib.parse.quote(code)
+    return ref or a
+
 # micro1 tab "Field" text -> board family (first match wins)
 MICRO1_FIELD_FAMILY = [
     (r"financ|account|trad|quant|rates", "Finance & Accounting"), (r"\blaw|legal", "Legal"),

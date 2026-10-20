@@ -151,7 +151,7 @@
    "primexbt",
    "alxafrica",
    "automatticcareers",
-   "moniepoint@eu",
+   "moniepoint",
    "remotasks",
    "xai",
    "utilityprofit",
@@ -257,9 +257,10 @@
    "fetch": false
   },
   "mercor": {
-   "referral_link": "https://t.mercor.com/HzWIQ",
+   "referral_link": "https://t.mercor.com/DIMIE",
    "note": "Every Mercor role on the board and in ERJ sheets must link through this referral link. Mercor roles come in through the ERJ search sheets (Mercor tab) unless jobboard.py adds a Mercor fetcher.",
-   "fetch": false
+   "fetch": false,
+   "referral_code": "f4814dcf-ca47-478c-a846-a7921dbe7bb3"
   }
  },
  "company_daily_caps": {},
