@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.everythingremotejob.app",
+      "sha256_cert_fingerprints": [
+        "80:00:E1:4E:46:F3:04:26:C1:E4:97:27:65:5A:3D:4F:2B:61:56:99:22:5A:DA:5B:87:C4:11:DF:E7:E0:78:D6"
+      ]
+    }
+  }
+]
