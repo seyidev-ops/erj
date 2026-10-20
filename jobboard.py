@@ -509,6 +509,7 @@ def finalise(j, cfg):
         return bool(m) and len(m.group(0)) >= 0.45 * len(b)
     j["bullets"] = [b for b in (j.get("bullets") or []) if b and not pay_only(b)][:4] or ["Full requirements are on the employer's page"]
     j["apply"] = with_referral(j["apply"], cfg)
+    with_code(j, cfg)
     d = domain(j["apply"])
     j["direct"] = bool(re.search(r"greenhouse|lever\.co|ashbyhq|breezy|workable|smartrecruiters|bamboohr|recruitee|rippling|polymer|zohorecruit|teamtailor|careers", d))
     if not j.get("why"):
@@ -1362,6 +1363,20 @@ def with_referral(apply, cfg):
     return apply
 
 
+def with_code(j, cfg):
+    """Platforms whose referral is a code typed at sign-up (no link parameter):
+    the card's first bullet tells the applicant the code. cfg["referral_codes"]
+    maps a domain to the code."""
+    d = domain(j.get("apply") or "")
+    for dom, code in (cfg.get("referral_codes") or {}).items():
+        if not code or dom.startswith("_"):
+            continue
+        if d == dom or d.endswith("." + dom):
+            b = [x for x in (j.get("bullets") or []) if "referral code" not in x.lower()]
+            j["bullets"] = [f"ERJ referral code at sign-up: {code}"] + b[:3]
+    return j
+
+
 def cmd_direct(cfg, log):
     """Swap board links for the employer's own link; take down roles that stay
     behind a sign-up wall. Runs before the link check."""
@@ -1391,6 +1406,7 @@ def cmd_direct(cfg, log):
         log.setdefault("closed", []).extend(f"{j['title']} — {j['company']} (sign-up wall)" for j in down)
     for j in live["listings"]:
         j["apply"] = with_referral(j["apply"], cfg)
+        with_code(j, cfg)
     save(F_LIVE, live)
     save(F_ARCHIVE, archive)
     print(f"direct: {len(todo)} board links read, {swapped} swapped for the employer's link, {len(down)} taken down (sign-up wall)")

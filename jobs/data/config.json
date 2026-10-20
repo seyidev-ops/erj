@@ -282,6 +282,11 @@
   "jobberman.com"
  ],
  "referrals": {
-  "_note": "Domain -> ERJ referral. A full link replaces the apply link (like Mercor); 'name=value' is added to the link. micro1 and Mercor are set under feeds. Add more as ERJ joins referral programmes."
+  "_note": "Domain -> ERJ referral. A full link replaces the apply link; 'name=value' is added to the job's own link. Use a full link only where the platform has no per-job application (you apply once, then get matched to roles). micro1 and Mercor are set under feeds.",
+  "turing.com": "https://work.turing.com/r/AwFKaZ6WkX"
+ },
+ "referral_codes": {
+  "_note": "Domain -> referral code the applicant types at sign-up. Shown as the first bullet on the card.",
+  "dataannotation.tech": "906ptvc"
  }
 }
