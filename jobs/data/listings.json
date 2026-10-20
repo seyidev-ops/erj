@@ -5911,33 +5911,6 @@
    "direct": true
   },
   {
-   "id": "d044e7e282",
-   "title": "Site Reliability Engineer (SRE)",
-   "company": "Social Discovery Group",
-   "region": "Worldwide",
-   "type": "Full-Time",
-   "experience": "3+ years",
-   "salary": "$5000",
-   "bullets": [
-    "3+ years of experience in SRE, DevOps, System Administration, or Build/Release Engineering",
-    "Strong Linux administration and troubleshooting skills",
-    "Hands-on experience with Kubernetes and containerization technologies (Docker/Podman)",
-    "Experience with CI/CD pipelines, preferably GitLab CI"
-   ],
-   "apply": "https://social-discovery-ventures.breezy.hr/p/f52e072d105f01-site-reliability-engineer-sre",
-   "posted": "2026-10-12",
-   "deadline": null,
-   "checked": "2026-10-20",
-   "added": "2026-10-12",
-   "listed": "2026-10-12",
-   "source": "Breezy",
-   "origin": "feed",
-   "ats_id": "f52e072d105f01",
-   "family": "Tech & IT",
-   "why": "Open worldwide with no country exclusion, so you can apply from Nigeria, and pays in foreign currency ($5000). You apply directly on the employer's own page.",
-   "direct": true
-  },
-  {
    "id": "53f24ae2e6",
    "title": "Game Development Expert - AI Training Projects",
    "company": "Gramian Consulting Group",
@@ -9316,6 +9289,33 @@
    "ats_id": "5fd7ed4a-73c8-431d-8d9b-890af02a2bcd",
    "family": "Marketing & Creative",
    "why": "Open to candidates in Nigeria by name. You apply directly on the employer's own page.",
+   "direct": true
+  },
+  {
+   "id": "6230e3d7b7",
+   "title": "Junior System Administrator (Monitoring Team)",
+   "company": "Social Discovery Group",
+   "region": "Worldwide / Armenia / Georgia / Serbia / Poland",
+   "type": "Full-Time",
+   "experience": "2+ years",
+   "salary": "$5000",
+   "bullets": [
+    "2+ years in system administration, monitoring, NOC/duty operations, or technical support",
+    "Confident Linux command-line skills: connecting over SSH/VPN, navigating hosts, running Bash scripts",
+    "Hands-on experience with Zabbix and Grafana at user level (metrics, hosts, host groups, dashboards)",
+    "Understanding of monitoring basics"
+   ],
+   "apply": "https://social-discovery-ventures.breezy.hr/p/9f06b471696701-junior-system-administrator-monitoring-team",
+   "posted": "2026-10-20",
+   "deadline": null,
+   "checked": "2026-10-20",
+   "added": "2026-10-20",
+   "listed": "2026-10-20",
+   "source": "Breezy",
+   "origin": "feed",
+   "ats_id": "9f06b471696701",
+   "family": "Virtual Assistant & Admin",
+   "why": "Open worldwide with no country exclusion, so you can apply from Nigeria, and pays in foreign currency ($5000). You apply directly on the employer's own page.",
    "direct": true
   }
  ]

@@ -5845,6 +5845,35 @@
    "direct": true,
    "closed": "2026-10-20",
    "closed_reason": "employer page closed"
+  },
+  {
+   "id": "d044e7e282",
+   "title": "Site Reliability Engineer (SRE)",
+   "company": "Social Discovery Group",
+   "region": "Worldwide",
+   "type": "Full-Time",
+   "experience": "3+ years",
+   "salary": "$5000",
+   "bullets": [
+    "3+ years of experience in SRE, DevOps, System Administration, or Build/Release Engineering",
+    "Strong Linux administration and troubleshooting skills",
+    "Hands-on experience with Kubernetes and containerization technologies (Docker/Podman)",
+    "Experience with CI/CD pipelines, preferably GitLab CI"
+   ],
+   "apply": "https://social-discovery-ventures.breezy.hr/p/f52e072d105f01-site-reliability-engineer-sre",
+   "posted": "2026-10-12",
+   "deadline": null,
+   "checked": "2026-10-20",
+   "added": "2026-10-12",
+   "listed": "2026-10-12",
+   "source": "Breezy",
+   "origin": "feed",
+   "ats_id": "f52e072d105f01",
+   "family": "Tech & IT",
+   "why": "Open worldwide with no country exclusion, so you can apply from Nigeria, and pays in foreign currency ($5000). You apply directly on the employer's own page.",
+   "direct": true,
+   "closed": "2026-10-20",
+   "closed_reason": "employer page closed"
   }
  ]
 }
