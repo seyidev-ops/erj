@@ -619,6 +619,20 @@ def not_english(*parts):
     return len(words) >= 30 and sum(w in EN_WORDS for w in words) / len(words) < 0.04
 
 
+def office_role(location, title, desc=""):
+    """Company boards in Nigeria post office and field roles beside remote ones
+    (e.g. "Kano, Nigeria / Headquarters"). A role named to one place, with no
+    remote wording in its location, title or description, is an office role."""
+    loc = clean(location).lower()
+    if re.search(r"remote|anywhere|worldwide|global|telecommut|online|work from home", loc + " " + clean(title).lower()):
+        return False
+    if loc.count("/") + loc.count(";") + loc.count(",") > 2 and not re.search(r"headquart|headquat|office", loc):
+        return False  # a list of several countries is a remote hiring area
+    if re.search(r"hybrid|on-?site|in-office|headquart|headquat|\boffice\b", loc):
+        return True
+    return not re.search(r"\bremote\b|work from home|work from anywhere|telecommut|distributed team", html_text(desc or "")[:20000], re.I)
+
+
 def location_ok(location, desc="", strict=False):
     """Feed listings: the employer's own location text must open the role to Nigeria,
     and the description must not shut it. 'Remote' on its own never counts."""
@@ -1198,6 +1212,8 @@ def cmd_fetch(cfg, log):
         if jid in have:
             continue
         ok, why = location_ok(x.get("location"), x.get("desc"), strict=x["source"] in AGGREGATORS)
+        if ok and x["source"] not in AGGREGATORS and office_role(x.get("location"), title, x.get("desc")):
+            ok, why = False, "office role in one place, not remote"
         if ok and (blocked(apply, cfg) or search_page(apply)):
             ok, why = False, "sign-up-to-apply board"
         if ok and re.search(r"\b(" + OTHER_COUNTRIES + r")\b", title, re.I) and not re.search(r"nigeria|africa|worldwide|global", title, re.I):
