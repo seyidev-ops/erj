@@ -340,10 +340,10 @@ html[data-theme="day"] .fx-glow i{opacity:.55;}
 @media(prefers-reduced-motion:no-preference){.fx-hero h1 em{animation:fxSheen 6s ease-in-out infinite}}
 @keyframes fxSheen{50%{background-position:100% 0}}
 html[data-theme="day"] .fx-hero h1 em{background:linear-gradient(90deg,#E8470F,#C2410C 55%,#E8470F);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;}
-.fx-lede{font-size:clamp(1rem,1.5vw,1.12rem);line-height:1.7;color:var(--ink-soft);max-width:56ch;margin:0 0 1.6rem;}
+.fx-lede{font-size:clamp(1.05rem,1.6vw,1.2rem);line-height:1.6;color:var(--ink-soft);max-width:40ch;margin:0 0 2.2rem;}
 
 /* cohort picker */
-.fx-pick{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.55rem;margin:0 0 1rem;max-width:620px;}
+.fx-pick{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.55rem;margin:0 0 .7rem;max-width:520px;}
 .fx-pick .fx-co{padding:.8rem .85rem;}
 .fx-co{all:unset;box-sizing:border-box;cursor:pointer;display:flex;flex-direction:column;gap:.2rem;padding:.85rem 1rem;border-radius:16px;border:1.5px solid var(--line);background:var(--card);
   transition:border-color .25s,transform .25s var(--ease),box-shadow .25s;position:relative;}
@@ -354,14 +354,14 @@ html[data-theme="day"] .fx-hero h1 em{background:linear-gradient(90deg,#E8470F,#
 .fx-co-n{font-family:var(--font-display);font-weight:800;font-size:1rem;color:var(--ink);}
 .fx-co-n small,.fx-date-k small{font-size:.58rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;background:#25D366;color:#04210f;padding:.15rem .4rem;border-radius:6px;margin-left:.3rem;vertical-align:2px;}
 .fx-co-d{font-size:.86rem;color:var(--ink);}
-.fx-co-c{font-size:.72rem;color:var(--ink-faint);}
+.fx-co-d em{font-style:normal;color:var(--ink-faint);}
 .fx-co.is-past{display:none;}
-.fx-fwd{max-width:560px;margin:-.2rem 0 1.1rem;padding:.7rem .9rem;border-radius:12px;border:1px dashed rgba(37,211,102,.55);font-size:.84rem;line-height:1.5;color:var(--ink-soft);}
-.fx-fwd b{color:#25D366;}
-html[data-theme="day"] .fx-fwd b{color:#1E8E4E;}
+.fx-fwd{margin:0 0 1.8rem;font-size:.84rem;color:var(--ink-faint);}
+.fx-fwd a{color:var(--accent);font-weight:700;text-decoration:none;}
+.fx-fwd a:hover{text-decoration:underline;}
 
 /* countdown */
-.fx-timer{display:flex;flex-direction:column;gap:.45rem;margin:0 0 1.4rem;}
+.fx-timer{display:flex;flex-direction:column;gap:.45rem;margin:0 0 1.8rem;}
 .fx-timer.center{align-items:center;}
 .fx-timer-k{font-size:.66rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft);}
 .fx-clock{display:flex;gap:.45rem;}
@@ -375,8 +375,6 @@ html[data-theme="day"] .fx-fwd b{color:#1E8E4E;}
 .fx-cta.center{justify-content:center;}
 @media(prefers-reduced-motion:no-preference){.fx-pulse{animation:fxBtn 2.6s ease-in-out infinite}}
 @keyframes fxBtn{0%,100%{box-shadow:0 0 0 0 rgba(255,87,34,.45)}50%{box-shadow:0 0 0 12px rgba(255,87,34,0)}}
-.fx-trust{list-style:none;display:flex;flex-wrap:wrap;gap:.5rem 1.2rem;margin:0;padding:0;font-size:.82rem;color:var(--ink-soft);}
-.fx-trust b{font-family:var(--font-display);color:var(--ink);font-size:1rem;margin-right:.2rem;}
 
 /* hero photo with floating proof */
 .fx-hero-photo{position:relative;margin:0;padding:1.4rem 1.4rem 2.4rem;}
@@ -406,9 +404,10 @@ html[data-theme="day"] .fx-frame{box-shadow:0 26px 60px rgba(20,17,14,.18);}
   .fx-cert-mini{width:128px;}
 }
 @media(max-width:520px){
-  .fx-pick{grid-template-columns:1fr;gap:.45rem;}
-  .fx-pick .fx-co{display:grid;grid-template-columns:auto 1fr;column-gap:.8rem;align-items:baseline;padding:.65rem .85rem;}
-  .fx-co-c{grid-column:1/-1;}
+  .fx-pick{grid-template-columns:repeat(3,minmax(0,1fr));}
+  .fx-pick .fx-co{padding:.6rem .6rem;}
+  .fx-co-n{font-size:.88rem;} .fx-co-n small{display:none;} .fx-co-d{font-size:.8rem;} .fx-co-d em{display:block;font-size:.66rem;} .fx-co-d b{white-space:nowrap;}
+  .fx-co.on::after{width:16px;height:16px;font-size:.58rem;top:.45rem;right:.45rem;}
   .fx-clock>div{min-width:0;flex:1;}
   .fx-cta .btn-yes,.fx-cta .btn-more{width:100%;justify-content:center;}
 }
@@ -606,28 +605,25 @@ html[data-theme="day"] .fx-price-save{color:#1E8E4E;}
 <div class="fx-glow" aria-hidden="true"><i></i><i></i></div>
 <div class="fx-hero-grid">
 <div class="fx-hero-copy">
-<p class="fx-live"><i aria-hidden="true"></i>Live cohort · Stages 1–4 · Remote Job Foundation Training</p>
+<p class="fx-live"><i aria-hidden="true"></i>Live cohort · Foundation Training</p>
 <h1>Twenty live days.<br/><em>A remote-ready you.</em></h1>
-<p class="fx-lede">Live classes, real work marked by a person, and a certificate at the end. You finish with the CV, portfolio, LinkedIn and interview answer global employers actually read, and we keep working with you after the last class.</p>
+<p class="fx-lede">Live classes, your work marked by a person, and a certificate at the end.</p>
 
 <div class="fx-pick" role="radiogroup" aria-label="Choose your cohort">
 <button class="fx-co on" type="button" role="radio" aria-checked="true" data-co="Cohort 12, begins Mon 2 Nov" data-ends="2026-10-31T20:00:00+01:00" data-sticky="Cohort 12 closes Sat 31 Oct|Next: Cohort 13 begins Mon 30 Nov">
 <span class="fx-co-n">Cohort 12</span>
-<span class="fx-co-d">Begins <b>Mon 2 Nov</b></span>
-<span class="fx-co-c">Registration closes Sat 31 Oct, 8 PM</span>
+<span class="fx-co-d"><em>Begins</em> <b>Mon 2 Nov</b></span>
 </button>
 <button class="fx-co" type="button" role="radio" aria-checked="false" data-co="Cohort 13, begins Mon 30 Nov" data-ends="2026-11-29T20:00:00+01:00" data-sticky="Cohort 13 registration closes Sun 29 Nov|Classes begin Mon 30 Nov · 8 PM WAT">
 <span class="fx-co-n">Cohort 13 <small>New</small></span>
-<span class="fx-co-d">Begins <b>Mon 30 Nov</b></span>
-<span class="fx-co-c">Registration closes Sun 29 Nov, 8 PM</span>
+<span class="fx-co-d"><em>Begins</em> <b>Mon 30 Nov</b></span>
 </button>
 <button class="fx-co" type="button" role="radio" aria-checked="false" data-co="Cohort 14, begins Mon 4 Jan 2027" data-ends="2027-01-03T20:00:00+01:00" data-sticky="Cohort 14 registration closes Sun 3 Jan|Classes begin Mon 4 Jan · 8 PM WAT">
 <span class="fx-co-n">Cohort 14 <small>New</small></span>
-<span class="fx-co-d">Begins <b>Mon 4 Jan</b></span>
-<span class="fx-co-c">Registration closes Sun 3 Jan, 8 PM</span>
+<span class="fx-co-d"><em>Begins</em> <b>Mon 4 Jan</b></span>
 </button>
 </div>
-<p class="fx-fwd"><b>Register forward.</b> Cannot start this month? Pay now for a later cohort and your seat is held. Same fee, no waiting for registration to open.</p>
+<p class="fx-fwd">Can&rsquo;t start this month? <a href="#pricing">Register forward</a> and hold a later seat.</p>
 
 <div class="fx-timer">
 <span class="fx-timer-k" data-lbl="">Cohort 12 · registration closes in</span>
@@ -641,16 +637,12 @@ html[data-theme="day"] .fx-price-save{color:#1E8E4E;}
 <a class="btn-primary-ui btn-yes fx-pulse" href="../register.html#foundation"><span>Enrol now · ₦250,000</span><span class="arrow-wrap"><span class="arrow">→</span></span></a>
 <a class="btn-more btn-secondary-ui fx-seat" href="https://wa.me/2348032925957" rel="noopener" target="_blank"><span>Hold my seat on WhatsApp</span><span class="arrow-wrap"><span class="arrow">→</span></span></a>
 </div>
-<ul class="fx-trust">
-<li><b>446+</b> trained</li><li><b>382+</b> placed</li><li><b>10</b> cohorts completed</li><li><b>3</b> class times</li>
-</ul>
 </div>
 
 <figure class="fx-hero-photo">
 <div class="fx-frame"><img alt="Oluwaseyi Ashiru, Lead Facilitator, giving a thumbs-up at his laptop" decoding="async" fetchpriority="high" height="1100" loading="eager" src="../photo-seyi-thumbsup.webp" width="880"/></div>
 <span class="fx-chip c1"><i aria-hidden="true">✍️</i>Your work, marked by a person</span>
 <span class="fx-chip c2"><i aria-hidden="true">🎓</i>Certificate on completion</span>
-<span class="fx-chip c3"><i aria-hidden="true">🕗</i>7 PM, 8 PM or weekends</span>
 <img class="fx-cert-mini" alt="" aria-hidden="true" height="170" loading="eager" src="cert-proficiency-sample-800.webp" width="240"/>
 <figcaption>Oluwaseyi Ashiru · Lead Facilitator · in remote roles since 2013</figcaption>
 </figure>
@@ -1055,7 +1047,7 @@ html[data-theme="day"] .jt{--jt-o:#E8470F;--jt-line:rgba(20,17,14,.12);--jt-card
 })();
 </script>
 <script src="../erj-product.js?v=20260924c"></script>
-<script src="../erj-nav.js?v=20261021a"></script>
+<script src="../erj-nav.js?v=20261021b"></script>
 <script src="../erj-config.js?v=20261021b"></script>
 <script src="../erj-capture.js?v=20260911a"></script>
 <script>if("serviceWorker" in navigator){window.addEventListener("load",function(){var go=function(){navigator.serviceWorker.register("/sw.js").then(function(reg){reg.update();}).catch(function(){});};if("requestIdleCallback" in window){requestIdleCallback(go,{timeout:3000});}else{setTimeout(go,1200);}});}</script>

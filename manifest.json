@@ -2,7 +2,7 @@
   "name": "Everything Remote Job",
   "short_name": "ERJ",
   "description": "From job seeker to working for clients in the UK, the US and beyond, right from where you are. Start free; go further when you are ready.",
-  "start_url": "/index.html?source=pwa",
+  "start_url": "/jobs/?source=pwa",
   "id": "/index.html",
   "display": "standalone",
   "display_override": [
