@@ -63,6 +63,14 @@ The homepage remains the institutional ERJ ecosystem and leads with the main pro
 
 The countdowns on the home page and the store count down to 31 October.
 
+### Next: Cohort 13
+
+- **Registration closes:** Sunday, 29 November 2026 · 8:00 PM WAT
+- **Cohort 13 begins:** Monday, 30 November 2026 · 8:00 PM WAT
+- **Fee:** ₦250,000
+
+Cohort 13 lives in canon as `cohort.next`, so pages may name it while Cohort 12 is current. The Foundation Training page sells both and its countdown rolls onto 29 November when Cohort 12 closes.
+
 ### Instalment route
 
 `earlybird.html` carries the instalment route for Foundation Training. It **changes the payment timing, not the price** — the fee remains ₦250,000 either way.

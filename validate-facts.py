@@ -185,6 +185,8 @@ def main():
 
     # ── 4. the cohort in play is the cohort in canon ────────────────────
     current = canon["cohort"]["number"]
+    nxt = (canon["cohort"].get("next") or {}).get("number")
+    open_cohorts = {current} | ({nxt} if nxt else set())
     for path, raw in corpus:
         if path == DEFINITION or path in PORTAL or is_archive(path) or is_job_board(path):
             continue
@@ -192,7 +194,7 @@ def main():
             if ESCAPE in line:
                 continue
             for n in set(re.findall(r"Cohort\s+(\d+)", line)):
-                if int(n) != current:
+                if int(n) not in open_cohorts:
                     fail("cohort", path,
                          "Cohort %s referenced; canon is Cohort %d" % (n, current))
 

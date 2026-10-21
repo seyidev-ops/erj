@@ -53,6 +53,10 @@
       ambassador: 'AMBASSADOR\n\nHello ERJ \u2014 I would like to become an Everything Remote Job ambassador. Please tell me what it involves, how ambassadors are rewarded and how to get started.\n\nFull name:\nWhere I would share ERJ (WhatsApp groups, LinkedIn, school, church, community):\nRoughly how many people I reach:',
       /* Remote Job Board (jobs/): the 'Unsure you qualify? Ask ERJ' link on each card. */
       jobBoard: 'Hello ERJ \u2014 I saw this role on the job board and I am not sure I qualify.\n\nRole: {title}\nCompany: {company}\nLink: {url}\n\nI will send my CV here. Please check the requirements with me.',
+      /* Foundation Training page: hold a seat in a named cohort ({cohort} = 'Cohort 12, begins Mon 2 Nov'). */
+      ftSeat: 'FOUNDATION TRAINING\n\nI want a seat in {cohort}.\n\nFull name:\nTarget role:\nClass I can keep: 7 PM weekdays / 8 PM weekdays / weekends\n\nPlease send me how to pay and what happens next.',
+      /* Foundation Training page: a question before enrolling. */
+      ftAsk: 'Hello ERJ \u2014 I am looking at Foundation Training and I have a question before I enrol:\n\n',
       careerdevIncluded: 'MENTORINE ACCESS\n\nI am enrolled in Foundation Training and I am ready for my included career-development access at The Mentorine School.\n\nFull name:\nEmail:\nTarget role:\nAssessment done: yes / not yet'
     },
 
@@ -127,7 +131,16 @@
         beginsDisplay: 'Mon 2 Nov \u00b7 8:00 PM WAT',
         instalmentWindowCloses: '2026-10-24',
         instalmentHref: 'earlybird.html',
-        instalmentNote: 'It changes the payment timing, not the price.'
+        instalmentNote: 'It changes the payment timing, not the price.',
+        /* The cohort after this one, already open for registration. Pages may
+           name it; validate-facts.py accepts its number alongside the current one. */
+        next: {
+          number: 13,
+          closes:  '2026-11-29T20:00:00+01:00',
+          begins:  '2026-11-30T20:00:00+01:00',
+          closesDisplay: 'Sun 29 Nov \u00b7 8:00 PM WAT',
+          beginsDisplay: 'Mon 30 Nov \u00b7 8:00 PM WAT'
+        }
       },
 
       /* The store, cheapest first. `part` is the Five-Finger part the
