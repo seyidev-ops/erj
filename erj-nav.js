@@ -226,6 +226,17 @@
         '.erj-drop a.erj-all,.erj-sub-item.erj-all{color:var(--enAccent);font-weight:700;}',
         '.erj-kh{padding:.75rem .65rem .25rem;}.erj-kh b{display:block;font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--enAccent);}',
         '.erj-kh small{display:block;font-size:.72rem;color:var(--enFaint);}',
+        '.erj-fold{border:1px solid var(--enLine);border-radius:14px;margin:.45rem 0;overflow:hidden;transition:border-color .25s;}',
+        '.erj-fold.open{border-color:var(--enAccent);}',
+        '.erj-fold-h{all:unset;box-sizing:border-box;cursor:pointer;width:100%;display:flex;align-items:center;justify-content:space-between;gap:.6rem;padding:.8rem .85rem;}',
+        '.erj-fold-h:focus-visible{outline:2px solid var(--enAccent);outline-offset:-2px;}',
+        '.erj-fold-h b{display:block;font-size:.98rem;font-weight:700;color:var(--enInk);}',
+        '.erj-fold-h small{display:block;font-size:.74rem;color:var(--enFaint);margin-top:.1rem;}',
+        '.erj-fold-h i{font-style:normal;color:var(--enFaint);transition:transform .3s;}',
+        '.erj-fold.open .erj-fold-h i{transform:rotate(180deg);color:var(--enAccent);}',
+        '.erj-fold-b{display:none;padding:0 .4rem .5rem;}',
+        '.erj-fold.open .erj-fold-b{display:block;}',
+        '.erj-kids .erj-fold+.erj-all,.erj-kids .erj-fold+a.erj-sub-item{margin-top:.3rem;}',
         '.erj-link.erj-toggle{font-family:var(--font-display,"Space Grotesk",system-ui,sans-serif);font-size:1.14rem;font-weight:600;letter-spacing:-0.3px;}'
     ].join('');
     const style = document.createElement('style');
@@ -310,6 +321,25 @@
             extAttr(c) + (cur ? ' aria-current="page"' : '') + '>' + esc(c.label) + '</a>' +
             '';
     }
+    /* How We Help in the drawer: three folds (DIY, DWY, DFY), one open at a
+       time, all closed on arrival unless the current page sits inside one. */
+    function megaKids(kids) {
+        const folds = [];
+        let foot = '';
+        kids.forEach(c => {
+            if (c.all) { foot = childRow(c); return; }
+            if (c.heading) { folds.push({ h: c, items: [] }); return; }
+            if (folds.length) folds[folds.length - 1].items.push(c);
+        });
+        return folds.map((f, i) => {
+            const cur = f.items.some(c => matches(c.keys));
+            const id = 'erjFold' + i;
+            return '<div class="erj-fold' + (cur ? ' open' : '') + '">' +
+                '<button type="button" class="erj-fold-h" aria-expanded="' + (cur ? 'true' : 'false') + '" aria-controls="' + id + '">' +
+                '<span><b>' + esc(f.h.heading) + '</b><small>' + esc(f.h.sub || '') + ' \u00b7 ' + f.items.length + '</small></span><i aria-hidden="true">\u25BE</i></button>' +
+                '<div class="erj-fold-b" id="' + id + '">' + f.items.map(childRow).join('') + '</div></div>';
+        }).join('') + foot;
+    }
     function buildItems() {
         if (IS_PORTAL) {
             return PORTAL_MENU.map(c => '<div class="erj-item"><a class="erj-link" href="' + P(c.href) + '">' +
@@ -328,7 +358,7 @@
             /* Group: title links to its page, chevron opens the sub-menu.
                When the group's OWN page is current, its anchors sit directly
                under the title; when a child is current, they sit under that child. */
-            const kids = top.children.map(childRow).join(''); /* the same list on every page */
+            const kids = top.mega ? megaKids(top.children) : top.children.map(childRow).join(''); /* the same list on every page */
             return '<div class="erj-item' + (isCurrent ? ' open' : '') +
                 (selfCurrent ? ' is-current' : '') + '" data-group="' + top.key + '">' +
                 '<div class="erj-row">' + link +
@@ -397,6 +427,18 @@
                     g.classList.add('open');
                     btn.setAttribute('aria-expanded', 'true');
                 }
+            });
+        });
+        /* How We Help folds: opening one closes the others. */
+        panel.querySelectorAll('.erj-fold-h').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const f = btn.closest('.erj-fold');
+                const willOpen = !f.classList.contains('open');
+                f.parentNode.querySelectorAll('.erj-fold').forEach(o => {
+                    o.classList.remove('open');
+                    o.querySelector('.erj-fold-h').setAttribute('aria-expanded', 'false');
+                });
+                if (willOpen) { f.classList.add('open'); btn.setAttribute('aria-expanded', 'true'); }
             });
         });
         /* Desktop dropdowns: one at a time, close on outside click or Escape. */

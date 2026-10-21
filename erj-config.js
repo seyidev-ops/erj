@@ -132,15 +132,21 @@
         instalmentWindowCloses: '2026-10-24',
         instalmentHref: 'earlybird.html',
         instalmentNote: 'It changes the payment timing, not the price.',
-        /* The cohort after this one, already open for registration. Pages may
-           name it; validate-facts.py accepts its number alongside the current one. */
-        next: {
-          number: 13,
-          closes:  '2026-11-29T20:00:00+01:00',
-          begins:  '2026-11-30T20:00:00+01:00',
-          closesDisplay: 'Sun 29 Nov \u00b7 8:00 PM WAT',
-          beginsDisplay: 'Mon 30 Nov \u00b7 8:00 PM WAT'
-        }
+        /* The cohorts after this one, already open for registration (people
+           may register forward). Pages may name them; validate-facts.py accepts
+           their numbers alongside the current one. Remove a cohort once it is current. */
+        upcoming: [
+          { number: 13,
+            closes:  '2026-11-29T20:00:00+01:00',
+            begins:  '2026-11-30T20:00:00+01:00',
+            closesDisplay: 'Sun 29 Nov \u00b7 8:00 PM WAT',
+            beginsDisplay: 'Mon 30 Nov \u00b7 8:00 PM WAT' },
+          { number: 14,
+            closes:  '2027-01-03T20:00:00+01:00',
+            begins:  '2027-01-04T20:00:00+01:00',
+            closesDisplay: 'Sun 3 Jan 2027 \u00b7 8:00 PM WAT',
+            beginsDisplay: 'Mon 4 Jan 2027 \u00b7 8:00 PM WAT' }
+        ]
       },
 
       /* The store, cheapest first. `part` is the Five-Finger part the

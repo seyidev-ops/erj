@@ -63,13 +63,14 @@ The homepage remains the institutional ERJ ecosystem and leads with the main pro
 
 The countdowns on the home page and the store count down to 31 October.
 
-### Next: Cohort 13
+### Next: Cohorts 13 and 14 (register forward)
 
-- **Registration closes:** Sunday, 29 November 2026 · 8:00 PM WAT
-- **Cohort 13 begins:** Monday, 30 November 2026 · 8:00 PM WAT
-- **Fee:** ₦250,000
+| Cohort | Registration closes | Begins |
+|---|---|---|
+| Cohort 13 | Sunday, 29 November 2026 · 8:00 PM WAT | Monday, 30 November 2026 · 8:00 PM WAT |
+| Cohort 14 | Sunday, 3 January 2027 · 8:00 PM WAT | Monday, 4 January 2027 · 8:00 PM WAT |
 
-Cohort 13 lives in canon as `cohort.next`, so pages may name it while Cohort 12 is current. The Foundation Training page sells both and its countdown rolls onto 29 November when Cohort 12 closes.
+Same fee, ₦250,000. People can register forward: pay now for a later cohort and the seat is held. These live in canon as `cohort.upcoming`, so pages may name them while Cohort 12 is current. The Foundation Training page sells all three, hides each one once its registration closes, and its countdown always counts to the nearest open gate.
 
 ### Instalment route
 

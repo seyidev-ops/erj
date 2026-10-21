@@ -185,8 +185,7 @@ def main():
 
     # ── 4. the cohort in play is the cohort in canon ────────────────────
     current = canon["cohort"]["number"]
-    nxt = (canon["cohort"].get("next") or {}).get("number")
-    open_cohorts = {current} | ({nxt} if nxt else set())
+    open_cohorts = {current} | {c["number"] for c in (canon["cohort"].get("upcoming") or [])}
     for path, raw in corpus:
         if path == DEFINITION or path in PORTAL or is_archive(path) or is_job_board(path):
             continue
