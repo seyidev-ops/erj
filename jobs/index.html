@@ -159,7 +159,7 @@
 .jb-tk:hover b{color:var(--accent);}
 
 /* browse by field */
-.jb-browse{padding-top:clamp(1.6rem,4vw,2.6rem);padding-bottom:0;}
+.jb-browse{padding-top:clamp(1.6rem,4vw,2.6rem);padding-bottom:clamp(2.6rem,6vw,4rem);}
 .jb-browse-h{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;margin-bottom:1rem;}
 .jb-browse-h h2{font-size:clamp(1.3rem,2.6vw,1.75rem);margin:0;}
 .jb-browse-h span{font-size:.85rem;color:var(--ink-faint);}
@@ -8291,7 +8291,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- Install the job board as an app (PWA). Shows only where the browser offers
      installation (or on iPhone, where it explains Add to Home Screen). Dismiss is
      remembered for 14 days. The installed app opens on this page (manifest start_url). -->
-<style id="jbInstall">
+<style id="jbInstallCSS">
 .jbi{position:fixed;left:50%;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:950;width:min(440px,calc(100vw - 24px));transform:translate(-50%,140%);
   transition:transform .45s cubic-bezier(.22,1,.36,1);display:grid;grid-template-columns:auto 1fr auto;gap:.8rem;align-items:center;padding:.85rem .9rem;border-radius:18px;
   background:#111;color:#fff;border:1px solid rgba(255,87,34,.55);box-shadow:0 20px 50px rgba(0,0,0,.45);font-family:Inter,system-ui,sans-serif;}
@@ -8310,7 +8310,7 @@ body.sticky-on .jbi{bottom:96px;}
 </style>
 <div class="jbi" id="jbInstall" role="dialog" aria-label="Install the job board" aria-hidden="true" inert="">
 <img alt="" height="44" src="../icon192.png" width="44"/>
-<div><b>Get the job board on your home screen</b><span>New roles twice a day, one tap away. Opens straight to the board.</span></div>
+<div><b>Install the job board as an app</b><span>New roles twice a day, one tap away. Opens straight to the board.</span></div>
 <button class="jbi-go" type="button">Install</button>
 <button class="jbi-x" type="button" aria-label="Not now">✕</button>
 <p class="jbi-ios">On iPhone: tap the <b>Share</b> icon in Safari, then <b>Add to Home Screen</b>.</p>
