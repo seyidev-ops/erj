@@ -135,6 +135,25 @@
 .jb-aff .jb-ad-t small{color:#F89406;}
 .jb-aff .jb-ad-btn{background:#F68B1E;}
 .jb-jm{background:rgba(248,148,6,.16)!important;}
+.jbd{position:relative;z-index:5;border-bottom:1px solid rgba(246,139,30,.35);background:linear-gradient(90deg,rgba(246,139,30,.14),rgba(246,139,30,.04));}
+.jbd-tab{all:unset;box-sizing:border-box;cursor:pointer;width:100%;display:flex;align-items:center;justify-content:center;gap:.7rem;padding:.55rem 1rem;font-size:.84rem;}
+.jbd-tab span{display:inline-flex;align-items:center;gap:.5rem;flex-wrap:wrap;justify-content:center;}
+.jbd-tab em{font-style:normal;font-size:.62rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#F68B1E;}
+.jbd-tab i{font-style:normal;color:#F68B1E;transition:transform .3s;}
+.jbd.open .jbd-tab i{transform:rotate(180deg);}
+.jbd-tab:focus-visible{outline:2px solid #F68B1E;outline-offset:-2px;}
+.jbd-body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s cubic-bezier(.22,1,.36,1);}
+.jbd.open .jbd-body{grid-template-rows:1fr;}
+.jbd-body>*{overflow:hidden;min-height:0;}
+.jbd:not(.open) .jbd-in{padding-bottom:0;visibility:hidden;}
+.jbd-in{display:flex;flex-wrap:wrap;align-items:center;gap:.6rem 1rem;padding-bottom:.9rem;}
+.jbd-in .jb-jm-f{flex:1 1 360px;margin:0;}
+.jbd-pick{display:flex;flex-direction:column;text-decoration:none;color:inherit;font-weight:700;font-size:.84rem;}
+.jbd-pick em{font-style:normal;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:#F68B1E;}
+.jbd-in .jb-aff-note{flex-basis:100%;margin:0;}
+.jbd-up{all:unset;cursor:pointer;display:block;margin:0 auto;padding:.1rem 1.2rem .3rem;color:#F68B1E;font-size:1rem;}
+.jbd:not(.open) .jbd-up{display:none;}
+@media(prefers-reduced-motion:reduce){.jbd-body,.jbd-tab i{transition:none;}}
 .jb-jm-in:hover{transform:none;}
 .jb-jm-f{display:flex!important;gap:.4rem;margin:.6rem 0 .5rem;max-width:520px;}
 .jb-jm-f input[type=search]{flex:1;min-width:0;padding:.6rem .9rem;border-radius:999px;border:1px solid var(--line);background:var(--bg,transparent);color:inherit;font:inherit;font-size:.86rem;}
@@ -384,6 +403,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <script>window.ERJ_NAV={active:'jobboard',base:'../',onPage:[{label:'Browse By Field',href:'#fields',sub:'Jump straight to your kind of role'},{label:'Live Roles',href:'#board',sub:'Open to Nigeria · checked twice a day'},{label:'Share The Board',href:'#share',sub:'Send it to someone job-hunting'},{label:'Not Hearing Back?',href:'#next',sub:'Find where your search is breaking down'}]};</script>
 
 <main>
+<aside class="jbd" id="jbDesk" aria-label="Partner: Jumia">
+<button class="jbd-tab" type="button" aria-expanded="false" aria-controls="jbDeskBody"><span>🛒 <b>Set up your remote desk</b><em>Jumia partner</em></span><i aria-hidden="true">▾</i></button>
+<div class="jbd-body" id="jbDeskBody">
+<div class="jbd-in wrap">
+<form class="jb-jm-f" action="https://www.jumia.com.ng/catalog/" method="get" target="_blank" rel="sponsored noopener">
+<input name="q" type="search" placeholder="Search Jumia: headset, laptop, power bank…" aria-label="Search Jumia" required>
+<input name="s" type="hidden" value="rbh6RDA"><button type="submit">Search</button></form>
+<span class="jb-jm-row" data-jm-chips><a href="https://www.jumia.com.ng/catalog/?q=headset&amp;s=rbh6RDA" target="_blank" rel="sponsored noopener">🎧 Headsets</a><a href="https://www.jumia.com.ng/catalog/?q=laptop&amp;s=rbh6RDA" target="_blank" rel="sponsored noopener">💻 Laptops</a><a href="https://www.jumia.com.ng/catalog/?q=power+bank&amp;s=rbh6RDA" target="_blank" rel="sponsored noopener">🔋 Power banks</a><a href="https://www.jumia.com.ng/catalog/?q=mifi+router&amp;s=rbh6RDA" target="_blank" rel="sponsored noopener">📶 Internet</a></span>
+<a class="jbd-pick" href="https://www.jumia.com.ng/emeet-hs50-wired-headset-419565273.html?s=rbh6RDA" target="_blank" rel="sponsored noopener"><em>Pick for calls</em>EMEET HS50 headset →</a>
+<small class="jb-aff-note">Affiliate links: ERJ may earn a commission when you buy, at no cost to you.</small>
+</div>
+<button class="jbd-up" type="button" aria-label="Close the Jumia panel">▴</button>
+</div>
+</aside>
   <section class="jb-hero">
     <div class="wrap">
       <p class="jb-live"><span class="jb-dot" aria-hidden="true"></span>Live board<time id="jbUpdated" datetime="2026-10-22">22 Oct 2026</time></p>
@@ -8288,7 +8321,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <aside class="jb-promo jb-ad" data-ad="stage3"><a class="jb-ad-in" href="../register.html#stage3"><img alt="" height="300" loading="lazy" src="../shop/stage3.webp" width="300"/><span class="jb-ad-t"><small>Stage 3 · 5 days</small><b>Write so a team in another time zone can rely on you.</b><span>Async Communication Mastery: emails, updates and messages that need no follow-up.</span></span><span class="jb-ad-go"><em class="jb-ad-p">₦70,000</em><span class="jb-ad-btn">See Stage 3 →</span></span></a></aside>
 <aside class="jb-promo jb-ad" data-ad="intentbook"><a class="jb-ad-in" href="../fromintenttooffer/"><img alt="" height="300" loading="lazy" src="../shop/intentbook-centred.webp" width="300"/><span class="jb-ad-t"><small>The method, written down</small><b>From intent to a signed offer, step by step.</b><span>The book behind the programme: aim, apply, interview and negotiate.</span></span><span class="jb-ad-go"><em class="jb-ad-p">₦15,000</em><span class="jb-ad-btn">See From Intent to Offer →</span></span></a></aside>
 <aside class="jb-promo jb-ad" data-ad="diagnose"><a class="jb-ad-in" href="../diagnose/"><span class="jb-ad-ic" aria-hidden="true">🧭</span><span class="jb-ad-t"><small>Free · 90 seconds</small><b>Not sure which of these to apply for?</b><span>Five questions tell you which part of your search is breaking first.</span></span><span class="jb-ad-go"><em class="jb-ad-p is-free">Free</em><span class="jb-ad-btn">Find what is holding me back →</span></span></a></aside>
-<aside class="jb-promo jb-ad jb-aff" data-ad="jumia"><div class="jb-ad-in jb-jm-in"><span class="jb-ad-ic jb-jm" aria-hidden="true">🛒</span><span class="jb-ad-t"><small>Partner · Jumia</small><b>Set up your remote desk.</b><span>Search Jumia for anything you need. Delivered across Nigeria.</span><form class="jb-jm-f" action="https://www.jumia.com.ng/catalog/" method="get" target="_blank" rel="sponsored noopener"><input name="q" type="search" placeholder="Search Jumia: headset, laptop, power bank…" aria-label="Search Jumia" required><input name="s" type="hidden" value="rbh6RDA"><button type="submit">Search</button></form><span class="jb-jm-row" data-jm-chips><a href="https://www.jumia.com.ng/catalog/?q=headset&amp;s=rbh6RDA" target="_blank" rel="sponsored noopener">🎧 Headsets</a><a href="https://www.jumia.com.ng/catalog/?q=laptop&amp;s=rbh6RDA" target="_blank" rel="sponsored noopener">💻 Laptops</a><a href="https://www.jumia.com.ng/catalog/?q=power+bank&amp;s=rbh6RDA" target="_blank" rel="sponsored noopener">🔋 Power banks</a><a href="https://www.jumia.com.ng/catalog/?q=mifi+router&amp;s=rbh6RDA" target="_blank" rel="sponsored noopener">📶 Internet</a></span></span><span class="jb-ad-go"><a class="jb-jm-pick" href="https://www.jumia.com.ng/emeet-hs50-wired-headset-419565273.html?s=rbh6RDA" target="_blank" rel="sponsored noopener"><em>Pick for calls</em>EMEET HS50 headset</a><a class="jb-ad-btn" href="https://www.jumia.com.ng/?s=rbh6RDA" target="_blank" rel="sponsored noopener">Shop on Jumia →</a></span></div><small class="jb-aff-note">Affiliate links: ERJ may earn a commission when you buy, at no cost to you.</small></aside>
 </template>
 <div class="jb-sheet" id="jbSheet" hidden role="dialog" aria-modal="true" aria-labelledby="jbSheetT">
   <div class="jb-sheet-in">
@@ -8378,10 +8410,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     [].slice.call(grid.querySelectorAll('.jb-day')).forEach(function(h){var n=perDay[h.getAttribute('data-d')];if(n){var em=document.createElement('em');em.textContent=n+(n===1?' role':' roles');h.appendChild(em);}});
     /* one ERJ help card after every twelfth visible role, rotating through the five parts */
     var tpl=document.getElementById('jbPromos'),all=tpl?[].slice.call(tpl.content.children):[];
-    var aff=all.filter(function(x){return x.classList.contains('jb-aff')&&x.querySelector('a[href*="s="]');});
-    var pr=all.filter(function(x){return !x.classList.contains('jb-aff');});
+    var pr=all;
     if(pr.length){var vis=cards.filter(function(c){return !c.classList.contains('jb-hide');}),k=VISIT*3,n=0;
-      for(var i=4;i<vis.length;i+=4){n++;var isAff=aff.length&&n%5===3,src=isAff?aff[0]:pr[k++%pr.length],el=src.cloneNode(true);if(isAff)jmFit(el,vis[i-1].getAttribute('data-family'));grid.insertBefore(el,vis[i]);}}
+      for(var i=4;i<vis.length;i+=4){n++;grid.insertBefore(pr[k++%pr.length].cloneNode(true),vis[i]);}}
     more.classList.toggle('jb-hide',match<=shown);more.textContent='Show more roles ('+(match-shown)+' left)';
     none.classList.toggle('jb-hide',match>0);
     result.textContent=(fam||term||onlyNew)?(match+(match===1?' role matches':' roles match')+(fam?' in '+fam:'')):'';
@@ -8395,7 +8426,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       'Virtual Assistant & Admin':[['🎧 Headsets','headset'],['💻 Laptops','laptop'],['🔋 Power banks','power+bank'],['📶 Internet','mifi+router']],
       'Marketing & Creative':[['💡 Ring lights','ring+light'],['🎙️ Microphones','usb+microphone'],['💻 Laptops','laptop'],['🔋 Power banks','power+bank']],
       'Tutoring & Teaching':[['📷 Webcams','webcam'],['🎧 Headsets','headset'],['💡 Ring lights','ring+light'],['🔋 Power banks','power+bank']]
-    }[f];if(!L)return;
+    }[f]||[['🎧 Headsets','headset'],['💻 Laptops','laptop'],['🔋 Power banks','power+bank'],['📶 Internet','mifi+router']];
     row.innerHTML='';L.forEach(function(c){var a=document.createElement('a');a.href='https://www.jumia.com.ng/catalog/?q='+c[1]+'&s='+S;a.target='_blank';a.rel='sponsored noopener';a.textContent=c[0];row.appendChild(a);});
   }
   function setFam(f,scroll){
@@ -8404,6 +8435,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     var fl=$('jbFilter');if(fl){fl.hidden=!fam;$('jbFilterName').textContent=fam;}
     if($('jbPinFam'))$('jbPinFam').textContent=fam||'All fields';
     if($('jbPinX'))$('jbPinX').hidden=!fam;
+    var jd=$('jbDesk');if(jd)jmFit(jd,fam);
     render();
     if(scroll){var top=$('board').getBoundingClientRect().top+window.scrollY-70;window.scrollTo({top:top,behavior:reduce?'auto':'smooth'});}
   }
@@ -8586,6 +8618,19 @@ html[data-theme="day"] .jbo-x{background:rgba(20,17,14,.08);}
   }
   addEventListener('scroll',function s(){if(scrollY>500){read=true;removeEventListener('scroll',s);tryShow();}},{passive:true});
   setTimeout(function(){timeUp=true;tryShow();},15000);
+})();
+</script>
+<script>
+/* Jumia drop-down: opens once a visit after a few seconds, the arrow folds it away. */
+(function(){
+  var d=document.getElementById('jbDesk');if(!d)return;
+  var tab=d.querySelector('.jbd-tab'),up=d.querySelector('.jbd-up');
+  function set(o,user){d.classList.toggle('open',o);tab.setAttribute('aria-expanded',o?'true':'false');
+    if(user){try{sessionStorage.setItem('erj-jbd',o?'open':'shut');}catch(e){}}}
+  tab.addEventListener('click',function(){set(!d.classList.contains('open'),true);});
+  up.addEventListener('click',function(){set(false,true);});
+  var st='';try{st=sessionStorage.getItem('erj-jbd')||'';}catch(e){}
+  if(st==='open')set(true);else if(!st)setTimeout(function(){if(scrollY<200)set(true);},2500);
 })();
 </script>
 <script defer="" src="../erj-alive.js?v=20261004a"></script>
