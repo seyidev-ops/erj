@@ -6442,6 +6442,35 @@
    "direct": true,
    "closed": "2026-10-22",
    "closed_reason": "region does not confirm Nigeria or Africa"
+  },
+  {
+   "id": "bbcd23d1c2",
+   "title": "Senior Python Developer",
+   "company": "Jobgether partner",
+   "region": "Nigeria",
+   "type": "Full-Time",
+   "experience": "Not stated",
+   "salary": "Undisclosed",
+   "bullets": [
+    "Design, develop, and maintain scalable backend services using Python and frameworks such as FastAPI or Flask",
+    "Build and integrate RESTful APIs to support mobile application features, fan engagement functionalities, and digital service delivery",
+    "Implement AI-powered features by integrating services and models from providers such as OpenAI, Hugging Face, or similar platforms",
+    "Develop efficient asynchronous data flows and ensure reliable communication between application components and external services"
+   ],
+   "apply": "https://jobs.lever.co/jobgether/2ee28e78-342c-45c3-89ab-eb4cd6dbf1f9",
+   "posted": "2026-10-15",
+   "deadline": null,
+   "checked": "2026-10-22",
+   "added": "2026-10-15",
+   "listed": "2026-10-15",
+   "source": "Lever",
+   "origin": "feed",
+   "ats_id": "2ee28e78-342c-45c3-89ab-eb4cd6dbf1f9",
+   "family": "Tech & IT",
+   "why": "Open to candidates in Nigeria by name. You apply directly on the employer's own page.",
+   "direct": true,
+   "closed": "2026-10-22",
+   "closed_reason": "employer page closed"
   }
  ]
 }
