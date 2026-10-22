@@ -118,12 +118,29 @@
   .jb-swipe b{color:var(--accent);}}
 @media(prefers-reduced-motion:reduce){.jb-step,.jb-step-a a{transition:none;}.jb-steps.is-arm .jb-step{transform:none;}.jb-free-first i{animation:none;}}
 /* ERJ help cards between the listings */
-.jb-promo{grid-column:1/-1;display:flex;align-items:center;gap:1rem;flex-wrap:wrap;padding:1rem 1.2rem;border-radius:16px;border:1px dashed var(--accent);
+.jb-promo{grid-column:1/-1;}
+.jb-ad-in{position:relative;display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:1.1rem;align-items:center;padding:1rem 1.2rem;border-radius:20px;text-decoration:none;color:inherit;overflow:hidden;
+  border:1px solid rgba(255,87,34,.45);background:radial-gradient(70% 140% at 0 50%,rgba(255,87,34,.16),transparent 60%),var(--card,rgba(255,255,255,.03));
+  transition:transform .3s var(--ease),border-color .3s,box-shadow .3s;}
+.jb-ad-in:hover{transform:translateY(-3px);border-color:var(--accent);box-shadow:0 18px 44px rgba(255,87,34,.16);}
+.jb-ad-in img,.jb-ad-ic{width:86px;height:86px;border-radius:14px;object-fit:cover;flex:none;display:flex;align-items:center;justify-content:center;font-size:2.4rem;background:rgba(255,87,34,.12);}
+.jb-ad-t small{display:block;font-size:.62rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:.25rem;}
+.jb-ad-t b{display:block;font-family:var(--font-display);font-size:1.08rem;line-height:1.25;margin-bottom:.25rem;}
+.jb-ad-t>span{display:block;font-size:.86rem;line-height:1.5;color:var(--ink-soft,var(--muted));}
+.jb-ad-go{display:flex;flex-direction:column;align-items:flex-end;gap:.45rem;}
+.jb-ad-p{font-style:normal;font-family:var(--font-display);font-weight:800;font-size:1.05rem;}
+.jb-ad-p.is-free{color:#25D366;}
+.jb-ad-btn{display:inline-flex;font-weight:700;font-size:.86rem;color:#fff;background:var(--accent-btn,#FF5722);padding:.6rem 1rem;border-radius:100px;white-space:nowrap;}
+.jb-aff .jb-ad-in{border-color:rgba(248,148,6,.6);background:radial-gradient(70% 140% at 0 50%,rgba(248,148,6,.16),transparent 60%),var(--card,rgba(255,255,255,.03));}
+.jb-aff .jb-ad-t small{color:#F89406;}
+.jb-aff .jb-ad-btn{background:#F68B1E;}
+.jb-jm{background:rgba(248,148,6,.16)!important;}
+.jb-jm-row{display:flex!important;flex-wrap:wrap;gap:.35rem;margin-top:.5rem;}
+.jb-jm-row i{font-style:normal;font-size:.72rem;padding:.25rem .55rem;border-radius:999px;border:1px solid var(--line);color:var(--ink,inherit);}
+.jb-aff-note{display:block;font-size:.66rem;color:var(--ink-faint,#8a8a8a);margin:.35rem .4rem 0;}
+@media(max-width:640px){.jb-ad-in{grid-template-columns:auto minmax(0,1fr);}.jb-ad-in img,.jb-ad-ic{width:64px;height:64px;font-size:1.8rem;}
+  .jb-ad-go{grid-column:1/-1;flex-direction:row;justify-content:space-between;align-items:center;}}
   background:linear-gradient(110deg,rgba(255,87,34,.10),transparent 70%);}
-.jb-promo i{font-style:normal;font-size:1.5rem;}
-.jb-promo p{flex:1;min-width:220px;margin:0;font-size:.92rem;line-height:1.5;}
-.jb-promo p b{font-family:var(--font-display);display:block;font-size:1rem;}
-.jb-promo a{font-weight:700;font-size:.9rem;color:#fff;background:var(--accent-btn,#FF5722);padding:.65rem 1rem;border-radius:100px;text-decoration:none;white-space:nowrap;}
 @media(prefers-reduced-motion:reduce){.jb-step{transition:none;}}
 /* ── Remote Job Board. Each card is the ERJ channel post, set as a page. ──
    Motion moves things; it never hides them (validate-facts check 12). */
@@ -354,14 +371,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 <a class="skip-link" href="#board">Skip to the jobs</a>
 <div id="erjNavMount"></div>
-<script>window.ERJ_NAV={active:'jobboard',base:'../',onPage:[{label:'Browse By Field',href:'#fields',sub:'Jump straight to your kind of role'},{label:'Get Ready For Them',href:'#ready',sub:'What we do when you find a role you want'},{label:'Live Roles',href:'#board',sub:'Open to Nigeria · checked twice a day'},{label:'Share The Board',href:'#share',sub:'Send it to someone job-hunting'},{label:'Not Hearing Back?',href:'#next',sub:'Find where your search is breaking down'}]};</script>
+<script>window.ERJ_NAV={active:'jobboard',base:'../',onPage:[{label:'Browse By Field',href:'#fields',sub:'Jump straight to your kind of role'},{label:'Live Roles',href:'#board',sub:'Open to Nigeria · checked twice a day'},{label:'Share The Board',href:'#share',sub:'Send it to someone job-hunting'},{label:'Not Hearing Back?',href:'#next',sub:'Find where your search is breaking down'}]};</script>
 
 <main>
   <section class="jb-hero">
     <div class="wrap">
       <p class="jb-live"><span class="jb-dot" aria-hidden="true"></span>Live board<time id="jbUpdated" datetime="2026-10-22">22 Oct 2026</time></p>
       <h1>Remote jobs you can apply for <em>from Nigeria.</em></h1>
-      <p class="lede">Every role here is open to someone living in Nigeria, checked twice a day, and taken down when it closes. And when you find one you want, <a href="#ready">we help you get ready for it</a>.</p>
+      <p class="lede">Every role here is open to someone living in Nigeria, checked twice a day, and taken down when it closes. And when you find one you want, <a href="../foundationtraining/">we help you get ready for it</a>.</p>
       <div class="jb-stats">
         <div class="jb-stat"><b id="jbCount" data-count>371</b><span>live roles</span></div>
         <div class="jb-stat is-accent"><b id="jbNewCount">0</b><span>new in 2 days</span></div>
@@ -383,16 +400,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </section>
 
 
-  <section class="jb-ready" id="ready" aria-labelledby="jbReadyH">
-    <div class="wrap">
-      <p class="section-label">More than a job board</p>
-      <h2 id="jbReadyH">Found a role you want? <em>Here is how we help you get it.</em></h2>
-      <p class="jb-ready-lede">Every remote job search runs on five parts. This board fixes one of them. Whichever part is holding you back, there is a free first step, and help beyond it when you want it.</p>
-      <p class="jb-free-first"><i aria-hidden="true"></i>A free first step in every part</p>
-      <p class="jb-swipe">Swipe <b>→</b> through all five</p>
-      <div class="jb-steps" id="jbSteps"><span class="jb-run" aria-hidden="true"></span><article class="jb-step"><span class="jb-step-n">01</span><span class="jb-step-ic" aria-hidden="true">🧱</span><span class="jb-step-k">Capacity</span><h3>“I see the roles, but I’m not sure I can do them yet.”</h3><p>You can’t be hired for work you can’t yet do. Find out where you stand for free, then build it live, marked by a person. Cohort 12 is enrolling now.</p><div class="jb-step-a"><a class="is-free" href="../capacityscan/">Capacity Audit<span>Free</span></a><a class="is-main" href="../foundationtraining/">Foundation Training<span>Cohort 12</span></a><a class="" href="../selflearn/">Self-Learn Pack<span>&#8358;35,000</span></a></div></article><article class="jb-step is-here"><span class="jb-here">You are here · free</span><span class="jb-step-n">02</span><span class="jb-step-ic" aria-hidden="true">🔎</span><span class="jb-step-k">Supply</span><h3>“I can never find roles that can hire me from here.”</h3><p>You’re on it. Every role on this board is open to Nigeria, checked twice a day, and it costs nothing. Want more? Learn the search, or let us apply for you.</p><div class="jb-step-a"><a class="is-free" href="#board">This job board<span>Free</span></a><a class="" href="../register.html#book">Search book<span>&#8358;5,000</span></a><a class="" href="../jobapplication/">Done-For-You<span>&#8358;50,000</span></a></div></article><article class="jb-step"><span class="jb-step-n">03</span><span class="jb-step-ic" aria-hidden="true">📄</span><span class="jb-step-k">Representation</span><h3>“I apply and hear nothing back.”</h3><p>Usually the CV is not being read, by software or by a person. Scan it free in under a minute, rebuild it yourself, or let us fix it for one field.</p><div class="jb-step-a"><a class="is-free" href="../cvscan/">CV Scan<span>Free</span></a><a class="" href="../cvbuilder.html">CV Engine<span>&#8358;5,000/month</span></a><a class="" href="../register.html#cvfix">CV Fix<span>&#8358;30,000</span></a></div></article><article class="jb-step"><span class="jb-step-n">04</span><span class="jb-step-ic" aria-hidden="true">🎯</span><span class="jb-step-k">Aim</span><h3>“I apply everywhere and nothing lands.”</h3><p>Applying everywhere isn’t the same as applying where you’d get hired. Find what is holding you back in ninety seconds, then choose one target.</p><div class="jb-step-a"><a class="is-free" href="../diagnose/">Find what is holding you back<span>Free</span></a><a class="" href="../fromintenttooffer/">From Intent to Offer<span>&#8358;15,000</span></a></div></article><article class="jb-step"><span class="jb-step-n">05</span><span class="jb-step-ic" aria-hidden="true">🤝</span><span class="jb-step-k">Conversion</span><h3>“I get interviews, but no offers.”</h3><p>Interviews don’t pay you; a signed offer does. Bring a real application to the free live Clinic, or work the last metre one-to-one with us.</p><div class="jb-step-a"><a class="is-free" href="../masterclass/">Application Clinic<span>Free</span></a><a class="" href="../innercircle/">The Inner Circle<span>1:1</span></a></div></article></div>
-    </div>
-  </section>
+
 
   <div class="jb-pin" id="jbPin" aria-hidden="true">
     <div class="wrap">
@@ -8256,11 +8264,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </main>
 
 <template id="jbPromos">
-<aside class="jb-promo"><i aria-hidden="true">🧱</i><p><b>Reading roles you can’t quite do yet?</b>That’s capacity, and it is fixable. Foundation Training builds it live, marked by a person.</p><a href="../foundationtraining/">See Foundation Training →</a></aside>
-<aside class="jb-promo"><i aria-hidden="true">📄</i><p><b>Applying and hearing nothing back?</b>Your CV may not be getting read. Score it free in under a minute, on your own device.</p><a href="../cvscan/">Scan my CV free →</a></aside>
-<aside class="jb-promo"><i aria-hidden="true">🧭</i><p><b>Not sure which of these you should apply for?</b>Five questions, about ninety seconds, and you will know what is holding your search back.</p><a href="../diagnose/">Find what is holding me back →</a></aside>
-<aside class="jb-promo"><i aria-hidden="true">⏱️</i><p><b>Found roles but no time to apply?</b>Our team runs a seven-day job hunt in your field and applies for you.</p><a href="../jobapplication/">See Done-For-You →</a></aside>
-<aside class="jb-promo"><i aria-hidden="true">🎤</i><p><b>Getting interviews but no offers?</b>Bring one real application to the free live Clinic and see what to fix first.</p><a href="../masterclass/">See the free Clinic →</a></aside>
+<aside class="jb-promo jb-ad" data-ad="foundation"><a class="jb-ad-in" href="../foundationtraining/"><img alt="" height="300" loading="lazy" src="../shop/foundation.webp" width="300"/><span class="jb-ad-t"><small>Live cohort · Stages 1–4</small><b>Turn these listings into interviews you can win.</b><span>Twenty live days building the CV, portfolio, LinkedIn and interview answer remote employers read. Marked by a person, certificate at the end.</span></span><span class="jb-ad-go"><em class="jb-ad-p">₦250,000</em><span class="jb-ad-btn">See Foundation Training →</span></span></a></aside>
+<aside class="jb-promo jb-ad" data-ad="cvscan"><a class="jb-ad-in" href="../cvscan/"><span class="jb-ad-ic" aria-hidden="true">📄</span><span class="jb-ad-t"><small>Free · under a minute</small><b>Is your CV the reason nobody replies?</b><span>Score it against ten points on your own device. Every point you miss comes with the fix.</span></span><span class="jb-ad-go"><em class="jb-ad-p is-free">Free</em><span class="jb-ad-btn">Scan my CV free →</span></span></a></aside>
+<aside class="jb-promo jb-ad" data-ad="stage4"><a class="jb-ad-in" href="../register.html#stage4"><img alt="" height="300" loading="lazy" src="../shop/stage4.webp" width="300"/><span class="jb-ad-t"><small>Stage 4 · 5 days</small><b>CV, LinkedIn, portfolio and a recorded interview answer.</b><span>Start Your Remote Career builds the package you send with every application on this board.</span></span><span class="jb-ad-go"><em class="jb-ad-p">₦100,000</em><span class="jb-ad-btn">See Stage 4 →</span></span></a></aside>
+<aside class="jb-promo jb-ad" data-ad="dfy"><a class="jb-ad-in" href="../jobapplication/"><img alt="" height="300" loading="lazy" src="../shop/dfy7.webp" width="300"/><span class="jb-ad-t"><small>Done for you · 7 days</small><b>Found roles but no time to apply?</b><span>We run a seven-day hunt in your field, tailor each application and tell you what was sent.</span></span><span class="jb-ad-go"><em class="jb-ad-p">₦50,000</em><span class="jb-ad-btn">See Done-For-You →</span></span></a></aside>
+<aside class="jb-promo jb-ad" data-ad="foundation"><a class="jb-ad-in" href="../foundationtraining/#pricing"><img alt="" height="300" loading="lazy" src="../shop/foundation.webp" width="300"/><span class="jb-ad-t"><small>Register forward</small><b>Can’t start this month? Hold a later seat.</b><span>Foundation Training runs again on 30 November and 4 January. Same fee, seat held from today.</span></span><span class="jb-ad-go"><em class="jb-ad-p">₦250,000</em><span class="jb-ad-btn">Choose a start date →</span></span></a></aside>
+<aside class="jb-promo jb-ad" data-ad="stage2"><a class="jb-ad-in" href="../register.html#stage2"><img alt="" height="300" loading="lazy" src="../shop/stage2.webp" width="300"/><span class="jb-ad-t"><small>Stage 2 · 5 days</small><b>Zoom, project boards and AI tools, used like a pro.</b><span>The Digital Toolkit remote teams assume you already run, built in five live days.</span></span><span class="jb-ad-go"><em class="jb-ad-p">₦130,000</em><span class="jb-ad-btn">See Stage 2 →</span></span></a></aside>
+<aside class="jb-promo jb-ad" data-ad="cvengine"><a class="jb-ad-in" href="../cvbuilder.html"><img alt="" height="300" loading="lazy" src="../shop/cvpass.webp" width="300"/><span class="jb-ad-t"><small>Do it yourself</small><b>Rebuild your CV against the same ten points.</b><span>The CV Engine walks you through every section and scores it as you write.</span></span><span class="jb-ad-go"><em class="jb-ad-p">₦5,000/month</em><span class="jb-ad-btn">Open the CV Engine →</span></span></a></aside>
+<aside class="jb-promo jb-ad" data-ad="inner"><a class="jb-ad-in" href="../innercircle/"><img alt="" height="300" loading="lazy" src="../shop/inner.webp" width="300"/><span class="jb-ad-t"><small>Private · one to one</small><b>Getting interviews but no offer?</b><span>The Inner Circle works the last stretch with you: interviews, negotiation and the offer itself.</span></span><span class="jb-ad-go"><em class="jb-ad-p">₦250,000</em><span class="jb-ad-btn">See The Inner Circle →</span></span></a></aside>
+<aside class="jb-promo jb-ad" data-ad="stage1"><a class="jb-ad-in" href="../register.html#stage1"><img alt="" height="300" loading="lazy" src="../shop/stage1.webp" width="300"/><span class="jb-ad-t"><small>Stage 1 · 5 days</small><b>Work like someone already hired remotely.</b><span>Deep work, daily KPIs and end-of-day reports: the Remote Mindset Blueprint.</span></span><span class="jb-ad-go"><em class="jb-ad-p">₦70,000</em><span class="jb-ad-btn">See Stage 1 →</span></span></a></aside>
+<aside class="jb-promo jb-ad" data-ad="selflearn"><a class="jb-ad-in" href="../selflearn/"><img alt="" height="300" loading="lazy" src="../shop/selflearn-foundation.webp" width="300"/><span class="jb-ad-t"><small>At your own pace</small><b>All four stages, worked alone.</b><span>The Self-Learn Pack carries the same stages and rubrics as the live cohort.</span></span><span class="jb-ad-go"><em class="jb-ad-p">₦35,000</em><span class="jb-ad-btn">See the Self-Learn Pack →</span></span></a></aside>
+<aside class="jb-promo jb-ad" data-ad="cvfix"><a class="jb-ad-in" href="../register.html#cvfix"><img alt="" height="300" loading="lazy" src="../shop/cvfix.webp" width="300"/><span class="jb-ad-t"><small>Done for you</small><b>Rather we rebuilt your CV for you?</b><span>CV Fix: one CV, rebuilt by us for one field.</span></span><span class="jb-ad-go"><em class="jb-ad-p">₦30,000</em><span class="jb-ad-btn">See CV Fix →</span></span></a></aside>
+<aside class="jb-promo jb-ad" data-ad="stage3"><a class="jb-ad-in" href="../register.html#stage3"><img alt="" height="300" loading="lazy" src="../shop/stage3.webp" width="300"/><span class="jb-ad-t"><small>Stage 3 · 5 days</small><b>Write so a team in another time zone can rely on you.</b><span>Async Communication Mastery: emails, updates and messages that need no follow-up.</span></span><span class="jb-ad-go"><em class="jb-ad-p">₦70,000</em><span class="jb-ad-btn">See Stage 3 →</span></span></a></aside>
+<aside class="jb-promo jb-ad" data-ad="intentbook"><a class="jb-ad-in" href="../fromintenttooffer/"><img alt="" height="300" loading="lazy" src="../shop/intentbook-centred.webp" width="300"/><span class="jb-ad-t"><small>The method, written down</small><b>From intent to a signed offer, step by step.</b><span>The book behind the programme: aim, apply, interview and negotiate.</span></span><span class="jb-ad-go"><em class="jb-ad-p">₦15,000</em><span class="jb-ad-btn">See From Intent to Offer →</span></span></a></aside>
+<aside class="jb-promo jb-ad" data-ad="diagnose"><a class="jb-ad-in" href="../diagnose/"><span class="jb-ad-ic" aria-hidden="true">🧭</span><span class="jb-ad-t"><small>Free · 90 seconds</small><b>Not sure which of these to apply for?</b><span>Five questions tell you which part of your search is breaking first.</span></span><span class="jb-ad-go"><em class="jb-ad-p is-free">Free</em><span class="jb-ad-btn">Find what is holding me back →</span></span></a></aside>
+<aside class="jb-promo jb-ad jb-aff" data-ad="jumia"><a class="jb-ad-in" href="JUMIA_AFFILIATE_LINK" target="_blank" rel="sponsored noopener"><span class="jb-ad-ic jb-jm" aria-hidden="true">🛒</span><span class="jb-ad-t"><small>Partner · Jumia</small><b>Set up your remote desk.</b><span>Laptops, headsets, power banks, routers and ring lights, delivered across Nigeria.</span><span class="jb-jm-row"><i>💻 Laptops</i><i>🎧 Headsets</i><i>🔋 Power</i><i>📶 Internet</i></span></span><span class="jb-ad-go"><em class="jb-ad-p">Jumia</em><span class="jb-ad-btn">Shop on Jumia →</span></span></a><small class="jb-aff-note">Affiliate link: ERJ may earn a commission, at no cost to you.</small></aside>
 </template>
 <div class="jb-sheet" id="jbSheet" hidden role="dialog" aria-modal="true" aria-labelledby="jbSheetT">
   <div class="jb-sheet-in">
@@ -8303,6 +8321,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   if(cats)$('jbCatMount').appendChild(cats);
   var q=$('jbQ'),newBtn=$('jbNew'),more=$('jbMore'),result=$('jbResult'),none=$('jbNone');
   var PAGE=24,limit=PAGE,fam='',term='',onlyNew=false;
+  var VISIT=0;try{VISIT=(+localStorage.getItem('erj-jb-visits')||0);}catch(e){}
   var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
   function ymd(d){return new Intl.DateTimeFormat('en-CA',{timeZone:'Africa/Lagos',year:'numeric',month:'2-digit',day:'2-digit'}).format(d);}
   var today=ymd(new Date()),yest=ymd(new Date(Date.now()-864e5));
@@ -8348,9 +8367,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     });
     [].slice.call(grid.querySelectorAll('.jb-day')).forEach(function(h){var n=perDay[h.getAttribute('data-d')];if(n){var em=document.createElement('em');em.textContent=n+(n===1?' role':' roles');h.appendChild(em);}});
     /* one ERJ help card after every twelfth visible role, rotating through the five parts */
-    var tpl=document.getElementById('jbPromos'),pr=tpl?[].slice.call(tpl.content.children):[];
-    if(pr.length){var vis=cards.filter(function(c){return !c.classList.contains('jb-hide');}),k=0;
-      for(var i=12;i<vis.length;i+=12){var el=pr[k++%pr.length].cloneNode(true);grid.insertBefore(el,vis[i]);}}
+    var tpl=document.getElementById('jbPromos'),all=tpl?[].slice.call(tpl.content.children):[];
+    var aff=all.filter(function(x){return x.classList.contains('jb-aff')&&x.querySelector('a').getAttribute('href').indexOf('http')===0;});
+    var pr=all.filter(function(x){return !x.classList.contains('jb-aff');});
+    if(pr.length){var vis=cards.filter(function(c){return !c.classList.contains('jb-hide');}),k=VISIT*3,n=0;
+      for(var i=4;i<vis.length;i+=4){n++;var src=(aff.length&&n%5===3)?aff[0]:pr[k++%pr.length];grid.insertBefore(src.cloneNode(true),vis[i]);}}
     more.classList.toggle('jb-hide',match<=shown);more.textContent='Show more roles ('+(match-shown)+' left)';
     none.classList.toggle('jb-hide',match>0);
     result.textContent=(fam||term||onlyNew)?(match+(match===1?' role matches':' roles match')+(fam?' in '+fam:'')):'';
@@ -8483,6 +8504,67 @@ body.sticky-on .jbi{bottom:96px;}
   if(/iphone|ipad|ipod/i.test(navigator.userAgent)&&!/crios|fxios/i.test(navigator.userAgent)){
     box.querySelector('.jbi-go').textContent='How?'; soon();
   }
+})();
+</script>
+<!-- One offer per visit, rotating: a small card that slides in once a visit,
+     after the visitor has been reading for a while. Never on top of the install card. -->
+<style id="jbOfferCSS">
+.jbo{position:fixed;left:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:940;width:min(360px,calc(100vw - 32px));transform:translateY(160%);
+  transition:transform .5s cubic-bezier(.22,1,.36,1);border-radius:20px;overflow:hidden;background:#111;color:#fff;border:1px solid rgba(255,87,34,.6);
+  box-shadow:0 24px 60px rgba(0,0,0,.5);font-family:Inter,system-ui,sans-serif;}
+html[data-theme="day"] .jbo{background:#fff;color:#14110E;box-shadow:0 20px 50px rgba(20,17,14,.2);}
+.jbo.on{transform:none;}
+.jbo a{display:grid;grid-template-columns:72px 1fr;gap:.85rem;padding:1rem 1rem 1.05rem;text-decoration:none;color:inherit;}
+.jbo img,.jbo .jbo-ic{width:72px;height:72px;border-radius:14px;object-fit:cover;display:flex;align-items:center;justify-content:center;font-size:2rem;background:rgba(255,87,34,.14);}
+.jbo small{display:block;font-size:.6rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#FF5722;margin-bottom:.2rem;}
+.jbo b{display:block;font-family:'Space Grotesk',system-ui,sans-serif;font-size:1.05rem;line-height:1.25;margin-bottom:.3rem;}
+.jbo p{margin:0 0 .65rem;font-size:.8rem;line-height:1.45;opacity:.8;}
+.jbo .jbo-btn{display:inline-flex;padding:.5rem .9rem;border-radius:999px;background:#FF5722;color:#fff;font-weight:700;font-size:.8rem;}
+.jbo-x{position:absolute;top:8px;right:8px;width:26px;height:26px;border-radius:50%;border:0;background:rgba(255,255,255,.12);color:inherit;cursor:pointer;font-size:.8rem;}
+html[data-theme="day"] .jbo-x{background:rgba(20,17,14,.08);}
+@media(max-width:560px){.jbo{left:12px;right:12px;width:auto;}.jbo a{grid-template-columns:56px 1fr;gap:.7rem;padding:.85rem;}.jbo img,.jbo .jbo-ic{width:56px;height:56px;}.jbo p{display:none;}.jbo b{font-size:.98rem;margin-bottom:.5rem;}}
+@media(prefers-reduced-motion:reduce){.jbo{transition:none;}}
+</style>
+<div class="jbo" id="jbOffer" role="complementary" aria-label="Offer" aria-hidden="true" inert=""></div>
+<script>
+(function(){
+  var box=document.getElementById('jbOffer'); if(!box) return;
+  /* intent first; Foundation Training comes round every other visit */
+  var O=[
+    {k:'Foundation Training',i:'foundation.webp',t:'Want a second income, earned remotely?',p:'Twenty live days build the CV, portfolio and interview answer remote employers hire on. Start dates to January.',c:'See Foundation Training',h:'../foundationtraining/'},
+    {k:'Free · under a minute',e:'📄',t:'Is your CV why nobody replies?',p:'Score it against ten points on your own device. Every miss comes with its fix.',c:'Scan my CV free',h:'../cvscan/'},
+    {k:'Foundation Training',i:'foundation.webp',t:'Ready to work for a UK or US company from here?',p:'Live classes, your work marked by a person, and a certificate at the end. Register forward for a later date if this month is full.',c:'Choose a start date',h:'../foundationtraining/#pricing'},
+    {k:'Stage 4 · ₦100,000',i:'stage4.webp',t:'Make every application on this board stronger.',p:'CV, LinkedIn, portfolio and a recorded interview answer, built in five live days.',c:'See Stage 4',h:'../register.html#stage4'},
+    {k:'Foundation Training',i:'foundation.webp',t:'Stop applying. Start getting picked.',p:'Twenty days building what remote employers read. Marked by a person, certificate at the end.',c:'See Foundation Training',h:'../foundationtraining/'},
+    {k:'Stage 2 · ₦130,000',i:'stage2.webp',t:'Use Zoom, Asana and AI tools like a remote pro.',p:'The Digital Toolkit, in five live days.',c:'See Stage 2',h:'../register.html#stage2'},
+    {k:'Foundation Training',i:'foundation.webp',t:'Your next twenty days will pass anyway.',p:'Spend them building proof global employers hire on.',c:'See Foundation Training',h:'../foundationtraining/'},
+    {k:'Stage 1 · ₦70,000',i:'stage1.webp',t:'Work like someone already hired remotely.',p:'Deep work, daily KPIs and end-of-day reports: the Remote Mindset Blueprint.',c:'See Stage 1',h:'../register.html#stage1'}
+  ];
+  var visit=0,seen=false;
+  try{
+    seen=sessionStorage.getItem('erj-jb-offer')==='1';
+    if(!sessionStorage.getItem('erj-jb-counted')){visit=(+localStorage.getItem('erj-jb-visits')||0)+1;localStorage.setItem('erj-jb-visits',String(visit));sessionStorage.setItem('erj-jb-counted','1');}
+    else visit=+localStorage.getItem('erj-jb-visits')||1;
+  }catch(e){}
+  if(seen) return;
+  var o=O[(Math.max(visit,1)-1)%O.length];
+  box.innerHTML='<a href="'+o.h+'">'+(o.i?'<img alt="" height="72" width="72" src="../shop/'+o.i+'">':'<span class="jbo-ic" aria-hidden="true">'+o.e+'</span>')+
+    '<span><small></small><b></b><p></p><span class="jbo-btn"></span></span></a><button class="jbo-x" type="button" aria-label="Close">✕</button>';
+  box.querySelector('small').textContent=o.k;box.querySelector('b').textContent=o.t;box.querySelector('p').textContent=o.p;box.querySelector('.jbo-btn').textContent=o.c+' →';
+  function hide(){box.classList.remove('on');box.setAttribute('aria-hidden','true');box.setAttribute('inert','');}
+  box.querySelector('.jbo-x').addEventListener('click',hide);
+  box.querySelector('a').addEventListener('click',function(){try{if(window.erjTrack)erjTrack('Lead',{content_name:'Job board offer: '+o.c});}catch(e){}});
+  var read=false,timeUp=false;
+  function tryShow(){
+    if(!read||!timeUp) return;
+    var inst=document.getElementById('jbInstall');
+    if(inst&&inst.classList.contains('on')){setTimeout(tryShow,4000);return;}
+    box.classList.add('on');box.setAttribute('aria-hidden','false');box.removeAttribute('inert');
+    try{sessionStorage.setItem('erj-jb-offer','1');}catch(e){}
+    setTimeout(hide,20000);
+  }
+  addEventListener('scroll',function s(){if(scrollY>500){read=true;removeEventListener('scroll',s);tryShow();}},{passive:true});
+  setTimeout(function(){timeUp=true;tryShow();},15000);
 })();
 </script>
 <script defer="" src="../erj-alive.js?v=20261004a"></script>
