@@ -135,8 +135,18 @@
 .jb-aff .jb-ad-t small{color:#F89406;}
 .jb-aff .jb-ad-btn{background:#F68B1E;}
 .jb-jm{background:rgba(248,148,6,.16)!important;}
-.jb-jm-row{display:flex!important;flex-wrap:wrap;gap:.35rem;margin-top:.5rem;}
-.jb-jm-row i{font-style:normal;font-size:.72rem;padding:.25rem .55rem;border-radius:999px;border:1px solid var(--line);color:var(--ink,inherit);}
+.jb-jm-in:hover{transform:none;}
+.jb-jm-f{display:flex!important;gap:.4rem;margin:.6rem 0 .5rem;max-width:520px;}
+.jb-jm-f input[type=search]{flex:1;min-width:0;padding:.6rem .9rem;border-radius:999px;border:1px solid var(--line);background:var(--bg,transparent);color:inherit;font:inherit;font-size:.86rem;}
+.jb-jm-f input:focus{outline:none;border-color:#F68B1E;}
+.jb-jm-f button{border:0;cursor:pointer;padding:.6rem 1rem;border-radius:999px;background:#F68B1E;color:#fff;font:700 .84rem/1 inherit;}
+.jb-jm-row{display:flex!important;flex-wrap:wrap;gap:.35rem;}
+.jb-jm-row a{font-size:.74rem;padding:.3rem .65rem;border-radius:999px;border:1px solid var(--line);color:inherit;text-decoration:none;}
+.jb-jm-row a:hover{border-color:#F68B1E;color:#F68B1E;}
+.jb-jm-pick{display:flex;flex-direction:column;align-items:flex-end;text-decoration:none;color:inherit;font-weight:700;font-size:.86rem;}
+.jb-jm-pick em{font-style:normal;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:#F68B1E;}
+.jb-ad-btn{text-decoration:none;}
+@media(max-width:640px){.jb-jm-in{grid-template-columns:1fr;}.jb-jm-in>.jb-ad-ic{display:none;}.jb-jm-f input[type=search]{font-size:16px;}}
 .jb-aff-note{display:block;font-size:.66rem;color:var(--ink-faint,#8a8a8a);margin:.35rem .4rem 0;}
 @media(max-width:640px){.jb-ad-in{grid-template-columns:auto minmax(0,1fr);}.jb-ad-in img,.jb-ad-ic{width:64px;height:64px;font-size:1.8rem;}
   .jb-ad-go{grid-column:1/-1;flex-direction:row;justify-content:space-between;align-items:center;}}
@@ -8278,7 +8288,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <aside class="jb-promo jb-ad" data-ad="stage3"><a class="jb-ad-in" href="../register.html#stage3"><img alt="" height="300" loading="lazy" src="../shop/stage3.webp" width="300"/><span class="jb-ad-t"><small>Stage 3 · 5 days</small><b>Write so a team in another time zone can rely on you.</b><span>Async Communication Mastery: emails, updates and messages that need no follow-up.</span></span><span class="jb-ad-go"><em class="jb-ad-p">₦70,000</em><span class="jb-ad-btn">See Stage 3 →</span></span></a></aside>
 <aside class="jb-promo jb-ad" data-ad="intentbook"><a class="jb-ad-in" href="../fromintenttooffer/"><img alt="" height="300" loading="lazy" src="../shop/intentbook-centred.webp" width="300"/><span class="jb-ad-t"><small>The method, written down</small><b>From intent to a signed offer, step by step.</b><span>The book behind the programme: aim, apply, interview and negotiate.</span></span><span class="jb-ad-go"><em class="jb-ad-p">₦15,000</em><span class="jb-ad-btn">See From Intent to Offer →</span></span></a></aside>
 <aside class="jb-promo jb-ad" data-ad="diagnose"><a class="jb-ad-in" href="../diagnose/"><span class="jb-ad-ic" aria-hidden="true">🧭</span><span class="jb-ad-t"><small>Free · 90 seconds</small><b>Not sure which of these to apply for?</b><span>Five questions tell you which part of your search is breaking first.</span></span><span class="jb-ad-go"><em class="jb-ad-p is-free">Free</em><span class="jb-ad-btn">Find what is holding me back →</span></span></a></aside>
-<aside class="jb-promo jb-ad jb-aff" data-ad="jumia"><a class="jb-ad-in" href="JUMIA_AFFILIATE_LINK" target="_blank" rel="sponsored noopener"><span class="jb-ad-ic jb-jm" aria-hidden="true">🛒</span><span class="jb-ad-t"><small>Partner · Jumia</small><b>Set up your remote desk.</b><span>Laptops, headsets, power banks, routers and ring lights, delivered across Nigeria.</span><span class="jb-jm-row"><i>💻 Laptops</i><i>🎧 Headsets</i><i>🔋 Power</i><i>📶 Internet</i></span></span><span class="jb-ad-go"><em class="jb-ad-p">Jumia</em><span class="jb-ad-btn">Shop on Jumia →</span></span></a><small class="jb-aff-note">Affiliate link: ERJ may earn a commission, at no cost to you.</small></aside>
+<aside class="jb-promo jb-ad jb-aff" data-ad="jumia"><div class="jb-ad-in jb-jm-in"><span class="jb-ad-ic jb-jm" aria-hidden="true">🛒</span><span class="jb-ad-t"><small>Partner · Jumia</small><b>Set up your remote desk.</b><span>Search Jumia for anything you need. Delivered across Nigeria.</span><form class="jb-jm-f" action="https://www.jumia.com.ng/catalog/" method="get" target="_blank" rel="sponsored noopener"><input name="q" type="search" placeholder="Search Jumia: headset, laptop, power bank…" aria-label="Search Jumia" required><input name="s" type="hidden" value="rbh6RDA"><button type="submit">Search</button></form><span class="jb-jm-row" data-jm-chips><a href="https://www.jumia.com.ng/catalog/?q=headset&amp;s=rbh6RDA" target="_blank" rel="sponsored noopener">🎧 Headsets</a><a href="https://www.jumia.com.ng/catalog/?q=laptop&amp;s=rbh6RDA" target="_blank" rel="sponsored noopener">💻 Laptops</a><a href="https://www.jumia.com.ng/catalog/?q=power+bank&amp;s=rbh6RDA" target="_blank" rel="sponsored noopener">🔋 Power banks</a><a href="https://www.jumia.com.ng/catalog/?q=mifi+router&amp;s=rbh6RDA" target="_blank" rel="sponsored noopener">📶 Internet</a></span></span><span class="jb-ad-go"><a class="jb-jm-pick" href="https://www.jumia.com.ng/emeet-hs50-wired-headset-419565273.html?s=rbh6RDA" target="_blank" rel="sponsored noopener"><em>Pick for calls</em>EMEET HS50 headset</a><a class="jb-ad-btn" href="https://www.jumia.com.ng/?s=rbh6RDA" target="_blank" rel="sponsored noopener">Shop on Jumia →</a></span></div><small class="jb-aff-note">Affiliate links: ERJ may earn a commission when you buy, at no cost to you.</small></aside>
 </template>
 <div class="jb-sheet" id="jbSheet" hidden role="dialog" aria-modal="true" aria-labelledby="jbSheetT">
   <div class="jb-sheet-in">
@@ -8368,14 +8378,25 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     [].slice.call(grid.querySelectorAll('.jb-day')).forEach(function(h){var n=perDay[h.getAttribute('data-d')];if(n){var em=document.createElement('em');em.textContent=n+(n===1?' role':' roles');h.appendChild(em);}});
     /* one ERJ help card after every twelfth visible role, rotating through the five parts */
     var tpl=document.getElementById('jbPromos'),all=tpl?[].slice.call(tpl.content.children):[];
-    var aff=all.filter(function(x){return x.classList.contains('jb-aff')&&x.querySelector('a').getAttribute('href').indexOf('http')===0;});
+    var aff=all.filter(function(x){return x.classList.contains('jb-aff')&&x.querySelector('a[href*="s="]');});
     var pr=all.filter(function(x){return !x.classList.contains('jb-aff');});
     if(pr.length){var vis=cards.filter(function(c){return !c.classList.contains('jb-hide');}),k=VISIT*3,n=0;
-      for(var i=4;i<vis.length;i+=4){n++;var src=(aff.length&&n%5===3)?aff[0]:pr[k++%pr.length];grid.insertBefore(src.cloneNode(true),vis[i]);}}
+      for(var i=4;i<vis.length;i+=4){n++;var isAff=aff.length&&n%5===3,src=isAff?aff[0]:pr[k++%pr.length],el=src.cloneNode(true);if(isAff)jmFit(el,vis[i-1].getAttribute('data-family'));grid.insertBefore(el,vis[i]);}}
     more.classList.toggle('jb-hide',match<=shown);more.textContent='Show more roles ('+(match-shown)+' left)';
     none.classList.toggle('jb-hide',match>0);
     result.textContent=(fam||term||onlyNew)?(match+(match===1?' role matches':' roles match')+(fam?' in '+fam:'')):'';
     observe();
+  }
+  /* Jumia card: lead with the kit the role just above it needs */
+  function jmFit(el,f){
+    var row=el.querySelector('[data-jm-chips]');if(!row)return;var S='rbh6RDA',L={
+      'Tech & IT':[['💻 Laptops','laptop'],['🖥️ Monitors','monitor'],['🔋 Power banks','power+bank'],['📶 Internet','mifi+router']],
+      'Customer Service & Success':[['🎧 Headsets','headset'],['📶 Internet','mifi+router'],['🔋 Power banks','power+bank'],['💻 Laptops','laptop']],
+      'Virtual Assistant & Admin':[['🎧 Headsets','headset'],['💻 Laptops','laptop'],['🔋 Power banks','power+bank'],['📶 Internet','mifi+router']],
+      'Marketing & Creative':[['💡 Ring lights','ring+light'],['🎙️ Microphones','usb+microphone'],['💻 Laptops','laptop'],['🔋 Power banks','power+bank']],
+      'Tutoring & Teaching':[['📷 Webcams','webcam'],['🎧 Headsets','headset'],['💡 Ring lights','ring+light'],['🔋 Power banks','power+bank']]
+    }[f];if(!L)return;
+    row.innerHTML='';L.forEach(function(c){var a=document.createElement('a');a.href='https://www.jumia.com.ng/catalog/?q='+c[1]+'&s='+S;a.target='_blank';a.rel='sponsored noopener';a.textContent=c[0];row.appendChild(a);});
   }
   function setFam(f,scroll){
     fam=f||'';limit=PAGE;
