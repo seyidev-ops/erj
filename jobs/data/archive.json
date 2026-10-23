@@ -6666,6 +6666,64 @@
    "direct": true,
    "closed": "2026-10-23",
    "closed_reason": "employer page closed"
+  },
+  {
+   "id": "78b3d099c8",
+   "title": "Head of Growth Marketing",
+   "company": "Jobgether partner",
+   "region": "Nigeria",
+   "type": "Full-Time",
+   "experience": "6+ years",
+   "salary": "$600 per year",
+   "bullets": [
+    "Own paid user acquisition across Meta, Google, TikTok, Snapchat, and relevant advertising networks, managing budgets",
+    "Develop and execute comprehensive CRM and lifecycle marketing strategies covering customer segmentation, onboarding, repeat purchases",
+    "Manage lifecycle communications across push notifications, email, SMS, and WhatsApp to improve customer engagement, retention",
+    "Lead app store optimization initiatives and improve conversion rates from storefront visits to first purchases"
+   ],
+   "apply": "https://jobs.lever.co/jobgether/5109f8ee-e8e8-475f-9e49-1e2715823f2f",
+   "posted": "2026-10-16",
+   "deadline": null,
+   "checked": "2026-10-23",
+   "added": "2026-10-16",
+   "listed": "2026-10-16",
+   "source": "Lever",
+   "origin": "feed",
+   "ats_id": "5109f8ee-e8e8-475f-9e49-1e2715823f2f",
+   "family": "Marketing & Creative",
+   "why": "Open to candidates in Nigeria by name, and pays in foreign currency ($600 per year). You apply directly on the employer's own page.",
+   "direct": true,
+   "closed": "2026-10-23",
+   "closed_reason": "employer page closed"
+  },
+  {
+   "id": "105b475d74",
+   "title": "Senior Software Engineer, AI Evaluation Infrastructure",
+   "company": "Turing",
+   "region": "Global - Remote / Global - Remote",
+   "type": "Not stated",
+   "experience": "5+ years",
+   "salary": "Undisclosed",
+   "bullets": [
+    "Typically 5+ years building and operating production backend systems, with ownership of at least one service from design through on-call",
+    "Strong Python",
+    "Hands-on experience in LLM evaluation, beyond calling a model API",
+    "Judgment about task quality"
+   ],
+   "apply": "https://job-boards.greenhouse.io/turing/jobs/6225409004",
+   "posted": "2026-10-19",
+   "deadline": null,
+   "checked": "2026-10-23",
+   "added": "2026-10-20",
+   "listed": "2026-10-20",
+   "source": "Greenhouse",
+   "origin": "feed",
+   "ats_id": "6225409004",
+   "family": "Tech & IT",
+   "why": "Open worldwide with no country exclusion, so you can apply from Nigeria. You apply directly on the employer's own page.",
+   "direct": true,
+   "closed": "2026-10-23",
+   "closed_reason": "employer page closed"
   }
  ]
 }
