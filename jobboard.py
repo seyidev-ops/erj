@@ -923,6 +923,14 @@ def cmd_inbox(cfg):
         p = os.path.join(INBOX, f)
         if not os.path.isfile(p) or not f.lower().endswith((".xlsx", ".csv")) or f.startswith(("~$", ".")):
             continue
+        # A file named after-YYYY-MM-DDTHH_....xlsx waits in the inbox until that hour (WAT),
+        # so one sheet can be split between the morning and the evening run.
+        hold = re.match(r"after-(\d{4}-\d{2}-\d{2})(?:T(\d{2}))?", f, re.I)
+        if hold:
+            at = dt.datetime.fromisoformat(hold.group(1) + "T" + (hold.group(2) or "00") + ":00:00+01:00")
+            if dt.datetime.now(dt.timezone.utc) < at:
+                print(f"inbox: {f}: held until {at.isoformat()}")
+                continue
         # A file named ..._ALL.xlsx or ..._BACKFILL.xlsx imports every eligible row, whatever its date.
         everything = re.search(r"(^|[_\- ])(all|backfill)([_\- .]|$)", f, re.I)
         added, skipped = import_sheet(p, cfg, window_days=None if everything else cfg["sheet_window_days"])
