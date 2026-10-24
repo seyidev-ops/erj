@@ -10185,6 +10185,60 @@
    "family": "Executive & Operations",
    "why": "Open worldwide with no country exclusion, so you can apply from Nigeria, and pays in foreign currency ($168,000-$198,000.).",
    "direct": false
+  },
+  {
+   "id": "4958c8fe22",
+   "title": "Data API Engineer",
+   "company": "Supabase",
+   "region": "Remote, Global",
+   "type": "Full-Time",
+   "experience": "3+ years",
+   "salary": "Undisclosed",
+   "bullets": [
+    "Strong Haskell skills with at least 3 years of experience",
+    "Experience using the C language",
+    "Solid knowledge of SQL and plpgsql scripting in PostgreSQL",
+    "Strong experience with providing technical support to users with varying levels of technical expertise"
+   ],
+   "apply": "https://jobs.ashbyhq.com/supabase/950e8ffc-79a5-4626-b1dd-115fcbcddad0",
+   "posted": "2026-10-24",
+   "deadline": null,
+   "checked": "2026-10-24",
+   "added": "2026-10-24",
+   "listed": "2026-10-24",
+   "source": "Ashby",
+   "origin": "feed",
+   "ats_id": "950e8ffc-79a5-4626-b1dd-115fcbcddad0",
+   "family": "Data & Product",
+   "why": "Open worldwide with no country exclusion, so you can apply from Nigeria. You apply directly on the employer's own page.",
+   "direct": true
+  },
+  {
+   "id": "f19b077fa1",
+   "title": "Software Engineer - Storage",
+   "company": "Supabase",
+   "region": "Remote, Global",
+   "type": "Full-Time",
+   "experience": "5+ years",
+   "salary": "Undisclosed",
+   "bullets": [
+    "Prior experience working on developer tools",
+    "Solid knowledge of cloud infrastructure (AWS, GCP or Azure) and containerization (Docker, Kubernetes)",
+    "Direct experience designing and operating large file upload/download pipelines at scale",
+    "Deep, practical CDN integration and optimization knowledge"
+   ],
+   "apply": "https://jobs.ashbyhq.com/supabase/9f2ba0b2-6d3b-43ea-990f-5b4bf3930520",
+   "posted": "2026-10-24",
+   "deadline": null,
+   "checked": "2026-10-24",
+   "added": "2026-10-24",
+   "listed": "2026-10-24",
+   "source": "Ashby",
+   "origin": "feed",
+   "ats_id": "9f2ba0b2-6d3b-43ea-990f-5b4bf3930520",
+   "family": "Tech & IT",
+   "why": "Open worldwide with no country exclusion, so you can apply from Nigeria. You apply directly on the employer's own page.",
+   "direct": true
   }
  ]
 }
