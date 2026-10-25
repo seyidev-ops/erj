@@ -10088,6 +10088,60 @@
    "id": "a8aeec549d",
    "added": "2026-10-25",
    "direct": false
+  },
+  {
+   "id": "2b7f300f7e",
+   "title": "Creative Designer (BBS879)",
+   "company": "Hire Overseas",
+   "region": "Remote — Lagos, Nigeria",
+   "type": "Full-Time",
+   "experience": "Not stated",
+   "salary": "Undisclosed",
+   "bullets": [
+    "Proven design experience with a portfolio showing finished work across multiple formats including paid ad creative, social content",
+    "Proficiency in Figma and Adobe Creative Suite including Illustrator, Photoshop, and InDesign",
+    "Ability to work within and across multiple brand systems simultaneously without drifting from any of them",
+    "Strong understanding of visual hierarchy, typography, and layout with an eye for what makes design effective in a performance context"
+   ],
+   "apply": "https://apply.workable.com/j/4315023086",
+   "posted": "2026-10-15",
+   "deadline": null,
+   "checked": "2026-10-25",
+   "added": "2026-10-25",
+   "listed": "2026-10-25",
+   "source": "Workable",
+   "origin": "feed",
+   "ats_id": null,
+   "family": "Marketing & Creative",
+   "why": "Open to candidates in Nigeria by name. You apply directly on the employer's own page.",
+   "direct": true
+  },
+  {
+   "id": "d2950fc2a6",
+   "title": "Security Engineer",
+   "company": "Metabase",
+   "region": "Global Remote",
+   "type": "Full-Time",
+   "experience": "Not stated",
+   "salary": "Undisclosed",
+   "bullets": [
+    "A demonstrated track record of finding and exploiting application vulnerabilities through source code analysis and hands-on research",
+    "The ability to independently navigate unfamiliar codebases, understand complex architectures, and reason about runtime behavior",
+    "Experience with application security challenges, including authentication, authorization, injection, and unsafe handling of untrusted data",
+    "Sound judgment about exploitability and real-world impact, and the ability to communicate findings and remediation options clearly"
+   ],
+   "apply": "https://jobs.lever.co/metabase/a0196239-ed3e-4bb0-9760-a52c2fcc0e21",
+   "posted": "2026-10-14",
+   "deadline": null,
+   "checked": "2026-10-25",
+   "added": "2026-10-25",
+   "listed": "2026-10-25",
+   "source": "Lever",
+   "origin": "feed",
+   "ats_id": "a0196239-ed3e-4bb0-9760-a52c2fcc0e21",
+   "family": "Tech & IT",
+   "why": "Open worldwide with no country exclusion, so you can apply from Nigeria. You apply directly on the employer's own page.",
+   "direct": true
   }
  ]
 }
