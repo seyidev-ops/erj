@@ -134,7 +134,9 @@
   "chipper": "Chipper Cash",
   "remote-crew": "Remote Crew",
   "arc": "Arc",
-  "awesomic": "Awesomic"
+  "awesomic": "Awesomic",
+  "growetalents": "Growe",
+  "hire-overseas": "Hire Overseas"
  },
  "feeds": {
   "enabled": true,
@@ -273,7 +275,14 @@
  "company_daily_caps": {},
  "company_max_age_days": {
   "micro1": 30,
-  "mercor": 30
+  "mercor": 30,
+  "Metabase": 45,
+  "Growe": 45,
+  "Growetalents": 45,
+  "Growe Talents": 45,
+  "GROWE": 45,
+  "Hire Overseas": 45,
+  "Hire-Overseas": 45
  },
  "indirect_domains": [
   "weworkremotely.com",
