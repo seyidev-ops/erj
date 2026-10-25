@@ -261,7 +261,10 @@
    "note": "Every Mercor role on the board and in ERJ sheets must link through this referral link. Mercor roles come in through the ERJ search sheets (Mercor tab) unless jobboard.py adds a Mercor fetcher.",
    "fetch": false,
    "referral_code": "f4814dcf-ca47-478c-a846-a7921dbe7bb3"
-  }
+  },
+  "sitepages": [
+   "https://www.vtnation.com/careers/"
+  ]
  },
  "company_daily_caps": {},
  "company_max_age_days": {

@@ -1139,6 +1139,75 @@ def feed_workable(slug):
         }
 
 
+def feed_sitepages(base):
+    """Company careers pages on their own website (no ATS). Job pages are found
+    through the site's sitemap (or links on the careers page) and read from the
+    schema.org JobPosting each page carries. Closed pages are skipped."""
+    from urllib.parse import urljoin, urlparse
+    base = base if base.startswith("http") else "https://" + base
+    root = "{0.scheme}://{0.netloc}".format(urlparse(base))
+    path = urlparse(base).path.rstrip("/") or "/careers"
+    def get(u, n=800_000):
+        req = urllib.request.Request(u, headers={"User-Agent": BROWSER_UA})
+        with urllib.request.urlopen(req, timeout=25) as r:
+            return r.read(n).decode("utf-8", "replace")
+    urls = []
+    for sm in (root + "/sitemap.xml", root + "/sitemap_index.xml"):
+        try:
+            xml = get(sm)
+        except Exception:
+            continue
+        locs = re.findall(r"<loc>\s*([^<\s]+)\s*</loc>", xml)
+        for sub in [l for l in locs if l.endswith(".xml")][:5]:
+            try:
+                locs += re.findall(r"<loc>\s*([^<\s]+)\s*</loc>", get(sub))
+            except Exception:
+                pass
+        urls += [l for l in locs if urlparse(l).path.rstrip("/").startswith(path + "/")]
+        if urls:
+            break
+    if not urls:
+        page = get(base)
+        urls = [urljoin(base, h) for h in re.findall(r'href="([^"#?]+)"', page)
+                if urlparse(urljoin(base, h)).path.rstrip("/").startswith(path + "/")]
+    seen = set()
+    for u in urls[:40]:
+        if u in seen:
+            continue
+        seen.add(u)
+        try:
+            page = get(u)
+        except Exception:
+            continue
+        if re.search(r"no longer accepting applications|position (has been|is) (filled|closed)|this (job|role) is closed", page, re.I):
+            continue
+        for block in re.findall(r'(?is)<script[^>]+application/ld\+json[^>]*>(.*?)</script>', page):
+            try:
+                data = json.loads(block.strip())
+            except Exception:
+                continue
+            items = data if isinstance(data, list) else data.get("@graph", [data]) if isinstance(data, dict) else []
+            for x in items:
+                if not isinstance(x, dict) or x.get("@type") != "JobPosting":
+                    continue
+                vt = parse_date(x.get("validThrough"))
+                if vt and vt < today():
+                    continue
+                req_locs = x.get("applicantLocationRequirements") or []
+                req_locs = req_locs if isinstance(req_locs, list) else [req_locs]
+                names = [clean(l.get("name") if isinstance(l, dict) else l) for l in req_locs]
+                remote = str(x.get("jobLocationType", "")).upper() == "TELECOMMUTE"
+                where = " / ".join(n for n in names if n)
+                org = x.get("hiringOrganization") or {}
+                yield {
+                    "title": x.get("title"), "company": (org.get("name") if isinstance(org, dict) else org) or urlparse(root).netloc,
+                    "location": ("Remote — " if remote else "") + (where or ("Worldwide" if remote and not names else "")),
+                    "desc": x.get("description") or "", "type": job_type(str(x.get("employmentType") or "")),
+                    "posted": parse_date(x.get("datePosted")), "deadline": vt,
+                    "apply": u, "source": "Company site", "remote": remote,
+                }
+
+
 def iter_feeds(cfg, log):
     f = cfg["feeds"]
     jobs = []
@@ -1160,6 +1229,8 @@ def iter_feeds(cfg, log):
         plan.append((f"breezy:{b}", lambda n=b: feed_breezy(n)))
     for b in f.get("workable", []):
         plan.append((f"workable:{b}", lambda n=b: feed_workable(n)))
+    for b in f.get("sitepages", []):
+        plan.append((f"site:{b}", lambda n=b: feed_sitepages(n)))
     if (f.get("micro1") or {}).get("fetch") and f["micro1"].get("referral_code"):
         plan.append(("micro1", lambda c=f["micro1"]["referral_code"]: feed_micro1(c)))
 
