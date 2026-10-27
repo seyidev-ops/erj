@@ -1147,30 +1147,6 @@
    "direct": true
   },
   {
-   "title": "Senior Backend Engineer — Asset Sales",
-   "company": "M-KOPA",
-   "region": "Nairobi, Accra, Cape Town, Johannesburg, Kampala, Lagos (fully remote)",
-   "type": "Not stated",
-   "experience": "Senior",
-   "salary": "Undisclosed",
-   "bullets": [
-    "Backend engineering",
-    "Core GMT hours"
-   ],
-   "why": "Open to candidates in Nigeria by name. You apply directly on the employer's own page.",
-   "apply": "https://jobs.ashbyhq.com/M-KOPA/0c0fdef0-61b7-4f7d-bd56-c09d66471396",
-   "family": "Sales & Accounts",
-   "posted": "2026-09-30",
-   "deadline": null,
-   "checked": "2026-10-27",
-   "listed": "2026-10-07",
-   "source": "ERJ research",
-   "origin": "sheet",
-   "id": "b7ff203be5",
-   "added": "2026-10-07",
-   "direct": true
-  },
-  {
    "id": "6faa7fcee5",
    "title": "Graphic Designer",
    "company": "Micro1",
@@ -4262,32 +4238,6 @@
    "direct": true
   },
   {
-   "title": "Senior Backend Engineer - Mobility (12-month FTC)",
-   "company": "M-KOPA",
-   "region": "Fully remote within UTC-1 to UTC+3; listed Lagos, Accra, Nairobi, Kampala, Cape Town, Johannesburg",
-   "type": "Not stated",
-   "experience": "Senior",
-   "salary": "Not listed",
-   "bullets": [
-    "C#/.NET",
-    "Event-driven microservices (Service Bus/Kafka)",
-    "Azure",
-    "Kubernetes"
-   ],
-   "why": "Open to candidates in Nigeria by name. You apply directly on the employer's own page.",
-   "apply": "https://jobs.ashbyhq.com/m-kopa/121d269d-f893-4e4c-9a88-eae3f6c5c917",
-   "family": "Tech & IT",
-   "posted": "2026-10-09",
-   "deadline": null,
-   "checked": "2026-10-27",
-   "listed": "2026-10-10",
-   "source": "ERJ research",
-   "origin": "sheet",
-   "id": "bc6ae77534",
-   "added": "2026-10-10",
-   "direct": true
-  },
-  {
    "title": "Production Manager",
    "company": "Scale Army",
    "region": "Egypt, Argentina, Ethiopia, Nigeria, South Africa",
@@ -6724,32 +6674,6 @@
    "family": "Virtual Assistant & Admin",
    "why": "Open worldwide with no country exclusion, so you can apply from Nigeria. Part-time, so it can sit beside a current job.",
    "direct": true
-  },
-  {
-   "title": "Paralegal with a Passion for Customer Service (LegalTech)",
-   "company": "Codekeeper",
-   "region": "Worldwide (remote-first, no country restriction)",
-   "type": "Full-Time",
-   "experience": "Mid level",
-   "salary": "Undisclosed",
-   "bullets": [
-    "Draft customer agreements and reports",
-    "LegalTech familiarity and strong legal drafting",
-    "Customer-facing support and some sales support",
-    "Excellent written English, detail-oriented"
-   ],
-   "why": "Codekeeper (The Hague) is remote-first and hires across countries; the advert sets no location limit and asks your expected salary in your own currency. Open for about two months.",
-   "apply": "https://codekeeper.applytojob.com/apply/iN5RVrWvIf/Paralegal-With-A-Passion-For-Customer-Service-LegalTech",
-   "family": "Legal",
-   "posted": null,
-   "deadline": null,
-   "checked": "2026-10-27",
-   "listed": "2026-10-18",
-   "source": "ERJ research",
-   "origin": "sheet",
-   "id": "1e1aa491d3",
-   "added": "2026-10-18",
-   "direct": false
   },
   {
    "title": "QA & Verifications Specialist",
@@ -10413,6 +10337,114 @@
    "family": "Sales & Accounts",
    "why": "Open worldwide with no country exclusion, so you can apply from Nigeria.",
    "direct": false
+  },
+  {
+   "id": "f8db45b7fc",
+   "title": "Head of Personal Banking Sales Network",
+   "company": "Moniepoint",
+   "region": "Remote, Lagos, Nigeria / Moniepoint Headquaters",
+   "type": "Not stated",
+   "experience": "10–15 years",
+   "salary": "$182",
+   "bullets": [
+    "10 - 15 years in field sales leadership, with at least 5 years leading regional sales leaders",
+    "Direct experience running a distributed agent, agency or independent contractor network of significant scale",
+    "Proven ownership of a commission or incentive scheme, including designing it and defending its cost",
+    "Strong command of sales analytics: funnel conversion, productivity distribution, cohort based performance"
+   ],
+   "apply": "https://job-boards.eu.greenhouse.io/moniepoint/jobs/5017312101",
+   "posted": "2026-10-27",
+   "deadline": null,
+   "checked": "2026-10-27",
+   "added": "2026-10-27",
+   "listed": "2026-10-27",
+   "source": "Greenhouse",
+   "origin": "feed",
+   "ats_id": "5017312101",
+   "family": "Sales & Accounts",
+   "why": "Open to candidates in Nigeria by name, and pays in foreign currency ($182). You apply directly on the employer's own page.",
+   "direct": true
+  },
+  {
+   "id": "c9c6e3bf19",
+   "title": "Senior Corporate Counsel",
+   "company": "Jobgether partner",
+   "region": "Nigeria",
+   "type": "Full-Time",
+   "experience": "Not stated",
+   "salary": "USD 180,000–300,000",
+   "bullets": [
+    "Lead global securities law compliance and provide strategic guidance on corporate governance matters relevant to a late-stage private…",
+    "Manage the international subsidiary structure, including board meetings, corporate records, entity reorganizations",
+    "Support board governance by preparing agendas and materials, documenting meetings",
+    "Lead the legal execution of fundraising, M&A, financing, and other strategic transactions, ensuring appropriate risk management"
+   ],
+   "apply": "https://jobs.lever.co/jobgether/9c40a987-ab79-4d40-9040-70a39e17bc0a",
+   "posted": "2026-10-27",
+   "deadline": null,
+   "checked": "2026-10-27",
+   "added": "2026-10-27",
+   "listed": "2026-10-27",
+   "source": "Lever",
+   "origin": "feed",
+   "ats_id": "9c40a987-ab79-4d40-9040-70a39e17bc0a",
+   "family": "Legal",
+   "why": "Open to candidates in Nigeria by name, and pays in foreign currency (USD 180,000–300,000). You apply directly on the employer's own page.",
+   "direct": true
+  },
+  {
+   "id": "077518e9f3",
+   "title": "Senior Backend Engineer - Mobility",
+   "company": "M-KOPA",
+   "region": "Nairobi / Cape Town / Lagos / Kampala / Accra / Johannesburg",
+   "type": "Full-Time",
+   "experience": "Not stated",
+   "salary": "Undisclosed",
+   "bullets": [
+    "Strong grasp of C# .NET development",
+    "Experience with event-driven systems: Service Bus or similar messaging technologies such as Kafka or RabbitMQ",
+    "Microservices architecture experience",
+    "Experience with Azure, or other major cloud providers such as AWS or GCP"
+   ],
+   "apply": "https://jobs.ashbyhq.com/M-KOPA/4f814df8-71c1-4aef-99ca-4ca5e47dd266",
+   "posted": "2026-10-27",
+   "deadline": null,
+   "checked": "2026-10-27",
+   "added": "2026-10-27",
+   "listed": "2026-10-27",
+   "source": "Ashby",
+   "origin": "feed",
+   "ats_id": "4f814df8-71c1-4aef-99ca-4ca5e47dd266",
+   "family": "Tech & IT",
+   "why": "Open to candidates in Nigeria by name. You apply directly on the employer's own page.",
+   "direct": true
+  },
+  {
+   "id": "92e686f042",
+   "title": "Product Engineer (AI-Native)",
+   "company": "Social Discovery Group",
+   "region": "Worldwide",
+   "type": "Full-Time",
+   "experience": "3+ years",
+   "salary": "$5000",
+   "bullets": [
+    "Senior-level engineering background with experience owning a complex production system end-to-end: architecture, reliability",
+    "AI agents (Claude Code, Codex or similar) as your primary daily development tool",
+    "Strong ownership and an entrepreneurial mindset: you figure out on your own what needs to be done",
+    "A critical eye for AI-generated work: you quickly dig into agents' output, catch errors and choose the best solution"
+   ],
+   "apply": "https://social-discovery-ventures.breezy.hr/p/e5a41beaf52b01-product-engineer-ai-native",
+   "posted": "2026-10-27",
+   "deadline": null,
+   "checked": "2026-10-27",
+   "added": "2026-10-27",
+   "listed": "2026-10-27",
+   "source": "Breezy",
+   "origin": "feed",
+   "ats_id": "e5a41beaf52b01",
+   "family": "Tech & IT",
+   "why": "Open worldwide with no country exclusion, so you can apply from Nigeria, and pays in foreign currency ($5000). You apply directly on the employer's own page.",
+   "direct": true
   }
  ]
 }

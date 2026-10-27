@@ -7984,6 +7984,88 @@
    "direct": false,
    "closed": "2026-10-27",
    "closed_reason": "employer page closed"
+  },
+  {
+   "title": "Senior Backend Engineer — Asset Sales",
+   "company": "M-KOPA",
+   "region": "Nairobi, Accra, Cape Town, Johannesburg, Kampala, Lagos (fully remote)",
+   "type": "Not stated",
+   "experience": "Senior",
+   "salary": "Undisclosed",
+   "bullets": [
+    "Backend engineering",
+    "Core GMT hours"
+   ],
+   "why": "Open to candidates in Nigeria by name. You apply directly on the employer's own page.",
+   "apply": "https://jobs.ashbyhq.com/M-KOPA/0c0fdef0-61b7-4f7d-bd56-c09d66471396",
+   "family": "Sales & Accounts",
+   "posted": "2026-09-30",
+   "deadline": null,
+   "checked": "2026-10-27",
+   "listed": "2026-10-07",
+   "source": "ERJ research",
+   "origin": "sheet",
+   "id": "b7ff203be5",
+   "added": "2026-10-07",
+   "direct": true,
+   "closed": "2026-10-27",
+   "closed_reason": "employer page closed"
+  },
+  {
+   "title": "Senior Backend Engineer - Mobility (12-month FTC)",
+   "company": "M-KOPA",
+   "region": "Fully remote within UTC-1 to UTC+3; listed Lagos, Accra, Nairobi, Kampala, Cape Town, Johannesburg",
+   "type": "Not stated",
+   "experience": "Senior",
+   "salary": "Not listed",
+   "bullets": [
+    "C#/.NET",
+    "Event-driven microservices (Service Bus/Kafka)",
+    "Azure",
+    "Kubernetes"
+   ],
+   "why": "Open to candidates in Nigeria by name. You apply directly on the employer's own page.",
+   "apply": "https://jobs.ashbyhq.com/m-kopa/121d269d-f893-4e4c-9a88-eae3f6c5c917",
+   "family": "Tech & IT",
+   "posted": "2026-10-09",
+   "deadline": null,
+   "checked": "2026-10-27",
+   "listed": "2026-10-10",
+   "source": "ERJ research",
+   "origin": "sheet",
+   "id": "bc6ae77534",
+   "added": "2026-10-10",
+   "direct": true,
+   "closed": "2026-10-27",
+   "closed_reason": "employer page closed"
+  },
+  {
+   "title": "Paralegal with a Passion for Customer Service (LegalTech)",
+   "company": "Codekeeper",
+   "region": "Worldwide (remote-first, no country restriction)",
+   "type": "Full-Time",
+   "experience": "Mid level",
+   "salary": "Undisclosed",
+   "bullets": [
+    "Draft customer agreements and reports",
+    "LegalTech familiarity and strong legal drafting",
+    "Customer-facing support and some sales support",
+    "Excellent written English, detail-oriented"
+   ],
+   "why": "Codekeeper (The Hague) is remote-first and hires across countries; the advert sets no location limit and asks your expected salary in your own currency. Open for about two months.",
+   "apply": "https://codekeeper.applytojob.com/apply/iN5RVrWvIf/Paralegal-With-A-Passion-For-Customer-Service-LegalTech",
+   "family": "Legal",
+   "posted": null,
+   "deadline": null,
+   "checked": "2026-10-27",
+   "listed": "2026-10-18",
+   "source": "ERJ research",
+   "origin": "sheet",
+   "id": "1e1aa491d3",
+   "added": "2026-10-18",
+   "direct": false,
+   "closed": "2026-10-27",
+   "closed_reason": "employer page closed"
   }
  ]
 }
