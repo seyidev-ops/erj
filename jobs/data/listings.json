@@ -6804,32 +6804,6 @@
    "direct": false
   },
   {
-   "title": "Marketing Copywriter",
-   "company": "Codekeeper",
-   "region": "Worldwide (remote-first, no country restriction)",
-   "type": "Full-Time",
-   "experience": "Mid level",
-   "salary": "Undisclosed",
-   "bullets": [
-    "3+ years in copywriting or content marketing",
-    "Conversion-focused copy for landing pages and funnels",
-    "SEO, search intent and CRO know-how; AI tools",
-    "HubSpot and Figma a plus"
-   ],
-   "why": "Codekeeper (The Hague) is remote-first and hires across countries; the advert sets no location limit and asks your expected salary in your own currency. Open for about two months.",
-   "apply": "https://codekeeper.applytojob.com/apply/StzvKbOSO9/Marketing-Copywriter",
-   "family": "Marketing & Creative",
-   "posted": null,
-   "deadline": null,
-   "checked": "2026-10-27",
-   "listed": "2026-10-18",
-   "source": "ERJ research",
-   "origin": "sheet",
-   "id": "f83ed9030f",
-   "added": "2026-10-18",
-   "direct": false
-  },
-  {
    "id": "e13b565a6a",
    "title": "Sales Development Representative - Education Industry",
    "company": "Huzzle",
@@ -10384,6 +10358,60 @@
    "origin": "sheet",
    "id": "9282c22ca3",
    "added": "2026-10-27",
+   "direct": false
+  },
+  {
+   "id": "3646909fe4",
+   "title": "Senior IT Systems Engineer",
+   "company": "Upsun",
+   "region": "Anywhere in the World",
+   "type": "Full-Time",
+   "experience": "Not stated",
+   "salary": "Undisclosed",
+   "bullets": [
+    "Broad IT engineering experience",
+    "Depth in a core area",
+    "Device management deployment",
+    "Automation and scripting"
+   ],
+   "apply": "https://weworkremotely.com/remote-jobs/upsun-senior-it-systems-engineer",
+   "posted": "2026-10-27",
+   "deadline": null,
+   "checked": "2026-10-27",
+   "added": "2026-10-27",
+   "listed": "2026-10-27",
+   "source": "We Work Remotely",
+   "origin": "feed",
+   "ats_id": null,
+   "family": "Tech & IT",
+   "why": "Open worldwide with no country exclusion, so you can apply from Nigeria.",
+   "direct": false
+  },
+  {
+   "id": "70aecdd872",
+   "title": "Sales Enablement Manager",
+   "company": "Upsun",
+   "region": "Anywhere in the World",
+   "type": "Full-Time",
+   "experience": "Not stated",
+   "salary": "Undisclosed",
+   "bullets": [
+    "Enablement program experience",
+    "Sales or solutions engineering background",
+    "Builder mindset with AI",
+    "Clear thinking and measurement"
+   ],
+   "apply": "https://weworkremotely.com/remote-jobs/upsun-sales-enablement-manager",
+   "posted": "2026-10-27",
+   "deadline": null,
+   "checked": "2026-10-27",
+   "added": "2026-10-27",
+   "listed": "2026-10-27",
+   "source": "We Work Remotely",
+   "origin": "feed",
+   "ats_id": null,
+   "family": "Sales & Accounts",
+   "why": "Open worldwide with no country exclusion, so you can apply from Nigeria.",
    "direct": false
   }
  ]
