@@ -772,3 +772,70 @@
     else
         mount();
 })();
+
+/* ── REFRESH BUTTON ("cookie") ────────────────────────────────────
+   Bottom-left, mirroring the WhatsApp button. For a visitor stuck on an
+   old copy of the site: it empties the site's caches, retires the
+   service worker and reloads. It never touches localStorage, so sign-in,
+   progress and the theme survive. Decorative-safe: no page depends on it. */
+(function () {
+    if (window.ERJ_NO_REFRESH || document.getElementById('erjCk')) return;
+    function mount() {
+        try { var cu = new URL(location.href); if (cu.searchParams.has('fresh')) { cu.searchParams.delete('fresh'); history.replaceState(history.state, '', cu.toString()); } } catch (e) {}
+        var css = document.createElement('style');
+        css.id = 'erjCkCSS';
+        css.textContent =
+            '.erj-ck{position:fixed;left:22px;bottom:22px;z-index:49;width:50px;height:50px;border-radius:50%;border:0;cursor:pointer;padding:0;' +
+            'background:radial-gradient(circle at 35% 30%,#E8B26A,#B9772F 70%);box-shadow:0 10px 26px rgba(0,0,0,.35),inset 0 -3px 0 rgba(0,0,0,.15);' +
+            'display:flex;align-items:center;justify-content:center;font-size:1.55rem;line-height:1;transition:transform .3s cubic-bezier(.22,1,.36,1),bottom .3s;}' +
+            '.erj-ck:hover{transform:rotate(-18deg) scale(1.06);}.erj-ck:focus-visible{outline:2px solid #FF5722;outline-offset:3px;}' +
+            '.erj-ck.spin{animation:erjCkSpin .8s linear infinite;}@keyframes erjCkSpin{to{transform:rotate(360deg)}}' +
+            'body.sticky-on .erj-ck{bottom:86px;}' +
+            '.erj-ck-pop{position:fixed;left:22px;bottom:84px;z-index:1200;width:min(290px,calc(100vw - 44px));padding:1rem 1rem .9rem;border-radius:16px;' +
+            'background:#111;color:#fff;border:1px solid rgba(232,178,106,.6);box-shadow:0 22px 50px rgba(0,0,0,.5);font-family:Inter,system-ui,sans-serif;' +
+            'transform:translateY(12px);opacity:0;visibility:hidden;transition:transform .3s,opacity .3s,visibility 0s .3s;}' +
+            'html[data-theme="day"] .erj-ck-pop{background:#fff;color:#14110E;box-shadow:0 18px 44px rgba(20,17,14,.18);}' +
+            '.erj-ck-pop.on{transform:none;opacity:1;visibility:visible;transition:transform .3s,opacity .3s;}' +
+            'body.sticky-on .erj-ck-pop{bottom:148px;}' +
+            '.erj-ck-pop b{display:block;font-size:.95rem;margin-bottom:.3rem;}.erj-ck-pop p{margin:0 0 .8rem;font-size:.8rem;line-height:1.45;opacity:.8;}' +
+            '.erj-ck-go{border:0;cursor:pointer;width:100%;padding:.65rem;border-radius:999px;background:#FF5722;color:#fff;font:700 .86rem/1 Inter,system-ui,sans-serif;}' +
+            '.erj-ck-x{position:absolute;top:6px;right:8px;border:0;background:none;color:inherit;opacity:.6;cursor:pointer;font-size:.9rem;}' +
+            '.pz-float{left:84px!important;}' +
+            '@media print{.erj-ck,.erj-ck-pop{display:none!important}}' +
+            '@media(prefers-reduced-motion:reduce){.erj-ck,.erj-ck-pop{transition:none}.erj-ck.spin{animation:none}}';
+        document.head.appendChild(css);
+        var btn = document.createElement('button');
+        btn.className = 'erj-ck'; btn.id = 'erjCk'; btn.type = 'button';
+        btn.setAttribute('aria-label', 'Refresh the site');
+        btn.setAttribute('aria-expanded', 'false');
+        btn.setAttribute('title', 'Seeing an old version? Refresh the site');
+        btn.innerHTML = '<span aria-hidden="true">🍪</span>';
+        var pop = document.createElement('div');
+        pop.className = 'erj-ck-pop'; pop.id = 'erjCkPop'; pop.setAttribute('role', 'dialog'); pop.setAttribute('aria-label', 'Refresh the site');
+        pop.innerHTML = '<button class="erj-ck-x" type="button" aria-label="Close">✕</button>' +
+            '<b>Seeing an old version?</b><p>This clears the site’s saved copy on your device and loads the latest. Your sign-in and settings stay.</p>' +
+            '<button class="erj-ck-go" type="button">Refresh the site</button>';
+        document.body.appendChild(btn);
+        document.body.appendChild(pop);
+        function toggle(on) { pop.classList.toggle('on', on); btn.setAttribute('aria-expanded', on ? 'true' : 'false'); }
+        btn.addEventListener('click', function () { toggle(!pop.classList.contains('on')); });
+        pop.querySelector('.erj-ck-x').addEventListener('click', function () { toggle(false); });
+        document.addEventListener('keydown', function (e) { if (e.key === 'Escape') toggle(false); });
+        pop.querySelector('.erj-ck-go').addEventListener('click', function () {
+            var go = pop.querySelector('.erj-ck-go');
+            go.textContent = 'Refreshing…'; go.disabled = true; btn.classList.add('spin');
+            var jobs = [];
+            try { if (window.caches && caches.keys) jobs.push(caches.keys().then(function (ks) { return Promise.all(ks.map(function (k) { return caches.delete(k); })); })); } catch (e) {}
+            try { if (navigator.serviceWorker && navigator.serviceWorker.getRegistrations) jobs.push(navigator.serviceWorker.getRegistrations().then(function (rs) { return Promise.all(rs.map(function (r) { return r.unregister(); })); })); } catch (e) {}
+            var done = function () {
+                var u = new URL(location.href);
+                u.searchParams.set('fresh', Date.now().toString(36));
+                location.replace(u.toString());
+            };
+            Promise.all(jobs).then(done, done);
+            setTimeout(done, 4000);
+        });
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', mount);
+    else mount();
+})();
