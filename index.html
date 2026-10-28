@@ -794,6 +794,14 @@ h1,h2,h3,h4,.ask,.cost-h,.rung-title,.shelf-title,.fb-title,.pledge-h,.joint-t,.
      "Register now" — because the line above already says what closes and
      when. Padding does the rest. */
   .sticky-cta .btn-yes{padding:0.46rem 0.82rem;font-size:1.18rem;font-weight:700;color:#fff;white-space:nowrap;flex-shrink:0;gap:0.3rem;}
+/* compact bar (Oct 2026): smaller button; deeper orange keeps white text readable at this size (4.95:1) */
+.sticky-cta{padding-top:.5rem!important;padding-bottom:calc(.5rem + env(safe-area-inset-bottom))!important;}
+.sticky-cta .btn-yes,.sticky-cta .btn-primary-ui{min-height:0!important;padding:.55rem .95rem!important;font-size:.95rem!important;gap:.4rem!important;background:#C9410C!important;border-color:#C9410C!important;box-shadow:none!important;}
+.sticky-cta .btn-yes .arrow-wrap,.sticky-cta .btn-primary-ui .arrow-wrap{width:22px!important;height:22px!important;}
+.sticky-cta .s-txt strong{font-size:.86rem!important;}
+body.sticky-on .wa-float{bottom:72px;}
+body.sticky-on .erj-ck{bottom:72px;}
+
   @media(max-width:430px){
     .sticky-cta .s-txt strong{font-size:0.84rem;}
     .sticky-cta .s-txt{font-size:0.72rem;}
@@ -1098,7 +1106,7 @@ html[data-theme="day"]{--ha-glass:rgba(255,255,255,.7);}
 /* ── hero ── */
 .home-hero{position:relative;isolation:isolate;}
 .ha-aurora{position:absolute;z-index:-1;top:-90px;bottom:0;left:50%;width:100vw;transform:translateX(-50%);overflow:hidden;pointer-events:none;}
-.ha-aurora i{position:absolute;border-radius:50%;filter:blur(70px);opacity:.55;}
+.ha-aurora i{position:absolute;border-radius:50%;opacity:.55;}
 .ha-aurora .a1{width:46vw;height:46vw;max-width:620px;max-height:620px;left:-8vw;top:-10%;background:radial-gradient(circle,rgba(255,87,34,.75),transparent 65%);}
 .ha-aurora .a2{width:40vw;height:40vw;max-width:560px;max-height:560px;right:-6vw;top:8%;background:radial-gradient(circle,rgba(255,170,60,.55),transparent 65%);}
 .ha-aurora .a3{width:34vw;height:34vw;max-width:460px;max-height:460px;left:38%;bottom:-18%;background:radial-gradient(circle,rgba(13,140,79,.45),transparent 65%);}
@@ -1425,7 +1433,7 @@ html[data-theme="day"] .shelf-item::before{color:#0B6E3E;}
 /* ── Proof It Works: live message + story spotlight ── */
 .pf-h{margin-bottom:.8rem;}
 .pf-lead{max-width:60ch;color:var(--ink-soft);line-height:1.7;margin:0 0 1.8rem;}
-.pf-stage{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(1rem,3vw,1.8rem);align-items:stretch;}
+.pf-stage{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(1rem,3vw,1.8rem);align-items:start;}
 .pf-sel{margin:.7rem 0;padding:.8rem .9rem;border-radius:14px;background:#fff;color:#1d1d1f;border:4px solid #E3E6FA;display:grid;gap:.25rem;font-family:Inter,system-ui,sans-serif;}
 .pf-sel-k{font-size:.74rem;color:#5b5b66;}
 .pf-sel-b{justify-self:start;background:#E8F8EC;color:#167A3A;font-weight:700;font-size:.82rem;padding:.2rem .5rem;border-radius:6px;}
@@ -1456,7 +1464,7 @@ html[data-theme="day"] .pf-bubble{background:#DCF8C6;border-color:#bfe8a3;}
 .pf-msg-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem;margin-top:auto;}
 .pf-msg-stats div{padding:.7rem .65rem;border-radius:12px;background:var(--card);border:1px solid var(--line);}
 .pf-msg-stats b{display:block;font-family:var(--font-display);font-size:1.25rem;font-weight:800;color:var(--accent);line-height:1.1;}
-.pf-msg-stats span{font-size:.72rem;color:var(--ink-soft);line-height:1.35;}
+.pf-msg-stats span{display:block;font-size:.72rem;color:var(--ink-soft);line-height:1.35;margin-top:.2rem;}
 .pf-msg-note{font-size:.7rem;color:var(--ink-faint);}
 .pf-spot{position:relative;display:flex;flex-direction:column;min-width:0;padding:1.2rem 1.3rem 1.4rem;border-radius:22px;background:var(--card);
   border:1.5px solid transparent;background:linear-gradient(var(--card),var(--card)) padding-box,linear-gradient(125deg,#FF5722,#FFC46B,#0D8C4F,#FF5722) border-box;
@@ -1566,7 +1574,7 @@ html[data-theme="day"] .timer-num{background-image:linear-gradient(160deg,#0A0A0
 @media (max-width:960px){
   
   
-  .ha-aurora i{filter:blur(50px);opacity:.45;}
+  .ha-aurora i{opacity:.45;}
 }
 @media (max-width:640px){
   .rung{padding-left:.75rem;padding-right:.75rem;}
@@ -1583,7 +1591,7 @@ html[data-theme="day"] .timer-num{background-image:linear-gradient(160deg,#0A0A0
 
 
 </style>
-<link href="erj-alive.css?v=20261004a" rel="stylesheet" media="print" onload="this.media='all'"/><noscript><link href="erj-alive.css?v=20261004a" rel="stylesheet"/></noscript>
+<link href="erj-alive.css?v=20261028b" rel="stylesheet" media="print" onload="this.media='all'"/><noscript><link href="erj-alive.css?v=20261028b" rel="stylesheet"/></noscript>
 <style id="mobilePerf">
 /* Below-the-fold sections render when they come near the screen, not at load.
    The size hint keeps the scrollbar and the tour arrows honest until then. */
@@ -1961,7 +1969,7 @@ html[data-theme="day"] .jt{--jt-o:#E8470F;--jt-line:rgba(20,17,14,.12);--jt-card
 </a>
 <script defer="" src="erj-theme.js?v=20260911a"></script>
 <script defer="" src="erj-product.js?v=20260924c"></script>
-<script defer="" src="erj-nav.js?v=20261028a"></script>
+<script defer="" src="erj-nav.js?v=20261028b"></script>
 <script defer="" src="erj-config.js?v=20261021b"></script>
 <script defer="" src="erj-capture.js?v=20260911a"></script>
 <script>if("serviceWorker" in navigator){window.addEventListener("load",function(){var go=function(){navigator.serviceWorker.register("/sw.js",{updateViaCache:"none"}).then(function(reg){reg.update();}).catch(function(){});};if("requestIdleCallback" in window){requestIdleCallback(go,{timeout:3000});}else{setTimeout(go,1200);}});}</script>

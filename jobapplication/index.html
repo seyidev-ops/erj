@@ -124,6 +124,14 @@
   .sticky-cta .s-txt strong{display:block;color:var(--ink);font-family:var(--font-display);font-size:0.90rem;letter-spacing:-0.01em;text-transform:none;line-height:1.2;margin-bottom:0.12rem;}
   .sticky-cta .s-txt strong,.sticky-cta .s-txt span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block;}
   .sticky-cta .btn-yes{padding:0.46rem 0.82rem;font-size:1.18rem;font-weight:700;color:#fff;white-space:nowrap;flex-shrink:0;gap:0.3rem;}
+/* compact bar (Oct 2026): smaller button; deeper orange keeps white text readable at this size (4.95:1) */
+.sticky-cta{padding-top:.5rem!important;padding-bottom:calc(.5rem + env(safe-area-inset-bottom))!important;}
+.sticky-cta .btn-yes,.sticky-cta .btn-primary-ui{min-height:0!important;padding:.55rem .95rem!important;font-size:.95rem!important;gap:.4rem!important;background:#C9410C!important;border-color:#C9410C!important;box-shadow:none!important;}
+.sticky-cta .btn-yes .arrow-wrap,.sticky-cta .btn-primary-ui .arrow-wrap{width:22px!important;height:22px!important;}
+.sticky-cta .s-txt strong{font-size:.86rem!important;}
+body.sticky-on .wa-float{bottom:72px;}
+body.sticky-on .erj-ck{bottom:72px;}
+
   @media(max-width:430px){
     .sticky-cta .s-txt strong{font-size:0.84rem;}
     .sticky-cta .s-txt{font-size:0.72rem;}
@@ -177,7 +185,7 @@
 </style><link href="/favicon.ico" rel="icon" sizes="48x48 32x32 16x16"/>
 <link href="/favicon-96.png" rel="icon" sizes="96x96" type="image/png"/>
 <link href="/appletouchicon.png" rel="apple-touch-icon"/>
-<link href="../erj-alive.css?v=20261004a" rel="stylesheet" media="print" onload="this.media='all'"/><noscript><link href="../erj-alive.css?v=20261004a" rel="stylesheet"/></noscript>
+<link href="../erj-alive.css?v=20261028b" rel="stylesheet" media="print" onload="this.media='all'"/><noscript><link href="../erj-alive.css?v=20261028b" rel="stylesheet"/></noscript>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -454,7 +462,7 @@
 </a>
 <script src="../erj-theme.js?v=20260911a"></script>
 <script src="../erj-product.js?v=20260924c"></script>
-<script src="../erj-nav.js?v=20261028a"></script>
+<script src="../erj-nav.js?v=20261028b"></script>
 <script src="../erj-config.js?v=20261021b"></script>
 <script src="../erj-capture.js?v=20260911a"></script>
 <script>if("serviceWorker" in navigator){window.addEventListener("load",function(){var go=function(){navigator.serviceWorker.register("/sw.js").then(function(reg){reg.update();}).catch(function(){});};if("requestIdleCallback" in window){requestIdleCallback(go,{timeout:3000});}else{setTimeout(go,1200);}});}</script>

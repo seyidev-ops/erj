@@ -785,31 +785,50 @@
         var css = document.createElement('style');
         css.id = 'erjCkCSS';
         css.textContent =
-            '.erj-ck{position:fixed;left:22px;bottom:22px;z-index:49;width:50px;height:50px;border-radius:50%;border:0;cursor:pointer;padding:0;' +
-            'background:radial-gradient(circle at 35% 30%,#E8B26A,#B9772F 70%);box-shadow:0 10px 26px rgba(0,0,0,.35),inset 0 -3px 0 rgba(0,0,0,.15);' +
-            'display:flex;align-items:center;justify-content:center;font-size:1.55rem;line-height:1;transition:transform .3s cubic-bezier(.22,1,.36,1),bottom .3s;}' +
-            '.erj-ck:hover{transform:rotate(-18deg) scale(1.06);}.erj-ck:focus-visible{outline:2px solid #FF5722;outline-offset:3px;}' +
-            '.erj-ck.spin{animation:erjCkSpin .8s linear infinite;}@keyframes erjCkSpin{to{transform:rotate(360deg)}}' +
-            'body.sticky-on .erj-ck{bottom:86px;}' +
-            '.erj-ck-pop{position:fixed;left:22px;bottom:84px;z-index:1200;width:min(290px,calc(100vw - 44px));padding:1rem 1rem .9rem;border-radius:16px;' +
+            '.erj-ck{position:fixed;left:22px;bottom:22px;z-index:49;width:52px;height:52px;border-radius:50%;border:0;cursor:pointer;padding:0;' +
+            'background:#141210;display:flex;align-items:center;justify-content:center;isolation:isolate;' +
+            'box-shadow:0 10px 28px rgba(0,0,0,.38),0 0 0 1px rgba(255,255,255,.06);transition:transform .35s cubic-bezier(.22,1,.36,1),bottom .3s,box-shadow .3s;}' +
+            '.erj-ck::before{content:"";position:absolute;inset:-2px;border-radius:50%;z-index:-1;' +
+            'background:conic-gradient(from 0deg,#FF5722,#FFB25C,#FF5722 40%,rgba(255,87,34,.15) 60%,#FF5722);' +
+            '-webkit-mask:radial-gradient(farthest-side,transparent calc(100% - 2.5px),#000 calc(100% - 2px));mask:radial-gradient(farthest-side,transparent calc(100% - 2.5px),#000 calc(100% - 2px));}' +
+            'html[data-theme="day"] .erj-ck{background:#fff;box-shadow:0 10px 26px rgba(20,17,14,.18);}' +
+            '.erj-ck>svg{width:30px;height:30px;display:block;transition:transform .5s cubic-bezier(.22,1,.36,1);}' +
+            '.erj-ck .erj-ck-b{position:absolute;right:-3px;bottom:-3px;width:20px;height:20px;border-radius:50%;background:#FF5722;color:#fff;' +
+            'display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 2px #141210;}' +
+            'html[data-theme="day"] .erj-ck .erj-ck-b{box-shadow:0 0 0 2px #fff;}' +
+            '.erj-ck .erj-ck-b svg{width:12px;height:12px;}' +
+            '.erj-ck:hover{transform:translateY(-3px);box-shadow:0 16px 34px rgba(255,87,34,.35);}' +
+            '.erj-ck:hover>svg{transform:rotate(-20deg) scale(1.08);}' +
+            '.erj-ck:focus-visible{outline:2px solid #FF5722;outline-offset:4px;}' +
+            '@media(prefers-reduced-motion:no-preference){.erj-ck::before{animation:erjCkRing 6s linear infinite}.erj-ck>svg{animation:erjCkNib 7s ease-in-out 3s infinite}}' +
+            '@keyframes erjCkRing{to{transform:rotate(360deg)}}' +
+            '@keyframes erjCkNib{0%,86%,100%{transform:none}90%{transform:rotate(-14deg) scale(1.1)}94%{transform:rotate(8deg)}}' +
+            '.erj-ck.spin .erj-ck-b svg{animation:erjCkSpin .7s linear infinite;}@keyframes erjCkSpin{to{transform:rotate(360deg)}}' +
+            'body.sticky-on .erj-ck{bottom:72px;}' +
+            '.erj-ck-pop{position:fixed;left:22px;bottom:86px;z-index:1200;width:min(290px,calc(100vw - 44px));padding:1rem 1rem .9rem;border-radius:16px;' +
             'background:#111;color:#fff;border:1px solid rgba(232,178,106,.6);box-shadow:0 22px 50px rgba(0,0,0,.5);font-family:Inter,system-ui,sans-serif;' +
             'transform:translateY(12px);opacity:0;visibility:hidden;transition:transform .3s,opacity .3s,visibility 0s .3s;}' +
             'html[data-theme="day"] .erj-ck-pop{background:#fff;color:#14110E;box-shadow:0 18px 44px rgba(20,17,14,.18);}' +
             '.erj-ck-pop.on{transform:none;opacity:1;visibility:visible;transition:transform .3s,opacity .3s;}' +
-            'body.sticky-on .erj-ck-pop{bottom:148px;}' +
+            'body.sticky-on .erj-ck-pop{bottom:136px;}' +
             '.erj-ck-pop b{display:block;font-size:.95rem;margin-bottom:.3rem;}.erj-ck-pop p{margin:0 0 .8rem;font-size:.8rem;line-height:1.45;opacity:.8;}' +
             '.erj-ck-go{border:0;cursor:pointer;width:100%;padding:.65rem;border-radius:999px;background:#FF5722;color:#fff;font:700 .86rem/1 Inter,system-ui,sans-serif;}' +
             '.erj-ck-x{position:absolute;top:6px;right:8px;border:0;background:none;color:inherit;opacity:.6;cursor:pointer;font-size:.9rem;}' +
             '.pz-float{left:84px!important;}' +
             '@media print{.erj-ck,.erj-ck-pop{display:none!important}}' +
-            '@media(prefers-reduced-motion:reduce){.erj-ck,.erj-ck-pop{transition:none}.erj-ck.spin{animation:none}}';
+            '@media(prefers-reduced-motion:reduce){.erj-ck,.erj-ck-pop{transition:none}.erj-ck.spin .erj-ck-b svg{animation:none}}';
         document.head.appendChild(css);
         var btn = document.createElement('button');
         btn.className = 'erj-ck'; btn.id = 'erjCk'; btn.type = 'button';
         btn.setAttribute('aria-label', 'Refresh the site');
         btn.setAttribute('aria-expanded', 'false');
         btn.setAttribute('title', 'Seeing an old version? Refresh the site');
-        btn.innerHTML = '<span aria-hidden="true">🍪</span>';
+        btn.innerHTML = '<svg viewBox="0 0 32 32" aria-hidden="true"><defs><linearGradient id="erjCkG" x1="0" y1="0" x2="1" y2="1">' +
+            '<stop offset="0" stop-color="#FFB25C"/><stop offset="1" stop-color="#FF5722"/></linearGradient>' +
+            '<mask id="erjCkM"><rect width="32" height="32" fill="#fff"/><circle cx="27" cy="6" r="6" fill="#000"/><circle cx="21.5" cy="3" r="3" fill="#000"/></mask></defs>' +
+            '<circle cx="16" cy="16" r="13" fill="url(#erjCkG)" mask="url(#erjCkM)"/>' +
+            '<g fill="#5A1E05"><circle cx="11" cy="12" r="1.9"/><circle cx="18" cy="18" r="2.1"/><circle cx="10.5" cy="20.5" r="1.6"/><circle cx="21" cy="11.5" r="1.4"/><circle cx="15.5" cy="24" r="1.3"/></g></svg>' +
+            '<span class="erj-ck-b" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M20 12a8 8 0 1 1-2.3-5.6"/><path d="M20 4v5h-5"/></svg></span>';
         var pop = document.createElement('div');
         pop.className = 'erj-ck-pop'; pop.id = 'erjCkPop'; pop.setAttribute('role', 'dialog'); pop.setAttribute('aria-label', 'Refresh the site');
         pop.innerHTML = '<button class="erj-ck-x" type="button" aria-label="Close">✕</button>' +

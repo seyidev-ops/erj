@@ -8,7 +8,7 @@
 
 /* soft light behind the header (desktop only moves) */
 .pz-aur{position:absolute;left:50%;top:0;width:100vw;height:560px;transform:translateX(-50%);z-index:-1;overflow:hidden;pointer-events:none;}
-.pz-aur i{position:absolute;border-radius:50%;filter:blur(60px);opacity:.45;}
+.pz-aur i{position:absolute;border-radius:50%;opacity:.45;}
 .pz-aur .a1{width:420px;height:420px;left:8%;top:-200px;background:radial-gradient(circle,rgba(255,87,34,.75),transparent 65%);}
 .pz-aur .a2{width:360px;height:360px;right:6%;top:-120px;background:radial-gradient(circle,rgba(255,170,60,.45),transparent 65%);}
 html[data-theme="day"] .pz-aur i{opacity:.25;}

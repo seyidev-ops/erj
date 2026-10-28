@@ -22,13 +22,13 @@
 /* ── hero aurora (injected by erj-alive.js into the first section) ── */
 .erj-lit{position:relative;isolation:isolate;}
 .erj-aurora{position:absolute;z-index:-1;top:-80px;bottom:0;left:50%;width:100vw;transform:translateX(-50%);overflow:hidden;pointer-events:none;}
-.erj-aurora i{position:absolute;border-radius:50%;filter:blur(70px);opacity:.5;}
+.erj-aurora i{position:absolute;border-radius:50%;opacity:.5;}
 .erj-aurora .a1{width:44vw;height:44vw;max-width:600px;max-height:600px;left:-8vw;top:-12%;background:radial-gradient(circle,rgba(255,87,34,.7),transparent 65%);}
 .erj-aurora .a2{width:38vw;height:38vw;max-width:540px;max-height:540px;right:-6vw;top:6%;background:radial-gradient(circle,rgba(255,170,60,.5),transparent 65%);}
 .erj-aurora .a3{width:30vw;height:30vw;max-width:440px;max-height:440px;left:40%;bottom:-20%;background:radial-gradient(circle,rgba(13,140,79,.4),transparent 65%);}
 .erj-aurora::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,var(--paper,#000) 100%);}
 html[data-theme="day"] .erj-aurora i{opacity:.28;}
-@media (max-width:900px){.erj-aurora i{filter:blur(50px);opacity:.42;}}
+@media (max-width:900px){.erj-aurora i{opacity:.42;}}
 
 /* ── headings: the accent words glow ── */
 :is(h1,h2) em,h2>span:not([class]){
