@@ -381,6 +381,16 @@ html[data-theme="day"]{--wa:#E8470F;}
    and tighter padding instead. */
 .btn-yes,.btn-pay,.btn-block,.fi-go,.r-go,.dfy-btn,.cvp-btn,.ts-cta-btn{white-space:nowrap;}
 @media(max-width:520px){.btn-yes,.btn-pay{padding-left:1.25rem;padding-right:1.25rem;gap:0.45rem;}}
+.ts-tl{list-style:none;margin:.8rem 0 0;padding:0;display:grid;gap:.7rem;}
+.ts-tl li{display:grid;grid-template-columns:3.6rem 1fr;gap:.9rem;align-items:start;}
+.ts-tl time{font-weight:800;font-size:.8rem;color:var(--accent);padding-top:.75rem;text-align:right;}
+.ts-tl li>div{padding:.8rem 1rem;border-radius:14px;border:1px solid var(--line);background:var(--bg,transparent);}
+.ts-tl b{display:block;font-size:.95rem;margin-bottom:.2rem;}.ts-tl p{margin:0;font-size:.88rem;line-height:1.55;opacity:.85;}
+.ts-tl li.win>div{border-color:#25D366;}.ts-tl li.win time{color:#1FAF55;}
+.ts-share{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1rem;}
+.ts-sh{display:inline-flex;align-items:center;padding:.6rem 1rem;border-radius:999px;border:1px solid var(--line);background:transparent;color:inherit;font:700 .84rem/1 inherit;text-decoration:none;cursor:pointer;}
+.ts-sh.wa{background:#1FAF55;border-color:#1FAF55;color:#fff;}
+.ts-feat:target{box-shadow:0 0 0 3px rgba(37,211,102,.5);}
 .ts-feat{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:clamp(1.2rem,4vw,2.6rem);align-items:center;margin:0 0 clamp(1.4rem,3vw,2rem);padding:clamp(1.3rem,3.4vw,2.2rem);border-radius:24px;
   border:1px solid rgba(37,211,102,.5);background:radial-gradient(90% 120% at 0 0,rgba(37,211,102,.14),transparent 60%),var(--card);}
 .ts-feat-go{display:inline-flex;margin-top:.9rem;font-weight:700;color:var(--accent);text-decoration:none;}
@@ -417,7 +427,18 @@ html[data-theme="day"]{--wa:#E8470F;}
 <div class="ts-role">Sound engineer &amp; voice talent · Lagos</div>
 <p class="ts-body">In August an automated screen turned his Sound Engineer application down. The skill was there; the CV was not carrying what the screen checks for. He sent AUDIT, took the free diagnosis, and reworked how his audio and voice work reads. On 16 October he applied to micro1’s Voice Actor/Coach role. <strong>micro1 selected him.</strong></p>
 <p class="ts-quote">It’s been a journey, and I am proud to say.</p>
-<a class="ts-feat-go" href="stories/tobi/">Read Tobi’s story, step by step →</a>
+<details class="ts-evidence ts-feat-tl">
+<summary><span>Read Tobi’s eight weeks, step by step</span><span>Rejection · fix · application · selected</span></summary>
+<ol class="ts-tl">
+<li><time>31 Aug</time><div><b>He sent us AUDIT.</b><p>Asked what usually happens after he clicks Apply, he answered: “I apply and mostly hear nothing” and “I keep getting rejected.” He ran the free diagnosis and sent his CV.</p></div></li>
+<li><time>31 Aug</time><div><b>The rejection that explained everything.</b><p>Deepdub had turned down his Sound Engineer application after an automated questionnaire. The skill was there. What the screen read was not: his CV was not carrying the words and details it was checking for.</p></div></li>
+<li><time>7 Sep</time><div><b>The part to fix.</b><p>Not his talent, his representation: the CV and portfolio had to show plainly that he could do this work for a remote team.</p></div></li>
+<li><time>16 Oct</time><div><b>He applied to micro1.</b><p>The Voice Actor/Coach role lists sound engineering, audio engineering and audio-quality evaluation among its skills.</p></div></li>
+<li class="win"><time>Oct</time><div><b>Selected.</b><p>His words: “Thank you for your suggestions on my earlier CV, again. This, by no means, is an end to the journey. It means I’m better equipped to work with you on finding higher heights.”</p></div></li>
+</ol>
+<p class="ts-evidence-note">micro1 lists the role at $30 to $70 an hour. Work there is project-based and hours depend on the projects available, so we do not turn the rate into a weekly figure. Shared with Tobi’s permission.</p>
+</details>
+<div class="ts-share" aria-label="Share Tobi’s story"><a class="ts-sh wa" href="https://wa.me/?text=From%20an%20automated%20%E2%80%9Cno%E2%80%9D%20to%20Selected%20at%20micro1%20in%20eight%20weeks%3A%20Tobi%E2%80%99s%20story%20https%3A%2F%2Feverythingremotejob.com%2Ftestimonials.html%23story-tobi" rel="noopener" target="_blank">Share Tobi’s story on WhatsApp</a><button class="ts-sh" type="button" data-copy="https://everythingremotejob.com/testimonials.html#story-tobi">Copy link</button></div>
 </div>
 <div class="ts-feat-card" aria-label="Tobi's micro1 status"><span class="k">✓ Applied on 16 Oct 2026</span><span class="b">Selected</span><b>Voice Actor/Coaches</b><span class="o">micro1 · 60 openings</span><span class="p"><strong>$30 – $70</strong>/hour, as listed</span></div>
 </article>
@@ -754,6 +775,13 @@ html[data-theme="day"] .jt{--jt-o:#E8470F;--jt-line:rgba(20,17,14,.12);--jt-card
 <nav class="foot-links"><a href="index.html">Home</a><a href="starthere.html">Your Starting Line</a><a href="free.html">Free For You</a><a href="blog.html">Blog</a><a href="register.html">Register</a><a href="login.html">Participant Login</a></nav>
 <div class="erj-rights-line" role="note" style="max-width:900px;margin:1rem auto 0;padding-top:.85rem;border-top:1px solid rgba(127,127,127,.18);font-size:.72rem;line-height:1.6;letter-spacing:.02em;text-align:center;color:#8A8A86;">© 2026 Business Play Limited · Everything Remote Job. Built for <span style="color:var(--accent,#FF5722)">global career scale.</span> All rights reserved. ERJ frameworks, curriculum and paid resources are not licensed for redistribution. <a href="terms.html" style="color:var(--accent,#FF5722);text-decoration:none">Terms</a> · <a href="privacy.html" style="color:var(--accent,#FF5722);text-decoration:none">Privacy</a></div>
 </footer>
+<script>
+(function(){
+  var b=document.querySelector('.ts-sh[data-copy]');if(b)b.addEventListener('click',function(){var u=b.getAttribute('data-copy');(navigator.clipboard?navigator.clipboard.writeText(u):Promise.reject()).then(function(){b.textContent='Link copied ✓';},function(){b.textContent=u;});});
+  /* arriving from a shared link: open Tobi's steps */
+  if(location.hash==='#story-tobi'){var d=document.querySelector('#story-tobi details');if(d)d.open=true;}
+})();
+</script>
 <script defer="" src="erj-schema.js?v=20261015b"></script>
 <script defer="" src="erj-alive.js?v=20261004a"></script>
 <script>document.addEventListener("DOMContentLoaded",function(){var C=window.ERJ_CONFIG;if(!C||!C.messages)return;document.querySelectorAll("[data-wa-msg]").forEach(function(a){var t=C.messages[a.getAttribute("data-wa-msg")];if(t)a.href="https://wa.me/"+C.whatsapp+"?text="+encodeURIComponent(t);});});</script>
