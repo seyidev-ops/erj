@@ -785,7 +785,7 @@
         var css = document.createElement('style');
         css.id = 'erjCkCSS';
         css.textContent =
-            '.erj-ck{position:fixed;left:22px;bottom:22px;z-index:49;width:52px;height:52px;border-radius:50%;border:0;cursor:pointer;padding:0;' +
+            '.erj-ck{position:fixed;left:22px;bottom:22px;z-index:49;width:50px;height:50px;border-radius:50%;border:0;cursor:pointer;padding:0;' +
             'background:#141210;display:flex;align-items:center;justify-content:center;isolation:isolate;' +
             'box-shadow:0 10px 28px rgba(0,0,0,.38),0 0 0 1px rgba(255,255,255,.06);transition:transform .35s cubic-bezier(.22,1,.36,1),bottom .3s,box-shadow .3s;}' +
             '.erj-ck::before{content:"";position:absolute;inset:-2px;border-radius:50%;z-index:-1;' +
@@ -822,7 +822,7 @@
         btn.className = 'erj-ck'; btn.id = 'erjCk'; btn.type = 'button';
         btn.setAttribute('aria-label', 'Refresh the site');
         btn.setAttribute('aria-expanded', 'false');
-        btn.setAttribute('title', 'Seeing an old version? Refresh the site');
+        btn.setAttribute('title', 'Seeing an old version? Tap to refresh the site');
         btn.innerHTML = '<svg viewBox="0 0 32 32" aria-hidden="true"><defs><linearGradient id="erjCkG" x1="0" y1="0" x2="1" y2="1">' +
             '<stop offset="0" stop-color="#FFB25C"/><stop offset="1" stop-color="#FF5722"/></linearGradient>' +
             '<mask id="erjCkM"><rect width="32" height="32" fill="#fff"/><circle cx="27" cy="6" r="6" fill="#000"/><circle cx="21.5" cy="3" r="3" fill="#000"/></mask></defs>' +
@@ -831,22 +831,18 @@
             '<span class="erj-ck-b" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M20 12a8 8 0 1 1-2.3-5.6"/><path d="M20 4v5h-5"/></svg></span>';
         var pop = document.createElement('div');
         pop.className = 'erj-ck-pop'; pop.id = 'erjCkPop'; pop.setAttribute('role', 'dialog'); pop.setAttribute('aria-label', 'Refresh the site');
-        pop.innerHTML = '<button class="erj-ck-x" type="button" aria-label="Close">✕</button>' +
-            '<b>Seeing an old version?</b><p>This clears the site’s saved copy on your device and loads the latest. Your sign-in and settings stay.</p>' +
-            '<button class="erj-ck-go" type="button">Refresh the site</button>';
+        pop.innerHTML = '<b>Refreshing\u2026</b><p>Loading the latest version of the site.</p>';
         document.body.appendChild(btn);
         document.body.appendChild(pop);
-        function toggle(on) { pop.classList.toggle('on', on); btn.setAttribute('aria-expanded', on ? 'true' : 'false'); }
-        btn.addEventListener('click', function () { toggle(!pop.classList.contains('on')); });
-        pop.querySelector('.erj-ck-x').addEventListener('click', function () { toggle(false); });
-        document.addEventListener('keydown', function (e) { if (e.key === 'Escape') toggle(false); });
-        pop.querySelector('.erj-ck-go').addEventListener('click', function () {
-            var go = pop.querySelector('.erj-ck-go');
-            go.textContent = 'Refreshing…'; go.disabled = true; btn.classList.add('spin');
+        var busy = false;
+        btn.addEventListener('click', function () {
+            if (busy) return; busy = true;
+            pop.classList.add('on'); btn.classList.add('spin'); btn.setAttribute('aria-busy', 'true');
             var jobs = [];
             try { if (window.caches && caches.keys) jobs.push(caches.keys().then(function (ks) { return Promise.all(ks.map(function (k) { return caches.delete(k); })); })); } catch (e) {}
             try { if (navigator.serviceWorker && navigator.serviceWorker.getRegistrations) jobs.push(navigator.serviceWorker.getRegistrations().then(function (rs) { return Promise.all(rs.map(function (r) { return r.unregister(); })); })); } catch (e) {}
-            var done = function () {
+            var gone = false, done = function () {
+                if (gone) return; gone = true;
                 var u = new URL(location.href);
                 u.searchParams.set('fresh', Date.now().toString(36));
                 location.replace(u.toString());
@@ -854,6 +850,23 @@
             Promise.all(jobs).then(done, done);
             setTimeout(done, 4000);
         });
+        /* sit level with the WhatsApp button, wherever a page puts it */
+        var raf = 0;
+        function sync() {
+            raf = 0;
+            var w = document.querySelector('.wa-float');
+            if (!w) return;
+            var r = w.getBoundingClientRect();
+            if (!r.height || getComputedStyle(w).display === 'none') return;
+            var size = btn.offsetHeight || 50;
+            btn.style.bottom = Math.max(8, Math.round(innerHeight - r.bottom + (r.height - size) / 2)) + 'px';
+            pop.style.bottom = (parseFloat(btn.style.bottom) + size + 12) + 'px';
+        }
+        function queue() { if (!raf) raf = requestAnimationFrame(sync); }
+        addEventListener('scroll', queue, { passive: true });
+        addEventListener('resize', queue);
+        try { new MutationObserver(function () { queue(); setTimeout(queue, 350); }).observe(document.body, { attributes: true, attributeFilter: ['class'] }); } catch (e) {}
+        addEventListener('load', queue); setTimeout(queue, 600); queue();
     }
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', mount);
     else mount();
