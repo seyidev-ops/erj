@@ -381,6 +381,24 @@ html[data-theme="day"]{--wa:#E8470F;}
    and tighter padding instead. */
 .btn-yes,.btn-pay,.btn-block,.fi-go,.r-go,.dfy-btn,.cvp-btn,.ts-cta-btn{white-space:nowrap;}
 @media(max-width:520px){.btn-yes,.btn-pay{padding-left:1.25rem;padding-right:1.25rem;gap:0.45rem;}}
+.ts-tl{list-style:none;margin:.8rem 0 0;padding:0;display:grid;gap:.7rem;}
+.ts-tl li{display:grid;grid-template-columns:3.6rem 1fr;gap:.9rem;align-items:start;}
+.ts-tl time{font-weight:800;font-size:.8rem;color:var(--accent);padding-top:.75rem;text-align:right;}
+.ts-tl li>div{padding:.8rem 1rem;border-radius:14px;border:1px solid var(--line);background:var(--bg,transparent);}
+.ts-tl b{display:block;font-size:.95rem;margin-bottom:.2rem;}.ts-tl p{margin:0;font-size:.88rem;line-height:1.55;opacity:.85;}
+.ts-tl li.win>div{border-color:#25D366;}.ts-tl li.win time{color:#1FAF55;}
+.ts-share{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1rem;}
+.ts-sh{display:inline-flex;align-items:center;padding:.6rem 1rem;border-radius:999px;border:1px solid var(--line);background:transparent;color:inherit;font:700 .84rem/1 inherit;text-decoration:none;cursor:pointer;}
+.ts-sh.wa{background:#1FAF55;border-color:#1FAF55;color:#fff;}
+.ts-feat:target{box-shadow:0 0 0 3px rgba(37,211,102,.5);}
+.ts-feat{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:clamp(1.2rem,4vw,2.6rem);align-items:center;margin:0 0 clamp(1.4rem,3vw,2rem);padding:clamp(1.3rem,3.4vw,2.2rem);border-radius:24px;
+  border:1px solid rgba(37,211,102,.5);background:radial-gradient(90% 120% at 0 0,rgba(37,211,102,.14),transparent 60%),var(--card);}
+.ts-feat-go{display:inline-flex;margin-top:.9rem;font-weight:700;color:var(--accent);text-decoration:none;}
+.ts-feat-card{display:grid;gap:.35rem;padding:1.2rem 1.3rem;border-radius:18px;background:#fff;color:#1d1d1f;border:5px solid #E3E6FA;transform:rotate(1.5deg);box-shadow:0 24px 60px rgba(0,0,0,.3);font-family:Inter,system-ui,sans-serif;}
+.ts-feat-card .k{font-size:.8rem;color:#5b5b66;}
+.ts-feat-card .b{justify-self:start;background:#E8F8EC;color:#167A3A;font-weight:700;padding:.25rem .55rem;border-radius:6px;font-size:.9rem;}
+.ts-feat-card b{font-size:1.3rem;}.ts-feat-card .o{font-size:.84rem;color:#5b5b66;}.ts-feat-card .p{font-size:.86rem;color:#3a3a44;border-top:1px solid #eee;padding-top:.5rem;margin-top:.3rem;}
+@media(max-width:820px){.ts-feat{grid-template-columns:1fr;}.ts-feat-card{transform:none;}}
 </style>
 </meta></meta></meta></meta><style id="erjButtons">:root{--btn-ink-on-orange:#FFFFFF;--btn-orange:#FF5722;--btn-orange-ink-on-white:#AD350A;--btn-invert-surface:#FFFFFF;--btn-ease:cubic-bezier(0.22,1,0.36,1)}.btn-primary-ui,.btn-secondary-ui{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:.75rem;min-height:64px;padding:1rem 1.45rem;border-radius:999px;border:1px solid transparent;font-family:var(--font-body),'Inter',system-ui,sans-serif;font-size:1.18rem !important;font-weight:700 !important;letter-spacing:-0.01em;line-height:1.15;text-decoration:none;cursor:pointer;white-space:nowrap;transition:background-color .24s var(--btn-ease),color .24s var(--btn-ease),border-color .24s var(--btn-ease),box-shadow .24s var(--btn-ease),transform .24s var(--btn-ease)}.btn-primary-ui>span:first-child,.btn-secondary-ui>span:first-child{white-space:normal}.arrow-wrap{display:inline-flex;align-items:center;justify-content:center;width:2rem;height:2rem;flex:0 0 2rem;border-radius:999px;font-size:1rem;line-height:1;transition:background-color .24s var(--btn-ease),color .24s var(--btn-ease)}.btn-primary-ui .arrow,.btn-secondary-ui .arrow{display:inline-block;transition:transform .24s var(--btn-ease)}.btn-primary-ui:hover .arrow,.btn-secondary-ui:hover .arrow,.btn-primary-ui:focus-visible .arrow,.btn-secondary-ui:focus-visible .arrow{transform:translateX(4px)}.btn-primary-ui:hover .arrow.is-down,.btn-secondary-ui:hover .arrow.is-down,.btn-primary-ui:focus-visible .arrow.is-down,.btn-secondary-ui:focus-visible .arrow.is-down{transform:translateY(3px)}.btn-primary-ui{background:var(--btn-orange) !important;color:var(--btn-ink-on-orange) !important;border-color:var(--btn-orange) !important;box-shadow:0 10px 24px rgba(255,87,34,.18)}.btn-primary-ui .arrow-wrap{background:rgba(255,255,255,.16);color:var(--btn-ink-on-orange)}.btn-primary-ui:hover,.btn-primary-ui:focus-visible{background:var(--btn-invert-surface) !important;color:var(--btn-orange-ink-on-white) !important;border-color:var(--btn-orange) !important;transform:translateY(-2px);box-shadow:0 16px 34px rgba(255,87,34,.24)}.btn-primary-ui:hover .arrow-wrap,.btn-primary-ui:focus-visible .arrow-wrap{background:rgba(255,87,34,.14);color:var(--btn-orange-ink-on-white)}.btn-secondary-ui{background:var(--card,#FFFFFF) !important;color:var(--ink,#0A0A0A) !important;border-color:var(--line,rgba(10,10,10,.12)) !important;box-shadow:0 7px 18px rgba(0,0,0,.04)}.btn-secondary-ui .arrow-wrap{background:rgba(10,10,10,.06);color:inherit}html[data-theme="night"] .btn-secondary-ui .arrow-wrap{background:rgba(255,255,255,.10)}.btn-secondary-ui:hover,.btn-secondary-ui:focus-visible{background:var(--btn-orange) !important;color:var(--btn-ink-on-orange) !important;border-color:var(--btn-orange) !important;transform:translateY(-2px);box-shadow:0 16px 34px rgba(255,87,34,.22)}.btn-secondary-ui:hover .arrow-wrap,.btn-secondary-ui:focus-visible .arrow-wrap,html[data-theme="night"] .btn-secondary-ui:hover .arrow-wrap,html[data-theme="night"] .btn-secondary-ui:focus-visible .arrow-wrap{background:rgba(255,255,255,.18);color:var(--btn-ink-on-orange)}.fc-actions:has(.btn-secondary-ui:hover) .btn-primary-ui,.sl-actions:has(.btn-secondary-ui:hover) .btn-primary-ui,.answers:has(.btn-secondary-ui:hover) .btn-primary-ui,.hero-cta:has(.btn-secondary-ui:hover) .btn-primary-ui,.erj-actions:has(.btn-secondary-ui:hover) .btn-primary-ui,.rt-cta:has(.btn-secondary-ui:hover) .btn-primary-ui,.fc-actions:has(.btn-secondary-ui:focus-visible) .btn-primary-ui,.sl-actions:has(.btn-secondary-ui:focus-visible) .btn-primary-ui,.answers:has(.btn-secondary-ui:focus-visible) .btn-primary-ui,.hero-cta:has(.btn-secondary-ui:focus-visible) .btn-primary-ui,.erj-actions:has(.btn-secondary-ui:focus-visible) .btn-primary-ui,.rt-cta:has(.btn-secondary-ui:focus-visible) .btn-primary-ui{background:var(--btn-invert-surface) !important;color:var(--btn-orange-ink-on-white) !important;border-color:var(--btn-orange) !important;box-shadow:0 6px 16px rgba(0,0,0,.06)}.fc-actions:has(.btn-secondary-ui:hover) .btn-primary-ui .arrow-wrap,.sl-actions:has(.btn-secondary-ui:hover) .btn-primary-ui .arrow-wrap,.answers:has(.btn-secondary-ui:hover) .btn-primary-ui .arrow-wrap,.hero-cta:has(.btn-secondary-ui:hover) .btn-primary-ui .arrow-wrap,.erj-actions:has(.btn-secondary-ui:hover) .btn-primary-ui .arrow-wrap,.rt-cta:has(.btn-secondary-ui:hover) .btn-primary-ui .arrow-wrap{background:rgba(255,87,34,.14);color:var(--btn-orange-ink-on-white)}.btn-primary-ui:active{background:var(--btn-invert-surface) !important;color:var(--btn-orange-ink-on-white) !important;border-color:var(--btn-orange) !important}.btn-primary-ui:active .arrow-wrap{background:rgba(255,87,34,.14);color:var(--btn-orange-ink-on-white)}.btn-secondary-ui:active{background:var(--btn-orange) !important;color:var(--btn-ink-on-orange) !important;border-color:var(--btn-orange) !important}.btn-secondary-ui:active .arrow-wrap{background:rgba(255,255,255,.18);color:var(--btn-ink-on-orange)}.btn-primary-ui:active,.btn-secondary-ui:active{transform:translateY(0) scale(.985);box-shadow:none}@media (hover:none){.btn-primary-ui:hover{background:var(--btn-orange) !important;color:var(--btn-ink-on-orange) !important;border-color:var(--btn-orange) !important;transform:none}.btn-primary-ui:hover .arrow-wrap{background:rgba(255,255,255,.16);color:var(--btn-ink-on-orange)}.btn-secondary-ui:hover{background:var(--card,#FFFFFF) !important;color:var(--ink,#0A0A0A) !important;border-color:var(--line,rgba(10,10,10,.12)) !important;transform:none}.btn-secondary-ui:hover .arrow-wrap{background:rgba(10,10,10,.06);color:inherit}html[data-theme="night"] .btn-secondary-ui:hover .arrow-wrap{background:rgba(255,255,255,.10)}.btn-primary-ui:hover .arrow,.btn-secondary-ui:hover .arrow{transform:none}}.btn-primary-ui:focus-visible,.btn-secondary-ui:focus-visible{outline:2px solid var(--btn-orange);outline-offset:3px}.btn-primary-ui.btn-block,.btn-secondary-ui.btn-block{width:100%}.fc-actions,.sl-actions,.answers,.hero-cta,.erj-actions{display:flex;flex-wrap:wrap;gap:1rem;align-items:center}.btn-primary-ui.pulse::after{border-color:var(--btn-orange)}.btn-primary-ui.pulse:hover::after{opacity:0 !important;animation:none !important}@media(max-width:620px){.fc-actions,.sl-actions,.answers,.hero-cta,.erj-actions{flex-direction:column;align-items:stretch}.fc-actions>.btn-primary-ui,.fc-actions>.btn-secondary-ui,.sl-actions>.btn-primary-ui,.sl-actions>.btn-secondary-ui,.answers>.btn-primary-ui,.answers>.btn-secondary-ui,.hero-cta>.btn-primary-ui,.hero-cta>.btn-secondary-ui,.erj-actions>.btn-primary-ui,.erj-actions>.btn-secondary-ui{width:100%}.btn-primary-ui,.btn-secondary-ui{min-height:60px;padding:.85rem 1.05rem;gap:.5rem}.arrow-wrap{width:1.75rem;height:1.75rem;flex:0 0 1.75rem}}@media(prefers-reduced-motion:reduce){.btn-primary-ui,.btn-secondary-ui,.btn-primary-ui .arrow,.btn-secondary-ui .arrow,.arrow-wrap{transition:background-color .01ms,color .01ms,border-color .01ms}.btn-primary-ui:hover,.btn-secondary-ui:hover,.btn-primary-ui:active,.btn-secondary-ui:active{transform:none}.btn-primary-ui:hover .arrow,.btn-secondary-ui:hover .arrow{transform:none}.btn-primary-ui.pulse::after{animation:none;opacity:0}}@media(forced-colors:active){.btn-primary-ui,.btn-secondary-ui{border:1px solid ButtonText}}</style><link href="/favicon.ico" rel="icon" sizes="48x48 32x32 16x16"/>
 <link href="/favicon-96.png" rel="icon" sizes="96x96" type="image/png"/>
@@ -402,7 +420,38 @@ html[data-theme="day"]{--wa:#E8470F;}
 <h1 class="ts-h1">Real people. Real offers. <em>Real dollars.</em></h1>
 <p class="ts-sub">Documented journeys with the numbers, the timeline, the before-and-after change, the interview or offer milestone, and the exact work that moved the search forward.</p>
 </div>
+<article class="ts-feat" id="story-tobi">
+<div class="ts-feat-copy">
+<div class="ts-tag"><span class="mark"></span>Latest win · 8 weeks</div>
+<div class="ts-name">Tobi</div>
+<div class="ts-role">Sound engineer &amp; voice talent · Lagos</div>
+<p class="ts-body">In August an automated screen turned his Sound Engineer application down. The skill was there; the CV was not carrying what the screen checks for. He sent AUDIT, took the free diagnosis, and reworked how his audio and voice work reads. On 16 October he applied to micro1’s Voice Actor/Coach role. <strong>micro1 selected him.</strong></p>
+<p class="ts-quote">It’s been a journey, and I am proud to say.</p>
+<details class="ts-evidence ts-feat-tl">
+<summary><span>Read Tobi’s eight weeks, step by step</span><span>Rejection · fix · application · selected</span></summary>
+<ol class="ts-tl">
+<li><time>31 Aug</time><div><b>He sent us AUDIT.</b><p>Asked what usually happens after he clicks Apply, he answered: “I apply and mostly hear nothing” and “I keep getting rejected.” He ran the free diagnosis and sent his CV.</p></div></li>
+<li><time>31 Aug</time><div><b>The rejection that explained everything.</b><p>Deepdub had turned down his Sound Engineer application after an automated questionnaire. The skill was there. What the screen read was not: his CV was not carrying the words and details it was checking for.</p></div></li>
+<li><time>7 Sep</time><div><b>The part to fix.</b><p>Not his talent, his representation: the CV and portfolio had to show plainly that he could do this work for a remote team.</p></div></li>
+<li><time>16 Oct</time><div><b>He applied to micro1.</b><p>The Voice Actor/Coach role lists sound engineering, audio engineering and audio-quality evaluation among its skills.</p></div></li>
+<li class="win"><time>Oct</time><div><b>Selected.</b><p>His words: “Thank you for your suggestions on my earlier CV, again. This, by no means, is an end to the journey. It means I’m better equipped to work with you on finding higher heights.”</p></div></li>
+</ol>
+<p class="ts-evidence-note">micro1 lists the role at $30 to $70 an hour. Work there is project-based and hours depend on the projects available, so we do not turn the rate into a weekly figure. Shared with Tobi’s permission.</p>
+</details>
+<div class="ts-share" aria-label="Share Tobi’s story"><a class="ts-sh wa" href="https://wa.me/?text=From%20an%20automated%20%E2%80%9Cno%E2%80%9D%20to%20Selected%20at%20micro1%20in%20eight%20weeks%3A%20Tobi%E2%80%99s%20story%20https%3A%2F%2Feverythingremotejob.com%2Ftestimonials.html%23story-tobi" rel="noopener" target="_blank">Share Tobi’s story on WhatsApp</a><button class="ts-sh" type="button" data-copy="https://everythingremotejob.com/testimonials.html#story-tobi">Copy link</button></div>
+</div>
+<div class="ts-feat-card" aria-label="Tobi's micro1 status"><span class="k">✓ Applied on 16 Oct 2026</span><span class="b">Selected</span><b>Voice Actor/Coaches</b><span class="o">micro1 · 60 openings</span><span class="p"><strong>$30 – $70</strong>/hour, as listed</span></div>
+</article>
 <div class="ts-grid">
+<article class="ts-card" id="story-joseph">
+<div class="ts-tag"><span class="mark"></span>Cohort member · First remote job</div>
+<div class="ts-name">Joseph B.</div>
+<div class="ts-role">Cohort member · while juggling exams, work and ministry</div>
+<div class="ts-delta"><span class="ts-was">No remote role</span><span class="ts-now">1st remote job</span><span class="ts-per">with an agency on Upwork · 2nd role at interview stage</span></div>
+<p class="ts-body">Joseph wrote to us the moment he confirmed it: his first remote job, with an agency on Upwork, and a second application already at second-interview stage.</p>
+<p class="ts-quote">I landed my first remote job — I'm now with an agency on Upwork. I just thought to let you know immediately I did confirm this. And I'm already at second-interview stage for another role I applied to.</p>
+<p class="ts-evidence-note">A message Joseph sent to ERJ, shared with permission. Name abbreviated for privacy.</p>
+</article>
 <article class="ts-card" id="story-chidi">
 <div class="ts-tag"><span class="mark"></span>7-Week Repositioning</div>
 <div class="ts-name">Chidi</div>
@@ -714,7 +763,7 @@ html[data-theme="day"] .jt{--jt-o:#E8470F;--jt-line:rgba(20,17,14,.12);--jt-card
 })();
 </script>
 <!-- ===== /Unified Theme Control ===== -->
-<script defer="" src="erj-nav.js?v=20261021b"></script>
+<script defer="" src="erj-nav.js?v=20261028a"></script>
 <script defer="" src="erj-config.js?v=20261021b"></script>
 <script defer="" src="erj-capture.js?v=20260911a"></script>
 <a class="wa-float" href="https://wa.me/2348032925957" rel="noopener" target="_blank" title="Chat on WhatsApp">
@@ -726,6 +775,13 @@ html[data-theme="day"] .jt{--jt-o:#E8470F;--jt-line:rgba(20,17,14,.12);--jt-card
 <nav class="foot-links"><a href="index.html">Home</a><a href="starthere.html">Your Starting Line</a><a href="free.html">Free For You</a><a href="blog.html">Blog</a><a href="register.html">Register</a><a href="login.html">Participant Login</a></nav>
 <div class="erj-rights-line" role="note" style="max-width:900px;margin:1rem auto 0;padding-top:.85rem;border-top:1px solid rgba(127,127,127,.18);font-size:.72rem;line-height:1.6;letter-spacing:.02em;text-align:center;color:#8A8A86;">© 2026 Business Play Limited · Everything Remote Job. Built for <span style="color:var(--accent,#FF5722)">global career scale.</span> All rights reserved. ERJ frameworks, curriculum and paid resources are not licensed for redistribution. <a href="terms.html" style="color:var(--accent,#FF5722);text-decoration:none">Terms</a> · <a href="privacy.html" style="color:var(--accent,#FF5722);text-decoration:none">Privacy</a></div>
 </footer>
+<script>
+(function(){
+  var b=document.querySelector('.ts-sh[data-copy]');if(b)b.addEventListener('click',function(){var u=b.getAttribute('data-copy');(navigator.clipboard?navigator.clipboard.writeText(u):Promise.reject()).then(function(){b.textContent='Link copied ✓';},function(){b.textContent=u;});});
+  /* arriving from a shared link: open Tobi's steps */
+  if(location.hash==='#story-tobi'){var d=document.querySelector('#story-tobi details');if(d)d.open=true;}
+})();
+</script>
 <script defer="" src="erj-schema.js?v=20261015b"></script>
 <script defer="" src="erj-alive.js?v=20261004a"></script>
 <script>document.addEventListener("DOMContentLoaded",function(){var C=window.ERJ_CONFIG;if(!C||!C.messages)return;document.querySelectorAll("[data-wa-msg]").forEach(function(a){var t=C.messages[a.getAttribute("data-wa-msg")];if(t)a.href="https://wa.me/"+C.whatsapp+"?text="+encodeURIComponent(t);});});</script>
