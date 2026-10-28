@@ -299,7 +299,7 @@
    "family": "Sales & Accounts",
    "posted": "2026-09-25",
    "deadline": "2026-10-30",
-   "checked": "2026-10-27",
+   "checked": "2026-10-28",
    "source": "ERJ research",
    "origin": "sheet",
    "id": "11cc0d0744",
@@ -5747,33 +5747,6 @@
    "direct": true
   },
   {
-   "id": "7374fd87a7",
-   "title": "Project Management Officer (PMO) - Web3",
-   "company": "Trust Wallet",
-   "region": "Remote - Global",
-   "type": "Full-Time",
-   "experience": "3+ years",
-   "salary": "Undisclosed",
-   "bullets": [
-    "3+ years in program management, technical program management, PMO within tech or product-led companies",
-    "Genuine passion for Web3 and a sharp eye for where the industry — and wallet infrastructure specifically — is heading",
-    "A proven track record of driving cross-functional projects to delivery between Product and Engineering",
-    "Warm, caring, people-first style: you build trust easily and people want to work with you"
-   ],
-   "apply": "https://jobs.ashbyhq.com/trust-wallet/ef6c1253-c7bb-466e-8a7c-9a451df784b2",
-   "posted": "2026-10-15",
-   "deadline": null,
-   "checked": "2026-10-28",
-   "added": "2026-10-15",
-   "listed": "2026-10-15",
-   "source": "Ashby",
-   "origin": "feed",
-   "ats_id": "ef6c1253-c7bb-466e-8a7c-9a451df784b2",
-   "family": "Tech & IT",
-   "why": "Open worldwide with no country exclusion, so you can apply from Nigeria. You apply directly on the employer's own page.",
-   "direct": true
-  },
-  {
    "id": "74e59134d7",
    "title": "Grants Associate",
    "company": "Centre for Effective Altruism",
@@ -10527,6 +10500,33 @@
    "ats_id": "a18c005c-b79b-4fd5-a826-7bc771bcd64e",
    "family": "Executive & Operations",
    "why": "Open worldwide with no country exclusion, so you can apply from Nigeria, and pays in foreign currency ($30 – $35). You apply directly on the employer's own page.",
+   "direct": true
+  },
+  {
+   "id": "848a45edee",
+   "title": "Product Compliance Counsel",
+   "company": "Jobgether partner",
+   "region": "Nigeria",
+   "type": "Full-Time",
+   "experience": "Not stated",
+   "salary": "$5,000",
+   "bullets": [
+    "Product Compliance",
+    "Marketing Compliance",
+    "Regulatory Monitoring",
+    "Sanctions Compliance"
+   ],
+   "apply": "https://jobs.lever.co/jobgether/590bfe19-8d3c-4ac2-91ac-6af575473a17",
+   "posted": "2026-10-28",
+   "deadline": null,
+   "checked": "2026-10-28",
+   "added": "2026-10-28",
+   "listed": "2026-10-28",
+   "source": "Lever",
+   "origin": "feed",
+   "ats_id": "590bfe19-8d3c-4ac2-91ac-6af575473a17",
+   "family": "Legal",
+   "why": "Open to candidates in Nigeria by name, and pays in foreign currency ($5,000). You apply directly on the employer's own page.",
    "direct": true
   }
  ]
