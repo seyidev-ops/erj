@@ -973,6 +973,49 @@ html[data-theme="day"] .htd-card{background:linear-gradient(135deg,rgba(255,87,3
 @keyframes htdBar{to{transform:scaleX(1)}}
 @media(max-width:560px){.htd-card{grid-template-columns:auto 1fr;padding:1rem 1rem 1.3rem;}.htd-go{grid-column:1/-1;justify-self:start;}.htd-ic{width:46px;height:46px;font-size:1.35rem;}}
 @media(prefers-reduced-motion:reduce){.htd-card{transition:none;}.htd.play .htd-card[data-pos="0"] .htd-bar i{animation:none;}}
+
+/* ── promise deck (Oct 2026) ── */
+.pd{position:relative;margin-top:1.4rem;padding:clamp(1.3rem,3.4vw,2.2rem);border-radius:26px;overflow:hidden;isolation:isolate;
+  background:radial-gradient(80% 120% at 0 0,rgba(255,87,34,.16),transparent 60%),radial-gradient(70% 100% at 100% 100%,rgba(255,178,92,.12),transparent 60%),var(--card);border:1px solid rgba(255,87,34,.35);}
+.pd-hand{display:flex;justify-content:center;gap:.35rem;margin-bottom:1.1rem;}
+.pd-hand i{flex:1;max-width:46px;height:6px;border-radius:6px;background:var(--line);transition:background .4s,transform .4s;}
+.pd-hand i.on{background:var(--accent);transform:scaleY(1.6);}
+.pd-hand i.done{background:rgba(255,87,34,.45);}
+.pd-track{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:minmax(0,1fr);}
+.pd-s{grid-area:1/1;min-width:0;min-height:200px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:.8rem;}
+.js-pd .pd-s{opacity:0;visibility:hidden;transform:translateX(40px);transition:opacity .5s,transform .6s cubic-bezier(.22,1,.36,1),visibility 0s .6s;}
+.js-pd .pd-s.on{opacity:1;visibility:visible;transform:none;transition:opacity .5s .1s,transform .6s cubic-bezier(.22,1,.36,1) .1s,visibility 0s;}
+.js-pd .pd-s.past{transform:translateX(-40px);}
+.pd-k{font-size:.66rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);}
+.pd-big{display:block;font-family:var(--font-display);font-size:clamp(1.8rem,4.4vw,3rem);font-weight:800;line-height:1.08;letter-spacing:-.02em;color:var(--ink);}
+.pd-big em{font-style:normal;color:var(--accent);}
+.pd-p{margin:0;font-size:clamp(1rem,1.6vw,1.15rem);line-height:1.6;color:var(--ink-soft);max-width:52ch;}
+.pd-row{display:flex;align-items:center;justify-content:center;gap:1rem;text-align:left;}
+.pd-ic{width:clamp(60px,8vw,78px);height:clamp(60px,8vw,78px);flex:none;border-radius:20px;display:grid;place-items:center;font-size:clamp(1.8rem,3.4vw,2.4rem);background:rgba(255,87,34,.14);}
+.js-pd .pd-s.on .pd-ic{animation:pdPop .7s cubic-bezier(.22,1,.36,1);}
+@keyframes pdPop{0%{transform:scale(.6) rotate(-12deg)}100%{transform:none}}
+.pd-t{display:block;font-family:var(--font-display);font-size:clamp(1.8rem,4.2vw,2.8rem);font-weight:800;line-height:1.05;color:var(--ink);}
+.pd-q{display:block;font-size:clamp(1rem,1.7vw,1.2rem);color:var(--ink-soft);margin-top:.25rem;}
+.pd-f{margin:0;display:inline-flex;text-align:left;gap:.6rem;align-items:baseline;padding:.9rem 1.1rem;border-radius:16px;background:rgba(255,87,34,.08);border:1px solid rgba(255,87,34,.3);font-size:clamp(1rem,1.6vw,1.12rem);color:var(--ink);max-width:56ch;}
+.pd-f i{font-style:normal;color:var(--accent);font-weight:800;}
+.pd-end .pd-big em{color:#1FAF55;}
+.pd-cta{align-self:center;display:inline-flex;padding:.7rem 1.15rem;border-radius:999px;background:#C9410C;color:#fff;font-weight:700;text-decoration:none;transition:transform .25s;}
+.pd-cta:hover{transform:translateX(4px);}
+.pd-nav{display:none;align-items:center;justify-content:space-between;gap:1rem;margin-top:1.2rem;}
+.js-pd .pd-nav{display:flex;}
+.pd-b{width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer;font-size:1rem;transition:transform .25s,border-color .25s;}
+.pd-b:hover{transform:scale(1.08);border-color:var(--accent);}
+.pd-dots{display:flex;gap:.4rem;}
+.pd-dots button{position:relative;overflow:hidden;width:10px;height:6px;padding:0;border:0;border-radius:999px;background:var(--line);cursor:pointer;transition:width .35s;}
+.pd-dots button.on{width:38px;}
+.pd-dots button i{position:absolute;inset:0;background:var(--accent);transform-origin:0 50%;transform:scaleX(0);}
+.pd-dots button.done i{transform:none;}
+.pd.play .pd-dots button.on i{animation:pdFill var(--pd-t,6s) linear forwards;}
+.pd:not(.play) .pd-dots button.on i{transform:none;}
+@keyframes pdFill{to{transform:scaleX(1)}}
+html:not(.js-pd) .pd-s{margin-bottom:1.2rem;grid-area:auto;min-height:0;}
+@media(max-width:560px){.pd{padding:1.2rem 1rem;}.pd-s{min-height:260px;}.pd-k{letter-spacing:.1em;}.pd-row{flex-direction:column;text-align:center;gap:.6rem;}.pd-f{font-size:.98rem;}}
+@media(prefers-reduced-motion:reduce){.js-pd .pd-s,.js-pd .pd-s.on{transition:none;transform:none;}.js-pd .pd-s.on .pd-ic{animation:none;}}
   .ht-cta{display:flex;flex-wrap:wrap;align-items:center;gap:1rem 1.6rem;margin-top:1.5rem;}
   .ht-skip{font-size:.88rem;font-weight:600;color:var(--accent);text-decoration:none;}
   .ht-skip:hover{text-decoration:underline;}
@@ -1785,10 +1828,10 @@ html[data-theme="day"] .timer-num{background-image:linear-gradient(160deg,#0A0A0
 <div class="pledge reveal">
 <span class="pledge-tag"><span class="pledge-dot"></span> 03 · The Promise</span>
 <h2 class="pledge-h">We will not let you go until you're <em>hired.</em></h2>
-<p class="pledge-p">Every job search has five parts. When offers stop, one of them is broken. <strong>We find it, fix it with you, and stay until you sign.</strong></p>
-<div class="pm" id="joints" style="scroll-margin-top:90px">
-<div class="pm-head" aria-hidden="true"><span>The ERJ Five-Finger Model</span><span>Ask yourself</span><span>What we do</span></div>
-<ol class="pm-list"><li class="pm-row"><span class="pm-n">01</span><b class="pm-t">Capacity</b><span class="pm-q">Can you do the job?</span><span class="pm-f"><i aria-hidden="true">→</i>We build the skill and the remote habits first.</span></li><li class="pm-row"><span class="pm-n">02</span><b class="pm-t">Supply</b><span class="pm-q">Are you finding jobs open to you?</span><span class="pm-f"><i aria-hidden="true">→</i>We bring you real roles you are eligible for.</span></li><li class="pm-row"><span class="pm-n">03</span><b class="pm-t">Representation</b><span class="pm-q">Do your CV and LinkedIn show it?</span><span class="pm-f"><i aria-hidden="true">→</i>We rebuild them until a stranger sees it in 30 seconds.</span></li><li class="pm-row"><span class="pm-n">04</span><b class="pm-t">Aim</b><span class="pm-q">Are you applying where you can be hired?</span><span class="pm-f"><i aria-hidden="true">→</i>We aim you at employers who hire and pay from here.</span></li><li class="pm-row"><span class="pm-n">05</span><b class="pm-t">Conversion</b><span class="pm-q">Do interviews turn into offers?</span><span class="pm-f"><i aria-hidden="true">→</i>We rehearse the interview and the pay talk with you.</span></li></ol>
+<div class="pd" id="joints" style="scroll-margin-top:90px" aria-roledescription="carousel" aria-label="Our promise, in seven cards">
+<div class="pd-hand" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+<ol class="pd-track"><li class="pd-s pd-intro" data-i="0"><span class="pd-k">Our promise to you</span><b class="pd-big">Every job search has <em>five parts.</em></b><p class="pd-p">When offers stop, one of them is broken. We find it, fix it with you, and stay until you sign. Here is what we check you by.</p></li><li class="pd-s" data-i="1"><span class="pd-k">Part 01 of 05 · The Five-Finger Model</span><div class="pd-row"><span class="pd-ic" aria-hidden="true">🧱</span><div><b class="pd-t">Capacity</b><span class="pd-q">Can you do the job?</span></div></div><p class="pd-f"><i aria-hidden="true">→</i>We build the skill and the remote habits first.</p></li><li class="pd-s" data-i="2"><span class="pd-k">Part 02 of 05 · The Five-Finger Model</span><div class="pd-row"><span class="pd-ic" aria-hidden="true">🔎</span><div><b class="pd-t">Supply</b><span class="pd-q">Are you finding jobs open to you?</span></div></div><p class="pd-f"><i aria-hidden="true">→</i>We bring you real roles you are eligible for.</p></li><li class="pd-s" data-i="3"><span class="pd-k">Part 03 of 05 · The Five-Finger Model</span><div class="pd-row"><span class="pd-ic" aria-hidden="true">📄</span><div><b class="pd-t">Representation</b><span class="pd-q">Do your CV and LinkedIn show it?</span></div></div><p class="pd-f"><i aria-hidden="true">→</i>We rebuild them until a stranger sees it in 30 seconds.</p></li><li class="pd-s" data-i="4"><span class="pd-k">Part 04 of 05 · The Five-Finger Model</span><div class="pd-row"><span class="pd-ic" aria-hidden="true">🎯</span><div><b class="pd-t">Aim</b><span class="pd-q">Are you applying where you can be hired?</span></div></div><p class="pd-f"><i aria-hidden="true">→</i>We aim you at employers who hire and pay from here.</p></li><li class="pd-s" data-i="5"><span class="pd-k">Part 05 of 05 · The Five-Finger Model</span><div class="pd-row"><span class="pd-ic" aria-hidden="true">🤝</span><div><b class="pd-t">Conversion</b><span class="pd-q">Do interviews turn into offers?</span></div></div><p class="pd-f"><i aria-hidden="true">→</i>We rehearse the interview and the pay talk with you.</p></li><li class="pd-s pd-end" data-i="6"><span class="pd-k">And then</span><b class="pd-big">We stay with you <em>until you’re hired</em>,</b><p class="pd-p">as long as you are ready to do the work with us.</p><a class="pd-cta" href="diagnose/">Find which part is yours →</a></li></ol>
+<div class="pd-nav"><button class="pd-b" type="button" data-d="-1" aria-label="Previous">←</button><div class="pd-dots"></div><button class="pd-b" type="button" data-d="1" aria-label="Next">→</button></div>
 </div>
 <p class="pledge-fine">Not sure which part is yours? <a href="diagnose/">Five questions will tell you</a>. We promise persistence, not a date: no placement, timeline or salary is guaranteed.</p>
 </div>
@@ -2170,6 +2213,36 @@ html[data-theme="day"] .jt{--jt-o:#E8470F;--jt-line:rgba(20,17,14,.12);--jt-card
     timer=setInterval(function(){show(cur+1);},4500);
     deck.addEventListener('mouseenter',function(){if(timer){clearInterval(timer);timer=null;deck.classList.remove('play');}});
   }
+})();
+</script>
+<script>
+/* Promise deck: seven cards that turn by themselves (time to read each), arrows, dots, swipe. */
+(function(){
+  var pd=document.getElementById('joints');if(!pd||!pd.classList.contains('pd'))return;
+  document.documentElement.classList.add('js-pd');
+  var s=[].slice.call(pd.querySelectorAll('.pd-s')),n=s.length,cur=0,timer=null,started=false,touched=false,dots=pd.querySelector('.pd-dots'),hand=[].slice.call(pd.querySelectorAll('.pd-hand i'));
+  var T=[6500,6000,6000,6000,6000,6000,8000];
+  s.forEach(function(_,i){var b=document.createElement('button');b.type='button';b.setAttribute('aria-label','Card '+(i+1));b.innerHTML='<i></i>';b.addEventListener('click',function(){stop();go(i);});dots.appendChild(b);});
+  var dd=[].slice.call(dots.children);
+  function go(i){cur=(i+n)%n;
+    s.forEach(function(x,k){x.classList.toggle('on',k===cur);x.classList.toggle('past',k<cur);x.setAttribute('aria-hidden',k===cur?'false':'true');});
+    dd.forEach(function(d,k){d.classList.toggle('on',k===cur);d.classList.toggle('done',k<cur);var f=d.firstChild;f.style.animation='none';void f.offsetWidth;f.style.animation='';});
+    hand.forEach(function(h,k){h.classList.toggle('on',k===cur-1);h.classList.toggle('done',k<cur-1||cur===n-1);});
+    pd.style.setProperty('--pd-t',T[cur]+'ms');
+    if(timer){clearTimeout(timer);timer=setTimeout(function(){go(cur+1);},T[cur]);}
+  }
+  function stop(){touched=true;pd.classList.remove('play');clearTimeout(timer);timer=null;}
+  function play(){pd.classList.add('play');clearTimeout(timer);timer=setTimeout(function(){go(cur+1);},T[cur]);}
+  [].forEach.call(pd.querySelectorAll('.pd-b'),function(b){b.addEventListener('click',function(){stop();go(cur+ +b.getAttribute('data-d'));});});
+  var x0=null;pd.addEventListener('touchstart',function(e){x0=e.touches[0].clientX;},{passive:true});
+  pd.addEventListener('touchend',function(e){if(x0===null)return;var dx=e.changedTouches[0].clientX-x0;x0=null;if(Math.abs(dx)>40){stop();go(cur+(dx<0?1:-1));}},{passive:true});
+  pd.addEventListener('mouseenter',function(){if(timer){clearTimeout(timer);timer=null;pd.classList.remove('play');}});
+  pd.addEventListener('mouseleave',function(){if(started&&!touched&&!timer)play();});
+  go(0);
+  var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduce||!('IntersectionObserver' in window))return;
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting&&!started){started=true;go(0);play();io.disconnect();}});},{threshold:.45});
+  io.observe(pd);
 })();
 </script>
 <script defer="" src="erj-schema.js?v=20261015b"></script>
