@@ -1,0 +1,271 @@
+/* ═══════════════════════════════════════════════════════════════
+   ERJ · HORIZON  (site-wide design system, 2026-11)
+
+   The look of the whole site lives here: colour, light, surfaces,
+   type, navigation, buttons, cards, footer and motion. Every page
+   keeps its own copy, structure and facts; this file restyles them.
+   Loaded render-blocking after each page's own styles (so there is
+   no flash of the old design), and after erj-alive.css.
+
+   Rules (see CLAUDE.md, validate-facts.py check 12):
+     1. Nothing starts invisible. Motion moves or lights; it never
+        hides content waiting for a script.
+     2. Large animated layers run on wide screens only; phones get
+        the same light, still.
+     3. prefers-reduced-motion switches every animation off.
+     4. <html data-alive="lite"> (portals, tools): colours, surfaces
+        and buttons, but no ambient light or pointer effects.
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── 1. tokens ─────────────────────────────────────────────────── */
+:root,html[data-theme="night"]{
+  --hz-o:#FF5722;          /* brand orange */
+  --hz-o2:#FF7A3D;
+  --hz-gold:#FFC46B;
+  --hz-g:#19C27A;          /* live / success */
+  --hz-v:#6E5BFF;          /* cool counter-light, used only in glows */
+  --hz-ease:cubic-bezier(.22,1,.36,1);
+  --hz-r:22px;             /* surface radius */
+  --hz-r-s:14px;
+
+  --paper:#05060A; --paper-2:#090B11; --bg2:#0C0F16; --card:#0B0D14;
+  --ink:#F5F4F1; --ink-soft:#A9AAB2; --ink-faint:#8A8C96;
+  --line:rgba(255,255,255,.085); --line-soft:rgba(255,255,255,.05);
+  --card-line:rgba(255,255,255,.09);
+
+  --hz-surface:linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,.018));
+  --hz-surface-hi:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.025));
+  --hz-edge:inset 0 1px 0 rgba(255,255,255,.07);
+  --hz-shadow:0 1px 0 rgba(255,255,255,.04),0 24px 60px -28px rgba(0,0,0,.85);
+  --hz-glass:rgba(9,11,17,.66);
+  --hz-spot:rgba(255,110,50,.13);
+}
+html[data-theme="day"]{
+  --paper:#F6F4EF; --paper-2:#EFECE5; --bg2:#FFFFFF; --card:#FFFFFF;
+  --ink:#0C0B0A; --ink-soft:#4F4D47; --ink-faint:#6B6962;
+  --line:rgba(12,11,10,.10); --line-soft:rgba(12,11,10,.06);
+  --card-line:rgba(12,11,10,.10);
+
+  --hz-surface:linear-gradient(180deg,rgba(255,255,255,.92),rgba(255,255,255,.74));
+  --hz-surface-hi:linear-gradient(180deg,#fff,rgba(255,255,255,.86));
+  --hz-edge:inset 0 1px 0 rgba(255,255,255,.9);
+  --hz-shadow:0 1px 2px rgba(20,14,8,.05),0 22px 50px -30px rgba(60,30,10,.28);
+  --hz-glass:rgba(250,248,244,.72);
+  --hz-spot:rgba(232,71,15,.08);
+}
+
+/* ── 2. the canvas: deep space with a horizon of light ─────────── */
+html{background:var(--paper);}
+body{background:transparent!important;}
+html::before,html::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:-1;}
+/* fixed light field: an ember rising from the bottom edge, a cool
+   glow top right, and a fine engineering grid that fades out */
+html::before{
+  background:
+    radial-gradient(1200px 520px at 50% 118%,rgba(255,87,34,.30),transparent 62%),
+    radial-gradient(900px 600px at 92% -12%,rgba(110,91,255,.16),transparent 60%),
+    radial-gradient(800px 520px at -8% 18%,rgba(255,122,61,.12),transparent 62%),
+    var(--paper);
+}
+html::after{
+  background-image:
+    linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
+  background-size:64px 64px;
+  -webkit-mask-image:radial-gradient(ellipse 80% 60% at 50% 0%,#000 25%,transparent 75%);
+          mask-image:radial-gradient(ellipse 80% 60% at 50% 0%,#000 25%,transparent 75%);
+}
+html[data-theme="day"]::before{
+  background:
+    radial-gradient(1200px 520px at 50% 120%,rgba(255,122,61,.20),transparent 62%),
+    radial-gradient(900px 600px at 95% -15%,rgba(110,91,255,.10),transparent 60%),
+    radial-gradient(800px 520px at -10% 15%,rgba(255,196,107,.20),transparent 62%),
+    var(--paper);
+}
+html[data-theme="day"]::after{
+  background-image:
+    linear-gradient(rgba(12,11,10,.045) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(12,11,10,.045) 1px,transparent 1px);
+}
+::selection{background:rgba(255,87,34,.85);color:#fff;}
+
+/* ── 3. type ───────────────────────────────────────────────────── */
+body{font-feature-settings:"ss01","cv11";text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased;}
+h1,h2{letter-spacing:-.035em!important;text-wrap:balance;}
+h1{line-height:1.02;}
+h2{line-height:1.06;}
+h3{letter-spacing:-.02em;text-wrap:balance;}
+p{text-wrap:pretty;}
+:is(h1,h2) em,h2>span:not([class]){
+  background:linear-gradient(100deg,#FF5722 0%,#FF8A3D 35%,#FFC46B 55%,#FF5722 90%);
+  background-size:200% 100%;-webkit-background-clip:text;background-clip:text;
+  color:transparent;-webkit-text-fill-color:transparent;font-style:normal;}
+html[data-theme="day"] :is(h1,h2) em,html[data-theme="day"] h2>span:not([class]){
+  background-image:linear-gradient(100deg,#AD350A 0%,#E8470F 45%,#C2410C 90%);}
+
+/* kicker / section label: a lit chip */
+.section-label{
+  display:inline-flex!important;align-items:center;gap:.6rem;
+  padding:.42rem .85rem .42rem .7rem;border-radius:999px;
+  border:1px solid rgba(255,87,34,.28);
+  background:linear-gradient(90deg,rgba(255,87,34,.12),rgba(255,87,34,.03));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.05),0 0 24px -8px rgba(255,87,34,.45);
+  letter-spacing:.18em!important;}
+.section-label .mark{width:7px!important;height:7px!important;border-radius:50%;
+  background:var(--hz-o)!important;box-shadow:0 0 0 3px rgba(255,87,34,.18),0 0 12px var(--hz-o);}
+html[data-theme="day"] .section-label{border-color:rgba(173,53,10,.25);
+  background:linear-gradient(90deg,rgba(232,71,15,.10),rgba(232,71,15,.02));box-shadow:none;}
+
+/* section separators become a horizon line of light */
+.section-line{border-top:0!important;position:relative;}
+.section-line::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);
+  width:min(1120px,92%);height:1px;pointer-events:none;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.12) 20%,rgba(255,87,34,.55) 50%,rgba(255,255,255,.12) 80%,transparent);}
+html[data-theme="day"] .section-line::before{
+  background:linear-gradient(90deg,transparent,rgba(12,11,10,.12) 20%,rgba(232,71,15,.45) 50%,rgba(12,11,10,.12) 80%,transparent);}
+
+/* ── 4. navigation: a floating glass dock ──────────────────────── */
+html body .erj-nav{
+  top:10px;left:50%;right:auto;transform:translateX(-50%);
+  width:min(1240px,calc(100% - 20px));
+  border-radius:18px;
+  background:var(--hz-glass)!important;
+  -webkit-backdrop-filter:blur(18px) saturate(1.5);backdrop-filter:blur(18px) saturate(1.5);
+  border:1px solid var(--line)!important;
+  box-shadow:var(--hz-edge),0 18px 50px -24px rgba(0,0,0,.7)!important;
+}
+html[data-theme="day"] body .erj-nav{box-shadow:var(--hz-edge),0 14px 40px -26px rgba(60,30,10,.35)!important;}
+/* the dock floats 10px down: make the same room above every page */
+html body{border-top:12px solid transparent;}
+html{scroll-padding-top:calc(var(--erj-nav-h,64px) + 24px)!important;}
+/* some pages paint every <nav> solid; the dock's own lists stay clear */
+html body .erj-nav nav,html body .erj-nav .erj-bar{background:transparent!important;}
+html body .erj-nav .erj-icon{border-radius:12px;background:rgba(255,255,255,.04);}
+html[data-theme="day"] body .erj-nav .erj-icon{background:rgba(12,11,10,.03);}
+html body .erj-bar-link{border-radius:10px;transition:background-color .25s var(--hz-ease),color .25s;}
+html body .erj-bar-link:hover{background:rgba(255,255,255,.06);}
+html[data-theme="day"] body .erj-bar-link:hover{background:rgba(12,11,10,.05);}
+html body .erj-panel{border-radius:20px 0 0 20px;}
+html body .erj-drop,html body .erj-mega{
+  border-radius:18px!important;background:var(--hz-glass)!important;
+  -webkit-backdrop-filter:blur(20px) saturate(1.5);backdrop-filter:blur(20px) saturate(1.5);
+  border:1px solid var(--line)!important;box-shadow:var(--hz-edge),0 30px 80px -30px rgba(0,0,0,.75)!important;}
+
+/* bars pinned under the menu sit under the dock, not behind it */
+.jb-pin{top:76px!important;left:10px!important;right:10px!important;max-width:1240px;margin:0 auto;border-radius:16px;
+  border:1px solid var(--line)!important;background:var(--hz-glass)!important;box-shadow:var(--hz-edge),0 18px 40px -24px rgba(0,0,0,.6);}
+@media (min-width:980px){.jb-pin{top:84px!important;}}
+
+/* scrolling strips under the dock become a slim glass band */
+.promo-tick,.ha-ticker{
+  width:min(1240px,calc(100% - 20px));margin:10px auto 0!important;border-radius:14px;
+  border:1px solid var(--line)!important;background:var(--hz-surface)!important;
+  box-shadow:var(--hz-edge);
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);
+          mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);}
+.promo-tick{padding:.62rem 0!important;}
+.promo-track{font-size:clamp(.85rem,2vw,.98rem)!important;}
+
+/* ── 5. buttons: lit pills─────────────────────────────────────── */
+.btn-primary-ui,.btn-yes,.btn-pay{
+  overflow:hidden;isolation:isolate;
+  background:linear-gradient(180deg,#FF6A3A 0%,#FF5722 55%,#F04A14 100%)!important;
+  border-color:rgba(255,160,120,.55)!important;color:#fff!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.35),inset 0 -2px 6px rgba(150,30,0,.25),
+             0 10px 30px -8px rgba(255,87,34,.65),0 0 0 1px rgba(255,87,34,.25)!important;
+  transition:transform .35s var(--hz-ease),box-shadow .35s var(--hz-ease),filter .35s!important;}
+.btn-primary-ui::after,.btn-yes::after,.btn-pay::after{
+  content:'';position:absolute;inset:-2px;z-index:-1;pointer-events:none;
+  background:linear-gradient(105deg,transparent 30%,rgba(255,255,255,.38) 48%,transparent 66%);
+  transform:translateX(-120%);transition:transform .8s var(--hz-ease);}
+.btn-primary-ui:hover,.btn-primary-ui:focus-visible,.btn-yes:hover,.btn-pay:hover{
+  background:linear-gradient(180deg,#FF7444 0%,#FF5722 55%,#F04A14 100%)!important;
+  color:#fff!important;border-color:rgba(255,190,160,.8)!important;
+  transform:translateY(-2px);filter:saturate(1.08);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.4),0 18px 44px -10px rgba(255,87,34,.8),0 0 0 1px rgba(255,87,34,.35)!important;}
+.btn-primary-ui:hover::after,.btn-yes:hover::after,.btn-pay:hover::after{transform:translateX(120%);}
+.btn-primary-ui .arrow-wrap,.btn-primary-ui:hover .arrow-wrap{background:rgba(255,255,255,.2)!important;color:#fff!important;}
+
+.btn-secondary-ui{
+  background:var(--hz-surface)!important;background-color:transparent!important;
+  -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
+  border-color:var(--line)!important;color:var(--ink)!important;
+  box-shadow:var(--hz-edge),0 10px 30px -16px rgba(0,0,0,.6)!important;}
+.btn-secondary-ui:hover,.btn-secondary-ui:focus-visible{
+  border-color:rgba(255,87,34,.55)!important;color:var(--ink)!important;background:var(--hz-surface-hi)!important;
+  transform:translateY(-2px);box-shadow:var(--hz-edge),0 16px 40px -18px rgba(255,87,34,.55)!important;}
+.btn-secondary-ui .arrow-wrap{background:rgba(255,87,34,.14)!important;color:var(--hz-o)!important;}
+html[data-theme="day"] .btn-secondary-ui{box-shadow:var(--hz-edge),0 10px 26px -18px rgba(60,30,10,.4)!important;}
+html[data-theme="day"] .btn-secondary-ui .arrow-wrap{color:#AD350A!important;}
+
+/* ── 6. surfaces: cards become lit glass ───────────────────────── */
+:is(.card,.price-card,.track-card,.pcard,.vc,.mini-t,.fc-proof-card,.ts-card,.cmp-row,
+    .jb-card,.jb-cat,.ld-row,.hs-item,.rt-block,.faq-item,.faq details,details.faq,
+    .jt-card,.stat-card){
+  border-radius:var(--hz-r)!important;
+  border-color:var(--card-line)!important;
+  background-color:var(--card);
+  background-image:
+    radial-gradient(420px circle at var(--mx,-600px) var(--my,-600px),var(--hz-spot),transparent 45%),
+    var(--hz-surface);
+  box-shadow:var(--hz-edge),var(--hz-shadow);
+  transition:transform .45s var(--hz-ease),box-shadow .45s var(--hz-ease),border-color .35s var(--hz-ease)!important;}
+:is(.card,.price-card,.track-card,.pcard,.vc,.ts-card,.jb-card,.jb-cat,.hs-item,.jt-card,.stat-card):hover{
+  border-color:rgba(255,87,34,.42)!important;
+  box-shadow:var(--hz-edge),0 0 0 1px rgba(255,87,34,.12),0 30px 70px -30px rgba(255,87,34,.45)!important;}
+:is(.pcard,.price-card,.track-card,.ts-card,.jb-cat,.hs-item):hover{transform:translateY(-4px);}
+
+/* FAQ rows: glass, spaced, with breathing room for the question */
+.faq details{margin:0 0 .6rem;padding:0 1.3rem;border:1px solid var(--card-line)!important;}
+.faq details[open]{border-color:rgba(255,87,34,.4)!important;}
+
+/* anything that is a large framed panel on a page gets the same glass */
+:is(.ht-stage,.ht-card,.jt,.hs-panel,.ask,.enrol-box,.cta-box,.urg,.timer,.countdown){
+  border-radius:calc(var(--hz-r) + 6px)!important;}
+
+/* ── 7. forms ──────────────────────────────────────────────────── */
+:is(input[type="text"],input[type="email"],input[type="tel"],input[type="search"],input[type="number"],select,textarea){
+  border-radius:var(--hz-r-s);
+  transition:border-color .25s var(--hz-ease),box-shadow .25s var(--hz-ease);}
+:is(input[type="text"],input[type="email"],input[type="tel"],input[type="search"],input[type="number"],select,textarea):focus{
+  outline:none;border-color:rgba(255,87,34,.7)!important;box-shadow:0 0 0 4px rgba(255,87,34,.16);}
+:focus-visible{outline-color:var(--hz-o);}
+
+/* ── 8. footer ─────────────────────────────────────────────────── */
+.foot{border-top:0!important;position:relative;padding-top:clamp(3.2rem,7vw,5rem)!important;}
+.foot::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:min(1120px,92%);height:1px;
+  background:linear-gradient(90deg,transparent,rgba(255,87,34,.6),transparent);
+  box-shadow:0 0 30px 2px rgba(255,87,34,.35);}
+.foot a{border-bottom-color:transparent!important;transition:color .25s,border-color .25s!important;}
+.foot a:hover{border-bottom-color:currentColor!important;}
+
+/* ── 9. pointer light (set by erj-future.js on wide screens) ───── */
+.hz-cursor{position:fixed;left:0;top:0;width:560px;height:560px;margin:-280px 0 0 -280px;border-radius:50%;
+  pointer-events:none;z-index:0;mix-blend-mode:screen;
+  background:radial-gradient(circle,rgba(255,110,50,.10),transparent 60%);
+  transform:translate3d(-999px,-999px,0);transition:opacity .4s;}
+html[data-theme="day"] .hz-cursor{mix-blend-mode:multiply;background:radial-gradient(circle,rgba(255,150,90,.10),transparent 60%);}
+
+/* ── 10. motion: ambient drift on wide screens only ────────────── */
+@media (min-width:1000px) and (prefers-reduced-motion:no-preference){
+  html::before{animation:hz-breathe 18s ease-in-out infinite alternate;}
+  :is(h1,h2) em{animation:hz-sheen 9s linear infinite;}
+}
+@keyframes hz-breathe{
+  0%{transform:translate3d(0,0,0) scale(1);}
+  100%{transform:translate3d(0,-2.5%,0) scale(1.06);}
+}
+@keyframes hz-sheen{to{background-position:-200% 0;}}
+
+/* phones: glass without the blur on buttons (one blurred layer, the dock, is enough) */
+@media (max-width:899px){.btn-secondary-ui{-webkit-backdrop-filter:none;backdrop-filter:none;}}
+
+/* ── 11. lite pages (portals, tools) ───────────────────────────── */
+html[data-alive="lite"]::before{animation:none!important;}
+html[data-alive="lite"] .hz-cursor{display:none;}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;}
+  .hz-cursor{display:none;}
+}
+@media print{html::before,html::after,.hz-cursor{display:none!important;}html{background:#fff;}}

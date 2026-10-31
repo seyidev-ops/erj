@@ -1,3 +1,4 @@
+@import url("../erj-future.css?v=20261101a");
 /* ═══ ERJ blog · shared layer for every post page and the archive (Oct 2026).
    Loaded after each page's own <style>, so it restyles without touching the
    article markup. Motion is transform-only; nothing starts invisible. ═══ */

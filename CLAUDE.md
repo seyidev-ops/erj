@@ -113,8 +113,11 @@ precached; keep it free of shared scripts so it renders with no network.
   `erj-nav.js`, `erj-theme.js`, `erj-track.js`, `erj-capture.js`,
   `erj-product.js`, `erj-schema.js`, `erj-cart.js`, `erj-passcode.js`,
   `erj-ascend.js`, `erj-private-protection.js`, `product.css`,
-  `erj-buttons.css`, and the site-wide visual layer `erj-alive.css` +
-  `erj-alive.js` (loaded last on every page except `blog/**`).
+  `erj-buttons.css`, the site-wide visual layer `erj-alive.css` +
+  `erj-alive.js` (loaded last on every page except `blog/**`), and the
+  Horizon design system `erj-future.css` + `erj-future.js` (after the alive
+  tags on every page; `blog/post.css` imports the CSS for every post) with
+  `erj-future-home.css` for the home page only.
 - Third-party code is vendored (`cvscan/vendor/`, `cvbuilder/vendor/`); don't
   add CDN dependencies for app logic.
 - `blog/<slug>/index.html`: static, canonical post pages. `blog.html` is the
@@ -158,6 +161,15 @@ precached; keep it free of shared scripts so it renders with no network.
   Portals and tools carry `<html data-alive="lite">` (no hero light). It is
   decorative only: no page may depend on it. New pages get the same two
   tags before `</head>` and `</body>`.
+- Horizon (`erj-future.css`) is the site's look: colour tokens, the canvas
+  (`html::before/::after`), the floating glass menu dock, lit buttons, glass
+  cards, chip labels, horizon dividers and the footer. It loads
+  render-blocking (a normal `<link>`, not the print/onload trick) so the old
+  look never flashes. The dock floats 10px down, so `body` carries a 12px
+  transparent top border; anything pinned under the menu needs the same
+  allowance (see `.jb-pin`). `erj-future.js` only adds pointer light and
+  magnetic buttons on wide screens with a fine pointer; nothing depends on
+  it. Its card list and the CSS card list should name the same classes.
 - Photos of the founder are `photo-seyi-<pose>.webp` (suit, welcome, invite,
   thumbsup, typing, headset, desk). A new photo gets a new name; delete the
   file it replaces so no residue ships.
