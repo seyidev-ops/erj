@@ -54,29 +54,30 @@ Cold or uncertain visitors should not be asked to choose among ERJ products firs
 
 The homepage remains the institutional ERJ ecosystem and leads with the main promise, not the diagnostic. Its order is: promise → founder welcome → proof, the Five-Finger Model, free resources and paid routes → story, pledge and FAQs → the diagnosis block ("Still unsure where to start?") → the cohort timer and enrolment. A small Free Diagnosis button stays in the opening screen for visitors ready to act immediately.
 
-## Current Cohort 12 campaign
+## Current Cohort 13 campaign
 
-- **Enrolment opens:** Monday, 5 October 2026
-- **Enrolment closes:** Saturday, 31 October 2026 · 8:00 PM WAT
-- **Cohort 12 begins:** Monday, 2 November 2026 · 8:00 PM WAT
+- **Enrolment opens:** Saturday, 31 October 2026 (the previous cohort’s enrolment was closed early that morning; it still begins Monday 2 November for those enrolled)
+- **Enrolment closes:** Sunday, 29 November 2026 · 8:00 PM WAT
+- **Cohort 13 begins:** Monday, 30 November 2026 · 8:00 PM WAT
 - **Foundation Training fee:** ₦250,000
 
-The countdowns on the home page and the store count down to 31 October.
+The countdowns on the home page, the store and the Foundation Training page count down to 29 November, then roll on to Cohort 14.
 
-### Next: Cohorts 13 and 14 (register forward)
+New participant logins are labelled with the cohort still enrolling (`nextCohort()` in `erj-passcode.js`, which reads each cohort's `closes`). Existing participants keep the cohort they registered under.
+
+### Next: Cohort 14 (register forward)
 
 | Cohort | Registration closes | Begins |
 |---|---|---|
-| Cohort 13 | Sunday, 29 November 2026 · 8:00 PM WAT | Monday, 30 November 2026 · 8:00 PM WAT |
 | Cohort 14 | Sunday, 3 January 2027 · 8:00 PM WAT | Monday, 4 January 2027 · 8:00 PM WAT |
 
-Same fee, ₦250,000. People can register forward: pay now for a later cohort and the seat is held. These live in canon as `cohort.upcoming`, so pages may name them while Cohort 12 is current. The Foundation Training page sells all three, hides each one once its registration closes, and its countdown always counts to the nearest open gate.
+Same fee, ₦250,000. People can register forward: pay now for a later cohort and the seat is held. Later cohorts live in canon as `cohort.upcoming`, so pages may name them alongside the current one.
 
 ### Instalment route
 
 `earlybird.html` carries the instalment route for Foundation Training. It **changes the payment timing, not the price** — the fee remains ₦250,000 either way.
 
-The Cohort 12 instalment window runs from 5 October to Saturday 24 October 2026, 11:59 PM WAT. After that, full payment applies until enrolment closes.
+The Cohort 13 instalment window runs from 31 October to Sunday 22 November 2026, 11:59 PM WAT. After that, full payment applies until enrolment closes.
 
 Any page still advertising an open instalment window after that date is stale and must be corrected.
 
@@ -99,7 +100,7 @@ Any page still advertising an open instalment window after that date is stale an
 | Stage 3 — Async Communication Mastery | ₦70,000 | Capacity |
 | Stage 4 — Start Your Remote Career | ₦100,000 | Representation and Aim |
 | Stage 2 — The Digital Toolkit | ₦130,000 | Capacity |
-| Remote Job Foundation Training (Cohort 12) | ₦250,000 (from ₦370,000) | Capacity, Supply, Representation, Aim |
+| Remote Job Foundation Training (Cohort 13) | ₦250,000 (from ₦370,000) | Capacity, Supply, Representation, Aim |
 | The Inner Circle — Stages 6–12 | ₦250,000 | Conversion |
 | Done-For-You Placement Engine — Stage 5 | ₦300,000 | Supply, Representation, Aim |
 | Get Your Dream Job Offer — Stages 1–5 | ₦500,000 (from ₦740,000) | The full route |

@@ -53,7 +53,7 @@
       ambassador: 'AMBASSADOR\n\nHello ERJ \u2014 I would like to become an Everything Remote Job ambassador. Please tell me what it involves, how ambassadors are rewarded and how to get started.\n\nFull name:\nWhere I would share ERJ (WhatsApp groups, LinkedIn, school, church, community):\nRoughly how many people I reach:',
       /* Remote Job Board (jobs/): the 'Unsure you qualify? Ask ERJ' link on each card. */
       jobBoard: 'Hello ERJ \u2014 I saw this role on the job board and I am not sure I qualify.\n\nRole: {title}\nCompany: {company}\nLink: {url}\n\nI will send my CV here. Please check the requirements with me.',
-      /* Foundation Training page: hold a seat in a named cohort ({cohort} = 'Cohort 12, begins Mon 2 Nov'). */
+      /* Foundation Training page: hold a seat in a named cohort ({cohort} = 'Cohort 13, begins Mon 30 Nov'). */
       ftSeat: 'FOUNDATION TRAINING\n\nI want a seat in {cohort}.\n\nFull name:\nTarget role:\nClass I can keep: 7 PM weekdays / 8 PM weekdays / weekends\n\nPlease send me how to pay and what happens next.',
       /* Foundation Training page: a question before enrolling. */
       ftAsk: 'Hello ERJ \u2014 I am looking at Foundation Training and I have a question before I enrol:\n\n',
@@ -121,26 +121,23 @@
       },
 
       cohort: {
-        number: 12,
+        /* Cohort 12 enrolment was closed early on the morning of Sat 31 Oct
+           2026; it still begins Mon 2 Nov for those enrolled. */
+        number: 13,
         feeNaira: 250000,
-        opens:   '2026-10-05',
-        closes:  '2026-10-31T20:00:00+01:00',
-        begins:  '2026-11-02T20:00:00+01:00',
-        opensDisplay:  'Mon 5 Oct',
-        closesDisplay: 'Sat 31 Oct \u00b7 8:00 PM WAT',
-        beginsDisplay: 'Mon 2 Nov \u00b7 8:00 PM WAT',
-        instalmentWindowCloses: '2026-10-24',
+        opens:   '2026-10-31',
+        closes:  '2026-11-29T20:00:00+01:00',
+        begins:  '2026-11-30T20:00:00+01:00',
+        opensDisplay:  'Sat 31 Oct',
+        closesDisplay: 'Sun 29 Nov \u00b7 8:00 PM WAT',
+        beginsDisplay: 'Mon 30 Nov \u00b7 8:00 PM WAT',
+        instalmentWindowCloses: '2026-11-22',
         instalmentHref: 'earlybird.html',
         instalmentNote: 'It changes the payment timing, not the price.',
         /* The cohorts after this one, already open for registration (people
            may register forward). Pages may name them; validate-facts.py accepts
            their numbers alongside the current one. Remove a cohort once it is current. */
         upcoming: [
-          { number: 13,
-            closes:  '2026-11-29T20:00:00+01:00',
-            begins:  '2026-11-30T20:00:00+01:00',
-            closesDisplay: 'Sun 29 Nov \u00b7 8:00 PM WAT',
-            beginsDisplay: 'Mon 30 Nov \u00b7 8:00 PM WAT' },
           { number: 14,
             closes:  '2027-01-03T20:00:00+01:00',
             begins:  '2027-01-04T20:00:00+01:00',

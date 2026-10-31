@@ -1703,7 +1703,7 @@ TEASE_COPY = {
                  ("Open the job board", "jobs/"), ("Find what is holding you back", "diagnose/")),
     "foundation": ("This is what you are training for:", "{n} live roles open to Nigeria.",
                    "The roles are already there. The twenty days are about being the person they hire. Pick your field and look.",
-                   ("See the roles by field", "jobs/"), ("Enrol in Cohort 12", "#pricing")),
+                   ("See the roles by field", "jobs/"), ("Enrol in Foundation Training", "#pricing")),
 }
 TEASE_CSS = """<style>
 .jt{--jt-o:#FF5722;--jt-line:rgba(255,255,255,.12);--jt-card:rgba(255,255,255,.035);--jt-mut:rgba(255,255,255,.66);position:relative;overflow:hidden;border:1px solid var(--jt-line);border-radius:22px;padding:clamp(1.3rem,3.4vw,2.2rem);margin:clamp(1.8rem,4vw,2.6rem) 0;background:radial-gradient(120% 140% at 100% 0,rgba(255,87,34,.14),transparent 55%),var(--jt-card);text-align:left;}

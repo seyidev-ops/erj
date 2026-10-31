@@ -66,9 +66,12 @@
     /* Cohort 12: enrolment 5-31 Oct (closes Sat 31 Oct 20:00 WAT), the cohort
        BEGINS Mon 2 Nov 20:00 WAT. 2 Nov 2026 is 22 Cheshvan (1 Cheshvan =
        12 Oct 2026), so the suffix is 2026CH. 13 and 14 are projections only. */
-    { n: 12, starts: '2026-11-02', ends: '2026-11-29', year: 2026, hm: 'CH', confirmed: true  },
-    { n: 13, starts: '2026-11-30', ends: '2026-12-27', year: 2026, hm: 'KI', confirmed: false },
-    { n: 14, starts: '2026-12-28', ends: '2027-01-24', year: 2026, hm: 'TE', confirmed: false }
+    /* `closes` = when that cohort's enrolment shut. Cohort 12 was closed early,
+       on the morning of Sat 31 Oct, and new registrations moved to Cohort 13. */
+    { n: 12, starts: '2026-11-02', ends: '2026-11-29', closes: '2026-10-31T07:00:00+01:00', year: 2026, hm: 'CH', confirmed: true  },
+    { n: 13, starts: '2026-11-30', ends: '2026-12-27', closes: '2026-11-29T20:00:00+01:00', year: 2026, hm: 'KI', confirmed: false },
+    /* Cohort 14 begins Mon 4 Jan 2027 (enrolment closes Sun 3 Jan). */
+    { n: 14, starts: '2027-01-04', ends: '2027-01-31', closes: '2027-01-03T20:00:00+01:00', year: 2027, hm: 'TE', confirmed: false }
   ];
 
   /* Every cohort begins at 20:00 WAT on its start date — never at midnight.
@@ -148,10 +151,13 @@
 
   /* The cohort currently SELLING — the next one that has not begun yet.
      What the site should count down to and name in enrolment copy. */
+  /* The cohort still ENROLLING: the first whose enrolment has not closed
+     (or, for rows without `closes`, whose start is still ahead). */
   function nextCohort(date) {
     var now = (date ? new Date(date) : new Date());
     for (var i = 0; i < COHORTS.length; i++) {
-      if (startsAt(COHORTS[i]) > now) return COHORTS[i];
+      var c = COHORTS[i], gate = c.closes ? new Date(c.closes) : startsAt(c);
+      if (gate > now) return c;
     }
     return COHORTS[COHORTS.length - 1];
   }

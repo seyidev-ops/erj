@@ -37,7 +37,7 @@
                 { label: 'Proof It Works', href: 'index.html#story' },
                 { label: 'How We Help', href: 'index.html#help' },
                 { label: 'Before You Decide', href: 'index.html#faq' },
-                { label: 'Join Cohort 12', href: 'index.html#enrol' }
+                { label: 'Join Cohort 13', href: 'index.html#enrol' }
             ]
         },
         {
