@@ -10212,6 +10212,128 @@
    "family": "Executive & Operations",
    "why": "Open across Africa, Nigeria included. You apply directly on the employer's own page.",
    "direct": true
+  },
+  {
+   "title": "Quality Assurance & Intern Support Officer",
+   "company": "10Alytics",
+   "region": "Remote (Nigerian company)",
+   "type": "Internship",
+   "experience": "See posting",
+   "salary": "Not listed",
+   "bullets": [
+    "Session coordination",
+    "Intern engagement and quality checks",
+    "2–3 yrs"
+   ],
+   "why": "Open to candidates in Nigeria by name.",
+   "apply": "https://www.10alytics.io/careers/quality-assurance-intern-support-officer",
+   "family": "Virtual Assistant & Admin",
+   "posted": "2026-10-30",
+   "deadline": null,
+   "checked": null,
+   "listed": "2026-10-31",
+   "source": "Career page",
+   "origin": "sheet",
+   "id": "de4a8ac2f0",
+   "added": "2026-10-31",
+   "direct": false
+  },
+  {
+   "title": "Senior IT Implementation Consultant",
+   "company": "OpenFn",
+   "region": "Remote — Africa",
+   "type": "Contract",
+   "experience": "See posting",
+   "salary": "Not listed",
+   "bullets": [
+    "Full-time contractor",
+    "Implements data-integration projects for health and NGO clients"
+   ],
+   "why": "Open across Africa, Nigeria included. Contract work: a fast way to earn a first remote reference.",
+   "apply": "https://apply.workable.com/openfn/j/B5CE217424",
+   "family": "Tech & IT",
+   "posted": "2026-10-29",
+   "deadline": null,
+   "checked": "2026-10-31",
+   "listed": "2026-10-31",
+   "source": "Workable",
+   "origin": "sheet",
+   "id": "d81237b847",
+   "added": "2026-10-31",
+   "direct": true
+  },
+  {
+   "title": "Principal Engineer / Professor — Technical Expert",
+   "company": "micro1",
+   "region": "Remote — worldwide (micro1 global expert network)",
+   "type": "Not stated",
+   "experience": "Not stated",
+   "salary": "$85–185/hr",
+   "bullets": [
+    "Full requirements are on the employer's page"
+   ],
+   "why": "Open worldwide with no country exclusion, so you can apply from Nigeria, and pays in foreign currency ($85–185/hr).",
+   "apply": "https://jobs.micro1.ai/post/954f5912-19a0-45c9-bcad-ab62ace16283?referralCode=d3605f74-92f0-4f1c-b8e2-4ab757bffc26",
+   "family": "Tech & IT",
+   "posted": "2026-10-31",
+   "deadline": null,
+   "checked": null,
+   "listed": "2026-10-31",
+   "source": "ERJ research",
+   "origin": "sheet",
+   "id": "664973f61c",
+   "added": "2026-10-31",
+   "direct": false
+  },
+  {
+   "title": "Manufacturing & Industrial Engineering Expert",
+   "company": "micro1",
+   "region": "Remote — worldwide (micro1 global expert network)",
+   "type": "Not stated",
+   "experience": "Not stated",
+   "salary": "$85–185/hr",
+   "bullets": [
+    "Full requirements are on the employer's page"
+   ],
+   "why": "Open worldwide with no country exclusion, so you can apply from Nigeria, and pays in foreign currency ($85–185/hr).",
+   "apply": "https://jobs.micro1.ai/post/4a2fb544-c427-4da3-80bb-ee83ff4802bb?referralCode=d3605f74-92f0-4f1c-b8e2-4ab757bffc26",
+   "family": "Tech & IT",
+   "posted": "2026-10-31",
+   "deadline": null,
+   "checked": null,
+   "listed": "2026-10-31",
+   "source": "ERJ research",
+   "origin": "sheet",
+   "id": "d34d3394cd",
+   "added": "2026-10-31",
+   "direct": false
+  },
+  {
+   "id": "bf52ca9fe5",
+   "title": "Software Engineer - AI Tooling Infrastructure",
+   "company": "Supabase",
+   "region": "Remote, Global",
+   "type": "Full-Time",
+   "experience": "5+ years",
+   "salary": "Undisclosed",
+   "bullets": [
+    "Have 5+ years of experience building and running backend services in production, and have carried on-call for them",
+    "Write strong TypeScript or Go, and are comfortable working in the other",
+    "Have designed and operated APIs with real consumers: versioning, error handling, rate limiting, and backwards-compatible change",
+    "Know OAuth , OIDC, JWT and API authorization well enough to debug them in production"
+   ],
+   "apply": "https://jobs.ashbyhq.com/supabase/fb0b563a-e541-43fd-8555-9eb6473aaa11",
+   "posted": "2026-10-31",
+   "deadline": null,
+   "checked": "2026-10-31",
+   "added": "2026-10-31",
+   "listed": "2026-10-31",
+   "source": "Ashby",
+   "origin": "feed",
+   "ats_id": "fb0b563a-e541-43fd-8555-9eb6473aaa11",
+   "family": "Tech & IT",
+   "why": "Open worldwide with no country exclusion, so you can apply from Nigeria. You apply directly on the employer's own page.",
+   "direct": true
   }
  ]
 }
