@@ -937,6 +937,42 @@ body.sticky-on .erj-ck{bottom:72px;}
       background:linear-gradient(100deg,transparent,rgba(255,196,107,.16),transparent);animation:epRun 5.5s ease-in-out 1s infinite;}}
   @keyframes epRun{0%{left:-40%}60%,100%{left:120%}}
   @media(max-width:700px){.ep{grid-template-columns:1fr;}.ep-cell{padding:1.1rem 1rem;}}
+
+/* ── tour deck (Oct 2026): the seven stops as a swipeable stack of cards ── */
+.htd-note{font-size:clamp(1.1rem,1.9vw,1.35rem)!important;line-height:1.45!important;max-width:30ch;}
+.htd{position:relative;margin-top:1.3rem;}
+.htd-top{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:.8rem;}
+.htd-k{font-size:.66rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);}
+.htd-ctl{display:inline-flex;align-items:center;gap:.5rem;}
+.htd-b{width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer;font-size:1rem;transition:transform .25s,border-color .25s,background .25s;}
+.htd-b:hover{transform:scale(1.08);border-color:var(--accent);}
+.htd-b:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
+.htd-n{font-size:.8rem;color:var(--ink-faint);min-width:2.6rem;text-align:center;}.htd-n b{color:var(--ink);font-size:1rem;}
+.htd-stack{position:relative;display:grid;padding-top:24px;touch-action:pan-y;}
+.htd-card{grid-area:1/1;position:relative;display:grid;grid-template-columns:auto 1fr auto;gap:1rem;align-items:center;padding:1.1rem 1.3rem 1.4rem;border-radius:20px;text-decoration:none;color:inherit;
+  background:linear-gradient(135deg,rgba(255,87,34,.14),transparent 60%),var(--card);border:1px solid rgba(255,87,34,.4);box-shadow:0 18px 44px rgba(0,0,0,.18);
+  transform-origin:50% 120%;transition:transform .55s cubic-bezier(.22,1,.36,1),opacity .45s,filter .45s;will-change:transform;}
+html[data-theme="day"] .htd-card{background:linear-gradient(135deg,rgba(255,87,34,.10),transparent 60%),#fff;box-shadow:0 16px 36px rgba(20,17,14,.10);}
+.htd-card[data-pos="0"]{z-index:5;transform:none;opacity:1;}
+.htd-card[data-pos="1"]{z-index:4;transform:translateY(-12px) scale(.95);opacity:.7;pointer-events:none;}
+.htd-card[data-pos="2"]{z-index:3;transform:translateY(-22px) scale(.9);opacity:.4;pointer-events:none;}
+.htd-card[data-pos="out"]{z-index:6;transform:translateX(-115%) rotate(-8deg);opacity:0;pointer-events:none;}
+.htd-card[data-pos="hide"]{z-index:1;transform:translateY(-28px) scale(.86);opacity:0;pointer-events:none;}
+.htd-ic{width:58px;height:58px;border-radius:16px;display:grid;place-items:center;font-size:1.7rem;background:rgba(255,87,34,.14);}
+.htd-no{display:block;font-family:var(--font-display);font-weight:800;font-size:.8rem;color:var(--accent);letter-spacing:.06em;}
+.htd-t{display:block;font-family:var(--font-display);font-size:clamp(1.15rem,2vw,1.4rem);font-weight:800;line-height:1.15;color:var(--ink);margin:.1rem 0 .25rem;}
+.htd-s{display:block;font-size:.86rem;line-height:1.45;color:var(--ink-soft);}
+.htd-go{display:inline-flex;align-items:center;gap:.35rem;padding:.55rem .9rem;border-radius:999px;background:#C9410C;color:#fff;font-weight:700;font-size:.82rem;white-space:nowrap;transition:transform .25s;}
+.htd-card:hover .htd-go{transform:translateX(3px);}
+.htd-dots{display:flex;gap:.4rem;justify-content:center;margin-top:.9rem;}
+.htd-dots button{width:8px;height:8px;padding:0;border:0;border-radius:999px;background:var(--line);cursor:pointer;transition:width .35s,background .35s;}
+.htd-dots button.on{width:26px;background:var(--accent);}
+.htd-bar{position:absolute;left:1.3rem;right:1.3rem;bottom:.6rem;height:2px;border-radius:2px;background:rgba(255,87,34,.15);overflow:hidden;}
+.htd-bar i{display:block;height:100%;width:100%;background:var(--accent);transform-origin:0 50%;transform:scaleX(0);}
+.htd.play .htd-card[data-pos="0"] .htd-bar i{animation:htdBar 4.5s linear forwards;}
+@keyframes htdBar{to{transform:scaleX(1)}}
+@media(max-width:560px){.htd-card{grid-template-columns:auto 1fr;padding:1rem 1rem 1.3rem;}.htd-go{grid-column:1/-1;justify-self:start;}.htd-ic{width:46px;height:46px;font-size:1.35rem;}}
+@media(prefers-reduced-motion:reduce){.htd-card{transition:none;}.htd.play .htd-card[data-pos="0"] .htd-bar i{animation:none;}}
   .ht-cta{display:flex;flex-wrap:wrap;align-items:center;gap:1rem 1.6rem;margin-top:1.5rem;}
   .ht-skip{font-size:.88rem;font-weight:600;color:var(--accent);text-decoration:none;}
   .ht-skip:hover{text-decoration:underline;}
@@ -1716,15 +1752,18 @@ html[data-theme="day"] .timer-num{background-image:linear-gradient(160deg,#0A0A0
 <div class="ht-head">
 <div class="step"><span class="step-n">01</span><span class="step-l">Start Here · Your Quick Tour</span></div>
 <h2 class="f-hello">New here? I’m glad <em>you’re here.</em></h2>
-<p class="f-note">I built Everything Remote Job for one person: the capable African professional the global market keeps overlooking — not for lack of skill, but for lack of a system. <strong>You are not the problem.</strong> The way you were taught to present yourself and search is.</p>
-<p class="f-sign">— Oluwaseyi<span>Lead Facilitator · Everything Remote Job by Business Play Ltd · In remote roles since 2013 · Training professionals into global roles since 2021</span></p>
-<p class="ht-lead"><span class="ht-lead-k">Let me take you through this page in a brief tour.</span> Tap any stop below and I’ll take you straight there, or press <b>Start the tour</b> and follow the arrow on the left of your screen: I’ll tell you what comes next as you go.</p>
+<p class="f-note htd-note"><strong>You are not the problem.</strong> The way you were taught to search is. Let’s fix that.</p>
+<p class="f-sign htd-sign">— Oluwaseyi<span>Lead Facilitator · in remote roles since 2013</span></p>
+<div class="htd" id="htDeck" aria-roledescription="carousel" aria-label="This page in seven stops">
+<div class="htd-top"><span class="htd-k">This page in 7 stops</span><span class="htd-ctl"><button class="htd-b" type="button" data-d="-1" aria-label="Previous stop">←</button><span class="htd-n" aria-live="polite"><b>1</b>/7</span><button class="htd-b" type="button" data-d="1" aria-label="Next stop">→</button></span></div>
+<div class="htd-stack"></div>
+<div class="htd-dots" role="tablist"></div>
 </div>
 </div>
-<div class="ht-tour" data-erj-tour=""></div>
+</div>
 <div class="ht-cta">
 <a class="btn-primary-ui pulse" href="#promise" id="htStart"><span>Start the tour</span><span class="arrow-wrap"><span class="arrow is-down">↓</span></span></a>
-<a class="ht-skip" href="#enrol">Already decided? Skip to Join Cohort 13 →</a>
+<a class="ht-skip" href="#enrol">Already decided? Join Cohort 13 →</a>
 </div>
 </div>
 </section>
@@ -2093,6 +2132,43 @@ html[data-theme="day"] .jt{--jt-o:#E8470F;--jt-line:rgba(20,17,14,.12);--jt-card
       atFinal = es[0].isIntersecting;
       apply();
     },{threshold:0,rootMargin:'0px 0px -80px 0px'}).observe(final);
+  }
+})();
+</script>
+<script>
+/* Tour deck: the stops from ERJ_NAV.onPage as a stack. Arrows, dots, swipe; plays by itself until touched. */
+(function(){
+  var deck=document.getElementById('htDeck');if(!deck)return;
+  var nav=(window.ERJ_NAV&&window.ERJ_NAV.onPage)||[];
+  var IC={'#promise':'🌍','#pledge':'✋','#jobs-live':'🔎','#story':'🏆','#help':'🧰','#faq':'💬','#enrol':'🚀'};
+  var stops=nav.filter(function(s){return !s.tourSelf;});if(!stops.length)return;
+  var stack=deck.querySelector('.htd-stack'),dots=deck.querySelector('.htd-dots'),cnt=deck.querySelector('.htd-n');
+  cnt.innerHTML='<b>1</b>/'+stops.length;
+  stops.forEach(function(s,i){
+    var a=document.createElement('a');a.className='htd-card';a.href=s.href;a.setAttribute('data-tour-target',s.href);
+    var no=i+2;a.innerHTML='<span class="htd-ic" aria-hidden="true">'+(IC[s.href]||'•')+'</span><span><span class="htd-no">'+(no<10?'0'+no:no)+'</span><span class="htd-t"></span><span class="htd-s"></span></span><span class="htd-go">Go there →</span><span class="htd-bar" aria-hidden="true"><i></i></span>';
+    a.querySelector('.htd-t').textContent=s.label;a.querySelector('.htd-s').textContent=s.sub||'';
+    stack.appendChild(a);
+    var d=document.createElement('button');d.type='button';d.setAttribute('aria-label','Stop '+(i+1)+': '+s.label);d.addEventListener('click',function(){stopPlay();show(i);});dots.appendChild(d);
+  });
+  var cards=[].slice.call(stack.children),dd=[].slice.call(dots.children),cur=0,n=cards.length,timer=null;
+  function show(i){
+    var prev=cur;cur=(i+n)%n;
+    cards.forEach(function(c,k){var off=(k-cur+n)%n;c.setAttribute('data-pos',off<3?String(off):(k===prev&&prev!==cur?'out':'hide'));c.tabIndex=off===0?0:-1;c.setAttribute('aria-hidden',off===0?'false':'true');});
+    dd.forEach(function(d,k){d.classList.toggle('on',k===cur);});
+    cnt.querySelector('b').textContent=String(cur+1);
+    if(deck.classList.contains('play')){var b=cards[cur].querySelector('.htd-bar i');b.style.animation='none';void b.offsetWidth;b.style.animation='';}
+  }
+  function stopPlay(){deck.classList.remove('play');clearInterval(timer);timer=null;}
+  [].forEach.call(deck.querySelectorAll('.htd-b'),function(b){b.addEventListener('click',function(){stopPlay();show(cur+ +b.getAttribute('data-d'));});});
+  var x0=null;stack.addEventListener('touchstart',function(e){x0=e.touches[0].clientX;},{passive:true});
+  stack.addEventListener('touchend',function(e){if(x0===null)return;var dx=e.changedTouches[0].clientX-x0;x0=null;if(Math.abs(dx)>40){stopPlay();show(cur+(dx<0?1:-1));}},{passive:true});
+  deck.addEventListener('keydown',function(e){if(e.key==='ArrowRight'){stopPlay();show(cur+1);}if(e.key==='ArrowLeft'){stopPlay();show(cur-1);}});
+  show(0);
+  if(!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)){
+    deck.classList.add('play');show(0);
+    timer=setInterval(function(){show(cur+1);},4500);
+    deck.addEventListener('mouseenter',function(){if(timer){clearInterval(timer);timer=null;deck.classList.remove('play');}});
   }
 })();
 </script>
