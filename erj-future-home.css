@@ -46,22 +46,26 @@ html[data-theme="day"] .step{border-color:rgba(173,53,10,.22);background:linear-
 .hz-sat b{position:absolute;transform:translate(-50%,-50%);display:inline-grid;place-items:center;min-width:44px;height:30px;padding:0 .7rem;border-radius:999px;
   font:700 .72rem/1 var(--font-display,'Space Grotesk',sans-serif);letter-spacing:.08em;color:#fff;
   background:linear-gradient(135deg,rgba(255,87,34,.95),rgba(255,138,61,.9));box-shadow:0 0 0 4px rgba(255,87,34,.15),0 10px 30px -6px rgba(255,87,34,.7);}
-.hz-sat.s1{transform:rotate(-38deg) translateX(min(255px,40vw)) rotate(38deg);}
-.hz-sat.s2{transform:rotate(200deg) translateX(min(230px,36vw)) rotate(-200deg);}
-.hz-sat.s3{transform:rotate(95deg) translateX(min(285px,42vw)) rotate(-95deg);}
+.hz-sat.s1{--hz-r:min(255px,40vw);transform:rotate(-38deg) translateX(var(--hz-r)) rotate(38deg);}
+.hz-sat.s2{--hz-r:min(230px,36vw);transform:rotate(200deg) translateX(var(--hz-r)) rotate(-200deg);}
+.hz-sat.s3{--hz-r:min(285px,42vw);transform:rotate(95deg) translateX(var(--hz-r)) rotate(-95deg);}
 html[data-theme="day"] .hz-orbit i{border-color:rgba(12,11,10,.10);}
 html[data-theme="day"] .hz-orbit .r1{border-color:rgba(232,71,15,.35);}
 #tour .ht-frame>*:not(.hz-orbit){position:relative;z-index:1;}
+/* the destinations revolve at every width (small, composited pills); the large dashed ring spins on desktop only */
 @media (min-width:1000px) and (prefers-reduced-motion:no-preference){
   .hz-orbit .r1{animation:hz-spin 60s linear infinite;}
+}
+@media (prefers-reduced-motion:no-preference){
+  .hz-sat{will-change:transform;}
   .hz-sat.s1{animation:hz-orb1 26s linear infinite;}
   .hz-sat.s2{animation:hz-orb2 34s linear infinite;}
   .hz-sat.s3{animation:hz-orb3 42s linear infinite;}
 }
 @keyframes hz-spin{to{transform:rotate(360deg);}}
-@keyframes hz-orb1{from{transform:rotate(-38deg) translateX(255px) rotate(38deg);}to{transform:rotate(322deg) translateX(255px) rotate(-322deg);}}
-@keyframes hz-orb2{from{transform:rotate(200deg) translateX(230px) rotate(-200deg);}to{transform:rotate(560deg) translateX(230px) rotate(-560deg);}}
-@keyframes hz-orb3{from{transform:rotate(95deg) translateX(285px) rotate(-95deg);}to{transform:rotate(455deg) translateX(285px) rotate(-455deg);}}
+@keyframes hz-orb1{from{transform:rotate(-38deg) translateX(var(--hz-r)) rotate(38deg);}to{transform:rotate(322deg) translateX(var(--hz-r)) rotate(-322deg);}}
+@keyframes hz-orb2{from{transform:rotate(200deg) translateX(var(--hz-r)) rotate(-200deg);}to{transform:rotate(560deg) translateX(var(--hz-r)) rotate(-560deg);}}
+@keyframes hz-orb3{from{transform:rotate(95deg) translateX(var(--hz-r)) rotate(-95deg);}to{transform:rotate(455deg) translateX(var(--hz-r)) rotate(-455deg);}}
 @media (max-width:899px){.hz-orbit{inset:-10%;}.hz-orbit .r3{display:none;}}
 
 /* the tour deck reads as stacked glass */
