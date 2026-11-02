@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="robots" content="noindex"/>
+<title>Foundation Training · motion graphic | Everything Remote Job</title>
+<!--
+  Foundation Training motion graphic.
+  Built the Null Motion way (github.com/blixvip/NullMotion): one 1920×1080
+  composition, every move on a single paused GSAP timeline exposed as
+  window.__timelines.root, so the same file plays on the page (iframe,
+  scaled to fit) and renders frame by frame to MP4 (?render: no scaling,
+  no autoplay; the renderer seeks the timeline).
+  Facts are the page's own: keep them in step with foundationtraining/index.html.
+-->
+<style>
+@font-face{font-family:'Space Grotesk';font-weight:300 800;font-display:block;src:url('../../fonts/space-grotesk-var.woff2') format('woff2');}
+@font-face{font-family:'Inter';font-weight:400;font-display:block;src:url('../../fonts/inter-400.woff2') format('woff2');}
+@font-face{font-family:'Inter';font-weight:500;font-display:block;src:url('../../fonts/inter-500.woff2') format('woff2');}
+:root{--o:#FF5722;--o2:#FF8A3D;--gold:#FFC46B;--g:#19C27A;--ink:#F5F4F1;--soft:#A9AAB2;--bg:#05060A;}
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{width:100%;height:100%;background:var(--bg);overflow:hidden;}
+body{font-family:'Inter',system-ui,sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased;}
+#stage{position:absolute;inset:0;}
+#root{position:absolute;left:50%;top:50%;width:1920px;height:1080px;overflow:hidden;background:var(--bg);transform-origin:50% 50%;transform:translate(-50%,-50%);}
+
+/* ── light, grid floor, grain ── */
+.bg{position:absolute;inset:0;pointer-events:none;}
+#glowA{position:absolute;width:1400px;height:900px;left:260px;top:560px;border-radius:50%;
+  background:radial-gradient(closest-side,rgba(255,87,34,.55),rgba(255,87,34,.12) 55%,transparent);}
+#glowB{position:absolute;width:1100px;height:800px;left:1180px;top:-420px;border-radius:50%;
+  background:radial-gradient(closest-side,rgba(110,91,255,.32),transparent);}
+#glowC{position:absolute;width:900px;height:700px;left:-380px;top:-200px;border-radius:50%;
+  background:radial-gradient(closest-side,rgba(255,138,61,.22),transparent);}
+#floorWrap{position:absolute;left:0;right:0;bottom:0;height:520px;perspective:700px;overflow:hidden;
+  -webkit-mask-image:linear-gradient(180deg,transparent,#000 45%);mask-image:linear-gradient(180deg,transparent,#000 45%);}
+#floor{position:absolute;left:-50%;right:-50%;top:0;height:1400px;transform-origin:50% 0;transform:rotateX(68deg);
+  background-image:linear-gradient(rgba(255,120,60,.28) 2px,transparent 2px),linear-gradient(90deg,rgba(255,120,60,.22) 2px,transparent 2px);
+  background-size:120px 120px;}
+#vig{position:absolute;inset:0;background:radial-gradient(ellipse 75% 70% at 50% 45%,transparent 55%,rgba(0,0,0,.65));}
+
+/* ── type ── */
+/* before the timeline exists, only the end card shows: a still poster, not a pile of scenes */
+html:not(.ready) .scene:not(#s7){visibility:hidden;}
+html:not(.ready) #cursor{display:none;}
+.scene{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;}
+.h{font-family:'Space Grotesk',sans-serif;font-weight:700;letter-spacing:-.045em;line-height:1;}
+.h .w{display:inline-block;white-space:pre;}
+.acc{background:linear-gradient(100deg,#FF5722,#FF8A3D 45%,#FFC46B 70%,#FF5722);-webkit-background-clip:text;background-clip:text;color:transparent;}
+.kick{display:inline-flex;align-items:center;gap:14px;padding:12px 26px 12px 18px;border-radius:999px;font:600 22px/1 'Space Grotesk',sans-serif;
+  letter-spacing:.2em;text-transform:uppercase;color:#FFB089;border:1px solid rgba(255,87,34,.4);background:linear-gradient(90deg,rgba(255,87,34,.16),rgba(255,87,34,.03));}
+.kick i{width:12px;height:12px;border-radius:50%;background:var(--o);box-shadow:0 0 0 5px rgba(255,87,34,.18),0 0 16px var(--o);}
+.glass{background:linear-gradient(180deg,rgba(255,255,255,.075),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.11);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.1),0 40px 90px -30px rgba(0,0,0,.8);border-radius:32px;}
+
+/* S1 */
+#s1 .l1{font-size:110px;color:#CFCFD4;}
+#s1 .l2{font-size:150px;margin-top:26px;}
+
+/* S2 */
+#s2{gap:10px;}
+#dayLbl{font:600 34px/1 'Space Grotesk',sans-serif;letter-spacing:.3em;text-transform:uppercase;color:var(--soft);}
+#dayNum{font:700 360px/0.9 'Space Grotesk',sans-serif;letter-spacing:-.06em;}
+#s2 .tag{font-size:96px;margin-top:20px;}
+#dayBar{width:820px;height:10px;border-radius:10px;background:rgba(255,255,255,.08);overflow:hidden;margin-top:30px;}
+#dayBar i{display:block;height:100%;width:100%;transform-origin:0 50%;background:linear-gradient(90deg,#FF5722,#FFC46B);box-shadow:0 0 24px rgba(255,87,34,.8);}
+
+/* S3: four stages */
+#s3 .hd{font-size:84px;margin-bottom:46px;}
+#plan{width:1380px;padding:44px 52px;text-align:left;}
+.row{display:grid;grid-template-columns:420px 1fr;align-items:center;gap:30px;height:118px;border-top:1px solid rgba(255,255,255,.07);}
+.row:first-child{border-top:0;}
+.row b{display:block;white-space:nowrap;font:700 34px/1.1 'Space Grotesk',sans-serif;letter-spacing:-.02em;}
+.row span{display:block;font-size:22px;color:var(--soft);margin-top:6px;}
+.track{position:relative;height:56px;}
+.bar{position:absolute;top:0;height:56px;width:calc(25% - 8px);border-radius:16px;display:flex;align-items:center;justify-content:center;padding:0 12px;
+  font:600 22px/1 'Space Grotesk',sans-serif;color:#fff;white-space:nowrap;
+  background:linear-gradient(180deg,#FF6A3A,#E5450F);box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 12px 30px -10px rgba(255,87,34,.9);}
+.row:nth-child(2) .bar{left:25%;} .row:nth-child(3) .bar{left:50%;} .row:nth-child(4) .bar{left:75%;}
+.ticks{display:grid;grid-template-columns:420px 1fr;gap:30px;margin-top:18px;}
+.ticks div{display:flex;justify-content:space-between;font-size:20px;color:#7d7f88;}
+#plan{position:relative;}
+#head{position:absolute;top:30px;bottom:70px;width:3px;border-radius:3px;background:linear-gradient(#FFC46B,#FF5722);box-shadow:0 0 18px #FF5722;}
+
+/* S4: day 1 vs day 20 */
+#s4 .hd{font-size:84px;margin-bottom:50px;}
+#cmp{display:grid;grid-template-columns:1fr 120px 1fr;align-items:center;width:1560px;}
+.col{padding:44px 48px;text-align:left;min-height:440px;}
+.col h3{font:700 44px/1 'Space Grotesk',sans-serif;letter-spacing:-.03em;margin-bottom:26px;}
+.col li{list-style:none;display:flex;gap:18px;align-items:flex-start;font-size:29px;line-height:1.3;padding:14px 0;border-top:1px solid rgba(255,255,255,.07);}
+.col li:first-child{border-top:0;}
+.col li em{flex:none;width:38px;height:38px;border-radius:50%;display:grid;place-items:center;font-style:normal;font-size:22px;font-weight:700;margin-top:1px;}
+#before{opacity:.92;} #before h3{color:#BFC0C6;}
+#before li{color:#9A9BA3;} #before li em{background:rgba(255,80,80,.14);color:#FF7B7B;}
+#after{border-color:rgba(25,194,122,.5);box-shadow:inset 0 1px 0 rgba(255,255,255,.1),0 40px 110px -40px rgba(25,194,122,.55);}
+#after h3{color:#7BF0B8;} #after li em{background:rgba(25,194,122,.18);color:#4BE39C;}
+#arrow{font:700 80px/1 'Space Grotesk',sans-serif;color:var(--o);text-align:center;}
+
+/* S5: sixteen assets */
+#s5 .hd{font-size:84px;}
+#s5 .sub{font-size:34px;color:var(--soft);margin:18px 0 46px;}
+#chips{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;width:1560px;}
+.chip{display:flex;align-items:center;gap:14px;padding:20px 22px;border-radius:20px;font:500 24px/1.15 'Inter',sans-serif;text-align:left;
+  background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.1);}
+.chip i{font-style:normal;font-size:30px;}
+#count{position:absolute;right:120px;top:96px;font:700 120px/1 'Space Grotesk',sans-serif;letter-spacing:-.05em;}
+#count small{font-size:44px;color:var(--soft);letter-spacing:-.02em;}
+#marked{position:absolute;left:120px;top:110px;}
+
+/* S6: certificate */
+#s6 .hd{font-size:80px;margin-bottom:44px;}
+#cert{width:900px;border-radius:18px;overflow:hidden;position:relative;
+  box-shadow:0 0 0 1px rgba(255,190,150,.5),0 60px 120px -30px rgba(0,0,0,.9),0 0 140px -20px rgba(255,87,34,.6);}
+#cert img{display:block;width:100%;}
+#sweep{position:absolute;top:0;bottom:0;left:-40%;width:35%;background:linear-gradient(105deg,transparent,rgba(255,255,255,.55) 50%,transparent);transform:skewX(-16deg);}
+#s6 .note{font-size:30px;color:var(--soft);margin-top:34px;}
+
+/* S7: end card */
+#logo{width:640px;}
+#s7 .hd{font-size:132px;margin-top:40px;}
+#times{display:flex;gap:18px;margin-top:44px;}
+.tm{padding:18px 30px;font:600 30px/1 'Space Grotesk',sans-serif;border-radius:999px;}
+#cta{position:relative;margin-top:56px;display:inline-flex;align-items:center;gap:20px;padding:30px 44px 30px 52px;border-radius:999px;
+  font:700 44px/1 'Space Grotesk',sans-serif;color:#fff;background:linear-gradient(180deg,#FF6A3A,#FF5722 55%,#F04A14);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.4),0 24px 60px -14px rgba(255,87,34,.9),0 0 0 1px rgba(255,160,120,.6);}
+#cta b{display:inline-grid;place-items:center;width:58px;height:58px;border-radius:50%;background:rgba(255,255,255,.2);font-size:34px;}
+#ring{position:absolute;inset:-4px;border-radius:999px;border:3px solid #FFC46B;}
+#cursor{position:absolute;left:0;top:0;width:54px;height:54px;}
+#url{font-size:30px;color:var(--soft);margin-top:34px;letter-spacing:.02em;}
+
+
+/* ── 9:16 (html.v): same film, stacked for phones and social ── */
+.v #root{width:1080px;height:1920px;}
+.v .scene{padding:0 70px;}
+.v #glowA{width:1200px;height:1100px;left:-60px;top:1180px;}
+.v #glowB{left:420px;top:-380px;}
+.v #floorWrap{height:760px;}
+.v #s1 .l1{font-size:96px;line-height:1.05;}
+.v #s1 .l2{font-size:132px;line-height:1.02;}
+.v #dayNum{font-size:340px;}
+.v #dayBar{width:760px;}
+.v #s2 .tag{font-size:100px;line-height:1.05;}
+.v #s3 .hd,.v #s4 .hd,.v #s5 .hd{font-size:92px;line-height:1.04;}
+.v #plan{width:940px;padding:34px 40px;}
+.v .row{grid-template-columns:1fr;height:auto;gap:14px;padding:22px 0;}
+.v .ticks{grid-template-columns:1fr;gap:0;}
+.v #head{top:40px;bottom:80px;}
+.v #cmp{grid-template-columns:1fr;width:940px;gap:10px;}
+.v #arrow{transform:rotate(90deg);font-size:64px;}
+.v .col{min-height:0;padding:34px 40px;}
+.v .col h3{font-size:42px;margin-bottom:12px;}
+.v .col li{font-size:28px;padding:10px 0;}
+.v #marked,.v #count{position:static;}
+.v #marked{margin-bottom:26px;font-size:20px;}
+.v #count{font-size:110px;margin-bottom:26px;}
+.v #chips{grid-template-columns:repeat(2,1fr);width:940px;gap:14px;}
+.v .chip{font-size:24px;padding:16px 18px;}
+.v #s6 .hd{font-size:110px;}
+.v #cert{width:940px;}
+.v #s6 .note{font-size:32px;line-height:1.35;}
+.v #logo{width:760px;}
+.v #s7 .hd{font-size:150px;line-height:1;}
+.v #times{flex-direction:column;align-items:center;}
+.v .tm{font-size:36px;padding:20px 40px;}
+.v #cta{font-size:46px;}
+.v #url{font-size:30px;}
+
+/* page controls (hidden when rendering) */
+#ctl{position:fixed;right:14px;bottom:14px;z-index:9;display:flex;gap:8px;}
+#ctl button{width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.25);background:rgba(10,12,18,.65);color:#fff;font-size:17px;cursor:pointer;
+  -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);}
+#ctl button:focus-visible{outline:2px solid var(--o);outline-offset:2px;}
+.render #ctl{display:none;}
+</style>
+</head>
+<body>
+<div id="stage">
+<div id="root" data-composition-id="root" data-start="0" data-duration="27" data-width="1920" data-height="1080" role="img"
+  aria-label="Foundation Training in 27 seconds: twenty live days across four stages, from Day 1 to Day 20, sixteen things you build, the Remote Job Proficiency Certificate, three class times, ₦250,000.">
+  <div class="bg"><div id="glowC"></div><div id="glowB"></div><div id="glowA"></div>
+    <div id="floorWrap"><div id="floor"></div></div><div id="vig"></div></div>
+
+  <section class="scene" id="s1">
+    <div class="h l1" data-split>You are not short of effort.</div>
+    <div class="h l2" data-split>You are short of <span class="acc">proof.</span></div>
+  </section>
+
+  <section class="scene" id="s2">
+    <div id="dayLbl">Day</div>
+    <div id="dayNum" class="acc">1</div>
+    <div id="dayBar"><i></i></div>
+    <div class="h tag" data-split>Twenty live days. <span class="acc">A remote-ready you.</span></div>
+  </section>
+
+  <section class="scene" id="s3">
+    <div class="h hd" data-split>Four stages. <span class="acc">Twenty days.</span></div>
+    <div id="plan" class="glass">
+      <div class="row"><div><b>Remote Mindset</b><span>Stage 1 · Your remote operating system</span></div><div class="track"><div class="bar">Days 1–5</div></div></div>
+      <div class="row"><div><b>Digital Toolkit</b><span>Stage 2 · The Integrated Sprint</span></div><div class="track"><div class="bar">Days 6–10</div></div></div>
+      <div class="row"><div><b>Async Communication</b><span>Stage 3 · 5 communication assets</span></div><div class="track"><div class="bar">Days 11–15</div></div></div>
+      <div class="row"><div><b>Career Launch</b><span>Stage 4 · The Global Ready Package</span></div><div class="track"><div class="bar">Days 16–20</div></div></div>
+      <div id="head"></div>
+      <div class="ticks"><span></span><div><span>Day 1</span><span>Day 5</span><span>Day 10</span><span>Day 15</span><span>Day 20</span></div></div>
+    </div>
+  </section>
+
+  <section class="scene" id="s4">
+    <div class="h hd" data-split>Day 1 you. <span class="acc">Day 20 you.</span></div>
+    <div id="cmp">
+      <div class="col glass" id="before"><h3>Day 1</h3><ul>
+        <li><em>✕</em>A CV written for local employers</li>
+        <li><em>✕</em>No portfolio a recruiter can open</li>
+        <li><em>✕</em>A LinkedIn profile nobody finds</li>
+        <li><em>✕</em>“Tell me about yourself” still makes you freeze</li></ul></div>
+      <div id="arrow">→</div>
+      <div class="col glass" id="after"><h3>Day 20</h3><ul>
+        <li><em>✓</em>A remote-first CV, ready to send as a PDF</li>
+        <li><em>✓</em>A 2–3 project portfolio with a public link</li>
+        <li><em>✓</em>A LinkedIn headline recruiters can find</li>
+        <li><em>✓</em>A recorded 2-minute STAR interview answer</li></ul></div>
+    </div>
+  </section>
+
+  <section class="scene" id="s5">
+    <div id="marked" class="kick"><i></i>Your work, marked by a person</div>
+    <div id="count"><span id="cn">0</span><small> / 16 built</small></div>
+    <div class="h hd" data-split>Sixteen things you build. <span class="acc">All yours.</span></div>
+    <div class="sub">Built live, one stage at a time.</div>
+    <div id="chips">
+      <div class="chip"><i>📅</i>Deep Work Calendar Blocks</div><div class="chip"><i>⏱</i>Pomodoro Tracker + Log</div>
+      <div class="chip"><i>🎯</i>Daily KPI Planning Sheet</div><div class="chip"><i>📋</i>End-of-Day Report System</div>
+      <div class="chip"><i>🖥</i>Workspace Audit + Photo</div><div class="chip"><i>🎙</i>Zoom Cloud Recording</div>
+      <div class="chip"><i>📌</i>Project Board, 5 Task Cards</div><div class="chip"><i>📄</i>Linked Cloud Document</div>
+      <div class="chip"><i>🔄</i>Async Sprint Board Review</div><div class="chip"><i>✉️</i>Zero-Follow-Up Email</div>
+      <div class="chip"><i>💬</i>Slack Batch Message</div><div class="chip"><i>🤝</i>Working With Me Manual</div>
+      <div class="chip"><i>🛠</i>Tech Emergency Fallback Plan</div><div class="chip"><i>📝</i>Remote-First CV (PDF)</div>
+      <div class="chip"><i>🗂</i>Digital Portfolio</div><div class="chip"><i>🎬</i>STAR Video Answer</div>
+    </div>
+  </section>
+
+  <section class="scene" id="s6">
+    <div class="h hd" data-split>Finish <span class="acc">certified.</span></div>
+    <div id="cert"><img src="../cert-proficiency-sample-800.webp" alt=""/><div id="sweep"></div></div>
+    <div class="note">Remote Job Proficiency Certificate · your name, your own student number</div>
+  </section>
+
+  <section class="scene" id="s7">
+    <img id="logo" src="../../erj-lockup-dark.png" alt=""/>
+    <div class="h hd" data-split>Foundation <span class="acc">Training.</span></div>
+    <div id="times">
+      <div class="tm glass">7pm Weekday</div><div class="tm glass">8pm Weekday</div><div class="tm glass">7pm Weekend</div>
+    </div>
+    <div id="cta">Enrol now · ₦250,000 <b>→</b><div id="ring"></div></div>
+    <div id="url">everythingremotejob.com/foundationtraining</div>
+    <svg id="cursor" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 2l16 9-7 2-3 7z" fill="#fff" stroke="#05060A" stroke-width="1.3" stroke-linejoin="round"/></svg>
+  </section>
+</div>
+</div>
+<div id="ctl"><button id="pp" type="button" aria-label="Pause">❚❚</button><button id="rw" type="button" aria-label="Play from the start">↺</button></div>
+
+<script src="gsap.min.js"></script>
+<script>
+(function () {
+  'use strict';
+  var RENDER = /[?&]render\b/.test(location.search);
+  if (RENDER) document.documentElement.classList.add('render');
+  /* 9:16 for phones and social: ?v, or a frame taller than it is wide */
+  var VERT = /[?&]v\b/.test(location.search) || (!RENDER && innerWidth < innerHeight);
+  if (VERT) document.documentElement.classList.add('v');
+  var W = VERT ? 1080 : 1920, H = VERT ? 1920 : 1080;
+  var root0 = document.getElementById('root');
+  root0.setAttribute('data-width', W); root0.setAttribute('data-height', H);
+
+  /* split [data-split] headings into words, keeping accent spans */
+  document.querySelectorAll('[data-split]').forEach(function (el) {
+    var out = [];
+    el.childNodes.forEach(function (n) {
+      var txt = n.textContent, cls = n.nodeType === 1 ? n.className : '';
+      txt.split(/(\s+)/).forEach(function (w) {
+        if (!w) return;
+        if (/^\s+$/.test(w)) { out.push(' '); return; }
+        out.push('<span class="w' + (cls ? ' ' + cls : '') + '">' + w + '</span>');
+      });
+    });
+    el.innerHTML = out.join('');
+  });
+
+  var $ = function (s) { return document.querySelector(s); };
+  var $$ = function (s) { return Array.prototype.slice.call(document.querySelectorAll(s)); };
+  var words = function (s) { return $$(s + ' .w'); };
+  var tl;
+  function build() {
+  tl = gsap.timeline({ paused: true, defaults: { ease: 'power3.out' } });
+
+  gsap.set('.scene', { autoAlpha: 0 });
+  var wordsIn = function (sel, at, d) {
+    tl.fromTo(words(sel), { opacity: 0, y: 40, filter: 'blur(18px)' },
+      { opacity: 1, y: 0, filter: 'blur(0px)', duration: d || 0.7, stagger: 0.07 }, at);
+  };
+  var show = function (id, at) { tl.set(id, { autoAlpha: 1 }, at); };
+  var hide = function (id, at) {
+    tl.to(id, { autoAlpha: 0, y: -30, filter: 'blur(14px)', duration: 0.5, ease: 'power2.in' }, at);
+  };
+
+  /* ambient: the light breathes, the floor rolls toward us all film long */
+  tl.fromTo('#floor', { backgroundPosition: '0px 0px' }, { backgroundPosition: '0px 1080px', duration: 27, ease: 'none' }, 0);
+  tl.fromTo('#glowA', { scale: .9, x: -60 }, { scale: 1.15, x: 80, duration: 27, ease: 'sine.inOut' }, 0);
+  tl.fromTo('#glowB', { x: 0 }, { x: -260, duration: 27, ease: 'sine.inOut' }, 0);
+
+  /* S1 · 0 – 3.4 */
+  show('#s1', 0);
+  wordsIn('#s1 .l1', 0.2, 0.6);
+  wordsIn('#s1 .l2', 1.25, 0.75);
+  tl.to('#s1 .l1', { opacity: .35, duration: .6 }, 1.4);
+  hide('#s1', 3.0);
+
+  /* S2 · 3.4 – 7.2 */
+  show('#s2', 3.4);
+  tl.from('#dayLbl', { opacity: 0, y: 20, duration: .5 }, 3.45);
+  tl.from('#dayNum', { opacity: 0, scale: .7, filter: 'blur(20px)', duration: .6 }, 3.5);
+  tl.from('#dayBar', { opacity: 0, duration: .3 }, 3.6);
+  var day = { n: 1 };
+  tl.to(day, { n: 20, duration: 1.9, ease: 'power2.inOut', onUpdate: function () { $('#dayNum').textContent = Math.round(day.n); } }, 3.8);
+  tl.fromTo('#dayBar i', { scaleX: .05 }, { scaleX: 1, duration: 1.9, ease: 'power2.inOut' }, 3.8);
+  tl.to('#dayNum', { scale: 1.06, duration: .25, yoyo: true, repeat: 1, ease: 'power1.inOut' }, 5.7);
+  wordsIn('#s2 .tag', 5.6, 0.6);
+  hide('#s2', 6.85);
+
+  /* S3 · 7.2 – 11.6 */
+  show('#s3', 7.2);
+  wordsIn('#s3 .hd', 7.25, 0.6);
+  tl.from('#plan', { opacity: 0, y: 60, scale: .96, duration: .7 }, 7.55);
+  tl.from('.row > div:first-child', { opacity: 0, x: -30, duration: .45, stagger: .12 }, 7.9);
+  tl.from('.bar', { scaleX: 0, transformOrigin: '0 50%', duration: .42, stagger: .42, ease: 'none' }, 8.38);
+  var tr = $('.track'), x0 = tr.offsetLeft, x1 = x0 + tr.offsetWidth;
+  if (tr.offsetParent !== $('#plan')) { x0 += tr.offsetParent.offsetLeft; x1 += tr.offsetParent.offsetLeft; }
+  tl.fromTo('#head', { left: x0, opacity: 1 }, { left: x1, opacity: 1, duration: 1.68, ease: 'none' }, 8.38);
+  tl.set('#head', { opacity: 0 }, 0);
+  tl.to('#head', { opacity: 0, duration: .3 }, 10.1);
+  hide('#s3', 11.2);
+
+  /* S4 · 11.6 – 16 */
+  show('#s4', 11.6);
+  wordsIn('#s4 .hd', 11.65, 0.6);
+  tl.from('#before', { opacity: 0, x: -80, duration: .6 }, 12.0);
+  tl.from('#before li', { opacity: 0, x: -20, duration: .35, stagger: .1 }, 12.2);
+  tl.from('#arrow', { opacity: 0, x: -30, scale: .6, duration: .45, ease: 'back.out(2)' }, 12.9);
+  tl.from('#after', { opacity: 0, x: 80, duration: .6 }, 13.1);
+  tl.from('#after li', { opacity: 0, x: 20, duration: .35, stagger: .16 }, 13.35);
+  tl.from('#after li em', { scale: 0, duration: .35, stagger: .16, ease: 'back.out(3)' }, 13.45);
+  tl.to('#before', { opacity: .45, scale: .97, duration: .6 }, 14.2);
+  hide('#s4', 15.6);
+
+  /* S5 · 16 – 19.8 */
+  show('#s5', 16.0);
+  wordsIn('#s5 .hd', 16.05, 0.6);
+  tl.from('#s5 .sub', { opacity: 0, y: 16, duration: .5 }, 16.5);
+  tl.from('.chip', { opacity: 0, y: 40, scale: .9, filter: 'blur(8px)', duration: .45, stagger: { each: .07, from: 'random' } }, 16.6);
+  var cnt = { n: 0 };
+  tl.to(cnt, { n: 16, duration: 1.35, ease: 'none', onUpdate: function () { $('#cn').textContent = Math.round(cnt.n); } }, 16.6);
+  tl.from('#count', { opacity: 0, y: -20, duration: .4 }, 16.6);
+  tl.from('#marked', { opacity: 0, x: -30, duration: .5 }, 17.6);
+  tl.to('.chip', { borderColor: 'rgba(255,87,34,.55)', boxShadow: '0 0 30px -8px rgba(255,87,34,.7)', duration: .3, stagger: .03 }, 18.1);
+  hide('#s5', 19.4);
+
+  /* S6 · 19.8 – 23 */
+  show('#s6', 19.8);
+  wordsIn('#s6 .hd', 19.85, 0.6);
+  tl.fromTo('#cert', { opacity: 0, y: 80, rotateX: 18, scale: .9, filter: 'blur(16px)' },
+    { opacity: 1, y: 0, rotateX: 0, scale: 1, filter: 'blur(0px)', duration: 1.0, ease: 'power3.out' }, 20.2);
+  tl.fromTo('#sweep', { x: 0 }, { x: '520%', duration: 1.1, ease: 'power2.inOut' }, 21.0);
+  tl.from('#s6 .note', { opacity: 0, y: 16, duration: .5 }, 21.4);
+  hide('#s6', 22.6);
+
+  /* S7 · 23 – 27 */
+  show('#s7', 23.0);
+  tl.from('#logo', { opacity: 0, scale: .9, filter: 'blur(14px)', duration: .7 }, 23.05);
+  wordsIn('#s7 .hd', 23.3, 0.6);
+  tl.from('.tm', { opacity: 0, y: 24, duration: .4, stagger: .1 }, 23.8);
+  tl.from('#cta', { opacity: 0, y: 30, scale: .9, duration: .6, ease: 'back.out(1.6)' }, 24.2);
+  tl.from('#url', { opacity: 0, duration: .5 }, 24.5);
+  var cta = $('#cta'), cx = cta.offsetLeft + cta.offsetWidth * .8, cy = cta.offsetTop + cta.offsetHeight * .55;
+  tl.fromTo('#cursor', { x: cx + 330, y: cy + 230, opacity: 0 }, { x: cx, y: cy, opacity: 1, duration: .9, ease: 'power2.inOut' }, 24.6);
+  tl.to('#cursor', { scale: .82, duration: .1, yoyo: true, repeat: 1 }, 25.55);
+  tl.to('#cta', { scale: .96, duration: .1, yoyo: true, repeat: 1 }, 25.55);
+  tl.fromTo('#ring', { opacity: .9, scale: 1 }, { opacity: 0, scale: 1.25, duration: .7, ease: 'power2.out' }, 25.6);
+  tl.to({}, { duration: .1 }, 26.9);  /* hold the end card to 27s */
+
+  window.__timelines = window.__timelines || {};
+  window.__timelines.root = tl;
+  document.documentElement.classList.add('ready');
+  }
+
+  function start() {
+
+  /* on the page: fit 1920×1080 into the frame, play when seen, loop */
+  var root = $('#root');
+  var fit = function () { root.style.transform = 'translate(-50%,-50%) scale(' + Math.min(innerWidth / W, innerHeight / H) + ')'; };
+  fit(); addEventListener('resize', fit);
+
+  var END = 26.2;  /* the end card: what anyone who cannot or will not watch motion sees */
+  var still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var pp = $('#pp'), rw = $('#rw'), userPaused = false, seen = false;
+  var setBtn = function () { var on = !tl.paused(); pp.textContent = on ? '❚❚' : '►'; pp.setAttribute('aria-label', on ? 'Pause' : 'Play'); };
+  tl.eventCallback('onComplete', function () { setTimeout(function () { if (!userPaused && seen) tl.restart(); }, 1800); });
+  tl.seek(still ? END : 0.01);
+  if (still) { tl.pause(); userPaused = true; }
+  pp.addEventListener('click', function () {
+    if (tl.paused()) { userPaused = false; if (tl.progress() >= 1) tl.restart(); else tl.play(); }
+    else { userPaused = true; tl.pause(); }
+    setBtn();
+  });
+  rw.addEventListener('click', function () { userPaused = false; tl.restart(); setBtn(); });
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (es) {
+      seen = es[0].isIntersecting;
+      if (seen && !userPaused) tl.play(); else if (!seen) tl.pause();
+      setBtn();
+    }, { threshold: .35 }).observe(document.body);
+  } else if (!still) { tl.play(); }
+  setBtn();
+  }
+
+  /* layout depends on the web fonts, and some moves are measured from it */
+  (document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve()).then(function () {
+    build();
+    if (!RENDER) start();
+  });
+})();
+</script>
+</body>
+</html>
