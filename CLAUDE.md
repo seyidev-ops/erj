@@ -120,6 +120,13 @@ precached; keep it free of shared scripts so it renders with no network.
   `erj-future-home.css` for the home page only.
 - Third-party code is vendored (`cvscan/vendor/`, `cvbuilder/vendor/`); don't
   add CDN dependencies for app logic.
+- `foundationtraining/motion/` is the page's motion graphic, built the Null
+  Motion way: one 1920×1080 (or 1080×1920 with `?v` / a tall frame) scene on a
+  single paused GSAP timeline (`window.__timelines.root`, vendored
+  `gsap.min.js`). The page embeds it in an iframe; `?render` turns off
+  scaling and autoplay so a headless browser can seek it frame by frame for
+  MP4 export. Its facts (stages, assets, class times, fee) are the page's:
+  change them together. No cohort numbers or dates in it.
 - `blog/<slug>/index.html`: static, canonical post pages. `blog.html` is the
   in-browser reader (query form `?p=` is blocked in `robots.txt`).
 
