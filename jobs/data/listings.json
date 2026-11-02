@@ -7404,33 +7404,6 @@
    "direct": true
   },
   {
-   "id": "05665fda3f",
-   "title": "Product Manager (IGaming)",
-   "company": "Growe Talents",
-   "region": "Anywhere; Europe / Anywhere",
-   "type": "Internship",
-   "experience": "2+ years",
-   "salary": "Undisclosed",
-   "bullets": [
-    "2+ years of experience in Product or Technical Project Management, including hands-on delivery of software development projects",
-    "Proven experience in real-money iGaming, with a strong understanding of casino mechanics and the operator-provider ecosystem",
-    "Solid understanding of frontend, backend, design, and QA workflows, with the ability to navigate technical challenges",
-    "Experience managing project scope, timelines, priorities, and cross-functional dependencies in a dynamic environment"
-   ],
-   "apply": "https://job-boards.eu.greenhouse.io/growetalents/jobs/4970777101",
-   "posted": "2026-10-12",
-   "deadline": null,
-   "checked": "2026-11-02",
-   "added": "2026-10-26",
-   "listed": "2026-10-26",
-   "source": "Greenhouse",
-   "origin": "feed",
-   "ats_id": "4970777101",
-   "family": "Data & Product",
-   "why": "Open worldwide with no country exclusion, so you can apply from Nigeria. You apply directly on the employer's own page.",
-   "direct": true
-  },
-  {
    "id": "1b618c54ff",
    "title": "Social Media & Influencer Specialist",
    "company": "Growe Talents",
@@ -9898,6 +9871,60 @@
    "ats_id": "fd35fcf9-8658-4394-94b0-beac551ec9ec",
    "family": "Tech & IT",
    "why": "Open to candidates in Nigeria by name, and pays in foreign currency ($2.9K – $3.8K per month). Contract work: a fast way to earn a first remote reference.",
+   "direct": true
+  },
+  {
+   "id": "80aeb87843",
+   "title": "Technical Support Specialist",
+   "company": "Growe Talents",
+   "region": "Europe / Anywhere",
+   "type": "Not stated",
+   "experience": "Not stated",
+   "salary": "Undisclosed",
+   "bullets": [
+    "6–12 months of experience in Technical Support or L1 Support",
+    "English proficiency at B1+/B2 level or higher for written communication and working with technical documentation",
+    "Understanding of client-server architecture, HTTP, REST API, request/response, and HTTP status codes",
+    "Ability to use browser DevTools (Network, Console)"
+   ],
+   "apply": "https://job-boards.eu.greenhouse.io/growetalents/jobs/5011245101",
+   "posted": "2026-11-02",
+   "deadline": null,
+   "checked": "2026-11-02",
+   "added": "2026-11-02",
+   "listed": "2026-11-02",
+   "source": "Greenhouse",
+   "origin": "feed",
+   "ats_id": "5011245101",
+   "family": "Customer Service & Success",
+   "why": "Open worldwide with no country exclusion, so you can apply from Nigeria. You apply directly on the employer's own page.",
+   "direct": true
+  },
+  {
+   "id": "e2c0fcd8a9",
+   "title": "Content Manager",
+   "company": "Jobgether partner",
+   "region": "Nigeria",
+   "type": "Full-Time",
+   "experience": "Not stated",
+   "salary": "Undisclosed",
+   "bullets": [
+    "Define and lead the content direction, setting editorial priorities and identifying topics and formats with the greatest potential value",
+    "Edit and improve new and existing content to ensure clarity, accuracy, relevance, and a consistently high editorial standard",
+    "Use AI tools to support content research, drafting, and editing while applying strong editorial judgment and maintaining quality",
+    "Lead and support a small team of writers, providing constructive feedback and helping them develop their skills"
+   ],
+   "apply": "https://jobs.lever.co/jobgether/316815c7-f576-4542-a702-cd82f7b3d752",
+   "posted": "2026-11-02",
+   "deadline": null,
+   "checked": "2026-11-02",
+   "added": "2026-11-02",
+   "listed": "2026-11-02",
+   "source": "Lever",
+   "origin": "feed",
+   "ats_id": "316815c7-f576-4542-a702-cd82f7b3d752",
+   "family": "Marketing & Creative",
+   "why": "Open to candidates in Nigeria by name. You apply directly on the employer's own page.",
    "direct": true
   }
  ]
