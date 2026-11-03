@@ -602,18 +602,34 @@ html[data-theme="day"] .fx-price-save{color:#1E8E4E;}
 <!-- End Google Tag Manager (noscript) -->
 <div id="erjNavMount"></div>
 <script>window.ERJ_NAV={active:'mastery',base:'../',onPage:[
+  {label:'In 27 seconds',href:'#film'},
   {label:'Start dates',href:'#top'},
   {label:'What changes',href:'#change'},
   {label:'The 4 stages',href:'#stages'},
   {label:'What you keep',href:'#assets'},
-  {label:'Proof',href:'#proof'},
   {label:'Certificate',href:'#certificate'},
+  {label:'Proof',href:'#proof'},
   {label:'Choose your class',href:'#tracks'},
   {label:'Pricing',href:'#pricing'},
   {label:'Questions',href:'#faq'}
 ]};</script>
 <main>
 <a class="promo-tick" href="#pricing" aria-label="We will not let you go until you're hired."><div class="promo-track">We will not let you go <em>until you're hired.</em></div></a>
+
+<!-- FILM: first thing on the page — the programme in 27 seconds (foundationtraining/motion/, a Null Motion-style GSAP composition) -->
+<section class="wrap fx-sec ft-film" id="film">
+<p class="section-label">The programme in 27 seconds</p>
+<div class="ft-film-frame"><iframe src="motion/" title="Foundation Training in 27 seconds: four stages over twenty live days, sixteen things you build, and the certificate" fetchpriority="high"></iframe></div>
+</section>
+<style>
+.ft-film{padding-top:clamp(1.2rem,3vw,2.2rem)!important;padding-bottom:clamp(.6rem,2vw,1.4rem)!important;}
+.ft-film .section-label{margin:0;}
+.ft-film-frame{margin-top:1.2rem;border-radius:26px;overflow:hidden;aspect-ratio:16/9;background:#05060A;
+  border:1px solid rgba(255,87,34,.35);box-shadow:0 40px 100px -40px rgba(255,87,34,.55),0 30px 60px -30px rgba(0,0,0,.6);}
+.ft-film-frame iframe{display:block;width:100%;height:100%;border:0;}
+/* phones: the tall cut, capped so the offer below still peeks into view */
+@media (max-width:700px){.ft-film-frame{aspect-ratio:9/16;width:min(100%,calc(62svh * 9 / 16),420px);margin-left:auto;margin-right:auto;}}
+</style>
 
 <!-- HERO -->
 <section class="fx-hero wrap" id="top">
@@ -661,19 +677,6 @@ html[data-theme="day"] .fx-price-save{color:#1E8E4E;}
 </figure>
 </div>
 </section>
-
-<!-- FILM: the programme in 27 seconds (foundationtraining/motion/, a Null Motion-style GSAP composition) -->
-<section class="wrap fx-sec ft-film" id="film">
-<p class="section-label">The programme in 27 seconds</p>
-<div class="ft-film-frame"><iframe src="motion/" title="Foundation Training in 27 seconds: four stages over twenty live days, sixteen things you build, and the certificate" loading="lazy"></iframe></div>
-</section>
-<style>
-.ft-film{padding-top:clamp(1.5rem,4vw,3rem)!important;padding-bottom:clamp(1.5rem,4vw,3rem)!important;}
-.ft-film-frame{margin-top:1.2rem;border-radius:26px;overflow:hidden;aspect-ratio:16/9;background:#05060A;
-  border:1px solid rgba(255,87,34,.35);box-shadow:0 40px 100px -40px rgba(255,87,34,.55),0 30px 60px -30px rgba(0,0,0,.6);}
-.ft-film-frame iframe{display:block;width:100%;height:100%;border:0;}
-@media (max-width:700px){.ft-film-frame{aspect-ratio:9/16;max-width:420px;margin-left:auto;margin-right:auto;}}
-</style>
 
 <!-- PAIN -->
 <section class="wrap fx-sec" id="familiar">
@@ -847,25 +850,6 @@ html[data-theme="day"] .jt{--jt-o:#E8470F;--jt-line:rgba(20,17,14,.12);--jt-card
 </div>
 </section>
 
-<!-- PROOF -->
-<section class="wrap fx-sec" id="proof">
-<p class="section-label">People ERJ has worked with</p>
-<h2>Same people. <span>Different evidence.</span></h2>
-<div class="stat-row stats-counter fx-stats" id="ftImpact">
-<div><div class="stat-num" data-count="446" data-suffix="+">446+</div><div class="stat-lbl">Professionals trained</div></div>
-<div><div class="stat-num" data-count="382" data-suffix="+">382+</div><div class="stat-lbl">Professionals placed</div></div>
-<div><div class="stat-num" data-count="10">10</div><div class="stat-lbl">Cohorts completed</div></div>
-<div><div class="stat-num" data-count="16">16</div><div class="stat-lbl">Assets built live</div></div>
-</div>
-<div class="fx-quotes">
-<figure class="fx-q"><blockquote>&ldquo;Nobody asked about my degree. Every single person asked how I handle an angry customer at 11pm, and I had four years of answers.&rdquo;</blockquote><figcaption><i aria-hidden="true">N</i><span><b>Ngozi</b>Retail Supervisor → Remote Customer Success · Enugu</span></figcaption></figure>
-<figure class="fx-q"><blockquote>&ldquo;Not exceptional talent or luck. 90 minutes a day, applied consistently, in the right direction. The constraints don&rsquo;t disqualify you.&rdquo;</blockquote><figcaption><i aria-hidden="true">A</i><span><b>Amara</b>Operations Manager → Remote Ops Coordinator · Abuja</span></figcaption></figure>
-<figure class="fx-q"><blockquote>&ldquo;I rewrote my CV four times for a problem that was never in my CV. The thing that was broken took two weeks of practice to fix.&rdquo;</blockquote><figcaption><i aria-hidden="true">T</i><span><b>Tunde</b>Data Analyst · Lagos</span></figcaption></figure>
-<figure class="fx-q"><blockquote>&ldquo;The 312 applications were not wasted. They taught me exactly what was not working. The 8 weeks taught me what was.&rdquo;</blockquote><figcaption><i aria-hidden="true">B</i><span><b>Blessing</b>NGO Project Coordinator → Remote PM · Lagos</span></figcaption></figure>
-</div>
-<p class="fx-more"><a href="../testimonials.html">Read their full stories →</a></p>
-</section>
-
 <!-- CERTIFICATE -->
 <section class="wrap fx-sec" id="certificate">
 <div class="fx-cert-grid">
@@ -884,6 +868,25 @@ html[data-theme="day"] .jt{--jt-o:#E8470F;--jt-line:rgba(20,17,14,.12);--jt-card
 <span class="fx-cert-tag">Sample · your name goes here</span>
 </div>
 </div>
+</section>
+
+<!-- PROOF -->
+<section class="wrap fx-sec" id="proof">
+<p class="section-label">People ERJ has worked with</p>
+<h2>Same people. <span>Different evidence.</span></h2>
+<div class="stat-row stats-counter fx-stats" id="ftImpact">
+<div><div class="stat-num" data-count="446" data-suffix="+">446+</div><div class="stat-lbl">Professionals trained</div></div>
+<div><div class="stat-num" data-count="382" data-suffix="+">382+</div><div class="stat-lbl">Professionals placed</div></div>
+<div><div class="stat-num" data-count="10">10</div><div class="stat-lbl">Cohorts completed</div></div>
+<div><div class="stat-num" data-count="16">16</div><div class="stat-lbl">Assets built live</div></div>
+</div>
+<div class="fx-quotes">
+<figure class="fx-q"><blockquote>&ldquo;Nobody asked about my degree. Every single person asked how I handle an angry customer at 11pm, and I had four years of answers.&rdquo;</blockquote><figcaption><i aria-hidden="true">N</i><span><b>Ngozi</b>Retail Supervisor → Remote Customer Success · Enugu</span></figcaption></figure>
+<figure class="fx-q"><blockquote>&ldquo;Not exceptional talent or luck. 90 minutes a day, applied consistently, in the right direction. The constraints don&rsquo;t disqualify you.&rdquo;</blockquote><figcaption><i aria-hidden="true">A</i><span><b>Amara</b>Operations Manager → Remote Ops Coordinator · Abuja</span></figcaption></figure>
+<figure class="fx-q"><blockquote>&ldquo;I rewrote my CV four times for a problem that was never in my CV. The thing that was broken took two weeks of practice to fix.&rdquo;</blockquote><figcaption><i aria-hidden="true">T</i><span><b>Tunde</b>Data Analyst · Lagos</span></figcaption></figure>
+<figure class="fx-q"><blockquote>&ldquo;The 312 applications were not wasted. They taught me exactly what was not working. The 8 weeks taught me what was.&rdquo;</blockquote><figcaption><i aria-hidden="true">B</i><span><b>Blessing</b>NGO Project Coordinator → Remote PM · Lagos</span></figcaption></figure>
+</div>
+<p class="fx-more"><a href="../testimonials.html">Read their full stories →</a></p>
 </section>
 
 <!-- CLASS TRACKS -->
