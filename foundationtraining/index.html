@@ -352,7 +352,9 @@ html[data-theme="day"] .fx-hero h1 em{background:linear-gradient(90deg,#E8470F,#
 .fx-lede{font-size:clamp(1.05rem,1.6vw,1.2rem);line-height:1.6;color:var(--ink-soft);max-width:40ch;margin:0 0 2.2rem;}
 
 /* cohort picker */
-.fx-pick{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.55rem;margin:0 0 .7rem;max-width:520px;}
+.fx-pick{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.55rem;margin:0 0 1.4rem;}
+.fx-co-fwd{text-decoration:none;border-style:dashed;}
+.fx-co-fwd:hover{border-color:var(--accent);}
 .fx-pick .fx-co{padding:.8rem .85rem;}
 .fx-co{all:unset;box-sizing:border-box;cursor:pointer;display:flex;flex-direction:column;gap:.2rem;padding:.85rem 1rem;border-radius:16px;border:1.5px solid var(--line);background:var(--card);
   transition:border-color .25s,transform .25s var(--ease),box-shadow .25s;position:relative;}
@@ -388,6 +390,11 @@ html[data-theme="day"] .fx-tag{color:#B4600C;} html[data-theme="day"] .fx-tag.no
 
 .fx-cta{display:flex;flex-wrap:wrap;gap:.7rem;margin:0 0 1.4rem;}
 .fx-cta.center{justify-content:center;}
+.fx-cta-sm{flex-wrap:nowrap;gap:.5rem;}
+.fx-cta-sm .btn-primary-ui,.fx-cta-sm .btn-secondary-ui{min-height:50px!important;padding:.6rem .7rem .6rem 1.05rem!important;font-size:1rem!important;gap:.5rem;flex:0 1 auto;}
+.fx-cta-sm .arrow-wrap{width:1.6rem;height:1.6rem;flex-basis:1.6rem;}
+.fx-cta-sm .btn-primary-ui span:first-child,.fx-cta-sm .btn-secondary-ui span:first-child{white-space:nowrap;}
+@media (max-width:520px){.fx-cta-sm .btn-primary-ui,.fx-cta-sm .btn-secondary-ui{flex:1 1 0;font-size:.95rem!important;padding:.6rem .9rem!important;min-height:48px!important;}.fx-cta-sm .arrow-wrap{display:none;}}
 @media(prefers-reduced-motion:no-preference){.fx-pulse{animation:fxBtn 2.6s ease-in-out infinite}}
 @keyframes fxBtn{0%,100%{box-shadow:0 0 0 0 rgba(255,87,34,.45)}50%{box-shadow:0 0 0 12px rgba(255,87,34,0)}}
 
@@ -428,14 +435,29 @@ html[data-theme="day"] .fx-frame{box-shadow:0 26px 60px rgba(20,17,14,.18);}
 }
 
 /* pains */
-.fx-pains{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.8rem;margin:1.6rem 0 1.4rem;}
-.fx-pain{padding:1.25rem;border-radius:20px;border:1px solid var(--line);background:var(--card);transition:transform .3s var(--ease),border-color .3s;}
-.fx-pain:hover{transform:translateY(-4px) rotate(-.4deg);border-color:var(--accent);}
-.fx-pain i{font-style:normal;font-size:1.6rem;display:block;margin-bottom:.7rem;}
-.fx-pain b{display:block;font-family:var(--font-display);font-size:1.02rem;line-height:1.3;color:var(--ink);margin-bottom:.45rem;}
-.fx-pain p{font-size:.86rem;line-height:1.6;color:var(--ink-soft);margin:0;}
-.fx-bridge{font-size:clamp(1.05rem,2vw,1.3rem);line-height:1.5;color:var(--ink-soft);max-width:62ch;}
-.fx-bridge b{color:var(--ink);}
+.fx-pains{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.8rem;margin:1.6rem 0 1.2rem;}
+.fx-pain{all:unset;box-sizing:border-box;cursor:pointer;position:relative;display:flex;flex-direction:column;gap:.55rem;padding:1.25rem 1.25rem 1.3rem;border-radius:22px;border:1.5px solid var(--line);background:var(--card);
+  transition:transform .35s var(--ease),border-color .3s,box-shadow .35s,background .35s;-webkit-tap-highlight-color:transparent;}
+.fx-pain:focus-visible{outline:2px solid var(--accent);outline-offset:3px;}
+.fx-pain:hover{transform:translateY(-3px);border-color:rgba(255,87,34,.55);}
+.fx-pain::after{content:'';position:absolute;top:1rem;right:1rem;width:22px;height:22px;border-radius:50%;border:1.5px solid var(--line);transition:all .3s var(--ease);}
+.fx-pain i{font-style:normal;font-size:1.7rem;display:inline-block;align-self:flex-start;line-height:1;transition:transform .45s var(--ease);}
+.fx-pain b{display:block;font-family:var(--font-display);font-weight:700;font-size:1.05rem;line-height:1.3;color:var(--ink);padding-right:1.6rem;}
+.fx-fix{display:block;font-size:.86rem;line-height:1.5;color:var(--ink-soft);}
+.fx-fix em{font-style:normal;font-weight:700;color:var(--accent);}
+/* once the script runs, the fix is the answer you get by tapping */
+.fx-quiz .fx-fix{max-height:0;overflow:hidden;margin-top:-.55rem;transition:max-height .45s var(--ease),margin .45s var(--ease);}
+.fx-quiz .fx-pain[aria-pressed="true"] .fx-fix{max-height:6em;margin-top:0;}
+.fx-pain[aria-pressed="true"]{border-color:var(--accent);background:linear-gradient(160deg,rgba(255,87,34,.16),transparent 70%),var(--card);box-shadow:0 18px 44px -18px rgba(255,87,34,.6);transform:translateY(-3px);}
+.fx-pain[aria-pressed="true"]::after{content:'✓';display:grid;place-items:center;background:var(--accent);border-color:var(--accent);color:#fff;font-size:.72rem;font-weight:800;transform:scale(1.1);}
+.fx-pain[aria-pressed="true"] i{transform:scale(1.18) rotate(-8deg);}
+.fx-verdict{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.8rem 1.4rem;padding:1.1rem 1.3rem;border-radius:20px;border:1px dashed var(--line);transition:border-color .3s,background .3s;}
+.fx-verdict.hot{border-style:solid;border-color:rgba(255,87,34,.6);background:linear-gradient(90deg,rgba(255,87,34,.12),transparent);}
+.fx-verdict-t{margin:0;font-size:clamp(1rem,1.8vw,1.15rem);line-height:1.5;color:var(--ink-soft);}
+.fx-verdict-t b{color:var(--ink);}
+.fx-verdict-go{font-weight:800;color:var(--accent);text-decoration:none;white-space:nowrap;}
+@media(max-width:900px){.fx-pains{grid-template-columns:1fr 1fr;}}
+@media(max-width:520px){#familiar .fx-pains{grid-template-columns:1fr 1fr!important;gap:.55rem;}.fx-pain{padding:.95rem .9rem 1rem;border-radius:18px;gap:.45rem;}.fx-pain::after{top:.75rem;right:.75rem;width:18px;height:18px;}.fx-pain b{font-size:.9rem;padding-right:1.2rem;}.fx-pain i{font-size:1.35rem;}.fx-fix{font-size:.8rem;}}
 @media(max-width:980px){.fx-pains{grid-template-columns:1fr 1fr;}}
 @media(max-width:520px){.fx-pains{grid-template-columns:1fr;}}
 
@@ -618,6 +640,13 @@ html[data-theme="day"] .fx-price-save{color:#1E8E4E;}
 .fx-final .fx-fine{margin-top:.4rem;}
 
 /* hide the old sticky copy on desktop as before; sticky text updates by JS */
+/* ── alive: every block rises into place (transform only: nothing is ever hidden) ── */
+#film~section .reveal.pre{transform:translateY(34px) scale(.975);}
+#film~section .reveal{transition:transform .8s cubic-bezier(.22,1,.36,1);}
+/* a slow light sweep across the enrol buttons, on every screen */
+@keyframes ftSheen{0%,72%{transform:translateX(-120%)}100%{transform:translateX(120%)}}
+.btn-yes::after{animation:ftSheen 5s ease-in-out 1.5s infinite;}
+@media (prefers-reduced-motion:reduce){.btn-yes::after{animation:none!important;}#film~section .reveal.pre{transform:none;}}
 @media(prefers-reduced-motion:reduce){.fx-live i,.fx-pulse,.fx-chip,.fx-shine,.fx-glow i,.fx-hero h1 em{animation:none!important}}
 </style>
 </head>
@@ -641,24 +670,26 @@ html[data-theme="day"] .fx-price-save{color:#1E8E4E;}
 <main>
 
 <!-- FILM: first thing on the page — the programme in 27 seconds (foundationtraining/motion/, a Null Motion-style GSAP composition) -->
-<section class="wrap fx-sec ft-film" id="film">
+<section class="fx-sec ft-film" id="film">
 <p class="section-label">The programme in 27 seconds</p>
 <div class="ft-film-frame"><iframe src="motion/" title="Foundation Training in 27 seconds: four stages over twenty live days, sixteen things you build, and the certificate" fetchpriority="high"></iframe></div>
 <div class="ft-film-cta"><p class="ft-film-line">That was 27 seconds. <b>The real thing is twenty live days, and it starts with your seat.</b></p><a class="btn-primary-ui btn-yes" href="#top"><span>Claim my seat</span><span class="arrow-wrap"><span class="arrow is-down">↓</span></span></a></div>
 </section>
 <style>
-.ft-film{padding-top:clamp(1.2rem,3vw,2.2rem)!important;padding-bottom:clamp(.6rem,2vw,1.4rem)!important;}
-.ft-film .section-label{margin:0;}
-.ft-film-frame{margin-top:1.2rem;border-radius:26px;overflow:hidden;aspect-ratio:16/9;background:#05060A;
-  border:1px solid rgba(255,87,34,.35);box-shadow:0 40px 100px -40px rgba(255,87,34,.55),0 30px 60px -30px rgba(0,0,0,.6);}
+.ft-film{padding-top:clamp(.8rem,2vw,1.4rem)!important;padding-bottom:clamp(.6rem,2vw,1.2rem)!important;}
+.ft-film .section-label{margin:0 0 0 max(12px,calc((100vw - 1240px)/2));}
+.ft-film-frame{margin:.8rem auto 0;width:min(calc(100% - 24px),calc((100svh - 150px) * 16 / 9));aspect-ratio:16/9;border-radius:22px;overflow:hidden;background:#05060A;
+  border:1px solid rgba(255,87,34,.35);box-shadow:0 40px 100px -40px rgba(255,87,34,.6),0 30px 60px -30px rgba(0,0,0,.6);}
 .ft-film-frame iframe{display:block;width:100%;height:100%;border:0;}
+@media (max-width:700px){
+  .ft-film .section-label{margin-left:12px;}
+  .ft-film-frame{aspect-ratio:9/16;width:calc(100% - 16px);max-height:calc(100svh - 120px);border-radius:18px;}
+}
 .ft-film-cta{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:.8rem 1.6rem;margin-top:1.3rem;}
 .ft-film-line{flex:1 1 100%;margin:0;text-align:center;font-size:clamp(1rem,1.6vw,1.15rem);line-height:1.5;color:var(--ink-soft);}
 .ft-film-line b{color:var(--ink);}
 .ft-film-more{font-weight:600;color:var(--ink-soft);text-decoration:none;border-bottom:1px solid var(--line);}
 .ft-film-more:hover{color:var(--accent);border-color:currentColor;}
-/* phones: the tall cut, capped so the offer below still peeks into view */
-@media (max-width:700px){.ft-film-frame{aspect-ratio:9/16;width:min(100%,calc(62svh * 9 / 16),420px);margin-left:auto;margin-right:auto;}}
 </style>
 
 <!-- HERO -->
@@ -681,8 +712,8 @@ html[data-theme="day"] .fx-price-save{color:#1E8E4E;}
 <span class="fx-co-n">Cohort 14</span>
 <span class="fx-co-d"><em>Begins</em> <b>Mon 4 Jan</b></span>
 </button>
+<a class="fx-co fx-co-fwd" href="#pricing"><span class="fx-tag">Later?</span><span class="fx-co-n">Register forward</span><span class="fx-co-d"><em>Pay now,</em> <b>hold a seat</b></span></a>
 </div>
-<p class="fx-fwd">Can&rsquo;t start this month? <a href="#pricing">Register forward</a> and hold a later seat.</p>
 
 <div class="fx-timer">
 <span class="fx-timer-k" data-lbl="">Cohort 13 · registration closes in</span>
@@ -692,9 +723,9 @@ html[data-theme="day"] .fx-price-save{color:#1E8E4E;}
 <span class="fx-timer-d timer-date">Closes Sun 29 Nov, 8:00 PM WAT · classes begin Mon 30 Nov</span>
 </div>
 
-<div class="fx-cta">
-<a class="btn-primary-ui btn-yes fx-pulse" href="../register.html#foundation"><span>Enrol now · ₦250,000</span><span class="arrow-wrap"><span class="arrow">→</span></span></a>
-<a class="btn-more btn-secondary-ui fx-seat" href="https://wa.me/2348032925957" rel="noopener" target="_blank"><span>Hold my seat on WhatsApp</span><span class="arrow-wrap"><span class="arrow">→</span></span></a>
+<div class="fx-cta fx-cta-sm">
+<a class="btn-primary-ui btn-yes fx-pulse" href="../register.html#foundation"><span>Enrol · ₦250,000</span><span class="arrow-wrap"><span class="arrow">→</span></span></a>
+<a class="btn-more btn-secondary-ui fx-seat" href="https://wa.me/2348032925957" rel="noopener" target="_blank"><span>Hold a seat</span><span class="arrow-wrap"><span class="arrow">→</span></span></a>
 </div>
 </div>
 
@@ -710,19 +741,19 @@ html[data-theme="day"] .fx-price-save{color:#1E8E4E;}
 <!-- PAIN -->
 <section class="wrap fx-sec" id="familiar">
 <p class="section-label">Sound familiar?</p>
-<h2>Which of these <span>sounds like you?</span></h2>
-<div class="fx-pains">
-<div class="fx-pain"><i aria-hidden="true">📭</i><b>You apply and hear nothing back.</b><p>Dozens of applications, a handful of automated replies, and no idea which part is failing.</p></div>
-<div class="fx-pain"><i aria-hidden="true">🧱</i><b>You can do the work, but cannot prove it.</b><p>Nothing you own shows a stranger in another time zone that you can be trusted with it.</p></div>
-<div class="fx-pain"><i aria-hidden="true">📺</i><b>You have watched the free videos.</b><p>You know more than you did. Your CV, your LinkedIn and your interviews have not changed.</p></div>
-<div class="fx-pain"><i aria-hidden="true">⏳</i><b>Your week leaves one hour, and it keeps disappearing.</b><p>Studying alone works until day three. Then life takes the hour back.</p></div>
+<h2>Tap every one <span>that sounds like you.</span></h2>
+<div class="fx-pains" role="group" aria-label="Which of these sounds like you?">
+<button class="fx-pain reveal" type="button" aria-pressed="false"><i aria-hidden="true">📭</i><b>I apply and hear nothing back.</b><span class="fx-fix"><em>Stage 4</em> rebuilds your CV for the screen remote employers use.</span></button>
+<button class="fx-pain reveal" type="button" aria-pressed="false"><i aria-hidden="true">🧱</i><b>I can do the work, but can’t prove it.</b><span class="fx-fix"><em>Stages 1–3</em> give you sixteen things you can show.</span></button>
+<button class="fx-pain reveal" type="button" aria-pressed="false"><i aria-hidden="true">📺</i><b>I’ve watched the free videos. Nothing changed.</b><span class="fx-fix"><em>Every stage</em> ends with work a person marks.</span></button>
+<button class="fx-pain reveal" type="button" aria-pressed="false"><i aria-hidden="true">⏳</i><b>Studying alone lasts about three days.</b><span class="fx-fix"><em>A live class</em> at the same hour, every day, for twenty days.</span></button>
 </div>
-<p class="fx-bridge">Foundation Training fixes this the way a good coach fixes fitness: <b>on a schedule, with someone watching your work.</b></p>
+<div class="fx-verdict" aria-live="polite"><p class="fx-verdict-t" data-v>Foundation Training fixes all four: <b>on a schedule, with someone watching your work.</b></p><a class="fx-verdict-go" href="#top">Claim my seat ↑</a></div>
 </section>
 
 <!-- DAY 1 / DAY 20 (compact: the film shows it in full) -->
 <section class="wrap ft-change" id="change" aria-label="What changes in 20 days">
-<p class="ft-change-line"><span class="k">Day 1</span><span class="from">a CV written for local employers, no portfolio, a LinkedIn nobody finds</span><span class="arrow" aria-hidden="true">→</span><span class="k on">Day 20</span><span class="to">a remote-first CV, a 2–3 project portfolio, a LinkedIn recruiters find, and a recorded 2-minute STAR answer</span></p>
+<p class="ft-change-line reveal"><span class="k">Day 1</span><span class="from">a CV written for local employers, no portfolio, a LinkedIn nobody finds</span><span class="arrow" aria-hidden="true">→</span><span class="k on">Day 20</span><span class="to">a remote-first CV, a 2–3 project portfolio, a LinkedIn recruiters find, and a recorded 2-minute STAR answer</span></p>
 </section>
 <style>
 .ft-change{padding-top:clamp(1rem,3vw,1.8rem);padding-bottom:clamp(1rem,3vw,1.8rem);}
@@ -734,45 +765,6 @@ html[data-theme="day"] .fx-price-save{color:#1E8E4E;}
 .ft-change-line .arrow{color:var(--accent);font-weight:800;}
 </style>
 
-<section class="wrap" id="jobs-live">
-<!--JOBTEASE:START ctx=foundation-->
-<style>
-.jt{--jt-o:#FF5722;--jt-line:rgba(255,255,255,.12);--jt-card:rgba(255,255,255,.035);--jt-mut:rgba(255,255,255,.66);position:relative;overflow:hidden;border:1px solid var(--jt-line);border-radius:22px;padding:clamp(1.3rem,3.4vw,2.2rem);margin:clamp(1.8rem,4vw,2.6rem) 0;background:radial-gradient(120% 140% at 100% 0,rgba(255,87,34,.14),transparent 55%),var(--jt-card);text-align:left;}
-html[data-theme="day"] .jt{--jt-o:#E8470F;--jt-line:rgba(20,17,14,.12);--jt-card:#fff;--jt-mut:#52514C;}
-.jt-k{display:inline-flex;align-items:center;gap:.5rem;font:700 .64rem/1 'Inter',system-ui,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--jt-o);margin:0 0 .9rem;}
-.jt-k i{width:8px;height:8px;border-radius:50%;background:#25D366;animation:jtPing 2s infinite;}
-@keyframes jtPing{0%{box-shadow:0 0 0 0 rgba(37,211,102,.55)}70%{box-shadow:0 0 0 9px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
-.jt h2{font-family:'Space Grotesk',system-ui,sans-serif;font-size:clamp(1.45rem,3.6vw,2.2rem);font-weight:800;letter-spacing:-.02em;line-height:1.15;margin:0 0 .6rem;}
-.jt h2 em{font-style:normal;color:var(--jt-o);display:block;}
-.jt-p{color:var(--jt-mut);font-size:.95rem;line-height:1.6;margin:0 0 1.2rem;max-width:56ch;}
-.jt-fs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.55rem;margin:0 0 1.3rem;}
-@media(max-width:860px){.jt-fs{grid-template-columns:repeat(2,minmax(0,1fr));}}
-.jt-f{display:grid;grid-template-columns:auto 1fr;grid-template-areas:"i n" "i c";column-gap:.6rem;align-items:center;padding:.75rem .85rem;border:1px solid var(--jt-line);border-radius:14px;text-decoration:none;color:inherit;background:var(--jt-card);transition:transform .25s,border-color .25s;}
-.jt-f:hover{transform:translateY(-2px);border-color:var(--jt-o);}
-.jt-f i{grid-area:i;font-style:normal;font-size:1.35rem;}
-.jt-f b{grid-area:n;font-size:.86rem;line-height:1.25;font-weight:700;}
-.jt-f span{grid-area:c;font-size:.74rem;color:var(--jt-mut);}
-.jt-f span em{font-style:normal;color:#25D366;font-weight:700;}
-.jt-ready{display:flex;gap:.8rem;align-items:flex-start;padding:.9rem 1rem;border-radius:14px;border:1px dashed var(--jt-line);margin:0 0 1.2rem;font-size:.9rem;line-height:1.55;}
-.jt-ready b{color:var(--jt-o);}
-.jt-ready a{color:inherit;font-weight:700;text-decoration:underline;text-decoration-color:var(--jt-o);text-underline-offset:3px;}
-.jt-cta{display:flex;flex-wrap:wrap;gap:.6rem;}
-.jt-cta a{display:inline-flex;align-items:center;gap:.45rem;padding:.85rem 1.25rem;border-radius:100px;font-weight:700;font-size:.95rem;text-decoration:none;border:1px solid var(--jt-line);color:inherit;transition:transform .25s;}
-.jt-cta a:first-child{background:var(--jt-o);border-color:var(--jt-o);color:#fff;}
-.jt-cta a:hover{transform:translateY(-2px);}
-@media(max-width:560px){.jt-f{grid-template-columns:1fr;grid-template-areas:"i" "n" "c";row-gap:.25rem;padding:.8rem;}.jt-f i{font-size:1.25rem;}.jt-cta a{flex:1 1 100%;justify-content:center;}}
-@media(prefers-reduced-motion:reduce){.jt-k i{animation:none;}.jt-f,.jt-cta a{transition:none;}}
-</style>
-<aside class="jt" aria-labelledby="jt-foundation">
-<p class="jt-k"><i aria-hidden="true"></i>Live &middot; Remote Job Board</p>
-<h2 id="jt-foundation">This is what you are training for: <em>381 live roles open to Nigeria.</em></h2>
-<p class="jt-p">The roles are already there. The twenty days are about being the person they hire. Pick your field and look.</p>
-<div class="jt-fs"><a class="jt-f" href="../jobs/?field=Tech%20%26%20IT#board"><i aria-hidden="true">💻</i><b>Tech &amp; IT</b><span>89 roles · <em>3 new</em></span></a><a class="jt-f" href="../jobs/?field=Virtual%20Assistant%20%26%20Admin#board"><i aria-hidden="true">🗂️</i><b>Virtual Assistant &amp; Admin</b><span>69 roles · <em>5 new</em></span></a><a class="jt-f" href="../jobs/?field=Executive%20%26%20Operations#board"><i aria-hidden="true">⚙️</i><b>Executive &amp; Operations</b><span>64 roles · <em>6 new</em></span></a><a class="jt-f" href="../jobs/?field=Data%20%26%20Product#board"><i aria-hidden="true">📊</i><b>Data &amp; Product</b><span>49 roles · <em>2 new</em></span></a><a class="jt-f" href="../jobs/?field=Marketing%20%26%20Creative#board"><i aria-hidden="true">🎨</i><b>Marketing &amp; Creative</b><span>47 roles · <em>5 new</em></span></a><a class="jt-f" href="../jobs/?field=Finance%20%26%20Accounting#board"><i aria-hidden="true">🧾</i><b>Finance &amp; Accounting</b><span>21 roles</span></a><a class="jt-f" href="../jobs/?field=Legal#board"><i aria-hidden="true">⚖️</i><b>Legal</b><span>14 roles</span></a><a class="jt-f" href="../jobs/?field=Customer%20Service%20%26%20Success#board"><i aria-hidden="true">🎧</i><b>Customer Service &amp; Success</b><span>11 roles · <em>3 new</em></span></a></div>
-<p class="jt-ready"><span aria-hidden="true">💡</span><span>Seeing the roles is <b>supply</b>. Being the person they hire is <b>capacity</b>: if you cannot yet show you can do the work, <a href="../foundationtraining/">Foundation Training</a> builds it, and <a href="../capacityscan/">the free Capacity Audit</a> tells you where you stand.</span></p>
-<div class="jt-cta"><a href="../jobs/">See the roles by field &rarr;</a><a href="#pricing">Enrol in Foundation Training &rarr;</a></div>
-</aside>
-<!--JOBTEASE:END-->
-</section>
 
 <!-- STAGES (tabs) -->
 <section class="wrap fx-sec" id="stages">
@@ -845,7 +837,7 @@ html[data-theme="day"] .jt{--jt-o:#E8470F;--jt-line:rgba(20,17,14,.12);--jt-card
 </article>
 </div>
 <p class="fx-hand">It works on your whole search, all five fingers: <b>Capacity</b> · <b>Supply</b> · <b>Representation</b> · <b>Aim</b> · <b>Conversion</b>.</p>
-<div class="ft-keep" id="assets">
+<div class="ft-keep reveal" id="assets">
 <div class="fx-assets-head">
 <div>
 <h3 class="ft-keep-h">What you keep: <span>sixteen things you build, all of them yours.</span></h3>
@@ -864,7 +856,7 @@ html[data-theme="day"] .jt{--jt-o:#E8470F;--jt-line:rgba(20,17,14,.12);--jt-card
 
 <!-- CERTIFICATE -->
 <section class="wrap fx-sec" id="certificate">
-<div class="fx-cert-grid">
+<div class="fx-cert-grid reveal">
 <div class="fx-cert-copy">
 <p class="section-label">Certification</p>
 <h2>Finish certified. <span>Show it anywhere.</span></h2>
@@ -886,7 +878,7 @@ html[data-theme="day"] .jt{--jt-o:#E8470F;--jt-line:rgba(20,17,14,.12);--jt-card
 <section class="wrap fx-sec" id="proof">
 <p class="section-label">People ERJ has worked with</p>
 <h2>Same people. <span>Different evidence.</span></h2>
-<article class="ft-tobi">
+<article class="ft-tobi reveal">
 <div class="ft-tobi-txt">
 <p class="ft-tobi-k"><i aria-hidden="true"></i>Latest win · 8 weeks</p>
 <p class="ft-tobi-who"><b>Tobi</b> · Sound engineer &amp; voice talent · Lagos</p>
@@ -905,10 +897,10 @@ html[data-theme="day"] .jt{--jt-o:#E8470F;--jt-line:rgba(20,17,14,.12);--jt-card
 <div><div class="stat-num" data-count="10">10</div><div class="stat-lbl">Cohorts completed</div></div>
 </div>
 <div class="fx-quotes">
-<figure class="fx-q"><blockquote>&ldquo;Nobody asked about my degree. Every single person asked how I handle an angry customer at 11pm, and I had four years of answers.&rdquo;</blockquote><figcaption><i aria-hidden="true">N</i><span><b>Ngozi</b>Retail Supervisor → Remote Customer Success · Enugu</span></figcaption></figure>
-<figure class="fx-q"><blockquote>&ldquo;Not exceptional talent or luck. 90 minutes a day, applied consistently, in the right direction. The constraints don&rsquo;t disqualify you.&rdquo;</blockquote><figcaption><i aria-hidden="true">A</i><span><b>Amara</b>Operations Manager → Remote Ops Coordinator · Abuja</span></figcaption></figure>
-<figure class="fx-q"><blockquote>&ldquo;I rewrote my CV four times for a problem that was never in my CV. The thing that was broken took two weeks of practice to fix.&rdquo;</blockquote><figcaption><i aria-hidden="true">T</i><span><b>Tunde</b>Data Analyst · Lagos</span></figcaption></figure>
-<figure class="fx-q"><blockquote>&ldquo;The 312 applications were not wasted. They taught me exactly what was not working. The 8 weeks taught me what was.&rdquo;</blockquote><figcaption><i aria-hidden="true">B</i><span><b>Blessing</b>NGO Project Coordinator → Remote PM · Lagos</span></figcaption></figure>
+<figure class="fx-q reveal"><blockquote>&ldquo;Nobody asked about my degree. Every single person asked how I handle an angry customer at 11pm, and I had four years of answers.&rdquo;</blockquote><figcaption><i aria-hidden="true">N</i><span><b>Ngozi</b>Retail Supervisor → Remote Customer Success · Enugu</span></figcaption></figure>
+<figure class="fx-q reveal"><blockquote>&ldquo;Not exceptional talent or luck. 90 minutes a day, applied consistently, in the right direction. The constraints don&rsquo;t disqualify you.&rdquo;</blockquote><figcaption><i aria-hidden="true">A</i><span><b>Amara</b>Operations Manager → Remote Ops Coordinator · Abuja</span></figcaption></figure>
+<figure class="fx-q reveal"><blockquote>&ldquo;I rewrote my CV four times for a problem that was never in my CV. The thing that was broken took two weeks of practice to fix.&rdquo;</blockquote><figcaption><i aria-hidden="true">T</i><span><b>Tunde</b>Data Analyst · Lagos</span></figcaption></figure>
+<figure class="fx-q reveal"><blockquote>&ldquo;The 312 applications were not wasted. They taught me exactly what was not working. The 8 weeks taught me what was.&rdquo;</blockquote><figcaption><i aria-hidden="true">B</i><span><b>Blessing</b>NGO Project Coordinator → Remote PM · Lagos</span></figcaption></figure>
 </div>
 <p class="ft-promise">We will not let you go <span>until you’re hired.</span><small>That is a promise of persistence, not a date: no placement, timeline or salary is guaranteed.</small></p>
 <p class="fx-more"><a href="../testimonials.html">Read their full stories →</a></p>
@@ -918,9 +910,9 @@ html[data-theme="day"] .jt{--jt-o:#E8470F;--jt-line:rgba(20,17,14,.12);--jt-card
 <section class="section-line wrap" id="tracks">
 <p class="section-label">Choose your hour</p>
 <h2>Three classes. <span>One programme.</span></h2>
-<p class="section-sub">Same four stages, same modules, same fee, same certificate. The only thing that changes is when you sit down.</p>
+<p class="section-sub">Same programme, fee and certificate. Pick the hour you can keep.</p>
 <div class="track-grid">
-<div class="track-card">
+<div class="track-card reveal">
 <div class="track-num">Track 01</div>
 <div class="track-name">7pm (Weekday) Class</div>
 <div class="track-when">7:00 – 8:00 PM WAT</div>
@@ -928,11 +920,10 @@ html[data-theme="day"] .jt{--jt-o:#E8470F;--jt-line:rgba(20,17,14,.12);--jt-card
 <div class="track-rule"></div>
 <div class="track-for">Built for</div>
 <p class="track-who">Undergraduates, entry-level, and anyone not gainfully employed yet.</p>
-<p class="track-note">Your evenings are your own, so this track takes the earlier hour, done by eight with the rest of the night for the sprint work.</p>
 <div class="track-meta">20 sessions × 60 minutes · 4 weeks</div>
 <a class="btn-block btn-more btn-secondary-ui" href="https://wa.me/2348032925957?text=Hello%20ERJ%2C%20I%20want%20to%20join%20the%20Remote%20Job%20Foundation%20Training%20%28weekdays%207-8%20PM%29%20Class.%20Please%20send%20me%20the%20details%20on%20how%20to%20enrol%20and%20join%20the%20class." rel="noopener" target="_blank"><span>Take the 7 PM Class</span><span class="arrow-wrap"><span class="arrow">→</span></span></a>
 </div>
-<div class="track-card">
+<div class="track-card reveal">
 <div class="track-num">Track 02</div>
 <div class="track-name">8pm (Weekday) Class</div>
 <div class="track-when">8:00 – 9:00 PM WAT</div>
@@ -940,11 +931,10 @@ html[data-theme="day"] .jt{--jt-o:#E8470F;--jt-line:rgba(20,17,14,.12);--jt-card
 <div class="track-rule"></div>
 <div class="track-for">Built for</div>
 <p class="track-who">The typical nine-to-five professional who can train on weekdays.</p>
-<p class="track-note">Lagos traffic and a 6 PM close do not make a 7 PM class. This one starts after you are home, fed and sitting down.</p>
 <div class="track-meta">20 sessions × 60 minutes · 4 weeks</div>
 <a class="btn-block btn-more btn-secondary-ui" href="https://wa.me/2348032925957?text=Hello%20ERJ%2C%20I%20want%20to%20join%20the%20Remote%20Job%20Foundation%20Training%20%28weekdays%208-9%20PM%29%20Class.%20Please%20send%20me%20the%20details%20on%20how%20to%20enrol%20and%20join%20the%20class." rel="noopener" target="_blank"><span>Take the 8 PM Class</span><span class="arrow-wrap"><span class="arrow">→</span></span></a>
 </div>
-<div class="track-card">
+<div class="track-card reveal">
 <div class="track-num">Track 03</div>
 <div class="track-name">7pm (Weekend) Class</div>
 <div class="track-when">7:00 – 8:30 PM WAT</div>
@@ -952,7 +942,6 @@ html[data-theme="day"] .jt{--jt-o:#E8470F;--jt-line:rgba(20,17,14,.12);--jt-card
 <div class="track-rule"></div>
 <div class="track-for">Built for</div>
 <p class="track-who">The 8 AM to 8 PM professional whose weekdays are simply not available.</p>
-<p class="track-note">Longer sessions, fewer of them, across more weekends. Nothing is cut; it is redistributed.</p>
 <div class="track-meta">14 sessions × 90 minutes · about 7 weekends</div>
 <a class="btn-block btn-more btn-secondary-ui" href="https://wa.me/2348032925957?text=Hello%20ERJ%2C%20I%20want%20to%20join%20the%20Remote%20Job%20Foundation%20Training%20%28weekends%207-8%3A30%20PM%29%20Class.%20Please%20send%20me%20the%20details%20on%20how%20to%20enrol%20and%20join%20the%20class." rel="noopener" target="_blank"><span>Take the Weekend Class</span><span class="arrow-wrap"><span class="arrow">→</span></span></a>
 </div>
@@ -961,12 +950,12 @@ html[data-theme="day"] .jt{--jt-o:#E8470F;--jt-line:rgba(20,17,14,.12);--jt-card
 
 <!-- BONUS -->
 <section class="wrap fx-sec" id="careerdev">
-<div class="fx-bonus">
+<div class="fx-bonus reveal">
 <span class="fx-ribbon">Bonus · included with your enrolment</span>
 <div class="fx-bonus-img"><picture><source srcset="../shop/careerdev-mentorine.webp" type="image/webp"/><img alt="Career Development — Self-Study box from The Mentorine School: one career track of your choice, roadmap, courses and practical work, 90 days from the day you activate" height="900" loading="lazy" src="../shop/careerdev-mentorine.jpg" width="900"/></picture><span class="fx-seal" aria-hidden="true"><b>FREE</b>with Foundation</span></div>
 <div>
 <h2>Plus 90 days of <span>career development.</span></h2>
-<p>Enrol in Foundation Training and receive <b>90-day access to a self-study career track at The Mentorine School</b>, matched to your target role, at no extra cost. The standard Self-Study rate there is <s>₦150,000</s>.</p>
+<p>A self-study career track at The Mentorine School, matched to your target role. Normally <s>₦150,000</s>; free with your enrolment.</p>
 <ul class="fx-pills"><li>One career track</li><li>Roadmap, courses and practical work</li><li>90 days from the day you activate</li><li>No second payment</li></ul>
 <details class="fx-how"><summary>How it reaches you</summary>
 <ol><li><b>Enrol and pay</b> for Foundation Training, then send your receipt.</li><li><b>Complete your assessment.</b> We assign your track from it.</li><li><b>Receive your activation email</b> with the portal link, your access code and your first task.</li><li><b>Activate.</b> Your 90 days start then.</li></ol>
@@ -982,7 +971,7 @@ html[data-theme="day"] .jt{--jt-o:#E8470F;--jt-line:rgba(20,17,14,.12);--jt-card
 <p class="section-label">Investment</p>
 <h2>One fee. <span>Everything included.</span></h2>
 <div class="fx-price-grid">
-<div class="fx-price">
+<div class="fx-price reveal">
 <span class="fx-price-k">Full programme · Stages 1–4</span>
 <div class="fx-price-was">Regular total ₦370,000</div>
 <div class="fx-price-now">₦250,000</div>
@@ -1000,20 +989,20 @@ html[data-theme="day"] .jt{--jt-o:#E8470F;--jt-line:rgba(20,17,14,.12);--jt-card
 <p class="fx-pay">Secured by Paystack. After payment, send your receipt on WhatsApp and your LMS login arrives within 24 hours.</p>
 </div>
 <div class="fx-dates">
-<div class="fx-date" data-ends="2026-11-29T20:00:00+01:00">
+<div class="fx-date reveal" data-ends="2026-11-29T20:00:00+01:00">
 <span class="fx-date-k">Cohort 13 <span class="fx-tag now" data-tag>Enrolling now</span></span>
 <b>Begins Mon 30 Nov · 8:00 PM WAT</b>
 <span>Registration closes <strong>Sun 29 Nov, 8:00 PM WAT</strong></span>
 <span class="fx-inst" data-until="2026-11-22T23:59:59+01:00">Instalments open until <strong>Sun 22 Nov</strong>. Start with any amount. <a href="../earlybird.html">How it works →</a></span>
 <a class="fx-date-go fx-seat" data-co="Cohort 13, begins Mon 30 Nov" href="https://wa.me/2348032925957" rel="noopener" target="_blank">Hold a Cohort 13 seat →</a>
 </div>
-<div class="fx-date" data-ends="2027-01-03T20:00:00+01:00">
+<div class="fx-date reveal" data-ends="2027-01-03T20:00:00+01:00">
 <span class="fx-date-k">Cohort 14 <span class="fx-tag" data-tag>Upcoming</span></span>
 <b>Begins Mon 4 Jan 2027 · 8:00 PM WAT</b>
 <span>Registration closes <strong>Sun 3 Jan, 8:00 PM WAT</strong></span>
 <a class="fx-date-go fx-seat" data-co="Cohort 14, begins Mon 4 Jan 2027" href="https://wa.me/2348032925957" rel="noopener" target="_blank">Hold a Cohort 14 seat →</a>
 </div>
-<div class="fx-date alt">
+<div class="fx-date alt reveal">
 <span class="fx-date-k">Prefer to go stage by stage?</span>
 <span>Stage 1 ₦70,000 · Stage 2 ₦130,000 · Stage 3 ₦70,000 · Stage 4 ₦100,000. Same teaching, same cohort. The career-development bonus comes with the full programme only.</span>
 <a class="fx-date-go" href="../register.html#stage1">Start with Stage 1 →</a>
@@ -1027,19 +1016,19 @@ html[data-theme="day"] .jt{--jt-o:#E8470F;--jt-line:rgba(20,17,14,.12);--jt-card
 <p class="section-label">Before you enrol</p>
 <h2>Straight answers.</h2>
 <div class="fx-faq">
-<details><summary>Will this get me a job?</summary><p>No honest programme can promise you a job or a date. What we are accountable for is what employers read: your CV, your portfolio, your LinkedIn, how you write and how you interview. The market decides when the offer comes, and we keep working with you after the last class until it does.</p></details>
-<details><summary>How much time does it take?</summary><p>One live session a day in the class time you choose (60 minutes on weekdays, or 90 minutes on weekends), plus the sprint work that turns each session into a deliverable. Plan for about ninety minutes a day in total.</p></details>
-<details><summary>Which cohort should I join, and can I pay now for a later one?</summary><p>Join the one you can attend from the first day to the last. If this month does not work, register forward: pay now for Cohort 14 (begins Mon 4 Jan) and your seat is held. Tell us which cohort when you send your receipt.</p></details>
-<details><summary>What do I need?</summary><p>A computer with a working internet connection, a backup for power if you can manage one, and your current CV exactly as it is. We build from there.</p></details>
-<details><summary>What happens after I pay?</summary><p>Send your receipt on WhatsApp to <a href="https://wa.me/2348032925957" rel="noopener" target="_blank">+234 803 292 5957</a>. Your LMS login arrives within 24 hours, and your Mentorine activation follows your assessment.</p></details>
-<details><summary>Should I take the self-paced pack instead?</summary><p>If you have finished a course on your own before, the <a href="../selflearn/">Self-Learn Pack</a> may serve you well. If you usually stop halfway, the live cohort is the fix. <a href="../self-learn-vs-foundation-training.html">The honest comparison →</a></p></details>
-<details><summary>I am not sure this is my problem.</summary><p>Then do not pay yet. <a href="../diagnose/">The free diagnosis</a> takes about ninety seconds and tells you which part of your search is breaking. If you do not need a paid ERJ service, we will tell you.</p></details>
+<details class="reveal"><summary>Will this get me a job?</summary><p>No honest programme can promise you a job or a date. What we are accountable for is what employers read: your CV, your portfolio, your LinkedIn, how you write and how you interview. The market decides when the offer comes, and we keep working with you after the last class until it does.</p></details>
+<details class="reveal"><summary>How much time does it take?</summary><p>One live session a day in the class time you choose (60 minutes on weekdays, or 90 minutes on weekends), plus the sprint work that turns each session into a deliverable. Plan for about ninety minutes a day in total.</p></details>
+<details class="reveal"><summary>Which cohort should I join, and can I pay now for a later one?</summary><p>Join the one you can attend from the first day to the last. If this month does not work, register forward: pay now for Cohort 14 (begins Mon 4 Jan) and your seat is held. Tell us which cohort when you send your receipt.</p></details>
+<details class="reveal"><summary>What do I need?</summary><p>A computer with a working internet connection, a backup for power if you can manage one, and your current CV exactly as it is. We build from there.</p></details>
+<details class="reveal"><summary>What happens after I pay?</summary><p>Send your receipt on WhatsApp to <a href="https://wa.me/2348032925957" rel="noopener" target="_blank">+234 803 292 5957</a>. Your LMS login arrives within 24 hours, and your Mentorine activation follows your assessment.</p></details>
+<details class="reveal"><summary>Should I take the self-paced pack instead?</summary><p>If you have finished a course on your own before, the <a href="../selflearn/">Self-Learn Pack</a> may serve you well. If you usually stop halfway, the live cohort is the fix. <a href="../self-learn-vs-foundation-training.html">The honest comparison →</a></p></details>
+<details class="reveal"><summary>I am not sure this is my problem.</summary><p>Then do not pay yet. <a href="../diagnose/">The free diagnosis</a> takes about ninety seconds and tells you which part of your search is breaking. If you do not need a paid ERJ service, we will tell you.</p></details>
 </div>
 </section>
 
 <!-- FINAL CTA -->
 <section class="wrap fx-sec" id="enrol">
-<div class="fx-final">
+<div class="fx-final reveal">
 <div class="fx-glow" aria-hidden="true"><i></i><i></i></div>
 <p class="fx-live"><i aria-hidden="true"></i>Seats are open</p>
 <h2>Your next twenty days are going to pass anyway. <span>Spend them building proof.</span></h2>
@@ -1130,7 +1119,7 @@ html[data-theme="day"] .jt{--jt-o:#E8470F;--jt-line:rgba(20,17,14,.12);--jt-card
   [].forEach.call(d.querySelectorAll('.fx-date[data-ends]'),function(el){ if(now()>new Date(el.getAttribute('data-ends'))) el.classList.add('is-past'); });
 
   /* cohort picker: drives the hero WhatsApp button */
-  var cos=[].slice.call(d.querySelectorAll('.fx-co')), heroSeat=d.querySelector('.fx-hero .fx-seat');
+  var cos=[].slice.call(d.querySelectorAll('.fx-co[data-ends]')), heroSeat=d.querySelector('.fx-hero .fx-seat');
   cos.forEach(function(b){ if(now()>new Date(b.getAttribute('data-ends'))) b.classList.add('is-past'); });
   var open=cos.filter(function(b){return !b.classList.contains('is-past');});
   function pick(b){
@@ -1146,6 +1135,19 @@ html[data-theme="day"] .jt{--jt-o:#E8470F;--jt-line:rgba(20,17,14,.12);--jt-card
   /* other seat and question buttons */
   [].forEach.call(d.querySelectorAll('.fx-date .fx-seat'),function(a){ if(msgs.ftSeat) a.href=wa(msgs.ftSeat.replace('{cohort}',a.getAttribute('data-co'))); });
   [].forEach.call(d.querySelectorAll('.fx-ask'),function(a){ if(msgs.ftAsk) a.href=wa(msgs.ftAsk); });
+
+  /* Sound familiar? — tap the ones that are you; each shows its fix */
+  var pains=[].slice.call(d.querySelectorAll('.fx-pain')), vt=d.querySelector('[data-v]'), vbox=d.querySelector('.fx-verdict');
+  if(pains.length&&vt){
+    d.getElementById('familiar').classList.add('fx-quiz');
+    var base=vt.innerHTML;
+    var say=['','That one is fixable. <b>Twenty live days, one stage at a time.</b>','Two of them. <b>Both are in the first twenty days.</b>','Three of them. <b>This programme was built for exactly this.</b>','All four. <b>You are who we built this for.</b>'];
+    pains.forEach(function(b){b.addEventListener('click',function(){
+      b.setAttribute('aria-pressed',b.getAttribute('aria-pressed')==='true'?'false':'true');
+      var n=pains.filter(function(x){return x.getAttribute('aria-pressed')==='true';}).length;
+      vt.innerHTML=n?say[n]:base; vbox.classList.toggle('hot',n>0);
+    });});
+  }
 
   /* stage tabs */
   var tabs=[].slice.call(d.querySelectorAll('.fx-tab')), bar=d.querySelector('.fx-tab-bar');
