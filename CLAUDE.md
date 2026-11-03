@@ -127,6 +127,11 @@ precached; keep it free of shared scripts so it renders with no network.
   scaling and autoplay so a headless browser can seek it frame by frame for
   MP4 export. Its facts (stages, assets, class times, fee) are the page's:
   change them together. No cohort numbers or dates in it.
+  Its sound is `score.m4a`, an original score synthesised for this film
+  (no samples, no third-party audio). It is off until the viewer taps
+  Sound, plays through Web Audio (no `<audio>` element or file link) and
+  follows the timeline clock. Cue times in the score match the timeline:
+  retime both together. Never publish the rendered MP4s on the site.
 - `blog/<slug>/index.html`: static, canonical post pages. `blog.html` is the
   in-browser reader (query form `?p=` is blocked in `robots.txt`).
 
