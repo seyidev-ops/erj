@@ -491,6 +491,31 @@ html[data-theme="day"] .fx-frame{box-shadow:0 26px 60px rgba(20,17,14,.18);}
 }
 
 /* sixteen assets */
+/* proof: Tobi leads, the promise closes */
+.ft-tobi{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:clamp(1.2rem,3vw,2.4rem);align-items:center;margin:1.6rem 0 1.4rem;padding:clamp(1.3rem,3vw,2rem);border-radius:26px;
+  border:1px solid rgba(25,194,122,.45);background:radial-gradient(90% 120% at 100% 0,rgba(25,194,122,.12),transparent 60%),var(--card);box-shadow:0 30px 80px -40px rgba(25,194,122,.5);}
+.ft-tobi-k{display:inline-flex;align-items:center;gap:.5rem;margin:0 0 .6rem;font-size:.66rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#19C27A;}
+.ft-tobi-k i{width:8px;height:8px;border-radius:50%;background:#19C27A;box-shadow:0 0 10px #19C27A;}
+.ft-tobi-who{margin:0 0 .6rem;color:var(--ink-soft);font-size:.9rem;}
+.ft-tobi-who b{font-family:var(--font-display);font-weight:800;font-size:1.5rem;color:var(--ink);margin-right:.3rem;}
+.ft-tobi-txt>p{line-height:1.65;}
+.ft-tobi blockquote{margin:.9rem 0;padding-left:1rem;border-left:3px solid #19C27A;font-style:italic;color:var(--ink);}
+.ft-tobi-foot{display:flex;flex-wrap:wrap;gap:.4rem 1.2rem;align-items:center;font-size:.86rem;margin:0;}
+.ft-tobi-foot a{color:var(--accent);font-weight:700;text-decoration:none;}
+.ft-tobi-foot span{color:var(--ink-faint);}
+.ft-tobi-path{display:grid;gap:.8rem;}
+.ft-tobi-path>div{display:grid;gap:.3rem;padding:1rem 1.1rem;border-radius:18px;border:1px solid var(--line);background:var(--paper-2,#0b0b0b);}
+.ft-tobi-path span{font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);}
+.ft-tobi-path b{font-family:var(--font-display);font-size:1rem;line-height:1.35;}
+.ft-tobi-path .no{opacity:.7;}.ft-tobi-path .no em{color:#ff7b7b;font-style:normal;font-weight:700;font-size:.85rem;}
+.ft-tobi-path .yes{border-color:rgba(25,194,122,.55);}.ft-tobi-path .yes em{color:#19C27A;font-style:normal;font-weight:700;font-size:.85rem;}
+.ft-promise{margin:2rem 0 .4rem;text-align:center;font-family:var(--font-display);font-weight:800;font-size:clamp(1.5rem,3.6vw,2.4rem);letter-spacing:-.03em;line-height:1.15;}
+.ft-promise span{color:var(--accent);}
+.ft-promise small{display:block;margin-top:.6rem;font-family:var(--font-body);font-weight:400;font-size:.82rem;letter-spacing:0;color:var(--ink-faint);}
+@media(max-width:860px){.ft-tobi{grid-template-columns:1fr;}}
+.ft-keep{margin-top:clamp(2rem,5vw,3rem);scroll-margin-top:90px;}
+.ft-keep-h{font-family:var(--font-display);font-size:clamp(1.3rem,2.6vw,1.75rem);font-weight:800;letter-spacing:-.02em;line-height:1.2;margin:0;}
+.ft-keep-h span{color:var(--accent);}
 .fx-assets-head{display:flex;justify-content:space-between;align-items:flex-end;gap:1rem;flex-wrap:wrap;}
 .fx-count{text-align:right;}
 .fx-count b{display:block;font-family:var(--font-display);font-size:clamp(3rem,8vw,4.6rem);font-weight:800;line-height:.9;color:var(--accent);font-variant-numeric:tabular-nums;}
@@ -604,7 +629,6 @@ html[data-theme="day"] .fx-price-save{color:#1E8E4E;}
 <script>window.ERJ_NAV={active:'mastery',base:'../',onPage:[
   {label:'In 27 seconds',href:'#film'},
   {label:'Start dates',href:'#top'},
-  {label:'What changes',href:'#change'},
   {label:'The 4 stages',href:'#stages'},
   {label:'What you keep',href:'#assets'},
   {label:'Certificate',href:'#certificate'},
@@ -614,12 +638,12 @@ html[data-theme="day"] .fx-price-save{color:#1E8E4E;}
   {label:'Questions',href:'#faq'}
 ]};</script>
 <main>
-<a class="promo-tick" href="#pricing" aria-label="We will not let you go until you're hired."><div class="promo-track">We will not let you go <em>until you're hired.</em></div></a>
 
 <!-- FILM: first thing on the page — the programme in 27 seconds (foundationtraining/motion/, a Null Motion-style GSAP composition) -->
 <section class="wrap fx-sec ft-film" id="film">
 <p class="section-label">The programme in 27 seconds</p>
 <div class="ft-film-frame"><iframe src="motion/" title="Foundation Training in 27 seconds: four stages over twenty live days, sixteen things you build, and the certificate" fetchpriority="high"></iframe></div>
+<div class="ft-film-cta"><a class="btn-primary-ui btn-yes" href="../register.html#foundation"><span>Enrol now · ₦250,000</span><span class="arrow-wrap"><span class="arrow">→</span></span></a><a class="ft-film-more" href="#top">See start dates and class times ↓</a></div>
 </section>
 <style>
 .ft-film{padding-top:clamp(1.2rem,3vw,2.2rem)!important;padding-bottom:clamp(.6rem,2vw,1.4rem)!important;}
@@ -627,6 +651,9 @@ html[data-theme="day"] .fx-price-save{color:#1E8E4E;}
 .ft-film-frame{margin-top:1.2rem;border-radius:26px;overflow:hidden;aspect-ratio:16/9;background:#05060A;
   border:1px solid rgba(255,87,34,.35);box-shadow:0 40px 100px -40px rgba(255,87,34,.55),0 30px 60px -30px rgba(0,0,0,.6);}
 .ft-film-frame iframe{display:block;width:100%;height:100%;border:0;}
+.ft-film-cta{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:.8rem 1.6rem;margin-top:1.3rem;}
+.ft-film-more{font-weight:600;color:var(--ink-soft);text-decoration:none;border-bottom:1px solid var(--line);}
+.ft-film-more:hover{color:var(--accent);border-color:currentColor;}
 /* phones: the tall cut, capped so the offer below still peeks into view */
 @media (max-width:700px){.ft-film-frame{aspect-ratio:9/16;width:min(100%,calc(62svh * 9 / 16),420px);margin-left:auto;margin-right:auto;}}
 </style>
@@ -691,34 +718,19 @@ html[data-theme="day"] .fx-price-save{color:#1E8E4E;}
 <p class="fx-bridge">Foundation Training fixes this the way a good coach fixes fitness: <b>on a schedule, with someone watching your work.</b></p>
 </section>
 
-<!-- DAY 1 / DAY 20 -->
-<section class="wrap fx-sec" id="change">
-<p class="section-label">What changes</p>
-<h2>Day 1 you. <span>Day 20 you.</span></h2>
-<div class="fx-vs">
-<div class="fx-vs-col before">
-<span class="fx-vs-k">Day 1</span>
-<ul>
-<li>A CV written for local employers</li>
-<li>No portfolio a recruiter can open</li>
-<li>A LinkedIn profile nobody finds</li>
-<li>&ldquo;Tell me about yourself&rdquo; still makes you freeze</li>
-<li>Unsure how remote teams actually work day to day</li>
-</ul>
-</div>
-<div class="fx-vs-arrow" aria-hidden="true"><span>20 live days</span></div>
-<div class="fx-vs-col after">
-<span class="fx-vs-k">Day 20</span>
-<ul>
-<li>A remote-first CV, ready to send as a PDF</li>
-<li>A 2–3 project portfolio with a public link</li>
-<li>A LinkedIn headline and summary recruiters can find</li>
-<li>A recorded 2-minute STAR interview answer</li>
-<li>Zoom, project boards, async writing and AI tools, used daily</li>
-</ul>
-</div>
-</div>
+<!-- DAY 1 / DAY 20 (compact: the film shows it in full) -->
+<section class="wrap ft-change" id="change" aria-label="What changes in 20 days">
+<p class="ft-change-line"><span class="k">Day 1</span><span class="from">a CV written for local employers, no portfolio, a LinkedIn nobody finds</span><span class="arrow" aria-hidden="true">→</span><span class="k on">Day 20</span><span class="to">a remote-first CV, a 2–3 project portfolio, a LinkedIn recruiters find, and a recorded 2-minute STAR answer</span></p>
 </section>
+<style>
+.ft-change{padding-top:clamp(1rem,3vw,1.8rem);padding-bottom:clamp(1rem,3vw,1.8rem);}
+.ft-change-line{display:flex;flex-wrap:wrap;align-items:baseline;gap:.35rem .7rem;margin:0;padding:1.1rem 1.3rem;border-radius:20px;border:1px solid var(--line);background:var(--card);font-size:1rem;line-height:1.55;color:var(--ink-soft);}
+.ft-change-line .k{font-family:var(--font-display);font-weight:800;color:var(--ink-faint);white-space:nowrap;}
+.ft-change-line .k.on{color:var(--accent);}
+.ft-change-line .from{text-decoration:line-through;text-decoration-color:rgba(255,87,34,.45);}
+.ft-change-line .to{color:var(--ink);}
+.ft-change-line .arrow{color:var(--accent);font-weight:800;}
+</style>
 
 <section class="wrap" id="jobs-live">
 <!--JOBTEASE:START ctx=foundation-->
@@ -831,14 +843,10 @@ html[data-theme="day"] .jt{--jt-o:#E8470F;--jt-line:rgba(20,17,14,.12);--jt-card
 </article>
 </div>
 <p class="fx-hand">It works on your whole search, all five fingers: <b>Capacity</b> · <b>Supply</b> · <b>Representation</b> · <b>Aim</b> · <b>Conversion</b>. Not sure which one is breaking? <a href="../diagnose/">Take the free diagnosis →</a></p>
-</section>
-
-<!-- 16 ASSETS -->
-<section class="wrap fx-sec" id="assets">
+<div class="ft-keep" id="assets">
 <div class="fx-assets-head">
 <div>
-<p class="section-label">What you keep</p>
-<h2>Sixteen things you build. <span>All of them yours.</span></h2>
+<h3 class="ft-keep-h">What you keep: <span>sixteen things you build, all of them yours.</span></h3>
 </div>
 <div class="fx-count" aria-hidden="true"><b id="fxN">16</b><span>/ 16 built</span></div>
 </div>
@@ -848,7 +856,9 @@ html[data-theme="day"] .jt{--jt-o:#E8470F;--jt-line:rgba(20,17,14,.12);--jt-card
 <span>🔄 Async Sprint Board Review</span><span>✉️ Zero-Follow-Up Email</span><span>💬 Slack Batch Message</span><span>🤝 Working With Me Manual</span>
 <span>🛠 Tech Emergency Fallback Plan</span><span>📝 Remote-First CV (PDF)</span><span>🗂 Digital Portfolio (2–3 projects)</span><span>🎬 STAR Video Answer (2 min)</span>
 </div>
+</div>
 </section>
+
 
 <!-- CERTIFICATE -->
 <section class="wrap fx-sec" id="certificate">
@@ -874,6 +884,19 @@ html[data-theme="day"] .jt{--jt-o:#E8470F;--jt-line:rgba(20,17,14,.12);--jt-card
 <section class="wrap fx-sec" id="proof">
 <p class="section-label">People ERJ has worked with</p>
 <h2>Same people. <span>Different evidence.</span></h2>
+<article class="ft-tobi">
+<div class="ft-tobi-txt">
+<p class="ft-tobi-k"><i aria-hidden="true"></i>Latest win · 8 weeks</p>
+<p class="ft-tobi-who"><b>Tobi</b> · Sound engineer &amp; voice talent · Lagos</p>
+<p>In August an automated screen turned his Sound Engineer application down. The skill was there; the CV was not carrying what the screen checks for. He sent AUDIT, took the free diagnosis, and reworked how his audio and voice work reads. On 16 October he applied to micro1’s Voice Actor/Coach role. <strong>micro1 selected him.</strong></p>
+<blockquote>“It’s been a journey, and I am proud to say.”</blockquote>
+<p class="ft-tobi-foot"><a href="../testimonials.html#story-tobi">Read Tobi’s eight weeks, step by step →</a><span>Shared with permission.</span></p>
+</div>
+<div class="ft-tobi-path" aria-hidden="true">
+<div class="no"><span>Aug</span><b>“We’ve decided not to move forward.”</b><em>✕ Turned down</em></div>
+<div class="yes"><span>Oct</span><b>micro1 · Voice Actor/Coach</b><em>✓ Selected</em></div>
+</div>
+</article>
 <div class="stat-row stats-counter fx-stats" id="ftImpact">
 <div><div class="stat-num" data-count="446" data-suffix="+">446+</div><div class="stat-lbl">Professionals trained</div></div>
 <div><div class="stat-num" data-count="382" data-suffix="+">382+</div><div class="stat-lbl">Professionals placed</div></div>
@@ -886,6 +909,7 @@ html[data-theme="day"] .jt{--jt-o:#E8470F;--jt-line:rgba(20,17,14,.12);--jt-card
 <figure class="fx-q"><blockquote>&ldquo;I rewrote my CV four times for a problem that was never in my CV. The thing that was broken took two weeks of practice to fix.&rdquo;</blockquote><figcaption><i aria-hidden="true">T</i><span><b>Tunde</b>Data Analyst · Lagos</span></figcaption></figure>
 <figure class="fx-q"><blockquote>&ldquo;The 312 applications were not wasted. They taught me exactly what was not working. The 8 weeks taught me what was.&rdquo;</blockquote><figcaption><i aria-hidden="true">B</i><span><b>Blessing</b>NGO Project Coordinator → Remote PM · Lagos</span></figcaption></figure>
 </div>
+<p class="ft-promise">We will not let you go <span>until you’re hired.</span><small>That is a promise of persistence, not a date: no placement, timeline or salary is guaranteed.</small></p>
 <p class="fx-more"><a href="../testimonials.html">Read their full stories →</a></p>
 </section>
 
