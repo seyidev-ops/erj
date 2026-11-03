@@ -1690,7 +1690,7 @@ def card(j, cfg):
 # <!--JOBTEASE:START ctx=...--> and <!--JOBTEASE:END-->. It leads with fields
 # (not individual jobs) and with readiness: seeing roles is supply, being hired
 # for them is capacity. Rewritten on every board run so the counts stay live.
-TEASE_PAGES = ["index.html", "testimonials.html", "register.html", "foundationtraining/index.html"]
+TEASE_PAGES = ["index.html", "testimonials.html", "register.html"]
 TEASE_COPY = {
     "home": ("{n} remote roles open to Nigeria, live right now.", "Are you ready for them?",
              "Every role is checked twice a day and taken down when it closes. Start with your field.",
