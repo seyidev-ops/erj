@@ -172,6 +172,12 @@ html:not(.ready) #cursor{display:none;}
   -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);}
 #ctl button:focus-visible{outline:2px solid var(--o);outline-offset:2px;}
 .render #ctl{display:none;}
+#ctl #snd{width:auto;display:inline-flex;align-items:center;gap:8px;padding:0 16px 0 13px;border-radius:999px;font:600 14px/1 'Inter',sans-serif;letter-spacing:.01em;}
+#snd .on{display:none;} #snd[aria-pressed="true"] .on{display:inline;} #snd[aria-pressed="true"] .off{display:none;}
+#snd[aria-pressed="false"]{border-color:rgba(255,138,61,.7);box-shadow:0 0 0 0 rgba(255,87,34,.5);animation:sndHint 2.4s ease-out 3s 3;}
+#snd[aria-pressed="true"]{background:rgba(255,87,34,.85);border-color:rgba(255,190,150,.8);}
+@keyframes sndHint{0%{box-shadow:0 0 0 0 rgba(255,87,34,.55);}100%{box-shadow:0 0 0 14px rgba(255,87,34,0);}}
+@media (prefers-reduced-motion:reduce){#snd{animation:none!important;}}
 </style>
 </head>
 <body>
@@ -257,7 +263,7 @@ html:not(.ready) #cursor{display:none;}
   </section>
 </div>
 </div>
-<div id="ctl"><button id="pp" type="button" aria-label="Pause">❚❚</button><button id="rw" type="button" aria-label="Play from the start">↺</button></div>
+<div id="ctl"><button id="snd" type="button" aria-pressed="false" aria-label="Turn sound on"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4z"/><path class="on" d="M15.5 8.5a5 5 0 0 1 0 7"/><path class="on" d="M19 5a10 10 0 0 1 0 14"/><path class="off" d="m22 9-6 6"/><path class="off" d="m16 9 6 6"/></svg><span>Sound</span></button><button id="pp" type="button" aria-label="Pause">❚❚</button><button id="rw" type="button" aria-label="Play from the start">↺</button></div>
 
 <script src="gsap.min.js"></script>
 <script>
@@ -412,6 +418,56 @@ html:not(.ready) #cursor{display:none;}
     setBtn();
   });
   rw.addEventListener('click', function () { userPaused = false; tl.restart(); setBtn(); });
+
+  /* ── sound: an original score (score.m4a), off until the viewer asks.
+     Browsers block sound before a tap, and a page should not surprise
+     anyone with it. Played through Web Audio, not an <audio> element, so
+     there is no player or file link on the page to save; the ticker keeps
+     it on the timeline's clock (pause, replay, loop, scroll away). ── */
+  var snd = $('#snd'), ac = null, buf = null, out = null, src = null, t0 = 0, soundOn = false, loading = false;
+  var stopSrc = function () { if (src) { try { src.stop(); } catch (e) {} src.disconnect(); src = null; } };
+  var startSrc = function () {
+    stopSrc();
+    if (!soundOn || !buf || tl.paused()) return;
+    var off = tl.time();
+    if (off >= buf.duration - 0.05) return;
+    src = ac.createBufferSource(); src.buffer = buf; src.connect(out);
+    src.start(0, off); t0 = ac.currentTime - off;
+  };
+  gsap.ticker.add(function () {
+    if (!soundOn || !buf) return;
+    if (tl.paused() || tl.progress() >= 1) { stopSrc(); return; }
+    if (!src || Math.abs((ac.currentTime - t0) - tl.time()) > 0.12) startSrc();
+  });
+  document.addEventListener('visibilitychange', function () {
+    if (!ac) return;
+    if (document.hidden) ac.suspend(); else ac.resume();
+  });
+  var setSnd = function () {
+    snd.setAttribute('aria-pressed', soundOn ? 'true' : 'false');
+    snd.setAttribute('aria-label', soundOn ? 'Turn sound off' : 'Turn sound on');
+    snd.lastChild.textContent = loading ? 'Loading…' : (soundOn ? 'Sound on' : 'Sound');
+  };
+  snd.addEventListener('click', function () {
+    soundOn = !soundOn;
+    if (!soundOn) { stopSrc(); setSnd(); return; }
+    var AC = window.AudioContext || window.webkitAudioContext;
+    if (!AC) { soundOn = false; setSnd(); return; }
+    if (!ac) {
+      ac = new AC(); out = ac.createGain(); out.gain.value = 0.9; out.connect(ac.destination);
+      loading = true; setSnd();
+      fetch('score.m4a').then(function (r) { return r.arrayBuffer(); })
+        .then(function (a) { return new Promise(function (ok, no) { ac.decodeAudioData(a, ok, no); }); })
+        .then(function (b) { buf = b; loading = false; setSnd(); })
+        .catch(function () { loading = false; soundOn = false; setSnd(); });
+    }
+    ac.resume();
+    if (tl.paused() && !still) { userPaused = false; if (tl.progress() >= 1) tl.restart(); else tl.play(); setBtn(); }
+    setSnd();
+  });
+  setSnd();
+  /* no "save as" on the film */
+  document.addEventListener('contextmenu', function (e) { e.preventDefault(); });
   if ('IntersectionObserver' in window) {
     new IntersectionObserver(function (es) {
       seen = es[0].isIntersecting;
