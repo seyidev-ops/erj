@@ -11130,6 +11130,64 @@
    "direct": true,
    "closed": "2026-11-03",
    "closed_reason": "employer page closed"
+  },
+  {
+   "id": "9dfddaf497",
+   "title": "Administrative & Executive Assistant (Part-Time)",
+   "company": "20four7VA",
+   "region": "Worldwide",
+   "type": "Part-Time",
+   "experience": "Not stated",
+   "salary": "Undisclosed",
+   "bullets": [
+    "Highly organized and detail-oriented",
+    "Proactive, resourceful, and able to anticipate tasks requiring attention",
+    "A fast learner who can adapt to different software, systems, and workflows",
+    "Experienced in handling a varied range of administrative responsibilities"
+   ],
+   "apply": "https://20four7va.breezy.hr/p/e964975cbbb1-cpt-11527-administrative-executive-assistant-part-time",
+   "posted": "2026-10-09",
+   "deadline": null,
+   "checked": "2026-11-03",
+   "added": "2026-10-10",
+   "listed": "2026-10-10",
+   "source": "Breezy",
+   "origin": "feed",
+   "ats_id": "e964975cbbb1",
+   "family": "Executive & Personal Assistant",
+   "why": "Open worldwide with no country exclusion, so you can apply from Nigeria. Part-time, so it can sit beside a current job.",
+   "direct": true,
+   "closed": "2026-11-03",
+   "closed_reason": "employer page closed"
+  },
+  {
+   "id": "7a937d9415",
+   "title": "Lead QA Engineer (AI native)",
+   "company": "Social Discovery Group",
+   "region": "Worldwide",
+   "type": "Full-Time",
+   "experience": "Not stated",
+   "salary": "Undisclosed",
+   "bullets": [
+    "Proven experience building and owning testing processes in large, complex products with high reliability requirements, as a QA Architect",
+    "Strong engineering background: understanding of system architecture, backend services, CI/CD and deployment processes",
+    "Hands-on experience with test automation and integrating tests into CI/CD pipelines",
+    "Daily use of AI coding agents (Claude Code, Codex, Cursor or similar) as a core part of your work"
+   ],
+   "apply": "https://social-discovery-ventures.breezy.hr/p/68473d3974f201-lead-qa-engineer-ai-native",
+   "posted": "2026-10-14",
+   "deadline": null,
+   "checked": "2026-11-03",
+   "added": "2026-10-14",
+   "listed": "2026-10-14",
+   "source": "Breezy",
+   "origin": "feed",
+   "ats_id": "68473d3974f201",
+   "family": "Tech & IT",
+   "why": "Open worldwide with no country exclusion, so you can apply from Nigeria. You apply directly on the employer's own page.",
+   "direct": true,
+   "closed": "2026-11-03",
+   "closed_reason": "employer page closed"
   }
  ]
 }
