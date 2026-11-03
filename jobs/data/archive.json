@@ -11101,6 +11101,35 @@
    "direct": false,
    "closed": "2026-11-03",
    "closed_reason": "older than the board's age limit"
+  },
+  {
+   "id": "92e686f042",
+   "title": "Product Engineer (AI-Native)",
+   "company": "Social Discovery Group",
+   "region": "Worldwide",
+   "type": "Full-Time",
+   "experience": "3+ years",
+   "salary": "$5000",
+   "bullets": [
+    "Senior-level engineering background with experience owning a complex production system end-to-end: architecture, reliability",
+    "AI agents (Claude Code, Codex or similar) as your primary daily development tool",
+    "Strong ownership and an entrepreneurial mindset: you figure out on your own what needs to be done",
+    "A critical eye for AI-generated work: you quickly dig into agents' output, catch errors and choose the best solution"
+   ],
+   "apply": "https://social-discovery-ventures.breezy.hr/p/e5a41beaf52b01-product-engineer-ai-native",
+   "posted": "2026-10-27",
+   "deadline": null,
+   "checked": "2026-11-03",
+   "added": "2026-10-27",
+   "listed": "2026-10-27",
+   "source": "Breezy",
+   "origin": "feed",
+   "ats_id": "e5a41beaf52b01",
+   "family": "Tech & IT",
+   "why": "Open worldwide with no country exclusion, so you can apply from Nigeria, and pays in foreign currency ($5000). You apply directly on the employer's own page.",
+   "direct": true,
+   "closed": "2026-11-03",
+   "closed_reason": "employer page closed"
   }
  ]
 }
