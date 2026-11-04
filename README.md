@@ -83,15 +83,17 @@ Any page still advertising an open instalment window after that date is stale an
 
 > **Note for future cohorts:** the ₦50,000 reservation mechanic used by the previous cohort has been retired. ₦50,000 on the current store is the price of two unrelated products, the Done-For-You 7-day service and Career Development — Self-Study. Do not reintroduce reservation copy at that figure.
 
-## The store — fifteen doors
+## The store — seventeen doors
 
-`register.html` presents the full catalogue with a basket, in three groups: **DIY — Do It Yourself** (the books, The CV Engine, the Self-Learn Pack, Career Development — Self-Study), **DWY — Done With You** (the live Foundation Training courses, Stages 1–4 individually or all four together, and the Inner Circle 1:1) and **DFY — Done For You** (CV Fix, Done-For-You 7 Days, the Placement Engine and Get Your Dream Job Offer). A buyer can add several items or buy any one outright. Every price is a one-time payment unless the product states otherwise.
+`register.html` presents the full catalogue with a basket, in three groups: **DIY — Do It Yourself** (the books, The CV Engine, the Self-Learn Pack, Career Development — Self-Study), **DWY — Done With You** (the live Foundation Training courses, Stages 1–4 individually or all four together, and the Inner Circle 1:1) and **DFY — Done For You** (The Job Hunter, CV Fix, Done-For-You 7 Days, the Placement Engine and Get Your Dream Job Offer). A buyer can add several items or buy any one outright. Every price is a one-time payment unless the product states otherwise.
 
 | Door | Price | Part addressed |
 |------|-------|----------------|
 | Google Search: Best Kept Open Secret (book) | ₦5,000 | Supply — carries the **Start here** badge |
 | The CV Engine | ₦5,000 / month | Representation — the instrument, operated by you |
 | From Intent to Offer (book) | ₦15,000 | The whole method — eighteen chapters, six appendices, instant download |
+| The Job Hunter — One Hunt | ₦15,000 | Aim and Supply — up to 25 roles open to Nigeria scored against the CV, application packs for the top 3; ERJ prepares, the buyer submits |
+| The Job Hunter — Hunt Month | ₦35,000 | The same, weekly for 30 days, up to 20 packs; one payment, no auto-renew |
 | CV Fix — one CV, one field | ₦30,000 | Representation — the same work, done for you once |
 | The Self-Learn Pack — Stages 1–4 | ₦35,000 | Capacity and Representation |
 | Done-For-You, 7 Days | ₦50,000 | Supply and Aim |
@@ -166,7 +168,7 @@ The site is a static HTML/CSS/JavaScript website hosted on **GitHub Pages** with
 
 - `/` — main website
 - `/starthere.html` — first-contact routing gateway, the default cold-traffic destination
-- `/register.html` — the store: fifteen doors, basket, enrolment
+- `/register.html` — the store: seventeen doors, basket, enrolment
 - `/free.html` — the free layer in one place
 - `/diagnose/` — the five-part Job Search Diagnostic and branded PDF result
 - `/capacityscan/` — the Capacity Audit: fourteen role families, ten questions, scored out of ten, runs entirely in the browser. **The gate for the other four fingers.**
@@ -177,6 +179,7 @@ The site is a static HTML/CSS/JavaScript website hosted on **GitHub Pages** with
 - `/selflearn/` — the self-paced Stages 1–4 pack
 - `/foundationtraining/` — live Foundation Training
 - `/jobapplication/` — Done-For-You application and placement services
+- `/jobhunter/` — The Job Hunter: roles scored against the CV and applications prepared, checked by a person; the buyer submits. Paid by transfer, confirmed on WhatsApp (no Paystack link yet)
 - `/innercircle/` — private 1:1 Inner Circle
 - `/masterclass/` — Remote Job Application Clinic registration
 - `/self-learn-vs-foundation-training.html` — the honest seller-written comparison

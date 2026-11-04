@@ -63,6 +63,7 @@
                 { label: 'Inner Circle', href: 'innercircle/', keys: ['inner'] },
                 { heading: 'Done for you', sub: 'We do it for you' },
                 { label: 'Remote Job Board', href: 'jobs/', keys: [], free: true },
+                { label: 'Job Hunter', href: 'jobhunter/', keys: ['jobhunter'] },
                 { label: 'CV Fix', href: 'register.html#cvfix', keys: [] },
                 { label: 'Job Application', href: 'jobapplication/', keys: ['remote'] },
                 { all: true, label: 'See both shelves on the home page', href: 'index.html#help' }

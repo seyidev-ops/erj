@@ -55,6 +55,9 @@
       jobBoard: 'Hello ERJ \u2014 I saw this role on the job board and I am not sure I qualify.\n\nRole: {title}\nCompany: {company}\nLink: {url}\n\nI will send my CV here. Please check the requirements with me.',
       /* Foundation Training page: hold a seat in a named cohort ({cohort} = 'Cohort 13, begins Mon 30 Nov'). */
       ftSeat: 'FOUNDATION TRAINING\n\nI want a seat in {cohort}.\n\nFull name:\nTarget role:\nClass I can keep: 7 PM weekdays / 8 PM weekdays / weekends\n\nPlease send me how to pay and what happens next.',
+      /* The Job Hunter (jobhunter/): {plan} = 'One Hunt \u00b7 \u20a615,000' or 'Hunt Month \u00b7 \u20a635,000'. */
+      jobHunter: 'THE JOB HUNTER\n\nPlan: {plan}\n\nFull name:\nTarget role(s):\nCountries / time zones I can work in:\nLowest monthly pay I will accept:\nMy CV: I will attach it here.\n\nPlease send me how to pay and when my shortlist will arrive.',
+      jobHunterAsk: 'Hello ERJ \u2014 I am looking at The Job Hunter and I have a question first:\n\n',
       /* Foundation Training page: a question before enrolling. */
       ftAsk: 'Hello ERJ \u2014 I am looking at Foundation Training and I have a question before I enrol:\n\n',
       careerdevIncluded: 'MENTORINE ACCESS\n\nI am enrolled in Foundation Training and I am ready for my included career-development access at The Mentorine School.\n\nFull name:\nEmail:\nTarget role:\nAssessment done: yes / not yet'
@@ -156,6 +159,13 @@
           href:'cvbuilder.html', pay:'https://paystack.shop/pay/84mjv4w4x7' },
         { id:'cvfix',      name:'CV Fix \u2014 one CV, one field',         naira:30000,  unit:'one-time', part:'representation',
           href:'register.html#cvfix', pay:'https://wa.me/2348032925957' },
+        /* The Job Hunter: ERJ runs the hunt (career-ops method, MIT) for the
+           buyer, a person checks every pack, the buyer presses Submit. No
+           Paystack link yet, so paid by transfer and confirmed on WhatsApp. */
+        { id:'jobhunt',    name:'The Job Hunter \u2014 One Hunt',          naira:15000,  unit:'one-time', part:'aim',
+          href:'jobhunter/', pay:'https://wa.me/2348032925957', badge:'New' },
+        { id:'jobhuntmonth', name:'The Job Hunter \u2014 Hunt Month',      naira:35000,  unit:'one-time', part:'aim',
+          href:'jobhunter/', pay:'https://wa.me/2348032925957' },
         { id:'intentbook', name:'From Intent to Offer',               naira:15000,  unit:'one-time', part:'capacity',
           href:'fromintenttooffer/', pay:'https://selar.com/from_intent_to_offer', badge:'New' },
         { id:'selflearn',  name:'The Self-Learn Pack',                 naira:35000,  unit:'one-time', part:'capacity',
