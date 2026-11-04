@@ -42,7 +42,7 @@ body{font-family:'Inter',system-ui,sans-serif;color:var(--ink);-webkit-font-smoo
 
 /* ── type ── */
 /* before the timeline exists, only the end card shows: a still poster, not a pile of scenes */
-html:not(.ready) .scene:not(#s7){visibility:hidden;}
+html:not(.ready) .scene:not(#s0){visibility:hidden;}
 html:not(.ready) #cursor{display:none;}
 .scene{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;}
 .h{font-family:'Space Grotesk',sans-serif;font-weight:700;letter-spacing:-.045em;line-height:1;}
@@ -53,6 +53,18 @@ html:not(.ready) #cursor{display:none;}
 .kick i{width:12px;height:12px;border-radius:50%;background:var(--o);box-shadow:0 0 0 5px rgba(255,87,34,.18),0 0 16px var(--o);}
 .glass{background:linear-gradient(180deg,rgba(255,255,255,.075),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.11);
   box-shadow:inset 0 1px 0 rgba(255,255,255,.1),0 40px 90px -30px rgba(0,0,0,.8);border-radius:32px;}
+
+/* S0: the logo, then the camera pulls back */
+#s0glow{position:absolute;left:50%;top:50%;width:1300px;height:1300px;margin:-650px 0 0 -650px;border-radius:50%;
+  background:radial-gradient(closest-side,rgba(255,87,34,.42),rgba(255,87,34,.10) 55%,transparent);}
+#logo0{position:relative;width:900px;max-width:80%;filter:drop-shadow(0 30px 80px rgba(255,87,34,.35));}
+.v #logo0{width:860px;max-width:86%;}
+/* S6b: the honest line */
+#s6b .kick{margin-bottom:40px;}
+#s6b .l1{font-size:104px;color:#E9E8EC;}
+#s6b .l2{font-size:80px;margin-top:30px;color:#CFCFD4;max-width:1760px;line-height:1.08;}
+.v #s6b .l1{font-size:96px;line-height:1.05;}
+.v #s6b .l2{font-size:80px;line-height:1.08;}
 
 /* S1 */
 #s1 .l1{font-size:110px;color:#CFCFD4;}
@@ -182,10 +194,15 @@ html:not(.ready) #cursor{display:none;}
 </head>
 <body>
 <div id="stage">
-<div id="root" data-composition-id="root" data-start="0" data-duration="27" data-width="1920" data-height="1080" role="img"
-  aria-label="Foundation Training in 27 seconds: twenty live days across four stages, from Day 1 to Day 20, sixteen things you build, the Remote Job Proficiency Certificate, three class times, ₦250,000.">
+<div id="root" data-composition-id="root" data-start="0" data-duration="33" data-width="1920" data-height="1080" role="img"
+  aria-label="Foundation Training in 33 seconds. We don’t get you a remote job; we prepare you and set you up to get one: twenty live days across four stages, from Day 1 to Day 20, sixteen things you build, the Remote Job Proficiency Certificate, three class times, ₦250,000.">
   <div class="bg"><div id="glowC"></div><div id="glowB"></div><div id="glowA"></div>
     <div id="floorWrap"><div id="floor"></div></div><div id="vig"></div></div>
+
+  <section class="scene" id="s0">
+    <div id="s0glow"></div>
+    <img id="logo0" src="../../erj-lockup-dark.png" alt=""/>
+  </section>
 
   <section class="scene" id="s1">
     <div class="h l1" data-split>You are not short of effort.</div>
@@ -251,6 +268,12 @@ html:not(.ready) #cursor{display:none;}
     <div class="note">Remote Job Proficiency Certificate · your name, your own student number</div>
   </section>
 
+  <section class="scene" id="s6b">
+    <div class="kick"><i></i>Straight talk</div>
+    <div class="h l1" data-split>We don’t get you a remote job.</div>
+    <div class="h l2" data-split>We prepare you and set you up <span class="acc">to get one.</span></div>
+  </section>
+
   <section class="scene" id="s7">
     <img id="logo" src="../../erj-lockup-dark.png" alt=""/>
     <div class="h hd" data-split>Foundation <span class="acc">Training.</span></div>
@@ -297,7 +320,7 @@ html:not(.ready) #cursor{display:none;}
   var words = function (s) { return $$(s + ' .w'); };
   var tl;
   function build() {
-  tl = gsap.timeline({ paused: true, defaults: { ease: 'power3.out' } });
+  tl = gsap.timeline({ defaults: { ease: 'power3.out' } });   /* core: the programme; nested below */
 
   gsap.set('.scene', { autoAlpha: 0 });
   var wordsIn = function (sel, at, d) {
@@ -310,9 +333,6 @@ html:not(.ready) #cursor{display:none;}
   };
 
   /* ambient: the light breathes, the floor rolls toward us all film long */
-  tl.fromTo('#floor', { backgroundPosition: '0px 0px' }, { backgroundPosition: '0px 1080px', duration: 27, ease: 'none' }, 0);
-  tl.fromTo('#glowA', { scale: .9, x: -60 }, { scale: 1.15, x: 80, duration: 27, ease: 'sine.inOut' }, 0);
-  tl.fromTo('#glowB', { x: 0 }, { x: -260, duration: 27, ease: 'sine.inOut' }, 0);
 
   /* S1 · 0 – 3.4 */
   show('#s1', 0);
@@ -379,19 +399,44 @@ html:not(.ready) #cursor{display:none;}
   tl.from('#s6 .note', { opacity: 0, y: 16, duration: .5 }, 21.4);
   hide('#s6', 22.6);
 
-  /* S7 · 23 – 27 */
-  show('#s7', 23.0);
-  tl.from('#logo', { opacity: 0, scale: .9, filter: 'blur(14px)', duration: .7 }, 23.05);
-  wordsIn('#s7 .hd', 23.3, 0.6);
-  tl.from('.tm', { opacity: 0, y: 24, duration: .4, stagger: .1 }, 23.8);
-  tl.from('#cta', { opacity: 0, y: 30, scale: .9, duration: .6, ease: 'back.out(1.6)' }, 24.2);
-  tl.from('#url', { opacity: 0, duration: .5 }, 24.5);
+  /* S6b · 22.9 – 26.3: what we do, said plainly */
+  show('#s6b', 22.9);
+  tl.from('#s6b .kick', { opacity: 0, y: -16, duration: .5 }, 22.95);
+  wordsIn('#s6b .l1', 23.05, 0.6);
+  wordsIn('#s6b .l2', 24.1, 0.7);
+  tl.to('#s6b .l1', { opacity: .45, duration: .6 }, 24.3);
+  hide('#s6b', 25.9);
+
+  /* S7 · 26.4 – 30.4 (core time; +2.6 on the master) */
+  show('#s7', 26.4);
+  tl.from('#logo', { opacity: 0, scale: .9, filter: 'blur(14px)', duration: .7 }, 26.45);
+  wordsIn('#s7 .hd', 26.7, 0.6);
+  tl.from('.tm', { opacity: 0, y: 24, duration: .4, stagger: .1 }, 27.2);
+  tl.from('#cta', { opacity: 0, y: 30, scale: .9, duration: .6, ease: 'back.out(1.6)' }, 27.6);
+  tl.from('#url', { opacity: 0, duration: .5 }, 27.9);
   var cta = $('#cta'), cx = cta.offsetLeft + cta.offsetWidth * .8, cy = cta.offsetTop + cta.offsetHeight * .55;
-  tl.fromTo('#cursor', { x: cx + 330, y: cy + 230, opacity: 0 }, { x: cx, y: cy, opacity: 1, duration: .9, ease: 'power2.inOut' }, 24.6);
-  tl.to('#cursor', { scale: .82, duration: .1, yoyo: true, repeat: 1 }, 25.55);
-  tl.to('#cta', { scale: .96, duration: .1, yoyo: true, repeat: 1 }, 25.55);
-  tl.fromTo('#ring', { opacity: .9, scale: 1 }, { opacity: 0, scale: 1.25, duration: .7, ease: 'power2.out' }, 25.6);
-  tl.to({}, { duration: .1 }, 26.9);  /* hold the end card to 27s */
+  tl.fromTo('#cursor', { x: cx + 330, y: cy + 230, opacity: 0 }, { x: cx, y: cy, opacity: 1, duration: .9, ease: 'power2.inOut' }, 28);
+  tl.to('#cursor', { scale: .82, duration: .1, yoyo: true, repeat: 1 }, 28.95);
+  tl.to('#cta', { scale: .96, duration: .1, yoyo: true, repeat: 1 }, 28.95);
+  tl.fromTo('#ring', { opacity: .9, scale: 1 }, { opacity: 0, scale: 1.25, duration: .7, ease: 'power2.out' }, 29);
+  tl.to({}, { duration: .1 }, 30.3);  /* hold the end card */
+
+  /* master: the logo opens, the camera pulls back, the programme follows */
+  var core = tl, INTRO = 2.6, TOTAL = 33;
+  tl = gsap.timeline({ paused: true, defaults: { ease: 'power3.out' } });
+  tl.fromTo('#floor', { backgroundPosition: '0px 0px' }, { backgroundPosition: '0px 1300px', duration: TOTAL, ease: 'none' }, 0);
+  tl.fromTo('#glowA', { scale: .9, x: -60 }, { scale: 1.15, x: 80, duration: TOTAL, ease: 'sine.inOut' }, 0);
+  tl.fromTo('#glowB', { x: 0 }, { x: -260, duration: TOTAL, ease: 'sine.inOut' }, 0);
+  tl.set('#s0', { autoAlpha: 1 }, 0);
+  tl.fromTo('#logo0', { scale: 1.32, opacity: 0, filter: 'blur(22px)' }, { scale: 1.12, opacity: 1, filter: 'blur(0px)', duration: .9, ease: 'power3.out' }, 0.05);
+  tl.fromTo('#s0glow', { scale: .6, opacity: 0 }, { scale: 1, opacity: 1, duration: 1.2, ease: 'sine.out' }, 0);
+  tl.to('#logo0', { scale: 1.0, duration: 1.0, ease: 'sine.inOut' }, 0.95);
+  /* the pull-back: the logo recedes, the world comes into frame */
+  tl.fromTo('.bg', { scale: 1.35 }, { scale: 1, duration: 1.5, ease: 'power2.inOut' }, 1.15);
+  tl.to('#logo0', { scale: .18, opacity: 0, filter: 'blur(6px)', duration: 0.85, ease: 'power3.in' }, 1.75);
+  tl.to('#s0glow', { scale: .3, opacity: 0, duration: 0.85, ease: 'power3.in' }, 1.75);
+  tl.set('#s0', { autoAlpha: 0 }, INTRO);
+  tl.add(core, INTRO);
 
   window.__timelines = window.__timelines || {};
   window.__timelines.root = tl;
@@ -405,7 +450,7 @@ html:not(.ready) #cursor{display:none;}
   var fit = function () { root.style.transform = 'translate(-50%,-50%) scale(' + Math.min(innerWidth / W, innerHeight / H) + ')'; };
   fit(); addEventListener('resize', fit);
 
-  var END = 26.2;  /* the end card: what anyone who cannot or will not watch motion sees */
+  var END = 32.2;  /* the end card: what anyone who cannot or will not watch motion sees */
   var still = matchMedia('(prefers-reduced-motion: reduce)').matches;
   var pp = $('#pp'), rw = $('#rw'), userPaused = false, seen = false;
   var setBtn = function () { var on = !tl.paused(); pp.textContent = on ? '❚❚' : '►'; pp.setAttribute('aria-label', on ? 'Pause' : 'Play'); };
