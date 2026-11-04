@@ -93,7 +93,7 @@ Any page still advertising an open instalment window after that date is stale an
 | The CV Engine | ₦5,000 / month | Representation — the instrument, operated by you |
 | From Intent to Offer (book) | ₦15,000 | The whole method — eighteen chapters, six appendices, instant download |
 | The Job Hunter — One Hunt | ₦15,000 | Aim and Supply — up to 25 roles open to Nigeria scored against the CV, application packs for the top 3; ERJ prepares, the buyer submits |
-| The Job Hunter — Hunt Month | ₦35,000 | The same, weekly for 30 days, up to 20 packs; one payment, no auto-renew |
+| The Job Hunter — Hunt Month | ₦50,000 | The same, weekly for 30 days, up to 20 packs; one payment, no auto-renew |
 | CV Fix — one CV, one field | ₦30,000 | Representation — the same work, done for you once |
 | The Self-Learn Pack — Stages 1–4 | ₦35,000 | Capacity and Representation |
 | Done-For-You, 7 Days | ₦50,000 | Supply and Aim |
