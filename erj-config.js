@@ -30,7 +30,7 @@
       lead: 'A cohort has a date. Your job hunt doesn\u2019t.',
       body: 'These doors open the day you walk through them \u2014 no gate, no waiting list.',
       doors: [
-        { label: 'Job Application DFY \u2014 done for you, starts this week', href: 'jobapplication/' },
+        { label: 'The Job Hunter \u2014 roles scored, applications prepared, from \u20a615,000', href: 'jobhunter/' },
         { label: 'The free stack \u2014 CV scan, blog, job board, masterclass', href: 'free.html' }
       ]
     },
@@ -170,8 +170,6 @@
           href:'fromintenttooffer/', pay:'https://selar.com/from_intent_to_offer', badge:'New' },
         { id:'selflearn',  name:'The Self-Learn Pack',                 naira:35000,  unit:'one-time', part:'capacity',
           href:'selflearn/', pay:'https://selar.com/77v230274x' },
-        { id:'dfy7',       name:'Done-For-You, 7 Days',                naira:50000,  unit:'one-time', part:'supply',
-          href:'jobapplication/', pay:'https://paystack.shop/pay/dfy7days' },
         /* Delivered by the partner school (see `partners.mentorine`). Paid to
            ERJ; the Registrar verifies payment and issues the Mentorine code.
            No Paystack link yet, so it is paid by transfer and confirmed on the
@@ -243,7 +241,8 @@
         'Mastery Setup', 'Remote Job World Mastery', 'Mastery Training',
         'Private Remote Job Board',
         '2347033134979', '+234 703 313 4979',
-        'Get A Remote Job \u2014 Stage 5'
+        'Get A Remote Job \u2014 Stage 5',
+        'Done-For-You, 7 Days', 'Done-For-You 7 Days'
       ]
     }
   };

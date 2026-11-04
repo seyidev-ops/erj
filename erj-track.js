@@ -83,7 +83,6 @@
     'paystack.shop/pay/stage4only':       { value: 100000, name: 'Stage 4 - Global Ready Package' },
     'paystack.shop/pay/rjmtstages1-4':    { value: 250000, name: 'Foundation Training (Stages 1-4)' },
     'paystack.shop/pay/earlybirdstages1-4': { value: 200000, name: 'Foundation Training (Early Bird)' },
-    'paystack.shop/pay/dfy7days':         { value: 50000,  name: 'Job Hunt & Application DFY (7 Days)' },
     'paystack.shop/pay/gtdj-stage5':      { value: 300000, name: 'Stage 5 - Placement Engine' },
     'paystack.shop/pay/gydjo-stages1-5':  { value: 500000, name: 'Dream Job Offer (Stages 1-5)' },
     'paystack.shop/pay/erj-inner-circle': { value: 250000, name: 'The Inner Circle' },
