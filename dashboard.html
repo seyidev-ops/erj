@@ -1230,7 +1230,6 @@ function cohortLabelFor(session, rec){
 <div style="font-family:var(--font-d);font-size:1.45rem;font-weight:800;color:var(--text);line-height:1.18;margin-bottom:.65rem">You choose the field. ERJ handles the search and applications.</div>
 <p style="font-size:.9rem;color:var(--muted);line-height:1.75;margin:0 0 1.2rem">The active execution service is Done-For-You Application: ERJ sources verified roles, tailors the application to the opportunity and submits on your behalf.</p>
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:.7rem;margin-bottom:1.2rem">
-<div style="border:1px solid var(--border2);border-radius:12px;padding:.9rem"><strong style="display:block;color:var(--text);margin-bottom:.25rem">7-day starter · ₦50,000</strong><span style="font-size:.8rem;color:var(--muted);line-height:1.55">One field, tailored CV/application, 3+ verified roles sourced and applied within 7 days.</span></div>
 <div style="border:1px solid var(--border2);border-radius:12px;padding:.9rem"><strong style="display:block;color:var(--text);margin-bottom:.25rem">Monthly engine · ₦300,000</strong><span style="font-size:.8rem;color:var(--muted);line-height:1.55">Career assets completed, then 30+ verified roles sourced and applied weekly for a month.</span></div>
 </div>
 <div style="display:flex;gap:.65rem;flex-wrap:wrap">
@@ -1498,7 +1497,7 @@ function saveProgress() {
 
 /* ── The Private Job Board was discontinued.
    Everything that granted, counted down and re-sold access to it has been
-   removed. The 7-day Done-For-You search at /jobapplication/ replaced it.
+   removed. The done-for-you services replaced it.
    The old localStorage keys (rjm_jb_expiry_*, rjm_jb_email_access) are
    simply left alone: nothing writes them and nothing reads them. ── */
 
@@ -2544,7 +2543,7 @@ window.addEventListener('offline', () => { document.body.classList.add('offline'
 </script>
 <!-- ===== /Unified Theme Control ===== -->
 <script defer="" src="erj-passcode.js?v=20261031a"></script>
-<script defer="" src="erj-config.js?v=20261104a"></script>
+<script defer="" src="erj-config.js?v=20261104b"></script>
 <script>
 /* The claim message lives in ERJ_CONFIG.messages.careerdevIncluded. */
 document.addEventListener('DOMContentLoaded', function () {
