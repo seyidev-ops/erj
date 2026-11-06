@@ -37,6 +37,9 @@
 
     /* ── Prefilled message templates. {tokens} are filled at runtime. ── */
     messages: {
+      /* Home page "which is true for you?" answers */
+      shapeInterview: 'INTERVIEW SOON\n\nI have a remote interview or test coming up.\n\nRole and company:\nDate:\nMy CV: I will attach it here.\n\nWhat is the fastest way to prepare this week?',
+      shapeSponsor: 'ENROL SOMEONE\n\nI want to pay for someone else to join Foundation Training.\n\nTheir name:\nTheir field / current work:\nTheir WhatsApp number:\n\nPlease tell me how to enrol them.',
       scan: 'Hello ERJ \u2014 I just scored {score}/10 on the free CV scan.\n\nThe points I did not clear: {defaults}\n\nPlease send me the fix list for my score.',
       scanClear: 'Hello ERJ \u2014 I scored {score}/10 on the free CV scan and cleared all ten points.\n\nMy CV is not the reason I am not getting interviews. Where should I look next?',
       channel: 'AUDIT\n\nI am on the ERJ free job channel and I have been applying for remote roles.\n\nTarget role:\nApplications in the last 30 days:\nInterviews in the last 30 days:\nCV/LinkedIn: I will attach or paste it here.\n\nPlease tell me which part of my search is breaking down and what I should fix first.',
