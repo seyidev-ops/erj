@@ -8,10 +8,10 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <link href="../manifest.json" rel="manifest"/>
 <meta content="#000000" id="metaThemeColor" name="theme-color"/>
-<title>The Inner Circle: 1:1 Remote Career Advisory | ERJ</title>
-<meta content="Private one-to-one remote career advisory, by application: positioning, applications, interviews and negotiation, worked beside you. ₦250,000 one payment." name="description"/>
-<meta content="The Inner Circle — 1:1 Remote Career Deployment" property="og:title"/>
-<meta content="Private one-to-one advisory: real-time co-applying, pre-interview dry-runs and live negotiation review. Application-first. ₦250,000 one payment." property="og:description"/>
+<title>The Inner Circle: A Year 1:1, for Foundation Alumni | ERJ</title>
+<meta content="Private one-to-one deployment for Foundation Training graduates: we work your search beside you for twelve months. ₦250,000 for the year." name="description"/>
+<meta content="The Inner Circle — a year one-to-one, for Foundation Training alumni" property="og:title"/>
+<meta content="You finished Foundation Training. Now we stay with you for a year: co-applying, interview dry-runs and offer review, one to one." property="og:description"/>
 <meta content="https://everythingremotejob.com/preview-innercircle.jpg" property="og:image"/>
 <meta content="1200" property="og:image:width"/>
 <meta content="630" property="og:image:height"/>
@@ -37,23 +37,10 @@
 </style>
 <noscript></noscript>
 <link href="../product.css?v=20261004b" rel="stylesheet"/>
-<style>
-  .weeks{list-style:none;display:flex;flex-direction:column;}
-  .weeks li{padding:1.2rem 0;border-bottom:1px solid var(--line);}
-  .weeks li:first-child{border-top:1px solid var(--line);}
-  .wk-k{font-size:0.64rem;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:0.3rem;}
-  .wk-t{font-family:var(--font-display);font-size:1.2rem;font-weight:500;color:var(--ink);margin-bottom:0.3rem;}
-  .wk-d{font-size:0.9rem;color:var(--ink-soft);font-weight:300;line-height:1.55;}
-  /* the hero figure only takes room away from the headline above the 820px
-     grid breakpoint (see .hero-grid) — past that point the long dollar-range
-     token can break mid-word under the site-wide narrow-screen safety rule.
-     Below 820px the headline has the full width and never needs it. */
-  @media (min-width:821px){.hero h1 em{word-break:normal;overflow-wrap:normal;}}
-</style>
 <link href="https://everythingremotejob.com/innercircle/" rel="canonical"/>
 <meta content="en_NG" property="og:locale"/>
 <meta content="index,follow,max-image-preview:large,max-snippet:-1" name="robots"/>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","name":"The Inner Circle — Private 1:1 Remote Career Advisory","description":"A private one-to-one remote career advisory engagement for stable, skilled professionals. ERJ works beside the participant on positioning, applications, interviews and negotiation. Admission is verified before payment and start dates are agreed individually.","url":"https://everythingremotejob.com/innercircle/","provider":{"@type":"Organization","name":"Everything Remote Job","url":"https://everythingremotejob.com/","@id":"https://everythingremotejob.com/#organization"},"areaServed":"Africa","serviceType":"Private 1:1 remote career advisory","offers":{"@type":"Offer","price":"250000","priceCurrency":"NGN","availability":"https://schema.org/InStock","url":"../register.html#inner","category":"Paid"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","name":"The Inner Circle — a year of private 1:1 remote career deployment for Foundation Training alumni","description":"Twelve months of one-to-one remote career deployment for graduates of ERJ Foundation Training: seven weeks of build-up, then a year-long residency with co-applying, interview dry-runs and offer review. Admission is confirmed before payment.","url":"https://everythingremotejob.com/innercircle/","provider":{"@type":"Organization","name":"Everything Remote Job","url":"https://everythingremotejob.com/","@id":"https://everythingremotejob.com/#organization"},"areaServed":"Africa","serviceType":"Private 1:1 remote career deployment","offers":{"@type":"Offer","price":"250000","priceCurrency":"NGN","availability":"https://schema.org/InStock","url":"https://everythingremotejob.com/innercircle/#apply","category":"Paid","eligibleDuration":{"@type":"QuantitativeValue","value":12,"unitCode":"MON"}}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://everythingremotejob.com/"},{"@type":"ListItem","position":2,"name":"The Inner Circle","item":"https://everythingremotejob.com/innercircle/"}]}</script>
 <style id="erjNavReserve">body{padding-top:63px}@media(min-width:980px){body{padding-top:65px}}
 /* Button labels stay on one line. The type size is NOT reduced to make them
@@ -88,131 +75,358 @@
 <link href="/appletouchicon.png" rel="apple-touch-icon"/>
 <link href="../erj-alive.css?v=20261028b" rel="stylesheet" media="print" onload="this.media='all'"/><noscript><link href="../erj-alive.css?v=20261028b" rel="stylesheet"/></noscript>
 <link href="../erj-future.css?v=20261104a" rel="stylesheet"/>
-<style id="icPhoto">/* the whole portrait, head to elbow, at every width; the slow zoom is off here so it never cuts the head */
-.hero-photo img{aspect-ratio:4/5!important;object-fit:cover;object-position:50% 0!important;animation:none!important;}
-@media(max-width:820px){.hero-photo{max-width:380px;margin-left:auto;margin-right:auto;}}</style>
+<style id="erjSelfLearn">
+  /* Self-Learn Pack page. The price is stated twice on screen: in the hero
+     and at the buy block. Everything between them sells the outcome. */
+  .sl-hero{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.85fr);gap:clamp(1.5rem,4vw,3.2rem);align-items:center;}
+  .sl-hero h1{font-size:clamp(2rem,4.4vw,3.3rem);}
+  .sl-hero .lede{margin-bottom:1.1rem;}
+  .sl-gets{list-style:none;margin:0 0 1.4rem;padding:0;display:grid;gap:.5rem;}
+  .sl-gets li{position:relative;padding-left:1.7rem;font-size:.97rem;line-height:1.5;color:var(--ink-soft);}
+  .sl-gets li::before{content:'\2713';position:absolute;left:0;top:0;width:1.15rem;height:1.15rem;border-radius:50%;
+    background:rgba(255,87,34,.14);color:var(--accent);font-size:.7rem;font-weight:800;display:flex;align-items:center;justify-content:center;margin-top:.15rem;}
+  .sl-gets b{color:var(--ink);}
+  .sl-price{display:flex;flex-wrap:wrap;align-items:baseline;gap:.3rem .9rem;margin:0 0 1.3rem;}
+  .sl-price .amt{font-family:var(--font-display);font-size:clamp(2rem,5vw,2.7rem);font-weight:800;letter-spacing:-.03em;line-height:1;color:var(--ink);}
+  .sl-price .amt-sub{font-size:.86rem;color:var(--ink-faint);}
+  .sl-trust{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:1.1rem;}
+  .sl-trust span{font-size:.72rem;color:var(--ink-soft);padding:.38rem .7rem;border:1px solid var(--line);border-radius:999px;}
+  .sl-box{margin:0;position:relative;}
+  .sl-box img{display:block;width:100%;height:auto;border-radius:22px;border:1px solid var(--card-line);}
+  .sl-box figcaption{position:absolute;left:1rem;bottom:1rem;font:700 .66rem/1 var(--font-body);letter-spacing:.14em;text-transform:uppercase;
+    color:#fff;background:rgba(0,0,0,.6);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);padding:.5rem .75rem;border-radius:999px;}
+  @media(max-width:860px){.sl-hero{grid-template-columns:1fr;}.sl-box{max-width:340px;margin:0 auto;}}
+  /* phones: the headline and price lead; the box shot waits for the buy block */
+  @media(max-width:600px){.sl-hero .sl-box{display:none;}.sl-hero .lede{font-size:1rem;}.sl-gets li{font-size:.92rem;}.sl-hero .sl-gets{gap:.35rem;margin-bottom:1.1rem;}}
+  body:has(.sl-bar.is-on) .wa-float{bottom:calc(5.4rem + env(safe-area-inset-bottom));transition:bottom .3s;}
+
+  /* five parts */
+  .sl-parts{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:.6rem;margin-top:1.6rem;}
+  .sl-part{padding:1.05rem 1.1rem;border-radius:16px;border:1px solid var(--card-line);background:var(--card);}
+  .sl-part b{display:block;font:700 .66rem/1 var(--font-body);letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:.5rem;}
+  .sl-part span{font-size:.88rem;line-height:1.5;color:var(--ink);}
+  .sl-part.later{opacity:.6;}
+  .sl-part.later b{color:var(--ink-faint);}
+  @media(max-width:900px){.sl-parts{grid-template-columns:1fr 1fr;}}
+  @media(max-width:520px){.sl-parts{grid-template-columns:1fr;}}
+
+  /* stages */
+  .sl-stages{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;margin-top:1.6rem;}
+  .sl-stage{display:flex;flex-direction:column;padding:1.4rem 1.5rem;border-radius:22px;border:1px solid var(--card-line);background:var(--card);}
+  .sl-stage-top{display:flex;align-items:baseline;gap:.8rem;margin-bottom:.5rem;}
+  .sl-stage-n{font:800 1.7rem/1 var(--font-display);color:var(--accent);letter-spacing:-.03em;}
+  .sl-stage-s{font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);}
+  .sl-stage h3{font:800 1.12rem/1.3 var(--font-display);letter-spacing:-.015em;color:var(--ink);margin:0 0 .45rem;}
+  .sl-stage p{font-size:.9rem;line-height:1.6;color:var(--ink-soft);margin:0 0 1rem;flex:1;}
+  .sl-stage-out{font-size:.86rem;color:var(--ink);padding:.7rem .9rem;border-radius:12px;background:rgba(255,87,34,.07);border-left:3px solid var(--accent);}
+  .sl-stage-out b{color:var(--accent);}
+  @media(max-width:760px){.sl-stages{grid-template-columns:1fr;}}
+  .sl-folder{margin-top:1.4rem;padding:1.2rem 1.3rem;border-radius:20px;border:1px dashed var(--line);}
+  .sl-folder>b{display:block;font-family:var(--font-display);font-size:1rem;color:var(--ink);margin-bottom:.75rem;}
+  .sl-folder ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:.45rem;}
+  .sl-folder li{font-size:.82rem;color:var(--ink);padding:.45rem .8rem;border-radius:999px;border:1px solid var(--card-line);background:var(--card);}
+  .sl-folder li i{font-style:normal;color:var(--ink-faint);margin-left:.3rem;}
+
+  /* how it works */
+  .sl-steps{list-style:none;margin:1.6rem 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.8rem;counter-reset:s;}
+  .sl-steps li{padding:1.2rem 1.3rem;border-radius:20px;border:1px solid var(--card-line);background:var(--card);counter-increment:s;}
+  .sl-steps li::before{content:'0' counter(s);display:block;font:800 1.2rem/1 var(--font-display);color:var(--accent);margin-bottom:.6rem;}
+  .sl-steps b{display:block;font-family:var(--font-display);font-size:1rem;color:var(--ink);margin-bottom:.3rem;}
+  .sl-steps span{font-size:.88rem;line-height:1.55;color:var(--ink-soft);}
+  @media(max-width:760px){.sl-steps{grid-template-columns:1fr;}}
+
+  /* compare */
+  .sl-cmp{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1.6rem;}
+  .sl-cmp-col{padding:1.5rem;border-radius:22px;border:1px solid var(--card-line);background:var(--card);}
+  .sl-cmp-col.this{border-color:rgba(255,87,34,.55);box-shadow:0 30px 80px -50px rgba(255,87,34,.7);}
+  .sl-cmp-k{font:700 .64rem/1 var(--font-body);letter-spacing:.16em;text-transform:uppercase;color:var(--ink-faint);}
+  .sl-cmp-col.this .sl-cmp-k{color:var(--accent);}
+  .sl-cmp-col h3{font:800 1.15rem/1.3 var(--font-display);color:var(--ink);margin:.5rem 0 .9rem;}
+  .sl-cmp-col ul{list-style:none;margin:0;padding:0;}
+  .sl-cmp-col li{position:relative;padding:.4rem 0 .4rem 1.45rem;font-size:.9rem;line-height:1.5;color:var(--ink-soft);}
+  .sl-cmp-col li.y::before{content:'\2713';position:absolute;left:0;color:var(--accent);font-weight:800;}
+  .sl-cmp-col li.n::before{content:'\2715';position:absolute;left:0;color:var(--ink-faint);font-weight:800;}
+  .sl-cmp-col a{color:var(--accent);font-weight:700;}
+  @media(max-width:760px){.sl-cmp{grid-template-columns:1fr;}}
+  .sl-credit{margin-top:1rem;padding:1.1rem 1.3rem;border-radius:20px;background:rgba(255,87,34,.07);border:1px solid rgba(255,87,34,.4);}
+  .sl-credit b{color:var(--ink);}
+  .sl-credit p{margin:0;font-size:.9rem;line-height:1.65;color:var(--ink-soft);}
+  .sl-credit small{display:block;margin-top:.45rem;font-size:.74rem;color:var(--ink-faint);}
+
+  /* fit */
+  .sl-fit{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1.6rem;}
+  .sl-fit>div{padding:1.4rem 1.5rem;border-radius:22px;border:1px solid var(--card-line);background:var(--card);}
+  .sl-fit h3{font:800 1.02rem/1.3 var(--font-display);color:var(--ink);margin:0 0 .7rem;}
+  .sl-fit ul{list-style:none;margin:0;padding:0;}
+  .sl-fit li{position:relative;padding:.38rem 0 .38rem 1.45rem;font-size:.9rem;line-height:1.55;color:var(--ink-soft);}
+  .sl-fit .yes li::before{content:'\2713';position:absolute;left:0;color:var(--accent);font-weight:800;}
+  .sl-fit .no li::before{content:'\2715';position:absolute;left:0;color:var(--ink-faint);font-weight:800;}
+  .sl-fit a{color:var(--accent);font-weight:700;}
+  @media(max-width:760px){.sl-fit{grid-template-columns:1fr;}}
+
+  /* FAQ */
+  .sl-faq{margin-top:1.4rem;}
+  .sl-faq details{margin:0 0 .6rem;padding:0 1.2rem;border-radius:18px;border:1px solid var(--card-line);background:var(--card);}
+  .sl-faq details[open]{border-color:rgba(255,87,34,.45);}
+  .sl-faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1rem 0;font-family:var(--font-display);font-weight:700;font-size:1rem;color:var(--ink);}
+  .sl-faq summary::-webkit-details-marker{display:none;}
+  .sl-faq summary::after{content:'+';font-size:1.4rem;font-weight:400;color:var(--accent);transition:transform .3s;}
+  .sl-faq details[open] summary::after{transform:rotate(45deg);}
+  .sl-faq p{margin:0 0 1rem;font-size:.92rem;line-height:1.65;color:var(--ink-soft);}
+  .sl-faq a{color:var(--accent);font-weight:700;}
+
+  /* buy */
+  .sl-buy{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(1.2rem,3vw,2.4rem);align-items:center;margin-top:1.6rem;
+    padding:clamp(1.4rem,3.4vw,2.4rem);border-radius:28px;border:1px solid rgba(255,87,34,.55);
+    background:radial-gradient(100% 120% at 100% 0,rgba(255,87,34,.16),transparent 60%),var(--card);box-shadow:0 40px 100px -50px rgba(255,87,34,.75);}
+  .sl-buy img{display:block;width:100%;height:auto;border-radius:18px;}
+  .sl-buy h3{font:800 1.3rem/1.25 var(--font-display);color:var(--ink);margin:0 0 .3rem;}
+  .sl-buy .amt{font:800 clamp(2.4rem,6vw,3.3rem)/1 var(--font-display);letter-spacing:-.03em;color:var(--ink);margin:.4rem 0 .3rem;}
+  .sl-buy .amt-sub{font-size:.86rem;color:var(--ink-faint);margin:0 0 1rem;}
+  .sl-buy .sl-gets{margin-bottom:1.2rem;}
+  .sl-buy-btns{display:flex;flex-wrap:wrap;gap:.7rem;}
+  .sl-buy-no{margin:1rem 0 0;font-size:.8rem;line-height:1.6;color:var(--ink-faint);}
+  .sl-buy-no b{color:var(--ink-soft);}
+  @media(max-width:760px){.sl-buy{grid-template-columns:1fr;}.sl-buy img{max-width:240px;margin:0 auto;}}
+
+  /* final */
+  .sl-final{text-align:center;padding-top:clamp(3rem,7vw,5rem);padding-bottom:clamp(4rem,8vw,6rem);}
+  .sl-final .hero-cta{justify-content:center;}
+
+  /* sticky bar: phones only, hidden while the hero or buy block is on screen */
+  .sl-bar{position:fixed;left:0;right:0;bottom:0;z-index:60;display:none;align-items:center;justify-content:space-between;gap:.8rem;
+    padding:.55rem 1rem calc(.55rem + env(safe-area-inset-bottom));background:var(--paper-2);border-top:1px solid var(--line);
+    box-shadow:0 -10px 30px rgba(0,0,0,.18);transform:translateY(110%);transition:transform .3s var(--ease);}
+  .sl-bar.is-on{transform:none;}
+  .sl-bar>div{min-width:0;}
+  .sl-bar b{display:block;font-family:var(--font-display);font-size:.95rem;color:var(--ink);white-space:nowrap;}
+  .sl-bar small{display:block;font-size:.68rem;color:var(--ink-faint);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .sl-bar .btn-primary-ui{min-height:50px;padding:.55rem .95rem;font-size:1.02rem!important;flex:none;}
+  .sl-bar .btn-primary-ui>span:first-child{white-space:nowrap;}
+  @media(max-width:760px){.sl-bar{display:flex;}}
+  @media(prefers-reduced-motion:reduce){.sl-bar{transition:none;}}
+</style><style id="erjInnerExtra">
+  /* Inner Circle pieces on top of the shared sl-* components */
+  .ic-photo{margin:0;position:relative;max-width:440px;justify-self:end;}
+  .ic-photo::before{content:'';position:absolute;inset:-1px;border-radius:30px;padding:1px;
+    background:linear-gradient(160deg,rgba(255,87,34,.9),rgba(255,87,34,.15) 45%,rgba(255,255,255,.08));
+    -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none;z-index:2;}
+  .ic-photo img{display:block;width:100%;height:auto!important;max-height:none;aspect-ratio:4/5!important;object-fit:cover;animation:none!important;object-position:50% 0;border-radius:30px;
+    box-shadow:0 50px 120px -50px rgba(255,87,34,.75);}
+  .ic-photo .ic-tag{position:absolute;top:1rem;left:1rem;z-index:3;font:700 .64rem/1 var(--font-body);letter-spacing:.14em;text-transform:uppercase;
+    color:#fff;background:var(--accent);padding:.5rem .75rem;border-radius:999px;}
+  .ic-photo figcaption{position:absolute;left:1rem;right:1rem;bottom:1rem;z-index:3;padding:.8rem 1rem;border-radius:18px;
+    background:rgba(0,0,0,.62);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);color:#fff;font-size:.82rem;line-height:1.4;}
+  .ic-photo figcaption b{display:block;font-family:var(--font-display);font-size:1rem;}
+  @media(max-width:860px){.ic-photo{justify-self:center;max-width:340px;}}
+  .ic-gate{margin-top:1.4rem;display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+  .ic-gate>div{padding:1.3rem 1.4rem;border-radius:22px;border:1px solid var(--card-line);background:var(--card);}
+  .ic-gate .ok{border-color:rgba(25,194,122,.5);background:linear-gradient(160deg,rgba(25,194,122,.09),transparent 60%),var(--card);}
+  .ic-gate h3{font:800 1.05rem/1.3 var(--font-display);color:var(--ink);margin:0 0 .6rem;}
+  .ic-gate p,.ic-gate li{font-size:.9rem;line-height:1.6;color:var(--ink-soft);}
+  .ic-gate ul{list-style:none;margin:0;padding:0;}
+  .ic-gate li{position:relative;padding:.3rem 0 .3rem 1.4rem;}
+  .ic-gate .ok li::before{content:'\2713';position:absolute;left:0;color:#2BD48A;font-weight:800;}
+  .ic-gate .not li::before{content:'\2192';position:absolute;left:0;color:var(--accent);font-weight:800;}
+  .ic-gate a{color:var(--accent);font-weight:700;}
+  html[data-theme="day"] .ic-gate .ok li::before{color:#0B7A47;}
+  @media(max-width:760px){.ic-gate{grid-template-columns:1fr;}}
+  .ic-phase{margin-top:1.6rem;}
+  .ic-phase-h{display:flex;align-items:baseline;gap:.8rem;margin:0 0 .8rem;}
+  .ic-phase-h b{font:800 1.15rem/1.2 var(--font-display);color:var(--ink);}
+  .ic-phase-h span{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:700;}
+  .ic-weeks{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.7rem;}
+  .ic-weeks li{padding:1.1rem 1.2rem;border-radius:18px;border:1px solid var(--card-line);background:var(--card);}
+  .ic-weeks i{display:block;font-style:normal;font:700 .64rem/1 var(--font-body);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:.45rem;}
+  .ic-weeks b{display:block;font-family:var(--font-display);font-size:1rem;color:var(--ink);margin-bottom:.3rem;}
+  .ic-weeks span{font-size:.86rem;line-height:1.55;color:var(--ink-soft);}
+  @media(max-width:900px){.ic-weeks{grid-template-columns:1fr 1fr;}}
+  @media(max-width:560px){.ic-weeks{grid-template-columns:1fr;}}
+  .ic-year{padding:1.3rem 1.4rem;border-radius:22px;border:1px solid rgba(255,87,34,.5);
+    background:radial-gradient(100% 140% at 100% 0,rgba(255,87,34,.13),transparent 60%),var(--card);}
+  .ic-year .sl-gets{margin:0;display:grid;grid-template-columns:1fr 1fr;gap:.55rem 1.4rem;}
+  @media(max-width:700px){.ic-year .sl-gets{grid-template-columns:1fr;}}
+  .ic-form{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:1rem;margin-top:1.6rem;align-items:start;}
+  @media(max-width:860px){.ic-form{grid-template-columns:1fr;}}
+  .ic-card{padding:clamp(1.3rem,3vw,1.9rem);border-radius:26px;border:1px solid var(--card-line);background:var(--card);}
+  .ic-card.pay{border-color:rgba(255,87,34,.55);background:radial-gradient(100% 120% at 100% 0,rgba(255,87,34,.15),transparent 60%),var(--card);
+    box-shadow:0 40px 100px -50px rgba(255,87,34,.7);}
+  .ic-card h3{font:800 1.15rem/1.3 var(--font-display);color:var(--ink);margin:0 0 1rem;}
+  .ic-card .field{margin-bottom:.85rem;}
+  .ic-card .amt{font:800 clamp(2.2rem,5.6vw,3rem)/1 var(--font-display);letter-spacing:-.03em;color:var(--ink);margin:.2rem 0 .3rem;}
+  .ic-card .amt-sub{font-size:.85rem;color:var(--ink-faint);margin:0 0 1rem;}
+  .ic-card .sl-gets{margin-bottom:1.2rem;}
+  .ic-card .note{font-size:.8rem;line-height:1.6;color:var(--ink-faint);margin:.9rem 0 0;}
+  .ic-card .acct{margin-top:1rem;}
+</style>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe height="0" src="https://www.googletagmanager.com/ns.html?id=GTM-NMFHS59B" style="display:none;visibility:hidden" width="0"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 <div id="erjNavMount"></div>
-<script>window.ERJ_NAV={active:'inner',base:'../',onPage:[
-  {label:'What it is',href:'#what'},
-  {label:'The 7-week residency',href:'#weeks'},
-  {label:'Core deliverables',href:'#deliverables'},
-  {label:'Request admission',href:'#apply'}
-]};</script>
+<script>window.ERJ_NAV={active:'inner',base:'../',onPage:[{label:'Who can join',href:'#who'},{label:'Your year',href:'#year'},{label:'What we do with you',href:'#with'},{label:'Questions',href:'#faq'},{label:'Request admission',href:'#apply'}]};</script>
+
 <main>
-<a class="promo-tick" href="#apply" aria-label="We will not let you go until you're hired."><div class="promo-track">We will not let you go <em>until you're hired.</em></div></a>
+
 <!-- HERO -->
-<section class="hero wrap reveal">
-<div class="hero-grid">
+<section class="hero wrap">
+<div class="sl-hero">
 <div>
-<p class="section-label"><span class="mark"></span> Inner Circle · Stages 6–12</p>
-<h1>Placed 1:1 into a <em>$1,000–$2,500/month</em> role — built and negotiated beside you.</h1>
-<p class="lede">Getting a remote job with a personal coach beside you: private 1:1, by application only. We co-build your profile, audit your applications in real time and position you into international pathways. One seat, one outcome.</p>
-<div class="hero-cta">
-<a class="btn-primary-ui btn-yes" href="#apply"><span>Request Admission</span><span class="arrow-wrap"><span class="arrow">→</span></span></a>
-<a class="btn-more btn-secondary-ui" href="#weeks"><span>See the Residency</span><span class="arrow-wrap"><span class="arrow is-down">↓</span></span></a>
+<p class="section-label reveal"><span class="mark"></span> The Inner Circle · Foundation Training alumni</p>
+<h1 class="reveal">You finished Foundation Training. <em>Now we stay with you for a year.</em></h1>
+<p class="lede reveal">Private one-to-one deployment, only for Foundation Training graduates. We already know your work, so we start where your cohort ended and work your search beside you for twelve months.</p>
+<ul class="sl-gets reveal">
+<li><b>One-to-one, not a class:</b> your applications, interviews and offers</li>
+<li><b>Real-time co-applying</b> before every application you send</li>
+<li><b>Dry-runs before interviews</b> and review of every offer</li>
+<li><b>Twelve months in the Circle</b>, with weekly accountability</li>
+</ul>
+<div class="sl-price reveal"><span class="amt">₦250,000</span><span class="amt-sub">One payment · twelve months · alumni only</span></div>
+<div class="hero-cta reveal">
+<a href="#apply" class="btn-primary-ui btn-yes" id="slHeroCta"><span>Request admission</span><span class="arrow-wrap"><span class="arrow">→</span></span></a>
+<a href="#who" class="btn-more btn-secondary-ui"><span>Who can join</span><span class="arrow-wrap"><span class="arrow is-down">↓</span></span></a>
 </div>
 </div>
-<figure class="hero-photo">
-<img alt="Oluwaseyi Ashiru, your Inner Circle facilitator, welcoming you into the room" decoding="async" height="1100" loading="eager" src="../photo-seyi-suit.webp" width="880"/>
-<figcaption>Oluwaseyi Ashiru · works your search with you inside the Circle</figcaption>
+<figure class="ic-photo reveal">
+<span class="ic-tag">Alumni only</span>
+<img alt="Oluwaseyi Ashiru, Lead Facilitator, who works your search with you inside the Inner Circle" decoding="async" height="1100" loading="eager" fetchpriority="high" src="../photo-seyi-suit.webp" width="880"/>
+<figcaption><b>Oluwaseyi Ashiru</b>Lead Facilitator · works your search with you, one to one</figcaption>
 </figure>
 </div>
 </section>
-<!-- WHAT IT IS -->
-<section class="section-line wrap is-tight" id="what">
-<p class="section-label">Why It's Different</p>
-<h2>We don't teach you to apply. <span>We deploy you.</span></h2>
-<p class="section-sub" style="max-width:64ch;">50 applications, 0 offers is the public-portal experience. The Inner Circle skips the algorithms, shares global roles that never get made public, and works beside you one-on-one until you are positioned to win.</p>
-</section>
-<!-- WEEKS -->
-<section class="section-line wrap" id="weeks">
-<p class="section-label">The Build-Up · Stages 6–12</p>
-<h2>Seven weeks. <span>One offer.</span></h2>
-<p class="section-sub">Each week tears down something old and rebuilds it on a stronger foundation.</p>
-<ul class="weeks">
-<li class="reveal"><div class="wk-k">Stage 6 · Week 1</div><div class="wk-t">The Audit</div><div class="wk-d">Tear down your current positioning and rebuild the foundation. By week's end you know exactly what you're selling and who needs to buy it.</div></li>
-<li class="reveal"><div class="wk-k">Stage 7 · Week 2</div><div class="wk-t">The Profile</div><div class="wk-d">LinkedIn, CV and portfolio rebuilt with the Necessity Dashboard framework — a profile that makes hiring managers stop scrolling.</div></li>
-<li class="reveal"><div class="wk-k">Stage 8 · Week 3</div><div class="wk-t">The Outreach Engine</div><div class="wk-d">We build your outreach system together and write your first 10 messages live — you send them during the session.</div></li>
-<li class="reveal"><div class="wk-k">Stage 9 · Week 4</div><div class="wk-t">The Interview Room</div><div class="wk-d">Mock interviews using the consulting framework. You stop auditioning and start diagnosing — a completely different posture and result.</div></li>
-<li class="reveal"><div class="wk-k">Stage 10 · Week 5</div><div class="wk-t">The Negotiation Table</div><div class="wk-d">Global salary research, ROI anchoring, counter-offer strategy. You learn to hold the table calmly and let the number move toward you.</div></li>
-<li class="reveal"><div class="wk-k">Stage 11 · Week 6</div><div class="wk-t">The Launch</div><div class="wk-d">Full support through active applications, responses and decisions. You don't graduate until you have a clear, executable path to an offer.</div></li>
-<li class="reveal"><div class="wk-k">Stage 12 · Ongoing</div><div class="wk-t">The Residency</div><div class="wk-d">Private community, weekly accountability, the private alumni network, and lifetime access to every framework we build together.</div></li>
-</ul>
-</section>
-<!-- DELIVERABLES -->
-<section class="section-line wrap" id="deliverables">
-<p class="section-label">Core Deliverables</p>
-<h2>Co-deployment, <span>not coursework.</span></h2>
-<div class="cards" style="margin-top:1.6rem;">
-<div class="card reveal">
-<div class="card-k">01</div>
-<h3>Real-Time Co-Applying</h3>
-<p>You share targeted roles; we draft, refine and optimise your specific cover letters and resume adjustments before submission.</p>
-</div>
-<div class="card reveal">
-<div class="card-k">02</div>
-<h3>Pre-Interview Dry-Runs</h3>
-<p>Private, high-touch strategy calls that mimic international panels — aligning your delivery with global standard operating procedures.</p>
-</div>
-<div class="card reveal">
-<div class="card-k">03</div>
-<h3>The Private Partner Directory</h3>
-<p>Direct-channel introductions to hiring entities looking for remote talent in emerging tech markets.</p>
-</div>
+
+<!-- WHO -->
+<section class="section-line wrap" id="who">
+<p class="section-label reveal">Who can join</p>
+<h2 class="reveal">The Circle is for graduates. <span>Here's why.</span></h2>
+<p class="section-sub reveal">Foundation Training builds your four assets and shows us how you work. The Inner Circle doesn't teach any of that again. It takes what you built and deploys it, one to one, for a year. Starting from your foundation is what makes a whole year of one-to-one work possible at this price.</p>
+<div class="ic-gate">
+<div class="ok reveal"><h3>You can join if</h3><ul>
+<li>You finished any Foundation Training cohort</li>
+<li>You bought Get Your Dream Job Offer, which includes Foundation Training</li>
+<li>You want a person working your search with you, not another course</li>
+</ul></div>
+<div class="not reveal"><h3>Not a graduate yet?</h3><ul>
+<li>Start with <a href="../foundationtraining/">Foundation Training</a>. The Circle opens to you the day you finish.</li>
+<li>Hold the Self-Learn Pack? Upgrade to Foundation Training within 90 days and what you paid is credited.</li>
+<li>Want applications prepared for you now? See <a href="../jobhunter/">The Job Hunter</a>.</li>
+</ul></div>
 </div>
 </section>
+
+<!-- YEAR -->
+<section class="section-line wrap" id="year">
+<p class="section-label reveal">Your year in the Circle</p>
+<h2 class="reveal">Seven weeks to build. <span>A year of being backed.</span></h2>
+<div class="ic-phase">
+<div class="ic-phase-h reveal"><span>Weeks 1–7</span><b>The build-up</b></div>
+<ol class="ic-weeks">
+<li class="reveal"><i>Week 1</i><b>The Audit</b><span>Your positioning torn down and rebuilt: what you are selling, and who needs to buy it.</span></li>
+<li class="reveal"><i>Week 2</i><b>The Profile</b><span>LinkedIn, CV and portfolio sharpened from your Foundation work into a profile that stops the scroll.</span></li>
+<li class="reveal"><i>Week 3</i><b>The Outreach Engine</b><span>Your outreach system built together, and your first ten messages written and sent in the session.</span></li>
+<li class="reveal"><i>Week 4</i><b>The Interview Room</b><span>Mock interviews on the consulting framework: you stop auditioning and start diagnosing.</span></li>
+<li class="reveal"><i>Week 5</i><b>The Negotiation Table</b><span>Salary research, anchoring and counter-offers, so you hold the table calmly.</span></li>
+<li class="reveal"><i>Weeks 6–7</i><b>The Launch</b><span>Live applications, responses and decisions, worked with you until the path to an offer is clear.</span></li>
+</ol>
+</div>
+<div class="ic-phase">
+<div class="ic-phase-h reveal"><span>Months 2–12</span><b>The residency</b></div>
+<div class="ic-year reveal"><ul class="sl-gets">
+<li><b>Weekly accountability</b> on your pipeline</li>
+<li><b>Co-applying</b> on every role you go for</li>
+<li><b>A dry-run</b> before every interview that comes</li>
+<li><b>Review of every offer</b> before you answer</li>
+<li><b>The private partner directory</b> and member leads</li>
+<li><b>The private alumni network</b> and every framework we build</li>
+</ul></div>
+</div>
+</section>
+
+<!-- WITH -->
+<section class="section-line wrap" id="with">
+<p class="section-label reveal">What we do with you</p>
+<h2 class="reveal">Co-deployment, <span>not coursework.</span></h2>
+<div class="sl-steps" style="list-style:none;padding:0;margin:1.6rem 0 0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.8rem;">
+<div class="sl-stage reveal"><div class="sl-stage-top"><span class="sl-stage-n">01</span></div><h3>Real-time co-applying</h3><p>You share the roles you want. We refine the CV, cover letter and answers with you before each one goes.</p></div>
+<div class="sl-stage reveal"><div class="sl-stage-top"><span class="sl-stage-n">02</span></div><h3>Pre-interview dry-runs</h3><p>Private strategy calls that mimic international panels, so the real interview feels like the second one.</p></div>
+<div class="sl-stage reveal"><div class="sl-stage-top"><span class="sl-stage-n">03</span></div><h3>The private partner directory</h3><p>Introductions to hiring teams looking for remote talent, and roles shared inside the Circle first.</p></div>
+</div>
+</section>
+
+<!-- FAQ -->
+<section class="section-line wrap" id="faq">
+<p class="section-label reveal">Questions</p>
+<h2 class="reveal">Before you <span>apply.</span></h2>
+<div class="sl-faq">
+<details class="reveal"><summary>I haven't done Foundation Training. Can I still join?</summary><p>Not yet. The Circle starts where Foundation Training ends, so we don't spend your year re-teaching it. Join <a href="../foundationtraining/">Foundation Training</a>, and the Circle opens to you the day you finish.</p></details>
+<details class="reveal"><summary>What does the year include?</summary><p>Seven weeks of one-to-one build-up, then the rest of the twelve months as a resident: weekly accountability, co-applying on the roles you go for, dry-runs before interviews, review of offers, and the private network.</p></details>
+<details class="reveal"><summary>Do you guarantee a job?</summary><p>No. No honest service can promise a job, a date or a salary, and we won't. We work your search with you for the full year, and you see exactly what changes.</p></details>
+<details class="reveal"><summary>What happens after twelve months?</summary><p>You can stay for another year if you want to. Nothing renews automatically; we ask you first.</p></details>
+<details class="reveal"><summary>How do I pay?</summary><p>Request admission below. Once we confirm you're a graduate, pay through Paystack or by transfer to Business Play Limited, then send the receipt on WhatsApp to open your private one-to-one thread.</p></details>
+</div>
+</section>
+
 <!-- APPLY -->
 <section class="section-line wrap" id="apply">
-<p class="section-label">Admission</p>
-<h2>Invite-only. <span>Apply to join.</span></h2>
-<p class="section-sub">The Inner Circle runs on a one-to-one basis, not a cohort countdown. Submit your details and we will confirm fit before payment. Once admitted, your private start date and working rhythm are agreed directly with you.</p>
-<div class="ask-slot reveal">
-<div class="ask-slot-k">How admission works</div>
-<p class="ask-slot-p">The room co-applies with you in real time, so we keep it small: one-to-one hours, not a cohort seat. Fit is confirmed before any payment; if we are full, you get a date, not a thinner programme.</p>
-<a class="ask-slot-btn" href="https://wa.me/2348032925957?text=INNER%20CIRCLE%0A%0AI%20would%20like%20to%20apply%20for%20the%20Inner%20Circle.%0A%0AMy%20domain%2Ffield%3A%0AWhere%20my%20search%20is%20stuck%3A%0A%0AIs%20admission%20open%20at%20the%20moment%3F" rel="noopener" target="_blank">Ask whether admission is open &rarr;</a>
-</div>
-
-<div class="form-grid">
-<div class="card reveal">
-<h3 style="margin-bottom:1.2rem;">Request admission</h3>
+<p class="section-label reveal">Request admission</p>
+<h2 class="reveal">Graduates, <span>this is your next step.</span></h2>
+<div class="ic-form">
+<div class="ic-card reveal">
+<h3>Tell us who you are</h3>
 <div class="field"><label for="f-name">Full name</label><input id="f-name" placeholder="Your name" type="text"/></div>
-<div class="field"><label for="f-domain">Your domain / field</label><input id="f-domain" placeholder="e.g. Product Design, Data, Customer Success" type="text"/></div>
-<div class="field"><label for="f-wa">WhatsApp number</label><input id="f-wa" placeholder="Your WhatsApp number" type="tel"/></div>
-<div class="field"><label for="f-obstacle">Your primary career obstacle</label><textarea id="f-obstacle" placeholder="What's standing between you and a remote offer right now?"></textarea></div>
-<a class="btn-block btn-primary-ui btn-yes" href="#" id="applyBtn"><span>Submit Application</span><span class="arrow-wrap"><span class="arrow">→</span></span></a>
-<p class="note">This opens WhatsApp with your application pre-filled so an advisor can verify fit. Payment paths are shared only after admission.</p>
+<div class="field"><label for="f-cohort">When you finished Foundation Training</label><input id="f-cohort" placeholder="e.g. the month and year" type="text"/></div>
+<div class="field"><label for="f-domain">Your field</label><input id="f-domain" placeholder="e.g. Product Design, Data, Customer Success" type="text"/></div>
+<div class="field"><label for="f-obstacle">Where your search is stuck now</label><textarea id="f-obstacle" placeholder="What is standing between you and a remote offer?"></textarea></div>
+<a class="btn-block btn-primary-ui btn-yes" href="#" id="applyBtn"><span>Send on WhatsApp</span><span class="arrow-wrap"><span class="arrow">→</span></span></a>
+<p class="note">This opens WhatsApp with your request filled in. We confirm you're a graduate, then agree your start date with you.</p>
 </div>
-<div class="card reveal">
-<h3 style="margin-bottom:0.4rem;">Payment paths</h3>
-<p style="font-size:0.9rem;color:var(--ink-soft);font-weight:300;margin-bottom:1rem;">Presented after fit is verified — shown here for transparency.</p>
-<div class="price-now" style="margin:0.2rem 0 0.5rem;">₦250,000</div>
-<span class="price-tag">Private 1:1 · one payment</span>
-<div style="border-top:1px solid var(--line);margin-top:1.2rem;padding-top:0.6rem;">
-<div class="pay-path"><span class="pp-l">One-time fee</span><span class="pp-v">₦250,000</span></div>
-</div>
-<ul class="flist" style="margin:1.1rem 0 1.3rem;">
-<li>Seven weeks, one-on-one, from positioning audit to a signed remote offer</li>
-<li>Real-time co-applying and pre-interview dry-runs</li>
-<li>Private partner directory and the private alumni network</li>
-<li>AI Fluency — prompt craft and AI-assisted output, applied to your own pipeline</li>
-<li>Lifetime access to every framework we build together</li>
+<div class="ic-card pay reveal">
+<h3>The Inner Circle · one year</h3>
+<div class="amt">₦250,000</div>
+<p class="amt-sub">One payment · twelve months · Foundation alumni only</p>
+<ul class="sl-gets">
+<li>Seven weeks of one-to-one build-up</li>
+<li>Ten more months as a resident</li>
+<li>Co-applying, dry-runs and offer review</li>
+<li>Private partner directory and alumni network</li>
 </ul>
-<a class="btn-block btn-primary-ui btn-yes" href="../register.html#inner"><span>Pay ₦250,000 via Paystack</span><span class="arrow-wrap"><span class="arrow">→</span></span></a>
+<a class="btn-block btn-primary-ui btn-yes" href="../register.html#inner"><span>Pay via Paystack</span><span class="arrow-wrap"><span class="arrow">→</span></span></a>
 <div class="acct">
 <div><span>Account name</span><span>Business Play Ltd</span></div>
 <div><span>Account number</span><span>0761646755</span></div>
 <div><span>Bank</span><span>Guaranty Trust Bank</span></div>
 </div>
-<p class="note">Admission is verified first — submit the form on the left and an advisor will confirm fit. Once admitted, pay ₦250,000 once through the official payment route, then send proof on WhatsApp to open your private 1:1 thread.</p>
+<p class="note">Pay after we've confirmed you're a graduate, then send the receipt on WhatsApp.</p>
 </div>
 </div>
 </section>
 </main>
+
+<div class="sl-bar" id="slBar" aria-hidden="true">
+<div><b>The Inner Circle</b><small>Foundation alumni · one year, one to one</small></div>
+<a class="btn-yes btn-primary-ui" href="#apply" tabindex="-1"><span>Request admission</span><span class="arrow-wrap"><span class="arrow">→</span></span></a>
+</div>
+<script>
+(function () {
+  var bar = document.getElementById('slBar'), hero = document.getElementById('slHeroCta'), buy = document.getElementById('apply');
+  if (bar && hero && buy && 'IntersectionObserver' in window) {
+    var gone = false, atBuy = false, link = bar.querySelector('a');
+    var paint = function () { var on = gone && !atBuy; bar.classList.toggle('is-on', on); bar.setAttribute('aria-hidden', on ? 'false' : 'true'); link.tabIndex = on ? 0 : -1; };
+    new IntersectionObserver(function (e) { gone = !e[0].isIntersecting && e[0].boundingClientRect.top < 0; paint(); }).observe(hero);
+    new IntersectionObserver(function (e) { atBuy = e[0].isIntersecting; paint(); }, { rootMargin: '0px 0px -25% 0px' }).observe(buy);
+  }
+  var btn = document.getElementById('applyBtn'); if (!btn) return;
+  btn.addEventListener('click', function (e) {
+    e.preventDefault();
+    var v = function (id) { return (document.getElementById(id).value || '').trim() || '—'; };
+    var msg = 'INNER CIRCLE · admission request\n\nName: ' + v('f-name') + '\nFinished Foundation Training: ' + v('f-cohort') +
+      '\nField: ' + v('f-domain') + '\nWhere my search is stuck: ' + v('f-obstacle');
+    window.open('https://wa.me/2348032925957?text=' + encodeURIComponent(msg), '_blank', 'noopener');
+  });
+})();
+</script>
+
 <footer class="foot wrap">
 <nav class="foot-links"><a href="../index.html">Home</a><a href="../starthere.html">Your Starting Line</a><a href="../free.html">Free For You</a><a href="../blog.html">Blog</a><a href="../register.html">Register</a><a href="../login.html">Participant Login</a></nav>
 <div class="erj-rights-line" role="note" style="max-width:900px;margin:1rem auto 0;padding-top:.85rem;border-top:1px solid rgba(127,127,127,.18);font-size:.72rem;line-height:1.6;letter-spacing:.02em;text-align:center;color:#8A8A86;">© 2026 Business Play Limited · Everything Remote Job. Built for <span style="color:var(--accent,#FF5722)">global career scale.</span> All rights reserved. ERJ frameworks, curriculum and paid resources are not licensed for redistribution. <a href="../terms.html" style="color:var(--accent,#FF5722);text-decoration:none">Terms</a> · <a href="../privacy.html" style="color:var(--accent,#FF5722);text-decoration:none">Privacy</a></div>
@@ -220,20 +434,6 @@
 <a class="wa-float" href="https://wa.me/2348032925957?text=I%20want%20to%20register%20for%20the%20Inner%20Circle." rel="noopener" target="_blank" title="Chat on WhatsApp">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"></path></svg>
 </a>
-<script>
-  (function(){
-    var btn=document.getElementById('applyBtn'); if(!btn) return;
-    btn.addEventListener('click',function(e){
-      e.preventDefault();
-      var v=function(id){return (document.getElementById(id).value||'').trim();};
-      var msg='Inner Circle admission request%0A%0AName: '+encodeURIComponent(v('f-name')||'—')
-        +'%0ADomain: '+encodeURIComponent(v('f-domain')||'—')
-        +'%0AWhatsApp: '+encodeURIComponent(v('f-wa')||'—')
-        +'%0APrimary obstacle: '+encodeURIComponent(v('f-obstacle')||'—');
-      window.open('https://wa.me/2348032925957?text='+msg,'_blank','noopener');
-    });
-  })();
-</script>
 <script src="../erj-theme.js?v=20260911a"></script>
 <script src="../erj-product.js?v=20260924c"></script>
 <script src="../erj-nav.js?v=20261104b"></script>
