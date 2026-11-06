@@ -1793,7 +1793,7 @@ html[data-theme="day"] .timer-num{background-image:linear-gradient(160deg,#0A0A0
 .hs2-face figcaption{position:absolute;left:.9rem;right:.9rem;bottom:.9rem;padding:.7rem .9rem;border-radius:16px;background:rgba(0,0,0,.62);
   -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);color:#fff;font-size:.78rem;line-height:1.35;}
 .hs2-face figcaption b{display:block;font-family:var(--font-display);font-size:.95rem;}
-@media(max-width:860px){.hs2-grid{grid-template-columns:1fr;}.hs2-face{display:none;}}
+@media(max-width:860px){.hs2-grid{grid-template-columns:1fr;}.hs2-face{max-width:320px;width:100%;margin:1.4rem auto 0;}}
 @media(max-width:520px){.hs2-picks{grid-template-columns:1fr;}.hs2-pick{padding:.85rem 1rem;}}
 /* the story */
 .hst-in{max-width:980px;}
@@ -1841,8 +1841,8 @@ html[data-theme="day"] .hst-h em,html[data-theme="day"] .hst-k{color:#0B7A47;}
 <article class="hs2-a" id="shape-interview" data-shape="interview">
 <p class="hs2-a-k">The date is your deadline</p>
 <h2>Prepare for that interview this week.</h2>
-<p>Remote interviews often turn on two answers: how you work without supervision, and what you say when they ask for your number. Send us the role and the date. We’ll tell you the fastest way to prepare before it.</p>
-<div class="hs2-a-go"><a class="btn-primary-ui btn-yes" data-msg="shapeInterview" href="https://wa.me/2348032925957" rel="noopener" target="_blank"><span>Send the role and date</span><span class="arrow-wrap"><span class="arrow">→</span></span></a><a class="hs2-alt" href="diagnose/">Or check which part is weak, free →</a></div>
+<p>Remote interviews often turn on two answers: how you work without supervision, and what you say when they ask for your number. The Interview Sprint is two one-to-one sessions before your date, on the role you actually applied for.</p>
+<div class="hs2-a-go"><a class="btn-primary-ui btn-yes" href="interviewsprint/"><span>See the Interview Sprint</span><span class="arrow-wrap"><span class="arrow">→</span></span></a><a class="hs2-alt" data-msg="shapeInterview" href="https://wa.me/2348032925957" rel="noopener" target="_blank">Or send us the role and date first →</a></div>
 </article>
 <article class="hs2-a" id="shape-employed" data-shape="employed">
 <p class="hs2-a-k">Keep your salary while you prepare</p>
@@ -1859,8 +1859,8 @@ html[data-theme="day"] .hst-h em,html[data-theme="day"] .hst-k{color:#0B7A47;}
 <article class="hs2-a" id="shape-sponsor" data-shape="sponsor">
 <p class="hs2-a-k">A gift you can see</p>
 <h2>Pay for the preparation, not another promise.</h2>
-<p>The person you enrol leaves Foundation Training with four finished assets, their work marked by a person, and a certificate. Tell us who they are and we’ll enrol them.</p>
-<div class="hs2-a-go"><a class="btn-primary-ui btn-yes" data-msg="shapeSponsor" href="https://wa.me/2348032925957" rel="noopener" target="_blank"><span>Enrol someone</span><span class="arrow-wrap"><span class="arrow">→</span></span></a><a class="hs2-alt" href="foundationtraining/">See what they will build →</a></div>
+<p>The person you enrol leaves Foundation Training with four finished assets, their work marked by a person, and a certificate. You get a short update from us at the end of each stage, with their permission.</p>
+<div class="hs2-a-go"><a class="btn-primary-ui btn-yes" href="gift/"><span>Enrol someone</span><span class="arrow-wrap"><span class="arrow">→</span></span></a><a class="hs2-alt" href="foundationtraining/">See what they will build →</a></div>
 </article>
 <article class="hs2-a" id="shape-exploring" data-shape="exploring">
 <p class="hs2-a-k">No pressure</p>
@@ -2169,8 +2169,8 @@ html[data-theme="day"] .jt{--jt-o:#E8470F;--jt-line:rgba(20,17,14,.12);--jt-card
 </a>
 <script defer="" src="erj-theme.js?v=20260911a"></script>
 <script defer="" src="erj-product.js?v=20260924c"></script>
-<script defer="" src="erj-nav.js?v=20261104b"></script>
-<script defer="" src="erj-config.js?v=20261107a"></script>
+<script defer="" src="erj-nav.js?v=20261107b"></script>
+<script defer="" src="erj-config.js?v=20261107b"></script>
 <script defer="" src="erj-capture.js?v=20260911a"></script>
 <script>if("serviceWorker" in navigator){window.addEventListener("load",function(){var go=function(){navigator.serviceWorker.register("/sw.js",{updateViaCache:"none"}).then(function(reg){reg.update();}).catch(function(){});};if("requestIdleCallback" in window){requestIdleCallback(go,{timeout:3000});}else{setTimeout(go,1200);}});}</script>
 <script>

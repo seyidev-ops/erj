@@ -30,12 +30,11 @@
     const MENU = [
         {
             key: 'home', label: 'Home', href: 'index.html', keys: ['home'], children: [
-                { label: 'Start Here · Quick Tour', href: 'index.html#tour' },
-                { label: 'What We Can Do For You', href: 'index.html#promise' },
-                { label: 'The Promise', href: 'index.html#pledge' },
+                { label: 'Which Is True for You?', href: 'index.html#start' },
+                { label: 'Tobi\u2019s Story', href: 'index.html#tobi' },
+                { label: 'The Five Parts', href: 'index.html#pledge' },
                 { label: 'Live Remote Jobs', href: 'index.html#jobs-live' },
                 { label: 'Proof It Works', href: 'index.html#story' },
-                { label: 'How We Help', href: 'index.html#help' },
                 { label: 'Before You Decide', href: 'index.html#faq' },
                 { label: 'Join Cohort 13', href: 'index.html#enrol' }
             ]
@@ -60,13 +59,15 @@
                 { heading: 'Done with you', sub: 'We do it together' },
                 { label: 'Free Live Clinic', href: 'masterclass/', keys: ['masterclass'], free: true },
                 { label: 'Foundation Training', href: 'foundationtraining/', keys: ['mastery'] },
+                { label: 'Interview Sprint', href: 'interviewsprint/', keys: ['sprint'] },
                 { label: 'Inner Circle', href: 'innercircle/', keys: ['inner'] },
+                { label: 'Enrol Someone Else', href: 'gift/', keys: ['gift'] },
                 { heading: 'Done for you', sub: 'We do it for you' },
                 { label: 'Remote Job Board', href: 'jobs/', keys: [], free: true },
                 { label: 'Job Hunter', href: 'jobhunter/', keys: ['jobhunter'] },
                 { label: 'CV Fix', href: 'register.html#cvfix', keys: [] },
                 { label: 'Job Application', href: 'jobapplication/', keys: ['remote'] },
-                { all: true, label: 'See both shelves on the home page', href: 'index.html#help' }
+                { all: true, label: 'Not sure? Your starting line', href: 'starthere.html' }
             ]
         },
         { key: 'stories', label: 'Success Stories', href: 'testimonials.html', keys: ['stories', 'jobs'] },
@@ -868,4 +869,41 @@
     }
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', mount);
     else mount();
+})();
+
+/* ── Faster page changes: start fetching the next page the moment a link is
+      touched or hovered, so the tap itself feels instant. Chrome uses the
+      browser's speculation rules; other browsers get a one-off prefetch.
+      Private pages, other sites and new-tab links are never prefetched. ── */
+(function () {
+    'use strict';
+    var SKIP = /\/(dashboard|participant|admin|instructor|login|blog-admin|erj-surge-console)[^/]*$|\.(pdf|zip|mp4)$/i;
+    try {
+        if (window.HTMLScriptElement && HTMLScriptElement.supports && HTMLScriptElement.supports('speculationrules')) {
+            var s = document.createElement('script');
+            s.type = 'speculationrules';
+            s.textContent = JSON.stringify({ prefetch: [{ where: { and: [
+                { href_matches: '/*' },
+                { not: { href_matches: ['/dashboard*', '/participant*', '/admin*', '/instructor*', '/login*', '/blog-admin*', '/erj-surge-console*', '/*.pdf', '/*\\?*'] } },
+                { not: { selector_matches: '[target=_blank], [download], [rel~=nofollow]' } }
+            ] }, eagerness: 'moderate' }] });
+            document.head.appendChild(s);
+            return;
+        }
+    } catch (e) { /* fall through to the simple prefetch */ }
+    var done = {};
+    function warm(ev) {
+        var a = ev.target && ev.target.closest && ev.target.closest('a[href]');
+        if (!a || a.target === '_blank' || a.hasAttribute('download')) return;
+        var u; try { u = new URL(a.href, location.href); } catch (e) { return; }
+        if (u.origin !== location.origin || u.search || SKIP.test(u.pathname)) return;
+        var key = u.pathname;
+        if (key === location.pathname || done[key]) return;
+        done[key] = 1;
+        var l = document.createElement('link');
+        l.rel = 'prefetch'; l.href = u.pathname;
+        document.head.appendChild(l);
+    }
+    document.addEventListener('touchstart', warm, { passive: true, capture: true });
+    document.addEventListener('mouseover', function (ev) { setTimeout(function () { warm(ev); }, 80); }, { passive: true });
 })();

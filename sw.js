@@ -2,7 +2,7 @@
    EVERYTHING REMOTE JOB — SERVICE WORKER
    Cache-first for app shell, network-first for fonts
 ═══════════════════════════════════════════════════════ */
-const CACHE = 'erj-site-20261107a';
+const CACHE = 'erj-site-20261107b';
 const OFFLINE = '/offline.html';
 
 /* SHELL is what a first-time visitor pays for before anything renders. It had
@@ -10,49 +10,13 @@ const OFFLINE = '/offline.html';
    duplicate JPEG of an image already listed as WebP, the sitemap, and a 500 KB
    blog page. Those are left to the runtime cache now: still cached the first
    time they are actually requested, they just no longer compete with first
-   paint. Anything a cold visitor genuinely needs offline stays here. */
+   paint. Anything a cold visitor genuinely needs offline stays here.
+   November 2026: cut again to the offline page, logos, fonts and the shared
+   CSS/JS (about 20 small files). The old 1.9 MB list downloaded right after a
+   visitor's first page, so on a slow phone connection the first menu tap
+   waited behind it. Pages, photos and box art are cached when first used. */
 const SHELL = [
   '/offline.html',
-  '/index.html',
-  '/register.html',
-  '/foundationtraining/index.html',
-  '/jobapplication/index.html',
-  '/selflearn/index.html',
-  '/fromintenttooffer/index.html',
-  '/selflearn-box-foundation.webp',
-  '/cvscan/index.html',
-  '/capacityscan/index.html',
-  '/capacityscan/cap.css?v=20260928c',
-  '/capacityscan/bank.js?v=20260922a',
-  '/capacityscan/report-pdf.js?v=20260928c',
-  '/capacityscan/cap.js?v=20261008a',
-  '/blog/index.html',
-  '/free.html',
-  '/starthere.html',
-  '/erj-nav.js?v=20261104b',
-  '/erj-track.js?v=20261104b',
-  '/photo-seyi-suit.webp',
-  '/photo-seyi-invite.webp',
-  '/photo-seyi-welcome.webp',
-  '/photo-seyi-thumbsup.webp',
-  '/photo-seyi-typing.webp',
-  '/photo-seyi-desk.webp',
-  '/photo-seyi-headset.webp',
-  '/erj-theme.js?v=20260911a',
-  '/erj-product.js?v=20260924c',
-  '/erj-passcode.js?v=20261031a',
-  '/erj-schema.js?v=20261015b',
-  '/diagnose/dx.js?v=20261106a',
-  '/diagnose/report-pdf.js?v=20261008a',
-  '/diagnose/index.html',
-  '/erj-capture.js?v=20260911a',
-  '/erj-config.js?v=20261107a',
-  '/product.css?v=20261004b',
-  '/erj-alive.css?v=20261028b',
-  '/erj-alive.js?v=20261004a',
-  '/erj-future.css?v=20261104a',
-  '/erj-future.js?v=20261101a',
-  '/erj-future-home.css?v=20261101b',
   '/manifest.json',
   '/erj-mark-dark-128.png',
   '/erj-mark-light-128.png',
@@ -63,20 +27,15 @@ const SHELL = [
   '/fonts/inter-300.woff2',
   '/fonts/inter-400.woff2',
   '/fonts/inter-500.woff2',
-  '/erj-cart.js?v=20261004a',
-  '/shop/book.webp',
-  '/shop/cvpass.webp',
-  '/shop/dreamjob.webp',
-  '/shop/foundation.webp',
-  '/shop/inner.webp',
-  '/shop/placement.webp',
-  '/shop/selflearn-foundation.webp',
-  '/shop/careerdev-mentorine.webp',
-  '/shop/stage1.webp',
-  '/shop/stage2.webp',
-  '/shop/stage3.webp',
-  '/shop/stage4.webp',
-  '/shop/cvfix.webp'
+  '/erj-nav.js?v=20261107b',
+  '/erj-track.js?v=20261104b',
+  '/erj-theme.js?v=20260911a',
+  '/erj-config.js?v=20261107b',
+  '/product.css?v=20261004b',
+  '/erj-alive.css?v=20261028b',
+  '/erj-alive.js?v=20261004a',
+  '/erj-future.css?v=20261104a',
+  '/erj-future.js?v=20261101a'
 ];
 
 self.addEventListener('install', e => {
@@ -157,19 +116,30 @@ self.addEventListener('fetch', e => {
     (e.request.headers.get('accept') || '').includes('text/html');
 
   if (isHTML) {
+    // NETWORK-FIRST with a time limit: a fresh page whenever the network
+    // answers in time; on a slow connection, the copy saved on the last visit
+    // after 2.5 s instead of a blank wait. The network copy still lands in the
+    // cache for next time.
+    const net = fetch(e.request).then(res => {
+      if (res && res.status === 200) {
+        const clone = res.clone();
+        caches.open(CACHE).then(c => c.put(e.request, clone));
+      }
+      return res;
+    });
+    e.waitUntil(net.catch(() => {}));
     e.respondWith(
-      fetch(e.request)
-        // A phone that drops signal for a second should not land on the
-        // offline page: try once more before falling back.
-        .catch(() => new Promise(r => setTimeout(r, 1200)).then(() => fetch(e.request)))
-        .then(res => {
-          if (res && res.status === 200) {
-            const clone = res.clone();
-            caches.open(CACHE).then(c => c.put(e.request, clone));
-          }
-          return res;
-        })
-        .catch(() => caches.match(e.request).then(cached => cached || caches.match(OFFLINE)))
+      caches.match(e.request).then(cached => {
+        if (!cached) {
+          // A phone that drops signal for a second should not land on the
+          // offline page: try once more before falling back.
+          return net
+            .catch(() => new Promise(r => setTimeout(r, 1200)).then(() => fetch(e.request)))
+            .catch(() => caches.match(OFFLINE));
+        }
+        const slow = new Promise(r => setTimeout(() => r(cached), 2500));
+        return Promise.race([net.catch(() => cached), slow]);
+      })
     );
     return;
   }
