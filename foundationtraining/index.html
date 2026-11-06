@@ -649,6 +649,45 @@ html[data-theme="day"] .fx-price-save{color:#1E8E4E;}
 @media (prefers-reduced-motion:reduce){.btn-yes::after{animation:none!important;}#film~section .reveal.pre{transform:none;}}
 @media(prefers-reduced-motion:reduce){.fx-live i,.fx-pulse,.fx-chip,.fx-shine,.fx-glow i,.fx-hero h1 em{animation:none!important}}
 </style>
+<style id="ftFitStyles">
+/* the four-question test, the four things you keep, and the sponsor block */
+.ft-fit-sub{color:var(--ink-soft);margin:.2rem 0 1.4rem;max-width:60ch;}
+.ft-fit{list-style:none;margin:0;padding:0;display:grid;gap:.6rem;counter-reset:q;}
+.ft-q{counter-increment:q;display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:1rem;align-items:center;padding:1rem 1.2rem;border-radius:18px;border:1px solid var(--line);background:var(--card);transition:border-color .25s;}
+.ft-q::before{content:counter(q);font:800 1.1rem/1 var(--font-display);color:var(--accent);width:2.2rem;height:2.2rem;border-radius:50%;border:1.5px solid rgba(255,87,34,.5);display:grid;place-items:center;}
+.ft-q p{margin:0;}
+.ft-q p b{display:block;font-family:var(--font-display);font-size:1.05rem;color:var(--ink);line-height:1.3;}
+.ft-q p span{display:block;font-size:.86rem;color:var(--ink-faint);margin-top:.2rem;}
+.ft-yn{display:flex;gap:.4rem;}
+.ft-yn button{font:700 .9rem var(--font-body);min-width:4.2rem;padding:.6rem .9rem;border-radius:999px;border:1.5px solid var(--line);background:transparent;color:var(--ink);cursor:pointer;transition:background .2s,border-color .2s,color .2s;}
+.ft-yn button:hover{border-color:var(--accent);}
+.ft-yn button:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
+.ft-yn button[aria-pressed="true"][data-a="1"]{background:var(--accent);border-color:var(--accent);color:#fff;}
+.ft-yn button[aria-pressed="true"][data-a="0"]{background:var(--ink);border-color:var(--ink);color:var(--paper,#000);}
+.ft-q.done{border-color:rgba(255,87,34,.45);}
+@media(max-width:620px){.ft-q{grid-template-columns:auto minmax(0,1fr);}.ft-yn{grid-column:1/-1;}.ft-yn button{flex:1;}}
+.ft-fit-out{margin-top:1rem;display:grid;gap:.6rem;}
+.ft-o{display:flex;flex-wrap:wrap;align-items:baseline;gap:.3rem 1rem;padding:1rem 1.2rem;border-radius:18px;border:1px dashed var(--line);font-size:.95rem;color:var(--ink-soft);}
+.ft-o b{color:var(--ink);font-family:var(--font-display);}
+.ft-o a{margin-left:auto;font-weight:800;color:var(--accent);text-decoration:none;white-space:nowrap;}
+.ft-fit-out.js .ft-o{display:none;}
+.ft-fit-out.js .ft-o.on{display:flex;border-style:solid;border-color:rgba(255,87,34,.6);background:linear-gradient(90deg,rgba(255,87,34,.12),transparent),var(--card);}
+.ft-fit-out.js .ft-o.hint{display:flex;}
+.ft-four{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.7rem;margin:1.2rem 0 1rem;}
+.ft-four>div{padding:1.1rem 1.15rem;border-radius:18px;border:1px solid var(--line);background:var(--card);}
+.ft-four span{display:block;font:700 .64rem/1 var(--font-body);letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:.5rem;}
+.ft-four b{display:block;font-family:var(--font-display);font-size:1.02rem;color:var(--ink);margin-bottom:.35rem;}
+.ft-four p{margin:0;font-size:.86rem;line-height:1.55;color:var(--ink-soft);}
+@media(max-width:900px){.ft-four{grid-template-columns:1fr 1fr;}}
+@media(max-width:520px){.ft-four{grid-template-columns:1fr;}}
+.ft-all{margin-top:.4rem;}
+.ft-all summary{cursor:pointer;font-weight:700;color:var(--accent);padding:.4rem 0;}
+.ft-all[open] summary{margin-bottom:.8rem;}
+.ft-sponsor{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1.2rem 2rem;padding:clamp(1.3rem,3vw,2rem);border-radius:26px;border:1px solid rgba(255,87,34,.5);background:radial-gradient(100% 140% at 0 0,rgba(255,87,34,.13),transparent 60%),var(--card);}
+.ft-sponsor>div{flex:1 1 420px;}
+.ft-sponsor h2{margin:.3rem 0 .6rem;}
+.ft-sponsor p:not(.section-label){margin:0;color:var(--ink-soft);line-height:1.65;max-width:62ch;}
+</style>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -656,41 +695,20 @@ html[data-theme="day"] .fx-price-save{color:#1E8E4E;}
 <!-- End Google Tag Manager (noscript) -->
 <div id="erjNavMount"></div>
 <script>window.ERJ_NAV={active:'mastery',base:'../',onPage:[
-  {label:'In 33 seconds',href:'#film'},
   {label:'Start dates',href:'#top'},
+  {label:'In 33 seconds',href:'#film'},
+  {label:'Is this for you?',href:'#fit'},
   {label:'The 4 stages',href:'#stages'},
-  {label:'What you keep',href:'#assets'},
+  {label:'What you leave with',href:'#assets'},
   {label:'Certificate',href:'#certificate'},
   {label:'Proof',href:'#proof'},
   {label:'Choose your class',href:'#tracks'},
   {label:'Pricing',href:'#pricing'},
+  {label:'Paying for someone?',href:'#sponsor'},
   {label:'Questions',href:'#faq'},
   {label:'Claim your seat',href:'#enrol'}
 ]};</script>
 <main>
-
-<!-- FILM: first thing on the page — the programme in 33 seconds (foundationtraining/motion/, a Null Motion-style GSAP composition) -->
-<section class="fx-sec ft-film" id="film">
-<p class="section-label">The programme in 33 seconds</p>
-<div class="ft-film-frame"><iframe src="motion/" title="Foundation Training in 33 seconds: we prepare you and set you up to get a remote job; four stages over twenty live days, sixteen things you build, and the certificate" fetchpriority="high"></iframe></div>
-<div class="ft-film-cta"><p class="ft-film-line">That was 33 seconds. <b>The real thing is twenty live days, and it starts with your seat.</b></p><a class="btn-primary-ui btn-yes" href="#top"><span>Claim my seat</span><span class="arrow-wrap"><span class="arrow is-down">↓</span></span></a></div>
-</section>
-<style>
-.ft-film{padding-top:clamp(.8rem,2vw,1.4rem)!important;padding-bottom:clamp(.6rem,2vw,1.2rem)!important;}
-.ft-film .section-label{margin:0 0 0 max(12px,calc((100vw - 1240px)/2));}
-.ft-film-frame{margin:.8rem auto 0;width:min(calc(100% - 24px),calc((100svh - 150px) * 16 / 9));aspect-ratio:16/9;border-radius:22px;overflow:hidden;background:#05060A;
-  border:1px solid rgba(255,87,34,.35);box-shadow:0 40px 100px -40px rgba(255,87,34,.6),0 30px 60px -30px rgba(0,0,0,.6);}
-.ft-film-frame iframe{display:block;width:100%;height:100%;border:0;}
-@media (max-width:700px){
-  .ft-film .section-label{margin-left:12px;}
-  .ft-film-frame{aspect-ratio:9/16;width:calc(100% - 16px);max-height:calc(100svh - 120px);border-radius:18px;}
-}
-.ft-film-cta{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:.8rem 1.6rem;margin-top:1.3rem;}
-.ft-film-line{flex:1 1 100%;margin:0;text-align:center;font-size:clamp(1rem,1.6vw,1.15rem);line-height:1.5;color:var(--ink-soft);}
-.ft-film-line b{color:var(--ink);}
-.ft-film-more{font-weight:600;color:var(--ink-soft);text-decoration:none;border-bottom:1px solid var(--line);}
-.ft-film-more:hover{color:var(--accent);border-color:currentColor;}
-</style>
 
 <!-- HERO -->
 <section class="fx-hero wrap" id="top">
@@ -698,8 +716,8 @@ html[data-theme="day"] .fx-price-save{color:#1E8E4E;}
 <div class="fx-hero-grid">
 <div class="fx-hero-copy">
 <p class="fx-live"><i aria-hidden="true"></i>Live cohort · Foundation Training</p>
-<h1>Twenty live days.<br/><em>A remote-ready you.</em></h1>
-<p class="fx-lede">Live classes, your work marked by a person, and a certificate at the end.</p>
+<h1>Keep your job.<br/><em>Leave in twenty days with proof.</em></h1>
+<p class="fx-lede">One live class a day at the hour that suits you: early, after work, or weekends. Your work is marked by a person, and you finish with a certificate.</p>
 
 <div class="fx-pick" role="radiogroup" aria-label="Choose your cohort">
 <button class="fx-co on" type="button" role="radio" aria-checked="true" data-co="Cohort 13, begins Mon 30 Nov" data-ends="2026-11-29T20:00:00+01:00" data-sticky="Cohort 13 registration closes Sun 29 Nov|Classes begin Mon 30 Nov · 8 PM WAT">
@@ -738,18 +756,49 @@ html[data-theme="day"] .fx-price-save{color:#1E8E4E;}
 </div>
 </section>
 
-<!-- PAIN -->
-<section class="wrap fx-sec" id="familiar">
-<p class="section-label">Sound familiar?</p>
-<h2>Tap every one <span>that sounds like you.</span></h2>
-<div class="fx-pains" role="group" aria-label="Which of these sounds like you?">
-<button class="fx-pain reveal" type="button" aria-pressed="false"><i aria-hidden="true">📭</i><b>I apply and hear nothing back.</b><span class="fx-fix"><em>Stage 4</em> rebuilds your CV for the screen remote employers use.</span></button>
-<button class="fx-pain reveal" type="button" aria-pressed="false"><i aria-hidden="true">🧱</i><b>I can do the work, but can’t prove it.</b><span class="fx-fix"><em>Stages 1–3</em> give you sixteen things you can show.</span></button>
-<button class="fx-pain reveal" type="button" aria-pressed="false"><i aria-hidden="true">📺</i><b>I’ve watched the free videos. Nothing changed.</b><span class="fx-fix"><em>Every stage</em> ends with work a person marks.</span></button>
-<button class="fx-pain reveal" type="button" aria-pressed="false"><i aria-hidden="true">⏳</i><b>Studying alone lasts about three days.</b><span class="fx-fix"><em>A live class</em> at the same hour, every day, for twenty days.</span></button>
-</div>
-<div class="fx-verdict" aria-live="polite"><p class="fx-verdict-t" data-v>Foundation Training fixes all four: <b>on a schedule, with someone watching your work.</b></p><a class="fx-verdict-go" href="#top">Claim my seat ↑</a></div>
+<!-- FILM: right under the hero — the programme in 33 seconds (foundationtraining/motion/, a Null Motion-style GSAP composition) -->
+<section class="fx-sec ft-film" id="film">
+<p class="section-label">The programme in 33 seconds</p>
+<div class="ft-film-frame"><iframe src="motion/" title="Foundation Training in 33 seconds: we prepare you and set you up to get a remote job; four stages over twenty live days, sixteen things you build, and the certificate" fetchpriority="high"></iframe></div>
+<div class="ft-film-cta"><p class="ft-film-line">That was 33 seconds. <b>Is the real thing right for you? Four questions will tell you.</b></p><a class="btn-primary-ui btn-yes" href="#fit"><span>Answer the four questions</span><span class="arrow-wrap"><span class="arrow is-down">↓</span></span></a></div>
 </section>
+<style>
+.ft-film{padding-top:clamp(.8rem,2vw,1.4rem)!important;padding-bottom:clamp(.6rem,2vw,1.2rem)!important;}
+.ft-film .section-label{margin:0 0 0 max(12px,calc((100vw - 1240px)/2));}
+.ft-film-frame{margin:.8rem auto 0;width:min(calc(100% - 24px),calc((100svh - 150px) * 16 / 9));aspect-ratio:16/9;border-radius:22px;overflow:hidden;background:#05060A;
+  border:1px solid rgba(255,87,34,.35);box-shadow:0 40px 100px -40px rgba(255,87,34,.6),0 30px 60px -30px rgba(0,0,0,.6);}
+.ft-film-frame iframe{display:block;width:100%;height:100%;border:0;}
+@media (max-width:700px){
+  .ft-film .section-label{margin-left:12px;}
+  .ft-film-frame{aspect-ratio:9/16;width:calc(100% - 16px);max-height:calc(100svh - 120px);border-radius:18px;}
+}
+.ft-film-cta{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:.8rem 1.6rem;margin-top:1.3rem;}
+.ft-film-line{flex:1 1 100%;margin:0;text-align:center;font-size:clamp(1rem,1.6vw,1.15rem);line-height:1.5;color:var(--ink-soft);}
+.ft-film-line b{color:var(--ink);}
+.ft-film-more{font-weight:600;color:var(--ink-soft);text-decoration:none;border-bottom:1px solid var(--line);}
+.ft-film-more:hover{color:var(--accent);border-color:currentColor;}
+</style>
+
+
+
+<!-- IS THIS FOR YOU? The four-question test from the ERJ client profile -->
+<section class="wrap fx-sec" id="fit">
+<p class="section-label">Is this for you?</p>
+<h2>Four questions. <span>An honest answer in under a minute.</span></h2>
+<p class="ft-fit-sub">These are the questions we ask before we recommend anything. Answer them for yourself first.</p>
+<ol class="ft-fit" id="ftFit">
+<li class="ft-q"><p><b>Do you have real work experience?</b><span>A year or more of actual work, not just a certificate or a title.</span></p><div class="ft-yn" role="group" aria-label="Real work experience"><button type="button" data-a="1">Yes</button><button type="button" data-a="0">No</button></div></li>
+<li class="ft-q"><p><b>Can you fund this without touching rent or school fees?</b><span>A salary, a business, savings, or someone paying for you.</span></p><div class="ft-yn" role="group" aria-label="Can fund it"><button type="button" data-a="1">Yes</button><button type="button" data-a="0">No</button></div></li>
+<li class="ft-q"><p><b>Is there a date pushing you?</b><span>An interview, a contract ending, a goal you have set for yourself.</span></p><div class="ft-yn" role="group" aria-label="A date"><button type="button" data-a="1">Yes</button><button type="button" data-a="0">No</button></div></li>
+<li class="ft-q"><p><b>If we showed you exactly what to fix, would you start this week?</b><span>Twenty days, one live class a day.</span></p><div class="ft-yn" role="group" aria-label="Start this week"><button type="button" data-a="1">Yes</button><button type="button" data-a="0">No</button></div></li>
+</ol>
+<div class="ft-fit-out" id="ftFitOut" aria-live="polite">
+<div class="ft-o" data-o="yes"><b>Three or four yes: this is for you.</b><span>Pick your cohort and claim your seat.</span><a href="#top">Claim my seat ↑</a></div>
+<div class="ft-o" data-o="maybe"><b>Two yes: one free step first.</b><span>Take the 90-second diagnosis now, and come back when the date or the money is in place.</span><a href="../diagnose/">Take the free diagnosis →</a></div>
+<div class="ft-o" data-o="no"><b>One or none: not yet, and that’s fine.</b><span>Use the free job board and the Channel. Pay when the timing is right, not before.</span><a href="../jobs/">Open the free job board →</a></div>
+</div>
+</section>
+
 
 <!-- DAY 1 / DAY 20 (compact: the film shows it in full) -->
 <section class="wrap ft-change" id="change" aria-label="What changes in 20 days">
@@ -840,16 +889,23 @@ html[data-theme="day"] .fx-price-save{color:#1E8E4E;}
 <div class="ft-keep reveal" id="assets">
 <div class="fx-assets-head">
 <div>
-<h3 class="ft-keep-h">What you keep: <span>sixteen things you build, all of them yours.</span></h3>
+<h3 class="ft-keep-h">You leave with four things <span>a remote employer can see.</span></h3>
 </div>
-<div class="fx-count" aria-hidden="true"><b id="fxN">16</b><span>/ 16 built</span></div>
 </div>
+<div class="ft-four">
+<div><span>Stage 1</span><b>Your remote operating system</b><p>Calendar blocks, KPI sheet and end-of-day reports: proof you work well unsupervised.</p></div>
+<div><span>Stage 2</span><b>The Integrated Sprint</b><p>A real project board, document and recorded walkthrough you can share.</p></div>
+<div><span>Stage 3</span><b>Five communication assets</b><p>Writing that shows how you work when nobody is online with you.</p></div>
+<div><span>Stage 4</span><b>The Global Ready Package</b><p>A remote-first CV, a 2–3 project portfolio and your recorded STAR answer.</p></div>
+</div>
+<details class="ft-all"><summary>See all sixteen pieces inside them</summary>
 <div class="fx-assets" id="fxAssets">
 <span>📅 Deep Work Calendar Blocks</span><span>⏱ Pomodoro Tracker + Log</span><span>🎯 Daily KPI Planning Sheet</span><span>📋 End-of-Day Report System</span>
 <span>🖥 Workspace Audit + Photo</span><span>🎙 Zoom Cloud Recording</span><span>📌 Project Board with 5 Task Cards</span><span>📄 Linked Cloud Document</span>
 <span>🔄 Async Sprint Board Review</span><span>✉️ Zero-Follow-Up Email</span><span>💬 Slack Batch Message</span><span>🤝 Working With Me Manual</span>
 <span>🛠 Tech Emergency Fallback Plan</span><span>📝 Remote-First CV (PDF)</span><span>🗂 Digital Portfolio (2–3 projects)</span><span>🎬 STAR Video Answer (2 min)</span>
 </div>
+</details>
 </div>
 </section>
 
@@ -1011,6 +1067,19 @@ html[data-theme="day"] .fx-price-save{color:#1E8E4E;}
 </div>
 </section>
 
+<!-- PAYING FOR SOMEONE ELSE -->
+<section class="wrap fx-sec ft-sponsor-s" id="sponsor">
+<div class="ft-sponsor reveal">
+<div>
+<p class="section-label">Paying for someone?</p>
+<h2>Give them the preparation, <span>not another promise.</span></h2>
+<p>A spouse, a sibling, your child, a friend. They join a live class at the hour that suits them, their work is marked by a person, and they finish with the four things above and a certificate. Tell us who they are and we’ll enrol them.</p>
+</div>
+<a class="btn-primary-ui btn-yes" data-msg="shapeSponsor" href="https://wa.me/2348032925957" rel="noopener" target="_blank"><span>Enrol someone</span><span class="arrow-wrap"><span class="arrow">→</span></span></a>
+</div>
+</section>
+
+
 <!-- FAQ -->
 <section class="wrap fx-sec" id="faq">
 <p class="section-label">Before you enrol</p>
@@ -1075,7 +1144,7 @@ html[data-theme="day"] .fx-price-save{color:#1E8E4E;}
 </script>
 <script src="../erj-product.js?v=20260924c"></script>
 <script src="../erj-nav.js?v=20261104b"></script>
-<script src="../erj-config.js?v=20261104b"></script>
+<script src="../erj-config.js?v=20261107a"></script>
 <script src="../erj-capture.js?v=20260911a"></script>
 <script>if("serviceWorker" in navigator){window.addEventListener("load",function(){var go=function(){navigator.serviceWorker.register("/sw.js").then(function(reg){reg.update();}).catch(function(){});};if("requestIdleCallback" in window){requestIdleCallback(go,{timeout:3000});}else{setTimeout(go,1200);}});}</script>
 <script>
@@ -1209,5 +1278,27 @@ html[data-theme="day"] .fx-price-save{color:#1E8E4E;}
 <script src="../erj-schema.js?v=20261015b"></script>
 <script defer="" src="../erj-alive.js?v=20261004a"></script>
 <script defer="" src="../erj-future.js?v=20261101a"></script>
+<script>
+/* Is this for you? Count the yes answers: 3–4 enrol, 2 one free step, 0–1 free route.
+   Without JS all three outcomes stay visible as plain guidance. */
+(function(){
+  var qs=[].slice.call(document.querySelectorAll('#ftFit .ft-q')),out=document.getElementById('ftFitOut');
+  if(!qs.length||!out)return;
+  var os=[].slice.call(out.querySelectorAll('.ft-o'));out.classList.add('js');
+  var hint=document.createElement('div');hint.className='ft-o hint';hint.innerHTML='<span>Answer all four to see your next step.</span>';out.insertBefore(hint,out.firstChild);
+  function update(){
+    var ans=qs.map(function(q){var b=q.querySelector('[aria-pressed="true"]');return b?b.getAttribute('data-a'):null;});
+    var done=ans.every(function(a){return a!==null;}),yes=ans.filter(function(a){return a==='1';}).length;
+    hint.style.display=done?'none':'';
+    var key=!done?'':(yes>=3?'yes':(yes===2?'maybe':'no'));
+    os.forEach(function(o){o.classList.toggle('on',o.getAttribute('data-o')===key);});
+  }
+  qs.forEach(function(q){var bs=[].slice.call(q.querySelectorAll('button'));bs.forEach(function(b){b.setAttribute('aria-pressed','false');b.addEventListener('click',function(){bs.forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false');});q.classList.add('done');update();});});});
+  update();
+  function wire(){var cfg=window.ERJ_CONFIG||{},m=cfg.messages||{},line=String((cfg.canon&&cfg.canon.lines&&cfg.canon.lines.official)||'2348032925957').replace(/\D/g,'');
+    [].forEach.call(document.querySelectorAll('[data-msg]'),function(a){var t=m[a.getAttribute('data-msg')];if(t)a.href='https://wa.me/'+line+'?text='+encodeURIComponent(t);});}
+  wire();window.addEventListener('load',wire);
+})();
+</script>
 </body>
 </html>
