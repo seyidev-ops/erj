@@ -83,9 +83,9 @@ Any page still advertising an open instalment window after that date is stale an
 
 > **Note for future cohorts:** the ₦50,000 reservation mechanic used by the previous cohort has been retired. ₦50,000 on the current store is the price of two unrelated products, The Job Hunter's Hunt Month and Career Development — Self-Study. Do not reintroduce reservation copy at that figure.
 
-## The store — sixteen doors
+## The store — seventeen doors
 
-`register.html` presents the full catalogue with a basket, in three groups: **DIY — Do It Yourself** (the books, The CV Engine, the Self-Learn Pack, Career Development — Self-Study), **DWY — Done With You** (the live Foundation Training courses, Stages 1–4 individually or all four together, and the Inner Circle 1:1) and **DFY — Done For You** (The Job Hunter, CV Fix, the Placement Engine and Get Your Dream Job Offer). A buyer can add several items or buy any one outright. Every price is a one-time payment unless the product states otherwise.
+`register.html` presents the full catalogue with a basket, in three groups: **DIY — Do It Yourself** (the books, The CV Engine, the Self-Learn Pack, Career Development — Self-Study), **DWY — Done With You** (the live Foundation Training courses, Stages 1–4 individually or all four together, the Interview Sprint, and the Inner Circle 1:1) and **DFY — Done For You** (The Job Hunter, CV Fix, the Placement Engine and Get Your Dream Job Offer). A buyer can add several items or buy any one outright. Every price is a one-time payment unless the product states otherwise.
 
 | Door | Price | Part addressed |
 |------|-------|----------------|
@@ -96,6 +96,7 @@ Any page still advertising an open instalment window after that date is stale an
 | The Job Hunter — Hunt Month | ₦50,000 | The same, weekly for 30 days, up to 20 packs; one payment, no auto-renew |
 | CV Fix — one CV, one field | ₦30,000 | Representation — the same work, done for you once |
 | The Self-Learn Pack — Stages 1–4 | ₦35,000 | Capacity and Representation |
+| The Interview Sprint | ₦40,000 | Conversion — two one-to-one sessions before a booked remote interview, test or trial task; paid by transfer, confirmed on WhatsApp |
 | Career Development — Self-Study | ₦50,000 | Capacity — one self-study career track at The Mentorine School, 90 days from activation |
 | Stage 1 — Remote Mindset Blueprint | ₦70,000 | Capacity |
 | Stage 3 — Async Communication Mastery | ₦70,000 | Capacity |
@@ -167,7 +168,7 @@ The site is a static HTML/CSS/JavaScript website hosted on **GitHub Pages** with
 
 - `/` — main website
 - `/starthere.html` — first-contact routing gateway, the default cold-traffic destination
-- `/register.html` — the store: sixteen doors, basket, enrolment
+- `/register.html` — the store: seventeen doors, basket, enrolment
 - `/free.html` — the free layer in one place
 - `/diagnose/` — the five-part Job Search Diagnostic and branded PDF result
 - `/capacityscan/` — the Capacity Audit: fourteen role families, ten questions, scored out of ten, runs entirely in the browser. **The gate for the other four fingers.**
@@ -178,6 +179,8 @@ The site is a static HTML/CSS/JavaScript website hosted on **GitHub Pages** with
 - `/selflearn/` — the self-paced Stages 1–4 pack
 - `/foundationtraining/` — live Foundation Training
 - `/jobapplication/` — Done-For-You application and placement services
+- `/interviewsprint/` — The Interview Sprint: two one-to-one sessions before a booked interview or test (₦40,000, transfer + WhatsApp)
+- `/gift/` — Enrol someone else: a sponsor pays Foundation Training for another person; stage updates to the sponsor only with the participant's permission
 - `/jobhunter/` — The Job Hunter: roles scored against the CV and applications prepared, checked by a person; the buyer submits. Paid by transfer, confirmed on WhatsApp (no Paystack link yet)
 - `/innercircle/` — the Inner Circle: twelve months one to one, open only to Foundation Training graduates (and Dream Job Offer buyers, which includes Foundation)
 - `/masterclass/` — Remote Job Application Clinic registration

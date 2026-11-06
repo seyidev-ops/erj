@@ -38,6 +38,18 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://everythingremotejob.com/interviewsprint/</loc>
+    <lastmod>2026-11-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://everythingremotejob.com/gift/</loc>
+    <lastmod>2026-11-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://everythingremotejob.com/jobhunter/</loc>
     <lastmod>2026-11-04</lastmod>
     <changefreq>monthly</changefreq>

@@ -38,6 +38,7 @@
     /* ── Prefilled message templates. {tokens} are filled at runtime. ── */
     messages: {
       /* Home page "which is true for you?" answers */
+      sprint: 'INTERVIEW SPRINT\n\nRole and company:\nInterview or test date:\nType (interview, test, trial task):\nMy CV: I will attach it here.\n\nPlease send me how to pay and book my two sessions.',
       shapeInterview: 'INTERVIEW SOON\n\nI have a remote interview or test coming up.\n\nRole and company:\nDate:\nMy CV: I will attach it here.\n\nWhat is the fastest way to prepare this week?',
       shapeSponsor: 'ENROL SOMEONE\n\nI want to pay for someone else to join Foundation Training.\n\nTheir name:\nTheir field / current work:\nTheir WhatsApp number:\n\nPlease tell me how to enrol them.',
       scan: 'Hello ERJ \u2014 I just scored {score}/10 on the free CV scan.\n\nThe points I did not clear: {defaults}\n\nPlease send me the fix list for my score.',
@@ -169,6 +170,11 @@
           href:'jobhunter/', pay:'https://wa.me/2348032925957', badge:'New' },
         { id:'jobhuntmonth', name:'The Job Hunter \u2014 Hunt Month',      naira:50000,  unit:'one-time', part:'aim',
           href:'jobhunter/', pay:'https://wa.me/2348032925957' },
+        /* The Interview Sprint: two one-to-one sessions before a booked remote
+           interview or test. Paid by transfer, confirmed on the official line
+           (no Paystack link yet), like The Job Hunter. */
+        { id:'sprint',     name:'The Interview Sprint',                naira:40000,  unit:'one-time', part:'conversion',
+          href:'interviewsprint/', pay:'https://wa.me/2348032925957', badge:'New' },
         { id:'intentbook', name:'From Intent to Offer',               naira:15000,  unit:'one-time', part:'capacity',
           href:'fromintenttooffer/', pay:'https://selar.com/from_intent_to_offer', badge:'New' },
         { id:'selflearn',  name:'The Self-Learn Pack',                 naira:35000,  unit:'one-time', part:'capacity',
