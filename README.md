@@ -201,7 +201,7 @@ The site is a static HTML/CSS/JavaScript website hosted on **GitHub Pages** with
 
 **Shared modules**
 
-`erj-theme.js` · `erj-nav.js` · `erj-product.js` · `erj-config.js` · `erj-capture.js` · `erj-schema.js` · `erj-cart.js` · `erj-facts.js` · `erj-passcode.js` · `erj-ascend.js` · `erj-track.js` · `erj-private-protection.js` · `product.css` · `erj-buttons.css` · `sw.js` · `manifest.json`
+`erj-theme.js` · `erj-nav.js` · `erj-product.js` · `erj-config.js` · `erj-capture.js` · `erj-schema.js` · `erj-cart.js` · `erj-passcode.js` · `erj-ascend.js` · `erj-track.js` · `erj-private-protection.js` · `product.css` · `erj-buttons.css` · `sw.js` · `manifest.json`
 
 ## Remote Job Board (`/jobs/`)
 
@@ -295,10 +295,6 @@ Open Graph and Twitter card images must stay **evergreen**. No cohort numbers an
 
 Replacing an image's contents requires a **new filename**. Browser and service-worker caches ignore content changes at the same URL.
 
-## GitHub social preview
-
-The current repository social-preview artwork is `github-social-preview.png` (1280 × 640). In GitHub, upload this file under **Settings → General → Social preview**. Keeping the file in the repository does not set the GitHub preview automatically; the Settings upload is a one-time repository configuration step.
-
 ## Deployment
 
 This package contains the current ERJ Website and is intended to be uploaded to the GitHub Pages repository root.
@@ -320,7 +316,6 @@ diagnostic model, the official phone line, published credits — lives in one
 place and is enforced by one script.
 
 **`erj-config.js` → `canon`** holds the facts.
-**`erj-facts.js`** can render them into marked-up spots at runtime (not currently loaded by any page).
 **`validate-facts.py`** fails the build when any file disagrees.
 
 ### Pages state facts as real text
@@ -329,13 +324,6 @@ Every page carries its prices, dates and names as ordinary HTML text, so they
 are visible to search engines and to readers without JavaScript. **Changing
 canon does not change a page by itself.** To change a fact: edit canon, update
 every page that states it, then run the gate below. Anything missed fails.
-
-`erj-facts.js` is an optional renderer for spots marked with
-`data-erj="price.foundation"`, `data-erj="cohort.closesDisplay"`,
-`data-erj-href="pay.foundation"` and similar keys. No page loads it or uses
-those attributes today. A page that adopts it must load `erj-config.js` first,
-then `erj-facts.js`, and call `window.ERJFacts.paint(node)` for markup built
-after load.
 
 ### The gate
 

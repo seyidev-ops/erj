@@ -32,10 +32,9 @@ product name, payment link, the diagnostic model, the official phone line,
 published figures and credits, plus a `retired` list of banned terms.
 
 - **Pages hard-code facts as real text** (for SEO and no-JS readers). The
-  validator is what keeps that text in line with canon. `erj-facts.js`
-  (the `data-erj="..."` renderer described in the README) exists but is
-  **not currently loaded by any page** and no page uses `data-erj`
-  attributes. Don't assume a page updates itself when canon changes.
+  validator is what keeps that text in line with canon. No page renders
+  facts from canon at runtime, so don't assume a page updates itself when
+  canon changes.
 - To change a price, date or product: edit canon, then grep for and update
   every page that states it, then run the validator.
 - To retire a term: add it to `canon.retired`. Never blanket find-and-replace
