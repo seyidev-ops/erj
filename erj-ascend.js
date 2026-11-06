@@ -7,15 +7,10 @@
    One rule: show exactly ONE next rung, decided by what they already
    own. Never a menu, never something they have already bought.
 
-     owns 1–4 (no Stage 5)  →  Stage 5, the placement engine
-     owns 1–5               →  Stages 6–12, the second ladder
-     owns everything        →  the ERJ Ambassador programme
+     owns 1–4 (a Foundation graduate)  →  the Inner Circle (alumni only)
+     already in the Circle (Stage 6+)  →  the ERJ Ambassador programme
 
-   ── THINGS OLUWASEYI MUST CONFIRM BEFORE THIS GOES LIVE ──
-   Marked CONFIRM below. Nothing invented is presented to a student
-   as purchasable: the Stages 6–12 card is deliberately a WAITLIST,
-   because those stages do not exist on the site yet, and the
-   Ambassador rates are placeholders until you set them.
+   The Ambassador rates below are placeholders until Oluwaseyi sets them.
    ═══════════════════════════════════════════════════════════════ */
 (function () {
   'use strict';
@@ -24,55 +19,28 @@
 
   var LADDER = {
 
-    /* ── Rung one: they hold the four teaching stages ────────────── */
-    stage5: {
-      key: 'stage5',
-      badge: 'Your next rung',
-      kicker: 'Stage 5 · Job Application DFY',
-      title: 'You built the assets. Now let us run the search with you.',
-      lead: 'Stages 1&ndash;4 made you hireable. They did not, on their own, get you hired &mdash; ' +
-            'that takes sourcing, aiming and following up every week, after work, for as long as it ' +
-            'takes. That is the part almost everyone stops doing around week six.',
+    /* ── Rung one: they finished Foundation Training (Stages 1–4) ──
+       The Inner Circle is for Foundation graduates only, so this is the
+       one door every graduate is shown. */
+    inner: {
+      key: 'inner',
+      badge: 'Graduates only · your next step',
+      kicker: 'The Inner Circle · twelve months, one to one',
+      title: 'You finished Foundation Training. Now we stay with you for a year.',
+      lead: 'Foundation Training built your assets. The Inner Circle deploys them: one-to-one work on ' +
+            'your search for twelve months, starting where your cohort ended. It is open only to graduates, ' +
+            'which is why a whole year of it costs what it does.',
       points: [
-        '<b>30+ verified roles sourced for you weekly</b> &mdash; scam-filtered, and checked that the company can actually pay someone in your country.',
-        '<b>Your four assets rebuilt to placement standard</b> &mdash; CV, LinkedIn, portfolio, cover letters.',
-        '<b>Applications sent alongside you</b>, tailored to each advert, while a shortlist still exists.',
-        '<b>Interview and salary rehearsal</b> &mdash; including the two answers that quietly end most final rounds.',
-        '<b>We do not let go until a real offer letter lands.</b>'
+        '<b>Seven weeks of one-to-one build-up</b> &mdash; audit, profile, outreach, interviews, negotiation, launch.',
+        '<b>Then ten more months as a resident</b> &mdash; weekly accountability on your pipeline.',
+        '<b>Co-applying on the roles you go for</b>, a dry-run before every interview, and review of every offer.',
+        '<b>The private partner directory</b> and the alumni network.'
       ],
-      price: '&#8358;300,000',
-      priceNote: 'once &middot; no cohort to wait for &middot; starts the week you join',
-      cta: 'See the placement engine',
-      href: 'jobapplication/',
-      wa: 'Hello ERJ — I have completed Stages 1–4 and I want to add Stage 5 (Job Application DFY). Please send me the details.'
-    },
-
-    /* ── Rung two: they hold the full 1–5 ladder ─────────────────── */
-    stages612: {
-      key: 'stages612',
-      badge: 'In development · join the waitlist',
-      kicker: 'Stages 6–12 · The Second Ladder',
-      title: 'Getting hired was the first ladder. Staying, rising and multiplying is the second.',
-      lead: 'Almost everything published about remote work stops at the offer letter. The years after it ' +
-            'decide whether one dollar income becomes a career &mdash; or a job you quietly lose in the ' +
-            'first restructure. Stages 6&ndash;12 are being built for that half of the story.',
-      /* CONFIRM: these seven titles are a DRAFT for Oluwaseyi to approve,
-         rename or replace. They are shown as "in development" and sell a
-         waitlist only — nothing here can be bought today. */
-      points: [
-        '<b>6 &middot; The First 90 Days</b> &mdash; becoming the person they are glad they hired, when nobody can see you work.',
-        '<b>7 &middot; Visibility Without a Desk</b> &mdash; being known for your work across timezones you are asleep in.',
-        '<b>8 &middot; The Raise and the Review</b> &mdash; evidence, timing and the conversation itself.',
-        '<b>9 &middot; From Contractor to Indispensable</b> &mdash; contract security, renewals and dependency.',
-        '<b>10 &middot; The Second Income</b> &mdash; adding a stream without risking the first.',
-        '<b>11 &middot; Managing Remotely</b> &mdash; leading people you have never met.',
-        '<b>12 &middot; Building Your Own Table</b> &mdash; consultancy, agency or your own product.'
-      ],
-      price: 'Waitlist',
-      priceNote: 'no payment &middot; founding members get first seats and founding pricing',
-      cta: 'Join the waitlist',
-      href: null,
-      wa: 'Hello ERJ — I have completed Stages 1–5. Please add me to the Stages 6–12 waitlist and tell me when it opens.'
+      price: '&#8358;250,000',
+      priceNote: 'one payment &middot; twelve months &middot; nothing renews automatically',
+      cta: 'Request admission',
+      href: 'innercircle/#apply',
+      wa: 'Hello ERJ — I have finished Foundation Training and I want to join the Inner Circle. Please confirm my admission.'
     },
 
     /* ── Rung three: they hold everything ────────────────────────── */
@@ -104,12 +72,10 @@
   function decide(owned) {
     var has = function (n) { return owned.indexOf(n) !== -1; };
     var core = has(1) && has(2) && has(3) && has(4);
-    var full = core && has(5);
-    var beyond = full && has(6);          // any Stage 6+ means they are on ladder two
+    var beyond = core && has(6);          // Stage 6+ means they are already in the Circle
 
     if (beyond) return LADDER.ambassador;
-    if (full) return LADDER.stages612;
-    if (core) return LADDER.stage5;
+    if (core) return LADDER.inner;        // every Foundation graduate: the Inner Circle
     return null;                          // still working through 1–4: sell nothing
   }
 

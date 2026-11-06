@@ -150,7 +150,7 @@
                 href: '../blog.html', label: 'Read the interview guides'
             },
             paid: {
-                text: 'Interview rehearsal and salary negotiation sit inside Foundation Training, and go furthest in the Inner Circle residency \u2014 where the room prepares with you in real time. One improved answer to the money question often outweighs the entire fee.',
+                text: 'Interview rehearsal and salary negotiation sit inside Foundation Training, and go furthest in the Inner Circle, the year-long one-to-one residency for Foundation graduates \u2014 where we prepare with you in real time. One improved answer to the money question often outweighs the entire fee.',
                 href: '../innercircle/', label: 'See the Inner Circle'
             },
             tonight: [

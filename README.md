@@ -102,7 +102,7 @@ Any page still advertising an open instalment window after that date is stale an
 | Stage 4 — Start Your Remote Career | ₦100,000 | Representation and Aim |
 | Stage 2 — The Digital Toolkit | ₦130,000 | Capacity |
 | Remote Job Foundation Training (Cohort 13) | ₦250,000 (from ₦370,000) | Capacity, Supply, Representation, Aim |
-| The Inner Circle — Stages 6–12 | ₦250,000 | Conversion |
+| The Inner Circle — 12 months 1:1, Foundation alumni only | ₦250,000 a year | Conversion |
 | Done-For-You Placement Engine — Stage 5 | ₦300,000 | Supply, Representation, Aim |
 | Get Your Dream Job Offer — Stages 1–5 | ₦500,000 (from ₦740,000) | The full route |
 
@@ -179,7 +179,7 @@ The site is a static HTML/CSS/JavaScript website hosted on **GitHub Pages** with
 - `/foundationtraining/` — live Foundation Training
 - `/jobapplication/` — Done-For-You application and placement services
 - `/jobhunter/` — The Job Hunter: roles scored against the CV and applications prepared, checked by a person; the buyer submits. Paid by transfer, confirmed on WhatsApp (no Paystack link yet)
-- `/innercircle/` — private 1:1 Inner Circle
+- `/innercircle/` — the Inner Circle: twelve months one to one, open only to Foundation Training graduates (and Dream Job Offer buyers, which includes Foundation)
 - `/masterclass/` — Remote Job Application Clinic registration
 - `/self-learn-vs-foundation-training.html` — the honest seller-written comparison
 - `/earlybird.html` — the Foundation Training instalment route
