@@ -31,10 +31,9 @@
         {
             key: 'home', label: 'Home', href: 'index.html', keys: ['home'], children: [
                 { label: 'Which Is True for You?', href: 'index.html#start' },
-                { label: 'Tobi\u2019s Story', href: 'index.html#tobi' },
+                { label: 'Proof It Works', href: 'index.html#tobi' },
                 { label: 'The Five Parts', href: 'index.html#pledge' },
                 { label: 'Live Remote Jobs', href: 'index.html#jobs-live' },
-                { label: 'Proof It Works', href: 'index.html#story' },
                 { label: 'Before You Decide', href: 'index.html#faq' },
                 { label: 'Join Cohort 13', href: 'index.html#enrol' }
             ]
