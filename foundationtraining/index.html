@@ -513,28 +513,10 @@ html[data-theme="day"] .fx-frame{box-shadow:0 26px 60px rgba(20,17,14,.18);}
 }
 
 /* sixteen assets */
-/* proof: Tobi leads, the promise closes */
-.ft-tobi{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:clamp(1.2rem,3vw,2.4rem);align-items:center;margin:1.6rem 0 1.4rem;padding:clamp(1.3rem,3vw,2rem);border-radius:26px;
-  border:1px solid rgba(25,194,122,.45);background:radial-gradient(90% 120% at 100% 0,rgba(25,194,122,.12),transparent 60%),var(--card);box-shadow:0 30px 80px -40px rgba(25,194,122,.5);}
-.ft-tobi-k{display:inline-flex;align-items:center;gap:.5rem;margin:0 0 .6rem;font-size:.66rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#19C27A;}
-.ft-tobi-k i{width:8px;height:8px;border-radius:50%;background:#19C27A;box-shadow:0 0 10px #19C27A;}
-.ft-tobi-who{margin:0 0 .6rem;color:var(--ink-soft);font-size:.9rem;}
-.ft-tobi-who b{font-family:var(--font-display);font-weight:800;font-size:1.5rem;color:var(--ink);margin-right:.3rem;}
-.ft-tobi-txt>p{line-height:1.65;}
-.ft-tobi blockquote{margin:.9rem 0;padding-left:1rem;border-left:3px solid #19C27A;font-style:italic;color:var(--ink);}
-.ft-tobi-foot{display:flex;flex-wrap:wrap;gap:.4rem 1.2rem;align-items:center;font-size:.86rem;margin:0;}
-.ft-tobi-foot a{color:var(--accent);font-weight:700;text-decoration:none;}
-.ft-tobi-foot span{color:var(--ink-faint);}
-.ft-tobi-path{display:grid;gap:.8rem;}
-.ft-tobi-path>div{display:grid;gap:.3rem;padding:1rem 1.1rem;border-radius:18px;border:1px solid var(--line);background:var(--paper-2,#0b0b0b);}
-.ft-tobi-path span{font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);}
-.ft-tobi-path b{font-family:var(--font-display);font-size:1rem;line-height:1.35;}
-.ft-tobi-path .no{opacity:.7;}.ft-tobi-path .no em{color:#ff7b7b;font-style:normal;font-weight:700;font-size:.85rem;}
-.ft-tobi-path .yes{border-color:rgba(25,194,122,.55);}.ft-tobi-path .yes em{color:#19C27A;font-style:normal;font-weight:700;font-size:.85rem;}
+/* proof: two stories, the promise, then the rest of the stories */
 .ft-promise{margin:2rem 0 .4rem;text-align:center;font-family:var(--font-display);font-weight:800;font-size:clamp(1.5rem,3.6vw,2.4rem);letter-spacing:-.03em;line-height:1.15;}
 .ft-promise span{color:var(--accent);}
 .ft-promise small{display:block;margin-top:.6rem;font-family:var(--font-body);font-weight:400;font-size:.82rem;letter-spacing:0;color:var(--ink-faint);}
-@media(max-width:860px){.ft-tobi{grid-template-columns:1fr;}}
 .ft-keep{margin-top:clamp(2rem,5vw,3rem);scroll-margin-top:90px;}
 .ft-keep-h{font-family:var(--font-display);font-size:clamp(1.3rem,2.6vw,1.75rem);font-weight:800;letter-spacing:-.02em;line-height:1.2;margin:0;}
 .ft-keep-h span{color:var(--accent);}
@@ -552,17 +534,21 @@ html[data-theme="day"] .fx-frame{box-shadow:0 26px 60px rgba(20,17,14,.18);}
 
 /* proof */
 .fx-stats{margin:1.4rem 0 1.6rem;}
-.fx-quotes{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.8rem;}
-.fx-q{margin:0;padding:1.3rem;border-radius:20px;border:1px solid var(--line);background:var(--card);display:flex;flex-direction:column;justify-content:space-between;gap:1rem;transition:transform .3s var(--ease),border-color .3s;}
-.fx-q:hover{transform:translateY(-4px);border-color:var(--accent);}
-.fx-q blockquote{margin:0;font-size:.95rem;line-height:1.6;color:var(--ink);}
-.fx-q figcaption{display:flex;gap:.65rem;align-items:center;}
-.fx-q figcaption i{font-style:normal;flex:none;width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;color:#fff;background:linear-gradient(135deg,#FF5722,#963F12);}
-.fx-q figcaption span{font-size:.74rem;line-height:1.4;color:var(--ink-faint);}
-.fx-q figcaption b{display:block;font-size:.88rem;color:var(--ink);}
-.fx-more{margin-top:1rem;} .fx-more a{color:var(--accent);font-weight:700;text-decoration:none;}
-@media(max-width:1000px){.fx-quotes{grid-template-columns:1fr 1fr;}}
-@media(max-width:560px){.fx-quotes{grid-template-columns:1fr;}}
+.fx-more{margin-top:1.2rem;display:flex;justify-content:center;}
+.ft-stories{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(.8rem,2vw,1.2rem);margin:1.6rem 0 1.4rem;}
+.ft-story{display:flex;flex-direction:column;gap:.8rem;padding:clamp(1.2rem,3vw,1.7rem);border-radius:24px;border:1px solid var(--line);
+  background:radial-gradient(110% 130% at 100% 0,rgba(255,87,34,.1),transparent 60%),var(--card);transition:transform .3s var(--ease),border-color .3s;}
+.ft-story:hover{transform:translateY(-4px);border-color:rgba(255,87,34,.6);}
+.ft-story-k{margin:0;font:700 .66rem/1 var(--font-body);letter-spacing:.15em;text-transform:uppercase;color:var(--accent);}
+.ft-story-who{display:flex;gap:.75rem;align-items:center;margin:0;}
+.ft-story-who i{font-style:normal;flex:none;width:46px;height:46px;border-radius:50%;display:grid;place-items:center;font:800 1.1rem/1 var(--font-display);color:#fff;background:linear-gradient(135deg,#FF5722,#963F12);}
+.ft-story-who span{font-size:.8rem;line-height:1.4;color:var(--ink-faint);}
+.ft-story-who b{display:block;font:800 1.35rem/1.15 var(--font-display);color:var(--ink);}
+.ft-story>p:not([class]){margin:0;font-size:.95rem;line-height:1.65;color:var(--ink-soft);}
+.ft-story blockquote{margin:0;padding-left:1rem;border-left:3px solid var(--accent);font-style:italic;line-height:1.6;color:var(--ink);}
+.ft-story-go{margin-top:auto;align-self:flex-start;color:var(--accent);font-weight:700;text-decoration:none;}
+.ft-story-go:hover{text-decoration:underline;}
+@media(max-width:760px){.ft-stories{grid-template-columns:1fr;}}
 
 /* certificate */
 .fx-cert-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(1.6rem,5vw,3.6rem);align-items:center;}
@@ -680,9 +666,52 @@ html[data-theme="day"] .fx-price-save{color:#1E8E4E;}
 .ft-four p{margin:0;font-size:.86rem;line-height:1.55;color:var(--ink-soft);}
 @media(max-width:900px){.ft-four{grid-template-columns:1fr 1fr;}}
 @media(max-width:520px){.ft-four{grid-template-columns:1fr;}}
-.ft-all{margin-top:.4rem;}
-.ft-all summary{cursor:pointer;font-weight:700;color:var(--accent);padding:.4rem 0;}
-.ft-all[open] summary{margin-bottom:.8rem;}
+/* the sixteen assets: a button that looks like the prize it opens */
+@property --fa-a{syntax:"<angle>";inherits:false;initial-value:0deg;}
+.ft-all{margin-top:.6rem;}
+.ft-all summary{list-style:none;}
+.ft-all summary::-webkit-details-marker{display:none;}
+.fa-btn{position:relative;isolation:isolate;cursor:pointer;display:grid;grid-template-columns:auto minmax(0,1fr) auto auto;align-items:center;gap:clamp(.8rem,2.4vw,1.4rem);
+  padding:clamp(.9rem,2.4vw,1.2rem) clamp(1rem,2.8vw,1.5rem);border-radius:24px;color:var(--ink);-webkit-tap-highlight-color:transparent;
+  background:radial-gradient(120% 160% at 0 0,rgba(255,87,34,.22),transparent 55%),radial-gradient(100% 140% at 100% 100%,rgba(255,178,92,.16),transparent 60%),var(--card);
+  box-shadow:0 18px 40px -22px rgba(255,87,34,.75);transition:transform .35s cubic-bezier(.22,1,.36,1),box-shadow .35s;}
+/* a lit edge that travels round the button */
+.fa-btn::before{content:"";position:absolute;inset:0;z-index:-1;border-radius:inherit;padding:2px;
+  background:conic-gradient(from var(--fa-a),#FF5722,#FFB25C,#E8470F 40%,rgba(255,87,34,.25) 60%,#FF5722);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;}
+/* a sheen that crosses it */
+.fa-btn::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;
+  background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,.18) 50%,transparent 65%);background-size:250% 100%;background-position:120% 0;}
+.fa-btn:hover{transform:translateY(-3px);box-shadow:0 26px 50px -22px rgba(255,87,34,.9);}
+.fa-btn:active{transform:scale(.985);}
+.fa-btn:focus-visible{outline:2px solid var(--accent);outline-offset:4px;}
+.fa-n{display:grid;place-items:center;align-content:center;width:clamp(58px,9vw,72px);aspect-ratio:1;border-radius:18px;color:#fff;
+  background:linear-gradient(140deg,#FF5722,#C9410C);box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 10px 22px -10px rgba(201,65,12,.9);}
+.fa-n b{font:800 clamp(1.5rem,3.6vw,1.9rem)/1 var(--font-display);letter-spacing:-.03em;font-variant-numeric:tabular-nums;}
+.fa-n small{font:700 .55rem/1 var(--font-body);letter-spacing:.14em;text-transform:uppercase;opacity:.9;margin-top:.2rem;}
+.fa-t b{display:block;font:800 clamp(1.08rem,2.4vw,1.4rem)/1.2 var(--font-display);letter-spacing:-.02em;}
+.fa-t small{display:block;margin-top:.25rem;font-size:clamp(.8rem,1.6vw,.9rem);color:var(--ink-soft);}
+.ft-all[open] .fa-closed,.ft-all:not([open]) .fa-opened{display:none;}
+.fa-strip{display:flex;gap:.3rem;}
+.fa-strip i{font-style:normal;display:grid;place-items:center;width:34px;height:34px;border-radius:10px;font-size:1rem;background:rgba(255,87,34,.1);border:1px solid rgba(255,87,34,.22);}
+.fa-go{display:grid;place-items:center;width:clamp(42px,6vw,50px);aspect-ratio:1;border-radius:50%;font:800 1.15rem/1 var(--font-body);color:#fff;background:#C9410C;
+  transition:transform .45s cubic-bezier(.22,1,.36,1),background .3s;}
+.fa-btn:hover .fa-go{background:#FF5722;}
+.ft-all[open] .fa-go{transform:rotate(180deg);}
+.ft-all[open] .fa-btn{box-shadow:0 10px 30px -20px rgba(255,87,34,.7);}
+@media(max-width:1100px){.fa-strip i:nth-child(n+6){display:none;}}
+@media(max-width:860px){.fa-strip{display:none;}.fa-btn{grid-template-columns:auto minmax(0,1fr) auto;}}
+@media(prefers-reduced-motion:no-preference){
+  .fa-btn::before{animation:faSpin 4.5s linear infinite;}
+  .ft-all:not([open]) .fa-btn::after{animation:faSheen 3.6s ease-in-out infinite;}
+  .ft-all:not([open]) .fa-go{animation:faBob 1.8s ease-in-out infinite;}
+  .fa-strip i{animation:faHop 3.2s ease-in-out infinite;}
+  .fa-strip i:nth-child(2){animation-delay:.15s}.fa-strip i:nth-child(3){animation-delay:.3s}.fa-strip i:nth-child(4){animation-delay:.45s}
+  .fa-strip i:nth-child(5){animation-delay:.6s}.fa-strip i:nth-child(6){animation-delay:.75s}.fa-strip i:nth-child(7){animation-delay:.9s}.fa-strip i:nth-child(8){animation-delay:1.05s}}
+@keyframes faSpin{to{--fa-a:360deg}}
+@keyframes faSheen{0%,55%{background-position:120% 0}100%{background-position:-60% 0}}
+@keyframes faBob{0%,100%{transform:none}50%{transform:translateY(4px)}}
+@keyframes faHop{0%,70%,100%{transform:none}80%{transform:translateY(-5px)}}
 .ft-sponsor{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1.2rem 2rem;padding:clamp(1.3rem,3vw,2rem);border-radius:26px;border:1px solid rgba(255,87,34,.5);background:radial-gradient(100% 140% at 0 0,rgba(255,87,34,.13),transparent 60%),var(--card);}
 .ft-sponsor>div{flex:1 1 420px;}
 .ft-sponsor h2{margin:.3rem 0 .6rem;}
@@ -898,7 +927,12 @@ html[data-theme="day"] .fx-price-save{color:#1E8E4E;}
 <div><span>Stage 3</span><b>Five communication assets</b><p>Writing that shows how you work when nobody is online with you.</p></div>
 <div><span>Stage 4</span><b>The Global Ready Package</b><p>A remote-first CV, a 2–3 project portfolio and your recorded STAR answer.</p></div>
 </div>
-<details class="ft-all"><summary>See all sixteen pieces inside them</summary>
+<details class="ft-all" id="ftAll"><summary class="fa-btn">
+<span class="fa-n" aria-hidden="true"><b id="fxN">16</b><small>assets</small></span>
+<span class="fa-t"><b><span class="fa-closed">See all 16 pieces you build</span><span class="fa-opened">The 16 pieces you build</span></b><small><span class="fa-closed">Every one is yours to show a remote employer</span><span class="fa-opened">Tap again to fold them away</span></small></span>
+<span class="fa-strip" aria-hidden="true"><i>📅</i><i>⏱</i><i>🎯</i><i>📋</i><i>🖥</i><i>🎙</i><i>📌</i><i>📄</i></span>
+<span class="fa-go" aria-hidden="true">↓</span>
+</summary>
 <div class="fx-assets" id="fxAssets">
 <span>📅 Deep Work Calendar Blocks</span><span>⏱ Pomodoro Tracker + Log</span><span>🎯 Daily KPI Planning Sheet</span><span>📋 End-of-Day Report System</span>
 <span>🖥 Workspace Audit + Photo</span><span>🎙 Zoom Cloud Recording</span><span>📌 Project Board with 5 Task Cards</span><span>📄 Linked Cloud Document</span>
@@ -934,32 +968,29 @@ html[data-theme="day"] .fx-price-save{color:#1E8E4E;}
 <section class="wrap fx-sec" id="proof">
 <p class="section-label">People ERJ has worked with</p>
 <h2>Same people. <span>Different evidence.</span></h2>
-<article class="ft-tobi reveal">
-<div class="ft-tobi-txt">
-<p class="ft-tobi-k"><i aria-hidden="true"></i>Latest win · 8 weeks</p>
-<p class="ft-tobi-who"><b>Tobi</b> · Sound engineer &amp; voice talent · Lagos</p>
-<p>In August an automated screen turned his Sound Engineer application down. The skill was there; the CV was not carrying what the screen checks for. He sent AUDIT, took the free diagnosis, and reworked how his audio and voice work reads. On 16 October he applied to micro1’s Voice Actor/Coach role. <strong>micro1 selected him.</strong></p>
-<blockquote>“It’s been a journey, and I am proud to say.”</blockquote>
-<p class="ft-tobi-foot"><a href="../testimonials.html#story-tobi">Read Tobi’s eight weeks, step by step →</a><span>Shared with permission.</span></p>
-</div>
-<div class="ft-tobi-path" aria-hidden="true">
-<div class="no"><span>Aug</span><b>“We’ve decided not to move forward.”</b><em>✕ Turned down</em></div>
-<div class="yes"><span>Oct</span><b>micro1 · Voice Actor/Coach</b><em>✓ Selected</em></div>
-</div>
-</article>
 <div class="stat-row stats-counter fx-stats" id="ftImpact">
 <div><div class="stat-num" data-count="446" data-suffix="+">446+</div><div class="stat-lbl">Professionals trained</div></div>
 <div><div class="stat-num" data-count="382" data-suffix="+">382+</div><div class="stat-lbl">Professionals placed</div></div>
 <div><div class="stat-num" data-count="10">10</div><div class="stat-lbl">Cohorts completed</div></div>
 </div>
-<div class="fx-quotes">
-<figure class="fx-q reveal"><blockquote>&ldquo;Nobody asked about my degree. Every single person asked how I handle an angry customer at 11pm, and I had four years of answers.&rdquo;</blockquote><figcaption><i aria-hidden="true">N</i><span><b>Ngozi</b>Retail Supervisor → Remote Customer Success · Enugu</span></figcaption></figure>
-<figure class="fx-q reveal"><blockquote>&ldquo;Not exceptional talent or luck. 90 minutes a day, applied consistently, in the right direction. The constraints don&rsquo;t disqualify you.&rdquo;</blockquote><figcaption><i aria-hidden="true">A</i><span><b>Amara</b>Operations Manager → Remote Ops Coordinator · Abuja</span></figcaption></figure>
-<figure class="fx-q reveal"><blockquote>&ldquo;I rewrote my CV four times for a problem that was never in my CV. The thing that was broken took two weeks of practice to fix.&rdquo;</blockquote><figcaption><i aria-hidden="true">T</i><span><b>Tunde</b>Data Analyst · Lagos</span></figcaption></figure>
-<figure class="fx-q reveal"><blockquote>&ldquo;The 312 applications were not wasted. They taught me exactly what was not working. The 8 weeks taught me what was.&rdquo;</blockquote><figcaption><i aria-hidden="true">B</i><span><b>Blessing</b>NGO Project Coordinator → Remote PM · Lagos</span></figcaption></figure>
+<div class="ft-stories">
+<article class="ft-story reveal">
+<p class="ft-story-k">14-month career pivot</p>
+<p class="ft-story-who"><i aria-hidden="true">K</i><span><b>Kemi</b>English Teacher → Technical Writer · Ibadan</span></p>
+<p>No technical background, but seven years of explaining hard ideas to people who did not yet understand them. Free courses, open-source documentation, a first paid writing contract, then a full-time offer from a UK developer-tools company.</p>
+<blockquote>“The 14 months felt very long while I was in them. Looking back, it was the shortest path to somewhere I genuinely wanted to be.”</blockquote>
+<a class="ft-story-go" href="../testimonials.html#story-kemi">Read Kemi’s story →</a>
+</article>
+<article class="ft-story reveal">
+<p class="ft-story-k">Employed &amp; discreet · 11 weeks</p>
+<p class="ft-story-who"><i aria-hidden="true">U</i><span><b>Uche</b>Finance Manager → Remote Contractor · Lagos</span></p>
+<p>Twelve years in, and afraid of being seen searching. We kept it off LinkedIn: a private portfolio link, direct notes to hiring managers, interviews at 6:30am before work. He resigned only after the contract was signed.</p>
+<blockquote>“Being 42 was not the obstacle I thought it was. Eleven years of closing books across three subsidiaries was the entire reason they wanted me.”</blockquote>
+<a class="ft-story-go" href="../testimonials.html#story-uche">Read Uche’s story →</a>
+</article>
 </div>
 <p class="ft-promise">We will not let you go <span>until you’re hired.</span><small>That is a promise of persistence, not a date: no placement, timeline or salary is guaranteed.</small></p>
-<p class="fx-more"><a href="../testimonials.html">Read their full stories →</a></p>
+<p class="fx-more"><a class="btn-primary-ui btn-yes" href="../testimonials.html"><span>Read all the success stories</span><span class="arrow-wrap"><span class="arrow">→</span></span></a></p>
 </section>
 
 <!-- CLASS TRACKS -->
@@ -1240,16 +1271,14 @@ html[data-theme="day"] .fx-price-save{color:#1E8E4E;}
 
   /* sixteen assets light up as you reach them */
   var grid=d.getElementById('fxAssets'), n=d.getElementById('fxN');
-  if(grid&&n&&'IntersectionObserver' in window&&!matchMedia('(prefers-reduced-motion: reduce)').matches){
+  var all=d.getElementById('ftAll');
+  if(grid&&n&&all&&!matchMedia('(prefers-reduced-motion: reduce)').matches){
     var items=[].slice.call(grid.children), fired=false;
-    var io=new IntersectionObserver(function(es){
-      es.forEach(function(e){
-        if(fired||!e.isIntersecting) return; fired=true; io.disconnect();
-        grid.classList.add('armed'); n.textContent='0';
-        items.forEach(function(it,k){ setTimeout(function(){ it.classList.add('lit'); n.textContent=String(k+1); },140+k*110); });
-      });
-    },{threshold:.3});
-    io.observe(grid);
+    all.addEventListener('toggle',function(){
+      if(!all.open||fired) return; fired=true;
+      grid.classList.add('armed'); n.textContent='0';
+      items.forEach(function(it,k){ setTimeout(function(){ it.classList.add('lit'); n.textContent=String(k+1); },120+k*90); });
+    });
   }
 
   /* sticky bar: after the hero, until pricing; its text follows the open cohort */
