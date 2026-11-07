@@ -1794,6 +1794,43 @@ html[data-theme="day"] .timer-num{background-image:linear-gradient(160deg,#0A0A0
   -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);color:#fff;font-size:.78rem;line-height:1.35;}
 .hs2-face figcaption b{display:block;font-family:var(--font-display);font-size:.95rem;}
 @media(max-width:860px){.hs2-grid{grid-template-columns:1fr;}.hs2-face{max-width:320px;width:100%;margin:1.4rem auto 0;}}
+/* hero: the portrait floats inside an orbit of the places that hire */
+.hs2-face{container-type:inline-size;}
+.hs2-face .hz-orbit{inset:auto;left:50%;top:50%;width:140cqw;aspect-ratio:1;transform:translate(-50%,-50%);}
+.hs2-face .hz-sat.s1{--hz-r:62cqw;}.hs2-face .hz-sat.s2{--hz-r:70cqw;}.hs2-face .hz-sat.s3{--hz-r:76cqw;}
+.hs2-lift{position:relative;z-index:1;}
+@media (prefers-reduced-motion:no-preference){.hs2-lift{animation:hs2-float 6s ease-in-out infinite alternate;}}
+@keyframes hs2-float{from{transform:translateY(6px);}to{transform:translateY(-10px);}}
+@media(max-width:860px){.hs2-face{max-width:230px;margin:3.2rem auto 2.6rem;}
+  .hs2-face .hz-sat.s1{--hz-r:56cqw;}.hs2-face .hz-sat.s2{--hz-r:60cqw;}.hs2-face .hz-sat.s3{--hz-r:66cqw;}.hs2-face .hz-sat b{min-width:38px;height:26px;font-size:.66rem;}}
+/* the promise sits inside a small globe: one lit line over it, one curving under it */
+#pledge{position:relative;isolation:isolate;padding-top:clamp(3.5rem,8vw,6rem);padding-bottom:clamp(3.5rem,8vw,6rem);}
+.hz-mini{position:absolute;z-index:-1;top:0;bottom:0;left:50%;width:100vw;transform:translateX(-50%);overflow:hidden;pointer-events:none;}
+.hz-mini i{--pw:clamp(1000px,135vw,2300px);position:absolute;left:50%;width:var(--pw);height:var(--pw);border-radius:50%;transform:translateX(-50%);}
+.hz-mini .up{top:clamp(1rem,3vw,2rem);box-shadow:0 -1px 0 0 rgba(255,190,150,.9),0 -6px 24px 2px rgba(255,110,50,.7),0 -40px 110px 24px rgba(255,87,34,.28);
+  -webkit-mask:linear-gradient(#000,transparent 420px);mask:linear-gradient(#000,transparent 420px);}
+.hz-mini .dn{bottom:clamp(1rem,3vw,2rem);box-shadow:0 1px 0 0 rgba(255,190,150,.9),0 6px 24px 2px rgba(255,110,50,.7),0 40px 110px 24px rgba(255,87,34,.28);
+  -webkit-mask:linear-gradient(to top,#000,transparent 420px);mask:linear-gradient(to top,#000,transparent 420px);}
+html[data-theme="day"] .hz-mini .up{box-shadow:0 -1px 0 0 rgba(232,71,15,.7),0 -6px 24px 2px rgba(255,122,61,.4),0 -40px 110px 24px rgba(255,140,80,.18);}
+html[data-theme="day"] .hz-mini .dn{box-shadow:0 1px 0 0 rgba(232,71,15,.7),0 6px 24px 2px rgba(255,122,61,.4),0 40px 110px 24px rgba(255,140,80,.18);}
+/* jobs around the world */
+.gl-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(1.6rem,4vw,3.4rem);align-items:center;}
+.gl-h{font:800 clamp(2rem,4.6vw,3.4rem)/1.06 var(--font-display);letter-spacing:-.04em;margin:1rem 0 1rem;text-wrap:balance;}
+.gl-h em{font-style:normal;color:var(--accent);}
+.gl-p{color:var(--ink-soft);line-height:1.7;max-width:52ch;margin:0 0 1.2rem;}
+.gl-live{display:flex;gap:.7rem;align-items:flex-start;margin:0 0 1.3rem;padding:.85rem 1rem;border-radius:16px;border:1px solid var(--card-line,var(--line));background:var(--card);font-size:.95rem;line-height:1.5;}
+.gl-live i{flex:none;width:9px;height:9px;margin-top:.45rem;border-radius:50%;background:#25D366;box-shadow:0 0 0 0 rgba(37,211,102,.55);}
+@media (prefers-reduced-motion:no-preference){.gl-live i{animation:jtPing 2s infinite;}}
+@keyframes jtPing{0%{box-shadow:0 0 0 0 rgba(37,211,102,.55)}70%{box-shadow:0 0 0 9px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
+.gl-live b{color:var(--accent);font-family:var(--font-display);font-size:1.15em;}
+.gl-cta{display:flex;flex-wrap:wrap;gap:.7rem;margin:0 0 1rem;}
+.gl-fine{font-size:.88rem;color:var(--ink-faint);margin:0;}
+.gl-fine a{color:var(--accent);font-weight:700;text-decoration:none;}
+.gl-fig{margin:0;position:relative;}
+.gl-canvas{display:block;width:100%;max-width:560px;aspect-ratio:1;margin:0 auto;}
+.gl-cap{text-align:center;margin-top:.4rem;font:700 .8rem/1.3 var(--font-body);letter-spacing:.1em;text-transform:uppercase;color:var(--accent);min-height:1.3em;}
+@media(max-width:860px){.gl-grid{grid-template-columns:1fr;}.gl-fig{order:-1;}.gl-canvas{max-width:min(92vw,420px);}}
+
 @media(max-width:520px){.hs2-picks{grid-template-columns:1fr;}.hs2-pick{padding:.85rem 1rem;}}
 /* the story */
 .hst-in{max-width:980px;}
@@ -1825,7 +1862,7 @@ html[data-theme="day"] .hst-h em,html[data-theme="day"] .hst-k{color:#0B7A47;}
 <noscript><iframe height="0" src="https://www.googletagmanager.com/ns.html?id=GTM-NMFHS59B" style="display:none;visibility:hidden" width="0"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 <div id="erjNavMount"></div>
-<script>window.ERJ_NAV={active:'home',onPage:[{label:'Which is true for you?',href:'#start',sub:'Your next step in one tap'},{label:'Proof it works',href:'#tobi',sub:'Tobi: turned down in August, selected in October'},{label:'The five parts',href:'#pledge',sub:'Where every search breaks, and how we fix each one'},{label:'Live remote jobs',href:'#jobs-live',sub:'Real roles open to Nigeria, by field'},{label:'Before you decide',href:'#faq',sub:'The questions everyone asks first'},{label:'Join Cohort 13',href:'#enrol',sub:'Enrolment closes Sun 29 Nov'}]};</script>
+<script>window.ERJ_NAV={active:'home',onPage:[{label:'Which is true for you?',href:'#start',sub:'Your next step in one tap'},{label:'Proof it works',href:'#tobi',sub:'Tobi: turned down in August, selected in October'},{label:'The five parts',href:'#pledge',sub:'Where every search breaks, and how we fix each one'},{label:'Jobs around the world',href:'#jobs-live',sub:'Where the work is, and the live job board'},{label:'Before you decide',href:'#faq',sub:'The questions everyone asks first'},{label:'Join Cohort 13',href:'#enrol',sub:'Enrolment closes Sun 29 Nov'}]};</script>
 <main>
 <!-- 01 · ONE PROMISE, A FIRST WIN IN ONE TAP: pick what is true, get your next step here, no form -->
 <section class="wrap hs2" id="start">
@@ -1876,8 +1913,11 @@ html[data-theme="day"] .hst-h em,html[data-theme="day"] .hst-k{color:#0B7A47;}
 </div>
 </div>
 <figure class="hs2-face">
+<div class="hz-orbit" aria-hidden="true"><i class="r1"></i><i class="r2"></i><i class="r3"></i><span class="hz-sat s1"><b>UK</b></span><span class="hz-sat s2"><b>US</b></span><span class="hz-sat s3"><b>EU</b></span></div>
+<div class="hs2-lift">
 <picture><source sizes="(max-width:700px) 220px, 330px" srcset="photo-seyi-suit-480.webp 480w, photo-seyi-suit.webp 880w" type="image/webp"/><img alt="Oluwaseyi Ashiru, Lead Facilitator of Everything Remote Job" decoding="async" fetchpriority="high" height="1100" src="photo-seyi-suit.jpg" width="880"/></picture>
 <figcaption><b>Oluwaseyi Ashiru</b>Lead Facilitator · in remote roles since 2013</figcaption>
+</div>
 </figure>
 </div>
 </section>
@@ -1913,6 +1953,7 @@ html[data-theme="day"] .hst-h em,html[data-theme="day"] .hst-k{color:#0B7A47;}
 
 <!-- THE PROMISE · the Five-Finger Model and how we carry you -->
 <section class="wrap section-line" id="pledge">
+<div class="hz-mini" aria-hidden="true"><i class="up"></i><i class="dn"></i></div>
 <div class="pledge reveal">
 <span class="pledge-tag"><span class="pledge-dot"></span> 03 · The Promise</span>
 <h2 class="pledge-h">Five parts. <em>One of them is breaking.</em></h2>
@@ -1925,46 +1966,166 @@ html[data-theme="day"] .hst-h em,html[data-theme="day"] .hst-k{color:#0B7A47;}
 </div>
 </section>
 
-<!-- 04 · LIVE JOBS: supply, the second part, fixed for free (counts written by jobboard.py) -->
-<section class="wrap section-line" id="jobs-live">
-<div class="step"><span class="step-n">04</span><span class="step-l">Live Remote Jobs · The Supply Fix</span></div>
-<!--JOBTEASE:START ctx=home-->
-<style>
-.jt{--jt-o:#FF5722;--jt-line:rgba(255,255,255,.12);--jt-card:rgba(255,255,255,.035);--jt-mut:rgba(255,255,255,.66);position:relative;overflow:hidden;border:1px solid var(--jt-line);border-radius:22px;padding:clamp(1.3rem,3.4vw,2.2rem);margin:clamp(1.8rem,4vw,2.6rem) 0;background:radial-gradient(120% 140% at 100% 0,rgba(255,87,34,.14),transparent 55%),var(--jt-card);text-align:left;}
-html[data-theme="day"] .jt{--jt-o:#E8470F;--jt-line:rgba(20,17,14,.12);--jt-card:#fff;--jt-mut:#52514C;}
-.jt-k{display:inline-flex;align-items:center;gap:.5rem;font:700 .64rem/1 'Inter',system-ui,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--jt-o);margin:0 0 .9rem;}
-.jt-k i{width:8px;height:8px;border-radius:50%;background:#25D366;animation:jtPing 2s infinite;}
-@keyframes jtPing{0%{box-shadow:0 0 0 0 rgba(37,211,102,.55)}70%{box-shadow:0 0 0 9px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
-.jt h2{font-family:'Space Grotesk',system-ui,sans-serif;font-size:clamp(1.45rem,3.6vw,2.2rem);font-weight:800;letter-spacing:-.02em;line-height:1.15;margin:0 0 .6rem;}
-.jt h2 em{font-style:normal;color:var(--jt-o);display:block;}
-.jt-p{color:var(--jt-mut);font-size:.95rem;line-height:1.6;margin:0 0 1.2rem;max-width:56ch;}
-.jt-fs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.55rem;margin:0 0 1.3rem;}
-@media(max-width:860px){.jt-fs{grid-template-columns:repeat(2,minmax(0,1fr));}}
-.jt-f{display:grid;grid-template-columns:auto 1fr;grid-template-areas:"i n" "i c";column-gap:.6rem;align-items:center;padding:.75rem .85rem;border:1px solid var(--jt-line);border-radius:14px;text-decoration:none;color:inherit;background:var(--jt-card);transition:transform .25s,border-color .25s;}
-.jt-f:hover{transform:translateY(-2px);border-color:var(--jt-o);}
-.jt-f i{grid-area:i;font-style:normal;font-size:1.35rem;}
-.jt-f b{grid-area:n;font-size:.86rem;line-height:1.25;font-weight:700;}
-.jt-f span{grid-area:c;font-size:.74rem;color:var(--jt-mut);}
-.jt-f span em{font-style:normal;color:#25D366;font-weight:700;}
-.jt-ready{display:flex;gap:.8rem;align-items:flex-start;padding:.9rem 1rem;border-radius:14px;border:1px dashed var(--jt-line);margin:0 0 1.2rem;font-size:.9rem;line-height:1.55;}
-.jt-ready b{color:var(--jt-o);}
-.jt-ready a{color:inherit;font-weight:700;text-decoration:underline;text-decoration-color:var(--jt-o);text-underline-offset:3px;}
-.jt-cta{display:flex;flex-wrap:wrap;gap:.6rem;}
-.jt-cta a{display:inline-flex;align-items:center;gap:.45rem;padding:.85rem 1.25rem;border-radius:100px;font-weight:700;font-size:.95rem;text-decoration:none;border:1px solid var(--jt-line);color:inherit;transition:transform .25s;}
-.jt-cta a:first-child{background:var(--jt-o);border-color:var(--jt-o);color:#fff;}
-.jt-cta a:hover{transform:translateY(-2px);}
-@media(max-width:560px){.jt-f{grid-template-columns:1fr;grid-template-areas:"i" "n" "c";row-gap:.25rem;padding:.8rem;}.jt-f i{font-size:1.25rem;}.jt-cta a{flex:1 1 100%;justify-content:center;}}
-@media(prefers-reduced-motion:reduce){.jt-k i{animation:none;}.jt-f,.jt-cta a{transition:none;}}
-</style>
-<aside class="jt" aria-labelledby="jt-home">
-<p class="jt-k"><i aria-hidden="true"></i>Live &middot; Remote Job Board</p>
-<h2 id="jt-home">334 remote roles open to Nigeria, live right now. <em>Are you ready for them?</em></h2>
-<p class="jt-p">Every role is checked twice a day and taken down when it closes. Start with your field.</p>
-<div class="jt-fs"><a class="jt-f" href="jobs/?field=Tech%20%26%20IT#board"><i aria-hidden="true">💻</i><b>Tech &amp; IT</b><span>75 roles · <em>3 new</em></span></a><a class="jt-f" href="jobs/?field=Virtual%20Assistant%20%26%20Admin#board"><i aria-hidden="true">🗂️</i><b>Virtual Assistant &amp; Admin</b><span>68 roles · <em>8 new</em></span></a><a class="jt-f" href="jobs/?field=Executive%20%26%20Operations#board"><i aria-hidden="true">⚙️</i><b>Executive &amp; Operations</b><span>55 roles · <em>4 new</em></span></a><a class="jt-f" href="jobs/?field=Data%20%26%20Product#board"><i aria-hidden="true">📊</i><b>Data &amp; Product</b><span>43 roles</span></a><a class="jt-f" href="jobs/?field=Marketing%20%26%20Creative#board"><i aria-hidden="true">🎨</i><b>Marketing &amp; Creative</b><span>42 roles · <em>6 new</em></span></a><a class="jt-f" href="jobs/?field=Finance%20%26%20Accounting#board"><i aria-hidden="true">🧾</i><b>Finance &amp; Accounting</b><span>15 roles</span></a><a class="jt-f" href="jobs/?field=Customer%20Service%20%26%20Success#board"><i aria-hidden="true">🎧</i><b>Customer Service &amp; Success</b><span>11 roles</span></a><a class="jt-f" href="jobs/?field=Legal#board"><i aria-hidden="true">⚖️</i><b>Legal</b><span>10 roles</span></a></div>
-<p class="jt-ready"><span aria-hidden="true">💡</span><span>Seeing the roles is <b>supply</b>. Being the person they hire is <b>capacity</b>: if you cannot yet show you can do the work, <a href="foundationtraining/">Foundation Training</a> builds it, and <a href="capacityscan/">the free Capacity Audit</a> tells you where you stand.</span></p>
-<div class="jt-cta"><a href="jobs/">Open the job board &rarr;</a><a href="foundationtraining/">Get ready for these roles &rarr;</a></div>
-</aside>
+<!-- 04 · JOBS AROUND THE WORLD: the globe pins where the work is, then brings it home; the live count is written by jobboard.py -->
+<section class="wrap section-line gl" id="jobs-live">
+<div class="gl-grid">
+<div class="gl-txt reveal">
+<div class="step"><span class="step-n">04</span><span class="step-l">Jobs Around the World</span></div>
+<h2 class="gl-h">The jobs are all over the world. <em>You work from right where you are.</em></h2>
+<p class="gl-p">Companies in London, Berlin, Dubai, Johannesburg, New York, Toronto and San Francisco post remote roles that people living in Nigeria can apply for. You keep your city and your family. The work comes to you.</p>
+<!--JOBTEASE:START ctx=globe-->
+<p class="gl-live"><i aria-hidden="true"></i><span><b>345</b> remote roles open to people in Nigeria are live on the board right now, each one checked twice a day.</span></p>
 <!--JOBTEASE:END-->
+<div class="gl-cta"><a class="btn-primary-ui btn-yes" href="jobs/"><span>See the jobs</span><span class="arrow-wrap"><span class="arrow">→</span></span></a><a class="btn-secondary-ui btn-more" href="foundationtraining/"><span>Get ready for them</span><span class="arrow-wrap"><span class="arrow">→</span></span></a></div>
+<p class="gl-fine">Seeing the roles is the easy part. Being the one they pick is what <a href="foundationtraining/">Foundation Training</a> builds in twenty days.</p>
+</div>
+<figure class="gl-fig">
+<canvas id="glCanvas" class="gl-canvas" aria-hidden="true"></canvas>
+<figcaption class="gl-cap" id="glCap">Jobs posted all over the world…</figcaption>
+</figure>
+</div>
+<script>
+/* The world section: a dotted globe that pins cities whose companies hire remotely,
+   draws each job back to Lagos, then settles on Lagos. Canvas only, decorative
+   (aria-hidden); the words around it carry the meaning. Pauses off-screen and in
+   background tabs; reduced motion gets the finished picture, still. */
+(function () {
+  var cv = document.getElementById('glCanvas'); if (!cv || !cv.getContext) return;
+  var cap = document.getElementById('glCap');
+  var ctx = cv.getContext('2d');
+  var LAND = 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOAfAP8DAAAAAAAAAAAAAAAAAAAAAADo//z//wcAAAAAAAACAAAAAAAAAAAAhvvw//8PAPABAAAAwAMAAAAAAAAAwADkw////wEABAAAAABgAAAAAAAAAADAUT8A/v8PAAAAAAwA/j8AuAEAAAAAcBHtDcD/fwAAAAAwAPz/fwMAABCAAQD5w/wD8P8FAAAMAIL7//9//xOAAP/ff0668QD/HwAA+A8At///////v3/w/////x8++B8AAOD/1//7////////jP////+/+AE/gAcAn9f//////////w/w/////wEs4AEAAHz+////////////gL////8HeAAcAADg5///////////9ADgAf7/f4AnAAAAAH78////////H0QAAAiA//8f8AcAAIBB4////////38ADwAQAOD//5//AQAAHAT/////////A3AAAAAA/v//+T8AAGDz//////////8DAQAAAMD/////AwAAsP//////////LwAAAAAA6P///2IAAAD+//////////8CAAAAAAD///8/CAAA4P//////////JwAAAAAA8P///wYAAAD+/un//////z8AAAAAAAD///8HAAAA/pgP/P//////MQAAAAAA8P//PwAAAMBD9v7//////wcBAAAAAAD///8AAAAAPkD7//////8hEAAAAAAA4P//DwAAAIDhAv//////f8YAAAAAAAD8//8AAAAA+AdE//////8jDwAAAAAAgP//AwAAAMD/APD/////PxgAAAAAAADw/x8AAAAA/n/v//////8HAAAAAAAAAPwDAgAAAOD////7////fwAAAAAAAACgHyAAAACA//9/f/7///8DAAAAAAAAAPQBAAAAAPj//+cv+P//PwAAAAAAAAAAHjAAAADA/////g/+//8EAAAAAAAAAOBhCAAAAP7//99/4D//AAAAAAAAAAAAPAMEAADA////+Qf84BcAAAAAAAAAAAA/AAAAAPz//58fgAf+QAAAAAAAAAAAAA8AAADg////ewA4gA8EAAAAAAAAAADAAAAAAPz//38BgAP4QQAAAAAAAAAAAAgPAADA////zwAwgAwQAAAAAAAAAAAA9Q8AAPj///8HAAVIAAAAAAAAAAAAAID/AQAA////fwBAAAAQAAAAAAAAAAAA+P8AAGDh//8DAAA0GAAAAAAAAAAAAID/HwAAAPj/HwAAgMIBAAAAAAAAAAAA/P8BAACA//8AAAAYXgAAAAAAAAAAAMD/fwAAAPz/BwAAAOOBAQAAAAAAAAAA/P8/AACA/z8AAABgbtQBAAAAAAAAAOD//w8AAPD/AwAAAAQIeAAAAAAAAAAA/P//AQAA/z8AAACAA4APAQAAAAAAAID//w8AAPD/AwAAAAARsEAAAAAAAAAA+P9/AAAA/j8AAAAAAAAAAAAAAAAAAAD//wcAAPD/QwAAAACAIwAAAAAAAAAA8P9/AAAA/z8EAAAAAD8GIAAAAAAAAAD8/wMAAPD/cQAAAAD4ZwAAAAAAAAAAgP8/AAAA/w8HAAAAgP8HAAAAAAAAAAD4/wMAAOD/MAAAAAD//wEBAAAAAAAAgP8PAAAA/g8DAAAA+P8fAAAAAAAAAAD4PwAAAOB/EAAAAID//wMAAAAAAAAAgP8DAAAA/AMAAAAA+P9/AAAAAAAAAAD8HwAAAMA/AAAAAID//wcAAAAAAAAAwP8BAAAA+AEAAAAA8P9/AAAAAAAAAAD8DwAAAIAPAAAAAAAP/gMAAAAAAAAAwB8AAAAAAAAAAAAAEIAfAAEAAAAAAAD+AwAAAAAAAAAAAAAA8AEgAAAAAAAA4AcAAAAAAAAAAAAAAAAAAAYAAAAAAABeAAAAAAAAAAAAAAAAwAAwAAAAAAAAwAMAAAAAAAAAAAAAAAAIgAEAAAAAAAAeAAAAAAAAAAAAAAAAAAAMAAAAAAAA4AEAAAAAAAAAAAAAAAAAAAAAAAAAAAAPAAAAAAAAAAABAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMAAAAAAAB4AEDwn/8HAAAAAAAAAAAwAAAAAACA/P/h/////w8AAAAAAAAAwAcAAAD4////z///////PwAAAAAAHALwAACA//////////////8HAADw/y///wMAAP7/////////////HwAA+P///38AAID///////////////8AAPL/////BwAO////////////////DwAA8P////8HEPD//////////////z8AAOD/////////////////////////HwDgPwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA';
+  var raw = atob(LAND), W = 180, H = 90, dots = [];
+  function bit(r, c) { var i = r * W + c; return (raw.charCodeAt(i >> 3) >> (i & 7)) & 1; }
+  for (var r = 0; r < H; r++) {
+    var lat = 89 - r * 2, step = Math.max(1, Math.round(1 / Math.max(Math.cos(lat * Math.PI / 180), .2)));
+    for (var c = 0; c < W; c += step) if (bit(r, c)) dots.push(vec(lat, -179 + c * 2));
+  }
+  function vec(lat, lon) { var p = lat * Math.PI / 180, l = lon * Math.PI / 180; return [Math.cos(p) * Math.cos(l), Math.cos(p) * Math.sin(l), Math.sin(p)]; }
+  var HOME = { n: 'You · Lagos', v: vec(6.5, 3.4) };
+  var CITIES = [
+    { n: 'London', at: 1.4, v: vec(51.5, -0.1), sx: -1 },
+    { n: 'Berlin', at: 2.4, v: vec(52.5, 13.4), sx: 1, sy: -1 },
+    { n: 'Dubai', at: 4.6, v: vec(25.2, 55.3) },
+    { n: 'Johannesburg', at: 5.6, v: vec(-26.2, 28) },
+    { n: 'New York', at: 8.6, v: vec(40.7, -74), sx: 1, sy: 1 },
+    { n: 'Toronto', at: 9.5, v: vec(43.7, -79.4), sx: -1, sy: -1 },
+    { n: 'San Francisco', at: 11.2, v: vec(37.8, -122.4) }
+  ];
+  var CAPS = [[0, 'Jobs posted all over the world…'], [1.4, 'London, United Kingdom'], [2.4, 'Berlin, Germany'], [4.6, 'Dubai, UAE'],
+    [5.6, 'Johannesburg, South Africa'], [8.6, 'New York, United States'], [9.5, 'Toronto, Canada'], [11.2, 'San Francisco, United States'],
+    [12.6, '…all of it, from right where you are.']];
+  // camera: [time, centre longitude]
+  var CAM = [[0, 8], [3.2, 12], [5.8, 38], [7.2, 20], [9.8, -62], [11.6, -90], [14.2, 4], [17, 4]];
+  var LOOP = 17, TILT = 18 * Math.PI / 180;
+  function ease(t) { return t < .5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2; }
+  function camLon(t) {
+    for (var i = 0; i < CAM.length - 1; i++) if (t <= CAM[i + 1][0]) {
+      var k = (t - CAM[i][0]) / (CAM[i + 1][0] - CAM[i][0]); return CAM[i][1] + (CAM[i + 1][1] - CAM[i][1]) * ease(k);
+    }
+    return CAM[CAM.length - 1][1];
+  }
+  var S, R, CX, CY, lon0 = 0, cs = 1, sn = 0;
+  function view(v, s) {
+    s = s || 1;
+    var x = v[0] * cs + v[1] * sn, y = -v[0] * sn + v[1] * cs, z = v[2];
+    var depth = x * Math.cos(TILT) + z * Math.sin(TILT), Y = -x * Math.sin(TILT) + z * Math.cos(TILT);
+    return { x: CX + R * s * y, y: CY - R * s * Y, z: depth };
+  }
+  function slerp(a, b, t) {
+    var d = Math.max(-1, Math.min(1, a[0] * b[0] + a[1] * b[1] + a[2] * b[2])), w = Math.acos(d);
+    if (w < 1e-4) return a.slice(); var s1 = Math.sin((1 - t) * w) / Math.sin(w), s2 = Math.sin(t * w) / Math.sin(w);
+    return [a[0] * s1 + b[0] * s2, a[1] * s1 + b[1] * s2, a[2] * s1 + b[2] * s2];
+  }
+  function size() {
+    var d = Math.min(window.devicePixelRatio || 1, 2), w = cv.clientWidth || 400;
+    cv.width = Math.round(w * d); cv.height = Math.round(w * d); S = d; R = cv.width * .4; CX = cv.width / 2; CY = cv.height / 2;
+  }
+  function day() { return document.documentElement.getAttribute('data-theme') === 'day'; }
+  function chip(p, label, col, a, sx, sy) {
+    ctx.save(); ctx.globalAlpha = a; ctx.font = '700 ' + (12 * S) + 'px Inter, system-ui, sans-serif';
+    var tw = ctx.measureText(label).width, pw = tw + 16 * S, ph = 22 * S, x = sx < 0 ? p.x - 10 * S - pw : p.x + 10 * S, y = sy > 0 ? p.y + 8 * S : p.y - 30 * S;
+    if (x + pw > cv.width - 4 * S) x = p.x - 10 * S - pw;
+    if (x < 4 * S) x = p.x + 10 * S;
+    ctx.fillStyle = col; ctx.beginPath(); if (ctx.roundRect) ctx.roundRect(x, y, pw, ph, 11 * S); else ctx.rect(x, y, pw, ph); ctx.fill();
+    ctx.fillStyle = '#fff'; ctx.textBaseline = 'middle'; ctx.fillText(label, x + 8 * S, y + ph / 2 + .5 * S); ctx.restore();
+  }
+  function pin(p, col, t, a) {
+    var pulse = (t % 1.6) / 1.6;
+    ctx.save(); ctx.globalAlpha = a * (1 - pulse); ctx.strokeStyle = col; ctx.lineWidth = 2 * S;
+    ctx.beginPath(); ctx.arc(p.x, p.y, (4 + pulse * 16) * S, 0, 7); ctx.stroke();
+    ctx.globalAlpha = a; ctx.fillStyle = col; ctx.beginPath(); ctx.arc(p.x, p.y, 4.2 * S, 0, 7); ctx.fill();
+    ctx.fillStyle = '#fff'; ctx.beginPath(); ctx.arc(p.x, p.y, 1.6 * S, 0, 7); ctx.fill(); ctx.restore();
+  }
+  function arc(from, to, prog, col, t) {
+    var pts = [], N = 48;
+    for (var i = 0; i <= N; i++) { var k = i / N; pts.push(view(slerp(from, to, k), 1 + .22 * Math.sin(Math.PI * k))); }
+    var upto = Math.floor(prog * N);
+    ctx.save(); ctx.lineCap = 'round';
+    for (var j = 0; j < upto; j++) {
+      var a = pts[j], b = pts[j + 1], vis = function (p) { return p.z > 0 || Math.hypot(p.x - CX, p.y - CY) > R; };
+      if (!vis(a) || !vis(b)) continue;
+      ctx.strokeStyle = col; ctx.globalAlpha = .85; ctx.lineWidth = 1.8 * S;
+      ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+    }
+    if (prog >= 1) { // a spark travelling the finished arc, from the job to you
+      var q = pts[Math.floor(((t * .7) % 1) * N)]; if (q && (q.z > 0 || Math.hypot(q.x - CX, q.y - CY) > R)) {
+        ctx.globalAlpha = 1; ctx.fillStyle = '#FFD7A8'; ctx.beginPath(); ctx.arc(q.x, q.y, 2.4 * S, 0, 7); ctx.fill();
+      }
+    } else if (upto > 0 && pts[upto].z > 0) { ctx.globalAlpha = 1; ctx.fillStyle = '#fff'; ctx.beginPath(); ctx.arc(pts[upto].x, pts[upto].y, 2.6 * S, 0, 7); ctx.fill(); }
+    ctx.restore();
+  }
+  var lastCap = '';
+  function frame(t) {
+    var D = day(), ORANGE = D ? '#E8470F' : '#FF5722', GREEN = D ? '#0B7A47' : '#19C27A';
+    lon0 = camLon(t) * Math.PI / 180; cs = Math.cos(lon0); sn = Math.sin(lon0);
+    ctx.clearRect(0, 0, cv.width, cv.height);
+    // the sphere, with a lit rim
+    var g = ctx.createRadialGradient(CX - R * .35, CY - R * .4, R * .1, CX, CY, R);
+    if (D) { g.addColorStop(0, '#FFFFFF'); g.addColorStop(1, '#F1ECE6'); } else { g.addColorStop(0, '#171A26'); g.addColorStop(1, '#07080D'); }
+    ctx.save(); ctx.shadowColor = D ? 'rgba(232,71,15,.35)' : 'rgba(255,87,34,.55)'; ctx.shadowBlur = 50 * S;
+    ctx.fillStyle = g; ctx.beginPath(); ctx.arc(CX, CY, R, 0, 7); ctx.fill(); ctx.restore();
+    ctx.strokeStyle = D ? 'rgba(232,71,15,.45)' : 'rgba(255,138,61,.55)'; ctx.lineWidth = 1.2 * S; ctx.beginPath(); ctx.arc(CX, CY, R, 0, 7); ctx.stroke();
+    // land as dots, brighter where they face you
+    var dr = 1.15 * S;
+    ctx.fillStyle = D ? '#3A3833' : '#E9E6F2';
+    for (var i = 0; i < dots.length; i++) {
+      var p = view(dots[i]); if (p.z <= 0.02) continue;
+      ctx.globalAlpha = .18 + .62 * p.z; ctx.fillRect(p.x - dr, p.y - dr, dr * 2, dr * 2);
+    }
+    ctx.globalAlpha = 1;
+    // jobs, arcs, and you
+    var home = view(HOME.v);
+    var back = t > 12.6 ? Math.min(1, (t - 12.6) / 1.2) : 0;
+    CITIES.forEach(function (c) {
+      if (t < c.at) return;
+      var k = Math.min(1, (t - c.at) / .9), p = view(c.v);
+      arc(c.v, HOME.v, k, ORANGE, t + c.at);
+      if (p.z > 0) { pin(p, ORANGE, t - c.at, 1); if (t - c.at < 2.6 && back === 0) chip(p, c.n, ORANGE, 1, c.sx, c.sy); }
+    });
+    if (home.z > 0) { pin(home, GREEN, t, 1); chip(home, HOME.n, GREEN, 1, 1, 1); }
+    // caption under the globe follows the camera
+    var txt = CAPS[0][1]; for (var j = 0; j < CAPS.length; j++) if (t >= CAPS[j][0]) txt = CAPS[j][1];
+    if (cap && txt !== lastCap) { cap.textContent = txt; lastCap = txt; }
+  }
+  size();
+  var still = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (still) { frame(14.6); window.addEventListener('resize', function () { size(); frame(14.6); }); return; }
+  var on = false, seen = false, t0 = 0, raf = 0, last = 0, narrow = window.innerWidth < 760;
+  function loop(now) {
+    raf = requestAnimationFrame(loop);
+    if (narrow && now - last < 32) return; // ~30 fps on phones
+    last = now; frame(((now - t0) / 1000) % LOOP);
+  }
+  function start() { if (on) return; on = true; t0 = performance.now(); raf = requestAnimationFrame(loop); } // each visit replays from the start
+  function stop() { on = false; cancelAnimationFrame(raf); }
+  frame(0);
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (es) { seen = es[0].isIntersecting; seen && !document.hidden ? start() : stop(); }, { threshold: .15 }).observe(cv);
+  } else { seen = true; start(); }
+  document.addEventListener('visibilitychange', function () { document.hidden ? stop() : seen && start(); });
+  window.addEventListener('resize', function () { narrow = window.innerWidth < 760; size(); });
+})();
+</script>
 </section>
 
 
