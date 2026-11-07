@@ -1735,6 +1735,12 @@ html[data-theme="day"] .jt{--jt-o:#E8470F;--jt-line:rgba(20,17,14,.12);--jt-card
 
 
 def teaser_html(live, ctx, base):
+    if ctx == "globe":
+        # the home page's world section: one live line; the section carries its own buttons
+        n = len(live)
+        return (f'<!--JOBTEASE:START ctx=globe-->\n'
+                f'<p class="gl-live"><i aria-hidden="true"></i><span><b>{n}</b> remote role{"s" if n != 1 else ""} open to people in Nigeria '
+                f'are live on the board right now, each one checked twice a day.</span></p>\n<!--JOBTEASE:END-->')
     t0 = today()
     recent = {t0.isoformat(), (t0 - dt.timedelta(days=1)).isoformat()}
     counts, new = {}, {}
