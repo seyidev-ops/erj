@@ -1811,6 +1811,11 @@ html[data-theme="day"] .hst-h em,html[data-theme="day"] .hst-k{color:#0B7A47;}
 .hst-b.is-yes span{color:#19C27A;}
 .hst-q{margin:1.4rem 0 0;font:700 clamp(1.05rem,2vw,1.25rem)/1.4 var(--font-display);}
 .hst-q a{color:var(--accent);text-decoration:none;white-space:nowrap;}
+.hst-anchor{display:block;position:relative;top:-90px;}
+.hst .tb{margin-top:.2rem;}
+@media(min-width:900px){.hst .tb{grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);align-items:center;}.hst .tb-facts{grid-column:1/-1;}}
+.hst-more{display:flex;flex-wrap:wrap;align-items:center;gap:.6rem 1rem;margin:1.1rem 0 .4rem;}
+.hst-more>span{font-size:.9rem;color:var(--ink-soft);}
 @media(max-width:760px){.hst-beats{grid-template-columns:1fr;}}
 @media(prefers-reduced-motion:reduce){.hs2-pick,.hs2.js .hs2-a.is-on{transition:none;animation:none;}}
 </style>
@@ -1820,7 +1825,7 @@ html[data-theme="day"] .hst-h em,html[data-theme="day"] .hst-k{color:#0B7A47;}
 <noscript><iframe height="0" src="https://www.googletagmanager.com/ns.html?id=GTM-NMFHS59B" style="display:none;visibility:hidden" width="0"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 <div id="erjNavMount"></div>
-<script>window.ERJ_NAV={active:'home',onPage:[{label:'Which is true for you?',href:'#start',sub:'Your next step in one tap'},{label:'Tobi’s story',href:'#tobi',sub:'Turned down in August, selected in October'},{label:'The five parts',href:'#pledge',sub:'Where every search breaks, and how we fix each one'},{label:'Live remote jobs',href:'#jobs-live',sub:'Real roles open to Nigeria, by field'},{label:'Proof it works',href:'#story',sub:'What changed for people who started where you are'},{label:'Before you decide',href:'#faq',sub:'The questions everyone asks first'},{label:'Join Cohort 13',href:'#enrol',sub:'Enrolment closes Sun 29 Nov'}]};</script>
+<script>window.ERJ_NAV={active:'home',onPage:[{label:'Which is true for you?',href:'#start',sub:'Your next step in one tap'},{label:'Proof it works',href:'#tobi',sub:'Tobi: turned down in August, selected in October'},{label:'The five parts',href:'#pledge',sub:'Where every search breaks, and how we fix each one'},{label:'Live remote jobs',href:'#jobs-live',sub:'Real roles open to Nigeria, by field'},{label:'Before you decide',href:'#faq',sub:'The questions everyone asks first'},{label:'Join Cohort 13',href:'#enrol',sub:'Enrolment closes Sun 29 Nov'}]};</script>
 <main>
 <!-- 01 · ONE PROMISE, A FIRST WIN IN ONE TAP: pick what is true, get your next step here, no form -->
 <section class="wrap hs2" id="start">
@@ -1877,17 +1882,30 @@ html[data-theme="day"] .hst-h em,html[data-theme="day"] .hst-k{color:#0B7A47;}
 </div>
 </section>
 
-<!-- 02 · ONE REAL STORY: character, stakes, the question it leaves open -->
+<!-- 02 · PROOF IT WORKS: one real story, told once; every other story one tap away -->
 <section class="wrap section-line hst" id="tobi">
+<span id="story" class="hst-anchor" aria-hidden="true"></span>
 <div class="hst-in reveal">
-<p class="hst-k"><i aria-hidden="true"></i> A real story · shared with permission</p>
+<p class="hst-k"><i aria-hidden="true"></i> Proof it works · shared with permission</p>
 <h2 class="hst-h">In August, a machine said no to Tobi. <em>In October, micro1 said yes.</em></h2>
-<div class="hst-beats">
-<div class="hst-b"><span>Aug</span><b>Turned down.</b><p>Tobi is a sound engineer and voice talent in Lagos. An automated screen rejected his application before a person ever read it. “I apply and mostly hear nothing,” he told us.</p></div>
-<div class="hst-b"><span>Sep</span><b>The skill was never the problem.</b><p>He took the free diagnosis and sent his CV. His talent was there. What the screen checked for was not on the page.</p></div>
-<div class="hst-b is-yes"><span>Oct</span><b>Selected.</b><p>He reworked how his audio and voice work reads, applied to micro1’s Voice Actor/Coach role on 16 October, and was selected.</p></div>
+<article class="tb" aria-label="Tobi's story">
+<div class="tb-txt">
+<p class="tb-k"><i aria-hidden="true"></i>Latest win · 8 weeks</p>
+<div class="tb-head"><span class="tb-ava" aria-hidden="true">TO</span><div><b>Tobi</b><span>Sound engineer &amp; voice talent · Lagos</span></div></div>
+<p class="tb-body">In August an automated screen turned his Sound Engineer application down. The skill was there; the CV was not carrying what the screen checks for. He sent AUDIT, took the free diagnosis, and reworked how his audio and voice work reads. On 16 October he applied to micro1’s Voice Actor/Coach role. <strong>micro1 selected him.</strong></p>
+<blockquote class="tb-q">It’s been a journey, and I am proud to say.</blockquote>
+<p class="tb-foot"><a href="testimonials.html#story-tobi">Read Tobi’s eight weeks, step by step →</a><a class="tb-share" href="https://wa.me/?text=From%20an%20automated%20%E2%80%9Cno%E2%80%9D%20to%20Selected%20at%20micro1%20in%20eight%20weeks%3A%20Tobi%E2%80%99s%20story%20https%3A%2F%2Feverythingremotejob.com%2Ftestimonials.html%23story-tobi" rel="noopener" target="_blank">Share Tobi’s win</a><span>Shared with permission.</span></p>
 </div>
+<div class="tb-vis" aria-hidden="true">
+<div class="tb-before"><span class="tb-when">Aug</span><span class="tb-from">Deepdub · automated screen</span><b>“We’ve decided not to move forward.”</b><span class="tb-no">✕ Turned down</span></div>
+<div class="tb-path"><svg viewBox="0 0 200 120" preserveAspectRatio="none"><path class="tb-dash" d="M20 0 C 10 70, 80 110, 200 100"/><path class="tb-run" d="M20 0 C 10 70, 80 110, 200 100"/></svg><span class="tb-mid-pill">8 weeks · CV reworked</span></div>
+<div class="tb-after"><span class="tb-when ok">Oct</span><span class="k">✓ Applied 16 Oct</span><span class="b">Selected</span><b>Voice Actor/Coaches</b><span class="o">micro1 · $30–$70/hour, as listed</span><i class="tb-burst"></i></div>
+</div>
+<div class="tb-facts"><div><b>Aug</b><span>turned down by an automated screen</span></div><div><b>8 wks</b><span>to rework how his CV reads</span></div><div><b>Oct</b><span>selected by micro1</span></div></div>
+</article>
 <p class="hst-q">So what was broken? Not his talent. One part of his search, out of five. <a href="#pledge">Which one is yours? ↓</a></p>
+<p class="hst-more"><a class="btn-secondary-ui btn-more" href="testimonials.html"><span>Read Every Story</span><span class="arrow-wrap"><span class="arrow">→</span></span></a><span>Chidi, Ngozi, Tunde, Amara and more: each one fixed a different part.</span></p>
+<p class="pf-fine">Documented individual journeys, not typical or guaranteed results. The work is yours; the market sets the timing.</p>
 </div>
 </section>
 
@@ -1949,126 +1967,7 @@ html[data-theme="day"] .jt{--jt-o:#E8470F;--jt-line:rgba(20,17,14,.12);--jt-card
 <!--JOBTEASE:END-->
 </section>
 
-<!-- 05 · PROOF: who is behind this, the numbers, then the stories -->
 
-
-<section class="wrap section-line" id="story">
-<div class="step"><span class="step-n">05</span><span class="step-l">Proof It Works</span></div>
-<h2 class="cost-h pf-h">They started where you are. <em>Here is what changed.</em></h2>
-<p class="pf-lead">Same country, same power cuts, same doubts. None of them got luckier. Each one found what was holding them back, fixed that one thing, and kept going.</p>
-<div class="pf-stage">
-<article class="tb" aria-label="Tobi's story">
-<div class="tb-txt">
-<p class="tb-k"><i aria-hidden="true"></i>Latest win · 8 weeks</p>
-<div class="tb-head"><span class="tb-ava" aria-hidden="true">TO</span><div><b>Tobi</b><span>Sound engineer &amp; voice talent · Lagos</span></div></div>
-<p class="tb-body">In August an automated screen turned his Sound Engineer application down. The skill was there; the CV was not carrying what the screen checks for. He sent AUDIT, took the free diagnosis, and reworked how his audio and voice work reads. On 16 October he applied to micro1’s Voice Actor/Coach role. <strong>micro1 selected him.</strong></p>
-<blockquote class="tb-q">It’s been a journey, and I am proud to say.</blockquote>
-<p class="tb-foot"><a href="testimonials.html#story-tobi">Read Tobi’s eight weeks, step by step →</a><a class="tb-share" href="https://wa.me/?text=From%20an%20automated%20%E2%80%9Cno%E2%80%9D%20to%20Selected%20at%20micro1%20in%20eight%20weeks%3A%20Tobi%E2%80%99s%20story%20https%3A%2F%2Feverythingremotejob.com%2Ftestimonials.html%23story-tobi" rel="noopener" target="_blank">Share Tobi’s win</a><span>Shared with permission.</span></p>
-</div>
-<div class="tb-vis" aria-hidden="true">
-<div class="tb-before"><span class="tb-when">Aug</span><span class="tb-from">Deepdub · automated screen</span><b>“We’ve decided not to move forward.”</b><span class="tb-no">✕ Turned down</span></div>
-<div class="tb-path"><svg viewBox="0 0 200 120" preserveAspectRatio="none"><path class="tb-dash" d="M20 0 C 10 70, 80 110, 200 100"/><path class="tb-run" d="M20 0 C 10 70, 80 110, 200 100"/></svg><span class="tb-mid-pill">8 weeks · CV reworked</span></div>
-<div class="tb-after"><span class="tb-when ok">Oct</span><span class="k">✓ Applied 16 Oct</span><span class="b">Selected</span><b>Voice Actor/Coaches</b><span class="o">micro1 · $30–$70/hour, as listed</span><i class="tb-burst"></i></div>
-</div>
-<div class="tb-facts"><div><b>Aug</b><span>turned down by an automated screen</span></div><div><b>8 wks</b><span>to rework how his CV reads</span></div><div><b>Oct</b><span>selected by micro1</span></div></div>
-</article>
-<div class="pf-spot reveal" aria-roledescription="carousel" aria-label="Member stories">
-<div class="pf-chips" role="tablist"><button class="pf-chip is-on" type="button" role="tab" aria-selected="true" data-i="0"><span aria-hidden="true">C</span>Chidi</button><button class="pf-chip" type="button" role="tab" aria-selected="false" data-i="1"><span aria-hidden="true">N</span>Ngozi</button><button class="pf-chip" type="button" role="tab" aria-selected="false" data-i="2"><span aria-hidden="true">T</span>Tunde</button><button class="pf-chip" type="button" role="tab" aria-selected="false" data-i="3"><span aria-hidden="true">A</span>Amara</button><button class="pf-chip" type="button" role="tab" aria-selected="false" data-i="4"><span aria-hidden="true">K</span>Kemi</button><button class="pf-chip" type="button" role="tab" aria-selected="false" data-i="5"><span aria-hidden="true">B</span>Blessing</button><button class="pf-chip" type="button" role="tab" aria-selected="false" data-i="6"><span aria-hidden="true">U</span>Uche</button><button class="pf-chip" type="button" role="tab" aria-selected="false" data-i="7"><span aria-hidden="true">T</span>Taiwo</button><button class="pf-chip" type="button" role="tab" aria-selected="false" data-i="8"><span aria-hidden="true">S</span>Sarah</button></div>
-<div class="pf-bar" aria-hidden="true"><i></i></div>
-<div class="pf-slides" aria-live="polite"><article class="pf-slide is-on" data-i="0" id="pf-chidi">
-<div class="pf-who"><span class="pf-ava">C</span><div><b>Chidi</b><span>Backend Engineer · Port Harcourt</span></div></div>
-<div class="pf-delta"><span class="pf-was">~$310/mo</span><span class="pf-arrow" aria-hidden="true"><i></i></span><span class="pf-now">$54,000<small>/year</small></span></div>
-<p class="pf-held">What was holding Chidi back: <b>Aim</b> <span>(applying to the right jobs)</span></p>
-<p class="pf-chg">Stopped applying to companies that could not hire him and aimed at ones that could. Two offers by week 7.</p>
-<blockquote class="pf-q">“Same skills in week 1 as in week 7. What changed was aiming every action at companies already willing to hire him.”</blockquote>
-<a class="pf-more" href="testimonials.html#story-chidi">Read Chidi’s full story <span aria-hidden="true">→</span></a>
-</article><article class="pf-slide" data-i="1" id="pf-ngozi">
-<div class="pf-who"><span class="pf-ava">N</span><div><b>Ngozi</b><span>Retail Supervisor → Customer Success · Enugu</span></div></div>
-<div class="pf-delta"><span class="pf-was">~$115/mo</span><span class="pf-arrow" aria-hidden="true"><i></i></span><span class="pf-now">$2,100<small>/month</small></span></div>
-<p class="pf-held">What was holding Ngozi back: <b>Representation</b> <span>(how the CV spoke for them)</span></p>
-<p class="pf-chg">No degree. Named her four years of customer work properly and backed it with numbers. Offer in six weeks.</p>
-<blockquote class="pf-q">“Nobody asked about my degree. Every single person asked how I handle an angry customer at 11pm, and I had four years of answers.”</blockquote>
-<a class="pf-more" href="testimonials.html#story-ngozi">Read Ngozi’s full story <span aria-hidden="true">→</span></a>
-</article><article class="pf-slide" data-i="2" id="pf-tunde">
-<div class="pf-who"><span class="pf-ava">T</span><div><b>Tunde</b><span>Data Analyst · Lagos</span></div></div>
-<div class="pf-delta"><span class="pf-was">2 final rounds lost</span><span class="pf-arrow" aria-hidden="true"><i></i></span><span class="pf-now">$46,800<small>/year</small></span></div>
-<p class="pf-held">What was holding Tunde back: <b>Conversion</b> <span>(turning interviews into offers)</span></p>
-<p class="pf-chg">His CV was fine. Two weeks of interview practice fixed the part that was actually costing him offers.</p>
-<blockquote class="pf-q">“I rewrote my CV four times for a problem that was never in my CV.”</blockquote>
-<a class="pf-more" href="testimonials.html#story-tunde">Read Tunde’s full story <span aria-hidden="true">→</span></a>
-</article><article class="pf-slide" data-i="3" id="pf-amara">
-<div class="pf-who"><span class="pf-ava">A</span><div><b>Amara</b><span>Operations Manager → Remote Ops · Abuja</span></div></div>
-<div class="pf-delta"><span class="pf-was">~$1,380/yr</span><span class="pf-arrow" aria-hidden="true"><i></i></span><span class="pf-now">$38,400<small>/year</small></span></div>
-<p class="pf-held">What was holding Amara back: <b>Representation</b> <span>(how the CV spoke for them)</span></p>
-<p class="pf-chg">Two young children, 90 minutes a day. Turned real work wins into proof employers could read. Offer in nine weeks.</p>
-<blockquote class="pf-q">“Not exceptional talent or luck — 90 minutes a day, applied consistently, in the right direction.”</blockquote>
-<a class="pf-more" href="testimonials.html#story-amara">Read Amara’s full story <span aria-hidden="true">→</span></a>
-</article><article class="pf-slide" data-i="4" id="pf-kemi">
-<div class="pf-who"><span class="pf-ava">K</span><div><b>Kemi</b><span>English Teacher → Technical Writer · Ibadan</span></div></div>
-<div class="pf-delta"><span class="pf-was">~$1,180/yr</span><span class="pf-arrow" aria-hidden="true"><i></i></span><span class="pf-now">$58,000<small>/year</small></span></div>
-<p class="pf-held">What was holding Kemi back: <b>Capacity</b> <span>(being able to do the work)</span></p>
-<p class="pf-chg">Built the skill first, then the evidence: open-source documentation, paid projects, then a full-time UK offer.</p>
-<blockquote class="pf-q">“The 14 months felt very long while I was in them. Looking back, it was the shortest path.”</blockquote>
-<a class="pf-more" href="testimonials.html#story-kemi">Read Kemi’s full story <span aria-hidden="true">→</span></a>
-</article><article class="pf-slide" data-i="5" id="pf-blessing">
-<div class="pf-who"><span class="pf-ava">B</span><div><b>Blessing</b><span>NGO Coordinator → Remote PM · Lagos</span></div></div>
-<div class="pf-delta"><span class="pf-was">312 applications, 0 replies</span><span class="pf-arrow" aria-hidden="true"><i></i></span><span class="pf-now">$56,000<small>/year</small></span></div>
-<p class="pf-held">What was holding Blessing back: <b>Representation</b> <span>(how the CV spoke for them)</span></p>
-<p class="pf-chg">Her CV spoke NGO language to tech recruiters. Same experience, translated. Signed in week 8.</p>
-<blockquote class="pf-q">“The 312 applications were not wasted. They taught me exactly what was not working.”</blockquote>
-<a class="pf-more" href="testimonials.html#story-blessing">Read Blessing’s full story <span aria-hidden="true">→</span></a>
-</article><article class="pf-slide" data-i="6" id="pf-uche">
-<div class="pf-who"><span class="pf-ava">U</span><div><b>Uche</b><span>Finance Manager · Lagos · 42</span></div></div>
-<div class="pf-delta"><span class="pf-was">~$4,700/yr</span><span class="pf-arrow" aria-hidden="true"><i></i></span><span class="pf-now">$71,000<small>/year</small></span></div>
-<p class="pf-held">What was holding Uche back: <b>Aim</b> <span>(applying to the right jobs)</span></p>
-<p class="pf-chg">A quiet search while still employed: private portfolio, direct outreach, interviews before work.</p>
-<blockquote class="pf-q">“Being 42 was not the obstacle I thought it was.”</blockquote>
-<a class="pf-more" href="testimonials.html#story-uche">Read Uche’s full story <span aria-hidden="true">→</span></a>
-</article><article class="pf-slide" data-i="7" id="pf-taiwo">
-<div class="pf-who"><span class="pf-ava">T</span><div><b>Taiwo</b><span>UX Designer · Abuja</span></div></div>
-<div class="pf-delta"><span class="pf-was">$38,000 offered</span><span class="pf-arrow" aria-hidden="true"><i></i></span><span class="pf-now">$52,000<small>accepted</small></span></div>
-<p class="pf-held">What was holding Taiwo back: <b>Conversion</b> <span>(turning interviews into offers)</span></p>
-<p class="pf-chg">One offer, no leverage, one honest negotiation email. Accepted without a counter.</p>
-<blockquote class="pf-q">“The email took 25 minutes to write.”</blockquote>
-<a class="pf-more" href="testimonials.html#story-taiwo">Read Taiwo’s full story <span aria-hidden="true">→</span></a>
-</article><article class="pf-slide" data-i="8" id="pf-sarah">
-<div class="pf-who"><span class="pf-ava">S</span><div><b>Sarah</b><span>Social Media &amp; Marketing</span></div></div>
-<div class="pf-delta"><span class="pf-was">$48,000 in-office</span><span class="pf-arrow" aria-hidden="true"><i></i></span><span class="pf-now">$72,000<small>/year remote</small></span></div>
-<p class="pf-held">What was holding Sarah back: <b>Representation</b> <span>(how the CV spoke for them)</span></p>
-<p class="pf-chg">Five months, one interview. Rebuilt the CV around numbers, added a portfolio, wrote to 12 companies directly. Three offers.</p>
-<blockquote class="pf-q">“I didn’t know if it would work. Now I can’t believe I spent 5 months doing it the other way.”</blockquote>
-<a class="pf-more" href="testimonials.html#story-sarah">Read Sarah’s full story <span aria-hidden="true">→</span></a>
-</article></div>
-</div>
-</div>
-<div class="pf-next reveal">
-<div><b>Which one is holding <em>you</em> back?</b><span>Five questions, about ninety seconds. Then you will know which of these stories is closest to yours.</span></div>
-<div class="pf-next-btns"><a class="btn-primary-ui btn-yes" href="diagnose/"><span>Find What Is Holding Me Back</span><span class="arrow-wrap"><span class="arrow">→</span></span></a><a class="btn-secondary-ui btn-more" href="testimonials.html"><span>Read Every Story</span><span class="arrow-wrap"><span class="arrow">→</span></span></a></div>
-</div>
-<p class="pf-fine">Documented individual journeys, not typical or guaranteed results. The work is yours; the market sets the timing.</p>
-<script>
-(function(){
-  var root=document.getElementById('story'); if(!root) return;
-  var slides=[].slice.call(root.querySelectorAll('.pf-slide')), chips=[].slice.call(root.querySelectorAll('.pf-chip'));
-  var bar=root.querySelector('.pf-bar i'), spot=root.querySelector('.pf-spot'), cur=0, timer=null, DUR=6500;
-  var still=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
-  function show(i){ cur=(i+slides.length)%slides.length;
-    slides.forEach(function(s,k){s.classList.toggle('is-on',k===cur);});
-    chips.forEach(function(c,k){c.classList.toggle('is-on',k===cur);c.setAttribute('aria-selected',k===cur);});
-    var c=chips[cur]; if(c&&c.parentNode) c.parentNode.scrollTo({left:c.offsetLeft-c.parentNode.clientWidth/2+c.clientWidth/2,behavior:'smooth'});
-    if(bar){bar.style.transition='none';bar.style.transform='scaleX(0)';void bar.offsetWidth;
-      if(!still){bar.style.transition='transform '+DUR+'ms linear';bar.style.transform='scaleX(1)';}} }
-  function play(){ stop(); if(still) return; timer=setInterval(function(){show(cur+1);},DUR); }
-  function stop(){ if(timer) clearInterval(timer); timer=null; }
-  chips.forEach(function(c){c.addEventListener('click',function(){show(+c.dataset.i);play();});});
-  spot.addEventListener('mouseenter',stop); spot.addEventListener('mouseleave',play);
-  spot.addEventListener('focusin',stop);
-  var x0=null; spot.addEventListener('touchstart',function(e){x0=e.touches[0].clientX;stop();},{passive:true});
-  spot.addEventListener('touchend',function(e){ if(x0===null) return; var dx=e.changedTouches[0].clientX-x0; if(Math.abs(dx)>40) show(cur+(dx<0?1:-1)); x0=null; play(); });
-  if('IntersectionObserver' in window){ new IntersectionObserver(function(es){es.forEach(function(e){ e.isIntersecting?(show(cur),play()):stop(); });},{threshold:.25}).observe(spot); } else { show(0); play(); }
-})();
-</script>
-</section>
 <!-- HOW WE HELP · one section, two shelves: free and go-further, each by DIY / DWY / DFY -->
 
 
@@ -2079,7 +1978,7 @@ html[data-theme="day"] .jt{--jt-o:#E8470F;--jt-line:rgba(20,17,14,.12);--jt-card
 
 <!-- FAQ / OBJECTIONS -->
 <section class="wrap section-line" id="faq">
-<div class="step"><span class="step-n">06</span><span class="step-l">Before You Decide</span></div>
+<div class="step"><span class="step-n">05</span><span class="step-l">Before You Decide</span></div>
 <h2 class="cost-h" style="margin-bottom:1.6rem;">The questions everyone asks <em>first.</em></h2>
 <div class="faq reveal">
 <details>
@@ -2119,7 +2018,7 @@ html[data-theme="day"] .jt{--jt-o:#E8470F;--jt-line:rgba(20,17,14,.12);--jt-card
 <!-- DIAGNOSIS · DECISION POINT -->
 <!-- JOIN COHORT 13 · why Foundation Training, one countdown, one action -->
 <section class="wrap section-line" id="enrol">
-<div class="step"><span class="step-n">07</span><span class="step-l">Join Cohort 13</span></div>
+<div class="step"><span class="step-n">06</span><span class="step-l">Join Cohort 13</span></div>
 <div class="ep reveal" aria-label="Our record so far">
 <div class="ep-cell"><div class="ep-n" data-count="382" data-suffix="+">382+</div><div class="ep-l">Professionals placed into global remote work</div></div>
 <div class="ep-cell"><div class="ep-n ep-cur"><span>USD</span><i>·</i><span>EUR</span><i>·</i><span>GBP</span></div><div class="ep-l">Hard-currency salaries, not naira ceilings</div></div>
@@ -2169,7 +2068,7 @@ html[data-theme="day"] .jt{--jt-o:#E8470F;--jt-line:rgba(20,17,14,.12);--jt-card
 </a>
 <script defer="" src="erj-theme.js?v=20260911a"></script>
 <script defer="" src="erj-product.js?v=20260924c"></script>
-<script defer="" src="erj-nav.js?v=20261107b"></script>
+<script defer="" src="erj-nav.js?v=20261107c"></script>
 <script defer="" src="erj-config.js?v=20261107b"></script>
 <script defer="" src="erj-capture.js?v=20260911a"></script>
 <script>if("serviceWorker" in navigator){window.addEventListener("load",function(){var go=function(){navigator.serviceWorker.register("/sw.js",{updateViaCache:"none"}).then(function(reg){reg.update();}).catch(function(){});};if("requestIdleCallback" in window){requestIdleCallback(go,{timeout:3000});}else{setTimeout(go,1200);}});}</script>
