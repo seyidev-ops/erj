@@ -717,6 +717,209 @@ html[data-theme="day"] .fx-price-save{color:#1E8E4E;}
 .ft-sponsor h2{margin:.3rem 0 .6rem;}
 .ft-sponsor p:not(.section-label){margin:0;color:var(--ink-soft);line-height:1.65;max-width:62ch;}
 </style>
+<style id="ftV2">
+/* ── Nov 2026: the registering cohort, the fit test, the classes, the bonus and "Invest in yourself" ── */
+@property --nw-a{syntax:"<angle>";inherits:false;initial-value:0deg;}
+.ft-lit{position:relative;isolation:isolate;}
+/* the registering cohort: one card, its dates, its clock and how much of the window is left */
+.fx-now-wrap{margin:0 0 1.5rem;max-width:560px;}
+.fx-now{position:relative;isolation:isolate;padding:clamp(1rem,2.6vw,1.3rem);border-radius:24px;
+  background:radial-gradient(120% 140% at 0 0,rgba(255,87,34,.18),transparent 55%),radial-gradient(90% 120% at 100% 100%,rgba(255,178,92,.12),transparent 60%),var(--card);
+  box-shadow:0 22px 44px -28px rgba(255,87,34,.8);}
+.fx-now::before{content:"";position:absolute;inset:0;z-index:-1;border-radius:inherit;padding:2px;
+  background:conic-gradient(from var(--nw-a),#FF5722,#FFB25C,#E8470F 40%,rgba(255,87,34,.22) 62%,#FF5722);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;}
+.fx-now+.fx-now{display:none;}
+.js-fx .fx-now{display:none;}
+.js-fx .fx-now.show{display:block;}
+.fx-now-top{display:flex;align-items:center;justify-content:space-between;gap:.8rem;flex-wrap:wrap;margin-bottom:.8rem;}
+.fx-now-live{display:inline-flex;align-items:center;gap:.45rem;padding:.35rem .7rem;border-radius:999px;background:rgba(25,194,122,.14);color:#12955c;
+  font:800 .64rem/1 var(--font-body);letter-spacing:.14em;text-transform:uppercase;}
+html[data-theme="night"] .fx-now-live{color:#3ddc97;}
+.fx-now-live i{width:8px;height:8px;border-radius:50%;background:#19C27A;box-shadow:0 0 0 0 rgba(25,194,122,.6);}
+.fx-now-n{font:800 clamp(1.5rem,3.4vw,1.9rem)/1 var(--font-display);letter-spacing:-.03em;color:var(--ink);}
+.fx-now-facts{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:.9rem;}
+.fx-now-facts>div{padding:.65rem .8rem;border-radius:14px;background:rgba(255,87,34,.07);border:1px solid rgba(255,87,34,.18);}
+.fx-now-facts span{display:block;font:700 .6rem/1.2 var(--font-body);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:.3rem;}
+.fx-now-facts b{font:800 clamp(.92rem,1.8vw,1.02rem)/1.25 var(--font-display);color:var(--ink);}
+.fx-now-k{display:block;font:700 .62rem/1 var(--font-body);letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:.45rem;}
+.fx-now .fx-clock{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.45rem;}
+.fx-now .fx-clock>div{min-width:0;padding:.6rem .3rem;border-radius:14px;border:1px solid var(--line);background:var(--card);text-align:center;}
+.fx-now .fx-clock>div:last-child{border-color:rgba(255,87,34,.5);}
+.fx-now .fx-clock b{font-size:clamp(1.5rem,3.6vw,2rem);}
+.fx-now-bar{position:relative;height:6px;margin-top:.9rem;border-radius:6px;background:rgba(255,87,34,.12);overflow:hidden;}
+.fx-now-bar i{position:absolute;left:0;top:0;bottom:0;width:var(--left,60%);border-radius:inherit;
+  background:linear-gradient(90deg,#C9410C,#FF5722,#FFB25C);background-size:200% 100%;}
+@media(prefers-reduced-motion:no-preference){
+  .fx-now::before{animation:nwSpin 5s linear infinite;}
+  .fx-now-live i{animation:nwPing 1.8s infinite;}
+  .fx-now .fx-clock>div:last-child{animation:nwTick 1s ease-in-out infinite;}
+  .fx-now-bar i{animation:nwFlow 2.4s linear infinite;}}
+@keyframes nwSpin{to{--nw-a:360deg}}
+@keyframes nwPing{0%{box-shadow:0 0 0 0 rgba(25,194,122,.6)}100%{box-shadow:0 0 0 9px rgba(25,194,122,0)}}
+@keyframes nwTick{0%,100%{box-shadow:0 0 0 0 rgba(255,87,34,0)}50%{box-shadow:0 0 0 4px rgba(255,87,34,.16)}}
+@keyframes nwFlow{to{background-position:-200% 0}}
+@media(max-width:340px){.fx-now-facts{grid-template-columns:1fr;}}
+
+/* Is this for you? a meter, numbered cards that light up, Yes/No that answer back */
+.ft-meter{display:flex;align-items:center;gap:.9rem;margin:0 0 .9rem;font:700 .7rem/1 var(--font-body);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);}
+.ft-meter i{flex:1;height:8px;border-radius:8px;background:rgba(255,87,34,.12);overflow:hidden;}
+.ft-meter b{display:block;height:100%;width:0;border-radius:inherit;background:linear-gradient(90deg,#C9410C,#FF5722,#FFB25C);transition:width .5s cubic-bezier(.22,1,.36,1);}
+#fit .ft-q{position:relative;isolation:isolate;border:0;border-radius:22px;padding:clamp(.95rem,2.4vw,1.2rem) clamp(1rem,2.6vw,1.4rem);
+  background:radial-gradient(120% 160% at 0 0,rgba(255,87,34,.08),transparent 55%),var(--card);
+  box-shadow:0 0 0 1px var(--card-line,var(--line)),0 14px 30px -24px rgba(255,87,34,.6);transition:transform .3s cubic-bezier(.22,1,.36,1),box-shadow .3s;}
+#fit .ft-q:hover{transform:translateY(-2px);box-shadow:0 0 0 1px rgba(255,87,34,.45),0 18px 36px -22px rgba(255,87,34,.7);}
+#fit .ft-q::before{width:clamp(42px,5vw,50px);height:auto;aspect-ratio:1;border:0;border-radius:14px;color:#fff;font-size:1.15rem;
+  background:linear-gradient(140deg,#FF5722,#C9410C);box-shadow:inset 0 1px 0 rgba(255,255,255,.3),0 8px 18px -10px rgba(201,65,12,.9);}
+#fit .ft-q.done::before{content:"✓";}
+#fit .ft-q.done{box-shadow:0 0 0 2px rgba(255,87,34,.55),0 18px 36px -24px rgba(255,87,34,.75);}
+#fit .ft-q p b{font-size:clamp(1rem,1.9vw,1.15rem);}
+#fit .ft-yn{gap:0;padding:4px;border-radius:999px;background:rgba(255,87,34,.08);border:1px solid rgba(255,87,34,.2);}
+#fit .ft-yn button{border:0;min-width:4.6rem;padding:.65rem 1rem;transition:background .25s,color .25s,transform .2s;}
+#fit .ft-yn button:active{transform:scale(.94);}
+#fit .ft-yn button[aria-pressed="true"][data-a="1"]{background:linear-gradient(135deg,#FF5722,#C9410C);box-shadow:0 6px 16px -8px rgba(201,65,12,.9);}
+#fit .ft-fit-out.js .ft-o.on{position:relative;padding:clamp(1.1rem,2.6vw,1.4rem);border-radius:22px;font-size:1rem;border:0;
+  background:radial-gradient(120% 160% at 0 0,rgba(255,87,34,.2),transparent 60%),var(--card);box-shadow:0 0 0 2px rgba(255,87,34,.55),0 20px 40px -24px rgba(255,87,34,.8);}
+#fit .ft-o.on b{font-size:1.15rem;}
+#fit .ft-o.on a{padding:.6rem 1rem;border-radius:999px;background:#C9410C;color:#fff;}
+@media(prefers-reduced-motion:no-preference){#fit .ft-fit-out.js .ft-o.on{animation:fitPop .5s cubic-bezier(.22,1,.36,1);}}
+@keyframes fitPop{0%{transform:scale(.97)}60%{transform:scale(1.01)}100%{transform:none}}
+
+/* the three classes: each a ticket with its hour, its days and a real call to action */
+.cl-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(.8rem,2vw,1.2rem);margin-top:1.8rem;}
+.cl-card{position:relative;isolation:isolate;display:flex;flex-direction:column;padding:clamp(1.2rem,2.8vw,1.6rem);border-radius:26px;overflow:hidden;
+  background:radial-gradient(120% 90% at 100% 0,rgba(255,87,34,.22),transparent 55%),var(--card);
+  box-shadow:0 0 0 1px var(--card-line,var(--line)),0 24px 48px -32px rgba(255,87,34,.8);transition:transform .35s cubic-bezier(.22,1,.36,1),box-shadow .35s;}
+.cl-card::before{content:"";position:absolute;inset:0;z-index:-1;border-radius:inherit;padding:2px;opacity:0;transition:opacity .3s;
+  background:conic-gradient(from var(--nw-a),#FF5722,#FFB25C,#E8470F 40%,rgba(255,87,34,.22) 62%,#FF5722);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;}
+.cl-card:hover{transform:translateY(-6px);}
+.cl-card:hover::before{opacity:1;}
+.cl-top{display:flex;align-items:center;justify-content:space-between;gap:.6rem;}
+.cl-no{font:800 .78rem/1 var(--font-display);letter-spacing:.1em;text-transform:uppercase;padding:.45rem .75rem;border-radius:999px;color:#fff;background:linear-gradient(135deg,#FF5722,#C9410C);}
+.cl-kind{font:700 .66rem/1 var(--font-body);letter-spacing:.16em;text-transform:uppercase;color:var(--accent);}
+.cl-time{display:flex;align-items:baseline;gap:.5rem;margin:1.2rem 0 .2rem;}
+.cl-time b{font:800 clamp(3rem,6.4vw,4.4rem)/.9 var(--font-display);letter-spacing:-.05em;
+  background:linear-gradient(135deg,var(--ink) 30%,#FF5722);-webkit-background-clip:text;background-clip:text;color:transparent;}
+.cl-time span{font:800 .9rem/1 var(--font-display);color:var(--accent);}
+.cl-to{margin:0 0 .9rem;font-size:.86rem;color:var(--ink-soft);}
+.cl-week{display:flex;gap:.3rem;margin-bottom:1rem;}
+.cl-week i{font-style:normal;flex:1;max-width:34px;aspect-ratio:1;display:grid;place-items:center;border-radius:10px;font:800 .72rem/1 var(--font-body);
+  color:var(--ink-faint);border:1px solid var(--line);}
+.cl-week i.on{color:#fff;border-color:transparent;background:linear-gradient(140deg,#FF5722,#C9410C);}
+.cl-for{margin:0 0 1rem;color:var(--ink);line-height:1.5;font-size:.95rem;}
+.cl-for span{display:block;font:700 .62rem/1 var(--font-body);letter-spacing:.16em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:.4rem;}
+.cl-meta{list-style:none;display:flex;gap:.4rem;margin:0 0 1.2rem;padding:0;flex-wrap:wrap;}
+.cl-meta li{display:flex;align-items:baseline;gap:.3rem;padding:.4rem .7rem;border-radius:999px;background:rgba(255,87,34,.08);font-size:.76rem;color:var(--ink-soft);}
+.cl-meta b{font:800 .95rem/1 var(--font-display);color:var(--ink);}
+.cl-go{position:relative;overflow:hidden;margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:.8rem;padding:.95rem 1rem .95rem 1.25rem;border-radius:16px;
+  color:#fff;text-decoration:none;font:800 1rem/1.2 var(--font-display);background:linear-gradient(135deg,#FF5722,#C9410C);
+  box-shadow:0 14px 28px -14px rgba(201,65,12,.95);transition:transform .25s,box-shadow .25s;}
+.cl-go i{font-style:normal;flex:none;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.2);transition:transform .3s cubic-bezier(.22,1,.36,1);}
+.cl-go::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,.28) 50%,transparent 65%);background-size:250% 100%;background-position:130% 0;}
+.cl-go:hover{transform:translateY(-2px);box-shadow:0 18px 34px -14px rgba(201,65,12,1);}
+.cl-go:hover i{transform:translateX(4px);}
+.cl-go:active{transform:scale(.98);}
+.cl-note{display:block;margin-top:.5rem;text-align:center;font-size:.72rem;color:var(--ink-faint);}
+@media(prefers-reduced-motion:no-preference){
+  .cl-card:hover::before{animation:nwSpin 4s linear infinite;}
+  .cl-go::after{animation:faSheen 3.8s ease-in-out infinite;}
+  .cl-card:nth-child(2) .cl-go::after{animation-delay:1.2s}.cl-card:nth-child(3) .cl-go::after{animation-delay:2.4s}}
+@media(max-width:900px){.cl-grid{grid-template-columns:1fr;max-width:520px;}}
+
+/* the bonus: the value it carries, a button for how it reaches you, and a way to claim it */
+.bn-val{display:flex;align-items:center;gap:.9rem;flex-wrap:wrap;margin:.2rem 0 1rem;}
+.bn-val>span{display:flex;flex-direction:column;padding:.6rem .9rem;border-radius:14px;border:1px solid var(--line);background:var(--card);}
+.bn-val>span:last-child{border-color:rgba(30,142,78,.5);background:rgba(30,142,78,.1);}
+.bn-val s{font:800 1.2rem/1.1 var(--font-display);color:var(--ink-faint);}
+.bn-val b{font:800 1.5rem/1 var(--font-display);color:#1E8E4E;}
+html[data-theme="night"] .bn-val b{color:#3ddc97;}
+.bn-val small{font-size:.7rem;color:var(--ink-faint);margin-top:.2rem;}
+.bn-val>i{font-style:normal;font-weight:800;color:#1E8E4E;}
+.fx-pills li{display:inline-flex;align-items:center;gap:.4rem;}
+.fx-pills li::before{content:"✓";display:grid;place-items:center;width:18px;height:18px;border-radius:50%;font-size:.62rem;font-weight:800;color:#fff;background:#1E8E4E;}
+.bn-how{margin:.4rem 0 1rem;}
+.bn-btn{background:radial-gradient(120% 160% at 0 0,rgba(30,142,78,.2),transparent 55%),var(--card);box-shadow:0 18px 40px -22px rgba(30,142,78,.7);}
+.bn-btn::before{background:conic-gradient(from var(--fa-a),#1E8E4E,#7BE0A7,#12955c 40%,rgba(30,142,78,.25) 60%,#1E8E4E)!important;}
+.bn-btn .fa-n{background:linear-gradient(140deg,#25b366,#1E8E4E);box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 10px 22px -10px rgba(30,142,78,.9);}
+.bn-btn .fa-go{background:#1E8E4E;}
+.bn-btn:hover .fa-go{background:#25b366;}
+.bn-btn:hover{box-shadow:0 26px 50px -22px rgba(30,142,78,.85);}
+.bn-how[open] ol{list-style:none;counter-reset:bn;padding:0;margin:1rem 0;display:grid;gap:.6rem;}
+.bn-how[open] ol li{counter-increment:bn;position:relative;padding:.75rem .9rem .75rem 3.1rem;border-radius:14px;border:1px solid var(--line);background:var(--card);}
+.bn-how[open] ol li::before{content:counter(bn);position:absolute;left:.75rem;top:50%;transform:translateY(-50%);width:28px;height:28px;border-radius:50%;display:grid;place-items:center;
+  font:800 .8rem/1 var(--font-display);color:#fff;background:#1E8E4E;}
+.bn-cta{display:inline-flex;align-items:center;gap:.6rem;margin:.2rem 0 1rem;padding:.75rem 1.1rem;border-radius:999px;color:#fff;text-decoration:none;font-weight:800;
+  background:linear-gradient(135deg,#25b366,#1E8E4E);box-shadow:0 12px 26px -12px rgba(30,142,78,.9);transition:transform .25s;}
+.bn-cta:hover{transform:translateY(-2px);}
+.bn-cta i{font-style:normal;transition:transform .3s;}
+.bn-cta:hover i{transform:translateX(4px);}
+@media(prefers-reduced-motion:no-preference){
+  .fx-bonus-img picture{display:block;animation:bnFloat 6s ease-in-out infinite alternate;}
+  .fx-seal{animation:bnSeal 4s ease-in-out infinite;}}
+@keyframes bnFloat{from{transform:translateY(6px) rotate(-.6deg)}to{transform:translateY(-8px) rotate(.6deg)}}
+@keyframes bnSeal{0%,100%{transform:rotate(-8deg) scale(1)}50%{transform:rotate(6deg) scale(1.06)}}
+
+/* Invest in yourself: each stage priced on its own, then the offer that beats the sum */
+.iv-sub{color:var(--ink-soft);margin:.2rem 0 1.4rem;max-width:62ch;}
+.iv-packs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.8rem;}
+.iv-pack{display:flex;flex-direction:column;gap:.45rem;padding:1.15rem 1.15rem 1.05rem;border-radius:22px;background:var(--card);
+  box-shadow:0 0 0 1px var(--card-line,var(--line));transition:transform .3s cubic-bezier(.22,1,.36,1),box-shadow .3s;}
+.iv-pack:hover{transform:translateY(-4px);box-shadow:0 0 0 1px rgba(255,87,34,.5),0 18px 36px -24px rgba(255,87,34,.7);}
+.iv-st{font:700 .64rem/1 var(--font-body);letter-spacing:.16em;text-transform:uppercase;color:var(--accent);}
+.iv-name{font:800 1.05rem/1.25 var(--font-display);color:var(--ink);}
+.iv-pack p{margin:0;font-size:.84rem;line-height:1.5;color:var(--ink-soft);flex:1;}
+.iv-price{font:800 1.6rem/1 var(--font-display);letter-spacing:-.02em;color:var(--ink);margin-top:.4rem;}
+.iv-buy{display:flex;align-items:center;justify-content:space-between;padding:.6rem .85rem;border-radius:12px;border:1.5px solid rgba(255,87,34,.45);
+  color:var(--accent);font-weight:800;font-size:.88rem;text-decoration:none;transition:background .25s,color .25s;}
+.iv-buy i{font-style:normal;transition:transform .3s;}
+.iv-buy:hover{background:#C9410C;border-color:#C9410C;color:#fff;}
+.iv-buy:hover i{transform:translateX(3px);}
+.iv-or{display:flex;align-items:center;gap:1rem;margin:1.6rem 0 1.4rem;color:var(--ink-faint);font:700 .7rem/1 var(--font-body);letter-spacing:.16em;text-transform:uppercase;}
+.iv-or::before,.iv-or::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(255,87,34,.45),transparent);}
+.iv-offer{position:relative;isolation:isolate;scroll-margin-top:100px;padding:clamp(1.5rem,3.6vw,2.4rem);border-radius:30px;
+  background:radial-gradient(90% 120% at 0 0,rgba(255,87,34,.22),transparent 55%),radial-gradient(80% 100% at 100% 100%,rgba(255,178,92,.14),transparent 60%),var(--card);
+  box-shadow:0 30px 70px -36px rgba(255,87,34,.9);}
+.iv-offer::before{content:"";position:absolute;inset:0;z-index:-1;border-radius:inherit;padding:2.5px;
+  background:conic-gradient(from var(--nw-a),#FF5722,#FFB25C,#E8470F 40%,rgba(255,87,34,.25) 62%,#FF5722);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;}
+.iv-ribbon{position:absolute;top:-.85rem;left:clamp(1.2rem,3vw,2rem);padding:.45rem .95rem;border-radius:999px;color:#fff;font:800 .66rem/1 var(--font-body);letter-spacing:.14em;text-transform:uppercase;
+  background:linear-gradient(135deg,#FF5722,#C9410C);box-shadow:0 10px 22px -10px rgba(201,65,12,.9);}
+.iv-offer-grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.85fr);gap:clamp(1.2rem,3.4vw,2.4rem);align-items:start;}
+.iv-main h3{margin:.3rem 0 1rem;font:800 clamp(1.5rem,3.2vw,2.1rem)/1.1 var(--font-display);letter-spacing:-.03em;color:var(--ink);}
+.iv-main h3 span{color:var(--accent);}
+.iv-sum{display:flex;flex-wrap:wrap;align-items:center;gap:.35rem;font:700 .9rem/1 var(--font-display);color:var(--ink-soft);}
+.iv-sum span{padding:.4rem .6rem;border-radius:10px;border:1px solid var(--line);background:var(--card);}
+.iv-sum i{font-style:normal;color:var(--ink-faint);}
+.iv-sum s{font-size:1.05rem;color:var(--ink-faint);text-decoration-color:#FF5722;text-decoration-thickness:2px;}
+.iv-now{display:flex;flex-wrap:wrap;align-items:baseline;gap:.4rem 1rem;margin:1rem 0 1.2rem;}
+.iv-now small{width:100%;font:700 .66rem/1 var(--font-body);letter-spacing:.16em;text-transform:uppercase;color:var(--ink-faint);}
+.iv-now b{font:800 clamp(2.8rem,7vw,4.2rem)/1 var(--font-display);letter-spacing:-.04em;color:var(--ink);}
+.iv-now em{font-style:normal;padding:.45rem .8rem;border-radius:999px;font-weight:800;font-size:.86rem;color:#fff;background:#1E8E4E;}
+.iv-plus-k{margin:0 0 .5rem;font:700 .64rem/1 var(--font-body);letter-spacing:.16em;text-transform:uppercase;color:var(--accent);}
+.iv-plus{list-style:none;margin:0;padding:0;display:grid;gap:.5rem;}
+.iv-plus li{position:relative;padding-left:1.9rem;color:var(--ink);line-height:1.45;}
+.iv-plus li::before{content:"✓";position:absolute;left:0;top:.05rem;width:20px;height:20px;border-radius:50%;display:grid;place-items:center;font-size:.66rem;font-weight:800;color:#fff;background:linear-gradient(135deg,#FF5722,#C9410C);}
+.iv-plus em{display:inline-block;margin-left:.3rem;font-style:normal;font-size:.74rem;font-weight:800;color:#1E8E4E;}
+html[data-theme="night"] .iv-plus em{color:#3ddc97;}
+.iv-side{display:flex;flex-direction:column;gap:.7rem;padding:clamp(1rem,2.4vw,1.3rem);border-radius:22px;background:rgba(255,87,34,.06);border:1px solid rgba(255,87,34,.22);}
+.iv-co{display:flex;flex-direction:column;gap:.35rem;}
+.iv-co.is-past{display:none;}
+.iv-co+.iv-co{display:none;}
+.js-fx .iv-co+.iv-co:not(.is-past){display:flex;}
+.iv-co .fx-now-live{align-self:flex-start;}
+.iv-co b{font:800 1.15rem/1.25 var(--font-display);color:var(--ink);}
+.iv-co>span:last-child{font-size:.84rem;color:var(--ink-soft);}
+.iv-inst{font-size:.82rem;color:var(--ink-soft);line-height:1.5;}
+.iv-inst a{color:var(--accent);}
+.iv-side .fx-pay{margin:0;font-size:.74rem;line-height:1.5;color:var(--ink-faint);text-align:center;}
+.iv-fine{margin:1rem 0 0;font-size:.82rem;line-height:1.6;color:var(--ink-faint);max-width:80ch;}
+@media(prefers-reduced-motion:no-preference){.iv-offer::before{animation:nwSpin 6s linear infinite;}}
+@media(max-width:1000px){.iv-packs{grid-template-columns:1fr 1fr;}}
+@media(max-width:860px){.iv-offer-grid{grid-template-columns:1fr;}}
+@media(max-width:520px){.iv-packs{grid-template-columns:1fr;}}
+@media(prefers-reduced-motion:reduce){.fx-now::before,.cl-card::before,.iv-offer::before{animation:none!important;}}
+</style>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -748,30 +951,29 @@ html[data-theme="day"] .fx-price-save{color:#1E8E4E;}
 <h1>Keep your job.<br/><em>Leave in twenty days with proof.</em></h1>
 <p class="fx-lede">One live class a day at the hour that suits you: early, after work, or weekends. Your work is marked by a person, and you finish with a certificate.</p>
 
-<div class="fx-pick" role="radiogroup" aria-label="Choose your cohort">
-<button class="fx-co on" type="button" role="radio" aria-checked="true" data-co="Cohort 13, begins Mon 30 Nov" data-ends="2026-11-29T20:00:00+01:00" data-sticky="Cohort 13 registration closes Sun 29 Nov|Classes begin Mon 30 Nov · 8 PM WAT">
-<span class="fx-tag now" data-tag>Enrolling now</span>
-<span class="fx-co-n">Cohort 13</span>
-<span class="fx-co-d"><em>Begins</em> <b>Mon 30 Nov</b></span>
-</button>
-<button class="fx-co" type="button" role="radio" aria-checked="false" data-co="Cohort 14, begins Mon 4 Jan 2027" data-ends="2027-01-03T20:00:00+01:00" data-sticky="Cohort 14 registration closes Sun 3 Jan|Classes begin Mon 4 Jan · 8 PM WAT">
-<span class="fx-tag" data-tag>Upcoming</span>
-<span class="fx-co-n">Cohort 14</span>
-<span class="fx-co-d"><em>Begins</em> <b>Mon 4 Jan</b></span>
-</button>
-<a class="fx-co fx-co-fwd" href="#pricing"><span class="fx-tag">Later?</span><span class="fx-co-n">Register forward</span><span class="fx-co-d"><em>Pay now,</em> <b>hold a seat</b></span></a>
-</div>
-
-<div class="fx-timer">
-<span class="fx-timer-k" data-lbl="">Cohort 13 · registration closes in</span>
-<div class="fx-clock" data-no-evergreen="" data-closed-label="Registration has closed" data-deadline="2026-11-29T20:00:00+01:00" data-next-deadline="2027-01-03T20:00:00+01:00" data-next-label="Next cohort · registration closes in" data-next-date="Closes Sun 29 Nov, 8:00 PM WAT · classes begin Mon 30 Nov">
+<div class="fx-now-wrap">
+<div class="fx-now" data-ends="2026-11-29T20:00:00+01:00" data-opens="2026-10-31T00:00:00+01:00" data-co="Cohort 13, begins Mon 30 Nov" data-sticky="Cohort 13 registration closes Sun 29 Nov|Classes begin Mon 30 Nov · 8 PM WAT">
+<div class="fx-now-top"><span class="fx-now-live"><i aria-hidden="true"></i>Registering now</span><span class="fx-now-n">Cohort 13</span></div>
+<div class="fx-now-facts"><div><span>Classes begin</span><b>Mon 30 Nov</b></div><div><span>Registration closes</span><b>Sun 29 Nov · 8 PM WAT</b></div></div>
+<div class="fx-now-clock"><span class="fx-now-k">Registration closes in</span>
+<div class="fx-clock" data-no-evergreen="" data-closed-label="Registration has closed" data-deadline="2026-11-29T20:00:00+01:00">
 <div><b data-k="d">00</b><span>days</span></div><div><b data-k="h">00</b><span>hrs</span></div><div><b data-k="m">00</b><span>min</span></div><div><b data-k="s">00</b><span>sec</span></div>
+</div></div>
+<div class="fx-now-bar" aria-hidden="true"><i></i></div>
 </div>
-<span class="fx-timer-d timer-date">Closes Sun 29 Nov, 8:00 PM WAT · classes begin Mon 30 Nov</span>
+<div class="fx-now" data-ends="2027-01-03T20:00:00+01:00" data-opens="2026-11-29T20:00:00+01:00" data-co="Cohort 14, begins Mon 4 Jan 2027" data-sticky="Cohort 14 registration closes Sun 3 Jan|Classes begin Mon 4 Jan · 8 PM WAT">
+<div class="fx-now-top"><span class="fx-now-live"><i aria-hidden="true"></i>Registering now</span><span class="fx-now-n">Cohort 14</span></div>
+<div class="fx-now-facts"><div><span>Classes begin</span><b>Mon 4 Jan 2027</b></div><div><span>Registration closes</span><b>Sun 3 Jan · 8 PM WAT</b></div></div>
+<div class="fx-now-clock"><span class="fx-now-k">Registration closes in</span>
+<div class="fx-clock" data-no-evergreen="" data-closed-label="Registration has closed" data-deadline="2027-01-03T20:00:00+01:00">
+<div><b data-k="d">00</b><span>days</span></div><div><b data-k="h">00</b><span>hrs</span></div><div><b data-k="m">00</b><span>min</span></div><div><b data-k="s">00</b><span>sec</span></div>
+</div></div>
+<div class="fx-now-bar" aria-hidden="true"><i></i></div>
+</div>
 </div>
 
 <div class="fx-cta fx-cta-sm">
-<a class="btn-primary-ui btn-yes fx-pulse" href="../register.html#foundation"><span>Enrol · ₦250,000</span><span class="arrow-wrap"><span class="arrow">→</span></span></a>
+<a class="btn-primary-ui btn-yes fx-pulse" href="#offer"><span>Claim your offer</span><span class="arrow-wrap"><span class="arrow">→</span></span></a>
 <a class="btn-more btn-secondary-ui fx-seat" href="https://wa.me/2348032925957" rel="noopener" target="_blank"><span>Hold a seat</span><span class="arrow-wrap"><span class="arrow">→</span></span></a>
 </div>
 </div>
@@ -815,6 +1017,7 @@ html[data-theme="day"] .fx-price-save{color:#1E8E4E;}
 <p class="section-label">Is this for you?</p>
 <h2>Four questions. <span>An honest answer in under a minute.</span></h2>
 <p class="ft-fit-sub">These are the questions we ask before we recommend anything. Answer them for yourself first.</p>
+<div class="ft-meter" aria-hidden="true"><span id="ftMeterT">0 of 4 answered</span><i><b id="ftMeterB"></b></i></div>
 <ol class="ft-fit" id="ftFit">
 <li class="ft-q"><p><b>Do you have real work experience?</b><span>A year or more of actual work, not just a certificate or a title.</span></p><div class="ft-yn" role="group" aria-label="Real work experience"><button type="button" data-a="1">Yes</button><button type="button" data-a="0">No</button></div></li>
 <li class="ft-q"><p><b>Can you fund this without touching rent or school fees?</b><span>A salary, a business, savings, or someone paying for you.</span></p><div class="ft-yn" role="group" aria-label="Can fund it"><button type="button" data-a="1">Yes</button><button type="button" data-a="0">No</button></div></li>
@@ -822,7 +1025,7 @@ html[data-theme="day"] .fx-price-save{color:#1E8E4E;}
 <li class="ft-q"><p><b>If we showed you exactly what to fix, would you start this week?</b><span>Twenty days, one live class a day.</span></p><div class="ft-yn" role="group" aria-label="Start this week"><button type="button" data-a="1">Yes</button><button type="button" data-a="0">No</button></div></li>
 </ol>
 <div class="ft-fit-out" id="ftFitOut" aria-live="polite">
-<div class="ft-o" data-o="yes"><b>Three or four yes: this is for you.</b><span>Pick your cohort and claim your seat.</span><a href="#top">Claim my seat ↑</a></div>
+<div class="ft-o" data-o="yes"><b>Three or four yes: this is for you.</b><span>Take the full programme at the offer price.</span><a href="#offer">Claim your offer ↓</a></div>
 <div class="ft-o" data-o="maybe"><b>Two yes: one free step first.</b><span>Take the 90-second diagnosis now, and come back when the date or the money is in place.</span><a href="../diagnose/">Take the free diagnosis →</a></div>
 <div class="ft-o" data-o="no"><b>One or none: not yet, and that’s fine.</b><span>Use the free job board and the Channel. Pay when the timing is right, not before.</span><a href="../jobs/">Open the free job board →</a></div>
 </div>
@@ -998,40 +1201,37 @@ html[data-theme="day"] .fx-price-save{color:#1E8E4E;}
 <p class="section-label">Choose your hour</p>
 <h2>Three classes. <span>One programme.</span></h2>
 <p class="section-sub">Same programme, fee and certificate. Pick the hour you can keep.</p>
-<div class="track-grid">
-<div class="track-card reveal">
-<div class="track-num">Track 01</div>
-<div class="track-name">7pm (Weekday) Class</div>
-<div class="track-when">7:00 – 8:00 PM WAT</div>
-<div class="track-days">Weekdays · Monday to Friday</div>
-<div class="track-rule"></div>
-<div class="track-for">Built for</div>
-<p class="track-who">Undergraduates, entry-level, and anyone not gainfully employed yet.</p>
-<div class="track-meta">20 sessions × 60 minutes · 4 weeks</div>
-<a class="btn-block btn-more btn-secondary-ui" href="https://wa.me/2348032925957?text=Hello%20ERJ%2C%20I%20want%20to%20join%20the%20Remote%20Job%20Foundation%20Training%20%28weekdays%207-8%20PM%29%20Class.%20Please%20send%20me%20the%20details%20on%20how%20to%20enrol%20and%20join%20the%20class." rel="noopener" target="_blank"><span>Take the 7 PM Class</span><span class="arrow-wrap"><span class="arrow">→</span></span></a>
-</div>
-<div class="track-card reveal">
-<div class="track-num">Track 02</div>
-<div class="track-name">8pm (Weekday) Class</div>
-<div class="track-when">8:00 – 9:00 PM WAT</div>
-<div class="track-days">Weekdays · Monday to Friday</div>
-<div class="track-rule"></div>
-<div class="track-for">Built for</div>
-<p class="track-who">The typical nine-to-five professional who can train on weekdays.</p>
-<div class="track-meta">20 sessions × 60 minutes · 4 weeks</div>
-<a class="btn-block btn-more btn-secondary-ui" href="https://wa.me/2348032925957?text=Hello%20ERJ%2C%20I%20want%20to%20join%20the%20Remote%20Job%20Foundation%20Training%20%28weekdays%208-9%20PM%29%20Class.%20Please%20send%20me%20the%20details%20on%20how%20to%20enrol%20and%20join%20the%20class." rel="noopener" target="_blank"><span>Take the 8 PM Class</span><span class="arrow-wrap"><span class="arrow">→</span></span></a>
-</div>
-<div class="track-card reveal">
-<div class="track-num">Track 03</div>
-<div class="track-name">7pm (Weekend) Class</div>
-<div class="track-when">7:00 – 8:30 PM WAT</div>
-<div class="track-days">Weekends · Saturday &amp; Sunday</div>
-<div class="track-rule"></div>
-<div class="track-for">Built for</div>
-<p class="track-who">The 8 AM to 8 PM professional whose weekdays are simply not available.</p>
-<div class="track-meta">14 sessions × 90 minutes · about 7 weekends</div>
-<a class="btn-block btn-more btn-secondary-ui" href="https://wa.me/2348032925957?text=Hello%20ERJ%2C%20I%20want%20to%20join%20the%20Remote%20Job%20Foundation%20Training%20%28weekends%207-8%3A30%20PM%29%20Class.%20Please%20send%20me%20the%20details%20on%20how%20to%20enrol%20and%20join%20the%20class." rel="noopener" target="_blank"><span>Take the Weekend Class</span><span class="arrow-wrap"><span class="arrow">→</span></span></a>
-</div>
+<div class="cl-grid">
+<article class="cl-card reveal">
+<div class="cl-top"><span class="cl-no">Class 1</span><span class="cl-kind">Weekday</span></div>
+<div class="cl-time"><b>7:00</b><span>PM WAT</span></div>
+<p class="cl-to">to 8:00 PM · Monday to Friday</p>
+<div class="cl-week" aria-hidden="true"><i class="on">M</i><i class="on">T</i><i class="on">W</i><i class="on">T</i><i class="on">F</i><i class="">S</i><i class="">S</i></div>
+<p class="cl-for"><span>Built for</span>Undergraduates, entry-level, and anyone not gainfully employed yet.</p>
+<ul class="cl-meta"><li><b>20</b>sessions</li><li><b>60</b>min each</li><li><b>4</b>weeks</li></ul>
+<a class="cl-go" href="https://wa.me/2348032925957?text=Hello%20ERJ%2C%20I%20want%20to%20join%20Class%201%20%28Weekday%2C%207-8%20PM%29%20of%20the%20Remote%20Job%20Foundation%20Training.%20Please%20send%20me%20the%20details%20on%20how%20to%20enrol%20and%20join%20the%20class." rel="noopener" target="_blank"><span>Save my seat in Class 1</span><i aria-hidden="true">→</i></a>
+<small class="cl-note">Opens WhatsApp with your class already named</small>
+</article>
+<article class="cl-card reveal">
+<div class="cl-top"><span class="cl-no">Class 2</span><span class="cl-kind">Weekday</span></div>
+<div class="cl-time"><b>8:00</b><span>PM WAT</span></div>
+<p class="cl-to">to 9:00 PM · Monday to Friday</p>
+<div class="cl-week" aria-hidden="true"><i class="on">M</i><i class="on">T</i><i class="on">W</i><i class="on">T</i><i class="on">F</i><i class="">S</i><i class="">S</i></div>
+<p class="cl-for"><span>Built for</span>The typical nine-to-five professional who can train on weekdays.</p>
+<ul class="cl-meta"><li><b>20</b>sessions</li><li><b>60</b>min each</li><li><b>4</b>weeks</li></ul>
+<a class="cl-go" href="https://wa.me/2348032925957?text=Hello%20ERJ%2C%20I%20want%20to%20join%20Class%202%20%28Weekday%2C%208-9%20PM%29%20of%20the%20Remote%20Job%20Foundation%20Training.%20Please%20send%20me%20the%20details%20on%20how%20to%20enrol%20and%20join%20the%20class." rel="noopener" target="_blank"><span>Save my seat in Class 2</span><i aria-hidden="true">→</i></a>
+<small class="cl-note">Opens WhatsApp with your class already named</small>
+</article>
+<article class="cl-card reveal">
+<div class="cl-top"><span class="cl-no">Class 3</span><span class="cl-kind">Weekend</span></div>
+<div class="cl-time"><b>7:00</b><span>PM WAT</span></div>
+<p class="cl-to">to 8:30 PM · Saturday &amp; Sunday</p>
+<div class="cl-week" aria-hidden="true"><i class="">M</i><i class="">T</i><i class="">W</i><i class="">T</i><i class="">F</i><i class="on">S</i><i class="on">S</i></div>
+<p class="cl-for"><span>Built for</span>The 8 AM to 8 PM professional whose weekdays are simply not available.</p>
+<ul class="cl-meta"><li><b>14</b>sessions</li><li><b>90</b>min each</li><li><b>~7</b>weekends</li></ul>
+<a class="cl-go" href="https://wa.me/2348032925957?text=Hello%20ERJ%2C%20I%20want%20to%20join%20Class%203%20%28Weekend%2C%207-8%3A30%20PM%29%20of%20the%20Remote%20Job%20Foundation%20Training.%20Please%20send%20me%20the%20details%20on%20how%20to%20enrol%20and%20join%20the%20class." rel="noopener" target="_blank"><span>Save my seat in Class 3</span><i aria-hidden="true">→</i></a>
+<small class="cl-note">Opens WhatsApp with your class already named</small>
+</article>
 </div>
 </section>
 
@@ -1042,12 +1242,18 @@ html[data-theme="day"] .fx-price-save{color:#1E8E4E;}
 <div class="fx-bonus-img"><picture><source srcset="../shop/careerdev-mentorine.webp" type="image/webp"/><img alt="Career Development — Self-Study box from The Mentorine School: one career track of your choice, roadmap, courses and practical work, 90 days from the day you activate" height="900" loading="lazy" src="../shop/careerdev-mentorine.jpg" width="900"/></picture><span class="fx-seal" aria-hidden="true"><b>FREE</b>with Foundation</span></div>
 <div>
 <h2>Plus 90 days of <span>career development.</span></h2>
-<p>A self-study career track at The Mentorine School, matched to your target role. Normally <s>₦150,000</s>; free with your enrolment.</p>
+<p>A self-study career track at The Mentorine School, matched to your target role, free with your enrolment.</p>
+<div class="bn-val"><span><s>₦150,000</s><small>sold on its own</small></span><i aria-hidden="true">→</i><span><b>₦0</b><small>with the full programme</small></span></div>
 <ul class="fx-pills"><li>One career track</li><li>Roadmap, courses and practical work</li><li>90 days from the day you activate</li><li>No second payment</li></ul>
-<details class="fx-how"><summary>How it reaches you</summary>
+<details class="fx-how ft-all bn-how"><summary class="fa-btn bn-btn">
+<span class="fa-n" aria-hidden="true"><b>4</b><small>steps</small></span>
+<span class="fa-t"><b><span class="fa-closed">See how it reaches you</span><span class="fa-opened">How it reaches you</span></b><small><span class="fa-closed">From your payment to your first task</span><span class="fa-opened">Tap again to fold it away</span></small></span>
+<span class="fa-go" aria-hidden="true">↓</span>
+</summary>
 <ol><li><b>Enrol and pay</b> for Foundation Training, then send your receipt.</li><li><b>Complete your assessment.</b> We assign your track from it.</li><li><b>Receive your activation email</b> with the portal link, your access code and your first task.</li><li><b>Activate.</b> Your 90 days start then.</li></ol>
 <p>Included with Foundation Training and Get Your Dream Job Offer; not with single stages or the Self-Learn Pack. Not enrolling? <b>Career Development — Self-Study</b> is sold on its own at ₦50,000. <a href="../register.html#careerdev">Choose a track →</a></p>
 </details>
+<a class="bn-cta" href="#offer">Claim it with the full programme <i aria-hidden="true">→</i></a>
 <p class="fx-fine">Delivered in partnership with The Mentorine School · <a href="https://thementorineschool.com/" rel="noopener" target="_blank">thementorineschool.com</a></p>
 </div>
 </div>
@@ -1056,46 +1262,42 @@ html[data-theme="day"] .fx-price-save{color:#1E8E4E;}
 <!-- PRICING -->
 <section class="wrap fx-sec" id="pricing">
 <p class="section-label">Investment</p>
-<h2>One fee. <span>Everything included.</span></h2>
-<div class="fx-price-grid">
-<div class="fx-price reveal">
-<span class="fx-price-k">Full programme · Stages 1–4</span>
-<div class="fx-price-was">Regular total ₦370,000</div>
-<div class="fx-price-now">₦250,000</div>
-<p class="fx-price-save">You save ₦120,000 against buying the stages one by one.</p>
-<ul class="fx-ticks">
-<li>20 live training days in the class time you choose</li>
+<h2>Invest in <span>yourself.</span></h2>
+<p class="iv-sub">Take the stage you need on its own, or take all four together and save ₦120,000.</p>
+<div class="iv-packs">
+<article class="iv-pack reveal"><span class="iv-st">Stage 1</span><b class="iv-name">Remote Mindset Blueprint</b><p>Your remote operating system: calendar blocks, KPI sheet and end-of-day reports.</p><div class="iv-price">₦70,000</div><a class="iv-buy" href="https://paystack.shop/pay/Stage1" rel="noopener" target="_blank">Get Stage 1 <i aria-hidden="true">→</i></a></article>
+<article class="iv-pack reveal"><span class="iv-st">Stage 2</span><b class="iv-name">The Digital Toolkit</b><p>The Integrated Sprint: a project board, a linked document and a recorded walkthrough.</p><div class="iv-price">₦130,000</div><a class="iv-buy" href="https://paystack.shop/pay/stage2ai" rel="noopener" target="_blank">Get Stage 2 <i aria-hidden="true">→</i></a></article>
+<article class="iv-pack reveal"><span class="iv-st">Stage 3</span><b class="iv-name">Async Communication Mastery</b><p>Five communication assets that show how you work when nobody is online.</p><div class="iv-price">₦70,000</div><a class="iv-buy" href="https://paystack.shop/pay/stage3alony" rel="noopener" target="_blank">Get Stage 3 <i aria-hidden="true">→</i></a></article>
+<article class="iv-pack reveal"><span class="iv-st">Stage 4</span><b class="iv-name">Start Your Remote Career</b><p>The Global Ready Package: remote-first CV, portfolio and your STAR video.</p><div class="iv-price">₦100,000</div><a class="iv-buy" href="https://paystack.shop/pay/stage4only" rel="noopener" target="_blank">Get Stage 4 <i aria-hidden="true">→</i></a></article>
+</div>
+<p class="iv-or"><span>or take all four together</span></p>
+<article class="iv-offer reveal" id="offer">
+<span class="iv-ribbon">Our offer · best value</span>
+<div class="iv-offer-grid">
+<div class="iv-main">
+<h3>The full programme, <span>Stages 1–4.</span></h3>
+<div class="iv-sum" aria-label="The four stages bought one by one come to ₦370,000"><span>₦70,000</span><i>+</i><span>₦130,000</span><i>+</i><span>₦70,000</span><i>+</i><span>₦100,000</span><i>=</i><s>₦370,000</s></div>
+<div class="iv-now"><small>Yours for</small><b>₦250,000</b><em>You save ₦120,000</em></div>
+<p class="iv-plus-k">Only with the full programme</p>
+<ul class="iv-plus">
+<li>Live classes at the hour you choose, for twenty days</li>
 <li>Your work marked by a person, every stage</li>
-<li>All 16 deliverables, templates and workbooks to keep</li>
-<li>AI fluency built into every stage</li>
-<li>Full LMS portal access and priority support</li>
-<li>Remote Job Proficiency Certificate</li>
-<li>90 days of career development at The Mentorine School, included</li>
+<li>The Remote Job Proficiency Certificate</li>
+<li>90 days of career development at The Mentorine School <em>₦150,000 value, included</em></li>
+<li>LMS portal access and priority support</li>
 </ul>
-<a class="btn-block btn-primary-ui btn-yes fx-pulse" href="../register.html#foundation"><span>Enrol now</span><span class="arrow-wrap"><span class="arrow">→</span></span></a>
+</div>
+<div class="iv-side">
+<div class="iv-co" data-ends="2026-11-29T20:00:00+01:00"><span class="fx-now-live"><i aria-hidden="true"></i>Registering now</span><b>Cohort 13 · begins Mon 30 Nov</b><span>Registration closes Sun 29 Nov, 8:00 PM WAT</span></div>
+<div class="iv-co" data-ends="2027-01-03T20:00:00+01:00"><span class="fx-now-live"><i aria-hidden="true"></i>Registering now</span><b>Cohort 14 · begins Mon 4 Jan 2027</b><span>Registration closes Sun 3 Jan, 8:00 PM WAT</span></div>
+<span class="fx-inst iv-inst" data-until="2026-11-22T23:59:59+01:00">Instalments open until <strong>Sun 22 Nov</strong>. Start with any amount. <a href="../earlybird.html">How it works →</a></span>
+<a class="btn-block btn-primary-ui btn-yes fx-pulse iv-claim" href="https://paystack.shop/pay/rjmtstages1-4" rel="noopener" target="_blank"><span>Claim the offer · ₦250,000</span><span class="arrow-wrap"><span class="arrow">→</span></span></a>
+<a class="btn-block btn-more btn-secondary-ui fx-seat" href="https://wa.me/2348032925957" rel="noopener" target="_blank"><span>Hold a seat first</span><span class="arrow-wrap"><span class="arrow">→</span></span></a>
 <p class="fx-pay">Secured by Paystack. After payment, send your receipt on WhatsApp and your LMS login arrives within 24 hours.</p>
 </div>
-<div class="fx-dates">
-<div class="fx-date reveal" data-ends="2026-11-29T20:00:00+01:00">
-<span class="fx-date-k">Cohort 13 <span class="fx-tag now" data-tag>Enrolling now</span></span>
-<b>Begins Mon 30 Nov · 8:00 PM WAT</b>
-<span>Registration closes <strong>Sun 29 Nov, 8:00 PM WAT</strong></span>
-<span class="fx-inst" data-until="2026-11-22T23:59:59+01:00">Instalments open until <strong>Sun 22 Nov</strong>. Start with any amount. <a href="../earlybird.html">How it works →</a></span>
-<a class="fx-date-go fx-seat" data-co="Cohort 13, begins Mon 30 Nov" href="https://wa.me/2348032925957" rel="noopener" target="_blank">Hold a Cohort 13 seat →</a>
 </div>
-<div class="fx-date reveal" data-ends="2027-01-03T20:00:00+01:00">
-<span class="fx-date-k">Cohort 14 <span class="fx-tag" data-tag>Upcoming</span></span>
-<b>Begins Mon 4 Jan 2027 · 8:00 PM WAT</b>
-<span>Registration closes <strong>Sun 3 Jan, 8:00 PM WAT</strong></span>
-<a class="fx-date-go fx-seat" data-co="Cohort 14, begins Mon 4 Jan 2027" href="https://wa.me/2348032925957" rel="noopener" target="_blank">Hold a Cohort 14 seat →</a>
-</div>
-<div class="fx-date alt reveal">
-<span class="fx-date-k">Prefer to go stage by stage?</span>
-<span>Stage 1 ₦70,000 · Stage 2 ₦130,000 · Stage 3 ₦70,000 · Stage 4 ₦100,000. Same teaching, same cohort. The career-development bonus comes with the full programme only.</span>
-<a class="fx-date-go" href="../register.html#stage1">Start with Stage 1 →</a>
-</div>
-</div>
-</div>
+</article>
+<p class="iv-fine">Single stages are taught in the same cohort. The certificate needs all four stages, and the career-development bonus comes with the full programme only. Can’t start this month? Pay now and register forward for Cohort 14 (begins Mon 4 Jan).</p>
 </section>
 
 <!-- PAYING FOR SOMEONE ELSE -->
@@ -1134,7 +1336,7 @@ html[data-theme="day"] .fx-price-save{color:#1E8E4E;}
 <p class="fx-live"><i aria-hidden="true"></i>Seats are open</p>
 <h2>Your next twenty days are going to pass anyway. <span>Spend them building proof.</span></h2>
 <div class="fx-cta center">
-<a class="btn-primary-ui btn-yes fx-pulse" href="../register.html#foundation"><span>Enrol now</span><span class="arrow-wrap"><span class="arrow">→</span></span></a>
+<a class="btn-primary-ui btn-yes fx-pulse" href="#offer"><span>Claim your offer</span><span class="arrow-wrap"><span class="arrow">→</span></span></a>
 <a class="btn-more btn-secondary-ui fx-ask" href="https://wa.me/2348032925957" rel="noopener" target="_blank"><span>Ask a question first</span><span class="arrow-wrap"><span class="arrow">→</span></span></a>
 </div>
 <p class="fx-fine">Not ready for the cohort? <a href="../register.html">See every option</a>.</p>
@@ -1143,7 +1345,7 @@ html[data-theme="day"] .fx-price-save{color:#1E8E4E;}
 </main>
 <div aria-hidden="true" class="sticky-cta" id="stickyCta" inert="">
 <div class="s-txt"><strong id="fxStickyT">Cohort 13 closes Sun 29 Nov</strong><span id="fxStickyS">Classes begin Mon 30 Nov · 8 PM WAT</span></div>
-<a class="btn-primary-ui btn-yes" href="../register.html#foundation"><span>Enrol Now</span><span class="arrow-wrap"><span class="arrow">→</span></span></a>
+<a class="btn-primary-ui btn-yes" href="#offer"><span>Claim offer</span><span class="arrow-wrap"><span class="arrow">→</span></span></a>
 </div>
 
 <footer class="foot wrap">
@@ -1219,19 +1421,19 @@ html[data-theme="day"] .fx-price-save{color:#1E8E4E;}
   [].forEach.call(d.querySelectorAll('[data-until]'),function(el){ if(now()>new Date(el.getAttribute('data-until'))) el.classList.add('is-past'); });
   [].forEach.call(d.querySelectorAll('.fx-date[data-ends]'),function(el){ if(now()>new Date(el.getAttribute('data-ends'))) el.classList.add('is-past'); });
 
-  /* cohort picker: drives the hero WhatsApp button */
-  var cos=[].slice.call(d.querySelectorAll('.fx-co[data-ends]')), heroSeat=d.querySelector('.fx-hero .fx-seat');
-  cos.forEach(function(b){ if(now()>new Date(b.getAttribute('data-ends'))) b.classList.add('is-past'); });
-  var open=cos.filter(function(b){return !b.classList.contains('is-past');});
-  function pick(b){
-    cos.forEach(function(x){var on=x===b;x.classList.toggle('on',on);x.setAttribute('aria-checked',on?'true':'false');});
-    if(heroSeat&&msgs.ftSeat) heroSeat.href=wa(msgs.ftSeat.replace('{cohort}',b.getAttribute('data-co')));
+  /* the registering cohort: the first whose registration is still open.
+     Only that one shows; its window bar shows how much of registration is left. */
+  var nows=[].slice.call(d.querySelectorAll('.fx-now[data-ends]'));
+  var open=nows.filter(function(b){return now()<new Date(b.getAttribute('data-ends'));});
+  nows.forEach(function(b){b.classList.toggle('show',b===open[0]);});
+  [].forEach.call(d.querySelectorAll('.iv-co[data-ends]'),function(c){c.classList.add('is-past');});
+  var ivo=[].filter.call(d.querySelectorAll('.iv-co[data-ends]'),function(c){return now()<new Date(c.getAttribute('data-ends'));});
+  if(ivo[0]) ivo[0].classList.remove('is-past');
+  if(open[0]){
+    var cur=open[0], o=new Date(cur.getAttribute('data-opens')), e=new Date(cur.getAttribute('data-ends')), bar=cur.querySelector('.fx-now-bar i');
+    if(bar){ var left=Math.min(1,Math.max(.04,(e-now())/(e-o))); bar.style.setProperty('--left',(left*100).toFixed(1)+'%'); }
+    if(msgs.ftSeat) [].forEach.call(d.querySelectorAll('.fx-hero .fx-seat,.iv-offer .fx-seat'),function(a){ a.href=wa(msgs.ftSeat.replace('{cohort}',cur.getAttribute('data-co'))); });
   }
-  cos.forEach(function(b){b.addEventListener('click',function(){pick(b);});});
-  open.forEach(function(b,i){var t=b.querySelector('[data-tag]');if(t){t.textContent=i?'Upcoming':'Enrolling now';t.classList.toggle('now',!i);}});
-  var dts=[].filter.call(d.querySelectorAll('.fx-date[data-ends]'),function(x){return !x.classList.contains('is-past');});
-  dts.forEach(function(x,i){var t=x.querySelector('[data-tag]');if(t){t.textContent=i?'Upcoming':'Enrolling now';t.classList.toggle('now',!i);}});
-  if(open.length) pick(open[0]);
 
   /* other seat and question buttons */
   [].forEach.call(d.querySelectorAll('.fx-date .fx-seat'),function(a){ if(msgs.ftSeat) a.href=wa(msgs.ftSeat.replace('{cohort}',a.getAttribute('data-co'))); });
@@ -1319,6 +1521,8 @@ html[data-theme="day"] .fx-price-save{color:#1E8E4E;}
     var ans=qs.map(function(q){var b=q.querySelector('[aria-pressed="true"]');return b?b.getAttribute('data-a'):null;});
     var done=ans.every(function(a){return a!==null;}),yes=ans.filter(function(a){return a==='1';}).length;
     hint.style.display=done?'none':'';
+    var n=ans.filter(function(a){return a!==null;}).length,mt=document.getElementById('ftMeterT'),mb=document.getElementById('ftMeterB');
+    if(mt) mt.textContent=done?'All four answered':n+' of 4 answered'; if(mb) mb.style.width=(n*25)+'%';
     var key=!done?'':(yes>=3?'yes':(yes===2?'maybe':'no'));
     os.forEach(function(o){o.classList.toggle('on',o.getAttribute('data-o')===key);});
   }

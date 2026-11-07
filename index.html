@@ -1764,11 +1764,13 @@ html[data-theme="day"] .timer-num{background-image:linear-gradient(160deg,#0A0A0
 .hs2-h{color:var(--ink);text-wrap:pretty;}
 .hs2-l2{display:block;}
 /* only "hired remotely" carries the colour, underlined; the line draws in once */
-.hs2-h em{font-style:normal;color:var(--accent);position:relative;display:inline-block;white-space:nowrap;}
-.hs2-h em::after{content:"";position:absolute;left:0;right:0;bottom:-.02em;height:.09em;border-radius:.09em;background:currentColor;
-  background:linear-gradient(90deg,#E8470F,#FF5722);transform-origin:0 50%;}
-@media(prefers-reduced-motion:no-preference){.hs2-h em::after{animation:hs2Line .9s cubic-bezier(.22,1,.36,1) .35s both;}}
-@keyframes hs2Line{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+/* only "your next remote job." carries the colour, underlined; it wraps like
+   normal text, so the full stop never ends up alone on a line */
+.hs2-h em{font-style:normal;color:var(--accent);text-decoration:underline;text-decoration-color:#E8470F;
+  text-decoration-thickness:.075em;text-underline-offset:.14em;text-decoration-skip-ink:none;}
+html[data-theme="night"] .hs2-h em{text-decoration-color:#FF5722;}
+@media(prefers-reduced-motion:no-preference){.hs2-h em{animation:hs2Line 1.1s ease .3s both;}}
+@keyframes hs2Line{from{text-decoration-color:transparent}}
 .hs2-lede{font-size:1.02rem;line-height:1.6;color:var(--ink-soft);margin:0 0 1.3rem;max-width:56ch;}
 .hs2-picks{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;}
 .hs2-pick{display:flex;flex-direction:column;gap:.25rem;padding:1rem 3rem 1rem 1.1rem;border-radius:18px;border:1.5px solid var(--card-line,var(--line));background:var(--card);text-decoration:none;color:var(--ink);
@@ -1821,9 +1823,43 @@ html[data-theme="day"] .timer-num{background-image:linear-gradient(160deg,#0A0A0
   -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);color:#fff;font-size:.78rem;line-height:1.35;}
 .hs2-face figcaption b{display:block;font-family:var(--font-display);font-size:.95rem;}
 @media(max-width:860px){.hs2-grid{grid-template-columns:1fr;}.hs2-face{max-width:320px;width:100%;margin:1.4rem auto 0;}}
+/* 05 · Before you decide: numbered cards that light up when opened; answers use the full width */
+@property --fq-a{syntax:"<angle>";inherits:false;initial-value:0deg;}
+#faq .faq{counter-reset:fq;gap:.7rem;}
+#faq .faq details{counter-increment:fq;position:relative;isolation:isolate;margin:0!important;padding:0!important;border:0!important;border-radius:22px;
+  background:radial-gradient(120% 160% at 0 0,rgba(255,87,34,.08),transparent 55%),var(--card);
+  box-shadow:0 0 0 1px var(--card-line,var(--line)),0 14px 34px -26px rgba(255,87,34,.6);transition:transform .3s cubic-bezier(.22,1,.36,1),box-shadow .3s;}
+#faq .faq details:hover{transform:translateY(-2px);box-shadow:0 0 0 1px rgba(255,87,34,.45),0 20px 40px -24px rgba(255,87,34,.75);}
+#faq .faq details::before{content:"";position:absolute;inset:0;z-index:-1;border-radius:inherit;padding:2px;opacity:0;transition:opacity .3s;
+  background:conic-gradient(from var(--fq-a),#FF5722,#FFB25C,#E8470F 40%,rgba(255,87,34,.2) 60%,#FF5722);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;}
+#faq .faq details[open]::before{opacity:1;}
+#faq .faq summary{display:grid!important;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:clamp(.8rem,2vw,1.2rem);
+  padding:clamp(1rem,2.4vw,1.25rem) clamp(1rem,2.6vw,1.4rem)!important;font:700 clamp(1rem,1.9vw,1.18rem)/1.35 var(--font-display);letter-spacing:-.01em;color:var(--ink);}
+#faq .faq summary::before{content:counter(fq,decimal-leading-zero);display:grid;place-items:center;width:clamp(40px,5vw,48px);aspect-ratio:1;border-radius:14px;
+  font:800 .95rem/1 var(--font-display);color:#fff;background:linear-gradient(140deg,#FF5722,#C9410C);box-shadow:inset 0 1px 0 rgba(255,255,255,.3),0 8px 18px -10px rgba(201,65,12,.9);}
+#faq .faq summary::after{content:"+"!important;display:grid;place-items:center;width:38px;height:38px;border-radius:50%;font:500 1.35rem/1 var(--font-body)!important;
+  color:#C9410C!important;background:rgba(255,87,34,.12);transition:transform .4s cubic-bezier(.22,1,.36,1),background .3s,color .3s!important;}
+#faq .faq details[open] summary::after{transform:rotate(135deg);background:#C9410C;color:#fff!important;}
+#faq .faq summary:hover{color:var(--ink);}
+#faq .faq .a{max-width:none!important;margin:0;padding:0 clamp(1rem,2.6vw,1.4rem) clamp(1.1rem,2.6vw,1.4rem) calc(clamp(1rem,2.6vw,1.4rem) + clamp(40px,5vw,48px) + clamp(.8rem,2vw,1.2rem))!important;
+  font-size:clamp(.92rem,1.5vw,1rem);line-height:1.7;}
+@media(max-width:560px){#faq .faq .a{padding-left:clamp(1rem,2.6vw,1.4rem)!important;}}
+@media(prefers-reduced-motion:no-preference){#faq .faq details[open]::before{animation:fqSpin 5s linear infinite;}
+  #faq .faq details[open] .a{animation:fqIn .45s cubic-bezier(.22,1,.36,1);}}
+@keyframes fqSpin{to{--fq-a:360deg}}
+@keyframes fqIn{from{transform:translateY(-6px)}}
 /* hero: the portrait floats inside an orbit of the places that hire */
 .hs2-face{container-type:inline-size;}
-.hs2-face .hz-orbit{inset:auto;left:50%;top:50%;width:140cqw;aspect-ratio:1;transform:translate(-50%,-50%);}
+.hs2-face .hz-orbit{inset:auto;left:50%;top:50%;width:140cqw;aspect-ratio:1.18;transform:translate(-50%,-50%);}
+/* not a perfect circle: soft, uneven ovals */
+.hs2-face .hz-orbit i{border-radius:46% 54% 42% 58% / 55% 44% 56% 45%;}
+.hs2-face .hz-orbit .r2{border-radius:53% 47% 57% 43% / 45% 56% 44% 55%;}
+.hs2-face .hz-orbit .r3{border-radius:44% 56% 50% 50% / 58% 42% 58% 42%;}
+/* desktop: the rings stretch left until they meet the headline and the choices */
+@media(min-width:861px){
+  .hs2-face .hz-orbit{width:178cqw;aspect-ratio:1.42;}
+  .hs2-face .hz-orbit .r3{inset:-12% -9%;}}
 .hs2-face .hz-sat.s1{--hz-r:62cqw;}.hs2-face .hz-sat.s2{--hz-r:70cqw;}.hs2-face .hz-sat.s3{--hz-r:76cqw;}
 .hs2-lift{position:relative;z-index:1;}
 @media (prefers-reduced-motion:no-preference){.hs2-lift{animation:hs2-float 6s ease-in-out infinite alternate;}}
@@ -1896,7 +1932,7 @@ html[data-theme="day"] .hst-h em,html[data-theme="day"] .hst-k{color:#0B7A47;}
 <span aria-hidden="true" class="ht-anchor" id="tour"></span><span aria-hidden="true" class="ht-anchor" id="promise"></span><span aria-hidden="true" class="ht-anchor" id="about"></span><span aria-hidden="true" class="ht-anchor" id="help"></span><span aria-hidden="true" class="ht-anchor" id="help-diy"></span><span aria-hidden="true" class="ht-anchor" id="help-dwy"></span><span aria-hidden="true" class="ht-anchor" id="help-dwy-go"></span><span aria-hidden="true" class="ht-anchor" id="help-dfy"></span><span aria-hidden="true" class="ht-anchor" id="free"></span><span aria-hidden="true" class="ht-anchor" id="paths"></span>
 <div class="hs2-grid">
 <div class="hs2-main">
-<h1 class="hs2-h">You have the experience. <span class="hs2-l2">Let’s find out why it isn’t getting you <em>hired remotely</em>.</span></h1>
+<h1 class="hs2-h">You have the experience. <span class="hs2-l2">Let’s identify what’s standing between you and <em>your next remote job.</em></span></h1>
 <p class="hs2-lede">Tap the one that is true for you. Your next step appears right here. No form, no email.</p>
 <div class="hs2-picks" role="group" aria-label="Which is true for you?">
 <a class="hs2-pick" href="#shape-interview" data-shape="interview"><b>I have a remote interview or test soon</b><span>Within the next two weeks</span></a>
