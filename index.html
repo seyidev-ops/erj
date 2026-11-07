@@ -1760,20 +1760,47 @@ html[data-theme="day"] .timer-num{background-image:linear-gradient(160deg,#0A0A0
 /* Home: one promise, one tap to the visitor's next step (by client shape), then one real story. */
 .hs2{padding-top:clamp(2rem,5vw,3.6rem);padding-bottom:clamp(2.4rem,5vw,3.6rem);}
 .hs2-grid{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,.75fr);gap:clamp(1.4rem,4vw,3.2rem);align-items:start;}
-.hs2-k{display:inline-flex;align-items:center;gap:.55rem;margin:0 0 1rem;font:700 .7rem/1.3 var(--font-body);letter-spacing:.14em;text-transform:uppercase;color:var(--accent);}
-.hs2-k i{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 12px var(--accent);}
 .hs2-h{font:800 clamp(2rem,4.6vw,3.4rem)/1.06 var(--font-display);letter-spacing:-.03em;margin:0 0 1rem;text-wrap:balance;}
-.hs2-h em{font-style:normal;color:var(--accent);display:block;}
+.hs2-h{color:var(--ink);text-wrap:pretty;}
+.hs2-l2{display:block;}
+/* only "hired remotely" carries the colour, underlined; the line draws in once */
+.hs2-h em{font-style:normal;color:var(--accent);position:relative;display:inline-block;white-space:nowrap;}
+.hs2-h em::after{content:"";position:absolute;left:0;right:0;bottom:-.02em;height:.09em;border-radius:.09em;background:currentColor;
+  background:linear-gradient(90deg,#E8470F,#FF5722);transform-origin:0 50%;}
+@media(prefers-reduced-motion:no-preference){.hs2-h em::after{animation:hs2Line .9s cubic-bezier(.22,1,.36,1) .35s both;}}
+@keyframes hs2Line{from{transform:scaleX(0)}to{transform:scaleX(1)}}
 .hs2-lede{font-size:1.02rem;line-height:1.6;color:var(--ink-soft);margin:0 0 1.3rem;max-width:56ch;}
 .hs2-picks{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;}
-.hs2-pick{display:flex;flex-direction:column;gap:.25rem;padding:1rem 1.1rem;border-radius:18px;border:1.5px solid var(--card-line,var(--line));background:var(--card);text-decoration:none;color:var(--ink);
-  transition:border-color .25s,transform .25s,background .25s;}
+.hs2-pick{display:flex;flex-direction:column;gap:.25rem;padding:1rem 3rem 1rem 1.1rem;border-radius:18px;border:1.5px solid var(--card-line,var(--line));background:var(--card);text-decoration:none;color:var(--ink);
+  position:relative;overflow:hidden;isolation:isolate;-webkit-tap-highlight-color:transparent;
+  transition:border-color .25s,transform .2s cubic-bezier(.22,1,.36,1),background .3s,color .3s,box-shadow .3s;}
+/* alive: a tap target that answers back. Arrow invites, press sinks, a fill
+   spreads from the finger, and the chosen one stays filled with a tick. */
+.hs2-pick::after{content:"→";position:absolute;right:1rem;top:50%;width:1.9rem;height:1.9rem;margin-top:-.95rem;border-radius:50%;
+  display:grid;place-items:center;font:700 .95rem/1 var(--font-body);color:var(--accent);background:rgba(255,87,34,.12);
+  transition:transform .3s cubic-bezier(.22,1,.36,1),background .3s,color .3s;}
+.hs2-pick:hover::after{transform:translateX(3px);}
+.hs2-pick:active{transform:scale(.975);}
+.hs2-pick b,.hs2-pick span{position:relative;z-index:1;transition:color .3s;}
+.hs2-ink{position:absolute;z-index:0;border-radius:50%;pointer-events:none;width:12px;height:12px;margin:-6px 0 0 -6px;
+  background:rgba(255,87,34,.35);transform:scale(0);animation:hs2Ink .6s ease-out forwards;}
+@keyframes hs2Ink{to{transform:scale(60);opacity:0}}
+.hs2-pick.is-on{color:#fff;border-color:transparent;background:linear-gradient(120deg,#C9410C,#FF5722);box-shadow:0 10px 28px -10px rgba(255,87,34,.7);}
+.hs2-pick.is-on span{color:rgba(255,255,255,.88);}
+.hs2-pick.is-on::after{content:"✓";color:#C9410C;background:#fff;transform:none;}
+@media(prefers-reduced-motion:no-preference){
+  .hs2-pick.is-on{animation:hs2Pop .45s cubic-bezier(.22,1,.36,1);}
+  .hs2-picks:not(.has-pick) .hs2-pick:not(.is-quiet)::after{animation:hs2Nudge 2.8s ease-in-out infinite;}
+  .hs2-picks:not(.has-pick) .hs2-pick:nth-child(2)::after{animation-delay:.35s}
+  .hs2-picks:not(.has-pick) .hs2-pick:nth-child(3)::after{animation-delay:.7s}
+  .hs2-picks:not(.has-pick) .hs2-pick:nth-child(4)::after{animation-delay:1.05s}}
+@keyframes hs2Pop{0%{transform:scale(.96)}60%{transform:scale(1.015)}100%{transform:none}}
+@keyframes hs2Nudge{0%,70%,100%{transform:none}80%{transform:translateX(4px)}90%{transform:translateX(0)}}
 .hs2-pick b{font:700 1rem/1.3 var(--font-display);}
 .hs2-pick span{font-size:.8rem;color:var(--ink-faint);}
 .hs2-pick:hover{border-color:var(--accent);transform:translateY(-2px);}
 .hs2-pick:focus-visible{outline:2px solid var(--accent);outline-offset:3px;}
-.hs2-pick.is-on{border-color:var(--accent);background:radial-gradient(120% 140% at 0 0,rgba(255,87,34,.16),transparent 60%),var(--card);}
-.hs2-pick.is-quiet{grid-column:1/-1;flex-direction:row;align-items:baseline;gap:.6rem;padding:.75rem 1.1rem;}
+.hs2-pick.is-quiet{grid-column:1/-1;flex-direction:row;align-items:baseline;gap:.6rem;padding:.75rem 3rem .75rem 1.1rem;}
 .hs2-pick.is-quiet b{font-size:.92rem;}
 .hs2-answers{margin-top:1rem;display:grid;gap:.8rem;}
 .hs2-a{padding:clamp(1.2rem,3vw,1.7rem);border-radius:22px;border:1px solid rgba(255,87,34,.5);
@@ -1831,7 +1858,7 @@ html[data-theme="day"] .hz-mini .dn{box-shadow:0 1px 0 0 rgba(232,71,15,.7),0 6p
 .gl-cap{text-align:center;margin-top:.4rem;font:700 .8rem/1.3 var(--font-body);letter-spacing:.1em;text-transform:uppercase;color:var(--accent);min-height:1.3em;}
 @media(max-width:860px){.gl-grid{grid-template-columns:1fr;}.gl-fig{order:-1;}.gl-canvas{max-width:min(92vw,420px);}}
 
-@media(max-width:520px){.hs2-picks{grid-template-columns:1fr;}.hs2-pick{padding:.85rem 1rem;}}
+@media(max-width:520px){.hs2-picks{grid-template-columns:1fr;}.hs2-pick{padding:.85rem 3rem .85rem 1rem;}}
 /* the story */
 .hst-in{max-width:980px;}
 .hst-k{display:inline-flex;align-items:center;gap:.55rem;margin:0 0 .9rem;font:700 .68rem/1 var(--font-body);letter-spacing:.15em;text-transform:uppercase;color:#19C27A;}
@@ -1854,7 +1881,7 @@ html[data-theme="day"] .hst-h em,html[data-theme="day"] .hst-k{color:#0B7A47;}
 .hst-more{display:flex;flex-wrap:wrap;align-items:center;gap:.6rem 1rem;margin:1.1rem 0 .4rem;}
 .hst-more>span{font-size:.9rem;color:var(--ink-soft);}
 @media(max-width:760px){.hst-beats{grid-template-columns:1fr;}}
-@media(prefers-reduced-motion:reduce){.hs2-pick,.hs2.js .hs2-a.is-on{transition:none;animation:none;}}
+@media(prefers-reduced-motion:reduce){.hs2-pick,.hs2.js .hs2-a.is-on{transition:none;animation:none;}.hs2-ink{display:none;}}
 </style>
 </head>
 <body>
@@ -1869,8 +1896,7 @@ html[data-theme="day"] .hst-h em,html[data-theme="day"] .hst-k{color:#0B7A47;}
 <span aria-hidden="true" class="ht-anchor" id="tour"></span><span aria-hidden="true" class="ht-anchor" id="promise"></span><span aria-hidden="true" class="ht-anchor" id="about"></span><span aria-hidden="true" class="ht-anchor" id="help"></span><span aria-hidden="true" class="ht-anchor" id="help-diy"></span><span aria-hidden="true" class="ht-anchor" id="help-dwy"></span><span aria-hidden="true" class="ht-anchor" id="help-dwy-go"></span><span aria-hidden="true" class="ht-anchor" id="help-dfy"></span><span aria-hidden="true" class="ht-anchor" id="free"></span><span aria-hidden="true" class="ht-anchor" id="paths"></span>
 <div class="hs2-grid">
 <div class="hs2-main">
-<p class="hs2-k"><i aria-hidden="true"></i> For professionals in Nigeria with real work experience</p>
-<h1 class="hs2-h">You have the experience. <em>Let’s find out why it isn’t getting you hired remotely.</em></h1>
+<h1 class="hs2-h">You have the experience. <span class="hs2-l2">Let’s find out why it isn’t getting you <em>hired remotely</em>.</span></h1>
 <p class="hs2-lede">Tap the one that is true for you. Your next step appears right here. No form, no email.</p>
 <div class="hs2-picks" role="group" aria-label="Which is true for you?">
 <a class="hs2-pick" href="#shape-interview" data-shape="interview"><b>I have a remote interview or test soon</b><span>Within the next two weeks</span></a>
@@ -2432,13 +2458,17 @@ fromHash();window.addEventListener('hashchange',fromHash);})();
   var picks=[].slice.call(box.querySelectorAll('.hs2-pick')),answers=[].slice.call(box.querySelectorAll('.hs2-a'));
   box.classList.add('js');
   function show(shape,scroll){
+    if(picks[0])picks[0].parentNode.classList.add('has-pick');
     picks.forEach(function(p){var on=p.getAttribute('data-shape')===shape;p.classList.toggle('is-on',on);p.setAttribute('aria-pressed',on?'true':'false');});
     answers.forEach(function(a){a.classList.toggle('is-on',a.getAttribute('data-shape')===shape);});
     var a=document.getElementById('shape-'+shape);
     if(scroll&&a&&a.getBoundingClientRect().top>window.innerHeight*.7){a.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'nearest'});}
     try{sessionStorage.setItem('erj-shape',shape);}catch(e){}
   }
-  picks.forEach(function(p){p.setAttribute('aria-pressed','false');p.addEventListener('click',function(e){e.preventDefault();show(p.getAttribute('data-shape'),true);});});
+  picks.forEach(function(p){p.setAttribute('aria-pressed','false');p.addEventListener('click',function(e){e.preventDefault();show(p.getAttribute('data-shape'),true);});
+    /* the fill spreads from where the finger lands */
+    p.addEventListener('pointerdown',function(e){var r=p.getBoundingClientRect(),i=document.createElement('i');i.className='hs2-ink';i.setAttribute('aria-hidden','true');
+      i.style.left=(e.clientX-r.left)+'px';i.style.top=(e.clientY-r.top)+'px';p.appendChild(i);setTimeout(function(){if(i.parentNode)i.parentNode.removeChild(i);},700);});});
   var start=(location.hash.indexOf('#shape-')===0)?location.hash.slice(7):null;
   if(!start){try{start=sessionStorage.getItem('erj-shape');}catch(e){}}
   if(start&&document.getElementById('shape-'+start))show(start,false);
