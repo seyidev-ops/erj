@@ -8286,6 +8286,33 @@
    "family": "Virtual Assistant & Admin",
    "why": "Open worldwide with no country exclusion, so you can apply from Nigeria. You apply directly on the employer's own page.",
    "direct": true
+  },
+  {
+   "id": "00c6c86d7e",
+   "title": "Senior Application Security Engineer - GenAI Security Evaluation",
+   "company": "Gramian Consulting Group",
+   "region": "Remote — Nigeria",
+   "type": "Contract",
+   "experience": "5+ years",
+   "salary": "Undisclosed",
+   "bullets": [
+    "Strong experience conducting secure code reviews and identifying application-level vulnerabilities",
+    "Practical knowledge of source-to-sink analysis, taint analysis, and static application security testing (SAST)",
+    "Hands-on experience with security analysis tools such as CodeQL or Semgrep",
+    "Experience building or securing LLM agents and/or Retrieval-Augmented Generation (RAG) applications"
+   ],
+   "apply": "https://apply.workable.com/j/EED38CFC17",
+   "posted": "2026-11-08",
+   "deadline": null,
+   "checked": "2026-11-08",
+   "added": "2026-11-08",
+   "listed": "2026-11-08",
+   "source": "Workable",
+   "origin": "feed",
+   "ats_id": null,
+   "family": "Tech & IT",
+   "why": "Open to candidates in Nigeria by name. Contract work: a fast way to earn a first remote reference.",
+   "direct": true
   }
  ]
 }
