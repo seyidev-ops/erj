@@ -14599,6 +14599,62 @@
    "direct": true,
    "closed": "2026-11-09",
    "closed_reason": "older than the board's age limit"
+  },
+  {
+   "id": "5f28c5c3cd",
+   "title": "Principal Mobile Engineer (POS Terminal)",
+   "company": "Moniepoint",
+   "region": "Remote, Lagos, Nigeria / Moniepoint Headquaters",
+   "type": "Not stated",
+   "experience": "8+ years",
+   "salary": "$250",
+   "bullets": [
+    "At least 8 years of experience in system design, architecture, and development, specifically in the POS terminal domain",
+    "Strong expertise in Android Native development (Java/Kotlin), with a deep understanding of Android-based POS terminal solutions",
+    "Experience in cross-platform mobile development, such as Flutter , and familiarity with other POS application platforms (e.g., C",
+    "Strong knowledge of EMV (Europay, Mastercard, and Visa) security protocols, including chip-based transactions, encryption"
+   ],
+   "apply": "https://job-boards.eu.greenhouse.io/moniepoint/jobs/5009088101",
+   "posted": "2026-10-16",
+   "deadline": null,
+   "checked": "2026-11-09",
+   "added": "2026-10-20",
+   "listed": "2026-10-20",
+   "source": "Greenhouse",
+   "origin": "feed",
+   "ats_id": "5009088101",
+   "family": "Tech & IT",
+   "why": "Open to candidates in Nigeria by name, and pays in foreign currency ($250). You apply directly on the employer's own page.",
+   "direct": true,
+   "closed": "2026-11-09",
+   "closed_reason": "employer page closed"
+  },
+  {
+   "title": "Data Quality Analyst",
+   "company": "Imagine Worldwide",
+   "region": "Remote — anywhere in Africa",
+   "type": "Not stated",
+   "experience": "See posting",
+   "salary": "Not listed",
+   "bullets": [
+    "Full-time remote",
+    "Data quality for education programmes",
+    "Overlap with Africa working hours"
+   ],
+   "why": "Open across Africa, Nigeria included. You apply directly on the employer's own page.",
+   "apply": "https://job-boards.greenhouse.io/imagineworldwide/jobs/4464914009",
+   "family": "Data & Product",
+   "posted": "2026-10-23",
+   "deadline": null,
+   "checked": "2026-11-09",
+   "listed": "2026-10-26",
+   "source": "Greenhouse",
+   "origin": "sheet",
+   "id": "2cc520c827",
+   "added": "2026-10-26",
+   "direct": true,
+   "closed": "2026-11-09",
+   "closed_reason": "employer page closed"
   }
  ]
 }

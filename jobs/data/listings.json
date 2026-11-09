@@ -2391,33 +2391,6 @@
    "direct": true
   },
   {
-   "id": "5f28c5c3cd",
-   "title": "Principal Mobile Engineer (POS Terminal)",
-   "company": "Moniepoint",
-   "region": "Remote, Lagos, Nigeria / Moniepoint Headquaters",
-   "type": "Not stated",
-   "experience": "8+ years",
-   "salary": "$250",
-   "bullets": [
-    "At least 8 years of experience in system design, architecture, and development, specifically in the POS terminal domain",
-    "Strong expertise in Android Native development (Java/Kotlin), with a deep understanding of Android-based POS terminal solutions",
-    "Experience in cross-platform mobile development, such as Flutter , and familiarity with other POS application platforms (e.g., C",
-    "Strong knowledge of EMV (Europay, Mastercard, and Visa) security protocols, including chip-based transactions, encryption"
-   ],
-   "apply": "https://job-boards.eu.greenhouse.io/moniepoint/jobs/5009088101",
-   "posted": "2026-10-16",
-   "deadline": null,
-   "checked": "2026-11-09",
-   "added": "2026-10-20",
-   "listed": "2026-10-20",
-   "source": "Greenhouse",
-   "origin": "feed",
-   "ats_id": "5009088101",
-   "family": "Tech & IT",
-   "why": "Open to candidates in Nigeria by name, and pays in foreign currency ($250). You apply directly on the employer's own page.",
-   "direct": true
-  },
-  {
    "id": "c68001cc34",
    "title": "Director, Information Security",
    "company": "Carrot",
@@ -4178,31 +4151,6 @@
    "ats_id": "4994722101",
    "family": "Marketing & Creative",
    "why": "Open worldwide with no country exclusion, so you can apply from Nigeria. You apply directly on the employer's own page.",
-   "direct": true
-  },
-  {
-   "title": "Data Quality Analyst",
-   "company": "Imagine Worldwide",
-   "region": "Remote — anywhere in Africa",
-   "type": "Not stated",
-   "experience": "See posting",
-   "salary": "Not listed",
-   "bullets": [
-    "Full-time remote",
-    "Data quality for education programmes",
-    "Overlap with Africa working hours"
-   ],
-   "why": "Open across Africa, Nigeria included. You apply directly on the employer's own page.",
-   "apply": "https://job-boards.greenhouse.io/imagineworldwide/jobs/4464914009",
-   "family": "Data & Product",
-   "posted": "2026-10-23",
-   "deadline": null,
-   "checked": "2026-11-09",
-   "listed": "2026-10-26",
-   "source": "Greenhouse",
-   "origin": "sheet",
-   "id": "2cc520c827",
-   "added": "2026-10-26",
    "direct": true
   },
   {
@@ -8043,6 +7991,110 @@
    "id": "69bfe8b9be",
    "added": "2026-11-09",
    "direct": false
+  },
+  {
+   "id": "f4cf944d4b",
+   "title": "Infrastructure Operations Engineer",
+   "company": "Jobgether partner",
+   "region": "Nigeria",
+   "type": "Full-Time",
+   "experience": "Not stated",
+   "salary": "Undisclosed",
+   "bullets": [
+    "Manage employee onboarding, offboarding, and access-management requests in accordance with established security procedures",
+    "Take ownership of common Linux and infrastructure requests and incidents, from initial triage",
+    "Perform standard host provisioning and production-server changes across bare-metal infrastructure, private cloud",
+    "Troubleshoot DNS-related issues and execute authorized DNS and domain-management changes in accordance with established operational…"
+   ],
+   "apply": "https://jobs.lever.co/jobgether/a2ad4b27-b133-47bc-9085-30f58d95fbfd",
+   "posted": "2026-11-09",
+   "deadline": null,
+   "checked": "2026-11-09",
+   "added": "2026-11-09",
+   "listed": "2026-11-09",
+   "source": "Lever",
+   "origin": "feed",
+   "ats_id": "a2ad4b27-b133-47bc-9085-30f58d95fbfd",
+   "family": "Executive & Operations",
+   "why": "Open to candidates in Nigeria by name. You apply directly on the employer's own page.",
+   "direct": true
+  },
+  {
+   "id": "82adef3b34",
+   "title": "Product Manager",
+   "company": "SKELAR",
+   "region": "Global, Remote",
+   "type": "Full-Time",
+   "experience": "Not stated",
+   "salary": "Undisclosed",
+   "bullets": [
+    "Have experience in business analysis, consulting, product management, or similar roles",
+    "Can empathize with users and put yourself in their shoes to build products they’ll love",
+    "Have experience working in fast-paced, ambiguous environments where priorities can shift quickly"
+   ],
+   "apply": "https://jobs.ashbyhq.com/SKELAR/3ddb3b0a-f683-4d2b-8925-03b112fa5ad7",
+   "posted": "2026-11-09",
+   "deadline": null,
+   "checked": "2026-11-09",
+   "added": "2026-11-09",
+   "listed": "2026-11-09",
+   "source": "Ashby",
+   "origin": "feed",
+   "ats_id": "3ddb3b0a-f683-4d2b-8925-03b112fa5ad7",
+   "family": "Data & Product",
+   "why": "Open worldwide with no country exclusion, so you can apply from Nigeria. You apply directly on the employer's own page.",
+   "direct": true
+  },
+  {
+   "id": "17501e0d41",
+   "title": "User Interface (UI) Designer",
+   "company": "20four7VA",
+   "region": "Worldwide",
+   "type": "Contract",
+   "experience": "Not stated",
+   "salary": "Undisclosed",
+   "bullets": [
+    "Strong UI and visual design skills with a good eye for layout, typography, spacing, hierarchy, and visual consistency"
+   ],
+   "apply": "https://20four7va.breezy.hr/p/723ae2d57b9d-s-cpt-0047-user-interface-ui-designer",
+   "posted": "2026-11-09",
+   "deadline": null,
+   "checked": "2026-11-09",
+   "added": "2026-11-09",
+   "listed": "2026-11-09",
+   "source": "Breezy",
+   "origin": "feed",
+   "ats_id": "723ae2d57b9d",
+   "family": "Marketing & Creative",
+   "why": "Open worldwide with no country exclusion, so you can apply from Nigeria. Contract work: a fast way to earn a first remote reference.",
+   "direct": true
+  },
+  {
+   "id": "a3a08989ad",
+   "title": "Product Owner (CX)",
+   "company": "Social Discovery Group",
+   "region": "Worldwide / Serbia / Spain / Poland / Georgia",
+   "type": "Full-Time",
+   "experience": "3+ years",
+   "salary": "$5000",
+   "bullets": [
+    "Own the customer journey end-to-end, from registration to quality conversations, identifying friction points",
+    "Dig into data yourself: explore analytics with AI tools (e.g., querying BigQuery via MCP), validate insights, and turn them into strong",
+    "Write concise product briefs and drive ideas through specs, prototyping, and release together with developers, analysts, and designers",
+    "Build and prioritize the backlog based on the value each initiative brings to users and the business"
+   ],
+   "apply": "https://social-discovery-ventures.breezy.hr/p/afd8d2649cc001-product-owner-cx",
+   "posted": "2026-11-09",
+   "deadline": null,
+   "checked": "2026-11-09",
+   "added": "2026-11-09",
+   "listed": "2026-11-09",
+   "source": "Breezy",
+   "origin": "feed",
+   "ats_id": "afd8d2649cc001",
+   "family": "Customer Service & Success",
+   "why": "Open worldwide with no country exclusion, so you can apply from Nigeria, and pays in foreign currency ($5000). You apply directly on the employer's own page.",
+   "direct": true
   }
  ]
 }
