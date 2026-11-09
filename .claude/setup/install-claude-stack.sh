@@ -1,54 +1,32 @@
 #!/usr/bin/env bash
-# Installs the tool stack into YOUR machine's Claude Code (user scope).
-# Idempotent. Run it on your own computer, not in the cloud session.
-#   bash install-claude-stack.sh            # core + plugins + CLIs
-#   WITH_GATEWAY=1 bash install-claude-stack.sh   # also OmniRoute + FreeLLMAPI (see notes)
-# Needs: claude, node 22+, npm, python3, uv (https://docs.astral.sh/uv/).
-# No keys or tokens are written by this script. Set keys yourself, in your shell profile.
+# Installs the recommended Claude Code stack on YOUR machine (user scope). Idempotent. Writes no keys.
+#   bash install-claude-stack.sh              # recommended set
+#   EXTRAS=1 bash install-claude-stack.sh     # + the optional tools listed at the bottom
+# Needs: claude, node 22+, npm, python3, uv.
 set -u
-ok(){ printf '\033[32m✓\033[0m %s\n' "$*"; }; bad(){ printf '\033[31m✗\033[0m %s\n' "$*"; FAILED+=("$*"); }
 FAILED=()
-for t in claude node npm python3 uv; do command -v $t >/dev/null || { echo "missing: $t"; exit 1; }; done
+ok(){ echo "ok   $*"; }; bad(){ echo "FAIL $*"; FAILED+=("$*"); }
+for t in claude node npm python3 uv git; do command -v $t >/dev/null || { echo "missing: $t"; exit 1; }; done
 HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-# 1) Plugins (marketplace/name pairs verified against each repo's marketplace.json)
-while read -r repo plugin; do
-  claude plugin marketplace add "$repo" >/dev/null 2>&1; 
-  claude plugin install "$plugin" >/dev/null 2>&1 && ok "plugin $plugin" || bad "plugin $plugin"
-done <<'L'
-DietrichGebert/ponytail          ponytail@ponytail
-thedotmack/claude-mem            claude-mem@thedotmack
-google/elephant-goldfish-model   egm@egm
-lemomo-ai/lemo-opuscar           lemo-opuscar@lemolab
-pbakaus/impeccable               impeccable@impeccable
-nutlope/hallmark                 hallmark@hallmark
-Leonxlnx/taste-skill             taste-skill@taste-skill
-L
+plugin(){ claude plugin marketplace add "$1" >/dev/null 2>&1; claude plugin install "$2" >/dev/null 2>&1 && ok "plugin $2" || bad "plugin $2"; }
 
-# 2) Scanner first, so you can vet anything else before installing it
-uv tool install --force 'git+https://github.com/NVIDIA/skillspector.git' >/dev/null 2>&1 && ok "skillspector" || bad "skillspector"
+plugin thedotmack/claude-mem  claude-mem@thedotmack     # cross-session memory
+plugin DietrichGebert/ponytail ponytail@ponytail        # minimal-diff coding + review/audit
+plugin pbakaus/impeccable     impeccable@impeccable     # design critique/audit (the one design skill)
 
-# 3) Skills that are not plugins
-npx -y skills add Bomx/distribb-skill -g --agent claude-code -y >/dev/null 2>&1 && ok "distribb-skill (needs DISTRIBB_API_KEY)" || bad "distribb-skill"
-TMP="$(mktemp -d)"; git clone -q --depth 1 https://github.com/google-research/timesfm "$TMP/t" \
-  && mkdir -p ~/.claude/skills && rm -rf ~/.claude/skills/timesfm-forecasting \
-  && cp -R "$TMP/t/timesfm-forecasting" ~/.claude/skills/ && ok "timesfm-forecasting skill (model weights download on first use)" || bad "timesfm skill"
-rm -rf "$TMP"
+uv tool install --force 'git+https://github.com/NVIDIA/skillspector.git' >/dev/null 2>&1 && ok skillspector || bad skillspector
+uv tool install headroom-ai >/dev/null 2>&1 && ok "headroom (then: headroom wrap claude)" || bad headroom
 
-# 4) Your own skill: image folder/zip -> one spreadsheet
-mkdir -p ~/.claude/skills && rm -rf ~/.claude/skills/records-digitizer && cp -R "$HERE/../skills/records-digitizer" ~/.claude/skills/ \
-  && python3 -m pip install --user -q pillow openpyxl && ok "records-digitizer skill" || bad "records-digitizer skill"
+rm -rf ~/.claude/skills/records-digitizer; mkdir -p ~/.claude/skills
+cp -R "$HERE/../skills/records-digitizer" ~/.claude/skills/ && python3 -m pip install --user -q pillow openpyxl \
+  && ok records-digitizer || bad records-digitizer
 
-# 5) CLIs
-uv tool install headroom-ai >/dev/null 2>&1 && ok "headroom (run: headroom wrap claude)" || bad "headroom"
-npm i -g @opencode/cli@latest >/dev/null 2>&1 && ok "opencode (@opencode/cli, NOT opencode-ai)" || bad "opencode"
-
-if [ "${WITH_GATEWAY:-0}" = 1 ]; then
-  npm i -g omniroute@latest >/dev/null 2>&1 && ok "omniroute" || bad "omniroute"
-  npm i -g freellmapi@latest >/dev/null 2>&1 && ok "freellmapi" || bad "freellmapi"
+if [ "${EXTRAS:-0}" = 1 ]; then
+  npm i -g omniroute@latest >/dev/null 2>&1 && ok "omniroute (gateway; sends prompts to third parties)" || bad omniroute
+  npx -y skills add Bomx/distribb-skill -g --agent claude-code -y >/dev/null 2>&1 && ok "distribb (needs DISTRIBB_API_KEY)" || bad distribb
+  T="$(mktemp -d)"; git clone -q --depth 1 https://github.com/google-research/timesfm "$T/t" \
+    && cp -R "$T/t/timesfm-forecasting" ~/.claude/skills/ && ok timesfm-skill || bad timesfm-skill; rm -rf "$T"
 fi
-
-echo; echo "Not auto-installed on purpose: Agent-Reach (can reuse your browser logins; install it deliberately,"
-echo "from GitHub only, the PyPI package of that name is a different project)."
 [ ${#FAILED[@]} -gt 0 ] && { echo "Failed: ${FAILED[*]}"; exit 1; }
-echo "Done. Restart Claude Code, then run /plugin to confirm."
+echo "Done. Restart Claude Code, run /plugin to confirm."
