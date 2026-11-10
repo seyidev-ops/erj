@@ -8315,6 +8315,87 @@
    "family": "Virtual Assistant & Admin",
    "why": "Open worldwide with no country exclusion, so you can apply from Nigeria. You apply directly on the employer's own page.",
    "direct": true
+  },
+  {
+   "id": "98e93005db",
+   "title": "Email Marketing Manager",
+   "company": "Jobgether partner",
+   "region": "Nigeria",
+   "type": "Full-Time",
+   "experience": "5+ years",
+   "salary": "Undisclosed",
+   "bullets": [
+    "Develop and execute comprehensive email and SMS marketing strategies for 6–7 e-commerce brands using Klaviyo and related platforms",
+    "Manage the full campaign lifecycle, including strategic planning, setup, scheduling, quality assurance, launch, and post-campaign analysis",
+    "Serve as the primary point of contact for assigned clients, participating in meetings, delivering weekly performance reports",
+    "Coordinate with copywriters, designers, and technical specialists to ensure campaigns are delivered accurately, efficiently"
+   ],
+   "apply": "https://jobs.lever.co/jobgether/c2ca4f78-db3c-4cf6-98b6-7de049a1be3e",
+   "posted": "2026-11-10",
+   "deadline": null,
+   "checked": "2026-11-10",
+   "added": "2026-11-10",
+   "listed": "2026-11-10",
+   "source": "Lever",
+   "origin": "feed",
+   "ats_id": "c2ca4f78-db3c-4cf6-98b6-7de049a1be3e",
+   "family": "Marketing & Creative",
+   "why": "Open to candidates in Nigeria by name. You apply directly on the employer's own page.",
+   "direct": true
+  },
+  {
+   "id": "ed3c16fd4b",
+   "title": "Senior Backend Engineer II & III - Asset Sales",
+   "company": "M-KOPA",
+   "region": "Nairobi / Cape Town / Lagos / Kampala / Accra / Johannesburg",
+   "type": "Full-Time",
+   "experience": "Not stated",
+   "salary": "Undisclosed",
+   "bullets": [
+    "Strong grasp of C# and .NET development",
+    "Experience with event-driven systems - We use Azure Service Bus",
+    "Microservices architecture experience, ideally on Azure and Kubernetes",
+    "Experience using observability tooling (e.g. Grafana, Application Insights) to understand production behaviour"
+   ],
+   "apply": "https://jobs.ashbyhq.com/M-KOPA/fbfc41bc-c167-4029-a091-da381012e6da",
+   "posted": "2026-11-10",
+   "deadline": null,
+   "checked": "2026-11-10",
+   "added": "2026-11-10",
+   "listed": "2026-11-10",
+   "source": "Ashby",
+   "origin": "feed",
+   "ats_id": "fbfc41bc-c167-4029-a091-da381012e6da",
+   "family": "Sales & Accounts",
+   "why": "Open to candidates in Nigeria by name. You apply directly on the employer's own page.",
+   "direct": true
+  },
+  {
+   "id": "4ba9e11598",
+   "title": "Talent Acquisition & Recruiting Coordinator Virtual Assistant",
+   "company": "20four7VA",
+   "region": "Worldwide",
+   "type": "Part-Time",
+   "experience": "Not stated",
+   "salary": "Undisclosed",
+   "bullets": [
+    "Customer service, recruitment, or executive assistant experience required",
+    "Recruiting coordination, talent acquisition, staffing, or comparable recruiting experience strongly preferred",
+    "Candidate pre-screening or interviewing experience strongly preferred",
+    "Strong critical-thinking and judgment skills required"
+   ],
+   "apply": "https://20four7va.breezy.hr/p/23537cce8e3c-cpt-11742-talent-acquisition-recruiting-coordinator-virtual-assistant",
+   "posted": "2026-11-10",
+   "deadline": null,
+   "checked": "2026-11-10",
+   "added": "2026-11-10",
+   "listed": "2026-11-10",
+   "source": "Breezy",
+   "origin": "feed",
+   "ats_id": "23537cce8e3c",
+   "family": "Virtual Assistant & Admin",
+   "why": "Open worldwide with no country exclusion, so you can apply from Nigeria. Part-time, so it can sit beside a current job.",
+   "direct": true
   }
  ]
 }
