@@ -29,6 +29,13 @@
   ];
   var TOWNS = [['Lagos', 6.5, 3.4], ['Abuja', 9.06, 7.49], ['Kano', 12, 8.52], ['Port Harcourt', 4.82, 7.03], ['Enugu', 6.44, 7.5], ['Ibadan', 7.38, 3.9], ['Kaduna', 10.52, 7.44], ['Benin City', 6.34, 5.62]]
     .map(function (t) { return { n: t[0], v: vec(t[1], t[2]) }; });
+  /* cities whose companies hire remote professionals worldwide: each lights up as the turning globe brings it round */
+  var SPOTS = [['You · Nigeria', 6.5, 3.4, 1], ['London', 51.5, -0.1], ['Dublin', 53.3, -6.3], ['Lisbon', 38.7, -9.1], ['Paris', 48.9, 2.4], ['Amsterdam', 52.4, 4.9],
+    ['Berlin', 52.5, 13.4], ['Stockholm', 59.3, 18.1], ['Tallinn', 59.4, 24.8], ['Cape Town', -33.9, 18.4], ['Johannesburg', -26.2, 28], ['Nairobi', -1.3, 36.8],
+    ['Tel Aviv', 32.1, 34.8], ['Dubai', 25.2, 55.3], ['Bengaluru', 12.97, 77.6], ['Singapore', 1.35, 103.8], ['Tokyo', 35.7, 139.7], ['Sydney', -33.9, 151.2],
+    ['Auckland', -36.8, 174.8], ['San Francisco', 37.8, -122.4], ['Seattle', 47.6, -122.3], ['Austin', 30.3, -97.7], ['Toronto', 43.7, -79.4], ['New York', 40.7, -74],
+    ['Mexico City', 19.4, -99.1], ['Bogotá', 4.7, -74.1], ['São Paulo', -23.5, -46.6], ['Buenos Aires', -34.6, -58.4]]
+    .map(function (t) { return { n: t[0], v: vec(t[1], t[2]), home: !!t[3], on: false, t0: 0 }; });
 
   var cv = document.createElement('canvas'); cv.id = 'erjWorld'; cv.setAttribute('aria-hidden', 'true');
   cv.style.cssText = 'position:fixed;left:0;top:0;width:100%;height:100%;z-index:-1;pointer-events:none;';
@@ -56,11 +63,11 @@
   function docY(el) { var r = el.getBoundingClientRect(); return r.top + window.pageYOffset; }
   function smooth(t) { t = t < 0 ? 0 : t > 1 ? 1 : t; return t * t * (3 - 2 * t); }
   function pick(s) { // a station's camera, for this screen
-    var o = { lat: s.lat, lon: s.lon, zoom: narrow && s.mzoom != null ? s.mzoom : s.zoom, x: narrow && s.mx != null ? s.mx : s.x, y: narrow && s.my != null ? s.my : s.y, a: narrow && s.ma != null ? s.ma : s.a, arcs: s.arcs || 0, ng: s.ng || 0, spin: s.spin || 0, towns: s.towns || 0 };
+    var o = { lat: s.lat, lon: s.lon, zoom: narrow && s.mzoom != null ? s.mzoom : s.zoom, x: narrow && s.mx != null ? s.mx : s.x, y: narrow && s.my != null ? s.my : s.y, a: narrow && s.ma != null ? s.ma : s.a, arcs: s.arcs || 0, ng: s.ng || 0, spin: s.spin || 0, towns: s.towns || 0, turn: s.turn || 0, spots: s.spots || 0 };
     if (s.anchor) { var el = document.querySelector(s.anchor); if (el) { var r = el.getBoundingClientRect(); if (r.width > 40) { o.x = (r.left + r.width / 2) / VW; o.y = (r.top + r.height / 2) / VH; o.zoom = Math.min(r.width, r.height) * .45 / BASE; } } }
     return o;
   }
-  var KEYS = ['lat', 'lon', 'zoom', 'x', 'y', 'a', 'arcs', 'ng', 'spin', 'towns'];
+  var KEYS = ['lat', 'lon', 'zoom', 'x', 'y', 'a', 'arcs', 'ng', 'spin', 'towns', 'turn', 'spots'];
   var stIndex = 0;
   function target() {
     var y = window.pageYOffset, a, b, k;
@@ -80,10 +87,10 @@
     return o;
   }
   function sway() { return 26 * Math.sin(swayT * .16); }
-  var cam = null, tgt = null, swayT = 0, worldT = 0, lastNow = 0, raf = 0, running = false;
+  var cam = null, tgt = null, swayT = 0, worldT = 0, turnLon = 0, spotT = 0, lastDraw = 0, lastNow = 0, raf = 0, running = false;
   var R, CX, CY, fx, fy, fz, rx, ry, ux, uy, uz;
   function setCam(c) {
-    var p = c.lat * RAD, l = (c.lon + sway() * c.spin) * RAD;
+    var p = c.lat * RAD, l = (c.lon + sway() * c.spin + turnLon) * RAD;
     fx = Math.cos(p) * Math.cos(l); fy = Math.cos(p) * Math.sin(l); fz = Math.sin(p);
     rx = -Math.sin(l); ry = Math.cos(l);
     ux = -Math.sin(p) * Math.cos(l); uy = -Math.sin(p) * Math.sin(l); uz = Math.cos(p);
@@ -191,6 +198,30 @@
       var p = proj(ct.v); if (p.z > 0) { pin(p, ORANGE, t + ct.at, la * c.arcs); if (c.arcs > .7 && c.zoom < 2) chip(p, ct.n, ORANGE, la * c.arcs); }
     });
     if (home.z > 0 && (c.arcs > .02 || c.ng > .3)) { var ha = la * Math.max(c.arcs, c.ng); pin(home, GREEN, t, ha, c.zoom > 3); if (c.arcs > .7 || c.towns > .5) chip(home, c.towns > .5 ? 'Lagos' : 'You · Lagos', GREEN, ha); }
+    if (c.spots > .02) {
+      var sa = Math.min(1, c.a * 1.4) * c.spots;
+      SPOTS.forEach(function (sp) {
+        var p = proj(sp.v);
+        if (still) { sp.on = p.z > .12; sp.t0 = -9; }
+        else if (!sp.on && p.z > .4) { sp.on = true; sp.t0 = spotT; }
+        else if (sp.on && p.z < -.45) sp.on = false;
+        if (!sp.on || p.z <= .02) return;
+        var age = spotT - sp.t0, edge = smooth(p.z / .3), col = sp.home ? GREEN : ORANGE, a = sa * edge;
+        ctx.save();
+        if (age < 1.6) { // the spotlight: a soft pool of light and one ring, as it comes on
+          var k = age / 1.6, pool = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, 34 * S);
+          pool.addColorStop(0, sp.home ? 'rgba(25,194,122,.5)' : 'rgba(255,138,61,.55)'); pool.addColorStop(1, 'rgba(255,138,61,0)');
+          ctx.globalAlpha = a * (1 - k); ctx.fillStyle = pool; ctx.beginPath(); ctx.arc(p.x, p.y, 34 * S, 0, 7); ctx.fill();
+          ctx.strokeStyle = col; ctx.lineWidth = 1.6 * S; ctx.beginPath(); ctx.arc(p.x, p.y, (4 + k * 20) * S, 0, 7); ctx.stroke();
+        }
+        var breathe = still ? 1 : .82 + .18 * Math.sin(t * 1.7 + sp.v[1] * 9);
+        ctx.globalAlpha = a * .3 * breathe; ctx.fillStyle = col; ctx.beginPath(); ctx.arc(p.x, p.y, 7.5 * S, 0, 7); ctx.fill();
+        ctx.globalAlpha = a; ctx.beginPath(); ctx.arc(p.x, p.y, (sp.home ? 4.2 : 3.2) * S, 0, 7); ctx.fill();
+        ctx.fillStyle = '#fff'; ctx.beginPath(); ctx.arc(p.x, p.y, 1.2 * S, 0, 7); ctx.fill();
+        ctx.restore();
+        if (age >= 0 && age < 2.6 && c.spots > .6) chip(p, sp.n, col, a * (age < 2 ? 1 : 1 - (age - 2) / .6));
+      });
+    }
     ctx.globalAlpha = 1;
   }
   function near(a, b) { return Math.abs(a.zoom - b.zoom) < .004 * b.zoom && Math.abs(a.x - b.x) < .0015 && Math.abs(a.y - b.y) < .0015 && Math.abs(a.lat - b.lat) < .05 && Math.abs(a.lon - b.lon) < .05 && Math.abs(a.a - b.a) < .004; }
@@ -203,9 +234,11 @@
       if (cam.arcs > .25) { worldT += dt; live = true; } else if (cam.arcs < .02) worldT = 0;
       if (cam.spin > .05 && (!narrow || cam.arcs > .25)) { swayT += dt; live = true; }
       if (cam.ng > .3 || cam.arcs > .02) live = cam.a > .03 || live; // pins pulse
+      if (cam.turn > .05) { turnLon += dt * cam.turn; spotT += dt; live = true; } // a slow, steady turn
+      else if (turnLon) { var home360 = Math.round(turnLon / 360) * 360; turnLon += (home360 - turnLon) * (1 - Math.pow(.0009, dt)); if (Math.abs(home360 - turnLon) < .05) turnLon = 0; else live = true; }
     }
-    draw(now);
-    hud();
+    /* phones: while the only motion is the slow turn, draw about 24 times a second */
+    if (!(narrow && live && cam.turn > .05 && near(cam, tgt) && now - lastDraw < 40)) { lastDraw = now; draw(now); hud(); }
     if (!document.hidden && onScreen && (live || !near(cam, tgt))) raf = requestAnimationFrame(tick); else { running = false; lastNow = 0; }
   }
   function kick() { if (!raf) { running = true; raf = requestAnimationFrame(tick); } }
@@ -231,7 +264,7 @@
       if (s && s.say) { toast.textContent = s.say; toast.classList.add('on'); clearTimeout(toastT); toastT = setTimeout(function () { toast.classList.remove('on'); }, 1900); }
     }
     var km = Math.round(13000 / Math.pow(cam.zoom, 1.25) / 10) * 10;
-    readout.textContent = km.toLocaleString('en-GB') + ' km up · ' + Math.abs(cam.lat).toFixed(1) + '°' + (cam.lat >= 0 ? 'N' : 'S') + ' ' + Math.abs(((cam.lon + sway() * cam.spin + 540) % 360) - 180).toFixed(1) + '°' + ((((cam.lon + sway() * cam.spin + 540) % 360) - 180) >= 0 ? 'E' : 'W');
+    readout.textContent = km.toLocaleString('en-GB') + ' km up · ' + Math.abs(cam.lat).toFixed(1) + '°' + (cam.lat >= 0 ? 'N' : 'S') + ' ' + Math.abs(((cam.lon + sway() * cam.spin + turnLon + 540) % 360) - 180).toFixed(1) + '°' + ((((cam.lon + sway() * cam.spin + turnLon + 540) % 360) - 180) >= 0 ? 'E' : 'W');
   }
   size(); measure(); buildHud(); kick();
   window.addEventListener('scroll', kick, { passive: true });
