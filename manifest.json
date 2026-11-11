@@ -1,7 +1,7 @@
 {
   "name": "Everything Remote Job",
   "short_name": "ERJ",
-  "description": "From job seeker to working for clients in the UK, the US and beyond, right from where you are. Start free; go further when you are ready.",
+  "description": "For experienced professionals in Nigeria: find what is standing between you and a remote job, and fix it. Start free; go further when you are ready.",
   "start_url": "/jobs/?source=pwa",
   "id": "/index.html",
   "display": "standalone",

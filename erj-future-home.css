@@ -149,3 +149,19 @@ html[data-theme="day"] .ep-n{background:linear-gradient(180deg,#E8470F,#AD350A)!
 #enrol .cost-h{font-size:clamp(2.2rem,4.6vw,3.6rem)!important;letter-spacing:-.045em!important;}
 .ft-list li{border-radius:18px!important;background:var(--hz-surface)!important;border-color:var(--card-line)!important;box-shadow:var(--hz-edge);}
 .ft-list li::before{background:linear-gradient(180deg,#FF5722,#FFC46B)!important;box-shadow:0 0 12px rgba(255,87,34,.6);}
+
+/* ── The world tour (erj-world.js): rail, altitude readout and chapter toast. Decorative. ── */
+.wt-rail,.wt-read{display:none;}
+.wt-toast{position:fixed;left:50%;top:78px;z-index:40;transform:translate(-50%,-8px);padding:.5rem .95rem;border-radius:999px;font:700 .68rem/1 var(--font-body);letter-spacing:.13em;text-transform:uppercase;color:#fff;background:rgba(18,18,22,.82);border:1px solid rgba(255,138,61,.5);box-shadow:0 10px 30px -12px rgba(255,87,34,.7);opacity:0;pointer-events:none;transition:opacity .35s,transform .35s;white-space:nowrap;}
+.wt-toast::before{content:'◎';margin-right:.5em;color:#FF8A3D;}
+.wt-toast.on{opacity:1;transform:translate(-50%,0);}
+@media(min-width:1180px){
+.wt-rail{display:flex;flex-direction:column;gap:.15rem;position:fixed;right:14px;top:50%;transform:translateY(-50%);z-index:30;}
+.wt-rail a{display:flex;align-items:center;justify-content:flex-end;gap:.6rem;padding:.42rem .2rem;text-decoration:none;color:var(--ink-faint);font:700 .66rem/1 var(--font-body);letter-spacing:.12em;text-transform:uppercase;}
+.wt-rail a span{opacity:0;transform:translateX(6px);transition:opacity .25s,transform .25s;padding:.4rem .6rem;border-radius:999px;background:var(--card);border:1px solid var(--card-line,var(--line));}
+.wt-rail a i{flex:none;width:9px;height:9px;border-radius:50%;border:1.5px solid currentColor;transition:transform .25s,background .25s,box-shadow .25s;}
+.wt-rail a:hover span,.wt-rail a.on span{opacity:1;transform:none;}
+.wt-rail a.on{color:var(--accent);}
+.wt-rail a.on i{background:var(--accent);border-color:var(--accent);transform:scale(1.35);box-shadow:0 0 0 5px rgba(255,87,34,.18);}
+.wt-read{display:block;position:fixed;right:18px;bottom:14px;z-index:30;font:600 .68rem/1 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.06em;color:var(--ink-faint);pointer-events:none;}
+}
