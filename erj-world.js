@@ -1,8 +1,8 @@
-/* ERJ World: one soft green Earth behind the page that the scroll flies.
+/* ERJ World: one soft grey Earth behind the page that the scroll flies.
    Scrolling down zooms from orbit into Nigeria, back out to the hiring
    world, and home again. Decorative only (aria-hidden): no page depends
    on it, and every word it sits behind is real text. Land is drawn as
-   smooth filled shapes (no dot pattern) so text and pictures above it
+   smooth grey shapes with a brand-orange edge (no dot pattern) so text and pictures above it
    stay clear. Draws on scroll and while a camera move is settling; sleeps
    otherwise. Reduced motion gets one still globe. No network, no library. */
 (function () {
@@ -136,18 +136,18 @@
     // ocean, with a soft glow round the edge
     var whole = R > far;
     var sea = ctx.createRadialGradient(CX - R * .3, CY - R * .35, R * .05, CX, CY, R);
-    if (D) { sea.addColorStop(0, '#EAF6F4'); sea.addColorStop(1, '#CFE6EA'); } else { sea.addColorStop(0, '#0E2A3A'); sea.addColorStop(1, '#04101A'); }
+    if (D) { sea.addColorStop(0, '#FBFAF8'); sea.addColorStop(1, '#ECE9E4'); } else { sea.addColorStop(0, '#17181D'); sea.addColorStop(1, '#07080A'); }
     if (!whole) {
       var halo = ctx.createRadialGradient(CX, CY, R * .97, CX, CY, R * 1.14);
-      halo.addColorStop(0, D ? 'rgba(46,160,110,.34)' : 'rgba(52,211,153,.40)'); halo.addColorStop(1, 'rgba(52,211,153,0)');
+      halo.addColorStop(0, D ? 'rgba(232,71,15,.26)' : 'rgba(255,87,34,.40)'); halo.addColorStop(1, 'rgba(255,87,34,0)');
       ctx.fillStyle = halo; ctx.beginPath(); ctx.arc(CX, CY, R * 1.14, 0, 7); ctx.fill();
     }
     ctx.save();
     if (!whole) { ctx.beginPath(); ctx.arc(CX, CY, R, 0, 7); ctx.clip(); }
     ctx.fillStyle = sea; ctx.fillRect(0, 0, cw, ch);
-    // land: smooth green shapes; anything over the horizon is tucked onto the edge
+    // land: smooth grey shapes; anything over the horizon is tucked onto the edge
     var lg = ctx.createRadialGradient(CX - R * .3, CY - R * .35, R * .05, CX, CY, R);
-    if (D) { lg.addColorStop(0, '#A9DDB4'); lg.addColorStop(1, '#7FC596'); } else { lg.addColorStop(0, '#2FA36C'); lg.addColorStop(1, '#125A3C'); }
+    if (D) { lg.addColorStop(0, '#DAD6D0'); lg.addColorStop(1, '#C4BFB8'); } else { lg.addColorStop(0, '#4A4C57'); lg.addColorStop(1, '#2A2C34'); }
     ctx.fillStyle = lg; ctx.beginPath();
     for (var i = 0, n = rings.length; i < n; i++) {
       var rg = rings[i], seen = false, pts = [];
@@ -160,14 +160,14 @@
       ctx.moveTo(pts[0], pts[1]); for (var k = 2; k < pts.length; k += 2) ctx.lineTo(pts[k], pts[k + 1]); ctx.closePath();
     }
     ctx.fill();
-    ctx.strokeStyle = D ? 'rgba(30,120,80,.30)' : 'rgba(140,240,190,.28)'; ctx.lineWidth = 1 * S; ctx.lineJoin = 'round'; ctx.stroke();
+    ctx.strokeStyle = D ? 'rgba(120,112,102,.35)' : 'rgba(255,255,255,.16)'; ctx.lineWidth = 1 * S; ctx.lineJoin = 'round'; ctx.stroke();
     if (!whole) { // roundness: a little shade toward the far edge
       var sh = ctx.createRadialGradient(CX - R * .25, CY - R * .3, R * .45, CX, CY, R);
-      sh.addColorStop(0, 'rgba(0,0,0,0)'); sh.addColorStop(1, D ? 'rgba(20,60,70,.20)' : 'rgba(0,0,0,.55)');
+      sh.addColorStop(0, 'rgba(0,0,0,0)'); sh.addColorStop(1, D ? 'rgba(60,50,40,.14)' : 'rgba(0,0,0,.55)');
       ctx.fillStyle = sh; ctx.fillRect(CX - R, CY - R, R * 2, R * 2);
     }
     ctx.restore();
-    if (!whole) { ctx.strokeStyle = D ? 'rgba(46,160,110,.45)' : 'rgba(110,231,183,.5)'; ctx.lineWidth = 1.2 * S; ctx.beginPath(); ctx.arc(CX, CY, R, 0, 7); ctx.stroke(); }
+    if (!whole) { ctx.strokeStyle = D ? 'rgba(232,71,15,.45)' : 'rgba(255,138,61,.6)'; ctx.lineWidth = 1.2 * S; ctx.beginPath(); ctx.arc(CX, CY, R, 0, 7); ctx.stroke(); }
     // Nigeria, lit, once you are close enough to see it
     if (c.ng > .02) {
       ctx.save(); ctx.beginPath();
