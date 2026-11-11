@@ -120,7 +120,9 @@ precached; keep it free of shared scripts so it renders with no network.
   `erj-world.js` draws a soft grey Earth behind public pages (not `blog/**`,
   portals or tools). The home page sets `window.ERJ_WORLD.stations` so the
   scroll flies the camera (orbit, Nigeria, the hiring world, home); other
-  pages get a quiet globe in the first screen. It is a fixed canvas at
+  pages get a quiet globe in the first screen. A station with `anchor`
+  fits the globe into that element (the home hero uses `#hsGlobe`); `turn`
+  rotates it steadily and `spots` lights hiring cities as they come round. It is a fixed canvas at
   `z-index:-1`, redraws only on scroll or while a move settles, and is
   decorative: no page may depend on it. The link-preview cards use the same
   globe.

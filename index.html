@@ -1995,6 +1995,37 @@ html[data-theme="day"] .hst-h em,html[data-theme="day"] .hst-k{color:#0B7A47;}
 @media(prefers-reduced-motion:no-preference){.hs2-face .hz-orbit{animation:hzLev 7s ease-in-out infinite alternate;}}
 @keyframes hzLev{from{translate:0 8px}to{translate:0 -10px}}
 @media(min-width:861px){.hs2-grid{align-items:start;}.hs2-face{margin-top:1.2rem;}}
+/* hero v5: the photo stands beside the button, his open hand at the button's height;
+   the globe sits clear on its own, turning, lighting up cities that hire remotely */
+.hs2-grid{grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr)!important;align-items:center!important;gap:clamp(1.4rem,4vw,3.4rem)!important;}
+.hs2-stage{--fw:clamp(190px,17vw,236px);--gh:66px;--gap:1.1rem;position:relative;margin-top:1.5rem;min-height:calc(var(--fw) * 1.25);}
+.hs2-stage .hs2-face{position:absolute;left:0;top:0;width:var(--fw);max-width:none;margin:0!important;container-type:normal;}
+.hs2-stage .hs2-face img{border-radius:22px;}
+.hs2-stage .hs2-face figcaption{left:.5rem;right:.5rem;bottom:.5rem;padding:.5rem .65rem;border-radius:12px;font-size:.66rem;line-height:1.3;}
+.hs2-stage .hs2-face figcaption b{font-size:.8rem;}
+.hs2-stage .hs2-drop{max-width:none;padding-top:calc(var(--fw) * .76 - var(--gh) / 2);}
+.hs2-stage .hs2-go{margin-left:calc(var(--fw) + var(--gap));min-height:var(--gh);margin-bottom:calc(var(--fw) * .49 - var(--gh) / 2 + .9rem);max-width:calc(100% - var(--fw) - var(--gap));box-sizing:border-box;}
+.hs2-stage .hs2-drop[open] .hs2-go{border-radius:999px!important;}
+.hs2-stage .hs2-panel{margin-top:0;max-width:600px;}
+.hs2-stage .hs2-go-t{font-size:clamp(1.08rem,1.55vw,1.3rem);}.hs2-stage .hs2-go-s{white-space:nowrap;}
+.hs2-globe{position:relative;justify-self:center;width:min(100%,470px);aspect-ratio:1;container-type:inline-size;pointer-events:none;}
+.hs2-globe .hz-sat b{min-width:40px;height:27px;font-size:.68rem;}
+.hs2-globe .hz-sat.s1{--hz-r:51cqw;}.hs2-globe .hz-sat.s2{--hz-r:53cqw;}.hs2-globe .hz-sat.s3{--hz-r:55cqw;}
+@media(max-width:860px){
+  .hs2-grid{grid-template-columns:1fr!important;gap:.6rem!important;}
+  .hs2-stage{--fw:clamp(132px,40vw,170px);--gh:84px;--gap:.75rem;margin-top:1.2rem;}
+  .hs2-stage .hs2-face figcaption span{display:none;}
+  .hs2-stage .hs2-face figcaption{padding:.4rem .5rem;text-align:center;}
+  .hs2-stage .hs2-face figcaption b{font-size:.7rem;}
+  .hs2-stage .hs2-go{padding:.6rem .6rem .6rem .95rem;gap:.5rem;border-radius:26px!important;}
+  .hs2-stage .hs2-drop[open] .hs2-go{border-radius:26px!important;}
+  .hs2-stage .hs2-go-i{display:none;}
+  .hs2-stage .hs2-go-t{white-space:normal;font-size:1.12rem;line-height:1.15;}
+  .hs2-stage .hs2-go-s{font-size:.56rem;letter-spacing:.1em;white-space:normal;}
+  body .erj-tournav{top:auto!important;bottom:68px!important;transform:none!important;left:.75rem!important;}
+  .hs2-globe{width:min(74vw,300px);margin:.4rem auto 1.2rem;}
+  .hs2-globe .hz-sat b{min-width:34px;height:23px;font-size:.6rem;padding:0 .5rem;}
+}
 </style>
 </head>
 <body>
@@ -2011,6 +2042,13 @@ html[data-theme="day"] .hst-h em,html[data-theme="day"] .hst-k{color:#0B7A47;}
 <div class="hs2-main">
 <h1 class="hs2-h">Welcome to <em>ERJ.</em></h1>
 <p class="hs2-lede">Here, you get everything you need to get your first remote job.</p>
+<div class="hs2-stage">
+<figure class="hs2-face">
+<div class="hs2-lift">
+<picture><source sizes="(max-width:860px) 160px, 250px" srcset="photo-seyi-suit-480.webp 480w, photo-seyi-suit.webp 880w" type="image/webp"/><img alt="Oluwaseyi Ashiru, Lead Facilitator of Everything Remote Job, gesturing towards the button beside him" decoding="async" fetchpriority="high" height="1100" src="photo-seyi-suit.jpg" width="880"/></picture>
+<figcaption><b>Oluwaseyi Ashiru</b><span>Lead Facilitator · in remote roles since 2013</span></figcaption>
+</div>
+</figure>
 <details class="hs2-drop" id="hs2Drop">
 <summary class="hs2-go"><i class="hs2-go-i" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="9"></circle><circle cx="12" cy="12" r="4.5"></circle><circle cx="12" cy="12" r="1" fill="currentColor"></circle></svg></i><span class="hs2-go-in"><span class="hs2-go-t">What’s in your way?</span><span class="hs2-go-s">Tap · ten seconds · free</span></span><i class="hs2-go-a" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></i></summary>
 <div class="hs2-panel">
@@ -2057,13 +2095,8 @@ html[data-theme="day"] .hst-h em,html[data-theme="day"] .hst-k{color:#0B7A47;}
 </div>
 </details>
 </div>
-<figure class="hs2-face">
-<div class="hz-orbit" aria-hidden="true"><i class="r1"></i><i class="r2"></i><i class="r3"></i><span class="hz-sat s1"><b>UK</b></span><span class="hz-sat s2"><b>US</b></span><span class="hz-sat s3"><b>EU</b></span></div>
-<div class="hs2-lift">
-<picture><source sizes="(max-width:700px) 220px, 330px" srcset="photo-seyi-suit-480.webp 480w, photo-seyi-suit.webp 880w" type="image/webp"/><img alt="Oluwaseyi Ashiru, Lead Facilitator of Everything Remote Job" decoding="async" fetchpriority="high" height="1100" src="photo-seyi-suit.jpg" width="880"/></picture>
-<figcaption><b>Oluwaseyi Ashiru</b>Lead Facilitator · in remote roles since 2013</figcaption>
 </div>
-</figure>
+<div class="hs2-globe" id="hsGlobe" aria-hidden="true"><span class="hz-sat s1"><b>UK</b></span><span class="hz-sat s2"><b>US</b></span><span class="hz-sat s3"><b>EU</b></span></div>
 </div>
 </section>
 
@@ -2233,7 +2266,7 @@ html[data-theme="day"] .hst-h em,html[data-theme="day"] .hst-k{color:#0B7A47;}
 </a>
 <script defer="" src="erj-theme.js?v=20260911a"></script>
 <script defer="" src="erj-product.js?v=20260924c"></script>
-<script defer="" src="erj-nav.js?v=20261107c"></script>
+<script defer="" src="erj-nav.js?v=20261111d"></script>
 <script defer="" src="erj-config.js?v=20261107b"></script>
 <script defer="" src="erj-capture.js?v=20260911a"></script>
 <script>if("serviceWorker" in navigator){window.addEventListener("load",function(){var go=function(){navigator.serviceWorker.register("/sw.js",{updateViaCache:"none"}).then(function(reg){reg.update();}).catch(function(){});};if("requestIdleCallback" in window){requestIdleCallback(go,{timeout:3000});}else{setTimeout(go,1200);}});}</script>
@@ -2465,7 +2498,7 @@ d.addEventListener('toggle',function(){if(d.open&&window.innerWidth<861){var r=d
 <script>
 /* The world tour: where the Earth behind this page sits for each part of it (see erj-world.js). */
 window.ERJ_WORLD={rail:true,stations:[
-{sel:'#start',name:'Orbit',lat:14,lon:4,zoom:.98,x:.79,y:.56,a:.9,mx:.5,my:.26,mzoom:1.05,ma:.5,spin:1},
+{sel:'#start',name:'Orbit',lat:16,lon:8,zoom:.98,x:.79,y:.56,a:1,anchor:'#hsGlobe',turn:9,spots:1},
 {sel:'#tobi',name:'A real story',say:'Zooming in · Lagos, Nigeria',lat:7.4,lon:4.6,zoom:4.2,x:.5,y:.5,a:.3,ma:.26,ng:1},
 {sel:'#pledge',name:'Five parts',say:'Nigeria · right where you are',lat:9.1,lon:8.4,zoom:6.4,x:.5,y:.52,a:.3,ma:.26,ng:.8},
 {sel:'#jobs-live',name:'The world’s jobs',say:'Zooming out · the hiring world',lat:24,lon:-20,zoom:1.2,x:.74,y:.5,a:1,arcs:1,spin:1.7,anchor:'#glWin'},
@@ -2474,6 +2507,6 @@ window.ERJ_WORLD={rail:true,stations:[
 {sel:'footer.foot',lat:10,lon:10,zoom:.62,x:.5,y:.55,a:.5}
 ]};
 </script>
-<script defer src="erj-world.js?v=20261111c"></script>
+<script defer src="erj-world.js?v=20261111d"></script>
 </body>
 </html>
