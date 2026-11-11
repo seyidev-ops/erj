@@ -293,31 +293,6 @@
    "direct": true
   },
   {
-   "title": "General Counsel",
-   "company": "Todoist (Doist)",
-   "region": "Anywhere in the world — \"we never place restrictions on location\"",
-   "type": "Not stated",
-   "experience": "Senior",
-   "salary": "Not listed",
-   "bullets": [
-    "Experienced in-house lawyer",
-    "Fully remote",
-    "Async company"
-   ],
-   "why": "Open worldwide with no country exclusion, so you can apply from Nigeria. You apply directly on the employer's own page.",
-   "apply": "https://jobs.ashbyhq.com/todoist-inc/464709c2-75ab-46d3-a416-6b91e8ca8b7f",
-   "family": "Legal",
-   "posted": "2026-10-12",
-   "deadline": null,
-   "checked": "2026-11-11",
-   "listed": "2026-10-13",
-   "source": "ERJ research",
-   "origin": "sheet",
-   "id": "1ec4cd36d2",
-   "added": "2026-10-13",
-   "direct": true
-  },
-  {
    "title": "Junior Data Scientist",
    "company": "micro1",
    "region": "Remote — worldwide (micro1 global expert network)",
@@ -8371,6 +8346,60 @@
    "ats_id": "5017571101",
    "family": "Customer Service & Success",
    "why": "Open worldwide with no country exclusion, so you can apply from Nigeria. A realistic entry point if you are early in your remote career.",
+   "direct": true
+  },
+  {
+   "id": "3869ea63ba",
+   "title": "Staff AI Product Engineer",
+   "company": "Jobgether partner",
+   "region": "Nigeria",
+   "type": "Full-Time",
+   "experience": "7+ years",
+   "salary": "$200,000–$300,000",
+   "bullets": [
+    "Lead the architecture, design, and development of a production-grade multi-agent system capable of safely executing actions across core…",
+    "Own the development and continuous improvement of Model Context Protocol",
+    "Design and implement a unified data infrastructure that consolidates information from multiple sources into a centralized layer…",
+    "Build contextual memory and customer profiling systems that ingest business data and enable increasingly personalized"
+   ],
+   "apply": "https://jobs.lever.co/jobgether/58f9cd68-34c6-411a-baae-57ad7d6dff62",
+   "posted": "2026-11-11",
+   "deadline": null,
+   "checked": "2026-11-11",
+   "added": "2026-11-11",
+   "listed": "2026-11-11",
+   "source": "Lever",
+   "origin": "feed",
+   "ats_id": "58f9cd68-34c6-411a-baae-57ad7d6dff62",
+   "family": "Tech & IT",
+   "why": "Open to candidates in Nigeria by name, and pays in foreign currency ($200,000–$300,000). You apply directly on the employer's own page.",
+   "direct": true
+  },
+  {
+   "id": "98581e4317",
+   "title": "Business Operations Associate",
+   "company": "Trust Wallet",
+   "region": "Remote - Global",
+   "type": "Full-Time",
+   "experience": "3+ years",
+   "salary": "Undisclosed",
+   "bullets": [
+    "3 years in business operations, procurement or finance operations, ideally at a startup or tech company",
+    "Experience with vendor management, invoices and payments",
+    "Highly organized, detail-oriented, with strong follow-through",
+    "Comfortable administering SaaS tools (Google Workspace, Notion, Slack)"
+   ],
+   "apply": "https://jobs.ashbyhq.com/trust-wallet/0402849c-50f8-4fee-a551-1b2dc1d1d011",
+   "posted": "2026-11-11",
+   "deadline": null,
+   "checked": "2026-11-11",
+   "added": "2026-11-11",
+   "listed": "2026-11-11",
+   "source": "Ashby",
+   "origin": "feed",
+   "ats_id": "0402849c-50f8-4fee-a551-1b2dc1d1d011",
+   "family": "Executive & Operations",
+   "why": "Open worldwide with no country exclusion, so you can apply from Nigeria. You apply directly on the employer's own page.",
    "direct": true
   }
  ]
