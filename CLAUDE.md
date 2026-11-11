@@ -117,7 +117,7 @@ precached; keep it free of shared scripts so it renders with no network.
   Horizon design system `erj-future.css` + `erj-future.js` (after the alive
   tags on every page; `blog/post.css` imports the CSS for every post) with
   `erj-future-home.css` for the home page only.
-  `erj-world.js` draws the dotted Earth behind public pages (not `blog/**`,
+  `erj-world.js` draws a soft grey Earth behind public pages (not `blog/**`,
   portals or tools). The home page sets `window.ERJ_WORLD.stations` so the
   scroll flies the camera (orbit, Nigeria, the hiring world, home); other
   pages get a quiet globe in the first screen. It is a fixed canvas at

@@ -18,11 +18,11 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <link href="manifest.json" rel="manifest"/>
 <meta content="#000000" id="metaThemeColor" name="theme-color"/>
-<title>Remote Jobs for Experienced Professionals in Nigeria | ERJ</title>
+<title>Everything Remote Job: Remote Work Help for Nigerians</title>
 <link as="image" fetchpriority="high" href="photo-seyi-suit-480.webp" imagesizes="(max-width:700px) 250px, 330px" imagesrcset="photo-seyi-suit-480.webp 480w, photo-seyi-suit.webp 880w" rel="preload" type="image/webp"/>
-<meta content="For professionals in Nigeria with real work experience: find what is standing between you and a remote job, then fix it. Free diagnosis, live training, done-for-you help." name="description"/>
-<meta content="You have the experience. We find what stands between you and your next remote job." property="og:title"/>
-<meta content="Right from where you are. Three ways we help: do it yourself, done with you, or done for you. Every way starts free." property="og:description"/>
+<meta content="Free job board, CV scan, live training and done-for-you help for professionals in Nigeria." name="description"/>
+<meta content="Everything Remote Job: Remote Work Help for Nigerians" property="og:title"/>
+<meta content="Free job board, CV scan, live training and done-for-you help for professionals in Nigeria." property="og:description"/>
 <meta content="https://everythingremotejob.com/preview-index.jpg" property="og:image"/>
 <meta content="1200" property="og:image:width"/>
 <meta content="630" property="og:image:height"/>
@@ -31,8 +31,8 @@
 <meta content="website" property="og:type"/>
 <meta content="Everything Remote Job" property="og:site_name">
 <meta content="summary_large_image" name="twitter:card">
-<meta content="You have the experience. We find what stands between you and your next remote job." name="twitter:title">
-<meta content="Right from where you are. Three ways we help: do it yourself, done with you, or done for you. Every way starts free." name="twitter:description">
+<meta content="Everything Remote Job: Remote Work Help for Nigerians" name="twitter:title">
+<meta content="Free job board, CV scan, live training and done-for-you help for professionals in Nigeria." name="twitter:description">
 <meta content="https://everythingremotejob.com/preview-index.jpg" name="twitter:image"/>
 <meta content="Everything Remote Job — land a dollar-paying remote job from right where you are." name="twitter:image:alt"/>
 <link rel="preload" href="/fonts/space-grotesk-var.woff2" as="font" type="font/woff2" crossorigin>
@@ -1740,7 +1740,7 @@ html[data-theme="day"] .timer-num{background-image:linear-gradient(160deg,#0A0A0
 </style>
 <link href="erj-alive.css?v=20261028b" rel="stylesheet" media="print" onload="this.media='all'"/><noscript><link href="erj-alive.css?v=20261028b" rel="stylesheet"/></noscript>
 <link href="erj-future.css?v=20261104a" rel="stylesheet"/>
-<link href="erj-future-home.css?v=20261111a" rel="stylesheet"/>
+<link href="erj-future-home.css?v=20261111b" rel="stylesheet"/>
 <style id="mobilePerf">
 /* Below-the-fold sections render when they come near the screen, not at load.
    The size hint keeps the scrollbar and the tour arrows honest until then. */
@@ -1918,6 +1918,83 @@ html[data-theme="day"] .hst-h em,html[data-theme="day"] .hst-k{color:#0B7A47;}
 .hst-more>span{font-size:.9rem;color:var(--ink-soft);}
 @media(max-width:760px){.hst-beats{grid-template-columns:1fr;}}
 @media(prefers-reduced-motion:reduce){.hs2-pick,.hs2.js .hs2-a.is-on{transition:none;animation:none;}.hs2-ink{display:none;}}
+
+/* opener v3: a welcome, one button, and the choices drop down from it */
+.hs2-h{font-size:clamp(2.2rem,5.2vw,3.9rem);margin-bottom:.7rem;}
+.hs2-lede{font-size:clamp(1.08rem,1.9vw,1.4rem);line-height:1.45;color:var(--ink);max-width:30ch;margin:0 0 1.5rem;}
+@property --go-a{syntax:"<angle>";inherits:false;initial-value:0deg;}
+.hs2-drop{max-width:640px;}
+.hs2-go{list-style:none;cursor:pointer;position:relative;isolation:isolate;display:flex;align-items:center;gap:1rem;padding:1.15rem 1.15rem 1.15rem 1.4rem;border-radius:24px;color:#fff;
+  background:linear-gradient(135deg,#FF6A2B 0%,#FF5722 45%,#D93D0C 100%);box-shadow:0 18px 44px -16px rgba(255,87,34,.75),inset 0 1px 0 rgba(255,255,255,.35);
+  transition:transform .25s cubic-bezier(.2,.8,.2,1),box-shadow .25s;overflow:hidden;-webkit-tap-highlight-color:transparent;}
+.hs2-go::-webkit-details-marker{display:none;}
+.hs2-go::before{content:'';position:absolute;inset:0;z-index:-1;border-radius:inherit;padding:2px;background:conic-gradient(from var(--go-a),rgba(255,255,255,0) 0 60%,rgba(255,255,255,.95) 78%,rgba(255,255,255,0) 96%);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;}
+.hs2-go::after{content:'';position:absolute;top:0;bottom:0;left:-40%;width:34%;z-index:-1;background:linear-gradient(100deg,transparent,rgba(255,255,255,.34),transparent);transform:skewX(-18deg);}
+@media(prefers-reduced-motion:no-preference){
+  .hs2-go::before{animation:goSpin 3.2s linear infinite;}
+  .hs2-go::after{animation:goSheen 3.4s ease-in-out infinite;}
+  .hs2-drop:not([open]) .hs2-go-a{animation:goNudge 1.5s ease-in-out infinite;}
+  .hs2-drop[open] .hs2-panel{animation:goDrop .45s cubic-bezier(.2,.8,.2,1);transform-origin:50% 0;}
+  .hs2-drop[open] .hs2-pick{animation:goPick .5s cubic-bezier(.2,.8,.2,1) backwards;}
+  .hs2-drop[open] .hs2-pick:nth-child(2){animation-delay:.06s}.hs2-drop[open] .hs2-pick:nth-child(3){animation-delay:.12s}.hs2-drop[open] .hs2-pick:nth-child(4){animation-delay:.18s}.hs2-drop[open] .hs2-pick:nth-child(5){animation-delay:.24s}
+}
+@keyframes goSpin{to{--go-a:360deg}}
+@keyframes goSheen{0%,55%{left:-40%}100%{left:120%}}
+@keyframes goNudge{0%,100%{transform:translateY(-2px)}50%{transform:translateY(4px)}}
+@keyframes goDrop{from{transform:translateY(-14px) scaleY(.94)}}
+@keyframes goPick{from{transform:translateY(-18px)}}
+.hs2-go:hover{transform:translateY(-3px);box-shadow:0 26px 54px -16px rgba(255,87,34,.9),inset 0 1px 0 rgba(255,255,255,.4);}
+.hs2-go:active{transform:scale(.985);}
+.hs2-go:focus-visible{outline:3px solid #fff;outline-offset:3px;}
+.hs2-go-in{flex:1;min-width:0;display:flex;flex-direction:column;gap:.45rem;}
+.hs2-go-t{font:800 clamp(1.08rem,2vw,1.38rem)/1.22 var(--font-display);letter-spacing:-.015em;text-wrap:balance;}
+.hs2-go-s{font:700 .68rem/1.3 var(--font-body);letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.9);}
+.hs2-go-a{flex:none;display:grid;place-items:center;width:52px;height:52px;border-radius:50%;background:#fff;color:#E8470F;box-shadow:0 8px 20px -8px rgba(0,0,0,.5);transition:transform .35s cubic-bezier(.2,.8,.2,1);}
+.hs2-drop[open] .hs2-go-a{transform:rotate(180deg);}
+.hs2-drop[open] .hs2-go{border-radius:24px 24px 10px 10px;}
+.hs2-panel{margin-top:.5rem;padding:1.1rem;border-radius:10px 10px 24px 24px;border:1.5px solid rgba(255,87,34,.4);background:var(--card);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);}
+.hs2-ask{margin:0 0 .9rem;font-size:.95rem;line-height:1.5;color:var(--ink-soft);}
+.hs2-ask b{color:var(--ink);}
+.hs2-panel .hs2-picks{grid-template-columns:1fr;gap:.5rem;}
+@media(max-width:520px){.hs2-go{padding:1rem .9rem 1rem 1.05rem;gap:.7rem;border-radius:20px;}.hs2-go-a{width:44px;height:44px;}.hs2-panel{padding:.8rem;}}
+/* opener v4: a short pill button; each choice opens its answer right under itself */
+.hs2-drop{max-width:560px;}
+.hs2-go{display:inline-flex;width:auto;max-width:100%;padding:.6rem .7rem .6rem .65rem;gap:.85rem;border-radius:999px!important;}
+.hs2-go-i{flex:none;position:relative;display:grid;place-items:center;width:50px;height:50px;border-radius:50%;background:rgba(255,255,255,.18);border:1.5px solid rgba(255,255,255,.55);color:#fff;}
+.hs2-go-i::after{content:'';position:absolute;inset:-1.5px;border-radius:50%;border:2px solid rgba(255,255,255,.7);}
+@media(prefers-reduced-motion:no-preference){.hs2-drop:not([open]) .hs2-go-i::after{animation:goPing 1.9s ease-out infinite;}.hs2-go-i svg{animation:goTurn 9s linear infinite;}}
+@keyframes goPing{0%{transform:scale(1);opacity:.9}100%{transform:scale(1.65);opacity:0}}
+@keyframes goTurn{to{transform:rotate(360deg)}}
+.hs2-go-in{gap:.3rem;padding-right:.4rem;}
+.hs2-go-t{font-size:clamp(1.15rem,2.1vw,1.45rem);white-space:nowrap;}
+.hs2-go-s{font-size:.62rem;}
+.hs2-go-a{width:44px;height:44px;}
+.hs2-panel{margin-top:.8rem;padding:.9rem;border-radius:26px;border:1px solid var(--card-line,var(--line));box-shadow:0 30px 60px -34px rgba(255,87,34,.55);}
+.hs2-ask{margin:.1rem .3rem .8rem;}
+.hs2-panel .hs2-picks{gap:.45rem;}
+.hs2-panel .hs2-pick,.hs2-panel .hs2-pick.is-quiet{display:grid;grid-template-columns:auto 1fr;grid-template-areas:"i b" "i s";column-gap:.8rem;row-gap:.1rem;align-items:center;padding:.7rem 3rem .7rem .7rem;border-radius:16px;}
+.hs2-pi{grid-area:i;display:grid;place-items:center;width:42px;height:42px;border-radius:13px;background:rgba(255,87,34,.12);font-style:normal;font-size:1.25rem;position:relative;z-index:1;transition:transform .3s cubic-bezier(.2,.8,.2,1),background .3s;}
+.hs2-panel .hs2-pick b{grid-area:b;align-self:end;}.hs2-panel .hs2-pick span{grid-area:s;align-self:start;}
+.hs2-pick:hover .hs2-pi{transform:scale(1.1) rotate(-6deg);}
+.hs2-pick.is-on .hs2-pi{background:rgba(255,255,255,.22);}
+.hs2-panel .hs2-pick::after{content:"";width:1.7rem;height:1.7rem;margin-top:-.85rem;background:rgba(255,87,34,.12) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23FF5722' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E") center/58% no-repeat;transition:transform .35s cubic-bezier(.2,.8,.2,1),background-color .3s;}
+.hs2-panel .hs2-pick.is-on::after{content:"";background-color:#fff;transform:rotate(180deg);}
+.hs2-panel .hs2-pick.is-on{border-radius:16px 16px 6px 6px;}
+.hs2-picks>.hs2-a{margin:-.2rem 0 .35rem;padding:1rem 1.05rem 1.1rem;border-radius:6px 6px 16px 16px;border:1px solid rgba(255,87,34,.45);border-top:0;box-shadow:inset 3px 0 0 #FF5722;transform-origin:50% 0;}
+.hs2-picks>.hs2-a h2{font-size:clamp(1.12rem,2vw,1.3rem);}
+.hs2-picks>.hs2-a p{font-size:.92rem;}
+.hs2.js .hs2-picks>.hs2-a.is-on{animation:goOpen .4s cubic-bezier(.2,.8,.2,1);}
+@keyframes goOpen{from{transform:translateY(-10px) scaleY(.9)}}
+.hs2-answers:empty{display:none;}
+@media(max-width:520px){.hs2-go-i{width:44px;height:44px;}.hs2-go-a{width:38px;height:38px;}.hs2-go{gap:.65rem;}}
+/* the rings stay round the photo: an upright oval that floats, clear of the words */
+.hs2-face .hz-orbit{width:132cqw!important;aspect-ratio:.84!important;}
+.hs2-face .hz-orbit .r3{inset:-5% -4%!important;}
+.hs2-face .hz-sat.s1{--hz-r:58cqw!important;}.hs2-face .hz-sat.s2{--hz-r:62cqw!important;}.hs2-face .hz-sat.s3{--hz-r:66cqw!important;}
+@media(prefers-reduced-motion:no-preference){.hs2-face .hz-orbit{animation:hzLev 7s ease-in-out infinite alternate;}}
+@keyframes hzLev{from{translate:0 8px}to{translate:0 -10px}}
+@media(min-width:861px){.hs2-grid{align-items:start;}.hs2-face{margin-top:1.2rem;}}
 </style>
 </head>
 <body>
@@ -1932,40 +2009,42 @@ html[data-theme="day"] .hst-h em,html[data-theme="day"] .hst-k{color:#0B7A47;}
 <span aria-hidden="true" class="ht-anchor" id="tour"></span><span aria-hidden="true" class="ht-anchor" id="promise"></span><span aria-hidden="true" class="ht-anchor" id="about"></span><span aria-hidden="true" class="ht-anchor" id="help"></span><span aria-hidden="true" class="ht-anchor" id="help-diy"></span><span aria-hidden="true" class="ht-anchor" id="help-dwy"></span><span aria-hidden="true" class="ht-anchor" id="help-dwy-go"></span><span aria-hidden="true" class="ht-anchor" id="help-dfy"></span><span aria-hidden="true" class="ht-anchor" id="free"></span><span aria-hidden="true" class="ht-anchor" id="paths"></span>
 <div class="hs2-grid">
 <div class="hs2-main">
-<h1 class="hs2-h">You have the experience. <span class="hs2-l2">Let’s identify what’s standing between you and <em>your next remote job.</em></span></h1>
-<p class="hs2-lede">Tap the one that is true for you. Your next step appears right here. No form, no email.</p>
+<h1 class="hs2-h">Welcome to <em>ERJ.</em></h1>
+<p class="hs2-lede">Here, you get everything you need to get your first remote job.</p>
+<details class="hs2-drop" id="hs2Drop">
+<summary class="hs2-go"><i class="hs2-go-i" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="9"></circle><circle cx="12" cy="12" r="4.5"></circle><circle cx="12" cy="12" r="1" fill="currentColor"></circle></svg></i><span class="hs2-go-in"><span class="hs2-go-t">What’s in your way?</span><span class="hs2-go-s">Tap · ten seconds · free</span></span><i class="hs2-go-a" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></i></summary>
+<div class="hs2-panel">
+<p class="hs2-ask"><b>Which one is you?</b> Tap it and your next step opens right under it.</p>
 <div class="hs2-picks" role="group" aria-label="Which is true for you?">
-<a class="hs2-pick" href="#shape-interview" data-shape="interview"><b>I have a remote interview or test soon</b><span>Within the next two weeks</span></a>
-<a class="hs2-pick" href="#shape-employed" data-shape="employed"><b>I’m employed and want to switch</b><span>Without quitting first</span></a>
-<a class="hs2-pick" href="#shape-ending" data-shape="ending"><b>My job or contract ends soon</b><span>And income stops with it</span></a>
-<a class="hs2-pick" href="#shape-sponsor" data-shape="sponsor"><b>I’m paying for someone else</b><span>A spouse, sibling, child or friend</span></a>
-<a class="hs2-pick is-quiet" href="#shape-exploring" data-shape="exploring"><b>I’m just exploring</b><span>Start free</span></a>
-</div>
-<div class="hs2-answers" id="hs2Answers">
+<a class="hs2-pick" href="#shape-interview" data-shape="interview"><i class="hs2-pi" aria-hidden="true">🎙️</i><b>I have a remote interview or test soon</b><span>Within the next two weeks</span></a>
 <article class="hs2-a" id="shape-interview" data-shape="interview">
 <p class="hs2-a-k">The date is your deadline</p>
 <h2>Prepare for that interview this week.</h2>
 <p>Remote interviews often turn on two answers: how you work without supervision, and what you say when they ask for your number. The Interview Sprint is two one-to-one sessions before your date, on the role you actually applied for.</p>
 <div class="hs2-a-go"><a class="btn-primary-ui btn-yes" href="interviewsprint/"><span>See the Interview Sprint</span><span class="arrow-wrap"><span class="arrow">→</span></span></a><a class="hs2-alt" data-msg="shapeInterview" href="https://wa.me/2348032925957" rel="noopener" target="_blank">Or send us the role and date first →</a></div>
 </article>
+<a class="hs2-pick" href="#shape-employed" data-shape="employed"><i class="hs2-pi" aria-hidden="true">💼</i><b>I’m employed and want to switch</b><span>Without quitting first</span></a>
 <article class="hs2-a" id="shape-employed" data-shape="employed">
 <p class="hs2-a-k">Keep your salary while you prepare</p>
 <h2>Switch without quitting first.</h2>
 <p>Foundation Training is twenty live days with a class at the hour that suits you: early, after work, or weekends. You finish with a CV, LinkedIn and portfolio that show a remote employer what your years of work are worth.</p>
 <div class="hs2-a-go"><a class="btn-primary-ui btn-yes" href="foundationtraining/"><span>See Foundation Training</span><span class="arrow-wrap"><span class="arrow">→</span></span></a><a class="hs2-alt" href="register.html#cvfix">Only your CV holding you back? CV Fix →</a></div>
 </article>
+<a class="hs2-pick" href="#shape-ending" data-shape="ending"><i class="hs2-pi" aria-hidden="true">⏳</i><b>My job or contract ends soon</b><span>And income stops with it</span></a>
 <article class="hs2-a" id="shape-ending" data-shape="ending">
 <p class="hs2-a-k">Prepare before the income stops</p>
 <h2>Use the time you have left in this role.</h2>
 <p>Foundation Training gets you remote-ready in twenty days. If you want the applications run for you as well, Get Your Dream Job Offer adds the placement engine after the training.</p>
 <div class="hs2-a-go"><a class="btn-primary-ui btn-yes" href="foundationtraining/"><span>See Foundation Training</span><span class="arrow-wrap"><span class="arrow">→</span></span></a><a class="hs2-alt" href="jobapplication/">Trained and placed in one decision →</a></div>
 </article>
+<a class="hs2-pick" href="#shape-sponsor" data-shape="sponsor"><i class="hs2-pi" aria-hidden="true">🎁</i><b>I’m paying for someone else</b><span>A spouse, sibling, child or friend</span></a>
 <article class="hs2-a" id="shape-sponsor" data-shape="sponsor">
 <p class="hs2-a-k">A gift you can see</p>
 <h2>Pay for the preparation, not another promise.</h2>
 <p>The person you enrol leaves Foundation Training with four finished assets, their work marked by a person, and a certificate. You get a short update from us at the end of each stage, with their permission.</p>
 <div class="hs2-a-go"><a class="btn-primary-ui btn-yes" href="gift/"><span>Enrol someone</span><span class="arrow-wrap"><span class="arrow">→</span></span></a><a class="hs2-alt" href="foundationtraining/">See what they will build →</a></div>
 </article>
+<a class="hs2-pick is-quiet" href="#shape-exploring" data-shape="exploring"><i class="hs2-pi" aria-hidden="true">🧭</i><b>I’m just exploring</b><span>Start free</span></a>
 <article class="hs2-a" id="shape-exploring" data-shape="exploring">
 <p class="hs2-a-k">No pressure</p>
 <h2>Start free, today.</h2>
@@ -1973,6 +2052,10 @@ html[data-theme="day"] .hst-h em,html[data-theme="day"] .hst-k{color:#0B7A47;}
 <div class="hs2-a-go"><a class="btn-primary-ui btn-yes" href="diagnose/"><span>Take the free diagnosis</span><span class="arrow-wrap"><span class="arrow">→</span></span></a><a class="hs2-alt" href="jobs/">Open the job board →</a></div>
 </article>
 </div>
+<div class="hs2-answers" id="hs2Answers">
+</div>
+</div>
+</details>
 </div>
 <figure class="hs2-face">
 <div class="hz-orbit" aria-hidden="true"><i class="r1"></i><i class="r2"></i><i class="r3"></i><span class="hz-sat s1"><b>UK</b></span><span class="hz-sat s2"><b>US</b></span><span class="hz-sat s3"><b>EU</b></span></div>
@@ -2360,7 +2443,7 @@ fromHash();window.addEventListener('hashchange',fromHash);})();
     if(scroll&&a&&a.getBoundingClientRect().top>window.innerHeight*.7){a.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'nearest'});}
     try{sessionStorage.setItem('erj-shape',shape);}catch(e){}
   }
-  picks.forEach(function(p){p.setAttribute('aria-pressed','false');p.addEventListener('click',function(e){e.preventDefault();show(p.getAttribute('data-shape'),true);});
+  picks.forEach(function(p){p.setAttribute('aria-pressed','false');p.addEventListener('click',function(e){e.preventDefault();if(p.classList.contains('is-on')){picks.forEach(function(x){x.classList.remove('is-on');x.setAttribute('aria-pressed','false');});answers.forEach(function(x){x.classList.remove('is-on');});try{sessionStorage.removeItem('erj-shape');}catch(_){}return;}show(p.getAttribute('data-shape'),true);});
     /* the fill spreads from where the finger lands */
     p.addEventListener('pointerdown',function(e){var r=p.getBoundingClientRect(),i=document.createElement('i');i.className='hs2-ink';i.setAttribute('aria-hidden','true');
       i.style.left=(e.clientX-r.left)+'px';i.style.top=(e.clientY-r.top)+'px';p.appendChild(i);setTimeout(function(){if(i.parentNode)i.parentNode.removeChild(i);},700);});});
@@ -2375,17 +2458,22 @@ fromHash();window.addEventListener('hashchange',fromHash);})();
 })();
 </script>
 <script>
+/* the choices live in a drop-down: open it for anyone who arrives on a choice link */
+(function(){var d=document.getElementById('hs2Drop');if(!d)return;function chk(){if(/^#shape-/.test(location.hash))d.open=true;}chk();addEventListener('hashchange',chk);
+d.addEventListener('toggle',function(){if(d.open&&window.innerWidth<861){var r=d.getBoundingClientRect();if(r.top<70||r.top>innerHeight*.45)scrollTo({top:scrollY+r.top-86,behavior:'smooth'});}});})();
+</script>
+<script>
 /* The world tour: where the Earth behind this page sits for each part of it (see erj-world.js). */
 window.ERJ_WORLD={rail:true,stations:[
-{sel:'#start',name:'Orbit',lat:14,lon:4,zoom:1.25,x:.77,y:.57,a:.62,mx:.5,my:.24,mzoom:1.15,ma:.3,spin:1},
-{sel:'#tobi',name:'A real story',say:'Zooming in · Lagos, Nigeria',lat:7.4,lon:4.6,zoom:4.2,x:.5,y:.5,a:.26,ma:.2,ng:1,towns:1},
-{sel:'#pledge',name:'Five parts',say:'Nigeria · right where you are',lat:9.1,lon:8.4,zoom:6.4,x:.5,y:.52,a:.24,ma:.18,ng:1,towns:1},
+{sel:'#start',name:'Orbit',lat:14,lon:4,zoom:.98,x:.79,y:.56,a:.9,mx:.5,my:.26,mzoom:1.05,ma:.5,spin:1},
+{sel:'#tobi',name:'A real story',say:'Zooming in · Lagos, Nigeria',lat:7.4,lon:4.6,zoom:4.2,x:.5,y:.5,a:.3,ma:.26,ng:1},
+{sel:'#pledge',name:'Five parts',say:'Nigeria · right where you are',lat:9.1,lon:8.4,zoom:6.4,x:.5,y:.52,a:.3,ma:.26,ng:.8},
 {sel:'#jobs-live',name:'The world’s jobs',say:'Zooming out · the hiring world',lat:24,lon:-20,zoom:1.2,x:.74,y:.5,a:1,arcs:1,spin:1.7,anchor:'#glWin'},
-{sel:'#faq',name:'Questions',say:'Africa and Europe',lat:28,lon:10,zoom:2.1,x:.5,y:.5,a:.14},
-{sel:'#enrol',name:'Your way in',say:'Coming home · Nigeria',lat:8.6,lon:6,zoom:4.6,x:.5,y:.5,a:.17,ma:.13,ng:1,arcs:.9,towns:.6},
-{sel:'footer.foot',lat:10,lon:10,zoom:.62,x:.5,y:.55,a:.4}
+{sel:'#faq',name:'Questions',say:'Africa and Europe',lat:28,lon:10,zoom:2.1,x:.5,y:.5,a:.22},
+{sel:'#enrol',name:'Your way in',say:'Coming home · Nigeria',lat:8.6,lon:6,zoom:4.6,x:.5,y:.5,a:.26,ma:.22,ng:.8},
+{sel:'footer.foot',lat:10,lon:10,zoom:.62,x:.5,y:.55,a:.5}
 ]};
 </script>
-<script defer src="erj-world.js?v=20261111a"></script>
+<script defer src="erj-world.js?v=20261111c"></script>
 </body>
 </html>

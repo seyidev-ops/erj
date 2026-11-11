@@ -165,3 +165,6 @@ html[data-theme="day"] .ep-n{background:linear-gradient(180deg,#E8470F,#AD350A)!
 .wt-rail a.on i{background:var(--accent);border-color:var(--accent);transform:scale(1.35);box-shadow:0 0 0 5px rgba(255,87,34,.18);}
 .wt-read{display:block;position:fixed;right:18px;bottom:14px;z-index:30;font:600 .68rem/1 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.06em;color:var(--ink-faint);pointer-events:none;}
 }
+
+/* the tour rail already names the next stop here, so the arrows lose their "Next" pill on this page */
+.erj-tournav .erj-tournext{display:none!important;}
