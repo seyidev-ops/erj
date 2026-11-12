@@ -772,7 +772,7 @@
 })();
 
 /* ── REFRESH BUTTON ───────────────────────────────────────────────
-   Bottom-left: just a cookie in the brand orange, no circle, badge or ring. Tapping it refreshes the site. For a visitor stuck on an
+   Bottom-left, the WhatsApp button's twin: the same orange disc, same size and height, with a white cookie on it. Tapping it refreshes the site. For a visitor stuck on an
    old copy of the site: it empties the site's caches, retires the
    service worker and reloads. It never touches localStorage, so sign-in,
    progress and the theme survive. Decorative-safe: no page depends on it. */
@@ -783,16 +783,17 @@
         var css = document.createElement('style');
         css.id = 'erjCkCSS';
         css.textContent =
-            '.erj-ck{position:fixed;left:14px;bottom:20px;z-index:49;width:48px;height:48px;padding:0;border:0;background:none;cursor:pointer;' +
-            'display:flex;align-items:center;justify-content:center;-webkit-tap-highlight-color:transparent;filter:drop-shadow(0 3px 6px rgba(0,0,0,.35));' +
-            'transition:transform .25s cubic-bezier(.22,1,.36,1),bottom .3s;}' +
-            'html[data-theme="day"] .erj-ck{filter:drop-shadow(0 3px 5px rgba(120,60,20,.3));}' +
-            '.erj-ck>svg{width:42px;height:42px;display:block;}' +
-            '.erj-ck:hover{transform:translateY(-3px) rotate(-12deg);}' +
-            '.erj-ck:focus-visible{outline:2px solid #FF5722;outline-offset:2px;border-radius:50%;}' +
+            '.erj-ck{position:fixed;left:22px;bottom:22px;z-index:49;width:50px;height:50px;padding:0;border:0;border-radius:50%;cursor:pointer;' +
+            'display:flex;align-items:center;justify-content:center;background:var(--wa,#FF5722);color:var(--wa-ink,#fff);-webkit-tap-highlight-color:transparent;' +
+            'box-shadow:0 8px 30px rgba(255,87,34,.35);transition:transform .3s cubic-bezier(.22,1,.36,1),bottom .3s;}' +
+            'html[data-theme="day"] .erj-ck{background:var(--wa,#E8470F);}' +
+            '.erj-ck>svg{width:27px;height:27px;display:block;transition:transform .5s cubic-bezier(.22,1,.36,1);}' +
+            '.erj-ck:hover{transform:scale(1.08);}' +
+            '.erj-ck:hover>svg{transform:rotate(-18deg);}' +
+            '.erj-ck:focus-visible{outline:2px solid #fff;outline-offset:3px;}' +
             '.erj-ck.spin>svg{animation:erjCkSpin .9s linear infinite;}@keyframes erjCkSpin{to{transform:rotate(360deg)}}' +
             'body.sticky-on .erj-ck{bottom:72px;}' +
-            '.erj-ck-pop{position:fixed;left:14px;bottom:76px;z-index:1200;width:min(290px,calc(100vw - 44px));padding:1rem 1rem .9rem;border-radius:16px;' +
+            '.erj-ck-pop{position:fixed;left:22px;bottom:84px;z-index:1200;width:min(290px,calc(100vw - 44px));padding:1rem 1rem .9rem;border-radius:16px;' +
             'background:#111;color:#fff;border:1px solid rgba(232,178,106,.6);box-shadow:0 22px 50px rgba(0,0,0,.5);font-family:Inter,system-ui,sans-serif;' +
             'transform:translateY(12px);opacity:0;visibility:hidden;transition:transform .3s,opacity .3s,visibility 0s .3s;}' +
             'html[data-theme="day"] .erj-ck-pop{background:#fff;color:#14110E;box-shadow:0 18px 44px rgba(20,17,14,.18);}' +
@@ -801,7 +802,7 @@
             '.erj-ck-pop b{display:block;font-size:.95rem;margin-bottom:.3rem;}.erj-ck-pop p{margin:0 0 .8rem;font-size:.8rem;line-height:1.45;opacity:.8;}' +
             '.erj-ck-go{border:0;cursor:pointer;width:100%;padding:.65rem;border-radius:999px;background:#FF5722;color:#fff;font:700 .86rem/1 Inter,system-ui,sans-serif;}' +
             '.erj-ck-x{position:absolute;top:6px;right:8px;border:0;background:none;color:inherit;opacity:.6;cursor:pointer;font-size:.9rem;}' +
-            '.pz-float{left:70px!important;}' +
+            '.pz-float{left:84px!important;}' +
             '@media print{.erj-ck,.erj-ck-pop{display:none!important}}' +
             '@media(prefers-reduced-motion:reduce){.erj-ck,.erj-ck-pop{transition:none}.erj-ck.spin>svg{animation:none}}';
         document.head.appendChild(css);
@@ -810,10 +811,11 @@
         btn.setAttribute('aria-label', 'Refresh the site');
         btn.setAttribute('aria-expanded', 'false');
         btn.setAttribute('title', 'Seeing an old version? Tap to refresh the site');
-        btn.innerHTML = '<svg viewBox="0 0 32 32" aria-hidden="true"><defs>' +
-            '<mask id="erjCkM"><rect width="32" height="32" fill="#fff"/><circle cx="27" cy="6" r="6" fill="#000"/><circle cx="21.5" cy="3" r="3" fill="#000"/></mask></defs>' +
-            '<circle cx="16" cy="16" r="14" fill="#FF5722" mask="url(#erjCkM)"/>' +
-            '<g fill="#1A0F0A"><circle cx="11" cy="12" r="1.9"/><circle cx="18" cy="18.5" r="2.1"/><circle cx="10.5" cy="21" r="1.6"/><circle cx="21" cy="12" r="1.4"/><circle cx="15.5" cy="25" r="1.3"/></g></svg>';
+        /* a white cookie on the same orange disc as the WhatsApp button: the bite and the chips are cut out, so the disc shows through */
+        btn.innerHTML = '<svg viewBox="0 0 32 32" aria-hidden="true"><defs><mask id="erjCkM"><rect width="32" height="32" fill="#fff"/>' +
+            '<circle cx="27.5" cy="5.5" r="6.2" fill="#000"/><circle cx="20.8" cy="2.6" r="3" fill="#000"/>' +
+            '<circle cx="11" cy="12" r="2"/><circle cx="18.2" cy="18.6" r="2.2"/><circle cx="10.4" cy="21" r="1.7"/><circle cx="21.4" cy="12.2" r="1.5"/><circle cx="15.6" cy="25.4" r="1.4"/>' +
+            '</mask></defs><circle cx="16" cy="16" r="14" fill="currentColor" mask="url(#erjCkM)"/></svg>';
         var pop = document.createElement('div');
         pop.className = 'erj-ck-pop'; pop.id = 'erjCkPop'; pop.setAttribute('role', 'dialog'); pop.setAttribute('aria-label', 'Refresh the site');
         pop.innerHTML = '<b>Refreshing\u2026</b><p>Loading the latest version of the site.</p>';
@@ -825,7 +827,8 @@
             pop.classList.add('on'); btn.classList.add('spin'); btn.setAttribute('aria-busy', 'true');
             var jobs = [];
             try { if (window.caches && caches.keys) jobs.push(caches.keys().then(function (ks) { return Promise.all(ks.map(function (k) { return caches.delete(k); })); })); } catch (e) {}
-            try { if (navigator.serviceWorker && navigator.serviceWorker.getRegistrations) jobs.push(navigator.serviceWorker.getRegistrations().then(function (rs) { return Promise.all(rs.map(function (r) { return r.unregister(); })); })); } catch (e) {}
+            /* the push worker (/push/onesignal/) is left alone: retiring it would silently end this device's alert subscription */
+            try { if (navigator.serviceWorker && navigator.serviceWorker.getRegistrations) jobs.push(navigator.serviceWorker.getRegistrations().then(function (rs) { return Promise.all(rs.filter(function (r) { return !/\/push\//.test(r.scope); }).map(function (r) { return r.unregister(); })); })); } catch (e) {}
             var gone = false, done = function () {
                 if (gone) return; gone = true;
                 var u = new URL(location.href);
@@ -843,7 +846,10 @@
             if (!w) return;
             var r = w.getBoundingClientRect();
             if (!r.height || getComputedStyle(w).display === 'none') return;
-            var size = btn.offsetHeight || 48;
+            /* same size and the same distance from the edge as the WhatsApp button */
+            btn.style.width = btn.style.height = Math.round(r.width) + 'px';
+            btn.style.left = pop.style.left = Math.max(8, Math.round(innerWidth - r.right)) + 'px';
+            var size = Math.round(r.height) || 50;
             btn.style.bottom = Math.max(8, Math.round(innerHeight - r.bottom + (r.height - size) / 2)) + 'px';
             pop.style.bottom = (parseFloat(btn.style.bottom) + size + 12) + 'px';
         }
