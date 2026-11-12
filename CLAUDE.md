@@ -126,14 +126,21 @@ precached; keep it free of shared scripts so it renders with no network.
   `z-index:-1`, redraws only on scroll or while a move settles, and is
   decorative: no page may depend on it. The link-preview cards use the same
   globe.
-- `erj-alerts.js` is the new-job alert bell on `jobs/index.html` and
-  `blog.html` (`<span data-erj-alerts>`; `="icon"` for the small one). There is
-  no push server: `jobboard.py` writes `jobs/data/latest.json`, and `sw.js`
-  (`checkJobs`) notifies a device about roles it has not seen, in the
-  background where the browser allows Periodic Background Sync for the
-  installed app, otherwise when the site is opened. Keep the panel's wording
-  honest about which one a device gets. `sw.js` keeps the `erj-alerts-v1`
-  cache across updates.
+- `erj-alerts.js` is the alert bell: topic `jobs` on `jobs/index.html`, topic
+  `posts` on `blog.html` (`<span data-erj-alerts data-topic="…">`; `="icon"`
+  for the small one). The feeds are `jobs/data/latest.json` (`jobboard.py`)
+  and `blog/latest.json` (`generate-blog-archive.py`, published posts only).
+  With `ERJ_CONFIG.push.onesignalAppId` filled, alerts go through OneSignal:
+  its script is the one allowed CDN dependency, loaded only for people who
+  use the bell; its worker is `push/onesignal/OneSignalSDKWorker.js` in its
+  own scope; the two workflows run `push-alerts.py` after publishing, which
+  pushes to devices tagged with the topic. The REST API key exists only as
+  the `ONESIGNAL_REST_API_KEY` Actions secret, never in a file. With the App
+  ID empty, or that script blocked, `sw.js` (`checkAlerts`) does it on the
+  device: in the background where the browser allows Periodic Background
+  Sync for the installed app, otherwise when the site is opened. Keep the
+  panel's wording honest about which one a device gets. `sw.js` keeps the
+  `erj-alerts-v1` cache across updates.
 - Third-party code is vendored (`cvscan/vendor/`, `cvbuilder/vendor/`); don't
   add CDN dependencies for app logic.
 - `foundationtraining/motion/` is the page's motion graphic, built the Null

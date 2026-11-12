@@ -51,6 +51,9 @@ jobs:
       - name: Install the sheet reader
         run: pip install openpyxl
 
+      - name: Keep the alert feed as it was before this run
+        run: cp jobs/data/latest.json "$RUNNER_TEMP/jobs-feed-before.json" 2>/dev/null || true
+
       - name: Update the board
         env:
           JOBBOARD_SUMMARY: ${{ runner.temp }}/jobboard-summary.txt
@@ -78,3 +81,16 @@ jobs:
             sleep 5
           done
           exit 1
+
+      # Tell subscribed devices about the roles this run added. Waits for the
+      # site to publish first so the board they land on already shows them.
+      # Sends nothing unless OneSignal is set up (see push-alerts.py).
+      - name: Send new-job alerts
+        env:
+          ONESIGNAL_REST_API_KEY: ${{ secrets.ONESIGNAL_REST_API_KEY }}
+        run: |
+          if cmp -s "$RUNNER_TEMP/jobs-feed-before.json" jobs/data/latest.json; then
+            echo "no new roles in this run"; exit 0
+          fi
+          sleep 90
+          python3 push-alerts.py jobs "$RUNNER_TEMP/jobs-feed-before.json" jobs/data/latest.json
