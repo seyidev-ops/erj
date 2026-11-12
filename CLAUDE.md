@@ -126,6 +126,14 @@ precached; keep it free of shared scripts so it renders with no network.
   `z-index:-1`, redraws only on scroll or while a move settles, and is
   decorative: no page may depend on it. The link-preview cards use the same
   globe.
+- `erj-alerts.js` is the new-job alert bell on `jobs/index.html` and
+  `blog.html` (`<span data-erj-alerts>`; `="icon"` for the small one). There is
+  no push server: `jobboard.py` writes `jobs/data/latest.json`, and `sw.js`
+  (`checkJobs`) notifies a device about roles it has not seen, in the
+  background where the browser allows Periodic Background Sync for the
+  installed app, otherwise when the site is opened. Keep the panel's wording
+  honest about which one a device gets. `sw.js` keeps the `erj-alerts-v1`
+  cache across updates.
 - Third-party code is vendored (`cvscan/vendor/`, `cvbuilder/vendor/`); don't
   add CDN dependencies for app logic.
 - `foundationtraining/motion/` is the page's motion graphic, built the Null
