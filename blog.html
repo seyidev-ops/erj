@@ -563,6 +563,8 @@ html[data-theme="day"] .bx-aur i{opacity:.28;}
 .bx-sub{font-size:clamp(.95rem,1.6vw,1.12rem)!important;max-width:52ch;padding:0!important;}
 .bx-sub b{color:var(--txt);font-weight:600;}
 .bx-hero .srch{margin:1.2rem 0 0;max-width:520px;}
+.bx-alerts{display:flex;flex-wrap:wrap;align-items:center;gap:.6rem .9rem;margin:1rem 0 0;}
+.bx-alerts small{font-size:.8rem;color:var(--ink-soft,inherit);opacity:.85;}
 .bx-hero .srch input{padding:.95rem 1rem .95rem 2.6rem;border-radius:14px;font-size:.95rem;}
 .bx-start{display:flex;flex-direction:column;gap:.6rem;align-self:center;}
 .bx-start-k{font-size:.62rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#3fd18b;}
@@ -739,6 +741,7 @@ html[data-theme="day"] .bx-promo{background:linear-gradient(140deg,#E8470F,#AD35
 <svg viewbox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" x2="16.65" y1="21" y2="16.65"></line></svg>
 <input autocomplete="off" enterkeyhint="search" id="searchInput" oninput="filterPosts()" placeholder="Search: CV, LinkedIn, interviews, salary…" type="search"/>
 </div>
+<div class="bx-alerts"><span data-erj-alerts></span><small>New remote jobs, sent to this device. No email.</small></div>
 
 </div>
 <aside class="bx-start" aria-label="Free tools to start with">
@@ -5595,6 +5598,7 @@ function checkURLParam(){
 <script defer="" src="erj-nav.js?v=20261111d"></script>
 <script defer="" src="erj-config.js?v=20261107b"></script>
 <script defer="" src="erj-capture.js?v=20260911a"></script>
+<script defer src="erj-alerts.js?v=20261112a"></script>
 <script defer="" src="erj-schema.js?v=20261111a"></script>
 <script defer="" src="erj-alive.js?v=20261004a"></script>
 <script defer="" src="erj-future.js?v=20261101a"></script>

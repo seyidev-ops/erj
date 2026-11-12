@@ -2,7 +2,7 @@
    EVERYTHING REMOTE JOB — SERVICE WORKER
    Cache-first for app shell, network-first for fonts
 ═══════════════════════════════════════════════════════ */
-const CACHE = 'erj-site-20261111d';
+const CACHE = 'erj-site-20261112a';
 const OFFLINE = '/offline.html';
 
 /* SHELL is what a first-time visitor pays for before anything renders. It had
@@ -36,7 +36,8 @@ const SHELL = [
   '/erj-alive.js?v=20261004a',
   '/erj-future.css?v=20261104a',
   '/erj-future.js?v=20261101a',
-  '/erj-world.js?v=20261111d'
+  '/erj-world.js?v=20261111d',
+  '/erj-alerts.js?v=20261112a'
 ];
 
 self.addEventListener('install', e => {
@@ -60,12 +61,44 @@ self.addEventListener('install', e => {
 // (e.g. behind a "new version — refresh" button) instead of it being forced.
 self.addEventListener('message', e => {
   if (e.data === 'ERJ_SKIP_WAITING') self.skipWaiting();
+  if (e.data && e.data.type === 'ERJ_ALERTS_ON') e.waitUntil(checkJobs({ welcome: true }));
+  if (e.data && e.data.type === 'ERJ_ALERTS_CHECK') e.waitUntil(checkJobs({}));
 });
+
+/* ── New-job alerts ───────────────────────────────────────────────
+   No server sends these. The installed app asks the browser to wake this
+   worker now and then (Periodic Background Sync, where the browser offers
+   it); any visit with alerts on checks too. Each check reads the small feed
+   jobboard.py writes and tells the person about roles this device has not
+   seen. What it has seen lives in its own cache, kept across updates. */
+const ALERT_CACHE = 'erj-alerts-v1';
+const ALERT_FEED = '/jobs/data/latest.json';
+async function checkJobs(opt) {
+  if (!self.Notification || Notification.permission !== 'granted') return;
+  let feed;
+  try { const r = await fetch(ALERT_FEED + '?t=' + Date.now(), { cache: 'no-store' }); if (!r.ok) return; feed = await r.json(); } catch (x) { return; }
+  if (!feed || !Array.isArray(feed.ids)) return;
+  const store = await caches.open(ALERT_CACHE);
+  const prev = await store.match('/seen');
+  const seen = prev ? await prev.json().catch(() => null) : null;
+  await store.put('/seen', new Response(JSON.stringify(feed.ids), { headers: { 'Content-Type': 'application/json' } }));
+  const show = (title, body, tag) => self.registration.showNotification(title, {
+    body: body, icon: '/icon192.png', badge: '/favicon-96.png', tag: tag, renotify: true, data: { url: '/jobs/?source=alert#board' }
+  });
+  if (opt.welcome) return show('Job alerts are on', 'This device will tell you when new remote roles open to Nigeria go up on the board.', 'erj-jobs-on');
+  if (!seen) return; // first look: remember what is there, say nothing
+  const had = new Set(seen), fresh = (feed['new'] || []).filter(j => !had.has(j.id));
+  if (!fresh.length) return;
+  const lines = fresh.slice(0, 3).map(j => j.title + ' · ' + j.company);
+  if (fresh.length > 3) lines.push('and ' + (fresh.length - 3) + ' more');
+  return show(fresh.length === 1 ? '1 new remote job open to Nigeria' : fresh.length + ' new remote jobs open to Nigeria', lines.join('\n'), 'erj-jobs');
+}
+self.addEventListener('periodicsync', e => { if (e.tag === 'erj-jobs') e.waitUntil(checkJobs({})); });
 
 self.addEventListener('activate', e => {
   e.waitUntil(
     caches.keys()
-      .then(keys => Promise.all(keys.filter(k => k !== CACHE).map(k => caches.delete(k))))
+      .then(keys => Promise.all(keys.filter(k => k !== CACHE && k !== ALERT_CACHE).map(k => caches.delete(k))))
       .then(() => self.clients.claim())
       // NOTE: the old clients.navigate() "self-heal" lived here and reloaded
       // every open tab on activation — a 2-5s white screen for anyone mid-page.
@@ -177,5 +210,9 @@ self.addEventListener('push', e => {
 
 self.addEventListener('notificationclick', e => {
   e.notification.close();
-  e.waitUntil(clients.openWindow(e.notification.data.url));
+  const url = (e.notification.data && e.notification.data.url) || '/';
+  e.waitUntil(clients.matchAll({ type: 'window', includeUncontrolled: true }).then(list => {
+    const open = list.find(c => 'focus' in c && new URL(c.url).pathname === new URL(url, self.location.origin).pathname);
+    return open ? open.focus() : clients.openWindow(url);
+  }));
 });

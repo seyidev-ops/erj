@@ -1830,6 +1830,26 @@ def touch_sitemap():
         open(p, "w", encoding="utf-8").write(out)
 
 
+F_ALERT = os.path.join(DATA, "latest.json")
+
+
+def write_alert_feed(live):
+    """The small feed the service worker reads to tell an installed app about new
+    roles (see sw.js, erj-alerts.js). Every live id, plus the roles added in the
+    last two days by name. Rewritten only when the board itself changes."""
+    t0 = today()
+    recent = {t0.isoformat(), (t0 - dt.timedelta(days=1)).isoformat()}
+    fresh = sorted((j for j in live if j.get("added") in recent), key=lambda j: j.get("added", ""), reverse=True)
+    feed = {"live": len(live), "ids": sorted(j["id"] for j in live),
+            "new": [{"id": j["id"], "title": j["title"], "company": j["company"]} for j in fresh[:60]]}
+    old = load(F_ALERT, None)
+    if old and {k: old.get(k) for k in feed} == feed:
+        return
+    feed["updated"] = dt.datetime.now(WAT).isoformat(timespec="minutes")
+    with open(F_ALERT, "w", encoding="utf-8") as f:
+        json.dump(feed, f, ensure_ascii=False, separators=(",", ":"))
+
+
 def cmd_build(cfg, check=False):
     page, out, n = render(cfg)
     if check:
@@ -1842,7 +1862,9 @@ def cmd_build(cfg, check=False):
             f.write(out)
         touch_sitemap()
     t0 = today()
-    update_teasers([j for j in load(F_LIVE, {"listings": []})["listings"] if expiry(j, cfg) >= t0])
+    live_now = [j for j in load(F_LIVE, {"listings": []})["listings"] if expiry(j, cfg) >= t0]
+    update_teasers(live_now)
+    write_alert_feed(live_now)
     print(f"build: {n} live listings rendered")
 
 
