@@ -19,7 +19,7 @@
           public by design. Empty = alerts run on the device only, no push
           service. The REST API key is NOT a public value: it lives only in
           the repository's Actions secrets, never in any file. ────────── */
-    push: { onesignalAppId: '' },
+    push: { onesignalAppId: '388c7cab-d5d8-4857-b934-7d06b1f4f9f1' },
 
     /* ── Placement capacity. Real hours, not marketing scarcity.
           Update `taken` as engagements start and finish. ────────── */
