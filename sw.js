@@ -2,7 +2,7 @@
    EVERYTHING REMOTE JOB — SERVICE WORKER
    Cache-first for app shell, network-first for fonts
 ═══════════════════════════════════════════════════════ */
-const CACHE = 'erj-site-20261112a';
+const CACHE = 'erj-site-20261112b';
 const OFFLINE = '/offline.html';
 
 /* SHELL is what a first-time visitor pays for before anything renders. It had
@@ -30,14 +30,14 @@ const SHELL = [
   '/erj-nav.js?v=20261111d',
   '/erj-track.js?v=20261104b',
   '/erj-theme.js?v=20260911a',
-  '/erj-config.js?v=20261107b',
+  '/erj-config.js?v=20261112a',
   '/product.css?v=20261004b',
   '/erj-alive.css?v=20261028b',
   '/erj-alive.js?v=20261004a',
   '/erj-future.css?v=20261104a',
   '/erj-future.js?v=20261101a',
   '/erj-world.js?v=20261111d',
-  '/erj-alerts.js?v=20261112a'
+  '/erj-alerts.js?v=20261112b'
 ];
 
 self.addEventListener('install', e => {
@@ -61,39 +61,64 @@ self.addEventListener('install', e => {
 // (e.g. behind a "new version — refresh" button) instead of it being forced.
 self.addEventListener('message', e => {
   if (e.data === 'ERJ_SKIP_WAITING') self.skipWaiting();
-  if (e.data && e.data.type === 'ERJ_ALERTS_ON') e.waitUntil(checkJobs({ welcome: true }));
-  if (e.data && e.data.type === 'ERJ_ALERTS_CHECK') e.waitUntil(checkJobs({}));
+  if (e.data && e.data.type === 'ERJ_ALERTS_SET') e.waitUntil(setTopics(e.data.topics || {}, e.data.welcome));
+  if (e.data && e.data.type === 'ERJ_ALERTS_CHECK') e.waitUntil(checkAlerts());
 });
 
-/* ── New-job alerts ───────────────────────────────────────────────
-   No server sends these. The installed app asks the browser to wake this
-   worker now and then (Periodic Background Sync, where the browser offers
-   it); any visit with alerts on checks too. Each check reads the small feed
-   jobboard.py writes and tells the person about roles this device has not
-   seen. What it has seen lives in its own cache, kept across updates. */
+/* ── Alerts kept on the device (new jobs, new blog posts) ─────────
+   Used when no push service is set up, or its script cannot load. The
+   installed app asks the browser to wake this worker now and then (Periodic
+   Background Sync, where the browser offers it); any visit with alerts on
+   checks too. Each check reads the small feeds jobboard.py and
+   generate-blog-archive.py write and tells the person about entries this
+   device has not seen. Which topics are on, and what has been seen, live in
+   their own cache, kept across updates. With OneSignal set up, erj-alerts.js
+   turns every topic off here so nobody is told twice. */
 const ALERT_CACHE = 'erj-alerts-v1';
-const ALERT_FEED = '/jobs/data/latest.json';
-async function checkJobs(opt) {
-  if (!self.Notification || Notification.permission !== 'granted') return;
-  let feed;
-  try { const r = await fetch(ALERT_FEED + '?t=' + Date.now(), { cache: 'no-store' }); if (!r.ok) return; feed = await r.json(); } catch (x) { return; }
-  if (!feed || !Array.isArray(feed.ids)) return;
-  const store = await caches.open(ALERT_CACHE);
-  const prev = await store.match('/seen');
-  const seen = prev ? await prev.json().catch(() => null) : null;
-  await store.put('/seen', new Response(JSON.stringify(feed.ids), { headers: { 'Content-Type': 'application/json' } }));
-  const show = (title, body, tag) => self.registration.showNotification(title, {
-    body: body, icon: '/icon192.png', badge: '/favicon-96.png', tag: tag, renotify: true, data: { url: '/jobs/?source=alert#board' }
-  });
-  if (opt.welcome) return show('Job alerts are on', 'This device will tell you when new remote roles open to Nigeria go up on the board.', 'erj-jobs-on');
-  if (!seen) return; // first look: remember what is there, say nothing
-  const had = new Set(seen), fresh = (feed['new'] || []).filter(j => !had.has(j.id));
-  if (!fresh.length) return;
-  const lines = fresh.slice(0, 3).map(j => j.title + ' · ' + j.company);
-  if (fresh.length > 3) lines.push('and ' + (fresh.length - 3) + ' more');
-  return show(fresh.length === 1 ? '1 new remote job open to Nigeria' : fresh.length + ' new remote jobs open to Nigeria', lines.join('\n'), 'erj-jobs');
+const ALERT_TOPICS = {
+  jobs: { feed: '/jobs/data/latest.json', seen: '/seen', tag: 'erj-jobs', url: '/jobs/?source=alert#board',
+    on: ['Job alerts are on', 'This device will tell you when new remote roles open to Nigeria go up on the board.'],
+    say: f => [f.length === 1 ? '1 new remote job open to Nigeria' : f.length + ' new remote jobs open to Nigeria',
+      f.slice(0, 3).map(j => j.title + ' · ' + j.company).concat(f.length > 3 ? ['and ' + (f.length - 3) + ' more'] : []).join('\n'), null] },
+  posts: { feed: '/blog/latest.json', seen: '/seen-posts', tag: 'erj-posts', url: '/blog.html',
+    on: ['Blog alerts are on', 'This device will tell you when a new post goes up on the ERJ blog.'],
+    say: f => f.length === 1 ? ['New on the ERJ blog', f[0].title, f[0].url]
+      : [f.length + ' new posts on the ERJ blog', f.slice(0, 3).map(p => p.title).join('\n'), null] }
+};
+async function alertStore() { return caches.open(ALERT_CACHE); }
+async function readJSON(store, key) { const r = await store.match(key); return r ? r.json().catch(() => null) : null; }
+function writeJSON(store, key, val) { return store.put(key, new Response(JSON.stringify(val), { headers: { 'Content-Type': 'application/json' } })); }
+function alertShow(t, title, body, url) {
+  return self.registration.showNotification(title, { body: body, icon: '/icon192.png', badge: '/favicon-96.png', tag: t.tag, renotify: true, data: { url: url || t.url } });
 }
-self.addEventListener('periodicsync', e => { if (e.tag === 'erj-jobs') e.waitUntil(checkJobs({})); });
+async function setTopics(topics, welcome) {
+  const store = await alertStore();
+  await writeJSON(store, '/topics', { jobs: !!topics.jobs, posts: !!topics.posts });
+  await checkAlerts(); // a topic just turned on has no seen list yet, so this only remembers what is there
+  const t = ALERT_TOPICS[welcome];
+  if (t && self.Notification && Notification.permission === 'granted') return alertShow({ tag: t.tag + '-on', url: t.url }, t.on[0], t.on[1]);
+}
+async function checkAlerts() {
+  if (!self.Notification || Notification.permission !== 'granted') return;
+  const store = await alertStore();
+  // a device that turned job alerts on before topics existed has only its seen list
+  const topics = (await readJSON(store, '/topics')) || { jobs: !!(await store.match('/seen')), posts: false };
+  for (const name of Object.keys(ALERT_TOPICS)) {
+    const t = ALERT_TOPICS[name];
+    if (!topics[name]) { await store.delete(t.seen); continue; }
+    let feed;
+    try { const r = await fetch(t.feed + '?t=' + Date.now(), { cache: 'no-store' }); if (!r.ok) continue; feed = await r.json(); } catch (x) { continue; }
+    if (!feed || !Array.isArray(feed.ids)) continue;
+    const seen = await readJSON(store, t.seen);
+    await writeJSON(store, t.seen, feed.ids);
+    if (!seen) continue; // first look: remember, say nothing
+    const had = new Set(seen), fresh = (feed['new'] || []).filter(x => !had.has(x.id));
+    if (!fresh.length) continue;
+    const m = t.say(fresh);
+    await alertShow(t, m[0], m[1], m[2]);
+  }
+}
+self.addEventListener('periodicsync', e => { if (e.tag === 'erj-jobs' || e.tag === 'erj-alerts') e.waitUntil(checkAlerts()); });
 
 self.addEventListener('activate', e => {
   e.waitUntil(
@@ -117,7 +142,8 @@ const NO_SW_HOSTS = [
   'google-analytics.com',
   'analytics.google.com',
   'analytics.tiktok.com',
-  'doubleclick.net'
+  'doubleclick.net',
+  'onesignal.com'
 ];
 
 const PRIVATE_PATHS = [

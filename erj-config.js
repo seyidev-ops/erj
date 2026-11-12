@@ -15,6 +15,12 @@
           which is exactly why every mention of it needs a bridge). ── */
     channel: 'https://whatsapp.com/channel/0029Vaym4DE3mFY2wCrC713S',
 
+    /* ── Push alerts (erj-alerts.js, push-alerts.py). The OneSignal App ID is
+          public by design. Empty = alerts run on the device only, no push
+          service. The REST API key is NOT a public value: it lives only in
+          the repository's Actions secrets, never in any file. ────────── */
+    push: { onesignalAppId: '' },
+
     /* ── Placement capacity. Real hours, not marketing scarcity.
           Update `taken` as engagements start and finish. ────────── */
     capacity: {

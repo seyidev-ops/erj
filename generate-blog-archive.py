@@ -20,7 +20,7 @@ import json
 import os
 import re
 import sys
-from datetime import date
+from datetime import date, datetime, timedelta, timezone
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 BLOG = os.path.join(ROOT, "blog.html")
@@ -119,10 +119,36 @@ def build(text, all_posts):
     return text, missing
 
 
+FEED = os.path.join(ROOT, "blog", "latest.json")
+
+
+def write_feed(all_posts):
+    """The small feed behind new-post alerts (sw.js, erj-alerts.js, push-alerts.py):
+    every post whose date has arrived in Lagos, and the last three days by title.
+    Rewritten only when that list changes, so the daily run is what publishes a
+    scheduled post to subscribers."""
+    today = (datetime.now(timezone.utc) + timedelta(hours=1)).date()
+    live = sorted((p for p in all_posts if date.fromisoformat(p["date"]) <= today), key=lambda p: p["date"], reverse=True)
+    recent = [p for p in live if (today - date.fromisoformat(p["date"])).days <= 2]
+    feed = {"ids": sorted(p["slug"] for p in live),
+            "new": [{"id": p["slug"], "title": p["title"], "url": "/blog/%s/" % p["slug"]} for p in recent[:10]]}
+    try:
+        if json.load(open(FEED, encoding="utf-8")) == feed:
+            return
+    except (OSError, ValueError):
+        pass
+    with open(FEED, "w", encoding="utf-8") as f:
+        json.dump(feed, f, ensure_ascii=False, separators=(",", ":"))
+    print("blog/latest.json updated: %d live post(s), %d recent." % (len(live), len(recent)))
+
+
 def main():
     check = "--check" in sys.argv
     text = open(ARCHIVE, encoding="utf-8").read()
-    new, added = build(text, posts())
+    all_posts = posts()
+    if not check:
+        write_feed(all_posts)
+    new, added = build(text, all_posts)
     if not added:
         print("blog/index.html is up to date.")
         return 0

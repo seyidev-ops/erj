@@ -59,6 +59,7 @@ jobs:
       - name: Regenerate blog archive and sitemap
         if: github.event_name != 'pull_request'
         run: |
+          cp blog/latest.json "$RUNNER_TEMP/posts-feed-before.json" 2>/dev/null || true
           python3 generate-blog-archive.py
           python3 generate-sitemap.py
 
@@ -76,6 +77,20 @@ jobs:
           # The job board workflow also commits; take its work first.
           git pull --rebase origin main
           git push
+
+      # Tell subscribed devices about a post that went live in this run (the
+      # daily run is what publishes a scheduled post). Sends nothing unless
+      # OneSignal is set up (see push-alerts.py).
+      - name: Send new-post alerts
+        if: github.event_name != 'pull_request'
+        env:
+          ONESIGNAL_REST_API_KEY: ${{ secrets.ONESIGNAL_REST_API_KEY }}
+        run: |
+          if cmp -s "$RUNNER_TEMP/posts-feed-before.json" blog/latest.json; then
+            echo "no new posts in this run"; exit 0
+          fi
+          sleep 90
+          python3 push-alerts.py posts "$RUNNER_TEMP/posts-feed-before.json" blog/latest.json
 
       - name: Check blog archive and sitemap (pull requests)
         if: github.event_name == 'pull_request'
