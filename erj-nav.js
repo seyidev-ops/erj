@@ -772,7 +772,7 @@
 })();
 
 /* ── REFRESH BUTTON ───────────────────────────────────────────────
-   Bottom-left, small and quiet (a plain refresh arrow, no badge or ring). For a visitor stuck on an
+   Bottom-left: a plain cookie, no badge or ring. Tapping it refreshes the site. For a visitor stuck on an
    old copy of the site: it empties the site's caches, retires the
    service worker and reloads. It never touches localStorage, so sign-in,
    progress and the theme survive. Decorative-safe: no page depends on it. */
@@ -783,17 +783,16 @@
         var css = document.createElement('style');
         css.id = 'erjCkCSS';
         css.textContent =
-            '.erj-ck{position:fixed;left:18px;bottom:22px;z-index:49;width:34px;height:34px;border-radius:50%;cursor:pointer;padding:0;' +
-            'display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.62);background:rgba(20,18,16,.5);border:1px solid rgba(255,255,255,.16);' +
-            '-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);transition:color .25s,border-color .25s,background .25s,bottom .3s;}' +
-            'html[data-theme="day"] .erj-ck{color:rgba(20,17,14,.5);background:rgba(255,255,255,.6);border-color:rgba(20,17,14,.14);}' +
-            '.erj-ck>svg{width:15px;height:15px;display:block;}' +
-            '.erj-ck:hover{color:#FF5722;border-color:rgba(255,87,34,.6);}' +
-            'html[data-theme="day"] .erj-ck:hover{color:#AD350A;border-color:rgba(173,53,10,.5);}' +
+            '.erj-ck{position:fixed;left:18px;bottom:22px;z-index:49;width:48px;height:48px;border-radius:50%;cursor:pointer;padding:0;' +
+            'display:flex;align-items:center;justify-content:center;background:#16130F;border:1.5px solid rgba(255,138,61,.75);' +
+            'box-shadow:0 8px 22px rgba(0,0,0,.4);transition:transform .25s cubic-bezier(.22,1,.36,1),border-color .25s,box-shadow .25s,bottom .3s;}' +
+            'html[data-theme="day"] .erj-ck{background:#fff;border-color:rgba(232,71,15,.7);box-shadow:0 8px 22px rgba(20,17,14,.2);}' +
+            '.erj-ck>svg{width:30px;height:30px;display:block;}' +
+            '.erj-ck:hover{transform:translateY(-3px);border-color:#FF5722;box-shadow:0 14px 30px rgba(255,87,34,.4);}' +
             '.erj-ck:focus-visible{outline:2px solid #FF5722;outline-offset:3px;}' +
-            '.erj-ck.spin>svg{animation:erjCkSpin .7s linear infinite;}@keyframes erjCkSpin{to{transform:rotate(360deg)}}' +
+            '.erj-ck.spin>svg{animation:erjCkSpin .9s linear infinite;}@keyframes erjCkSpin{to{transform:rotate(360deg)}}' +
             'body.sticky-on .erj-ck{bottom:72px;}' +
-            '.erj-ck-pop{position:fixed;left:18px;bottom:68px;z-index:1200;width:min(290px,calc(100vw - 44px));padding:1rem 1rem .9rem;border-radius:16px;' +
+            '.erj-ck-pop{position:fixed;left:18px;bottom:80px;z-index:1200;width:min(290px,calc(100vw - 44px));padding:1rem 1rem .9rem;border-radius:16px;' +
             'background:#111;color:#fff;border:1px solid rgba(232,178,106,.6);box-shadow:0 22px 50px rgba(0,0,0,.5);font-family:Inter,system-ui,sans-serif;' +
             'transform:translateY(12px);opacity:0;visibility:hidden;transition:transform .3s,opacity .3s,visibility 0s .3s;}' +
             'html[data-theme="day"] .erj-ck-pop{background:#fff;color:#14110E;box-shadow:0 18px 44px rgba(20,17,14,.18);}' +
@@ -802,7 +801,7 @@
             '.erj-ck-pop b{display:block;font-size:.95rem;margin-bottom:.3rem;}.erj-ck-pop p{margin:0 0 .8rem;font-size:.8rem;line-height:1.45;opacity:.8;}' +
             '.erj-ck-go{border:0;cursor:pointer;width:100%;padding:.65rem;border-radius:999px;background:#FF5722;color:#fff;font:700 .86rem/1 Inter,system-ui,sans-serif;}' +
             '.erj-ck-x{position:absolute;top:6px;right:8px;border:0;background:none;color:inherit;opacity:.6;cursor:pointer;font-size:.9rem;}' +
-            '.pz-float{left:64px!important;}' +
+            '.pz-float{left:78px!important;}' +
             '@media print{.erj-ck,.erj-ck-pop{display:none!important}}' +
             '@media(prefers-reduced-motion:reduce){.erj-ck,.erj-ck-pop{transition:none}.erj-ck.spin>svg{animation:none}}';
         document.head.appendChild(css);
@@ -811,7 +810,11 @@
         btn.setAttribute('aria-label', 'Refresh the site');
         btn.setAttribute('aria-expanded', 'false');
         btn.setAttribute('title', 'Seeing an old version? Tap to refresh the site');
-        btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.3-5.6"/><path d="M20 4v5h-5"/></svg>';
+        btn.innerHTML = '<svg viewBox="0 0 32 32" aria-hidden="true"><defs><linearGradient id="erjCkG" x1="0" y1="0" x2="1" y2="1">' +
+            '<stop offset="0" stop-color="#FFB25C"/><stop offset="1" stop-color="#FF5722"/></linearGradient>' +
+            '<mask id="erjCkM"><rect width="32" height="32" fill="#fff"/><circle cx="27" cy="6" r="6" fill="#000"/><circle cx="21.5" cy="3" r="3" fill="#000"/></mask></defs>' +
+            '<circle cx="16" cy="16" r="13" fill="url(#erjCkG)" mask="url(#erjCkM)"/>' +
+            '<g fill="#5A1E05"><circle cx="11" cy="12" r="1.9"/><circle cx="18" cy="18" r="2.1"/><circle cx="10.5" cy="20.5" r="1.6"/><circle cx="21" cy="11.5" r="1.4"/><circle cx="15.5" cy="24" r="1.3"/></g></svg>';
         var pop = document.createElement('div');
         pop.className = 'erj-ck-pop'; pop.id = 'erjCkPop'; pop.setAttribute('role', 'dialog'); pop.setAttribute('aria-label', 'Refresh the site');
         pop.innerHTML = '<b>Refreshing\u2026</b><p>Loading the latest version of the site.</p>';
@@ -841,7 +844,7 @@
             if (!w) return;
             var r = w.getBoundingClientRect();
             if (!r.height || getComputedStyle(w).display === 'none') return;
-            var size = btn.offsetHeight || 50;
+            var size = btn.offsetHeight || 48;
             btn.style.bottom = Math.max(8, Math.round(innerHeight - r.bottom + (r.height - size) / 2)) + 'px';
             pop.style.bottom = (parseFloat(btn.style.bottom) + size + 12) + 'px';
         }
