@@ -15736,6 +15736,64 @@
    "direct": true,
    "closed": "2026-11-12",
    "closed_reason": "older than the board's age limit"
+  },
+  {
+   "id": "2fd5ed790a",
+   "title": "Engineering Manager",
+   "company": "Moniepoint",
+   "region": "Remote, Lagos, Nigeria / Moniepoint Headquaters",
+   "type": "Not stated",
+   "experience": "8–10 years",
+   "salary": "$250",
+   "bullets": [
+    "Bachelor’s degree in Computer Science, Engineering, or a related technical field",
+    "8-10 years of experience as a Software Developer, Software Engineer, or in a similar hands-on technical role",
+    "5+ years of strong experience building production systems using Java and Spring Boot",
+    "Minimum 3 years of proven engineering leadership experience managing high-performing teams"
+   ],
+   "apply": "https://job-boards.eu.greenhouse.io/moniepoint/jobs/4975688101",
+   "posted": "2026-10-16",
+   "deadline": null,
+   "checked": "2026-11-12",
+   "added": "2026-10-20",
+   "listed": "2026-10-20",
+   "source": "Greenhouse",
+   "origin": "feed",
+   "ats_id": "4975688101",
+   "family": "Tech & IT",
+   "why": "Open to candidates in Nigeria by name, and pays in foreign currency ($250). You apply directly on the employer's own page.",
+   "direct": true,
+   "closed": "2026-11-12",
+   "closed_reason": "employer page closed"
+  },
+  {
+   "id": "f8a826f178",
+   "title": "Deputy CDO",
+   "company": "Social Discovery Group",
+   "region": "Worldwide",
+   "type": "Full-Time",
+   "experience": "6–10 years",
+   "salary": "$5000",
+   "bullets": [
+    "6–10+ years in data, analytics, or ML domains, including 3–5+ years in leadership roles",
+    "Proven track record delivering cross-functional projects involving ML, data platforms, experimentation, and analytics",
+    "Experience in product companies (not only consulting environments)",
+    "Strong understanding of product analytics, A/B testing, unit economics, and key business metrics"
+   ],
+   "apply": "https://social-discovery-ventures.breezy.hr/p/ef368709276901-deputy-cdo",
+   "posted": "2026-10-29",
+   "deadline": null,
+   "checked": "2026-11-12",
+   "added": "2026-10-29",
+   "listed": "2026-10-29",
+   "source": "Breezy",
+   "origin": "feed",
+   "ats_id": "ef368709276901",
+   "family": "Executive & Operations",
+   "why": "Open worldwide with no country exclusion, so you can apply from Nigeria, and pays in foreign currency ($5000). You apply directly on the employer's own page.",
+   "direct": true,
+   "closed": "2026-11-12",
+   "closed_reason": "employer page closed"
   }
  ]
 }

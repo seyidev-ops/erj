@@ -1869,33 +1869,6 @@
    "direct": false
   },
   {
-   "id": "2fd5ed790a",
-   "title": "Engineering Manager",
-   "company": "Moniepoint",
-   "region": "Remote, Lagos, Nigeria / Moniepoint Headquaters",
-   "type": "Not stated",
-   "experience": "8–10 years",
-   "salary": "$250",
-   "bullets": [
-    "Bachelor’s degree in Computer Science, Engineering, or a related technical field",
-    "8-10 years of experience as a Software Developer, Software Engineer, or in a similar hands-on technical role",
-    "5+ years of strong experience building production systems using Java and Spring Boot",
-    "Minimum 3 years of proven engineering leadership experience managing high-performing teams"
-   ],
-   "apply": "https://job-boards.eu.greenhouse.io/moniepoint/jobs/4975688101",
-   "posted": "2026-10-16",
-   "deadline": null,
-   "checked": "2026-11-12",
-   "added": "2026-10-20",
-   "listed": "2026-10-20",
-   "source": "Greenhouse",
-   "origin": "feed",
-   "ats_id": "4975688101",
-   "family": "Tech & IT",
-   "why": "Open to candidates in Nigeria by name, and pays in foreign currency ($250). You apply directly on the employer's own page.",
-   "direct": true
-  },
-  {
    "id": "c68001cc34",
    "title": "Director, Information Security",
    "company": "Carrot",
@@ -4702,33 +4675,6 @@
    "ats_id": "49eed0516769",
    "family": "Virtual Assistant & Admin",
    "why": "Open worldwide with no country exclusion, so you can apply from Nigeria. Part-time, so it can sit beside a current job.",
-   "direct": true
-  },
-  {
-   "id": "f8a826f178",
-   "title": "Deputy CDO",
-   "company": "Social Discovery Group",
-   "region": "Worldwide",
-   "type": "Full-Time",
-   "experience": "6–10 years",
-   "salary": "$5000",
-   "bullets": [
-    "6–10+ years in data, analytics, or ML domains, including 3–5+ years in leadership roles",
-    "Proven track record delivering cross-functional projects involving ML, data platforms, experimentation, and analytics",
-    "Experience in product companies (not only consulting environments)",
-    "Strong understanding of product analytics, A/B testing, unit economics, and key business metrics"
-   ],
-   "apply": "https://social-discovery-ventures.breezy.hr/p/ef368709276901-deputy-cdo",
-   "posted": "2026-10-29",
-   "deadline": null,
-   "checked": "2026-11-12",
-   "added": "2026-10-29",
-   "listed": "2026-10-29",
-   "source": "Breezy",
-   "origin": "feed",
-   "ats_id": "ef368709276901",
-   "family": "Executive & Operations",
-   "why": "Open worldwide with no country exclusion, so you can apply from Nigeria, and pays in foreign currency ($5000). You apply directly on the employer's own page.",
    "direct": true
   },
   {
@@ -8303,6 +8249,60 @@
    "ats_id": "26f7817d-ca92-4094-a2b5-f22e07a218c4",
    "family": "Tech & IT",
    "why": "Open worldwide with no country exclusion, so you can apply from Nigeria. You apply directly on the employer's own page.",
+   "direct": true
+  },
+  {
+   "id": "8bd0ba4e78",
+   "title": "Software Engineer - AI Tooling",
+   "company": "Jobgether partner",
+   "region": "Nigeria",
+   "type": "Full-Time",
+   "experience": "5+ years",
+   "salary": "Undisclosed",
+   "bullets": [
+    "Design, develop, and continuously improve AI-powered developer tools, including MCP servers, intelligent agents, agent skills",
+    "Ensure new products and features are accessible to AI agents from launch by developing the necessary tools, skills, integrations",
+    "Explore emerging AI technologies and agent architectures, rapidly prototype new solutions, assess their effectiveness",
+    "Establish and promote an evaluation-first engineering culture by developing evaluation frameworks, instrumentation"
+   ],
+   "apply": "https://jobs.lever.co/jobgether/6818ba64-66ad-4122-b3c5-81b1c3148990",
+   "posted": "2026-11-12",
+   "deadline": null,
+   "checked": "2026-11-12",
+   "added": "2026-11-12",
+   "listed": "2026-11-12",
+   "source": "Lever",
+   "origin": "feed",
+   "ats_id": "6818ba64-66ad-4122-b3c5-81b1c3148990",
+   "family": "Tech & IT",
+   "why": "Open to candidates in Nigeria by name. You apply directly on the employer's own page.",
+   "direct": true
+  },
+  {
+   "id": "d9caddcd8d",
+   "title": "Director of Marketing and Communications",
+   "company": "Centre for Effective Altruism",
+   "region": "Remote - Global",
+   "type": "Full-Time",
+   "experience": "Not stated",
+   "salary": "$219,700",
+   "bullets": [
+    "Bring deep expertise and a strong track record in at least one of marketing, communications, media, or brand",
+    "Have substantial experience leading teams through managers or other senior leaders , coaching their development, building buy-in",
+    "Have experience building and scaling teams or functions in startups or similarly fast-growing environments , including attracting",
+    "Have experience operating in publicly visible or reputationally sensitive environments and can provide steady leadership under scrutiny"
+   ],
+   "apply": "https://jobs.ashbyhq.com/centreforeffectivealtruism/685f1ac4-08e9-494d-b8d1-eff2f28ddd99",
+   "posted": "2026-11-12",
+   "deadline": null,
+   "checked": "2026-11-12",
+   "added": "2026-11-12",
+   "listed": "2026-11-12",
+   "source": "Ashby",
+   "origin": "feed",
+   "ats_id": "685f1ac4-08e9-494d-b8d1-eff2f28ddd99",
+   "family": "Marketing & Creative",
+   "why": "Open worldwide with no country exclusion, so you can apply from Nigeria, and pays in foreign currency ($219,700). You apply directly on the employer's own page.",
    "direct": true
   }
  ]
