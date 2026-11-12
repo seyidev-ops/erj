@@ -1744,7 +1744,7 @@ html[data-theme="day"] .timer-num{background-image:linear-gradient(160deg,#0A0A0
 <style id="mobilePerf">
 /* Below-the-fold sections render when they come near the screen, not at load.
    The size hint keeps the scrollbar and the tour arrows honest until then. */
-#jobs-live,#story,#help,#faq,#enrol{content-visibility:auto;contain-intrinsic-size:auto 1100px;}
+#jobs-live,#story,#help,#enrol{content-visibility:auto;contain-intrinsic-size:auto 1100px;}
 
 /* Phones: keep the motion that moves things (transform), drop the motion that
    repaints every frame (glow pulses, shifting gradients, big blurs). Cheaper to
@@ -1823,32 +1823,6 @@ html[data-theme="night"] .hs2-h em{text-decoration-color:#FF5722;}
   -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);color:#fff;font-size:.78rem;line-height:1.35;}
 .hs2-face figcaption b{display:block;font-family:var(--font-display);font-size:.95rem;}
 @media(max-width:860px){.hs2-grid{grid-template-columns:1fr;}.hs2-face{max-width:320px;width:100%;margin:1.4rem auto 0;}}
-/* 05 · Before you decide: numbered cards that light up when opened; answers use the full width */
-@property --fq-a{syntax:"<angle>";inherits:false;initial-value:0deg;}
-#faq .faq{counter-reset:fq;gap:.7rem;}
-#faq .faq details{counter-increment:fq;position:relative;isolation:isolate;margin:0!important;padding:0!important;border:0!important;border-radius:22px;
-  background:radial-gradient(120% 160% at 0 0,rgba(255,87,34,.08),transparent 55%),var(--card);
-  box-shadow:0 0 0 1px var(--card-line,var(--line)),0 14px 34px -26px rgba(255,87,34,.6);transition:transform .3s cubic-bezier(.22,1,.36,1),box-shadow .3s;}
-#faq .faq details:hover{transform:translateY(-2px);box-shadow:0 0 0 1px rgba(255,87,34,.45),0 20px 40px -24px rgba(255,87,34,.75);}
-#faq .faq details::before{content:"";position:absolute;inset:0;z-index:-1;border-radius:inherit;padding:2px;opacity:0;transition:opacity .3s;
-  background:conic-gradient(from var(--fq-a),#FF5722,#FFB25C,#E8470F 40%,rgba(255,87,34,.2) 60%,#FF5722);
-  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;}
-#faq .faq details[open]::before{opacity:1;}
-#faq .faq summary{display:grid!important;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:clamp(.8rem,2vw,1.2rem);
-  padding:clamp(1rem,2.4vw,1.25rem) clamp(1rem,2.6vw,1.4rem)!important;font:700 clamp(1rem,1.9vw,1.18rem)/1.35 var(--font-display);letter-spacing:-.01em;color:var(--ink);}
-#faq .faq summary::before{content:counter(fq,decimal-leading-zero);display:grid;place-items:center;width:clamp(40px,5vw,48px);aspect-ratio:1;border-radius:14px;
-  font:800 .95rem/1 var(--font-display);color:#fff;background:linear-gradient(140deg,#FF5722,#C9410C);box-shadow:inset 0 1px 0 rgba(255,255,255,.3),0 8px 18px -10px rgba(201,65,12,.9);}
-#faq .faq summary::after{content:"+"!important;display:grid;place-items:center;width:38px;height:38px;border-radius:50%;font:500 1.35rem/1 var(--font-body)!important;
-  color:#C9410C!important;background:rgba(255,87,34,.12);transition:transform .4s cubic-bezier(.22,1,.36,1),background .3s,color .3s!important;}
-#faq .faq details[open] summary::after{transform:rotate(135deg);background:#C9410C;color:#fff!important;}
-#faq .faq summary:hover{color:var(--ink);}
-#faq .faq .a{max-width:none!important;margin:0;padding:0 clamp(1rem,2.6vw,1.4rem) clamp(1.1rem,2.6vw,1.4rem) calc(clamp(1rem,2.6vw,1.4rem) + clamp(40px,5vw,48px) + clamp(.8rem,2vw,1.2rem))!important;
-  font-size:clamp(.92rem,1.5vw,1rem);line-height:1.7;}
-@media(max-width:560px){#faq .faq .a{padding-left:clamp(1rem,2.6vw,1.4rem)!important;}}
-@media(prefers-reduced-motion:no-preference){#faq .faq details[open]::before{animation:fqSpin 5s linear infinite;}
-  #faq .faq details[open] .a{animation:fqIn .45s cubic-bezier(.22,1,.36,1);}}
-@keyframes fqSpin{to{--fq-a:360deg}}
-@keyframes fqIn{from{transform:translateY(-6px)}}
 /* hero: the portrait floats inside an orbit of the places that hire */
 .hs2-face{container-type:inline-size;}
 .hs2-face .hz-orbit{inset:auto;left:50%;top:50%;width:140cqw;aspect-ratio:1.18;transform:translate(-50%,-50%);}
@@ -2033,7 +2007,7 @@ html[data-theme="day"] .hst-h em,html[data-theme="day"] .hst-k{color:#0B7A47;}
 <noscript><iframe height="0" src="https://www.googletagmanager.com/ns.html?id=GTM-NMFHS59B" style="display:none;visibility:hidden" width="0"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 <div id="erjNavMount"></div>
-<script>window.ERJ_NAV={active:'home',onPage:[{label:'Which is true for you?',href:'#start',sub:'Your next step in one tap'},{label:'Proof it works',href:'#tobi',sub:'Tobi: turned down in August, selected in October'},{label:'The five parts',href:'#pledge',sub:'Where every search breaks, and how we fix each one'},{label:'Jobs around the world',href:'#jobs-live',sub:'Where the work is, and the live job board'},{label:'Before you decide',href:'#faq',sub:'The questions everyone asks first'},{label:'Join Cohort 13',href:'#enrol',sub:'Enrolment closes Sun 29 Nov'}]};</script>
+<script>window.ERJ_NAV={active:'home',onPage:[{label:'Which is true for you?',href:'#start',sub:'Your next step in one tap'},{label:'Proof it works',href:'#tobi',sub:'Tobi: turned down in August, selected in October'},{label:'The five parts',href:'#pledge',sub:'Where every search breaks, and how we fix each one'},{label:'Jobs around the world',href:'#jobs-live',sub:'Where the work is, and the live job board'},{label:'Join Cohort 13',href:'#enrol',sub:'Enrolment closes Sun 29 Nov'}]};</script>
 <main>
 <!-- 01 · ONE PROMISE, A FIRST WIN IN ONE TAP: pick what is true, get your next step here, no form -->
 <section class="wrap hs2" id="start">
@@ -2175,48 +2149,10 @@ html[data-theme="day"] .hst-h em,html[data-theme="day"] .hst-k{color:#0B7A47;}
 
 
 <!-- FAQ / OBJECTIONS -->
-<section class="wrap section-line" id="faq">
-<div class="step"><span class="step-n">05</span><span class="step-l">Before You Decide</span></div>
-<h2 class="cost-h" style="margin-bottom:1.6rem;">The questions everyone asks <em>first.</em></h2>
-<div class="faq reveal">
-<details>
-<summary>Should I take the self-paced pack or the live cohort?</summary>
-<p class="a">They cover the <strong>same four stages, the same rubrics and the same four deliverables</strong> — it is the same curriculum. The live Foundation Training adds taught sessions, a marked verdict on your work, a certificate, and a cohort keeping pace; the ₦35,000 self-paced pack has none of those. The honest test is whether you will do work nobody is watching you do. We wrote the whole thing out side by side: <a href="self-learn-vs-foundation-training.html" style="color:var(--accent);font-weight:600;">Self-Learn vs the live Foundation Training →</a></p>
-</details>
-<details>
-<summary>What is the career-development access from The Mentorine School?</summary>
-<p class="a">Everyone who enrols and pays for <strong>Remote Job Foundation Training, Stages 1–4</strong> receives <strong>90 days of access to one self-study career track at The Mentorine School</strong>, at no additional cost. Your assessment decides how you use it: if Capacity is your gap, we assign the learning and practical work that closes it; if it is not, we focus on your other gaps and the access stays open for you. The 90 days start when you activate. Not enrolling? <a href="register.html#careerdev" style="color:var(--accent);font-weight:600;">Career Development — Self-Study</a> is sold separately at ₦50,000.</p>
-</details>
-<details>
-<summary>I've applied to hundreds of jobs with no reply. How is this actually different?</summary>
-<p class="a">Public job boards put you against 500–800 applicants and an ATS bot that rejects in seconds. We flip that: <strong>global-standard positioning first</strong> (CV, portfolio, video presence), then <strong>30+ verified pipelines sourced weekly</strong> and applied at volume with you — with accountability check-ins until the offer lands. You stop spraying; you start targeting companies already willing to hire you.</p>
-</details>
-<details>
-<summary>I don't have "tech skills." Can this still work for me?</summary>
-<p class="a">Yes. Remote roles span operations, customer success, virtual assistance, sales, admin, writing, project coordination and more. Stages 1–4 build the <strong>remote work skills every global employer screens for</strong> — async communication, digital tools, deliverable discipline — on top of the experience you already have.</p>
-</details>
-<details>
-<summary>How much time do I need each week?</summary>
-<p class="a">Members have landed roles while juggling exams, full-time work and ministry. Plan for roughly <strong>90 focused minutes a day</strong>. The system is built for busy professionals — everything is structured, templated and guided so no minute is wasted.</p>
-</details>
-<details>
-<summary>What does "we don't let you go until you're hired" really mean?</summary>
-<p class="a">It's <strong>The Promise</strong>: your enrolment doesn't expire when the training ends. You keep the community, the weekly verified job listings and the accountability structure until you're hired — and the support to keep the job after you land it.</p>
-</details>
-<details>
-<summary>How do payments work? Is it safe?</summary>
-<p class="a">Payments use <strong>Paystack, Selar or the official Business Play Ltd bank account</strong> depending on the product. Paystack supports cards, transfer and USSD. Flexible options exist too: you can take the programme one stage at a time from <strong>₦70,000</strong>. Foundation Training graduates can join the Inner Circle: <strong>₦250,000 for a year</strong>, one to one. <a href="register.html">See every option on one page →</a></p>
-</details>
-<details>
-<summary>I'm not sure which path fits me. Where do I start?</summary>
-<p class="a">Start with the <strong>free Five-Part Job Search Diagnostic</strong>. It shows which part of your search needs attention first and gives you one practical next step. If you have not started applying yet, it helps you build a baseline instead of guessing. <a href="diagnose/">Find my starting point →</a></p>
-</details>
-</div>
-</section>
 <!-- DIAGNOSIS · DECISION POINT -->
 <!-- JOIN COHORT 13 · why Foundation Training, one countdown, one action -->
 <section class="wrap section-line" id="enrol">
-<div class="step"><span class="step-n">06</span><span class="step-l">Join Cohort 13</span></div>
+<div class="step"><span class="step-n">05</span><span class="step-l">Join Cohort 13</span></div>
 <div class="ep reveal" aria-label="Our record so far">
 <div class="ep-cell"><div class="ep-n" data-count="382" data-suffix="+">382+</div><div class="ep-l">Professionals placed into global remote work</div></div>
 <div class="ep-cell"><div class="ep-n ep-cur"><span>USD</span><i>·</i><span>EUR</span><i>·</i><span>GBP</span></div><div class="ep-l">Hard-currency salaries, not naira ceilings</div></div>
@@ -2266,7 +2202,7 @@ html[data-theme="day"] .hst-h em,html[data-theme="day"] .hst-k{color:#0B7A47;}
 </a>
 <script defer="" src="erj-theme.js?v=20260911a"></script>
 <script defer="" src="erj-product.js?v=20260924c"></script>
-<script defer="" src="erj-nav.js?v=20261112f"></script>
+<script defer="" src="erj-nav.js?v=20261113a"></script>
 <script defer="" src="erj-config.js?v=20261112c"></script>
 <script defer="" src="erj-capture.js?v=20260911a"></script>
 <script>if("serviceWorker" in navigator){window.addEventListener("load",function(){var go=function(){navigator.serviceWorker.register("/sw.js",{updateViaCache:"none"}).then(function(reg){reg.update();}).catch(function(){});};if("requestIdleCallback" in window){requestIdleCallback(go,{timeout:3000});}else{setTimeout(go,1200);}});}</script>
@@ -2317,7 +2253,7 @@ html[data-theme="day"] .hst-h em,html[data-theme="day"] .hst-k{color:#0B7A47;}
 (function(){
   var deck=document.getElementById('htDeck');if(!deck)return;
   var nav=(window.ERJ_NAV&&window.ERJ_NAV.onPage)||[];
-  var IC={'#promise':'🌍','#pledge':'✋','#jobs-live':'🔎','#story':'🏆','#help':'🧰','#faq':'💬','#enrol':'🚀'};
+  var IC={'#promise':'🌍','#pledge':'✋','#jobs-live':'🔎','#story':'🏆','#help':'🧰','#enrol':'🚀'};
   var stops=nav.filter(function(s){return !s.tourSelf;});if(!stops.length)return;
   var stack=deck.querySelector('.htd-stack'),dots=deck.querySelector('.htd-dots'),cnt=deck.querySelector('.htd-n');
   cnt.innerHTML='<b>1</b>/'+stops.length;
@@ -2502,7 +2438,6 @@ window.ERJ_WORLD={rail:true,stations:[
 {sel:'#tobi',name:'A real story',say:'Zooming in · Lagos, Nigeria',lat:7.4,lon:4.6,zoom:4.2,x:.5,y:.5,a:.3,ma:.26,ng:1},
 {sel:'#pledge',name:'Five parts',say:'Nigeria · right where you are',lat:9.1,lon:8.4,zoom:6.4,x:.5,y:.52,a:.3,ma:.26,ng:.8},
 {sel:'#jobs-live',name:'The world’s jobs',say:'Zooming out · the hiring world',lat:24,lon:-20,zoom:1.2,x:.74,y:.5,a:1,arcs:1,spin:1.7,anchor:'#glWin'},
-{sel:'#faq',name:'Questions',say:'Africa and Europe',lat:28,lon:10,zoom:2.1,x:.5,y:.5,a:.22},
 {sel:'#enrol',name:'Your way in',say:'Coming home · Nigeria',lat:8.6,lon:6,zoom:4.6,x:.5,y:.5,a:.26,ma:.22,ng:.8},
 {sel:'footer.foot',lat:10,lon:10,zoom:.62,x:.5,y:.55,a:.5}
 ]};

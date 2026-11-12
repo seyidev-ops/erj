@@ -607,16 +607,33 @@ html[data-theme="day"] .fx-price-save{color:#1E8E4E;}
 @media(max-width:860px){.fx-price-grid{grid-template-columns:1fr;}}
 
 /* faq */
-.fx-faq{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-top:1.4rem;}
-.fx-faq details{border:1px solid var(--line);border-radius:16px;background:var(--card);padding:0 1.1rem;transition:border-color .25s;}
-.fx-faq details[open]{border-color:rgba(255,87,34,.55);}
-.fx-faq summary{cursor:pointer;list-style:none;padding:1rem 1.6rem 1rem 0;position:relative;font-weight:700;font-size:.95rem;color:var(--ink);}
+/* questions: neutral and roomy. One column of quiet rows beside a heading that stays in view; nothing shouts. */
+.fq{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.4fr);gap:clamp(1.6rem,5vw,4rem);align-items:start;}
+.fq-head{position:sticky;top:104px;}
+.fq-head h2{margin-bottom:.8rem;}
+.fq-lead{color:var(--ink-soft);line-height:1.7;margin:0 0 1.4rem;max-width:34ch;}
+.fq-ask{display:inline-grid;gap:.15rem;padding:.9rem 1.1rem;border-radius:16px;border:1px solid var(--line);background:var(--card);text-decoration:none;color:var(--ink);transition:border-color .25s;}
+.fq-ask:hover{border-color:var(--ink-soft);}
+.fq-ask b{font-family:var(--font-display);font-size:.95rem;}
+.fq-ask span{font-size:.85rem;color:var(--ink-soft);}
+.fx-faq{display:grid;gap:.75rem;margin:0;}
+.fx-faq details{border:1px solid var(--line);border-radius:18px;background:var(--card);transition:border-color .25s,box-shadow .25s;}
+.fx-faq details:hover{border-color:rgba(127,127,127,.5);}
+.fx-faq details[open]{border-color:rgba(127,127,127,.6);box-shadow:0 18px 44px -30px rgba(0,0,0,.45);}
+.fx-faq summary{cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.15rem 1.25rem;
+  font-family:var(--font-display);font-weight:700;font-size:clamp(1rem,1.5vw,1.08rem);line-height:1.4;color:var(--ink);}
 .fx-faq summary::-webkit-details-marker{display:none;}
-.fx-faq summary::after{content:'+';position:absolute;right:0;top:.85rem;font-size:1.2rem;color:var(--accent);transition:transform .25s;}
-.fx-faq details[open] summary::after{transform:rotate(45deg);}
-.fx-faq p{margin:0 0 1rem;font-size:.9rem;line-height:1.65;color:var(--ink-soft);}
-.fx-faq a{color:var(--accent);}
-@media(max-width:760px){.fx-faq{grid-template-columns:1fr;}}
+.fx-faq summary:focus-visible{outline:2px solid var(--ink-soft);outline-offset:2px;border-radius:18px;}
+.fx-faq summary i{flex:none;position:relative;width:30px;height:30px;border-radius:50%;border:1px solid var(--line);transition:transform .3s cubic-bezier(.2,.8,.2,1),background .25s,border-color .25s;}
+.fx-faq summary i::before,.fx-faq summary i::after{content:"";position:absolute;left:50%;top:50%;width:11px;height:1.6px;border-radius:2px;background:var(--ink);transform:translate(-50%,-50%);}
+.fx-faq summary i::after{transform:translate(-50%,-50%) rotate(90deg);transition:transform .3s cubic-bezier(.2,.8,.2,1);}
+.fx-faq details[open] summary i{border-color:var(--ink);}
+.fx-faq details[open] summary i::after{transform:translate(-50%,-50%) rotate(0deg);}
+.fq-a{padding:0 1.25rem 1.25rem;}
+.fq-a p{margin:0;max-width:62ch;font-size:.96rem;line-height:1.75;color:var(--ink-soft);}
+.fq-a strong{color:var(--ink);}
+.fq-a a{color:var(--ink);font-weight:600;text-decoration:underline;text-decoration-color:var(--accent);text-underline-offset:3px;}
+@media(max-width:860px){.fq{grid-template-columns:1fr;gap:1.4rem;}.fq-head{position:static;}.fq-lead{max-width:none;}}
 
 /* final */
 .fx-final{position:relative;isolation:isolate;overflow:hidden;text-align:center;padding:clamp(2rem,6vw,4rem) clamp(1.2rem,4vw,3rem);border-radius:32px;border:1px solid rgba(255,87,34,.5);background:var(--card);margin-bottom:clamp(3rem,6vw,5rem);}
@@ -1315,17 +1332,26 @@ html[data-theme="night"] .iv-plus em{color:#3ddc97;}
 
 <!-- FAQ -->
 <section class="wrap fx-sec" id="faq">
+<div class="fq">
+<div class="fq-head">
 <p class="section-label">Before you enrol</p>
 <h2>Straight answers.</h2>
+<p class="fq-lead">Eleven questions people ask before they enrol. Open the ones that are yours.</p>
+<a class="fq-ask" href="https://wa.me/2348032925957" rel="noopener" target="_blank"><b>Yours is not here?</b><span>Ask us on WhatsApp →</span></a>
+</div>
 <div class="fx-faq">
-<details class="reveal"><summary>Will this get me a job?</summary><p>No honest programme can promise you a job or a date. What we are accountable for is what employers read: your CV, your portfolio, your LinkedIn, how you write and how you interview. The market decides when the offer comes, and we keep working with you after the last class until it does.</p></details>
-<details class="reveal"><summary>How much time does it take?</summary><p>One live session a day in the class time you choose (60 minutes on weekdays, or 90 minutes on weekends), plus the sprint work that turns each session into a deliverable. Plan for about ninety minutes a day in total.</p></details>
-<details class="reveal"><summary>Which cohort should I join, and can I pay now for a later one?</summary><p>Join the one you can attend from the first day to the last. If this month does not work, register forward: pay now for Cohort 14 (begins Mon 4 Jan) and your seat is held. Tell us which cohort when you send your receipt.</p></details>
-<details class="reveal"><summary>What do I need?</summary><p>A computer with a working internet connection, a backup for power if you can manage one, and your current CV exactly as it is. We build from there.</p></details>
-<details class="reveal"><summary>What happens after I pay?</summary><p>Send your receipt on WhatsApp to <a href="https://wa.me/2348032925957" rel="noopener" target="_blank">+234 803 292 5957</a>. Your LMS login arrives within 24 hours, and your Mentorine activation follows your assessment.</p></details>
-<details class="reveal"><summary>Should I take the self-paced pack instead?</summary><p>If you have finished a course on your own before, the <a href="../selflearn/">Self-Learn Pack</a> may serve you well. If you usually stop halfway, the live cohort is the fix. <a href="../self-learn-vs-foundation-training.html">The honest comparison →</a></p></details>
-<details class="reveal"><summary>What comes after the twenty days?</summary><p>Graduates can join <a href="../innercircle/">the Inner Circle</a>: a year of one-to-one work on your search, open only to Foundation Training alumni. It starts where your cohort ends: co-applying, interview dry-runs and offer review, for twelve months.</p></details>
-<details class="reveal"><summary>I am not sure this is my problem.</summary><p>Then do not pay yet. <a href="../diagnose/">The free diagnosis</a> takes about ninety seconds and tells you which part of your search is breaking. If you do not need a paid ERJ service, we will tell you.</p></details>
+<details class="reveal"><summary><span>Will this get me a job?</span><i aria-hidden="true"></i></summary><div class="fq-a"><p>No honest programme can promise you a job or a date. What we are accountable for is what employers read: your CV, your portfolio, your LinkedIn, how you write and how you interview. The market decides when the offer comes, and we keep working with you after the last class until it does.</p></div></details>
+<details class="reveal"><summary><span>How much time does it take?</span><i aria-hidden="true"></i></summary><div class="fq-a"><p>One live session a day in the class time you choose (60 minutes on weekdays, or 90 minutes on weekends), plus the sprint work that turns each session into a deliverable. Plan for about ninety minutes a day in total.</p></div></details>
+<details class="reveal"><summary><span>I do not have “tech skills”. Can this still work for me?</span><i aria-hidden="true"></i></summary><div class="fq-a"><p>Yes. Remote roles span operations, customer success, virtual assistance, sales, admin, writing, project coordination and more. Stages 1–4 build the <strong>remote work skills every global employer screens for</strong> (async communication, digital tools, deliverable discipline) on top of the experience you already have.</p></div></details>
+<details class="reveal"><summary><span>Which cohort should I join, and can I pay now for a later one?</span><i aria-hidden="true"></i></summary><div class="fq-a"><p>Join the one you can attend from the first day to the last. If this month does not work, register forward: pay now for Cohort 14 (begins Mon 4 Jan) and your seat is held. Tell us which cohort when you send your receipt.</p></div></details>
+<details class="reveal"><summary><span>What do I need?</span><i aria-hidden="true"></i></summary><div class="fq-a"><p>A computer with a working internet connection, a backup for power if you can manage one, and your current CV exactly as it is. We build from there.</p></div></details>
+<details class="reveal"><summary><span>How do I pay?</span><i aria-hidden="true"></i></summary><div class="fq-a"><p>Through <strong>Paystack</strong>, which takes cards, bank transfer and USSD. ERJ never receives your card details. The Enrol button on this page opens the Paystack page for Foundation Training; after you pay, send your receipt on WhatsApp and your LMS login arrives within 24 hours.</p></div></details>
+<details class="reveal"><summary><span>What happens after I pay?</span><i aria-hidden="true"></i></summary><div class="fq-a"><p>Send your receipt on WhatsApp to <a href="https://wa.me/2348032925957" rel="noopener" target="_blank">+234 803 292 5957</a>. Your LMS login arrives within 24 hours, and your Mentorine activation follows your assessment.</p></div></details>
+<details class="reveal"><summary><span>What is the career-development access from The Mentorine School?</span><i aria-hidden="true"></i></summary><div class="fq-a"><p>Everyone who enrols and pays for <strong>Remote Job Foundation Training, Stages 1–4</strong> receives <strong>90 days of access to one self-study career track at The Mentorine School</strong>, at no additional cost. Your assessment decides how you use it: if Capacity is your gap, we assign the learning and practical work that closes it; if it is not, we focus on your other gaps and the access stays open for you. The 90 days start when you activate.</p></div></details>
+<details class="reveal"><summary><span>Should I take the self-paced pack instead?</span><i aria-hidden="true"></i></summary><div class="fq-a"><p>If you have finished a course on your own before, the <a href="../selflearn/">Self-Learn Pack</a> may serve you well. If you usually stop halfway, the live cohort is the fix. <a href="../self-learn-vs-foundation-training.html">The honest comparison →</a></p></div></details>
+<details class="reveal"><summary><span>What comes after the twenty days?</span><i aria-hidden="true"></i></summary><div class="fq-a"><p>Graduates can join <a href="../innercircle/">the Inner Circle</a>: a year of one-to-one work on your search, open only to Foundation Training alumni. It starts where your cohort ends: co-applying, interview dry-runs and offer review, for twelve months.</p></div></details>
+<details class="reveal"><summary><span>I am not sure this is my problem.</span><i aria-hidden="true"></i></summary><div class="fq-a"><p>Then do not pay yet. <a href="../diagnose/">The free diagnosis</a> takes about ninety seconds and tells you which part of your search is breaking. If you do not need a paid ERJ service, we will tell you.</p></div></details>
+</div>
 </div>
 </section>
 
@@ -1376,7 +1402,7 @@ html[data-theme="night"] .iv-plus em{color:#3ddc97;}
 })();
 </script>
 <script src="../erj-product.js?v=20260924c"></script>
-<script src="../erj-nav.js?v=20261112f"></script>
+<script src="../erj-nav.js?v=20261113a"></script>
 <script src="../erj-config.js?v=20261112c"></script>
 <script src="../erj-capture.js?v=20260911a"></script>
 <script>if("serviceWorker" in navigator){window.addEventListener("load",function(){var go=function(){navigator.serviceWorker.register("/sw.js").then(function(reg){reg.update();}).catch(function(){});};if("requestIdleCallback" in window){requestIdleCallback(go,{timeout:3000});}else{setTimeout(go,1200);}});}</script>
