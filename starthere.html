@@ -699,6 +699,84 @@ a.promo-tick{text-decoration:none;display:block;}
   .ta-close{margin-top:1.6rem;font-size:.9rem;line-height:1.75;color:var(--ink-soft);max-width:74ch;}
   .ta-close b{color:var(--ink);}
 
+  /* ── v2: nothing rests on anything. Every situation, product and warning is its own card with air round it, a picture, and a bold lead. ── */
+  .rt-list{border-top:0;display:grid;gap:.9rem;margin-top:2.4rem;}
+  .rt-row{border:1px solid var(--card-line,var(--line));border-radius:22px;background:var(--card);overflow:hidden;transition:border-color .25s,box-shadow .25s,transform .25s;}
+  .rt-row:hover{border-color:rgba(255,87,34,.45);transform:translateY(-2px);box-shadow:0 18px 40px -26px rgba(255,87,34,.55);}
+  .rt-row[open]{border-color:rgba(255,87,34,.55);box-shadow:0 26px 60px -34px rgba(255,87,34,.6);transform:none;}
+  .rt-row > summary{align-items:center;padding:1.05rem 1.1rem;gap:.9rem;}
+  .rt-row > summary:hover{padding-left:1.1rem;background:none;}
+  .rt-row[open] > summary{background:rgba(255,87,34,.05);}
+  .rt-n{padding-top:0;flex:0 0 auto;}
+  .rt-ic{flex:none;display:grid;place-items:center;width:46px;height:46px;border-radius:14px;background:rgba(255,87,34,.12);font-size:1.35rem;}
+  .rt-door{max-width:none;padding:1.2rem 1.2rem 1.5rem;gap:1rem;grid-template-columns:minmax(0,1fr) minmax(0,260px);align-items:start;}
+  .rt-door > *{grid-column:1;}
+  .rt-pic{grid-column:2;grid-row:1 / span 6;margin:0;border-radius:18px;overflow:hidden;border:1px solid var(--card-line,var(--line));}
+  .rt-pic img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;object-position:50% 12%;}
+  .rt-law{font-size:clamp(1.12rem,2vw,1.35rem);font-weight:700;border-left:3px solid var(--accent);letter-spacing:-.01em;}
+  .rt-block,.rt-limit{border-radius:16px;padding:1rem 1.1rem;border:1px solid var(--card-line,var(--line));background:rgba(127,127,127,.04);border-left-width:1px;}
+  .rt-door > div.rt-block:first-of-type{background:rgba(25,194,122,.07);border-color:rgba(25,194,122,.35);}
+  .rt-door > div.rt-block:first-of-type .rt-h{color:#0B7A47;}
+  html[data-theme="night"] .rt-door > div.rt-block:first-of-type .rt-h{color:#2BD48A;}
+  .rt-limit{background:rgba(255,87,34,.07);border-color:rgba(255,87,34,.4);}
+  .rt-block p b,.rt-limit p b{color:var(--ink);font-weight:700;}
+  @media(max-width:820px){
+    .rt-door{grid-template-columns:1fr;padding:1rem .9rem 1.3rem;}
+    .rt-pic{grid-column:1;grid-row:auto;}
+    .rt-pic img{aspect-ratio:16/10;object-position:50% 18%;}
+    .rt-row > summary{padding:.9rem .85rem;gap:.7rem;}
+    .rt-ic{width:40px;height:40px;font-size:1.15rem;border-radius:12px;}
+    .rt-n{display:none;}
+  }
+  /* the ladder */
+  #ladder,#turnaway,#close{padding-top:clamp(3.6rem,8vw,6rem);}
+  .lc-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.25rem;margin-top:2.4rem;}
+  .lc{display:flex;flex-direction:column;border:1px solid var(--card-line,var(--line));border-radius:24px;background:var(--card);overflow:hidden;transition:transform .3s cubic-bezier(.2,.8,.2,1),border-color .3s,box-shadow .3s;}
+  .lc:hover{transform:translateY(-4px);border-color:rgba(255,87,34,.5);box-shadow:0 30px 60px -36px rgba(255,87,34,.6);}
+  .lc.is-star{border-color:rgba(255,87,34,.6);box-shadow:0 30px 70px -40px rgba(255,87,34,.7);}
+  .lc.is-aside{background:rgba(127,127,127,.05);}
+  .lc-art{display:block;background:#0b0c10;}
+  .lc-art img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;object-position:50% 26%;}
+  .lc-art img.is-photo{object-position:50% 14%;}
+  .lc-top{padding:1.1rem 1.2rem .2rem;display:grid;gap:.35rem;}
+  .lc-part{font:700 .62rem/1.3 var(--font-display);letter-spacing:.13em;text-transform:uppercase;color:var(--accent);}
+  .lc-name{font:700 1.14rem/1.25 var(--font-display);letter-spacing:-.01em;color:var(--ink);margin:0;}
+  .lc-price{font:800 1.5rem/1.15 var(--font-display);letter-spacing:-.02em;color:var(--accent);}
+  .lc-what{font-size:.82rem;line-height:1.55;color:var(--ink-faint);}
+  .lc-fit{padding:.9rem 1.2rem 0;display:grid;gap:.7rem;}
+  .lc-fit p{display:flex;gap:.7rem;margin:0;font-size:.88rem;line-height:1.6;color:var(--ink-soft);}
+  .lc-fit i{flex:none;display:grid;place-items:center;width:24px;height:24px;margin-top:.15rem;border-radius:50%;font-style:normal;font-size:.72rem;font-weight:800;}
+  .lc-for i{background:rgba(25,194,122,.16);color:#0B7A47;}
+  html[data-theme="night"] .lc-for i{color:#2BD48A;}
+  .lc-not i{background:rgba(255,87,34,.14);color:var(--accent);}
+  .lc-fit em{display:block;font:700 .6rem/1.4 var(--font-display);letter-spacing:.14em;text-transform:uppercase;font-style:normal;color:var(--ink-faint);margin-bottom:.1rem;}
+  .lc-not em{color:var(--accent);}
+  .lc-fit b{color:var(--ink);font-weight:700;}
+  .lc-go{margin:1.1rem 1.2rem 1.25rem;margin-top:auto;padding-top:0;align-self:flex-start;display:inline-flex;gap:.45rem;align-items:center;font:700 .88rem/1 var(--font-display);
+    color:var(--ink);text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:.72rem 1.1rem;transition:border-color .2s,color .2s,background .2s;}
+  .lc-fit + .lc-go{margin-top:1.1rem;}
+  .lc{justify-content:flex-start;}.lc-fit{flex:1;}
+  .lc-go:hover{border-color:var(--accent);color:var(--accent);}
+  .lc.is-star .lc-go{background:var(--accent);border-color:var(--accent);color:#fff;}
+  .ld-note{margin-top:2rem;padding:1.1rem 1.25rem;border-radius:18px;border:1px dashed var(--line);max-width:none;}
+  @media(max-width:1100px){.lc-grid{grid-template-columns:repeat(2,minmax(0,1fr));}}
+  @media(max-width:680px){.lc-grid{grid-template-columns:1fr;gap:1.1rem;}}
+  /* who we turn away */
+  .tw{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(1.4rem,4vw,3rem);align-items:start;margin-top:2.4rem;}
+  .tw-face{margin:0;position:sticky;top:104px;border-radius:26px;overflow:hidden;border:1px solid var(--card-line,var(--line));background:var(--card);}
+  .tw-face img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;object-position:50% 10%;}
+  .tw-face figcaption{padding:1.1rem 1.2rem 1.25rem;font-size:.95rem;line-height:1.65;color:var(--ink-soft);}
+  .tw-face figcaption b{color:var(--ink);}
+  .tw-list{display:grid;gap:1rem;}
+  .tw-item{display:flex;gap:1rem;align-items:flex-start;padding:1.15rem 1.25rem;border-radius:20px;border:1px solid var(--card-line,var(--line));background:var(--card);transition:transform .25s,border-color .25s;}
+  .tw-item:hover{transform:translateX(4px);border-color:rgba(255,87,34,.5);}
+  .tw-n{flex:none;display:grid;place-items:center;width:44px;height:44px;border-radius:14px;background:rgba(255,87,34,.12);color:var(--accent);font:800 .95rem/1 var(--font-display);}
+  .tw-item b{display:block;font:700 1.02rem/1.35 var(--font-display);color:var(--ink);margin-bottom:.3rem;}
+  .tw-item p{margin:0;font-size:.9rem;line-height:1.65;color:var(--ink-soft);}
+  .tw-item p b{display:inline;font:inherit;font-weight:700;color:var(--ink);margin:0;}
+  @media(max-width:820px){.tw{grid-template-columns:1fr;}.tw-face{position:static;max-width:420px;}.tw-face img{aspect-ratio:16/11;object-position:50% 14%;}}
+  @media(prefers-reduced-motion:reduce){.rt-row,.lc,.tw-item{transition:none;transform:none!important;}}
+
   @media(max-width:900px){
     .ld-row{grid-template-columns:1fr;gap:.85rem;}
     .ld-go{justify-self:start;}
@@ -735,13 +813,14 @@ a.promo-tick{text-decoration:none;display:block;}
 </div>
 <div class="rt-list">
 <details class="rt-row" name="erj-router">
-<summary><span class="rt-n">01</span><span class="rt-says">&ldquo;I have not started applying yet.&rdquo;</span><span class="rt-chev" aria-hidden="true">⌄</span></summary>
+<summary><span class="rt-n">01</span><span class="rt-ic" aria-hidden="true">🌱</span><span class="rt-says">&ldquo;I have not started applying yet.&rdquo;</span><span class="rt-chev" aria-hidden="true">⌄</span></summary>
 <div class="rt-door">
+<figure class="rt-pic"><img alt="Oluwaseyi Ashiru welcoming you in" decoding="async" loading="lazy" src="photo-seyi-welcome.webp" width="880" height="1100"/></figure>
 <span class="rt-tag">Nothing broken yet · a baseline</span>
 <p class="rt-law">You cannot diagnose a search you have not run.</p>
-<div class="rt-block"><b class="rt-h">The free door — try this first</b><p>Everything you need is free. Score your CV with the <a href="cvscan/">CV Scan</a> — the rubric is published, so you can fix it yourself and owe us nothing. Bring it to the <a href="masterclass/">Remote Job Application Clinic</a> on Zoom. Then join the <a href="jobs/">Remote Job Board</a> so real roles start reaching you while you build.</p></div>
-<div class="rt-block"><b class="rt-h">If you want it built or run for you</b><p>If you want the whole method in your hands tonight, the book <a href="fromintenttooffer/">How to Get a Remote Job: From Intent to Offer</a> is ₦15,000. If you want the full course and know you will genuinely work it alone, the <a href="selflearn/">Self-Learn Pack</a> is ₦35,000. It is the same four stages and the same rubrics we run with paying cohorts, written to be worked without one.</p></div>
-<div class="rt-limit"><b class="rt-h">The limit, before you spend anything</b><p>Do not buy a diagnosis of a search you have not run. Starting without a job history is a position we build <em>from</em>, not around — but nothing on this page is required to begin.</p></div>
+<div class="rt-block"><b class="rt-h">The free door — try this first</b><p><b>Everything you need is free.</b> Score your CV with the <a href="cvscan/">CV Scan</a> — the rubric is published, so you can fix it yourself and owe us nothing. Bring it to the <a href="masterclass/">Remote Job Application Clinic</a> on Zoom. Then join the <a href="jobs/">Remote Job Board</a> so real roles start reaching you while you build.</p></div>
+<div class="rt-block"><b class="rt-h">If you want it built or run for you</b><p><b>If you want the whole method in your hands tonight</b>, the book <a href="fromintenttooffer/">How to Get a Remote Job: From Intent to Offer</a> is ₦15,000. If you want the full course and know you will genuinely work it alone, the <a href="selflearn/">Self-Learn Pack</a> is ₦35,000. It is the same four stages and the same rubrics we run with paying cohorts, written to be worked without one.</p></div>
+<div class="rt-limit"><b class="rt-h">The limit, before you spend anything</b><p><b>Do not buy a diagnosis of a search you have not run.</b> Starting without a job history is a position we build <em>from</em>, not around — but nothing on this page is required to begin.</p></div>
 <div class="rt-cta">
 <a class="btn-yes btn-primary-ui" href="cvscan/"><span>Start With The Free CV Scan</span><span class="arrow-wrap"><span class="arrow">→</span></span></a>
 
@@ -749,26 +828,28 @@ a.promo-tick{text-decoration:none;display:block;}
 </div>
 </details>
 <details class="rt-row" name="erj-router">
-<summary><span class="rt-n">02</span><span class="rt-says">&ldquo;I am not sure I can actually do the work yet.&rdquo;</span><span class="rt-chev" aria-hidden="true">⌄</span></summary>
+<summary><span class="rt-n">02</span><span class="rt-ic" aria-hidden="true">🧱</span><span class="rt-says">&ldquo;I am not sure I can actually do the work yet.&rdquo;</span><span class="rt-chev" aria-hidden="true">⌄</span></summary>
 <div class="rt-door">
+<figure class="rt-pic"><img alt="Oluwaseyi Ashiru at his desk" decoding="async" loading="lazy" src="photo-seyi-desk.webp" width="880" height="1100"/></figure>
 <span class="rt-tag">01 · Capacity</span>
 <p class="rt-law">You cannot be hired for work you cannot yet do.</p>
-<div class="rt-block"><b class="rt-h">The free door — try this first</b><p>Measure it rather than guess. The <a href="capacityscan/">free Capacity Audit</a> asks ten questions about the work itself and scores it out of ten — and if the skill is not there yet, it says so instead of selling you something. Then be specific about which half is missing. If it is the occupational skill — the accounting, the design, the writing, the support — no CV rewrite closes that, and you should be building it before you spend anything here. If it is the <em>remote</em> half — working unsupervised, writing so a stranger can act on it, owning your own deadlines — the <a href="blog.html">blog</a> and the <a href="free.html">free resources</a> cover it, and the <a href="jobs/">Remote Job Board</a> shows you what the market is actually asking for.</p></div>
+<div class="rt-block"><b class="rt-h">The free door — try this first</b><p><b>Measure it rather than guess.</b> The <a href="capacityscan/">free Capacity Audit</a> asks ten questions about the work itself and scores it out of ten — and if the skill is not there yet, it says so instead of selling you something. Then be specific about which half is missing. If it is the occupational skill — the accounting, the design, the writing, the support — no CV rewrite closes that, and you should be building it before you spend anything here. If it is the <em>remote</em> half — working unsupervised, writing so a stranger can act on it, owning your own deadlines — the <a href="blog.html">blog</a> and the <a href="free.html">free resources</a> cover it, and the <a href="jobs/">Remote Job Board</a> shows you what the market is actually asking for.</p></div>
 <div class="rt-block"><b class="rt-h">If you want it built or run for you</b><p>Stages 1 and 2 of <a href="foundationtraining/">Foundation Training</a> exist for exactly this: the remote mindset, then the toolkit every global team runs on. The <a href="selflearn/">Self-Learn Pack</a> carries all four stages at ₦35,000 if you will genuinely work them alone.</p></div>
-<div class="rt-limit"><b class="rt-h">The limit, before you spend anything</b><p>We can teach you to work remotely. We cannot teach you someone else’s profession in four weeks. If the gap is the occupational skill itself, build that first — and come back when an employer would have something to assess.</p></div>
+<div class="rt-limit"><b class="rt-h">The limit, before you spend anything</b><p><b>We can teach you to work remotely.</b> We cannot teach you someone else’s profession in four weeks. If the gap is the occupational skill itself, build that first — and come back when an employer would have something to assess.</p></div>
 <div class="rt-cta">
 <a class="btn-yes btn-primary-ui" href="capacityscan/"><span>Take The Free Capacity Audit</span><span class="arrow-wrap"><span class="arrow">→</span></span></a>
 </div>
 </div>
 </details>
 <details class="rt-row" name="erj-router">
-<summary><span class="rt-n">03</span><span class="rt-says">&ldquo;I rarely see remote jobs I could actually apply for — or I have no time to look.&rdquo;</span><span class="rt-chev" aria-hidden="true">⌄</span></summary>
+<summary><span class="rt-n">03</span><span class="rt-ic" aria-hidden="true">🔎</span><span class="rt-says">&ldquo;I rarely see remote jobs I could actually apply for — or I have no time to look.&rdquo;</span><span class="rt-chev" aria-hidden="true">⌄</span></summary>
 <div class="rt-door">
+<figure class="rt-pic"><img alt="Oluwaseyi Ashiru on a call with a headset" decoding="async" loading="lazy" src="photo-seyi-headset.webp" width="880" height="1100"/></figure>
 <span class="rt-tag">02 · Supply</span>
 <p class="rt-law">You cannot apply for a job you never saw.</p>
-<div class="rt-block"><b class="rt-h">The free door — try this first</b><p>The <a href="jobs/">Remote Job Board</a> carries new remote roles twice a day, each one open to someone in Nigeria or Africa, at no cost and with no gatekeeping. The same roles go out on our <a href="https://whatsapp.com/channel/0029Vaym4DE3mFY2wCrC713S" rel="noopener" target="_blank">free WhatsApp channel</a>. If your problem is purely that nothing reaches you, start there before you pay for anything.</p></div>
-<div class="rt-block"><b class="rt-h">If you want it built or run for you</b><p>If the roles never reach you, the book <a href="register.html#book">Google Search: Best Kept Open Secret</a> is ₦5,000: the search methods that surface roles before they reach a job board. If you can find them but have no hours left, <a href="jobhunter/">The Job Hunter</a> is ₦15,000: up to 25 roles open to Nigeria scored against your CV, and a finished application for your top 3.</p></div>
-<div class="rt-limit"><b class="rt-h">The limit, before you spend anything</b><p>There is no offer guarantee, and there never will be. We are accountable for sourcing, tailoring and submitting on your behalf. We are not accountable for the market&rsquo;s timing — anyone promising you a specific job by a specific date is promising something they do not control.</p></div>
+<div class="rt-block"><b class="rt-h">The free door — try this first</b><p><b>The <a href="jobs/">Remote Job Board</a> carries new remote roles twice a day</b>, each one open to someone in Nigeria or Africa, at no cost and with no gatekeeping. The same roles go out on our <a href="https://whatsapp.com/channel/0029Vaym4DE3mFY2wCrC713S" rel="noopener" target="_blank">free WhatsApp channel</a>. If your problem is purely that nothing reaches you, start there before you pay for anything.</p></div>
+<div class="rt-block"><b class="rt-h">If you want it built or run for you</b><p><b>If the roles never reach you</b>, the book <a href="register.html#book">Google Search: Best Kept Open Secret</a> is ₦5,000: the search methods that surface roles before they reach a job board. If you can find them but have no hours left, <a href="jobhunter/">The Job Hunter</a> is ₦15,000: up to 25 roles open to Nigeria scored against your CV, and a finished application for your top 3.</p></div>
+<div class="rt-limit"><b class="rt-h">The limit, before you spend anything</b><p><b>There is no offer guarantee, and there never will be.</b> We are accountable for sourcing, tailoring and submitting on your behalf. We are not accountable for the market&rsquo;s timing — anyone promising you a specific job by a specific date is promising something they do not control.</p></div>
 <div class="rt-cta">
 <a class="btn-yes btn-primary-ui" href="jobs/"><span>Open The Job Board</span><span class="arrow-wrap"><span class="arrow">→</span></span></a>
 
@@ -776,13 +857,14 @@ a.promo-tick{text-decoration:none;display:block;}
 </div>
 </details>
 <details class="rt-row" name="erj-router">
-<summary><span class="rt-n">04</span><span class="rt-says">&ldquo;I apply and hear nothing back.&rdquo;</span><span class="rt-chev" aria-hidden="true">⌄</span></summary>
+<summary><span class="rt-n">04</span><span class="rt-ic" aria-hidden="true">📭</span><span class="rt-says">&ldquo;I apply and hear nothing back.&rdquo;</span><span class="rt-chev" aria-hidden="true">⌄</span></summary>
 <div class="rt-door">
+<figure class="rt-pic"><img alt="Oluwaseyi Ashiru typing at a laptop" decoding="async" loading="lazy" src="photo-seyi-typing.webp" width="880" height="1100"/></figure>
 <span class="rt-tag">03 · Representation</span>
 <p class="rt-law">If your CV cannot be read, you were never really in the running.</p>
-<div class="rt-block"><b class="rt-h">The free door — try this first</b><p>Run the <a href="cvscan/">CV Scan</a> first. It runs entirely on your own device — nothing uploads, nothing is stored — and every point it fails comes with the specific fix. Many people fix the weak point here and never pay us anything, which is the correct outcome.</p></div>
-<div class="rt-block"><b class="rt-h">If you want it built or run for you</b><p>If the problem is the CV alone, <a href="cvbuilder.html">The CV Engine</a> is ₦5,000 a month, cancellable any time, and you rebuild it yourself. If you would rather we rebuilt it once, properly, <a href="register.html#cvfix">CV Fix</a> is ₦30,000 for one CV in one field. If it is broader — LinkedIn, portfolio, evidence of work, async writing — that is <a href="foundationtraining/">Foundation Training</a> at ₦250,000, or the single stage that covers your gap from ₦70,000.</p></div>
-<div class="rt-limit"><b class="rt-h">The limit, before you spend anything</b><p>The ₦5,000 a month rents an instrument. It buys a tool, never teaching. If what is missing is the method rather than the document, it is the wrong door and it will feel like one.</p></div>
+<div class="rt-block"><b class="rt-h">The free door — try this first</b><p><b>Run the <a href="cvscan/">CV Scan</a> first.</b> It runs entirely on your own device — nothing uploads, nothing is stored — and every point it fails comes with the specific fix. Many people fix the weak point here and never pay us anything, which is the correct outcome.</p></div>
+<div class="rt-block"><b class="rt-h">If you want it built or run for you</b><p><b>If the problem is the CV alone</b>, <a href="cvbuilder.html">The CV Engine</a> is ₦5,000 a month, cancellable any time, and you rebuild it yourself. If you would rather we rebuilt it once, properly, <a href="register.html#cvfix">CV Fix</a> is ₦30,000 for one CV in one field. If it is broader — LinkedIn, portfolio, evidence of work, async writing — that is <a href="foundationtraining/">Foundation Training</a> at ₦250,000, or the single stage that covers your gap from ₦70,000.</p></div>
+<div class="rt-limit"><b class="rt-h">The limit, before you spend anything</b><p><b>The ₦5,000 a month rents an instrument.</b> It buys a tool, never teaching. If what is missing is the method rather than the document, it is the wrong door and it will feel like one.</p></div>
 <div class="rt-cta">
 <a class="btn-yes btn-primary-ui" href="cvscan/"><span>Run The Free CV Scan</span><span class="arrow-wrap"><span class="arrow">→</span></span></a>
 
@@ -790,13 +872,14 @@ a.promo-tick{text-decoration:none;display:block;}
 </div>
 </details>
 <details class="rt-row" name="erj-router">
-<summary><span class="rt-n">05</span><span class="rt-says">&ldquo;I apply constantly, and get rejections or eligibility mismatches.&rdquo;</span><span class="rt-chev" aria-hidden="true">⌄</span></summary>
+<summary><span class="rt-n">05</span><span class="rt-ic" aria-hidden="true">🎯</span><span class="rt-says">&ldquo;I apply constantly, and get rejections or eligibility mismatches.&rdquo;</span><span class="rt-chev" aria-hidden="true">⌄</span></summary>
 <div class="rt-door">
+<figure class="rt-pic"><img alt="Oluwaseyi Ashiru in a suit, gesturing to one side" decoding="async" loading="lazy" src="photo-seyi-suit-480.webp" width="880" height="1100"/></figure>
 <span class="rt-tag">04 · Aim</span>
 <p class="rt-law">Applying everywhere is not the same as applying where you would get hired.</p>
-<div class="rt-block"><b class="rt-h">The free door — try this first</b><p>Read the targeting and eligibility guides on the <a href="blog.html">blog</a> — which companies can legally pay you from here, which postings mean do not apply, and how many applications a week actually works. Bring one real job advert to the free <a href="masterclass/">Clinic</a> and we will check the fit live.</p></div>
+<div class="rt-block"><b class="rt-h">The free door — try this first</b><p><b>Read the targeting and eligibility guides on the <a href="blog.html">blog</a></b> — which companies can legally pay you from here, which postings mean do not apply, and how many applications a week actually works. Bring one real job advert to the free <a href="masterclass/">Clinic</a> and we will check the fit live.</p></div>
 <div class="rt-block"><b class="rt-h">If you want it built or run for you</b><p><a href="foundationtraining/">Foundation Training</a> installs a weekly targeting and application system you operate yourself. Once your assets are ready, the <a href="jobapplication/">Done-For-You Placement Engine</a> (₦300,000) runs an aimed search on your behalf for a month: thirty or more verified roles a week.</p></div>
-<div class="rt-limit"><b class="rt-h">The limit, before you spend anything</b><p>Done-For-You only starts after hireability and target fit are confirmed. It is not a way to skip readiness, and buying it before your assets are ready wastes the month you paid for.</p></div>
+<div class="rt-limit"><b class="rt-h">The limit, before you spend anything</b><p><b>Done-For-You only starts after hireability and target fit are confirmed.</b> It is not a way to skip readiness, and buying it before your assets are ready wastes the month you paid for.</p></div>
 <div class="rt-cta">
 <a class="btn-yes btn-primary-ui" href="blog.html"><span>Read The Targeting Guides Free</span><span class="arrow-wrap"><span class="arrow">→</span></span></a>
 
@@ -804,13 +887,14 @@ a.promo-tick{text-decoration:none;display:block;}
 </div>
 </details>
 <details class="rt-row" name="erj-router">
-<summary><span class="rt-n">06</span><span class="rt-says">&ldquo;I get interviews, but no offers — or the money is wrong.&rdquo;</span><span class="rt-chev" aria-hidden="true">⌄</span></summary>
+<summary><span class="rt-n">06</span><span class="rt-ic" aria-hidden="true">🤝</span><span class="rt-says">&ldquo;I get interviews, but no offers — or the money is wrong.&rdquo;</span><span class="rt-chev" aria-hidden="true">⌄</span></summary>
 <div class="rt-door">
+<figure class="rt-pic"><img alt="Oluwaseyi Ashiru giving a thumbs up" decoding="async" loading="lazy" src="photo-seyi-thumbsup.webp" width="880" height="1100"/></figure>
 <span class="rt-tag">05 · Conversion</span>
 <p class="rt-law">Interviews do not pay you. A signed offer does.</p>
-<div class="rt-block"><b class="rt-h">The free door — try this first</b><p>The <a href="blog.html">blog</a> carries the interview and negotiation material — the twelve questions you will be asked, the two-minute answer, and the salary question that loses offers in four seconds. The free <a href="masterclass/">Clinic</a> walks the salary answer live.</p></div>
-<div class="rt-block"><b class="rt-h">If you want it built or run for you</b><p><a href="register.html">Stage 4 alone</a> is ₦100,000: interview performance, the STAR video, and negotiation preparation. Once you have finished Foundation Training, the <a href="innercircle/">Inner Circle</a> is ₦250,000 for a year of private one-to-one deployment: a person working your interviews and offers with you.</p></div>
-<div class="rt-limit"><b class="rt-h">The limit, before you spend anything</b><p>If your CV, LinkedIn and portfolio are already producing interviews, do not rebuild them. A more expensive product existing is not a reason to buy it, and the weak point you have is later in the process than the one it fixes.</p></div>
+<div class="rt-block"><b class="rt-h">The free door — try this first</b><p><b>The <a href="blog.html">blog</a> carries the interview and negotiation material</b> — the twelve questions you will be asked, the two-minute answer, and the salary question that loses offers in four seconds. The free <a href="masterclass/">Clinic</a> walks the salary answer live.</p></div>
+<div class="rt-block"><b class="rt-h">If you want it built or run for you</b><p><b><a href="register.html">Stage 4 alone</a> is ₦100,000: interview performance</b>, the STAR video, and negotiation preparation. Once you have finished Foundation Training, the <a href="innercircle/">Inner Circle</a> is ₦250,000 for a year of private one-to-one deployment: a person working your interviews and offers with you.</p></div>
+<div class="rt-limit"><b class="rt-h">The limit, before you spend anything</b><p><b>If your CV, LinkedIn and portfolio are already producing interviews, do not rebuild them.</b> A more expensive product existing is not a reason to buy it, and the weak point you have is later in the process than the one it fixes.</p></div>
 <div class="rt-cta">
 <a class="btn-yes btn-primary-ui" href="register.html"><span>See Stage 4 And The Inner Circle</span><span class="arrow-wrap"><span class="arrow">→</span></span></a>
 
@@ -818,8 +902,9 @@ a.promo-tick{text-decoration:none;display:block;}
 </div>
 </details>
 <details class="rt-row" name="erj-router">
-<summary><span class="rt-n">07</span><span class="rt-says">&ldquo;I am honestly not sure which of these is me.&rdquo;</span><span class="rt-chev" aria-hidden="true">⌄</span></summary>
+<summary><span class="rt-n">07</span><span class="rt-ic" aria-hidden="true">🧭</span><span class="rt-says">&ldquo;I am honestly not sure which of these is me.&rdquo;</span><span class="rt-chev" aria-hidden="true">⌄</span></summary>
 <div class="rt-door">
+<figure class="rt-pic"><img alt="Oluwaseyi Ashiru reaching out a hand" decoding="async" loading="lazy" src="photo-seyi-invite.webp" width="880" height="1100"/></figure>
 <span class="rt-tag">Start here</span>
 <p class="rt-law">Most people patch the wrong point for months.</p>
 <div class="rt-block"><b class="rt-h">The free door — try this first</b><p>This is the normal answer, not a failure — the five failures feel identical from the inside. Two free ways to find out. The <a href="diagnose/">90-second diagnostic</a> asks five questions and returns an instant result with one action you can take tonight. Or send <b>AUDIT</b> on WhatsApp and a person reads your target role, your last thirty days of applications and interviews, and your CV or LinkedIn, then names the earliest weak point in one sentence.</p></div>
@@ -838,79 +923,79 @@ a.promo-tick{text-decoration:none;display:block;}
 <p class="section-label"><span class="mark"></span> Every Route And Price</p>
 <h2 class="cost-h" style="margin-bottom:.9rem;">The whole ladder, <em>on one screen.</em></h2>
 <p class="rt-lead">Every rung carries who it is <b>not</b> for, in the same size type as who it is for. You only need to find yours — then <a href="register.html" style="color:var(--accent);font-weight:600;">pay for it in the store</a>.</p>
-<div class="ld">
-<div class="ld-row">
-<div><span class="ld-name">Free</span><span class="ld-price">₦0</span><span class="ld-part">Finds what is holding you back</span><span class="ld-what">CV scan · diagnosis · Application Clinic · blog · Remote Job Board</span></div>
-<div class="ld-col ld-for"><b>Who it is for</b><p>Everyone, without exception. This is the layer that finds out whether you need us at all.</p></div>
-<div class="ld-col ld-not"><b>Who it is not for</b><p>Nobody. If the free layer fixes your weak point, that is the right outcome and you should take it.</p></div>
-<a class="ld-go" href="free.html">See what&rsquo;s free</a>
-</div>
-<div class="ld-row">
-<div><span class="ld-name">Google Search: Best Kept Open Secret</span><span class="ld-price">₦5,000</span><span class="ld-part">Fixes: Supply</span><span class="ld-what">Book · instant download</span></div>
-<div class="ld-col ld-for"><b>Who it is for</b><p>Someone who rarely sees roles they could apply for, and wants to find them before they reach a job board.</p></div>
-<div class="ld-col ld-not"><b>Who it is not for</b><p>Anyone already seeing plenty of roles. More roles will not fix a CV that cannot be read.</p></div>
-<a class="ld-go" href="register.html#book">See the book</a>
-</div>
-<div class="ld-row">
-<div><span class="ld-name">The CV Engine</span><span class="ld-price">₦5,000 / month</span><span class="ld-part">Fixes: Representation</span><span class="ld-what">The CV Engine only · monthly · cancel any time</span></div>
-<div class="ld-col ld-for"><b>Who it is for</b><p>A Representation weak point concentrated in one document, where you need the instrument rather than the teaching.</p></div>
-<div class="ld-col ld-not"><b>Who it is not for</b><p>Anyone whose weak point is not the CV. It is a monthly tool subscription — it is not a cheap Self-Learn Pack.</p></div>
-<a class="ld-go" href="cvbuilder.html">See the CV Engine</a>
-</div>
-<div class="ld-row">
-<div><span class="ld-name">How to Get a Remote Job: From Intent to Offer</span><span class="ld-price">₦15,000</span><span class="ld-part">The whole method</span><span class="ld-what">Book · 171 pages · instant download</span></div>
-<div class="ld-col ld-for"><b>Who it is for</b><p>Someone who wants the whole five-part method in their hands tonight and will work it alone.</p></div>
-<div class="ld-col ld-not"><b>Who it is not for</b><p>Anyone who needs a person to mark their work. A book cannot tell you what you got wrong.</p></div>
-<a class="ld-go" href="fromintenttooffer/">See the book</a>
-</div>
-<div class="ld-row">
-<div><span class="ld-name">CV Fix — one CV, one field</span><span class="ld-price">₦30,000</span><span class="ld-part">Fixes: Representation</span><span class="ld-what">Done for you · 72 hours · two revision rounds</span></div>
-<div class="ld-col ld-for"><b>Who it is for</b><p>Someone who can do the work and has the evidence, but wants the CV rebuilt once, properly, rather than learning the tool.</p></div>
-<div class="ld-col ld-not"><b>Who it is not for</b><p>Anyone whose weak point is not the CV, or who needs more than one field. A second field is a second CV.</p></div>
-<a class="ld-go" href="register.html#cvfix">See CV Fix</a>
-</div>
-<div class="ld-row">
-<div><span class="ld-name">The Self-Learn Pack</span><span class="ld-price">₦35,000</span><span class="ld-part">Fixes: Capacity · Representation</span><span class="ld-what">Stages 1–4 self-paced · files + private Telegram</span></div>
-<div class="ld-col ld-for"><b>Who it is for</b><p>Someone who cannot sit a live cohort, will genuinely work alone, and wants the method today.</p></div>
-<div class="ld-col ld-not"><b>Who it is not for</b><p>Anyone who will not do unwatched work. No certificate and no placement — it is only cheap if you finish it.</p></div>
-<a class="ld-go" href="selflearn/">See the pack</a>
-</div>
-<div class="ld-row">
-<div><span class="ld-name">The Job Hunter</span><span class="ld-price">₦15,000</span><span class="ld-part">Fixes: Aim · Supply</span><span class="ld-what">Up to 25 roles scored against your CV · 3 application packs · you press Submit</span></div>
-<div class="ld-col ld-for"><b>Who it is for</b><p>Already employable and well represented, where the only missing input is your time.</p></div>
-<div class="ld-col ld-not"><b>Who it is not for</b><p>Anyone whose CV still cannot be read. There is no offer guarantee at any price.</p></div>
-<a class="ld-go" href="jobhunter/">See how it works</a>
-</div>
-<div class="ld-row">
-<div><span class="ld-name">Single stages</span><span class="ld-price">from ₦70,000</span><span class="ld-part">Fixes: one part at a time</span><span class="ld-what">Stage 1 ₦70k · Stage 2 ₦130k · Stage 3 ₦70k · Stage 4 ₦100k</span></div>
-<div class="ld-col ld-for"><b>Who it is for</b><p>One specific, already-diagnosed build weak point — not a general sense that something is wrong.</p></div>
-<div class="ld-col ld-not"><b>Who it is not for</b><p>Anyone buying three or four of them. That is the full programme at a worse price; take Foundation Training.</p></div>
-<a class="ld-go" href="register.html">See the stages</a>
-</div>
-<div class="ld-row">
-<div><span class="ld-name">Remote Job Foundation Training</span><span class="ld-price">₦250,000</span><span class="ld-part">Fixes: Capacity · Supply · Representation · Aim</span><span class="ld-what">Live Stages 1–4 · 20 training days · marking · certificate</span></div>
-<div class="ld-col ld-for"><b>Who it is for</b><p>Someone who can do real work but owns nothing that would convince a stranger of it in thirty seconds.</p></div>
-<div class="ld-col ld-not"><b>Who it is not for</b><p>Anyone who cannot give the live build its time, or for whom this money competes with rent or school fees.</p></div>
-<a class="ld-go" href="foundationtraining/">See Cohort 13</a>
-</div>
-<div class="ld-row">
-<div><span class="ld-name">Done-For-You Placement Engine</span><span class="ld-price">₦300,000</span><span class="ld-part">Fixes: Supply · Representation · Aim</span><span class="ld-what">Assets ready, then 30+ roles sourced and applied weekly for a month</span></div>
-<div class="ld-col ld-for"><b>Who it is for</b><p>Skilled, represented and time-poor — you want the search executed, not taught.</p></div>
-<div class="ld-col ld-not"><b>Who it is not for</b><p>Anyone whose assets are not finished yet. The engine needs something worth sending.</p></div>
-<a class="ld-go" href="jobapplication/">See the Placement Engine</a>
-</div>
-<div class="ld-row">
-<div><span class="ld-name">Get Your Dream Job Offer</span><span class="ld-price">₦500,000</span><span class="ld-part">The full route</span><span class="ld-what">Stages 1–5 complete · build + application engine · lifetime access</span></div>
-<div class="ld-col ld-for"><b>Who it is for</b><p>Someone who would rather make one decision than two, and wants the build and the search under one roof.</p></div>
-<div class="ld-col ld-not"><b>Who it is not for</b><p>Anyone shopping on price alone. The cheapest wrong option is the expensive one.</p></div>
-<a class="ld-go" href="jobapplication/">See the full path</a>
-</div>
-<div class="ld-row is-aside">
-<div><span class="ld-name">The Inner Circle</span><span class="ld-price">₦250,000 a year</span><span class="ld-part">Fixes: Conversion</span><span class="ld-what">Twelve months one to one · co-applying, interview dry-runs, offer review · Foundation alumni only</span></div>
-<div class="ld-col ld-for"><b>Who it is for</b><p>Foundation Training graduates who want a person working their search with them for a year.</p></div>
-<div class="ld-col ld-not"><b>Who it is not for</b><p>Anyone who has not done Foundation Training yet. Start there; the Circle opens the day you finish.</p></div>
-<a class="ld-go" href="innercircle/">Request admission</a>
-</div>
+<div class="lc-grid">
+<article class="lc">
+<a class="lc-art" href="free.html" tabindex="-1" aria-hidden="true"><img class="is-photo" alt="Oluwaseyi Ashiru welcoming you" decoding="async" loading="lazy" src="photo-seyi-welcome.webp" width="880" height="1100"/></a>
+<div class="lc-top"><span class="lc-part">Finds what is holding you back</span><h3 class="lc-name">Free</h3><span class="lc-price">₦0</span><span class="lc-what">CV scan · diagnosis · Application Clinic · blog · Remote Job Board</span></div>
+<div class="lc-fit"><p class="lc-for"><i aria-hidden="true">✓</i><span><em>Who it is for</em><b>Everyone, without exception.</b> This is the layer that finds out whether you need us at all.</span></p><p class="lc-not"><i aria-hidden="true">✕</i><span><em>Who it is not for</em><b>Nobody.</b> If the free layer fixes your weak point, that is the right outcome and you should take it.</span></p></div>
+<a class="lc-go" href="free.html">See what&rsquo;s free <span aria-hidden="true">→</span></a>
+</article>
+<article class="lc">
+<a class="lc-art" href="register.html#book" tabindex="-1" aria-hidden="true"><picture><source srcset="shop/book.webp" type="image/webp"/><img alt="" decoding="async" loading="lazy" src="shop/book.jpg" width="900" height="900"/></picture></a>
+<div class="lc-top"><span class="lc-part">Fixes: Supply</span><h3 class="lc-name">Google Search: Best Kept Open Secret</h3><span class="lc-price">₦5,000</span><span class="lc-what">Book · instant download</span></div>
+<div class="lc-fit"><p class="lc-for"><i aria-hidden="true">✓</i><span><em>Who it is for</em><b>Someone who rarely sees roles they could apply for</b>, and wants to find them before they reach a job board.</span></p><p class="lc-not"><i aria-hidden="true">✕</i><span><em>Who it is not for</em><b>Anyone already seeing plenty of roles.</b> More roles will not fix a CV that cannot be read.</span></p></div>
+<a class="lc-go" href="register.html#book">See the book <span aria-hidden="true">→</span></a>
+</article>
+<article class="lc">
+<a class="lc-art" href="cvbuilder.html" tabindex="-1" aria-hidden="true"><picture><source srcset="shop/cvpass.webp" type="image/webp"/><img alt="" decoding="async" loading="lazy" src="shop/cvpass.jpg" width="900" height="900"/></picture></a>
+<div class="lc-top"><span class="lc-part">Fixes: Representation</span><h3 class="lc-name">The CV Engine</h3><span class="lc-price">₦5,000 / month</span><span class="lc-what">The CV Engine only · monthly · cancel any time</span></div>
+<div class="lc-fit"><p class="lc-for"><i aria-hidden="true">✓</i><span><em>Who it is for</em><b>A Representation weak point concentrated in one document</b>, where you need the instrument rather than the teaching.</span></p><p class="lc-not"><i aria-hidden="true">✕</i><span><em>Who it is not for</em><b>Anyone whose weak point is not the CV.</b> It is a monthly tool subscription — it is not a cheap Self-Learn Pack.</span></p></div>
+<a class="lc-go" href="cvbuilder.html">See the CV Engine <span aria-hidden="true">→</span></a>
+</article>
+<article class="lc">
+<a class="lc-art" href="fromintenttooffer/" tabindex="-1" aria-hidden="true"><picture><source srcset="shop/intentbook-centred.webp" type="image/webp"/><img alt="" decoding="async" loading="lazy" src="shop/intentbook-centred.jpg" width="900" height="900"/></picture></a>
+<div class="lc-top"><span class="lc-part">The whole method</span><h3 class="lc-name">How to Get a Remote Job: From Intent to Offer</h3><span class="lc-price">₦15,000</span><span class="lc-what">Book · 171 pages · instant download</span></div>
+<div class="lc-fit"><p class="lc-for"><i aria-hidden="true">✓</i><span><em>Who it is for</em>Someone who wants the whole five-part method in their hands tonight and will work it alone.</span></p><p class="lc-not"><i aria-hidden="true">✕</i><span><em>Who it is not for</em><b>Anyone who needs a person to mark their work.</b> A book cannot tell you what you got wrong.</span></p></div>
+<a class="lc-go" href="fromintenttooffer/">See the book <span aria-hidden="true">→</span></a>
+</article>
+<article class="lc">
+<a class="lc-art" href="register.html#cvfix" tabindex="-1" aria-hidden="true"><picture><source srcset="shop/cvfix.webp" type="image/webp"/><img alt="" decoding="async" loading="lazy" src="shop/cvfix.jpg" width="900" height="900"/></picture></a>
+<div class="lc-top"><span class="lc-part">Fixes: Representation</span><h3 class="lc-name">CV Fix — one CV, one field</h3><span class="lc-price">₦30,000</span><span class="lc-what">Done for you · 72 hours · two revision rounds</span></div>
+<div class="lc-fit"><p class="lc-for"><i aria-hidden="true">✓</i><span><em>Who it is for</em><b>Someone who can do the work and has the evidence</b>, but wants the CV rebuilt once, properly, rather than learning the tool.</span></p><p class="lc-not"><i aria-hidden="true">✕</i><span><em>Who it is not for</em><b>Anyone whose weak point is not the CV, or who needs more than one field.</b> A second field is a second CV.</span></p></div>
+<a class="lc-go" href="register.html#cvfix">See CV Fix <span aria-hidden="true">→</span></a>
+</article>
+<article class="lc">
+<a class="lc-art" href="selflearn/" tabindex="-1" aria-hidden="true"><picture><source srcset="shop/selflearn-foundation.webp" type="image/webp"/><img alt="" decoding="async" loading="lazy" src="shop/selflearn-foundation.jpg" width="900" height="900"/></picture></a>
+<div class="lc-top"><span class="lc-part">Fixes: Capacity · Representation</span><h3 class="lc-name">The Self-Learn Pack</h3><span class="lc-price">₦35,000</span><span class="lc-what">Stages 1–4 self-paced · files + private Telegram</span></div>
+<div class="lc-fit"><p class="lc-for"><i aria-hidden="true">✓</i><span><em>Who it is for</em><b>Someone who cannot sit a live cohort</b>, will genuinely work alone, and wants the method today.</span></p><p class="lc-not"><i aria-hidden="true">✕</i><span><em>Who it is not for</em><b>Anyone who will not do unwatched work.</b> No certificate and no placement — it is only cheap if you finish it.</span></p></div>
+<a class="lc-go" href="selflearn/">See the pack <span aria-hidden="true">→</span></a>
+</article>
+<article class="lc">
+<a class="lc-art" href="jobhunter/" tabindex="-1" aria-hidden="true"><picture><source srcset="shop/jobhunter.webp" type="image/webp"/><img alt="" decoding="async" loading="lazy" src="shop/jobhunter.jpg" width="900" height="900"/></picture></a>
+<div class="lc-top"><span class="lc-part">Fixes: Aim · Supply</span><h3 class="lc-name">The Job Hunter</h3><span class="lc-price">₦15,000</span><span class="lc-what">Up to 25 roles scored against your CV · 3 application packs · you press Submit</span></div>
+<div class="lc-fit"><p class="lc-for"><i aria-hidden="true">✓</i><span><em>Who it is for</em><b>Already employable and well represented</b>, where the only missing input is your time.</span></p><p class="lc-not"><i aria-hidden="true">✕</i><span><em>Who it is not for</em><b>Anyone whose CV still cannot be read.</b> There is no offer guarantee at any price.</span></p></div>
+<a class="lc-go" href="jobhunter/">See how it works <span aria-hidden="true">→</span></a>
+</article>
+<article class="lc">
+<a class="lc-art" href="register.html" tabindex="-1" aria-hidden="true"><picture><source srcset="shop/stage1.webp" type="image/webp"/><img alt="" decoding="async" loading="lazy" src="shop/stage1.jpg" width="900" height="900"/></picture></a>
+<div class="lc-top"><span class="lc-part">Fixes: one part at a time</span><h3 class="lc-name">Single stages</h3><span class="lc-price">from ₦70,000</span><span class="lc-what">Stage 1 ₦70k · Stage 2 ₦130k · Stage 3 ₦70k · Stage 4 ₦100k</span></div>
+<div class="lc-fit"><p class="lc-for"><i aria-hidden="true">✓</i><span><em>Who it is for</em><b>One specific</b>, already-diagnosed build weak point — not a general sense that something is wrong.</span></p><p class="lc-not"><i aria-hidden="true">✕</i><span><em>Who it is not for</em><b>Anyone buying three or four of them.</b> That is the full programme at a worse price; take Foundation Training.</span></p></div>
+<a class="lc-go" href="register.html">See the stages <span aria-hidden="true">→</span></a>
+</article>
+<article class="lc is-star">
+<a class="lc-art" href="foundationtraining/" tabindex="-1" aria-hidden="true"><picture><source srcset="shop/foundation.webp" type="image/webp"/><img alt="" decoding="async" loading="lazy" src="shop/foundation.jpg" width="900" height="900"/></picture></a>
+<div class="lc-top"><span class="lc-part">Fixes: Capacity · Supply · Representation · Aim</span><h3 class="lc-name">Remote Job Foundation Training</h3><span class="lc-price">₦250,000</span><span class="lc-what">Live Stages 1–4 · 20 training days · marking · certificate</span></div>
+<div class="lc-fit"><p class="lc-for"><i aria-hidden="true">✓</i><span><em>Who it is for</em>Someone who can do real work but owns nothing that would convince a stranger of it in thirty seconds.</span></p><p class="lc-not"><i aria-hidden="true">✕</i><span><em>Who it is not for</em><b>Anyone who cannot give the live build its time</b>, or for whom this money competes with rent or school fees.</span></p></div>
+<a class="lc-go" href="foundationtraining/">See Cohort 13 <span aria-hidden="true">→</span></a>
+</article>
+<article class="lc">
+<a class="lc-art" href="jobapplication/" tabindex="-1" aria-hidden="true"><picture><source srcset="shop/placement.webp" type="image/webp"/><img alt="" decoding="async" loading="lazy" src="shop/placement.jpg" width="900" height="900"/></picture></a>
+<div class="lc-top"><span class="lc-part">Fixes: Supply · Representation · Aim</span><h3 class="lc-name">Done-For-You Placement Engine</h3><span class="lc-price">₦300,000</span><span class="lc-what">Assets ready, then 30+ roles sourced and applied weekly for a month</span></div>
+<div class="lc-fit"><p class="lc-for"><i aria-hidden="true">✓</i><span><em>Who it is for</em>Skilled, represented and time-poor — you want the search executed, not taught.</span></p><p class="lc-not"><i aria-hidden="true">✕</i><span><em>Who it is not for</em><b>Anyone whose assets are not finished yet.</b> The engine needs something worth sending.</span></p></div>
+<a class="lc-go" href="jobapplication/">See the Placement Engine <span aria-hidden="true">→</span></a>
+</article>
+<article class="lc">
+<a class="lc-art" href="jobapplication/" tabindex="-1" aria-hidden="true"><picture><source srcset="shop/dreamjob.webp" type="image/webp"/><img alt="" decoding="async" loading="lazy" src="shop/dreamjob.jpg" width="900" height="900"/></picture></a>
+<div class="lc-top"><span class="lc-part">The full route</span><h3 class="lc-name">Get Your Dream Job Offer</h3><span class="lc-price">₦500,000</span><span class="lc-what">Stages 1–5 complete · build + application engine · lifetime access</span></div>
+<div class="lc-fit"><p class="lc-for"><i aria-hidden="true">✓</i><span><em>Who it is for</em><b>Someone who would rather make one decision than two</b>, and wants the build and the search under one roof.</span></p><p class="lc-not"><i aria-hidden="true">✕</i><span><em>Who it is not for</em><b>Anyone shopping on price alone.</b> The cheapest wrong option is the expensive one.</span></p></div>
+<a class="lc-go" href="jobapplication/">See the full path <span aria-hidden="true">→</span></a>
+</article>
+<article class="lc is-aside">
+<a class="lc-art" href="innercircle/" tabindex="-1" aria-hidden="true"><picture><source srcset="shop/inner.webp" type="image/webp"/><img alt="" decoding="async" loading="lazy" src="shop/inner.jpg" width="900" height="900"/></picture></a>
+<div class="lc-top"><span class="lc-part">Fixes: Conversion</span><h3 class="lc-name">The Inner Circle</h3><span class="lc-price">₦250,000 a year</span><span class="lc-what">Twelve months one to one · co-applying, interview dry-runs, offer review · Foundation alumni only</span></div>
+<div class="lc-fit"><p class="lc-for"><i aria-hidden="true">✓</i><span><em>Who it is for</em>Foundation Training graduates who want a person working their search with them for a year.</span></p><p class="lc-not"><i aria-hidden="true">✕</i><span><em>Who it is not for</em><b>Anyone who has not done Foundation Training yet.</b> Start there; the Circle opens the day you finish.</span></p></div>
+<a class="lc-go" href="innercircle/">Request admission <span aria-hidden="true">→</span></a>
+</article>
 </div>
 <p class="ld-note"><b>Prices are self-funded, in naira, and one payment</b> — except The CV Engine, which is ₦5,000 a month and can be cancelled any time. Nothing else renews. Cohort 13 enrolment is open now and closes <b>Sunday 29 November, 8:00 PM WAT</b>; the cohort begins <b>Monday 30 November, 8:00 PM WAT</b>. Visa sponsorship and relocation are not the proposition — every route here is global remote work performed from where you already live.</p>
 </section>
@@ -919,15 +1004,18 @@ a.promo-tick{text-decoration:none;display:block;}
 <p class="section-label"><span class="mark"></span> Who We Turn Away</p>
 <h2 class="cost-h" style="margin-bottom:.9rem;">Six people <em>we tell not to buy.</em></h2>
 <p class="rt-lead">This list costs us money every month. It stays because it is the only thing that makes the rest of what we say believable.</p>
-<div class="ta-grid">
-<div class="ta-item"><b>Anyone for whom this money competes with rent or school fees</b><p>Do not borrow for this. Use the free layer, or wait until it is money you can lose. That instruction has cost us revenue and it stays.</p></div>
-<div class="ta-item"><b>Anyone expecting a guaranteed job handed over</b><p>Foundation Training does not apply on your behalf. Done-For-You does run applications — but only after hireability and target fit are confirmed.</p></div>
-<div class="ta-item"><b>Anyone who will not do unwatched work</b><p>The self-paced pack is the cheapest rung and the easiest to waste. It is only cheap if you finish it.</p></div>
-<div class="ta-item"><b>Anyone already employable and well represented</b><p>If your CV and portfolio are working and interviews are arriving, do not let us sell you Stages 1–4. Your weak point is later.</p></div>
-<div class="ta-item"><b>Anyone who cannot give the live programme its time</b><p>Twenty training days, missed in most part, produces a fraction of the value and a bad opinion of us. Both are avoidable.</p></div>
-<div class="ta-item"><b>Anyone shopping on price alone</b><p>The cheapest wrong option is expensive. If you are choosing by the number, run the diagnostic instead and choose by the weak point.</p></div>
+<div class="tw">
+<figure class="tw-face"><img alt="Oluwaseyi Ashiru, Lead Facilitator, giving a thumbs up" decoding="async" loading="lazy" src="photo-seyi-thumbsup.webp" width="880" height="1100"/>
+<figcaption>We do not sell to people who cannot do the work. We sell to people who <b>can</b> do the work and cannot prove it across a border. That is a much smaller market than &ldquo;job seekers&rdquo; — and a much better one, because the raw material is already there.</figcaption></figure>
+<div class="tw-list">
+<div class="tw-item"><span class="tw-n" aria-hidden="true">01</span><div><b>Anyone for whom this money competes with rent or school fees</b><p><b>Do not borrow for this.</b> Use the free layer, or wait until it is money you can lose. That instruction has cost us revenue and it stays.</p></div></div>
+<div class="tw-item"><span class="tw-n" aria-hidden="true">02</span><div><b>Anyone expecting a guaranteed job handed over</b><p><b>Foundation Training does not apply on your behalf.</b> Done-For-You does run applications — but only after hireability and target fit are confirmed.</p></div></div>
+<div class="tw-item"><span class="tw-n" aria-hidden="true">03</span><div><b>Anyone who will not do unwatched work</b><p><b>The self-paced pack is the cheapest rung and the easiest to waste.</b> It is only cheap if you finish it.</p></div></div>
+<div class="tw-item"><span class="tw-n" aria-hidden="true">04</span><div><b>Anyone already employable and well represented</b><p><b>If your CV and portfolio are working and interviews are arriving, do not let us sell you Stages 1–4.</b> Your weak point is later.</p></div></div>
+<div class="tw-item"><span class="tw-n" aria-hidden="true">05</span><div><b>Anyone who cannot give the live programme its time</b><p><b>Twenty training days, missed in most part, produces a fraction of the value and a bad opinion of us.</b> Both are avoidable.</p></div></div>
+<div class="tw-item"><span class="tw-n" aria-hidden="true">06</span><div><b>Anyone shopping on price alone</b><p><b>The cheapest wrong option is expensive.</b> If you are choosing by the number, run the diagnostic instead and choose by the weak point.</p></div></div>
 </div>
-<p class="ta-close">We do not sell to people who cannot do the work. We sell to people who <b>can</b> do the work and cannot prove it across a border. That is a much smaller market than &ldquo;job seekers&rdquo; — and a much better one, because the raw material is already there.</p>
+</div>
 </section>
 
 <section class="wrap section-line" id="close">
@@ -947,7 +1035,7 @@ a.promo-tick{text-decoration:none;display:block;}
 </footer>
 <script defer="" src="erj-theme.js?v=20260911a"></script>
 <script defer="" src="erj-product.js?v=20260924c"></script>
-<script defer="" src="erj-nav.js?v=20261112f"></script>
+<script defer="" src="erj-nav.js?v=20261113a"></script>
 <script defer="" src="erj-config.js?v=20261112c"></script>
 <script defer="" src="erj-capture.js?v=20260911a"></script>
 <script defer="" src="erj-schema.js?v=20261111a"></script>

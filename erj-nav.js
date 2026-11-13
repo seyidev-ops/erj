@@ -34,7 +34,6 @@
                 { label: 'Proof It Works', href: 'index.html#tobi' },
                 { label: 'The Five Parts', href: 'index.html#pledge' },
                 { label: 'Live Remote Jobs', href: 'index.html#jobs-live' },
-                { label: 'Before You Decide', href: 'index.html#faq' },
                 { label: 'Join Cohort 13', href: 'index.html#enrol' }
             ]
         },
