@@ -1690,7 +1690,7 @@ def card(j, cfg):
 # <!--JOBTEASE:START ctx=...--> and <!--JOBTEASE:END-->. It leads with fields
 # (not individual jobs) and with readiness: seeing roles is supply, being hired
 # for them is capacity. Rewritten on every board run so the counts stay live.
-TEASE_PAGES = ["index.html", "testimonials.html", "register.html"]
+TEASE_PAGES = ["index.html", "testimonials.html", "register.html", "masterclass/index.html"]
 TEASE_COPY = {
     "home": ("{n} remote roles open to Nigeria, live right now.", "Are you ready for them?",
              "Every role is checked twice a day and taken down when it closes. Start with your field.",
@@ -1735,6 +1735,12 @@ html[data-theme="day"] .jt{--jt-o:#E8470F;--jt-line:rgba(20,17,14,.12);--jt-card
 
 
 def teaser_html(live, ctx, base):
+    if ctx == "launch":
+        # the Launchpad page's "no role yet?" card: one live line
+        n = len(live)
+        return (f'<!--JOBTEASE:START ctx=launch-->\n'
+                f'<p class="lp-live"><i aria-hidden="true"></i><span><b>{n}</b> remote role{"s" if n != 1 else ""} open to people in Nigeria '
+                f'{"are" if n != 1 else "is"} live on the job board right now.</span></p>\n<!--JOBTEASE:END-->')
     if ctx == "globe":
         # the home page's world section: one live line; the section carries its own buttons
         n = len(live)

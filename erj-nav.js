@@ -55,7 +55,7 @@
                 { label: 'CV Engine', href: 'cvbuilder.html', keys: ['cvpass'] },
                 { label: 'Self-Learn Pack', href: 'selflearn/', keys: ['selflearn'] },
                 { heading: 'Done with you', sub: 'We do it together' },
-                { label: 'Free Live Clinic', href: 'masterclass/', keys: ['masterclass'], free: true },
+                { label: 'Saturday Launchpad', href: 'masterclass/', keys: ['masterclass'], free: true },
                 { label: 'Foundation Training', href: 'foundationtraining/', keys: ['mastery'] },
                 { label: 'Interview Sprint', href: 'interviewsprint/', keys: ['sprint'] },
                 { label: 'Inner Circle', href: 'innercircle/', keys: ['inner'] },
