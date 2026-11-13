@@ -183,7 +183,7 @@ The site is a static HTML/CSS/JavaScript website hosted on **GitHub Pages** with
 - `/gift/` — Enrol someone else: a sponsor pays Foundation Training for another person; stage updates to the sponsor only with the participant's permission
 - `/jobhunter/` — The Job Hunter: roles scored against the CV and applications prepared, checked by a person; the buyer submits. Paid by transfer, confirmed on WhatsApp (no Paystack link yet)
 - `/innercircle/` — the Inner Circle: twelve months one to one, open only to Foundation Training graduates (and Dream Job Offer buyers, which includes Foundation)
-- `/masterclass/` — Remote Job Application Clinic registration
+- `/masterclass/` — The Remote Job Launchpad: the free weekly Saturday walkthrough (4:00 PM WAT) and its Zoom registration; the countdown rolls to the next Saturday by itself
 - `/self-learn-vs-foundation-training.html` — the honest seller-written comparison
 - `/earlybird.html` — the Foundation Training instalment route
 - `/blog.html` — Remote Career Blog
@@ -256,7 +256,7 @@ To publish posts, upload the new `blog/<slug>/` folders and the updated `blog.ht
 
 The blog archive follows the **Africa/Lagos (WAT)** daily publication schedule. The archive exposes posts according to their scheduled date rather than displaying every pre-generated article file at once.
 
-Each article carries one conversion job — diagnosis, CV scan, Clinic registration, AUDIT, a named product or the correct post-diagnosis route — rather than sending every reader to the same place.
+Each article carries one conversion job — diagnosis, CV scan, Launchpad registration, AUDIT, a named product or the correct post-diagnosis route — rather than sending every reader to the same place.
 
 Future-dated posts ship unpublished and are released on their date, either automatically or from the blog admin surface.
 

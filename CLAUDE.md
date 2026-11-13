@@ -216,8 +216,13 @@ precached; keep it free of shared scripts so it renders with no network.
   `<!--JOBS:START-->` and `<!--JOBS:END-->` is rewritten by `jobboard.py`
   from `jobs/data/listings.json`. Edit the page chrome freely; edit listings
   through the data, the inbox or `jobboard.py remove`, never by hand.
+- The Launchpad (`masterclass/index.html`, the URL is kept) runs every Saturday
+  at 4:00 PM WAT. Its countdown computes the next Saturday in the browser, so
+  no date is edited by hand; the Zoom registration link must be for a
+  recurring meeting. Older blog posts still say "Clinic" and are left as the
+  archive they are.
 - Blog posts are scheduled by date (Africa/Lagos, WAT). Each post has one
-  conversion job (diagnose, CV scan, Clinic, AUDIT, a named product).
+  conversion job (diagnose, CV scan, Launchpad, AUDIT, a named product).
 
 ## Security reality
 

@@ -8,10 +8,10 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <link href="../manifest.json" rel="manifest"/>
 <meta content="#000000" id="metaThemeColor" name="theme-color"/>
-<title>Free Live CV and Job Search Clinic | ERJ</title>
-<meta content="Bring your CV and one job advert. Saturday 14 November 2026, 4:00 PM WAT. Free." name="description"/>
-<meta content="Free Live CV and Job Search Clinic" property="og:title"/>
-<meta content="Bring your CV and one job advert. Saturday 14 November 2026, 4:00 PM WAT. Free." property="og:description"/>
+<title>The Remote Job Launchpad: a free weekly walkthrough of your CV | ERJ</title>
+<meta content="Every Saturday, 4:00 PM WAT, live on Zoom. Bring your CV (and a job advert if you have one) and see where you stand for a remote job. Free." name="description"/>
+<meta content="The Remote Job Launchpad: a free weekly walkthrough of your CV" property="og:title"/>
+<meta content="Every Saturday, 4:00 PM WAT, live on Zoom. Bring your CV and see where you stand for a remote job. Free." property="og:description"/>
 <meta content="https://everythingremotejob.com/preview-masterclass.jpg" property="og:image"/>
 <meta content="1200" property="og:image:width"/>
 <meta content="630" property="og:image:height"/>
@@ -117,11 +117,93 @@
   .cta-p{font-size:0.98rem;color:var(--ink-soft);font-weight:300;line-height:1.7;max-width:56ch;margin:0 auto 1.6rem;}
   .cta-how{font-size:0.82rem;color:var(--ink-faint);font-weight:300;margin-top:1rem;line-height:1.7;}
   .cta-how strong{color:var(--ink);font-weight:500;}
+
+  /* ── The Launchpad (v2): airy cards, a face on the page, bold leads ── */
+  .lp-hero{padding-top:clamp(1.4rem,4vw,2.6rem);}
+  .lp-hero-in{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:clamp(1.6rem,5vw,4rem);align-items:center;}
+  .lp-hero h1{font-size:clamp(2.3rem,5.6vw,4.2rem);line-height:1.04;letter-spacing:-.04em;margin:.2rem 0 1.1rem;}
+  .lp-hero .lede b{color:var(--ink);font-weight:700;}
+  .lp-hero .lede{margin-bottom:0;}
+  .lp-hero .hero-cta{margin-top:clamp(1.8rem,4vw,2.4rem);}
+  .lp-face{margin:0;justify-self:end;width:100%;max-width:360px;}
+  .lp-face-in{position:relative;border-radius:30px;overflow:hidden;border:1px solid rgba(255,87,34,.4);background:var(--card);
+    box-shadow:0 0 0 8px rgba(255,87,34,.06),0 40px 90px -40px rgba(255,87,34,.6);}
+  .lp-face img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;object-position:50% 12%;}
+  .lp-face figcaption{position:absolute;left:.8rem;right:.8rem;bottom:.8rem;padding:.65rem .85rem;border-radius:14px;background:rgba(0,0,0,.62);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);color:#fff;font-size:.78rem;line-height:1.35;}
+  .lp-face figcaption b{display:block;font:700 .92rem/1.2 var(--font-display);}
+  @media(prefers-reduced-motion:no-preference){.lp-face-in{animation:lpFloat 6s ease-in-out infinite alternate;}}
+  @keyframes lpFloat{from{transform:translateY(6px)}to{transform:translateY(-8px)}}
+  @media(max-width:820px){.lp-hero-in{grid-template-columns:1fr;}.lp-face{justify-self:start;max-width:260px;}}
+  .mc-count{border-radius:22px;margin-top:2.2rem;}
+  .facts{border-radius:20px;}
+  .lp-sub{max-width:60ch;margin-top:.4rem;}
+  .section-line{padding-top:clamp(3.4rem,8vw,5.5rem);}
+  /* what to bring */
+  .lp-bring{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.25rem;margin-top:2rem;}
+  .lp-bc{position:relative;display:flex;flex-direction:column;gap:.55rem;padding:1.5rem 1.35rem 1.4rem;border-radius:24px;border:1px solid var(--card-line);background:var(--card);transition:transform .3s cubic-bezier(.2,.8,.2,1),border-color .3s,box-shadow .3s;}
+  .lp-bc:hover{transform:translateY(-4px);border-color:rgba(255,87,34,.5);box-shadow:0 30px 60px -36px rgba(255,87,34,.6);}
+  .lp-bc.is-main{border-color:rgba(255,87,34,.6);box-shadow:0 30px 70px -44px rgba(255,87,34,.7);}
+  .lp-bc-tag{align-self:flex-start;font:700 .6rem/1 var(--font-display);letter-spacing:.14em;text-transform:uppercase;color:#fff;background:var(--accent);padding:.38rem .7rem;border-radius:999px;}
+  .lp-bc-tag.is-soft{background:rgba(127,127,127,.16);color:var(--ink-soft);}
+  .lp-bc-ic{font-style:normal;font-size:2rem;line-height:1;margin-top:.3rem;}
+  .lp-bc h3{font:700 1.2rem/1.25 var(--font-display);letter-spacing:-.01em;margin:0;color:var(--ink);}
+  .lp-bc p{margin:0;font-size:.92rem;line-height:1.65;color:var(--ink-soft);}
+  .lp-bc p b{color:var(--ink);font-weight:700;}
+  .lp-live{display:flex;gap:.6rem;align-items:flex-start;margin:.3rem 0 0!important;padding:.7rem .85rem;border-radius:14px;background:rgba(25,194,122,.08);border:1px solid rgba(25,194,122,.3);font-size:.86rem!important;line-height:1.5!important;}
+  .lp-live i{flex:none;width:9px;height:9px;margin-top:.4rem;border-radius:50%;background:#25D366;}
+  @media(prefers-reduced-motion:no-preference){.lp-live i{animation:lvPulse 1.8s ease-in-out infinite;}}
+  .lp-live b{color:var(--accent);font-family:var(--font-display);}
+  .lp-bc-link{margin-top:auto;padding-top:.5rem;font:700 .9rem/1 var(--font-display);color:var(--accent);text-decoration:none;}
+  .lp-bc-link:hover{text-decoration:underline;}
+  @media(max-width:980px){.lp-bring{grid-template-columns:1fr;}}
+  /* how it works */
+  .lp-how{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,.6fr);gap:clamp(1.4rem,4vw,3rem);align-items:start;margin-top:2rem;}
+  .lp-steps{list-style:none;margin:0;padding:0;display:grid;gap:1rem;}
+  .lp-step{display:flex;gap:1.1rem;align-items:flex-start;padding:1.25rem 1.35rem;border-radius:22px;border:1px solid var(--card-line);background:var(--card);transition:transform .25s,border-color .25s;}
+  .lp-step:hover{transform:translateX(4px);border-color:rgba(255,87,34,.5);}
+  .lp-sn{flex:none;display:grid;place-items:center;width:46px;height:46px;border-radius:14px;background:rgba(255,87,34,.12);color:var(--accent);font:800 .95rem/1 var(--font-display);}
+  .lp-step h3{font:700 1.12rem/1.3 var(--font-display);margin:0 0 .3rem;color:var(--ink);}
+  .lp-step p{margin:0;font-size:.93rem;line-height:1.7;color:var(--ink-soft);}
+  .lp-step p b{color:var(--ink);font-weight:700;}
+  .lp-pic{margin:0;position:sticky;top:104px;border-radius:26px;overflow:hidden;border:1px solid var(--card-line);}
+  .lp-pic img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;object-position:50% 12%;}
+  .lp-note{margin-top:1.4rem;padding:1.1rem 1.3rem;border-radius:18px;border:1px dashed var(--line);background:rgba(255,87,34,.05);font-size:.95rem;line-height:1.65;color:var(--ink-soft);}
+  .lp-note b{color:var(--ink);}
+  @media(max-width:860px){.lp-how{grid-template-columns:1fr;}.lp-pic{position:static;max-width:300px;order:-1;}.lp-pic img{aspect-ratio:16/11;}}
+  /* who */
+  .lp-who{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.25rem;margin-top:2rem;}
+  .lp-wc{padding:1.45rem 1.4rem;border-radius:24px;border:1px solid var(--card-line);background:var(--card);transition:transform .3s,border-color .3s;}
+  .lp-wc:hover{transform:translateY(-4px);border-color:rgba(255,87,34,.5);}
+  .lp-wc i{display:grid;place-items:center;width:48px;height:48px;border-radius:14px;background:rgba(255,87,34,.12);font-style:normal;font-size:1.5rem;margin-bottom:.8rem;}
+  .lp-wc h3{font:700 1.15rem/1.3 var(--font-display);margin:0 0 .45rem;color:var(--ink);}
+  .lp-wc p{margin:0;font-size:.93rem;line-height:1.7;color:var(--ink-soft);}
+  .lp-wc p b{color:var(--ink);font-weight:700;}
+  @media(max-width:700px){.lp-who{grid-template-columns:1fr;}}
+  .host-photo{border-radius:26px;}
+  .host-bio strong{font-weight:700;}
+  /* register */
+  .cta-panel{border-radius:30px;box-shadow:0 40px 100px -60px rgba(255,87,34,.7);}
+  .zoom-step{border-radius:20px;}
+  /* questions: calm and neutral */
+  .lp-faq{display:grid;gap:.75rem;margin-top:1.6rem;max-width:820px;}
+  .lp-faq details{border:1px solid var(--card-line);border-radius:18px;background:var(--card);transition:border-color .25s,box-shadow .25s;}
+  .lp-faq details:hover{border-color:rgba(127,127,127,.5);}
+  .lp-faq details[open]{border-color:rgba(127,127,127,.6);box-shadow:0 18px 44px -30px rgba(0,0,0,.45);}
+  .lp-faq summary{cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.1rem 1.25rem;font:700 1.02rem/1.4 var(--font-display);color:var(--ink);}
+  .lp-faq summary::-webkit-details-marker{display:none;}
+  .lp-faq summary i{flex:none;position:relative;width:30px;height:30px;border-radius:50%;border:1px solid var(--line);}
+  .lp-faq summary i::before,.lp-faq summary i::after{content:"";position:absolute;left:50%;top:50%;width:11px;height:1.6px;border-radius:2px;background:var(--ink);transform:translate(-50%,-50%);}
+  .lp-faq summary i::after{transform:translate(-50%,-50%) rotate(90deg);transition:transform .3s cubic-bezier(.2,.8,.2,1);}
+  .lp-faq details[open] summary i::after{transform:translate(-50%,-50%) rotate(0);}
+  .lp-faq details p{margin:0;padding:0 1.25rem 1.25rem;max-width:64ch;font-size:.96rem;line-height:1.75;color:var(--ink-soft);}
+  .lp-ask{margin-top:1.4rem;color:var(--ink-soft);}
+  .lp-ask a{color:var(--accent);font-weight:700;text-decoration:none;}
+  @media(prefers-reduced-motion:reduce){.lp-bc,.lp-wc,.lp-step{transition:none;transform:none!important;}.lp-face-in{animation:none;}}
 </style>
 <meta content="en_NG" property="og:locale"/>
 <meta content="index,follow,max-image-preview:large,max-snippet:-1" name="robots"/>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"EducationEvent","name":"Remote Job Application Clinic — free live masterclass","description":"A free live application clinic where participants bring a CV and one remote job advert, diagnose the failing part in the ERJ Five-Finger Model, review ATS and role fit, and leave with the first correction to make. Daily Audit Rounds continue afterwards in the Clinic WhatsApp group.","url":"https://everythingremotejob.com/masterclass/","eventAttendanceMode":"https://schema.org/OnlineEventAttendanceMode","eventStatus":"https://schema.org/EventScheduled","startDate":"2026-11-14T16:00:00+01:00","endDate":"2026-11-14T17:15:00+01:00","location":{"@type":"VirtualLocation","url":"https://everythingremotejob.com/masterclass/"},"organizer":{"@type":"Organization","name":"Everything Remote Job","url":"https://everythingremotejob.com/","@id":"https://everythingremotejob.com/#organization"},"inLanguage":"en","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"NGN","availability":"https://schema.org/InStock","url":"https://us06web.zoom.us/meeting/register/eCugOLfhQeKl-z13Csi-eA"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://everythingremotejob.com/"},{"@type":"ListItem","position":2,"name":"Free Masterclass","item":"https://everythingremotejob.com/masterclass/"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "EducationEvent", "name": "The Remote Job Launchpad: a free weekly walkthrough of your CV", "description": "A free weekly live walkthrough on Zoom. Participants bring their CV, and a remote job advert if they have one, and see where they stand for a remote job under the ERJ Five-Finger Model, with the first thing to fix.", "url": "https://everythingremotejob.com/masterclass/", "eventAttendanceMode": "https://schema.org/OnlineEventAttendanceMode", "eventStatus": "https://schema.org/EventScheduled", "startDate": "2026-11-14T16:00:00+01:00", "eventSchedule": {"@type": "Schedule", "repeatFrequency": "P1W", "byDay": "https://schema.org/Saturday", "startTime": "16:00:00", "scheduleTimezone": "Africa/Lagos", "startDate": "2026-11-14"}, "location": {"@type": "VirtualLocation", "url": "https://everythingremotejob.com/masterclass/"}, "organizer": {"@type": "Organization", "name": "Everything Remote Job", "url": "https://everythingremotejob.com/", "@id": "https://everythingremotejob.com/#organization"}, "inLanguage": "en", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "NGN", "availability": "https://schema.org/InStock", "url": "https://us06web.zoom.us/meeting/register/eCugOLfhQeKl-z13Csi-eA"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://everythingremotejob.com/"}, {"@type": "ListItem", "position": 2, "name": "The Remote Job Launchpad", "item": "https://everythingremotejob.com/masterclass/"}]}</script>
 <style id="erjNavReserve">body{padding-top:63px}@media(min-width:980px){body{padding-top:65px}}
 /* Button labels stay on one line. The type size is NOT reduced to make them
    fit — white on #FF5722 is 3.16:1, which passes WCAG only as LARGE text
@@ -143,23 +225,35 @@
 <!-- End Google Tag Manager (noscript) -->
 <div id="erjNavMount"></div>
 <script>window.ERJ_NAV={active:'masterclass',base:'../',onPage:[
-  {label:'What you will get',href:'#agenda'},
+  {label:'What to bring',href:'#bring'},
+  {label:'How it works',href:'#how'},
   {label:'Who it is for',href:'#who'},
   {label:'Your host',href:'#host'},
-  {label:'Register for the clinic',href:'#reserve'},
-  {label:'Daily Audit Rounds',href:'#audit-rounds'}
+  {label:'Register',href:'#reserve'},
+  {label:'Questions',href:'#questions'}
 ]};</script>
 <main>
-<a class="promo-tick" href="#reserve" aria-label="We will not let you go until you're hired."><div class="promo-track">We will not let you go <em>until you're hired.</em></div></a>
 <!-- HERO -->
-<section class="hero wrap reveal">
-<span class="live-badge"><span class="live-dot"></span> Free Live Application Clinic</span>
-<h1>Bring your CV + one remote job advert. <em>We’ll show you where the search is breaking down.</em></h1>
-<p class="lede">The practical edition of the ERJ free masterclass. We use the Five-Finger Model (Capacity, Supply, Representation, Aim and Conversion) to diagnose real job searches live, check CV and ATS fit, and show you what to fix first. After Zoom, the work continues in daily Audit Rounds in the Clinic WhatsApp group.</p>
+<section class="wrap lp-hero reveal">
+<div class="lp-hero-in">
+<div class="lp-hero-copy">
+<span class="live-badge"><span class="live-dot"></span> Free · Every Saturday · 4:00 PM WAT</span>
+<h1>Bring your CV. <em>Leave knowing where you stand.</em></h1>
+<p class="lede">Every Saturday, live on Zoom, <b>we go through it with you, line by line,</b> and show you where you stand for a remote job, and the one thing to fix first. No job advert needed.</p>
+<div class="hero-cta">
+<a class="btn-primary-ui btn-yes" href="#reserve"><span>Save my place</span><span class="arrow-wrap"><span class="arrow">→</span></span></a>
+<a class="btn-more btn-secondary-ui" href="#how"><span>How it works</span><span class="arrow-wrap"><span class="arrow is-down">↓</span></span></a>
+</div>
+</div>
+<figure class="lp-face"><div class="lp-face-in">
+<img alt="Oluwaseyi Ashiru on a headset, ready to walk through your CV" decoding="async" fetchpriority="high" height="1100" src="../photo-seyi-headset.webp" width="880"/>
+<figcaption><b>Oluwaseyi Ashiru</b><span>your host, live every Saturday</span></figcaption>
+</div></figure>
+</div>
 <div class="mc-count" id="mcCount">
 <div>
-<div class="mc-lbl" id="mcLbl">Clinic starts in</div>
-<div class="mc-when" id="mcWhen">Loading session…</div>
+<div class="mc-lbl" id="mcLbl">Next Saturday starts in</div>
+<div class="mc-when" id="mcWhen">Loading…</div>
 </div>
 <div class="mc-blocks">
 <div class="mc-b"><div class="mc-n" id="mcD">–</div><div class="mc-l">Days</div></div>
@@ -168,123 +262,131 @@
 <div class="mc-b"><div class="mc-n" id="mcS">–</div><div class="mc-l">Sec</div></div>
 </div>
 </div>
-<div class="hero-cta" style="margin-top:1.8rem;">
-<a class="btn-primary-ui btn-yes" href="#reserve"><span>Register for the Free Clinic</span><span class="arrow-wrap"><span class="arrow">→</span></span></a>
-<a class="btn-more btn-secondary-ui" href="#agenda"><span>See What We’ll Diagnose</span><span class="arrow-wrap"><span class="arrow is-down">↓</span></span></a>
-</div>
 <div class="facts">
-<div class="fact"><div class="fact-k">Date</div><div class="fact-v"><em>Sat 14 November 2026</em></div></div>
+<div class="fact"><div class="fact-k">When</div><div class="fact-v"><em>Every Saturday</em></div></div>
 <div class="fact"><div class="fact-k">Time</div><div class="fact-v">4:00 PM <em>WAT</em></div></div>
 <div class="fact"><div class="fact-k">Where</div><div class="fact-v">Live on <em>Zoom</em></div></div>
-<div class="fact"><div class="fact-k">Price</div><div class="fact-v"><em>Free</em> · registration required</div></div>
+<div class="fact"><div class="fact-k">Price</div><div class="fact-v"><em>Free</em> · register once</div></div>
 </div>
 </section>
-<!-- AGENDA -->
-<section class="section-line wrap" id="agenda">
-<p class="section-label"><span class="mark"></span> What happens in the clinic</p>
-<h2>Bring a real search. <span>Leave knowing what to fix first.</span></h2>
-<ul class="agenda">
-<li class="reveal"><div class="ag-n">01</div><div><div class="ag-t">Find what is holding you back, using the Five-Finger Model</div><div class="ag-d">We separate Capacity, Supply, Representation, Aim and Conversion so you stop trying to repair everything at once. The earliest failing point becomes the first correction.</div></div></li>
-<li class="reveal"><div class="ag-n">02</div><div><div class="ag-t">Live CV + ATS teardown</div><div class="ag-d">We review selected participant CVs against the ERJ ten-point rubric and show what software and a hiring manager can — and cannot — read quickly.</div></div></li>
-<li class="reveal"><div class="ag-n">03</div><div><div class="ag-t">Job-advert fit check</div><div class="ag-d">Bring one role you genuinely want. We check whether the company can hire across borders, whether the role fits your evidence and what the advert is actually asking you to prove.</div></div></li>
-<li class="reveal"><div class="ag-n">04</div><div><div class="ag-t">Position the application before you send it</div><div class="ag-d">We show how to reflect the role title, evidence, keywords and proof without turning your CV into keyword stuffing or sending forty hopeful applications.</div></div></li>
-<li class="reveal"><div class="ag-n">05</div><div><div class="ag-t">Your next honest door</div><div class="ag-d">You may need a free fix, the CV Engine, Self-Learn, Foundation Training, DFY or no paid ERJ service at all. The diagnosis decides — not the price list.</div></div></li>
-<li class="reveal"><div class="ag-n">06</div><div><div class="ag-t">Continue in the daily Audit Rounds</div><div class="ag-d">The Clinic does not end when Zoom closes. Inside the Clinic WhatsApp group, daily Audit Rounds let members bring one real application at a time, show the evidence, identify the earliest weak point and act on the first fix before the next live Clinic.</div></div></li>
-</ul>
-<div class="clinic-note">
-<p><strong>Registration is for commitment and reminders, not a fake seat counter.</strong> Register directly on Zoom to receive your personal join link by email. Then message <strong>CLINIC</strong> on WhatsApp for the preparation checklist, Clinic WhatsApp group entry and reminders. The same group hosts the daily Audit Rounds after the live session.</p>
+
+<!-- WHAT TO BRING -->
+<section class="section-line wrap" id="bring">
+<p class="section-label"><span class="mark"></span> What to bring</p>
+<h2>Your CV is the ticket. <span>A job advert is a bonus.</span></h2>
+<p class="section-sub lp-sub">You do not need to know how to find a remote job, or have one in mind. Come with the CV you are using now and we start from there.</p>
+<div class="lp-bring">
+<article class="lp-bc is-main reveal">
+<span class="lp-bc-tag">Bring this</span>
+<i class="lp-bc-ic" aria-hidden="true">📄</i>
+<h3>Your CV, as it is</h3>
+<p><b>The one you are sending out now.</b> Do not tidy it first. A PDF or Word file you can open on the device you join from is all it takes.</p>
+</article>
+<article class="lp-bc reveal">
+<span class="lp-bc-tag is-soft">If you have one</span>
+<i class="lp-bc-ic" aria-hidden="true">🎯</i>
+<h3>A job advert</h3>
+<p><b>One remote role you would really apply for.</b> Bring its link and we check whether the company can hire you, and whether your CV proves what it is asking for.</p>
+</article>
+<article class="lp-bc reveal">
+<span class="lp-bc-tag is-soft">If you do not</span>
+<i class="lp-bc-ic" aria-hidden="true">🔎</i>
+<h3>No role yet? Good.</h3>
+<p><b>When you register, we show you where the roles are:</b> the live job board, open to people in Nigeria. Pick one before Saturday, or come without.</p>
+<!--JOBTEASE:START ctx=launch-->
+<p class="lp-live"><i aria-hidden="true"></i><span><b>332</b> remote roles open to people in Nigeria are live on the job board right now.</span></p>
+<!--JOBTEASE:END-->
+<a class="lp-bc-link" href="../jobs/">Open the job board →</a>
+</article>
 </div>
 </section>
+
+<!-- HOW IT WORKS -->
+<section class="section-line wrap" id="how">
+<p class="section-label"><span class="mark"></span> How it works</p>
+<h2>One walkthrough. <span>Everyone gets a turn.</span></h2>
+<div class="lp-how">
+<ol class="lp-steps">
+<li class="lp-step reveal"><span class="lp-sn">01</span><div><h3>The map, in a few minutes</h3><p><b>The five parts of a remote job search:</b> Capacity, Supply, Representation, Aim and Conversion. So you know what we are looking for when we open your CV.</p></div></li>
+<li class="lp-step reveal"><span class="lp-sn">02</span><div><h3>Your turn, one person at a time</h3><p><b>We go through your CV together, live.</b> What the software and a hiring manager can read in seconds, and what they cannot. Turns are short, so we get through everyone, and you learn from the CVs ahead of yours.</p></div></li>
+<li class="lp-step reveal"><span class="lp-sn">03</span><div><h3>Where you stand, said plainly</h3><p><b>Which of the five parts is weakest for you right now,</b> and the one thing to fix first. Not ten things. One.</p></div></li>
+<li class="lp-step reveal"><span class="lp-sn">04</span><div><h3>Your next step</h3><p><b>Usually a free fix you can finish this week.</b> If one paid ERJ door is truly the right one, we name it and its limit. The walkthrough decides, not the price list.</p></div></li>
+</ol>
+<figure class="lp-pic reveal"><img alt="Oluwaseyi Ashiru at his desk, going through a CV" decoding="async" loading="lazy" src="../photo-seyi-desk.webp" width="880" height="1100"/></figure>
+</div>
+<div class="lp-note"><b>It is weekly, and that is all it is.</b> No group to join, no course to buy to take part. Come back next Saturday with the fix done and show us.</div>
+</section>
+
 <!-- WHO IT'S FOR -->
 <section class="section-line wrap" id="who">
 <p class="section-label"><span class="mark"></span> Who this is for</p>
-<h2>If any of these is you, <span>this hour was built for you.</span></h2>
-<div class="cards" style="margin-top:1.6rem;">
-<div class="card reveal">
-<div class="card-k">01</div>
-<h3>You've applied and heard nothing</h3>
-<p>Dozens — maybe hundreds — of applications into silence, and you've started to wonder whether the problem is you. It isn't. You'll see exactly where the applications were dying.</p>
-</div>
-<div class="card reveal">
-<div class="card-k">02</div>
-<h3>You're earning in Naira and watching it shrink</h3>
-<p>You're good at what you do; the currency is the problem, not the competence. This is the route to a payroll that doesn't melt every quarter.</p>
-</div>
-<div class="card reveal">
-<div class="card-k">03</div>
-<h3>You don't want to japa</h3>
-<p>You want the global salary without leaving your family, your city or your country. That's precisely what remote work makes possible — and precisely what this session maps.</p>
-</div>
-<div class="card reveal">
-<div class="card-k">04</div>
-<h3>You have no connections abroad</h3>
-<p>No uncle in Canada, no friend who "referred" you. Good — the system taught here is built for people starting with no network at all.</p>
-</div>
+<h2>If any of these is you, <span>this Saturday was built for you.</span></h2>
+<div class="lp-who">
+<article class="lp-wc reveal"><i aria-hidden="true">📭</i><h3>You have applied and heard nothing</h3><p><b>Dozens, maybe hundreds of applications into silence,</b> and you have started to wonder whether it is you. You will see where the applications were dying.</p></article>
+<article class="lp-wc reveal"><i aria-hidden="true">📉</i><h3>You earn in naira and watch it shrink</h3><p><b>You are good at what you do; the currency is the problem.</b> This is where you find out how your experience reads to an employer who pays in dollars, euros or pounds.</p></article>
+<article class="lp-wc reveal"><i aria-hidden="true">🏡</i><h3>You do not want to japa</h3><p><b>You want a global salary without leaving your family, your city or your country.</b> Remote work can make that possible, and this Saturday shows you where you stand for it.</p></article>
+<article class="lp-wc reveal"><i aria-hidden="true">🤝</i><h3>You have no connections abroad</h3><p><b>No uncle in Canada, no friend who can refer you.</b> Good. What we teach is built for people starting with no network at all.</p></article>
 </div>
 </section>
+
 <!-- HOST -->
 <section class="section-line wrap" id="host">
 <p class="section-label"><span class="mark"></span> Your host</p>
 <div class="host">
 <div class="host-photo reveal">
-<img alt="Oluwaseyi Ashiru on a headset, hosting the live clinic" height="1100" loading="lazy" src="../photo-seyi-headset.webp" width="880"/>
+<img alt="Oluwaseyi Ashiru welcoming you" height="1100" loading="lazy" src="../photo-seyi-welcome.webp" width="880"/>
 </div>
 <div class="reveal">
 <div class="host-name">Oluwaseyi Ashiru</div>
 <div class="host-role">Lead Facilitator · Everything Remote Job</div>
-<p class="host-bio">I've spent the last several years doing one thing: helping African professionals get hired into globally competitive remote roles — from right where they are. After every cohort, I refine the system from what we see in real searches, interviews and offers.</p>
-<p class="host-bio" style="margin-top:0.9rem;">This masterclass is the honest version of what I've learned: <strong>the system, the company categories, the ATS machine, and the routes most people never hear about.</strong> Seventy-five focused minutes, everything on the table, nothing held back for the paid programme.</p>
+<p class="host-bio">I have spent years helping African professionals get hired into globally competitive remote roles, from right where they are. After every cohort, I refine the system from what we see in real CVs, interviews and offers.</p>
+<p class="host-bio" style="margin-top:0.9rem;">Every Saturday I do the same thing, in the open: <strong>I read your CV the way an employer abroad would, and tell you what I see.</strong> Honestly, including when the answer is that you do not need us.</p>
 </div>
 </div>
 </section>
-<!-- RESERVE -->
+
+<!-- REGISTER -->
 <section class="section-line wrap" id="reserve">
 <div class="cta-panel reveal">
-<span class="live-badge"><span class="live-dot"></span> Free · Saturday 14 November</span>
-<h2 class="cta-h">Register for the <em>Remote Job Application Clinic.</em></h2>
-<p class="cta-p">Registration happens directly on Zoom. Zoom sends your personal join link by email. After that, use the WhatsApp step below for the preparation checklist, session reminders and entry into the Clinic WhatsApp group where the daily Audit Rounds continue after the live session.</p>
+<span class="live-badge"><span class="live-dot"></span> Free · Every Saturday · 4:00 PM WAT</span>
+<h2 class="cta-h">Save your place for <em>the next Saturday.</em></h2>
+<p class="cta-p">Registration is on Zoom, and it is how you get your personal join link. Register once, then come the Saturday that suits you.</p>
 <div class="zoom-steps">
 <div class="zoom-step">
 <div class="zoom-step-n">STEP 01</div>
 <h3>Register on Zoom</h3>
-<p>Complete the Zoom registration first. Use an email address you can open on the device you will join from.</p>
+<p>Use an email address you can open on the device you will join from.</p>
 <a class="btn-primary-ui btn-yes" href="https://us06web.zoom.us/meeting/register/eCugOLfhQeKl-z13Csi-eA" id="zoomRegBtn" rel="noopener" target="_blank"><span>Register on Zoom</span><span class="arrow-wrap"><span class="arrow">→</span></span></a>
 </div>
 <div class="zoom-step">
 <div class="zoom-step-n">STEP 02</div>
 <h3>Add it to your calendar</h3>
-<p>After registration, open Zoom's confirmation email. It contains your personal join information and an Add to Calendar option. Keep that email — your join link is personal.</p>
+<p>Zoom emails you a confirmation with your personal join link and an Add to Calendar option. Keep that email.</p>
 <span class="btn-more" style="cursor:default;opacity:.85;">Use the Zoom confirmation email</span>
 </div>
 <div class="zoom-step">
 <div class="zoom-step-n">STEP 03</div>
-<h3>Join the Clinic WhatsApp group</h3>
-<p>Once you have registered on Zoom, message ERJ so we can match your registration and send the group-entry instructions, preparation checklist and session reminders. The same group is where the daily Audit Rounds happen after the Clinic.</p>
-<a class="btn-more btn-secondary-ui" href="https://wa.me/2348032925957?text=CLINIC%0A%0AI%20have%20registered%20on%20Zoom%20for%20the%20Remote%20Job%20Application%20Clinic%20on%20Saturday%2014%20November%202026%20at%204%3A00%20PM%20WAT.%0A%0AName%3A%0AEmail%20used%20for%20Zoom%20registration%3A%0ATarget%20remote%20role%3A%0A%0APlease%20send%20me%20the%20Clinic%20WhatsApp%20group%20link%20for%20reminders%20and%20the%20daily%20Audit%20Rounds." id="clinicReminderBtn" rel="noopener" target="_blank"><span>Join the Clinic WhatsApp Group</span><span class="arrow-wrap"><span class="arrow">→</span></span></a>
+<h3>Find a role to bring</h3>
+<p>Optional. Browse the job board and note one role you would apply for. No role yet? Come with just your CV.</p>
+<a class="btn-more btn-secondary-ui" href="../jobs/"><span>Open the job board</span><span class="arrow-wrap"><span class="arrow">→</span></span></a>
 </div>
 </div>
-<p class="cta-how">Saturday 14 November 2026 · 4:00 PM WAT · Live on Zoom · Free.<br/>Bring your current CV and one real remote job advert you would genuinely apply for. If you want your CV considered for a live teardown, tell us in the WhatsApp conversation. Daily Audit Rounds continue afterwards in the Clinic WhatsApp group.</p>
-<p class="zoom-note"><strong>Registration is not complete until Zoom confirms it.</strong> We will not manually send a general meeting link; registered participants should use the personal link in Zoom's confirmation email.</p>
+<p class="zoom-note"><strong>Registration is not complete until Zoom confirms it.</strong> Please use the personal link in Zoom's email. We do not send a general meeting link.</p>
 </div>
 </section>
-<!-- AUDIT ROUNDS -->
-<section class="section-line wrap" id="audit-rounds">
-<p class="section-label"><span class="mark"></span> After the live Clinic · daily</p>
-<h2>Zoom closes. <span>The Audit Rounds keep going.</span></h2>
-<p class="section-sub" style="max-width:68ch;">The Remote Job Application Clinic is the live diagnosis room. The Clinic WhatsApp group is the continuation room. After the live session, <strong>Audit Rounds run every day</strong> so you do not have to wait until the next Clinic to bring a real application and find out what is failing.</p>
-<div class="cards" style="margin-top:1.6rem;">
-<div class="card reveal"><div class="card-k">01</div><h3>Bring one real application</h3><p>Post the target role or job advert you are genuinely considering, not a hypothetical job you may never apply for.</p></div>
-<div class="card reveal"><div class="card-k">02</div><h3>Bring the evidence</h3><p>Your current CV or LinkedIn plus your recent application and interview signal gives us enough to distinguish Supply, Representation, Aim and Conversion.</p></div>
-<div class="card reveal"><div class="card-k">03</div><h3>Find the earliest weak point</h3><p>The Round identifies the first failing point and gives you one correction to make before you keep applying.</p></div>
-<div class="card reveal"><div class="card-k">04</div><h3>Only then decide what help you need</h3><p>An Audit Round can end with a free fix. If paid help is justified, we name one smallest correct ERJ door and its limit. No product grid first.</p></div>
+
+<!-- QUESTIONS -->
+<section class="section-line wrap" id="questions">
+<p class="section-label"><span class="mark"></span> Questions</p>
+<h2>Before you save your place.</h2>
+<div class="lp-faq">
+<details class="reveal"><summary><span>Do I need a job advert?</span><i aria-hidden="true"></i></summary><p>No. Your CV is enough. If you have a role you would apply for, bring it and we check the fit. If you do not, the job board is where we point you.</p></details>
+<details class="reveal"><summary><span>What does it cost?</span><i aria-hidden="true"></i></summary><p>Nothing. You register on Zoom, and that is all.</p></details>
+<details class="reveal"><summary><span>Will my CV be shown to everyone?</span><i aria-hidden="true"></i></summary><p>Only if you agree on the day. If you would rather it was not on the screen, say so and we go through it with you without showing it.</p></details>
+<details class="reveal"><summary><span>What if I cannot come this Saturday?</span><i aria-hidden="true"></i></summary><p>It runs every Saturday at 4:00 PM WAT. Come the Saturday that works for you.</p></details>
+<details class="reveal"><summary><span>What happens after?</span><i aria-hidden="true"></i></summary><p>Nothing else is required. If one paid ERJ door is the right one for you, we say which, and its limit. If not, we tell you that too. Come back next Saturday with the fix done.</p></details>
 </div>
-<div class="clinic-note">
-<p><strong>Audit Rounds are part of the Clinic mechanism, not a replacement for the live Clinic.</strong> The next live Clinic is Saturday 14 November 2026 at 4:00 PM WAT. Between live sessions, the Clinic WhatsApp group keeps the diagnosis active every day.</p>
-</div>
-<div class="hero-cta" style="margin-top:1.6rem;">
-<a class="btn-primary-ui btn-yes" href="https://wa.me/2348032925957?text=CLINIC%0A%0APlease%20send%20me%20the%20Clinic%20WhatsApp%20group%20link%20for%20the%20daily%20Audit%20Rounds.%0A%0AName%3A%0ATarget%20remote%20role%3A" rel="noopener" target="_blank"><span>Join the Clinic WhatsApp Group</span><span class="arrow-wrap"><span class="arrow">→</span></span></a>
-<a class="btn-more btn-secondary-ui" href="../diagnose/"><span>Run the 90-Second Diagnosis</span><span class="arrow-wrap"><span class="arrow">→</span></span></a>
-</div>
+<p class="lp-ask">Another question? <a href="https://wa.me/2348032925957" rel="noopener" target="_blank">Ask us on WhatsApp →</a></p>
 </section>
 </main>
 <footer class="foot wrap">
@@ -295,61 +397,58 @@
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"></path></svg>
 </a>
 <script>
-  /* Session countdown — auto-advances to the repeat session, then to standby. */
+  /* Weekly countdown: every Saturday 4:00 PM WAT (15:00 UTC). It rolls on to the next Saturday by itself, so no date is ever edited by hand. */
   (function () {
-    var SESSIONS = [
-      { start: '2026-11-14T16:00:00+01:00', label: 'Sat, 14 November 2026 · 4:00 PM WAT' }
-    ];
-    var LIVE_MINUTES = 75; /* keep "live now" state through the hour + buffer */
+    var LIVE_MINUTES = 120; /* keep the "live now" state while a session may still be running */
+    var MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
     var d = document.getElementById('mcD'), h = document.getElementById('mcH'),
         m = document.getElementById('mcM'), s = document.getElementById('mcS'),
         when = document.getElementById('mcWhen'), lbl = document.getElementById('mcLbl'),
         blocks = document.querySelector('.mc-blocks');
     if (!d) return;
     function pad(n) { return n < 10 ? '0' + n : '' + n; }
+    function thisOrNextStart(now) {
+      var t = new Date(now);
+      var add = (6 - t.getUTCDay() + 7) % 7;
+      var start = Date.UTC(t.getUTCFullYear(), t.getUTCMonth(), t.getUTCDate() + add, 15, 0, 0);
+      if (now >= start + LIVE_MINUTES * 60000) start += 7 * 86400000;
+      return start;
+    }
+    function label(start) {
+      var w = new Date(start + 3600000); /* shift to WAT, then read the UTC fields */
+      return 'Saturday, ' + w.getUTCDate() + ' ' + MONTHS[w.getUTCMonth()] + ' ' + w.getUTCFullYear() + ' · 4:00 PM WAT';
+    }
     function tick() {
-      var now = Date.now(), next = null, live = null;
-      for (var i = 0; i < SESSIONS.length; i++) {
-        var t = new Date(SESSIONS[i].start).getTime();
-        if (now >= t && now < t + LIVE_MINUTES * 60000) { live = SESSIONS[i]; break; }
-        if (now < t) { next = SESSIONS[i]; break; }
-      }
-      if (live) {
+      var now = Date.now(), start = thisOrNextStart(now);
+      if (now >= start) {
         lbl.textContent = 'Happening now';
         when.innerHTML = '<strong>We are live.</strong> If you registered, open your Zoom confirmation email and use your personal join link.';
         if (blocks) blocks.style.display = 'none';
         return;
       }
-      if (!next) {
-        lbl.textContent = 'Next session';
-        when.innerHTML = '<strong>Dates for the next masterclass are being announced.</strong> Message us to be told first.';
-        if (blocks) blocks.style.display = 'none';
-        return;
-      }
       if (blocks) blocks.style.display = '';
-      when.innerHTML = '<strong>' + next.label + '</strong>';
-      var diff = new Date(next.start).getTime() - now;
-      var dd = Math.floor(diff / 86400000);
-      var hh = Math.floor(diff % 86400000 / 3600000);
-      var mm = Math.floor(diff % 3600000 / 60000);
-      var ss = Math.floor(diff % 60000 / 1000);
-      d.textContent = pad(dd); h.textContent = pad(hh); m.textContent = pad(mm); s.textContent = pad(ss);
+      lbl.textContent = 'Next Saturday starts in';
+      when.innerHTML = '<strong>' + label(start) + '</strong>';
+      var diff = start - now;
+      d.textContent = pad(Math.floor(diff / 86400000));
+      h.textContent = pad(Math.floor(diff % 86400000 / 3600000));
+      m.textContent = pad(Math.floor(diff % 3600000 / 60000));
+      s.textContent = pad(Math.floor(diff % 60000 / 1000));
     }
     tick(); setInterval(tick, 1000);
   })();
 
-  /* Track the two intentional conversion steps: Zoom registration and Clinic WhatsApp group request. */
+  /* Track the one intentional conversion step: starting the Zoom registration. */
   (function(){
-    var z=document.getElementById('zoomRegBtn'), w=document.getElementById('clinicReminderBtn');
-    if(z)z.addEventListener('click',function(){if(window.erjTrack)window.erjTrack('MasterclassRegistrationStarted',{content_name:'Application Clinic Zoom registration',method:'zoom',value:0,link_url:z.href});});
-    if(w)w.addEventListener('click',function(){if(window.erjTrack)window.erjTrack('ClinicWhatsAppGroupRequest',{content_name:'Application Clinic WhatsApp group + daily Audit Rounds',method:'whatsapp',value:0,link_url:w.href});});
+    var z=document.getElementById('zoomRegBtn');
+    if(z)z.addEventListener('click',function(){if(window.erjTrack)window.erjTrack('MasterclassRegistrationStarted',{content_name:'Launchpad Zoom registration',method:'zoom',value:0,link_url:z.href});});
   })();
 
 </script>
 <script src="../erj-theme.js?v=20260911a"></script>
 <script src="../erj-product.js?v=20260924c"></script>
-<script src="../erj-nav.js?v=20261113a"></script>
-<script src="../erj-config.js?v=20261112c"></script>
+<script src="../erj-nav.js?v=20261113b"></script>
+<script src="../erj-config.js?v=20261113b"></script>
 <script src="../erj-capture.js?v=20260911a"></script>
 <script>if("serviceWorker" in navigator){window.addEventListener("load",function(){var go=function(){navigator.serviceWorker.register("/sw.js").then(function(reg){reg.update();}).catch(function(){});};if("requestIdleCallback" in window){requestIdleCallback(go,{timeout:3000});}else{setTimeout(go,1200);}});}</script>
 <script src="../erj-schema.js?v=20261111a"></script>

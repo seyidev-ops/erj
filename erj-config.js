@@ -37,7 +37,7 @@
       body: 'These doors open the day you walk through them \u2014 no gate, no waiting list.',
       doors: [
         { label: 'The Job Hunter \u2014 roles scored, applications prepared, from \u20a615,000', href: 'jobhunter/' },
-        { label: 'The free stack \u2014 CV scan, blog, job board, masterclass', href: 'free.html' }
+        { label: 'The free stack \u2014 CV scan, blog, job board, Saturday Launchpad', href: 'free.html' }
       ]
     },
 
