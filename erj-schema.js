@@ -24,7 +24,9 @@
       },
       "address": {
         "@type": "PostalAddress",
+        "streetAddress": "648 Idris Gidado Street, Wuye",
         "addressLocality": "Abuja",
+        "addressRegion": "FCT",
         "addressCountry": "NG"
       },
       "areaServed": [
@@ -120,7 +122,7 @@
     var n=document.createElement('div');
     n.className='erj-rights-line';
     n.setAttribute('role','note');
-    n.innerHTML='© 2026 Business Play Limited · Everything Remote Job. Built for <span style="color:var(--accent,#FF5722)">global career scale.</span> All rights reserved. ERJ frameworks, curriculum and paid resources are not licensed for redistribution. <a href="/terms.html">Terms</a> · <a href="/privacy.html">Privacy</a>';
+    n.innerHTML='© 2026 Business Play Limited · Everything Remote Job · 648 Idris Gidado Street, Wuye, FCT, Abuja, Nigeria. Built for <span style="color:var(--accent,#FF5722)">global career scale.</span> All rights reserved. ERJ frameworks, curriculum and paid resources are not licensed for redistribution. <a href="/terms.html">Terms</a> · <a href="/privacy.html">Privacy</a>';
     n.style.cssText='max-width:900px;margin:1rem auto 0;padding-top:.85rem;border-top:1px solid rgba(127,127,127,.18);font-size:.68rem;line-height:1.55;letter-spacing:.02em;opacity:.72;text-align:center;';
     Array.prototype.forEach.call(n.querySelectorAll('a'),function(a){a.style.cssText='color:#FF5722;text-decoration:none;';});
     foot.appendChild(n);
