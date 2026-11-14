@@ -136,7 +136,24 @@
   "arc": "Arc",
   "awesomic": "Awesomic",
   "growetalents": "Growe",
-  "hire-overseas": "Hire Overseas"
+  "hire-overseas": "Hire Overseas",
+  "5ca": "5CA",
+  "nysonian": "Nysonian",
+  "soum": "SOUM",
+  "caliza-financial-technologies": "Caliza",
+  "clipboard": "Clipboard",
+  "goodstack": "Goodstack",
+  "pearltalent": "Pearl Talent",
+  "town-web": "Town Web",
+  "remotepass": "RemotePass",
+  "intellecthq": "Intellect",
+  "scalesource-1": "Scalesource",
+  "awarri": "Awarri",
+  "veta-virtual-inc": "Veta Virtual",
+  "laulau": "LauLau",
+  "yellow-labs-software-inc": "Yellow Labs",
+  "startupblink": "StartupBlink",
+  "census": "CENSUS"
  },
  "feeds": {
   "enabled": true,
@@ -170,7 +187,9 @@
    "cloudflare",
    "datadog",
    "mozilla",
-   "growetalents"
+   "growetalents",
+   "5ca",
+   "nysonian"
   ],
   "lever": [
    "raya",
@@ -185,7 +204,9 @@
    "toptal",
    "outreach",
    "kraken",
-   "metabase"
+   "metabase",
+   "soum",
+   "caliza-financial-technologies"
   ],
   "ashby": [
    "Scale Army Careers",
@@ -223,13 +244,21 @@
    "langchain",
    "replit",
    "linear",
-   "raycast"
+   "raycast",
+   "clipboard",
+   "goodstack"
   ],
   "breezy": [
    "20four7va",
    "atlasbrands",
    "minerva-project",
-   "social-discovery-ventures"
+   "social-discovery-ventures",
+   "awarri",
+   "veta-virtual-inc",
+   "laulau",
+   "yellow-labs-software-inc",
+   "startupblink",
+   "census"
   ],
   "workable": [
    "bask-health-1",
@@ -255,7 +284,12 @@
    "remote-crew",
    "arc",
    "awesomic",
-   "hire-overseas"
+   "hire-overseas",
+   "pearltalent",
+   "town-web",
+   "remotepass",
+   "intellecthq",
+   "scalesource-1"
   ],
   "micro1": {
    "referral_code": "d3605f74-92f0-4f1c-b8e2-4ab757bffc26",
