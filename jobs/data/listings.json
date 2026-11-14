@@ -8206,6 +8206,33 @@
    "family": "Legal",
    "why": "Open worldwide with no country exclusion, so you can apply from Nigeria, and pays in foreign currency ($14 / hour). You apply directly on the employer's own page.",
    "direct": true
+  },
+  {
+   "id": "1dd70c30f6",
+   "title": "Technical Support Engineer",
+   "company": "D2B",
+   "region": "Africa Only",
+   "type": "Full-Time",
+   "experience": "3+ years",
+   "salary": "Undisclosed",
+   "bullets": [
+    "3+ years of technical support, application support, product support",
+    "Proven track record supporting technical B2B enterprise buyers, such as CISOs, IT Directors, SOC teams, security engineers",
+    "Demonstrated competency diagnosing multi-tenant architectures, recognizing tenant-specific misconfigurations versus global system incidents",
+    "Strong working knowledge of web technologies: browser developer tools, HTTP status codes, REST APIs, JSON payloads, and log analysis"
+   ],
+   "apply": "https://jobs.workable.com/company/dcaVtKQqXr9FwBNppNCBH9/jobs-at-d2b",
+   "posted": "2026-11-14",
+   "deadline": null,
+   "checked": "2026-11-14",
+   "added": "2026-11-14",
+   "listed": "2026-11-14",
+   "source": "We Work Remotely",
+   "origin": "feed",
+   "ats_id": null,
+   "family": "Customer Service & Success",
+   "why": "Open across Africa, Nigeria included. You apply directly on the employer's own page.",
+   "direct": true
   }
  ]
 }
