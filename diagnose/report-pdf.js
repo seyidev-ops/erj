@@ -72,10 +72,10 @@
     block('WHAT I WOULD DO NOW',{size:8,bold:true,orange:true,after:4});
     block((report.actions&&report.actions[0])||'Fix the earliest failing point before increasing application volume.',{size:10,max:90,leading:14,after:11});
 
-    block('GET A FREE HUMAN REVIEW',{size:8,bold:true,orange:true,after:4});
-    block('The quiz names the weak point. A human review can tell you what to fix first in your actual search.',{size:10,max:90,leading:14,after:4});
-    block('Message ERJ with AUDIT and include: target role, applications in the last 30 days, interviews in the last 30 days, and your CV or LinkedIn profile.',{size:10,bold:true,max:90,leading:14,after:7});
-    block('WhatsApp: +234 803 292 5957',{size:9,bold:true,orange:true,max:70});
+    block('GET YOUR CV AUDITED LIVE, FREE',{size:8,bold:true,orange:true,after:4});
+    block('The quiz names the weak point. At the Launchpad we go through your actual CV live and name the one thing to fix first.',{size:10,max:90,leading:14,after:4});
+    block('Every Saturday at 4:00 PM WAT, live on Zoom. Free. Register once, bring this report and your CV.',{size:10,bold:true,max:90,leading:14,after:7});
+    block('Register: everythingremotejob.com/masterclass/',{size:9,bold:true,orange:true,max:70});
 
     rule(59);
     text('Everything Remote Job  |  Work Beyond Borders.',54,40,8,true,false);

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"/><script id="erjThemeBoot">/* Apply the saved theme before first paint. erj-theme.js loads deferred, so without this a day-theme visitor sees the night page first. */try{var d=document.documentElement,p=localStorage.getItem('rjt-theme');if(p==='system')p=window.matchMedia&&matchMedia('(prefers-color-scheme: light)').matches?'day':'night';if(p==='day'||p==='night')d.setAttribute('data-theme',p)}catch(e){}</script>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<title>ERJ Conversion Command Centre · Cohort 12</title>
+<title>ERJ Command Centre · Launchpad and Foundation</title>
 <meta content="noindex,nofollow" name="robots"/>
 <link rel="preload" href="/fonts/space-grotesk-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/inter-300.woff2" as="font" type="font/woff2" crossorigin>
@@ -30,286 +30,315 @@ section{padding:2.4rem 0}.lab{font-size:.62rem;font-weight:500;letter-spacing:.2
 <link href="/favicon.ico" rel="icon" sizes="48x48 32x32 16x16"/>
 <link href="/favicon-96.png" rel="icon" sizes="96x96" type="image/png"/>
 <link href="/appletouchicon.png" rel="apple-touch-icon"/>
-<style id="consoleC12">
+<style id="consoleCC">
 .pg{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
-.pg li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:.4rem 1rem;padding:.9rem 0;border-bottom:1px solid var(--line2);align-items:start}
+.pg li{display:grid;grid-template-columns:minmax(0,1fr);gap:.4rem 1rem;padding:.9rem 0;border-bottom:1px solid var(--line2)}
 .pg b{color:var(--ink);font-weight:600;font-family:var(--fd)}.pg p{margin:.2rem 0 0;color:var(--soft);font-size:.86rem}
-.pg a.go{white-space:nowrap;font-size:.74rem;font-weight:600;color:var(--accent);text-decoration:none;border:1px solid rgba(255,87,34,.4);border-radius:999px;padding:.38rem .75rem}
-.pg a.go:hover{background:var(--accent);color:#fff}
-.new{display:inline-block;font-size:.56rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#3fd18b;border:1px solid rgba(13,140,79,.55);border-radius:999px;padding:.12rem .45rem;margin-left:.45rem;vertical-align:middle}
 .offer.hot{border-color:rgba(255,87,34,.55);box-shadow:0 18px 44px rgba(255,87,34,.14)}
+.offer a{display:inline-block;margin-top:.5rem;font-size:.74rem;color:var(--accent)}
 .bonus{font-size:.78rem;color:#3fd18b;border:1px solid rgba(13,140,79,.45);background:rgba(13,140,79,.1);border-radius:9px;padding:.45rem .6rem;margin:.45rem 0}
-.photos{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:.5rem;margin-top:.8rem}
-.photos figure{margin:0;border-radius:10px;overflow:hidden;border:1px solid var(--line)}
-.photos img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover}
-.photos figcaption{font-size:.62rem;color:var(--faint);padding:.3rem .4rem;line-height:1.3}
-@media(max-width:720px){.photos{grid-template-columns:repeat(4,minmax(0,1fr))}.pg li{grid-template-columns:1fr}}
+.cc-clocks{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-top:.8rem}
+.cc-clock{border:1px solid var(--line);background:var(--card);border-radius:12px;padding:.7rem .85rem;min-width:0}
+.cc-clock .kicker{margin-bottom:.2rem}
+.cc-big{font-family:var(--fd);font-weight:700;font-size:1.05rem;line-height:1.25;color:var(--ink)}
+.cc-sub{font-size:.74rem;color:var(--soft);margin-top:.15rem}
+@media(max-width:560px){.cc-clocks{grid-template-columns:1fr}}
 </style>
 <link href="erj-alive.css?v=20261028b" rel="stylesheet" media="print" onload="this.media='all'"/><noscript><link href="erj-alive.css?v=20261028b" rel="stylesheet"/></noscript>
 <link href="erj-future.css?v=20261104a" rel="stylesheet"/>
 </head>
 <body>
 <header><div class="wrap">
-  <div class="topline"><div class="brand">ERJ <span>Conversion Command Centre</span></div><div class="stamp">Internal · Cohort 12 · updated 4 Oct 2026</div></div>
-  <div class="cd" id="cd">
-    <div class="u"><div class="n" id="d">–</div><div class="l">days</div></div>
-    <div class="u"><div class="n" id="h">–</div><div class="l">hrs</div></div>
-    <div class="u"><div class="n" id="m">–</div><div class="l">min</div></div>
-    <div class="to" id="cdTo">until the next Cohort 12 gate</div>
+  <div class="topline"><div class="brand">ERJ <span>Command Centre</span></div><div class="stamp">Internal · the Launchpad and Foundation Training · updated 14 Nov 2026</div></div>
+  <div class="cc-clocks">
+    <div class="cc-clock"><div class="kicker">Next Launchpad</div><div class="cc-big" id="lpWhen">–</div><div class="cc-sub" id="lpLeft">Every Saturday · 4:00 PM WAT · Zoom</div></div>
+    <div class="cc-clock"><div class="kicker">Next Foundation gate</div><div class="cc-big" id="gtWhen">–</div><div class="cc-sub" id="gtLeft">–</div></div>
   </div>
   <nav class="tabs" id="tabs"></nav>
 </div></header>
 <main class="wrap">
-<section data-tab="Today">
-  <div class="lab">Sunday 4 October · launch eve</div>
-  <h1>The early-bird page <span class="accent">goes out.</span></h1>
-  <p class="sub">The instalment window opens tomorrow, Monday 5 October. The early-bird page is today's first outreach page: it sells the <b>shape</b> of the payment, not a discount. Every lead still goes through diagnosis before a door is prescribed.</p>
-  <div class="alert"><b>Internal truth: do not publish this as marketing.</b>The fee is ₦250,000 and it never changes. The window changes how someone pays, from 5 to 24 October. Foundation buyers also receive 90 days of one career track at The Mentorine School: mention it after diagnosis, as part of the right door, never as a reason to buy the wrong one.</div>
+
+<section data-tab="The model">
+  <div class="lab">How ERJ sells now · from 14 November 2026</div>
+  <h1>One free room a week. <span class="accent">One clear offer.</span></h1>
+  <p class="sub">Everything public leads to the Saturday Launchpad. The Launchpad is where we audit CVs live and make one offer, once, at the end. The main offer is Remote Job Foundation Training. Nothing else is given away in private.</p>
+  <div class="alert"><b>The rule that changed</b>More than sixty people got a free private AUDIT and none of them paid. A private AUDIT is now part of Foundation Training and every programme above it (Inner Circle, Placement Engine, Dream Job Offer), done by the participant's facilitator. Anyone else who asks for a CV review gets the Launchpad link. People already halfway through an AUDIT on WhatsApp are finished there; no new ones start.</div>
+  <div class="flow">
+    <div class="step"><b>01</b>Job post, blog or Status</div>
+    <div class="step"><b>02</b>Registers for the Launchpad</div>
+    <div class="step"><b>03</b>Uploads the CV</div>
+    <div class="step"><b>04</b>Attends on Saturday</div>
+    <div class="step"><b>05</b>CV audited live</div>
+    <div class="step"><b>06</b>The offer, once, priced</div>
+    <div class="step"><b>07</b>Verified payment</div>
+  </div>
   <div class="grid">
-    <div class="card third"><div class="kicker">Primary outcome</div><div class="big">≥ 1</div><p>first instalment received on Monday 5 October, from a lead whose diagnosis says Foundation is the right door.</p></div>
-    <div class="card third"><div class="kicker">Operating rule</div><div class="big">1 door</div><p>per person. Diagnose first, then the smallest correct door, its price and its limit.</p></div>
-    <div class="card third"><div class="kicker">Front door</div><div class="big">AUDIT</div><p>Cold traffic goes to <a href="starthere.html">Start Here</a> or the <a href="diagnose/">diagnosis</a>, never straight to the store.</p></div>
+    <div class="card third"><div class="kicker">Front door</div><div class="big">Launchpad</div><p>Every job post, the diagnosis, Start Here and Free For You point to <a href="masterclass/">/masterclass/</a>. Keyword: LAUNCHPAD.</p></div>
+    <div class="card third"><div class="kicker">Main offer</div><div class="big">₦250,000</div><p>Remote Job Foundation Training. Twenty days, four stages, marked work, a certificate, a Mentorine track and a private AUDIT by the facilitator.</p></div>
+    <div class="card third"><div class="kicker">The result we count</div><div class="big">Paid</div><p>A payment verified on the Business Play Ltd statement. Registrations and attendance are participation, not sales.</p></div>
   </div>
   <div class="rule"></div>
-  <div class="lab">Today's operating targets</div>
-  <div class="grid">
-    <div class="card"><div class="goal">30 warm reconnections</div><p>Cohort 11 enquirers, Clinic attendees and no-shows, previous AUDITs, recent channel repliers. Warm before cold.</p></div>
-    <div class="card"><div class="goal">12 AUDIT starts → 8 completed</div><p>Completed means target role, 30-day application and interview numbers, and CV or LinkedIn received.</p></div>
-    <div class="card"><div class="goal">5 Foundation-fit leads told about the window</div><p>Only leads whose weak point spans more than one part. Send them the early-bird page, with the date the window opens.</p></div>
-    <div class="card"><div class="goal">Capacity gaps routed honestly</div><p>A failed Capacity Audit is not a Foundation sale. Route to free resources or Career Development — Self-Study (₦50,000).</p></div>
-  </div>
-  <div class="rule"></div>
-  <div class="lab">Run the launch</div>
-  <ul class="plan">
-    <li><time>Sun · now</time><div><b>Check the pages.</b> Open the early-bird page, Foundation Training and the store on a phone. Countdown, prices, WhatsApp links and the Mentorine bonus must all read correctly. The Site tab lists every page.</div></li>
-    <li><time>Sun · evening</time><div><b>Build the warm list.</b> Pull every live thread: Cohort 11 enquiries, Clinic attendees, incomplete AUDITs. No cold spreadsheet first.</div></li>
-    <li><time>Sun · 8 PM</time><div><b>Tease the window.</b> Post the launch-eve message (Content tab) on the channel and status. The call to action is AUDIT, not "pay".</div></li>
-    <li><time>Mon · 07:00</time><div><b>Window opens.</b> Send the early-bird message to Foundation-fit leads only. Everyone else gets the AUDIT invite.</div></li>
-    <li><time>Mon · 09:00–13:00</time><div><b>Audit Round 01.</b> Complete audits in the order they come back. One useful action before any paid recommendation.</div></li>
-    <li><time>Mon · 13:00–16:00</time><div><b>Prescribe and close.</b> Name the weak point, the door, the price and its limit. Ask for YES / NOT NOW / NOT THIS PRODUCT.</div></li>
-    <li><time>Mon · 19:30</time><div><b>Close out.</b> Record payments, objections and tomorrow's warm list in the Closeout tab.</div></li>
+  <div class="lab">Who gets what</div>
+  <ul class="pg">
+    <li><div><b>Anyone</b><p>The job board, the free scans and diagnosis, the blog, and the Launchpad every Saturday.</p></div></li>
+    <li><div><b>Foundation Training participants and graduates</b><p>A private AUDIT of their search, done by their facilitator. Graduates can apply for the Inner Circle.</p></div></li>
+    <li><div><b>Inner Circle, Placement Engine, Dream Job Offer</b><p>A private AUDIT as part of the programme. Placement Engine buyers are included even if they did not take Foundation.</p></div></li>
+    <li><div><b>Everyone else who asks for a CV review</b><p>The Launchpad link. Not a private review, however they ask.</p></div></li>
   </ul>
 </section>
-<section data-tab="Pipeline">
-  <div class="lab">Only numbers that move revenue</div>
-  <h2>Live conversion scoreboard</h2>
-  <p class="sub">Update as the day moves. Saved on this browser for Cohort 12.</p>
-  <div class="flow">
-    <div class="step"><b>01</b>Warm conversation</div><div class="step"><b>02</b>AUDIT started</div><div class="step"><b>03</b>AUDIT complete</div><div class="step"><b>04</b>Diagnosis given</div><div class="step"><b>05</b>Qualified</div><div class="step"><b>06</b>Decision</div><div class="step"><b>07</b>Paid</div>
-  </div>
+
+<section data-tab="This week">
+  <div class="lab">The weekly rhythm</div>
+  <h2>Sunday to Saturday, every week</h2>
+  <p class="sub">Jobs go out at 5:45 AM and 7:45 PM whatever else happens. The Launchpad push uses 12:30 PM (Channel) and 8:00 PM (Status) so the job slots stay clear.</p>
+  <ul class="plan">
+    <li><time>Sun</time><div><b>The honest poll.</b> Channel poll about the state of their CV; text Status at 8 PM. Build this week's warm list from last Saturday's attendees and anyone who sent LAUNCHPAD.</div></li>
+    <li><time>Mon</time><div><b>The kitchen-table test.</b> Voice note on the Channel; Status at 8 PM. Personal messages to five employed contacts, one at a time.</div></li>
+    <li><time>Tue</time><div><b>Spot the call-back.</b> Two opening lines, A or B, as a poll. Answer tomorrow.</div></li>
+    <li><time>Wed</time><div><b>The reveal.</b> What, proof, where. Status for shy people: camera optional, CV shown only with consent.</div></li>
+    <li><time>Thu</time><div><b>Send it ugly.</b> Register, then upload the CV as it is. The one-to-one invite to people in your own network.</div></li>
+    <li><time>Fri</time><div><b>Prepare.</b> 9 AM: export the Zoom registrant list and send the reminder. 6 PM: close uploads and match each CV to a registrant by email. Night: one line per CV (the earliest weak part, the one thing to fix first, and the door that fits).</div></li>
+    <li><time>Sat</time><div><b>The Launchpad.</b> Morning reminder. 3:30 PM open the room. 4:00 PM live. The offer once, at the end. Record every attendee before you sleep.</div></li>
+  </ul>
+  <div class="rule"></div>
+  <div class="lab">Foundation dates · Cohort 13 and 14</div>
+  <ul class="pg">
+    <li><div><b>Instalments close</b><p>Sun 22 Nov · 11:59 PM WAT. After that, full payment only. Any amount holds a seat until then.</p></div></li>
+    <li><div><b>Cohort 13 enrolment closes</b><p>Sun 29 Nov · 8:00 PM WAT.</p></div></li>
+    <li><div><b>Cohort 13 begins</b><p>Mon 30 Nov · 8:00 PM WAT. Three class times: weekdays 7 PM, weekdays 8 PM, weekends 7:00–8:30 PM.</p></div></li>
+    <li><div><b>Cohort 14</b><p>Enrolment closes Sun 3 Jan 2027, 8:00 PM WAT · begins Mon 4 Jan 2027, 8:00 PM WAT. People can register now.</p></div></li>
+  </ul>
+  <p class="sub">Each Saturday before a gate, the offer at the end of the Launchpad names that gate. Never invent one.</p>
+</section>
+
+<section data-tab="Scoreboard">
+  <div class="lab">This week only · resets each week</div>
+  <h2>The numbers that lead to a payment</h2>
+  <p class="sub">Saved on this browser for the week ending <span id="wkLabel">this Saturday</span>.</p>
   <div class="grid" id="scores">
-    <div class="score" data-key="warm"><label>Warm conversations</label><div class="v"><span class="num">0</span><span class="counter"><button data-delta="-1">−</button><button data-delta="1">+</button></span></div><div class="target">Target 30</div></div>
-    <div class="score" data-key="auditStart"><label>AUDIT starts</label><div class="v"><span class="num">0</span><span class="counter"><button data-delta="-1">−</button><button data-delta="1">+</button></span></div><div class="target">Target 12</div></div>
-    <div class="score" data-key="auditComplete"><label>AUDIT completed</label><div class="v"><span class="num">0</span><span class="counter"><button data-delta="-1">−</button><button data-delta="1">+</button></span></div><div class="target">Target 8</div></div>
-    <div class="score" data-key="qualified"><label>Qualified opportunities</label><div class="v"><span class="num">0</span><span class="counter"><button data-delta="-1">−</button><button data-delta="1">+</button></span></div><div class="target">Target 4</div></div>
-    <div class="score" data-key="instalments"><label>Instalments started</label><div class="v"><span class="num">0</span><span class="counter"><button data-delta="-1">−</button><button data-delta="1">+</button></span></div><div class="target">Window 5–24 Oct</div></div>
+    <div class="score" data-key="reg"><label>Launchpad registrations</label><div class="v"><span class="num">0</span><span class="counter"><button data-delta="-1">−</button><button data-delta="1">+</button></span></div><div class="target">From the Zoom report</div></div>
+    <div class="score" data-key="cv"><label>CVs uploaded</label><div class="v"><span class="num">0</span><span class="counter"><button data-delta="-1">−</button><button data-delta="1">+</button></span></div><div class="target">From Tally</div></div>
+    <div class="score" data-key="att"><label>Attended on Saturday</label><div class="v"><span class="num">0</span><span class="counter"><button data-delta="-1">−</button><button data-delta="1">+</button></span></div><div class="target">From the Zoom report</div></div>
+    <div class="score" data-key="qual"><label>Passed the four questions</label><div class="v"><span class="num">0</span><span class="counter"><button data-delta="-1">−</button><button data-delta="1">+</button></span></div><div class="target">Work, funding, date, this week</div></div>
+    <div class="score" data-key="offer"><label>Priced offers stated</label><div class="v"><span class="num">0</span><span class="counter"><button data-delta="-1">−</button><button data-delta="1">+</button></span></div><div class="target">One door each</div></div>
+    <div class="score" data-key="seat"><label>Foundation seats held</label><div class="v"><span class="num">0</span><span class="counter"><button data-delta="-1">−</button><button data-delta="1">+</button></span></div><div class="target">Any amount, until 22 Nov</div></div>
     <div class="score" data-key="paid"><label>Paid in full</label><div class="v"><span class="num">0</span><span class="counter"><button data-delta="-1">−</button><button data-delta="1">+</button></span></div><div class="target">Any correct door</div></div>
-    <div class="score" style="grid-column:1/-1"><label>Verified revenue · ₦</label><input id="revenue" class="money" inputmode="numeric" placeholder="0"/><div class="target" style="margin-top:.4rem">Count only cleared, confirmed payments.</div></div>
+    <div class="score" data-key="hunt"><label>Other doors paid</label><div class="v"><span class="num">0</span><span class="counter"><button data-delta="-1">−</button><button data-delta="1">+</button></span></div><div class="target">Job Hunter, Sprint, CV Fix…</div></div>
+    <div class="score" data-key="no"><label>Clear "not now" with a date</label><div class="v"><span class="num">0</span><span class="counter"><button data-delta="-1">−</button><button data-delta="1">+</button></span></div><div class="target">Recorded, not chased</div></div>
+    <div class="score" style="grid-column:1/-1"><label>Verified revenue this week · ₦</label><input id="revenue" class="money" inputmode="numeric" placeholder="0"/><div class="target" style="margin-top:.4rem">Count only payments seen on the statement.</div></div>
   </div>
+  <div class="rule"></div>
+  <div class="lab">Where the week leaks</div>
+  <ul class="pg">
+    <li><div><b>Few registrations</b><p>The posts are not reaching the right people, or Thursday's ask was weak. Check the poll counts.</p></div></li>
+    <li><div><b>Registrations, few CVs</b><p>The upload step is the problem. Send the Friday reminder with the upload link alone.</p></div></li>
+    <li><div><b>CVs, few attendees</b><p>Timing or reminders. Send the 3:45 PM nudge with the personal Zoom link instruction.</p></div></li>
+    <li><div><b>Attendees, no offers</b><p>The session ran out of time or the offer was skipped. The offer is not optional.</p></div></li>
+    <li><div><b>Offers, no payments</b><p>Read their words before touching the product or price.</p></div></li>
+  </ul>
   <div class="rule"></div>
   <div class="lab">Not success metrics</div>
-  <div class="dont"><span class="chip">channel views</span><span class="chip">likes</span><span class="chip">website sessions</span><span class="chip">job links posted</span><span class="chip">"interested" without audit</span><span class="chip">payment promise without payment</span></div>
+  <div class="dont"><span class="chip">Channel views</span><span class="chip">likes</span><span class="chip">poll votes alone</span><span class="chip">website sessions</span><span class="chip">"I'll join next time"</span><span class="chip">payment promises</span></div>
 </section>
-<section data-tab="AUDIT">
-  <div class="lab">Diagnosis before prescription</div>
-  <h2>The one sales workflow</h2>
-  <p class="sub">A new lead never receives a product list. Target, 30-day signal, the evidence, the earliest weak point, one useful action, then the smallest honest door.</p>
-  <div class="grid">
-    <div class="card"><h3>01 · Target role</h3><p>One title or field. No role, no pricing.</p></div>
-    <div class="card"><h3>02 · 30-day signal</h3><p>Applications and interviews. This separates silence from mismatch from conversion.</p></div>
-    <div class="card"><h3>03 · Can they do the work?</h3><p>If unsure, send the free <a href="capacityscan/">Capacity Audit</a> first. A capacity gap is fixed by building the skill, not by a better CV.</p></div>
-    <div class="card"><h3>04 · Earliest weak point</h3><p><b>Capacity</b> → the skill is not there yet. <b>Supply</b> → no legitimate roles. <b>Representation</b> → applications, no interviews. <b>Aim</b> → mismatches. <b>Conversion</b> → interviews, no offer.</p></div>
-    <div class="card"><h3>05 · First useful action</h3><p>One fix they can act on now. It proves the diagnosis before the sale.</p></div>
-    <div class="card"><h3>06 · Smallest correct door</h3><p>Only now: one door, its price, its limit, and a clean decision.</p></div>
-  </div>
-  <div class="rule"></div>
-  <details class="rep" open><summary><span class="q">AUDIT invite · warm reconnection</span><span class="tag">Copy</span></summary><div class="body"><pre id="audit-invite">Hi [Name] — I'm closing the loop from [the Clinic / our last chat]. I won't send you a product list.
 
-If you are still after a remote [target role], send me four things:
-1. the exact role you want,
-2. how many applications you sent in the last 30 days,
-3. how many interviews came from them,
-4. your CV or LinkedIn link.
-
-I'll tell you which part is failing first (Capacity, Supply, Representation, Aim or Conversion) and the smallest next step. If free is enough, I'll say so.</pre><button class="copy" data-t="audit-invite">Copy</button></div></details>
-  <details class="rep"><summary><span class="q">Diagnosis message · before any offer</span><span class="tag">Copy</span></summary><div class="body"><pre id="audit-dx">I've checked it. Your earliest weak point is [CAPACITY / SUPPLY / REPRESENTATION / AIM / CONVERSION].
-
-Why: [one concrete sentence from their last 30 days or CV].
-
-Do this first: [one useful action they can take now].
-
-If you want help beyond that, I'll recommend one ERJ door only, the smallest one that actually fixes this.</pre><button class="copy" data-t="audit-dx">Copy</button></div></details>
-  <details class="rep"><summary><span class="q">Paid prescription · qualified lead only</span><span class="tag">Copy</span></summary><div class="body"><pre id="audit-rx">For what I can see, the right door is [PRODUCT].
-
-It fixes: [the diagnosed problem].
-Price: [₦].
-Its limit: [what it does NOT include].
-
-Say YES and I'll send the payment route. NOT NOW is fine. NOT THIS PRODUCT is fine. I just don't want to leave you in a "thinking about it" loop.</pre><button class="copy" data-t="audit-rx">Copy</button></div></details>
-</section>
-<section data-tab="Offers">
-  <div class="lab">Current ladder · Cohort 12</div>
-  <h2>Sell the door, not the ecosystem</h2>
-  <p class="sub">Use after diagnosis. Fifteen doors on the store; one per person.</p>
-  <div class="grid">
-    <div class="offer"><h3>Google Search: Best Kept Open Secret</h3><div class="price">₦5,000</div><div class="fit">Supply weak point: not seeing legitimate roles.</div><div class="limit">Book · instant download · no review of their search.</div><a href="register.html#book">register.html#book →</a></div>
-    <div class="offer"><h3>The CV Engine</h3><div class="price">₦5,000/month</div><div class="fit">Representation weak point in the CV; wants the tool, not teaching.</div><div class="limit">Cancel any time · tool only.</div><a href="cvbuilder.html">cvbuilder.html →</a></div>
-    <div class="offer"><h3>From Intent to Offer</h3><div class="price">₦15,000</div><div class="fit">Wants the whole method in hand tonight and will work it alone.</div><div class="limit">Book · 171 pages · no marking.</div><a href="fromintenttooffer/">fromintenttooffer/ →</a></div>
-    <div class="offer"><h3>CV Fix — one CV, one field</h3><div class="price">₦30,000</div><div class="fit">Can do the work, has evidence; Representation is the only weak point.</div><div class="limit">One CV, one field · 72 hours · refused if Capacity or Supply breaks down.</div><a href="register.html#cvfix">register.html#cvfix →</a></div>
-    <div class="offer"><h3>The Self-Learn Pack</h3><div class="price">₦35,000</div><div class="fit">Needs Stages 1–4, cannot sit a live cohort, will work alone.</div><div class="limit">No certificate · ₦35,000 credited if they upgrade to Foundation within 90 days.</div><a href="selflearn/">selflearn/ →</a></div>
-    <div class="offer"><h3>Career Development — Self-Study<span class="new">New</span></h3><div class="price">₦50,000</div><div class="fit">Capacity gap: needs the skills of the role itself. One track of their choice at The Mentorine School.</div><div class="limit">90 days from activation · paid by transfer · Registrar issues the code. Not ERJ's remote-job process.</div><a href="register.html#careerdev">register.html#careerdev →</a></div>
-    <div class="offer"><h3>The Job Hunter</h3><div class="price">₦15,000</div><div class="fit">Already employable and represented; time is the gap.</div><div class="limit">Up to 25 roles scored · 3 packs · Hunt Month ₦50,000 · the buyer submits · no offer guarantee.</div><a href="jobhunter/">jobhunter/ →</a></div>
-    <div class="offer"><h3>Single Stage</h3><div class="price">from ₦70,000</div><div class="fit">One build weak point needs depth; the full programme would be unnecessary.</div><div class="limit">Stage 1 ₦70,000 · Stage 2 ₦130,000 · Stage 3 ₦70,000 · Stage 4 ₦100,000 · no Mentorine bonus.</div><a href="register.html#stage1">register.html →</a></div>
-    <div class="offer hot"><h3>Foundation Training · Cohort 12</h3><div class="price">₦250,000</div><div class="bonus">+ 90 days of one career track at The Mentorine School, included (₦150,000 standard value). Assessment decides how it is used.</div><div class="fit">Weak Point spans more than one part; needs the full live Stages 1–4 build, marking and support.</div><div class="limit">Instalments from Mon 5 Oct, balanced by Sat 24 Oct. Then full payment only until Sat 31 Oct, 8 PM WAT. Begins Mon 2 Nov, 8 PM WAT.</div><a href="earlybird.html">earlybird.html →</a></div>
-    <div class="offer"><h3>The Inner Circle</h3><div class="price">₦250,000 a year</div><div class="fit">Foundation Training graduate who wants a person working their search for twelve months.</div><div class="limit">Alumni only · graduation confirmed before payment.</div><a href="innercircle/">innercircle/ →</a></div>
-    <div class="offer"><h3>Done-For-You Placement Engine</h3><div class="price">₦300,000</div><div class="fit">Assets ready; wants ERJ to run sourcing and applications for a month.</div><div class="limit">Execution, never an employer-timing guarantee.</div><a href="jobapplication/">jobapplication/ →</a></div>
-    <div class="offer"><h3>Get Your Dream Job Offer</h3><div class="price">₦500,000</div><div class="bonus">Contains Foundation Training, so the Mentorine track is included.</div><div class="fit">Needs the full build and the placement engine; wants one decision.</div><div class="limit">Persistence and execution, never a job-by-date guarantee.</div><a href="jobapplication/">jobapplication/ →</a></div>
-  </div>
-  <div class="alert"><b>Cohort 12 payment language</b>The fee is ₦250,000 and never changes. The window (5 to 24 October) changes the payment timing, not the price. Never call the Self-Learn credit a discount. Never reintroduce the retired ₦50,000 reservation script.</div>
-</section>
-<section data-tab="Follow-up">
-  <div class="lab">Warm leads before new traffic</div>
-  <h2>Re-open the conversations we already paid for</h2>
-  <p class="sub">One useful message, one diagnostic ask, one follow-up when there is a real next step.</p>
-  <details class="rep" open><summary><span class="q">Foundation-fit lead · the window opens</span><span class="tag">Copy</span></summary><div class="body"><pre id="f-window">Your audit shows you need the full build, not one tool or one service.
-
-Cohort 12 instalments open tomorrow, Monday 5 October. Foundation Training is ₦250,000 and that doesn't change. From the 5th you can start with any amount and finish paying by Saturday 24 October. After that it's full payment only until enrolment closes, Saturday 31 October at 8 PM WAT. Classes begin Monday 2 November.
-
-It also includes 90 days of one career track at The Mentorine School, at no extra cost.
-
-The page: everythingremotejob.com/earlybird.html
-Say YES and I'll walk you through the first payment.</pre><button class="copy" data-t="f-window">Copy</button></div></details>
-  <details class="rep"><summary><span class="q">Capacity gap · route honestly</span><span class="tag">Copy</span></summary><div class="body"><pre id="f-capacity">Thanks for doing the Capacity Audit honestly. It says the skill for [role] isn't there yet, so a CV rewrite or Foundation Training would be the wrong spend today.
-
-Two honest routes:
-1. Free: the resources at everythingremotejob.com/free.html.
-2. Structured: Career Development — Self-Study (₦50,000), one track at The Mentorine School for 90 days, with a roadmap, courses and practical work.
-
-Scan again when you've built it, and we'll take it from there.</pre><button class="copy" data-t="f-capacity">Copy</button></div></details>
-  <details class="rep"><summary><span class="q">Cohort 11 enquirer who didn't enrol</span><span class="tag">Copy</span></summary><div class="body"><pre id="f-c11">Hi [Name] — you asked about the last cohort and the timing didn't work out.
-
-Cohort 12 begins Monday 2 November. Before I say anything about it, send me your target role and your last 30 days of applications and interviews. If Foundation is still the right door, I'll show you the instalment route that opens tomorrow. If it isn't, I'll tell you what is.</pre><button class="copy" data-t="f-c11">Copy</button></div></details>
-  <details class="rep"><summary><span class="q">Previous AUDIT started but incomplete</span><span class="tag">Copy</span></summary><div class="body"><pre id="f-incomplete">Hi [Name] — we started your AUDIT but never finished, so you never got a proper verdict.
-
-Send the missing [CV / LinkedIn / target role / 30-day numbers] and I'll give you the weak point and one next action. No need to restart.</pre><button class="copy" data-t="f-incomplete">Copy</button></div></details>
-  <details class="rep"><summary><span class="q">Diagnosed, qualified, but no decision</span><span class="tag">Copy</span></summary><div class="body"><pre id="f-decision">Hi [Name] — closing the loop on [PRODUCT].
-
-I prescribed it because [one sentence tied to their weak point]. Price [₦], limit [limit].
-
-I only need a clean answer: YES, NOT NOW, or NOT THIS PRODUCT.</pre><button class="copy" data-t="f-decision">Copy</button></div></details>
-  <details class="rep"><summary><span class="q">Payment link sent · no payment yet</span><span class="tag">Copy</span></summary><div class="body"><pre id="f-pay">Hi [Name] — just checking: did the payment page work for you?
-
-If something broke, tell me what you saw and I'll help. If you've decided not today, say NOT NOW and I'll close the loop.</pre><button class="copy" data-t="f-pay">Copy</button></div></details>
-</section>
-<section data-tab="Content">
-  <div class="lab">Feed → private diagnosis</div>
-  <h2>Content that creates AUDIT conversations</h2>
-  <p class="sub">Every post routes to AUDIT. Prices and deadlines go only to qualified leads, never as the headline of every post.</p>
-  <details class="rep" open><summary><span class="q">Launch eve · channel and status (Sun 4 Oct)</span><span class="tag">Copy</span></summary><div class="body"><pre id="c-eve">Tomorrow, Monday 5 October, the Cohort 12 instalment window opens.
-
-Before you think about any of that: do you know which part of your job search is failing?
-
-Capacity. Supply. Representation. Aim. Conversion.
-
-Send AUDIT privately with your target role, your last 30 days of applications and interviews, and your CV or LinkedIn. We'll tell you the earliest weak point first, and whether you need us at all.</pre><button class="copy" data-t="c-eve">Copy</button></div></details>
-  <details class="rep"><summary><span class="q">WhatsApp channel · after a job batch</span><span class="tag">Copy</span></summary><div class="body"><pre id="c-channel">You may not need more job links.
-
-If applications keep producing silence, "not eligible" or interviews that go nowhere, one part of the search is failing first.
-
-Capacity. Supply. Representation. Aim. Conversion.
-
-Send AUDIT privately with your role, last 30 days of applications and interviews, and your CV or LinkedIn. You get the earliest weak point and one next action before anything paid.</pre><button class="copy" data-t="c-channel">Copy</button></div></details>
-  <details class="rep"><summary><span class="q">LinkedIn / Facebook diagnostic post</span><span class="tag">Copy</span></summary><div class="body"><pre id="c-social">If 30 applications produced 0 interviews, "apply more" isn't a strategy yet.
-
-A remote job search breaks at one of five parts:
-
-01 Capacity — the skill for the role isn't there yet.
-02 Supply — you aren't seeing enough roles you can actually take.
-03 Representation — the employer can't read your value from the CV or LinkedIn.
-04 Aim — you're applying where your location, level or evidence doesn't fit.
-05 Conversion — interviews happen, offers don't.
-
-Fixing all five at once is the mistake. Find the earliest weak point first.
-
-Free, 90 seconds: everythingremotejob.com/diagnose/
-Or send AUDIT on WhatsApp and we'll look at yours.</pre><button class="copy" data-t="c-social">Copy</button></div></details>
-  <details class="rep"><summary><span class="q">Qualified Foundation lead · window closing (from 20 Oct)</span><span class="tag">Copy</span></summary><div class="body"><pre id="c-deadline">The Cohort 12 instalment window closes Saturday 24 October.
-
-Foundation Training stays ₦250,000. Until the 24th you can still start with any amount and pay it down. After that it's full payment only until enrolment closes, Saturday 31 October at 8 PM WAT. Cohort 12 begins Monday 2 November.
-
-Use only after we've confirmed Foundation is your right door.</pre><button class="copy" data-t="c-deadline">Copy</button></div></details>
-</section>
-<section data-tab="Site">
-  <div class="lab">What changed on the website · 1–4 October</div>
-  <h2>Every page, and what to send it for</h2>
-  <p class="sub">The whole site was upgraded this week: livelier design on every page, new photos, the Mentorine partnership, shorter introductions, and a permanent fix for the blank-screen glitch. Open each link before you send it.</p>
-  <ul class="pg">
-    <li><div><b>Early-bird page</b><span class="new">Today</span><p>The first outreach page. Instalments 5–24 October, fee unchanged. Send only to Foundation-fit leads.</p></div><a class="go" href="earlybird.html">Open →</a></li>
-    <li><div><b>Home</b><span class="new">Upgraded</span><p>Offer stack in the hero (Cohort 12 with live countdown, free diagnosis, start from ₦5,000), advantage ticker, lit routes.</p></div><a class="go" href="index.html">Open →</a></li>
-    <li><div><b>Start Here</b><p>Seven situations, one door each. The default page for cold traffic.</p></div><a class="go" href="starthere.html">Open →</a></li>
-    <li><div><b>Foundation Training</b><span class="new">Upgraded</span><p>Bonus spotlight (₦150,000 Mentorine track, included), stage images, activation steps and FAQ.</p></div><a class="go" href="foundationtraining/">Open →</a></li>
-    <li><div><b>Store</b><span class="new">New door</span><p>Fifteen doors. Career Development — Self-Study with a track picker; the track travels into the basket and the WhatsApp message.</p></div><a class="go" href="register.html">Open →</a></li>
-    <li><div><b>Free diagnosis</b><p>Five questions, 90 seconds. The answer to "where do I start?"</p></div><a class="go" href="diagnose/">Open →</a></li>
-    <li><div><b>Capacity Audit</b><span class="new">Updated</span><p>Below the threshold it now offers the matching Mentorine track (free route first).</p></div><a class="go" href="capacityscan/">Open →</a></li>
-    <li><div><b>CV Scan · CV Engine</b><p>Free scan; the gated engine's PDF export, import and layout were fixed on 1 October.</p></div><a class="go" href="cvscan/">Open →</a></li>
-    <li><div><b>Free For You · Inner Circle · Done For You · Clinic · Book</b><p>New photos and shorter introductions.</p></div><a class="go" href="free.html">Open →</a></li>
-    <li><div><b>Participant dashboard</b><p>Shows the included Mentorine access and how to claim it.</p></div><a class="go" href="dashboard.html">Open →</a></li>
+<section data-tab="Launchpad">
+  <div class="lab">The Saturday run sheet</div>
+  <h2>Before, during and after</h2>
+  <p class="sub">The page: <a href="masterclass/">everythingremotejob.com/masterclass/</a>. Step 01 registers on Zoom (recurring meeting, personal join link). Step 02 uploads the CV on Tally.</p>
+  <ul class="plan">
+    <li><time>Fri 6 PM</time><div><b>Match.</b> Every uploaded CV to a registrant, by email. Note who sent no CV and who said "do not show my CV".</div></li>
+    <li><time>Fri night</time><div><b>Read once.</b> One line per CV: the earliest weak part (Capacity, Supply, Representation, Aim, Conversion), the one thing to fix first, and the door that fits if any.</div></li>
+    <li><time>Sat 3:30</time><div><b>Open the room.</b> Waiting room on. Screen share ready. The order of turns set, shortest fixes first.</div></li>
+    <li><time>4:00</time><div><b>The map, in a few minutes.</b> The five parts, Capacity first, so everyone knows what we look for.</div></li>
+    <li><time>4:10</time><div><b>Turns.</b> One person at a time. Say what an employer abroad sees, the weakest part, and the one thing to fix. Short turns so everyone gets one.</div></li>
+    <li><time>End</time><div><b>The offer, once.</b> Use the script below. Name the next Foundation gate if one is real. Then stop selling.</div></li>
+    <li><time>Sat night</time><div><b>Record.</b> Every attendee: role, weak part, the four questions if answered, door named, decision. Then the after-session message.</div></li>
   </ul>
   <div class="rule"></div>
-  <div class="lab">The new photos</div>
-  <div class="photos">
-    <figure><img src="photo-seyi-suit.webp" alt="" loading="lazy"/><figcaption>suit · home, Inner Circle</figcaption></figure>
-    <figure><img src="photo-seyi-welcome.webp" alt="" loading="lazy"/><figcaption>welcome · early-bird, launch</figcaption></figure>
-    <figure><img src="photo-seyi-invite.webp" alt="" loading="lazy"/><figcaption>invite · Start Here, home, free</figcaption></figure>
-    <figure><img src="photo-seyi-thumbsup.webp" alt="" loading="lazy"/><figcaption>thumbs-up · Foundation, early-bird</figcaption></figure>
-    <figure><img src="photo-seyi-typing.webp" alt="" loading="lazy"/><figcaption>typing · Done For You, free</figcaption></figure>
-    <figure><img src="photo-seyi-headset.webp" alt="" loading="lazy"/><figcaption>headset · Clinic, free</figcaption></figure>
-    <figure><img src="photo-seyi-desk.webp" alt="" loading="lazy"/><figcaption>desk · free</figcaption></figure>
-  </div>
+  <details class="rep" open><summary><span class="q">Friday reminder · to every registrant</span><span class="tag">Copy</span></summary><div class="body"><pre id="lp-fri">Hi [first name], tomorrow at 4:00 PM WAT we go through CVs live on Zoom.
+
+If you haven't sent yours yet, send it as it is, before 6 PM today:
+https://tally.so/r/bZjy02
+
+Use the personal join link in your Zoom confirmation email. We don't send a general link.</pre><button class="copy" data-t="lp-fri">Copy</button></div></details>
+  <details class="rep"><summary><span class="q">Saturday 3:45 PM nudge</span><span class="tag">Copy</span></summary><div class="body"><pre id="lp-nudge">We start in 15 minutes. Open your Zoom confirmation email and tap your personal join link. Camera optional.</pre><button class="copy" data-t="lp-nudge">Copy</button></div></details>
+  <details class="rep"><summary><span class="q">The offer at the end · say it once</span><span class="tag">Read aloud</span></summary><div class="body"><pre id="lp-offer">Before you go. Most of you saw today that the CV is only part of it. The one thing to fix first is yours to do this week, free. Come back next Saturday and show us.
+
+If what you saw today is bigger than one fix, that is what Foundation Training is for: twenty days, live, at the hour you choose, your work marked by a person, and a private audit of your search by your facilitator. It is ₦250,000. [Instalments are open until Sunday 22 November, any amount holds a seat.] Cohort 13 begins Monday 30 November.
+
+If that's you, message FOUNDATION on WhatsApp tonight and I'll answer you personally. If it isn't, that's fine. I'd rather tell you that than sell you the wrong thing.</pre><button class="copy" data-t="lp-offer">Copy</button></div></details>
+  <details class="rep"><summary><span class="q">After the session · attendee who passed the four questions</span><span class="tag">Copy</span></summary><div class="body"><pre id="lp-after">Hi [first name], thank you for coming today.
+
+Your one thing to fix first: [the fix].
+
+From what I saw, [one sentence on why Foundation fits, tied to their CV]. It's ₦250,000, and [instalments are open until Sun 22 Nov, any amount holds a seat / Cohort 13 begins Mon 30 Nov].
+
+Shall I send the payment details? YES, NOT NOW or NOT THIS PRODUCT are all fine answers.</pre><button class="copy" data-t="lp-after">Copy</button></div></details>
+  <details class="rep"><summary><span class="q">After the session · attendee, free fix is enough</span><span class="tag">Copy</span></summary><div class="body"><pre id="lp-free">Hi [first name], thank you for coming today.
+
+Your one thing to fix first: [the fix]. You don't need to pay us for this. Do it this week and bring the new version next Saturday, and we'll look again.</pre><button class="copy" data-t="lp-free">Copy</button></div></details>
+  <details class="rep"><summary><span class="q">Registered, didn't come</span><span class="tag">Copy</span></summary><div class="body"><pre id="lp-noshow">Hi [first name], we missed you today. It runs every Saturday at 4:00 PM WAT, and your registration still works. Same link, next Saturday.</pre><button class="copy" data-t="lp-noshow">Copy</button></div></details>
 </section>
+
+<section data-tab="Foundation">
+  <div class="lab">The main offer</div>
+  <h2>Remote Job Foundation Training · ₦250,000</h2>
+  <p class="sub">Offer it only after the four questions. It is for someone with real work behind them, a target, a date and the means to pay.</p>
+  <div class="grid">
+    <div class="card"><h3>What they get</h3><p>Stages 1–4 live over twenty training days · sixteen submittable assets · work marked by a person · the certificate · 90 days of one Mentorine career track · a private AUDIT of their search by their facilitator · Inner Circle eligibility after graduation.</p></div>
+    <div class="card"><h3>What it is not</h3><p>Not a job guarantee, not a date, not a salary. Not a whole new profession (that is Capacity: Career Development first). Not for anyone paying with rent or school fees.</p></div>
+    <div class="card"><h3>The arithmetic</h3><p>The four stages one by one come to ₦370,000. Foundation is ₦250,000 with teaching, marking and the certificate. Self-Learn buyers within 90 days pay ₦215,000 (a credit, never a discount).</p></div>
+    <div class="card"><h3>The private AUDIT</h3><p>Done by the participant's facilitator: their target role, recent applications and interviews, and their CV, ending with the first part to fix. Only for Foundation and above.</p></div>
+  </div>
+  <div class="rule"></div>
+  <div class="lab">The four questions</div>
+  <ol class="sub" style="margin:0 0 1rem;padding-left:1.2rem">
+    <li>What do you do now, and for how long?</li>
+    <li>How are you funding yourself right now?</li>
+    <li>What is your date?</li>
+    <li>If I show you exactly what to fix and what it costs, would you start this week?</li>
+  </ol>
+  <p class="sub">Three clear answers: the offer. Two: one free fix, next Saturday, and a review date. One or none: the free layer, and no more sales time.</p>
+  <details class="rep" open><summary><span class="q">FOUNDATION reply · first message</span><span class="tag">Copy</span></summary><div class="body"><pre id="ft-first">Hi [first name], thanks for messaging. Before I say anything about the programme, four quick questions so I don't send you the wrong thing:
+
+1. What work do you do now, and for how long?
+2. How are you funding yourself at the moment?
+3. Is there a date pushing you, like an interview or a contract ending?
+4. If I showed you exactly what to fix and what it costs, would you start this week?</pre><button class="copy" data-t="ft-first">Copy</button></div></details>
+  <details class="rep"><summary><span class="q">The offer · qualified lead</span><span class="tag">Copy</span></summary><div class="body"><pre id="ft-offer">From what you've told me, Foundation Training is the right door.
+
+It fixes: [their weak part, in their words].
+What you get: twenty days live at [their class time], your work marked, the certificate, a Mentorine track, and a private audit of your search by your facilitator.
+Price: ₦250,000. [Instalments until Sun 22 Nov: any amount holds your seat.]
+It does not include: a job guarantee or a date.
+Cohort 13 begins Mon 30 Nov, 8:00 PM WAT.
+
+Say YES and I'll send the payment route.</pre><button class="copy" data-t="ft-offer">Copy</button></div></details>
+  <details class="rep"><summary><span class="q">"It's too expensive"</span><span class="tag">Copy</span></summary><div class="body"><pre id="ft-price">I understand. Which is it: you don't have it now, you have it but not in one go, or you're not sure it will work for you?
+
+[Not in one go:] Instalments are open until Sunday 22 November. Any amount holds your seat, and the fee stays ₦250,000.
+[Not now:] Cohort 14 begins Monday 4 January 2027. Shall I note that date for you?
+[Not sure:] Come to Saturday's Launchpad first and watch how we read a CV. Then decide.</pre><button class="copy" data-t="ft-price">Copy</button></div></details>
+  <details class="rep"><summary><span class="q">"Can I pay after I get the job?"</span><span class="tag">Copy</span></summary><div class="body"><pre id="ft-after">I understand why you'd ask. The fee pays for the twenty days of work we do with you, which you'll see, not for the hiring, which the employer decides. If you'd like to start smaller, [smallest suitable door] is [price].</pre><button class="copy" data-t="ft-after">Copy</button></div></details>
+</section>
+
+<section data-tab="Replies">
+  <div class="lab">For the official line</div>
+  <h2>The replies you'll need most</h2>
+  <p class="sub">Answer within the hour in the reply windows (6:30–9:30 AM, 7:00–10:00 PM). One question per message, never four, except the FOUNDATION reply.</p>
+  <details class="rep" open><summary><span class="q">LAUNCHPAD</span><span class="tag">Copy</span></summary><div class="body"><pre id="r-lp">Welcome 👋 The Launchpad is free, live on Zoom, every Saturday at 4:00 PM WAT.
+
+Step 1: register (this is how you get your personal join link)
+https://everythingremotejob.com/masterclass/
+
+Step 2: send your CV, as it is
+https://tally.so/r/bZjy02
+
+One question so I can prepare: what work do you do now, and what remote role would you want?</pre><button class="copy" data-t="r-lp">Copy</button></div></details>
+  <details class="rep"><summary><span class="q">AUDIT, or "can you look at my CV?" · not in Foundation</span><span class="tag">Copy</span></summary><div class="body"><pre id="r-audit">Thanks for reaching out. We now audit CVs live at the Launchpad: free, every Saturday at 4:00 PM WAT on Zoom. Register here and send your CV through the same page before Saturday:
+https://everythingremotejob.com/masterclass/
+
+We'll go through yours and tell you the one thing to fix first.</pre><button class="copy" data-t="r-audit">Copy</button></div></details>
+  <details class="rep"><summary><span class="q">AUDIT already under way before 14 Nov</span><span class="tag">Copy</span></summary><div class="body"><pre id="r-mid">Hi [first name], I haven't forgotten your audit. Send the missing [CV / target role / last 30 days of applications and interviews] and I'll finish it here.
+
+From now on we audit CVs live at the Launchpad on Saturdays, so this is the last private one outside our programmes.</pre><button class="copy" data-t="r-mid">Copy</button></div></details>
+  <details class="rep"><summary><span class="q">From a job post · "do I qualify?"</span><span class="tag">Copy</span></summary><div class="body"><pre id="r-job">Good question to ask before applying. Bring the job link and your CV to Saturday's Launchpad, 4:00 PM WAT on Zoom, and we'll check the fit live:
+https://everythingremotejob.com/masterclass/</pre><button class="copy" data-t="r-job">Copy</button></div></details>
+  <details class="rep"><summary><span class="q">Interview in the next 14 days</span><span class="tag">Copy</span></summary><div class="body"><pre id="r-sprint">Congratulations. With an interview on [date], this one matters more than new applications. The Interview Sprint is two one-to-one sessions before your date: your answers from your own work, a full mock, and the money question. ₦40,000. When is it?</pre><button class="copy" data-t="r-sprint">Copy</button></div></details>
+  <details class="rep"><summary><span class="q">"Is the Launchpad really free?"</span><span class="tag">Copy</span></summary><div class="body"><pre id="r-free">Yes. Nothing to pay to take part, and no group to join afterwards. If a paid ERJ service is truly right for you, we'll name it at the end and say what it doesn't do. If none is, we'll tell you that too.</pre><button class="copy" data-t="r-free">Copy</button></div></details>
+</section>
+
+<section data-tab="Doors">
+  <div class="lab">After diagnosis only · one door each</div>
+  <h2>The store, and when each door fits</h2>
+  <p class="sub">Sixteen products. Never send the list; name one door, its price and its limit.</p>
+  <div class="grid">
+    <div class="offer hot"><h3>Remote Job Foundation Training</h3><div class="price">₦250,000</div><div class="bonus">Includes a Mentorine track and a private AUDIT by the facilitator.</div><div class="fit">More than one part needs building, with marking. Real work behind them.</div><div class="limit">No job guarantee · not a new profession.</div><a href="foundationtraining/">foundationtraining/</a></div>
+    <div class="offer"><h3>The Job Hunter</h3><div class="price">₦15,000 · ₦50,000 Hunt Month</div><div class="fit">Can do the work, has a CV; time is the gap.</div><div class="limit">Up to 25 roles scored · top 3 packs in 48 hours · the buyer presses Submit.</div><a href="jobhunter/">jobhunter/</a></div>
+    <div class="offer"><h3>The Interview Sprint</h3><div class="price">₦40,000</div><div class="fit">Interview, test or trial task booked in the next two weeks.</div><div class="limit">Two 60-minute sessions · book at least three days before.</div><a href="interviewsprint/">interviewsprint/</a></div>
+    <div class="offer"><h3>CV Fix — one CV, one field</h3><div class="price">₦30,000</div><div class="fit">Can do the work, has evidence; Representation is the first problem.</div><div class="limit">One CV · 72 hours · two revision rounds.</div><a href="register.html#cvfix">register.html#cvfix</a></div>
+    <div class="offer"><h3>The Self-Learn Pack</h3><div class="price">₦35,000</div><div class="fit">Needs Stages 1–4, will genuinely work alone.</div><div class="limit">No marking, certificate or private AUDIT · ₦35,000 credit to Foundation within 90 days.</div><a href="selflearn/">selflearn/</a></div>
+    <div class="offer"><h3>Career Development — Self-Study</h3><div class="price">₦50,000</div><div class="fit">Capacity gap: the skill of the role itself is missing.</div><div class="limit">One Mentorine track · 90 days from activation.</div><a href="register.html#careerdev">register.html#careerdev</a></div>
+    <div class="offer"><h3>Single stage</h3><div class="price">from ₦70,000</div><div class="fit">One specific build gap, already diagnosed.</div><div class="limit">Stage 1 ₦70,000 · Stage 2 ₦130,000 · Stage 3 ₦70,000 · Stage 4 ₦100,000. Three or four stages means Foundation.</div><a href="register.html">register.html</a></div>
+    <div class="offer"><h3>The Inner Circle</h3><div class="price">₦250,000 a year</div><div class="fit">Foundation graduate who wants a person beside the search for twelve months.</div><div class="limit">Graduation confirmed before payment · no auto-renewal.</div><a href="innercircle/">innercircle/</a></div>
+    <div class="offer"><h3>Done-For-You Placement Engine</h3><div class="price">₦300,000</div><div class="fit">Can already do the work; wants the search run for them.</div><div class="limit">Includes a private AUDIT · limited places · no employer-timing guarantee.</div><a href="jobapplication/">jobapplication/</a></div>
+    <div class="offer"><h3>Get Your Dream Job Offer</h3><div class="price">₦500,000</div><div class="fit">Needs the full build and then the placement engine; one decision.</div><div class="limit">Foundation first, then the engine · never the first thing a stranger hears.</div><a href="jobapplication/">jobapplication/</a></div>
+    <div class="offer"><h3>Books and the CV Engine</h3><div class="price">₦5,000 – ₦15,000</div><div class="fit">Google Search book (Supply) · From Intent to Offer (broad) · CV Engine ₦5,000/month (the document only).</div><div class="limit">Never offered just to collect a smaller payment.</div><a href="register.html">register.html</a></div>
+  </div>
+  <div class="alert"><b>Payment language</b>Paystack for Foundation, stages and the engines. Transfer to Business Play Ltd, GTBank 0761646755, with the receipt on WhatsApp, for the Job Hunter, Sprint, CV Fix and Career Development. Never a personal account. The Self-Learn credit is a credit, never a discount.</div>
+</section>
+
 <section data-tab="Closeout">
-  <div class="lab">Before you finish today</div>
-  <h2>What we learn from today</h2>
-  <p class="sub">Complete at the end of the day; notes save on this browser.</p>
+  <div class="lab">Before you sleep</div>
+  <h2>What today taught us</h2>
+  <p class="sub">Notes save on this browser.</p>
   <ul class="checks" id="eodChecks">
-    <li><input type="checkbox" data-check="1"><span><b>Every active warm lead has a next status.</b> No thread left at "interested".</span></li>
-    <li><input type="checkbox" data-check="2"><span><b>Every qualified lead has one prescribed door.</b> No one got the catalogue.</span></li>
-    <li><input type="checkbox" data-check="3"><span><b>Every payment promise has a result.</b> Paid, failed technically, or explicitly not now.</span></li>
-    <li><input type="checkbox" data-check="4"><span><b>Instalment payers are recorded</b> with amount paid and balance due by 24 October.</span></li>
-    <li><input type="checkbox" data-check="5"><span><b>Top three objections are recorded.</b> They become tomorrow's content and sales fixes.</span></li>
+    <li><input type="checkbox" data-check="1"><span><b>Every LAUNCHPAD reply got the two links and one question.</b></span></li>
+    <li><input type="checkbox" data-check="2"><span><b>No private CV review went to anyone outside Foundation and above.</b></span></li>
+    <li><input type="checkbox" data-check="3"><span><b>Every qualified person got one priced door</b> and a YES, NOT NOW (with a date) or NOT THIS PRODUCT.</span></li>
+    <li><input type="checkbox" data-check="4"><span><b>Seats and instalments recorded</b> with amount paid and balance due.</span></li>
+    <li><input type="checkbox" data-check="5"><span><b>Reasons for "no" written in their own words.</b></span></li>
   </ul>
   <div class="rule"></div>
-  <label class="kicker" for="eodNotes">End-of-day diagnosis</label>
-  <textarea class="notes" id="eodNotes" placeholder="What broke most often; objections; which door was prescribed most; payments and instalments; what changes tomorrow."></textarea>
+  <label class="kicker" for="eodNotes">Notes</label>
+  <textarea class="notes" id="eodNotes" placeholder="Who registered, who came, what the CVs had in common, which door was named, who paid, what to change next Saturday."></textarea>
   <div class="save-state">Saved automatically on this browser.</div>
-  <div class="alert"><b>The question at 8:30 PM</b>Did we create enough completed diagnoses and clean decisions to deserve a sale? If not, tomorrow's fix is the stage with the biggest drop, not "post more".</div>
+  <div class="alert"><b>The question on Saturday night</b>Who heard a priced offer today, who paid, and why did the others not? If the answer is "no one heard an offer", that is next week's fix.</div>
 </section>
-<footer><div>ERJ Conversion Command Centre · internal operating surface · updated 4 October 2026.</div><div style="margin-top:.35rem">Cohort 12: instalments 5–24 Oct · enrolment closes Sat 31 Oct, 8 PM WAT · begins Mon 2 Nov, 8 PM WAT. Prices follow erj-config.js canon.</div></footer>
+
+<footer><div>ERJ Command Centre · internal · updated 14 November 2026. Private page: not linked from the site, not indexed. Nothing here is security; anyone with the link can open it.</div></footer>
 </main>
 <div id="toast">Copied</div>
 <script>
 const secs=[...document.querySelectorAll('section[data-tab]')],tabs=document.getElementById('tabs');
-secs.forEach((s,i)=>{const b=document.createElement('button');b.textContent=s.dataset.tab;b.onclick=()=>{secs.forEach(x=>x.classList.add('hide'));s.classList.remove('hide');[...tabs.children].forEach(x=>x.classList.remove('on'));b.classList.add('on');window.scrollTo({top:0,behavior:'smooth'})};tabs.appendChild(b);if(i>0)s.classList.add('hide');else b.classList.add('on')});
+function show(i){secs.forEach(x=>x.classList.add('hide'));secs[i].classList.remove('hide');[...tabs.children].forEach((x,j)=>x.classList.toggle('on',j===i));try{localStorage.setItem('erj-cc-tab',String(i))}catch(e){}}
+secs.forEach((s,i)=>{const b=document.createElement('button');b.type='button';b.textContent=s.dataset.tab;b.onclick=()=>show(i);tabs.appendChild(b)});
+let startTab=0;try{startTab=Math.min(secs.length-1,Number(localStorage.getItem('erj-cc-tab'))||0)}catch(e){}
+show(startTab);
 const toast=document.getElementById('toast');let tt;function flash(msg){toast.textContent=msg;toast.classList.add('up');clearTimeout(tt);tt=setTimeout(()=>toast.classList.remove('up'),1450)}
-document.querySelectorAll('.copy').forEach(b=>b.onclick=async()=>{const txt=document.getElementById(b.dataset.t).innerText;try{await navigator.clipboard.writeText(txt)}catch(e){const ta=document.createElement('textarea');ta.value=txt;document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove()}b.classList.add('done');b.textContent='Copied';flash('Copied — personalise before sending');setTimeout(()=>{b.classList.remove('done');b.textContent='Copy'},1800)});
-const KEY='erj-command-centre-cohort-12';let state={};try{state=JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){}
+document.querySelectorAll('.copy').forEach(b=>b.onclick=async()=>{const txt=document.getElementById(b.dataset.t).innerText;try{await navigator.clipboard.writeText(txt);flash('Copied')}catch(e){const r=document.createRange();r.selectNodeContents(document.getElementById(b.dataset.t));const s=getSelection();s.removeAllRanges();s.addRange(r);flash('Selected · press copy')}});
+
+/* Lagos time is UTC+1 all year. */
+const WAT=60*60*1000;
+function lagosNow(){return new Date(Date.now()+WAT)} /* read with getUTC* */
+function nextLaunchpad(){
+  const n=lagosNow(),d=new Date(Date.UTC(n.getUTCFullYear(),n.getUTCMonth(),n.getUTCDate(),16,0,0));
+  let add=(6-n.getUTCDay()+7)%7;
+  if(add===0&&n.getUTCHours()>=18)add=7;
+  d.setUTCDate(d.getUTCDate()+add);
+  return new Date(d.getTime()-WAT); /* back to a real instant */
+}
+/* The week's scoreboard is keyed to the Saturday it leads to. */
+const lp=nextLaunchpad(),lpL=new Date(lp.getTime()+WAT);
+const WEEK=lpL.getUTCFullYear()+'-'+String(lpL.getUTCMonth()+1).padStart(2,'0')+'-'+String(lpL.getUTCDate()).padStart(2,'0');
+const MONTHS=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+document.getElementById('wkLabel').textContent='Sat '+lpL.getUTCDate()+' '+MONTHS[lpL.getUTCMonth()];
+const KEY='erj-command-centre-week-'+WEEK;let state={};try{state=JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){}
 function save(){try{localStorage.setItem(KEY,JSON.stringify(state))}catch(e){}}
-document.querySelectorAll('.score[data-key]').forEach(card=>{const key=card.dataset.key,num=card.querySelector('.num');let v=Number(state[key]||0);num.textContent=v;card.querySelectorAll('button[data-delta]').forEach(btn=>btn.onclick=()=>{v=Math.max(0,v+Number(btn.dataset.delta));state[key]=v;num.textContent=v;save()})});
+document.querySelectorAll('.score[data-key]').forEach(card=>{const key=card.dataset.key,num=card.querySelector('.num');let v=Number(state[key]||0);num.textContent=v;card.querySelectorAll('button[data-delta]').forEach(btn=>btn.onclick=()=>{v=Math.max(0,v+Number(btn.dataset.delta));num.textContent=v;state[key]=v;save()})});
 const revenue=document.getElementById('revenue');revenue.value=state.revenue||'';revenue.addEventListener('input',()=>{state.revenue=revenue.value;save()});
-const notes=document.getElementById('eodNotes');notes.value=state.notes||'';notes.addEventListener('input',()=>{state.notes=notes.value;save()});
-document.querySelectorAll('[data-check]').forEach(c=>{c.checked=!!state['check'+c.dataset.check];c.addEventListener('change',()=>{state['check'+c.dataset.check]=c.checked;save()})});
-/* Rolling gates: the header always counts to the next Cohort 12 event. */
+const DAYKEY='erj-command-centre-day-'+new Date(Date.now()+WAT).toISOString().slice(0,10);let day={};try{day=JSON.parse(localStorage.getItem(DAYKEY)||'{}')}catch(e){}
+function saveDay(){try{localStorage.setItem(DAYKEY,JSON.stringify(day))}catch(e){}}
+const notes=document.getElementById('eodNotes');notes.value=day.notes||'';notes.addEventListener('input',()=>{day.notes=notes.value;saveDay()});
+document.querySelectorAll('[data-check]').forEach(c=>{c.checked=!!day['check'+c.dataset.check];c.addEventListener('change',()=>{day['check'+c.dataset.check]=c.checked;saveDay()})});
+
 const GATES=[
-  {t:'2026-10-05T00:00:00+01:00',label:'until the <b>instalment window opens</b><br/>Mon 5 Oct · fee stays ₦250,000'},
-  {t:'2026-10-24T23:59:00+01:00',label:'until the <b>instalment window closes</b><br/>Sat 24 Oct · 11:59 PM WAT · then full payment only'},
-  {t:'2026-10-31T20:00:00+01:00',label:'until <b>enrolment closes</b><br/>Sat 31 Oct · 8:00 PM WAT'},
-  {t:'2026-11-02T20:00:00+01:00',label:'until <b>Cohort 12 begins</b><br/>Mon 2 Nov · 8:00 PM WAT'}
+  {t:'2026-11-22T23:59:00+01:00',label:'Instalments close · Sun 22 Nov, 11:59 PM'},
+  {t:'2026-11-29T20:00:00+01:00',label:'Cohort 13 enrolment closes · Sun 29 Nov, 8 PM'},
+  {t:'2026-11-30T20:00:00+01:00',label:'Cohort 13 begins · Mon 30 Nov, 8 PM'},
+  {t:'2027-01-03T20:00:00+01:00',label:'Cohort 14 enrolment closes · Sun 3 Jan, 8 PM'},
+  {t:'2027-01-04T20:00:00+01:00',label:'Cohort 14 begins · Mon 4 Jan, 8 PM'}
 ];
-function tick(){const now=Date.now(),g=GATES.find(x=>new Date(x.t).getTime()>now),cd=document.getElementById('cd');
-  if(!g){cd.innerHTML='<div class="closed">Cohort 12 is under way.</div>';return}
-  const gap=new Date(g.t).getTime()-now,d=Math.floor(gap/864e5),h=Math.floor(gap%864e5/36e5),m=Math.floor(gap%36e5/6e4);
-  document.getElementById('d').textContent=String(d).padStart(2,'0');document.getElementById('h').textContent=String(h).padStart(2,'0');document.getElementById('m').textContent=String(m).padStart(2,'0');
-  document.getElementById('cdTo').innerHTML=g.label}
+function left(ms){const d=Math.floor(ms/864e5),h=Math.floor(ms%864e5/36e5),m=Math.floor(ms%36e5/6e4);return (d?d+'d ':'')+h+'h '+m+'m'}
+function tick(){
+  const now=Date.now(),l=nextLaunchpad(),ll=new Date(l.getTime()+WAT),live=now>=l.getTime()&&now<l.getTime()+2*36e5;
+  document.getElementById('lpWhen').textContent=live?'Live now':('Sat '+ll.getUTCDate()+' '+MONTHS[ll.getUTCMonth()]);
+  document.getElementById('lpLeft').textContent=live?'Open the room · make the offer at the end':('in '+left(l.getTime()-now)+' · 4:00 PM WAT · Zoom');
+  const g=GATES.find(x=>new Date(x.t).getTime()>now);
+  if(!g){document.getElementById('gtWhen').textContent='Add the next cohort';document.getElementById('gtLeft').textContent='Update GATES in this page from canon.';return}
+  document.getElementById('gtWhen').textContent=g.label.split(' · ')[0];
+  document.getElementById('gtLeft').textContent=g.label.split(' · ')[1]+' WAT · in '+left(new Date(g.t).getTime()-now);
+}
 tick();setInterval(tick,30000);
 </script>
 <script defer="" src="erj-alive.js?v=20261004a"></script>

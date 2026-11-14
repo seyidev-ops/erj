@@ -19,7 +19,7 @@ The public website combines free diagnostic resources, a book, self-paced learni
 
 ### One official line
 
-**+234 803 292 5957** is the official ERJ line. It is the AUDIT contact and appears on every public page, in the diagnostic PDF, and in every template.
+**+234 803 292 5957** is the official ERJ line. It appears on every public page, in the diagnostic PDF, and in every template.
 
 A separate founder personal line exists for direct conversation. It must never be printed on a published page, in a job post template, or in any asset that scales.
 
@@ -48,7 +48,7 @@ Cold or uncertain visitors should not be asked to choose among ERJ products firs
 1. **Your Starting Line** — `starthere.html` is the default cold-traffic destination for social posts, ads, QR codes, generic learn-more links and first-contact campaigns.
 2. **Find the problem** — the free five-part diagnostic at `/diagnose/` identifies the earliest failing point and returns a branded PDF report.
 3. **Free first action** — the visitor receives a useful next move before any paid recommendation.
-4. **AUDIT on WhatsApp** — optional human review when the visitor wants ERJ to inspect the evidence.
+4. **The Launchpad** — `/masterclass/`, free every Saturday at 4:00 PM WAT on Zoom, where CVs are audited live. Every job on the board, the diagnosis result and its PDF send people here. A private AUDIT is no longer free: it is a feature for Foundation Training participants and every programme above it.
 5. **Correct ERJ door** — only after diagnosis should the smallest suitable paid route be introduced.
 6. **Register / payment** — `register.html` supports a decision already made. It is not the default first-contact page.
 
@@ -256,7 +256,7 @@ To publish posts, upload the new `blog/<slug>/` folders and the updated `blog.ht
 
 The blog archive follows the **Africa/Lagos (WAT)** daily publication schedule. The archive exposes posts according to their scheduled date rather than displaying every pre-generated article file at once.
 
-Each article carries one conversion job — diagnosis, CV scan, Launchpad registration, AUDIT, a named product or the correct post-diagnosis route — rather than sending every reader to the same place.
+Each article carries one conversion job — diagnosis, CV scan, Launchpad registration, a named product or the correct post-diagnosis route — rather than sending every reader to the same place.
 
 Future-dated posts ship unpublished and are released on their date, either automatically or from the blog admin surface.
 

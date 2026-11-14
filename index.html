@@ -1994,12 +1994,28 @@ html[data-theme="day"] .hst-h em,html[data-theme="day"] .hst-k{color:#0B7A47;}
   .hs2-stage .hs2-go{padding:.6rem .6rem .6rem .95rem;gap:.5rem;border-radius:26px!important;}
   .hs2-stage .hs2-drop[open] .hs2-go{border-radius:26px!important;}
   .hs2-stage .hs2-go-i{display:none;}
-  .hs2-stage .hs2-go-t{white-space:normal;font-size:1.12rem;line-height:1.15;}
-  .hs2-stage .hs2-go-s{font-size:.56rem;letter-spacing:.1em;white-space:normal;}
+  .hs2-stage .hs2-go-t{white-space:nowrap;font-size:min(1.08rem,4.5vw);line-height:1.15;}
+  .hs2-stage .hs2-go-s{font-size:min(.56rem,2.4vw);letter-spacing:.08em;white-space:nowrap;}
   body .erj-tournav{top:auto!important;bottom:88px!important;left:1.4rem!important;transform:none!important;left:.75rem!important;}
   .hs2-globe{width:min(74vw,300px);margin:.4rem auto 1.2rem;}
   .hs2-globe .hz-sat b{min-width:34px;height:23px;font-size:.6rem;padding:0 .5rem;}
 }
+/* phones: the button runs full width, on one line, straight under the photo */
+@media(max-width:860px){
+  .hs2-stage{min-height:0;}
+  .hs2-stage .hs2-face{position:relative;width:min(62vw,230px);margin:0 auto!important;}
+  .hs2-stage .hs2-face figcaption span{display:none;}
+  .hs2-stage .hs2-drop{padding-top:1rem;}
+  .hs2-stage .hs2-go{display:flex;width:100%;max-width:100%;margin:0;min-height:68px;padding:.6rem .6rem .6rem .7rem;gap:.7rem;border-radius:999px!important;}
+  .hs2-stage .hs2-drop[open] .hs2-go{border-radius:999px!important;}
+  .hs2-stage .hs2-go-i{display:grid;width:44px;height:44px;}
+  .hs2-stage .hs2-go-in{flex:1;min-width:0;}
+  .hs2-stage .hs2-go-t{white-space:nowrap;font-size:min(1.2rem,5.3vw);line-height:1.15;}
+  .hs2-stage .hs2-go-s{white-space:nowrap;font-size:min(.62rem,2.7vw);letter-spacing:.1em;}
+  .hs2-stage .hs2-go-a{width:42px;height:42px;}
+  .hs2-stage .hs2-panel{margin-top:.6rem;}
+}
+@media(max-width:370px){.hs2-stage .hs2-go-i{display:none;}.hs2-stage .hs2-go{padding-left:1.1rem;}}
 </style>
 </head>
 <body>
@@ -2126,7 +2142,7 @@ html[data-theme="day"] .hst-h em,html[data-theme="day"] .hst-k{color:#0B7A47;}
 <h2 class="gl-h">The jobs are all over the world. <em>You work from right where you are.</em></h2>
 <p class="gl-p">Companies in London, Berlin, Dubai, Johannesburg, New York, Toronto and San Francisco post remote roles that people living in Nigeria can apply for. You keep your city and your family. The work comes to you.</p>
 <!--JOBTEASE:START ctx=globe-->
-<p class="gl-live"><i aria-hidden="true"></i><span><b>332</b> remote roles open to people in Nigeria are live on the board right now, each one checked twice a day.</span></p>
+<p class="gl-live"><i aria-hidden="true"></i><span><b>292</b> remote roles open to people in Nigeria are live on the board right now, each one checked twice a day.</span></p>
 <!--JOBTEASE:END-->
 <div class="gl-cta"><a class="btn-primary-ui btn-yes" href="jobs/"><span>See the jobs</span><span class="arrow-wrap"><span class="arrow">→</span></span></a><a class="btn-secondary-ui btn-more" href="foundationtraining/"><span>Get ready for them</span><span class="arrow-wrap"><span class="arrow">→</span></span></a></div>
 <p class="gl-fine">Seeing the roles is the easy part. Being the one they pick is what <a href="foundationtraining/">Foundation Training</a> builds in twenty days.</p>

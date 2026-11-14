@@ -122,6 +122,11 @@ FAMILY_RULES = [
     ("Tech & IT", r"\b(engineer|developer|devops|sre\b|software|frontend|front-end|backend|back-end|full ?stack|qa\b|test(er|ing)|security|cloud|it\b|sysadmin|network|mobile|android|ios|web)"),
 ]
 
+# Every listing's "unsure you qualify?" line sends people to the free Saturday
+# Launchpad, where CVs are audited live. AUDIT itself is for Foundation Training
+# participants and above, so no listing offers a private check any more.
+LAUNCHPAD_URL = "https://everythingremotejob.com/masterclass/"
+
 TEMPLATE = (
     "👨🏽‍💻 JOB TITLE: {title}\n\n"
     "🏢 Company: {company}\n"
@@ -137,8 +142,8 @@ TEMPLATE = (
     "🔗 APPLY HERE:\n"
     "{apply}\n"
     "———\n\n"
-    "🙋🏽‍♂️ *Unsure whether you qualify for this role?* Message ERJ us with this Job and your CV "
-    "to check the requirements with you: {phone}\n\n"
+    "🙋🏽‍♂️ *Unsure whether you qualify for this role?* Register to join the next Launchpad, "
+    "where we audit your CV live and tell you what is wrong. It is free: {launchpad}\n\n"
     "Everything Remote Job\n"
     "Work Beyond Borders."
 )
@@ -523,7 +528,7 @@ def copy_text(j, cfg):
         title=j["title"], company=j["company"], region=j["region"], jtype=j["type"],
         experience=j["experience"], salary=j["salary"],
         bullets="\n".join("◽ " + b for b in j["bullets"]),
-        why=j["why"], apply=j["apply"], phone=cfg["phone"])
+        why=j["why"], apply=j["apply"], launchpad=LAUNCHPAD_URL)
 
 
 def classify(title):
@@ -1678,7 +1683,7 @@ def card(j, cfg):
 <div class="jb-actions">
 <a class="jb-apply" href="{e(href)}" target="_blank" rel="noopener nofollow"><span>Apply here</span><span class="jb-arrow" aria-hidden="true">→</span></a>
 <button class="jb-share" type="button" data-share="{j["id"]}" aria-haspopup="dialog" hidden>{SHARE_ICON}<span>Share job</span></button>
-<a class="jb-ask" data-ask="{j["id"]}" href="https://wa.me/{cfg["phone"].lstrip("+")}" target="_blank" rel="noopener">Unsure you qualify? Ask ERJ</a>
+<a class="jb-ask" href="../masterclass/">Unsure you qualify? Join the free Launchpad</a>
 </div>
 <p class="jb-src">Source: {src}{chk_txt}</p>
 </article>'''

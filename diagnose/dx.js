@@ -262,12 +262,6 @@
                 '<span class="dxs-t"><span style="width:' + row.pct + '%"></span></span>' +
                 '<span class="dxs-p">' + row.pct + '%</span></div>';
         }).join('');
-        const waHref = (window.ERJ_CAPTURE && window.ERJ_CAPTURE.waLink)
-            ? window.ERJ_CAPTURE.waLink('diagnose', {
-                joint: j.name, law: j.law, answer: chosen.filter(Boolean).join(' | ')
-            })
-            : 'https://wa.me/' + ((window.ERJ_CONFIG && window.ERJ_CONFIG.whatsapp) || '2348032925957') +
-              '?text=' + encodeURIComponent('AUDIT\nMy diagnostic says: ' + j.name + '\n\nTarget role:\nApplications in the last 30 days:\nInterviews in the last 30 days:\nCV/LinkedIn: I will attach or paste it here.');
         boxEl.setAttribute('hidden', '');
         resultEl.removeAttribute('hidden');
         resultEl.innerHTML =
@@ -290,20 +284,18 @@
                 '<div class="dxr-export"><button type="button" class="dx-pdf-btn" id="dxPdf">Download my diagnostic PDF <span aria-hidden="true">↓</span></button><span>Your result, score breakdown and next action in one branded report.</span></div>' +
 
                 '<div class="cap-read dxr-send dxr-human">' +
-                '<div class="cr-k">Get your free human review</div>' +
-                '<p><strong>The quiz names the weak point. A human needs to see your actual search to tell you what to fix first.</strong> ' +
-                'Send this result to ERJ with four details: your target role, applications in the last 30 days, interviews in the last 30 days, and your CV or LinkedIn profile.</p>' +
+                '<div class="cr-k">Get your CV audited live, free</div>' +
+                '<p><strong>The quiz names the weak point. To see what to fix first in your actual CV, join the Launchpad.</strong> ' +
+                'Every Saturday at 4:00 PM WAT, live on Zoom, we go through CVs one at a time and name the one thing to fix first. Bring this result and your CV.</p>' +
                 '<div class="cr-actions">' +
-                '<a class="cap-btn" id="dxAudit" href="' + waHref + '" target="_blank" rel="noopener">' +
-                '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12.05 21.785h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884"/></svg>' +
-                '<span>Send AUDIT to ERJ</span></a>' +
-                                '</div>' +
-                '<p class="dxr-privacy">No payment is required for the diagnosis. If you do not need a paid ERJ service, we will tell you that too.</p>' +
+                '<a class="cap-btn" id="dxAudit" href="../masterclass/"><span>Join the free Launchpad</span></a>' +
+                '</div>' +
+                '<p class="dxr-privacy">No payment is required for the diagnosis or the Launchpad. If you do not need a paid ERJ service, we will tell you that too.</p>' +
                 '</div>' +
 
                 '<div class="dxr-scores"><div class="dxs-k">How your answers fell</div>' + bars +
                 '<p class="dxs-note">A second point close behind is normal. Fix the earliest weak point first: an upstream failure can make every later reading unreliable.</p></div>' +
-                '<div class="dxr-tonight"><div class="dxr-k">One useful step before we reply</div><ol><li>' + esc(j.tonight[0]) + '</li></ol></div>' +
+                '<div class="dxr-tonight"><div class="dxr-k">One useful step before Saturday</div><ol><li>' + esc(j.tonight[0]) + '</li></ol></div>' +
                 '<div class="dxr-doors">' +
                 '<div class="dxr-door"><div class="dxr-door-k">Free door</div><p>' + esc(j.free.text) + '</p>' +
                 '<a class="btn-more btn-secondary-ui dx-rec" data-rec="free-' + key + '" href="' + j.free.href + '"' + (j.free.href.indexOf('http') === 0 ? ' target="_blank" rel="noopener"' : '') + '><span>' + esc(j.free.label) + '</span><span class="arrow-wrap"><span class="arrow">\u2192</span></span></a></div>' +
@@ -319,7 +311,7 @@
         const audit = document.getElementById('dxAudit');
         if (audit) {
             audit.addEventListener('click', () => {
-                if (window.erjTrack) window.erjTrack('AuditStarted', { content_name: 'AUDIT - ' + j.name, value: 0, method: 'whatsapp' });
+                if (window.erjTrack) window.erjTrack('LaunchpadClick', { content_name: 'Launchpad - ' + j.name, value: 0, method: 'diagnostic' });
             });
         }
         const pdf = document.getElementById('dxPdf');

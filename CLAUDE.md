@@ -222,7 +222,12 @@ precached; keep it free of shared scripts so it renders with no network.
   recurring meeting. Older blog posts still say "Clinic" and are left as the
   archive they are.
 - Blog posts are scheduled by date (Africa/Lagos, WAT). Each post has one
-  conversion job (diagnose, CV scan, Launchpad, AUDIT, a named product).
+  conversion job (diagnose, CV scan, Launchpad, a named product).
+- AUDIT (a private review of someone's search) is only for Foundation Training
+  participants and above. Free routes that used to say "send AUDIT" (job
+  listings, the diagnosis, Start Here, Free For You) now point to the
+  Launchpad, where CVs are audited live. The job listing footer lives in
+  `TEMPLATE` in `jobboard.py`; change it there, then run `jobboard.py build`.
 
 ## Security reality
 
