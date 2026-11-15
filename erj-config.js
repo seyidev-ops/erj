@@ -191,12 +191,10 @@
            official line — the same route as CV Fix. */
         { id:'careerdev',  name:'Career Development — Self-Study',  naira:50000,  unit:'one-time', part:'capacity',
           href:'register.html#careerdev', pay:'https://wa.me/2348032925957', badge:'New',
-          partner:'mentorine', accessDays:90,
-          /* The standard Self-Study rate at The Mentorine School (its own page
-             shows ₦50,000 after a ₦100,000 discount). Used ONLY as the
-             stated value of the Foundation bonus — never as a strike-through
-             on ERJ's own ₦50,000 price. */
-          valueNaira:150000 },
+          partner:'mentorine', accessDays:30,
+          /* The stated value of the Foundation bonus: the same ₦50,000 this
+             store charges for it. Never a strike-through on ERJ's own price. */
+          valueNaira:50000 },
         { id:'stage1',     name:'Stage 1 \u2014 Remote Mindset Blueprint',  naira:70000,  unit:'one-time', part:'capacity',
           href:'register.html#stage1', pay:'https://paystack.shop/pay/Stage1' },
         { id:'stage3',     name:'Stage 3 \u2014 Async Communication Mastery',naira:70000, unit:'one-time', part:'capacity',
@@ -228,7 +226,7 @@
           domain: 'thementorineschool.com',
           url: 'https://thementorineschool.com/',
           login: 'https://thementorineschool.com/login.html',
-          benefitDays: 90,
+          benefitDays: 30,
           clockStarts: 'activation',
           includedWith: ['foundation', 'dreamjob'],
           scope: 'One self-study career track: its roadmap, available courses and practical exercises.'

@@ -388,7 +388,7 @@
       box.appendChild(el('p', 'csc-note',
         'Want a structured way to build it? <a href="../register.html' + (t ? '?track=' + encodeURIComponent(t) : '') +
         '#careerdev">Career Development — Self-Study</a> gives you ' + (t ? 'the ' + esc(t) + ' track' : 'a career track of your choice') +
-        ' at The Mentorine School for 90 days: a roadmap, courses and practical exercises. It is paid; the free route above is not.'));
+        ' at The Mentorine School for 30 days: a roadmap, courses and practical exercises. It is paid; the free route above is not.'));
     }
 
     var nav = el('div', 'csc-nav');
