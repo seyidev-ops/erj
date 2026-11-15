@@ -97,7 +97,7 @@ Any page still advertising an open instalment window after that date is stale an
 | CV Fix — one CV, one field | ₦30,000 | Representation — the same work, done for you once |
 | The Self-Learn Pack — Stages 1–4 | ₦35,000 | Capacity and Representation |
 | The Interview Sprint | ₦40,000 | Conversion — two one-to-one sessions before a booked remote interview, test or trial task; paid by transfer, confirmed on WhatsApp |
-| Career Development — Self-Study | ₦50,000 | Capacity — one self-study career track at The Mentorine School, 90 days from activation |
+| Career Development — Self-Study | ₦50,000 | Capacity — one self-study career track at The Mentorine School, 30 days from activation |
 | Stage 1 — Remote Mindset Blueprint | ₦70,000 | Capacity |
 | Stage 3 — Async Communication Mastery | ₦70,000 | Capacity |
 | Stage 4 — Start Your Remote Career | ₦100,000 | Representation and Aim |
@@ -128,13 +128,13 @@ There are two routes:
 
 | Route | Payment | Delivery |
 |---|---|---|
-| Remote Job Foundation Training, Stages 1–4 | The Foundation fee; the benefit is included | ERJ training plus 90-day access to one self-study career track |
+| Remote Job Foundation Training, Stages 1–4 | The Foundation fee; the benefit is included | ERJ training plus 30-day access to one self-study career track |
 | Career Development — Self-Study | ₦50,000, separately | The track the buyer chooses, through the learning portal at The Mentorine School |
 
 - **Who gets the included benefit:** everyone who pays for Foundation Training, and Get Your Dream Job Offer buyers because that bundle contains Foundation Training. Single stages and the Self-Learn Pack do not include it.
 - **The assessment decides the use, not the eligibility.** A capacity gap gets assigned learning and practical work; sufficient capacity means ERJ prioritises the other gaps and the access stays available.
 - **Scope:** one self-study track with its roadmap, available courses and practical exercises. Live mentoring and certificates are not promised; list them only if that is decided.
-- **Clock:** 90 days from activation. The welcome email states the activation deadline; the portal shows the real expiry date.
+- **Clock:** 30 days from activation. The welcome email states the activation deadline; the portal shows the real expiry date.
 - **Flow:** product chosen → registration details (name, email, target role, track where applicable) → payment → Registrar verifies → unique access code tied to the person, track and duration → activation email (portal link, code, first task) → participant activates. Foundation participants are never asked for a second payment; ERJ assigns their track after assessment.
 - **Ownership:** ERJ owns Foundation enrolment, the assessment and next steps. The Mentorine School owns track access and materials. Both keep one shared record of payment verification, assigned track, code issue, activation and expiry.
 - **Distinct from the Self-Learn Pack:** Career Development builds the skills of the role; Self-Learn teaches ERJ's remote-job process.
