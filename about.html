@@ -539,37 +539,148 @@ a.promo-tick{text-decoration:none;display:block;}
 }
 </style>
 <style>
-.ab-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem;margin:1.6rem 0 1.2rem}
-.ab-stat{border:1px solid var(--card-line,var(--line));border-radius:16px;padding:1.1rem 1rem;background:var(--card,transparent)}
-.ab-stat b{display:block;font-family:var(--font-display);font-size:clamp(1.6rem,4vw,2.3rem);line-height:1.1;color:var(--accent,#FF5722)}
-.ab-stat span{display:block;margin-top:.35rem;font-size:.9rem;color:var(--ink-soft)}
-.ab-five{list-style:none;counter-reset:f;margin:1.4rem 0 0;padding:0;display:grid;gap:.7rem}
-.ab-five li{counter-increment:f;display:grid;grid-template-columns:2.4rem minmax(0,1fr);column-gap:.9rem;padding:.95rem 1rem;border:1px solid var(--card-line,var(--line));border-radius:14px}
+
+.jr{position:relative;padding-top:clamp(3rem,8vw,6rem)}
+/* About: the lower half. Lit glass cards, live figures, things to tap. Content is
+   real text first; scripts only animate or add live extras (hidden until filled). */
+.ab-g{border:1px solid var(--card-line);border-radius:18px;background-color:var(--card);
+  background-image:radial-gradient(420px circle at var(--mx,-600px) var(--my,-600px),var(--hz-spot),transparent 45%),var(--hz-surface);
+  box-shadow:var(--hz-edge),var(--hz-shadow);transition:transform .45s cubic-bezier(.2,.7,.2,1),border-color .3s,box-shadow .45s}
+@keyframes abPulse{0%{box-shadow:0 0 0 0 rgba(25,194,122,.55)}70%{box-shadow:0 0 0 9px rgba(25,194,122,0)}100%{box-shadow:0 0 0 0 rgba(25,194,122,0)}}
+.ab-pulse{display:inline-block;width:9px;height:9px;border-radius:50%;background:#19C27A;flex:none;animation:abPulse 2.2s infinite}
+
+/* numbers */
+.ab-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem;margin:1.6rem 0 1.1rem}
+.ab-stat{position:relative;overflow:hidden;padding:1.2rem 1.1rem 1.3rem}
+.ab-stat:hover{transform:translateY(-4px);border-color:rgba(255,87,34,.42)}
+.ab-stat b{display:block;font-family:var(--font-display);font-size:clamp(1.7rem,4.2vw,2.5rem);line-height:1.1;color:var(--accent,#FF5722);font-variant-numeric:tabular-nums}
+.ab-sl{display:block;margin-top:.35rem;font-size:.9rem;color:var(--ink-soft);line-height:1.45}
+.ab-years{display:block;font-style:normal;margin-top:.3rem;font-weight:600;color:var(--ink)}
+.ab-bar{position:absolute;left:0;right:0;bottom:0;height:4px;background:var(--line)}
+.ab-bar::after{content:"";position:absolute;inset:0;transform-origin:left;transform:scaleX(var(--fill));background:linear-gradient(90deg,#FF5722,#FFB36B);transition:transform 1.6s cubic-bezier(.2,.7,.2,1)}
+.ab-stats.wait .ab-bar::after{transform:scaleX(0)}
+.ab-dots{display:flex;gap:4px;margin-top:.8rem}
+.ab-dots s{flex:1;height:6px;border-radius:3px;background:var(--accent,#FF5722);transition:transform .35s cubic-bezier(.3,1.6,.5,1)}
+.ab-stats.wait .ab-dots s{transform:scaleY(.2)}
+.ab-dots s:nth-child(n){transition-delay:calc(var(--i,0)*60ms)}
+.ab-live{display:grid;grid-template-columns:auto minmax(0,1fr);align-items:center;column-gap:.75rem;row-gap:.15rem;width:fit-content;max-width:100%;margin:0 0 1rem;padding:.75rem 1.1rem;border-radius:16px;border:1px solid color-mix(in srgb,#19C27A 45%,transparent);color:var(--ink);text-decoration:none;font-size:.92rem;background:color-mix(in srgb,#19C27A 8%,transparent);transition:background .25s}
+.ab-live .ab-pulse{grid-row:span 2}
+.ab-live:hover,.ab-live:focus-visible{background:color-mix(in srgb,#19C27A 16%,transparent)}
+.ab-live b{font-family:var(--font-display);font-variant-numeric:tabular-nums}
+.ab-live small{color:var(--ink-soft)}
+
+/* the five points: a chain you can step along */
+.ab-chain{margin-top:1.4rem}
+.ab-chain-rail{position:relative;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:.3rem;margin-bottom:1rem}
+.ab-chain-line{position:absolute;left:10%;right:10%;top:22px;height:2px;background:var(--line);pointer-events:none}
+.ab-chain-line>i{position:absolute;inset:0;transform-origin:left;transform:scaleX(var(--p,0));background:linear-gradient(90deg,#FF5722,#FFB36B);transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.ab-chain-rail button{position:relative;display:flex;flex-direction:column;align-items:center;gap:.45rem;background:none;border:0;padding:0;color:var(--ink-soft);font:600 .78rem/1.2 var(--font-body);cursor:pointer;min-width:0}
+.ab-chain-rail button b{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;border:1.5px solid var(--card-line);background:var(--card);font:700 1rem/1 var(--font-display);color:var(--ink);transition:transform .35s cubic-bezier(.3,1.5,.5,1),background .3s,border-color .3s,color .3s,box-shadow .3s}
+.ab-chain-rail button span{max-width:100%;overflow:hidden;text-overflow:ellipsis}
+.ab-chain-rail button.done b{border-color:#FF5722;color:#FF5722}
+.ab-chain-rail button[aria-selected="true"]{color:var(--ink)}
+.ab-chain-rail button[aria-selected="true"] b{background:#FF5722;border-color:#FF5722;color:#fff;transform:scale(1.14);box-shadow:0 0 0 6px rgba(255,87,34,.16),0 10px 30px -8px rgba(255,87,34,.7)}
+.ab-chain-rail button:focus-visible b{outline:2px solid var(--accent);outline-offset:3px}
+.ab-five{list-style:none;counter-reset:f;margin:0;padding:0;display:grid;gap:.7rem}
+.ab-five li{counter-increment:f;display:grid;grid-template-columns:2.4rem minmax(0,1fr);column-gap:.9rem;padding:1rem 1.1rem}
 .ab-five li::before{content:"0" counter(f);grid-row:span 2;font-family:var(--font-display);font-weight:700;color:var(--accent,#FF5722)}
 .ab-five b{font-family:var(--font-display);font-size:1.05rem}
 .ab-five span{color:var(--ink-soft);font-size:.95rem;line-height:1.55}
+.ab-chain.on .ab-five li{display:none}
+.ab-chain.on .ab-five li.cur{display:grid;padding:1.4rem 1.4rem 1.5rem;grid-template-columns:3.4rem minmax(0,1fr);animation:abIn .5s cubic-bezier(.2,.7,.2,1)}
+.ab-chain.on .ab-five li.cur::before{font-size:1.9rem;line-height:1}
+.ab-five li:nth-child(1)::before{content:"01"}.ab-five li:nth-child(2)::before{content:"02"}.ab-five li:nth-child(3)::before{content:"03"}.ab-five li:nth-child(4)::before{content:"04"}.ab-five li:nth-child(5)::before{content:"05"}
+.ab-chain.on .ab-five li.cur b{font-size:1.5rem}
+.ab-chain.on .ab-five li.cur span{font-size:1.02rem}
+@keyframes abIn{from{transform:translateY(10px) scale(.985)}to{transform:none}}
+.ab-chain-go{display:inline-flex;margin-top:1rem;padding:.75rem 1.15rem;border-radius:999px;background:#FF5722;color:#fff;font-weight:600;text-decoration:none;transition:transform .25s,box-shadow .25s}
+.ab-chain-go:hover,.ab-chain-go:focus-visible{transform:translateY(-2px);box-shadow:0 12px 30px -10px rgba(255,87,34,.8)}
+
+/* founder */
 .ab-founder{display:grid;grid-template-columns:minmax(200px,320px) minmax(0,1fr);gap:clamp(1.4rem,4vw,3rem);align-items:center;margin-top:1rem}
-.ab-photo{margin:0;border-radius:18px;overflow:hidden;aspect-ratio:4/5;max-width:340px}
-.ab-photo img{width:100%;height:100%;object-fit:cover;display:block}
-.ab-founder-text p{color:var(--ink-soft);line-height:1.7;margin:.8rem 0 0}
-.ab-two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;margin-top:1.4rem}
-.ab-col{border:1px solid var(--card-line,var(--line));border-radius:16px;padding:1.2rem 1.25rem}
-.ab-col h3{margin:0 0 .6rem;font-family:var(--font-display)}
+.ab-photo{position:relative;margin:0;max-width:340px;aspect-ratio:4/5}
+.ab-photo img{position:relative;width:100%;height:100%;object-fit:cover;display:block;border-radius:20px;box-shadow:var(--hz-shadow)}
+.ab-orbit{position:absolute;inset:-14px;border-radius:30px;border:1.5px dashed rgba(255,87,34,.45);pointer-events:none}
+.ab-orbit::after{content:"";position:absolute;width:10px;height:10px;border-radius:50%;background:#FF5722;box-shadow:0 0 14px 3px rgba(255,87,34,.7);offset-path:inset(0 round 30px);animation:abRun 9s linear infinite}
+@keyframes abRun{to{offset-distance:100%}}
+.ab-here{position:absolute;left:12px;bottom:12px;display:flex;align-items:center;gap:.5rem;padding:.5rem .8rem;border-radius:999px;background:var(--hz-glass);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid var(--card-line);font:600 .82rem/1 var(--font-body);color:var(--ink)}
+.ab-here span{color:var(--ink-soft);font-variant-numeric:tabular-nums}
+.ab-tags{list-style:none;margin:.9rem 0 0;padding:0;display:flex;flex-wrap:wrap;gap:.45rem}
+.ab-tags li{padding:.45rem .8rem;border-radius:999px;border:1px solid rgba(255,87,34,.35);background:rgba(255,87,34,.07);font-size:.84rem;font-weight:600;color:var(--ink)}
+.ab-founder-text p{color:var(--ink-soft);line-height:1.7;margin:.9rem 0 0}
+
+/* promise: a switch between the two lists */
+.ab-terms{margin-top:1.4rem}
+.ab-switch{position:relative;display:grid;grid-template-columns:1fr 1fr;width:min(100%,340px);padding:5px;border-radius:999px;border:1px solid var(--card-line);background:var(--card);margin-bottom:1rem}
+.ab-switch>i{position:absolute;top:5px;bottom:5px;left:5px;width:calc(50% - 5px);border-radius:999px;background:#FF5722;box-shadow:0 8px 24px -8px rgba(255,87,34,.8);transition:transform .45s cubic-bezier(.3,1.3,.5,1),background .3s}
+.ab-terms.no .ab-switch>i{transform:translateX(100%);background:var(--ink)}
+.ab-switch button{position:relative;z-index:1;background:none;border:0;padding:.75rem .5rem;font:700 .95rem/1 var(--font-display);color:var(--ink-soft);cursor:pointer;transition:color .3s}
+.ab-switch button[aria-selected="true"]{color:#fff}
+.ab-terms.no .ab-switch button[aria-selected="true"]{color:var(--paper)}
+.ab-two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}
+.ab-col{padding:1.3rem 1.35rem}
+.ab-col h3{margin:0 0 .8rem;font-family:var(--font-display)}
 .ab-yes h3{color:var(--accent,#FF5722)}
-.ab-col ul{margin:0;padding-left:1.1rem;display:grid;gap:.55rem;line-height:1.55}
-.ab-doors{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.9rem;margin-top:1.4rem}
-.ab-door{display:block;text-decoration:none;color:inherit;border:1px solid var(--card-line,var(--line));border-radius:16px;padding:1.1rem 1.2rem;transition:border-color .2s}
-.ab-door:hover,.ab-door:focus-visible{border-color:var(--accent,#FF5722)}
-.ab-door b{display:block;font-family:var(--font-display);font-size:1.05rem}
+.ab-col ul{list-style:none;margin:0;padding:0;display:grid;gap:.75rem;line-height:1.55}
+.ab-col li{position:relative;padding-left:2rem}
+.ab-col li::before{content:"";position:absolute;left:0;top:.1rem;width:1.3rem;height:1.3rem;border-radius:50%;background:#FF5722 no-repeat center/62% url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2 6.3l2.6 2.5L10 3.4' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")}
+.ab-no li::before{background-color:var(--ink-faint);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M3 3l6 6M9 3l-6 6' fill='none' stroke='white' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E")}
+.ab-terms.on .ab-two{grid-template-columns:1fr;max-width:760px}
+.ab-terms.on .ab-col{display:none}
+.ab-terms.on .ab-col.cur{display:block;animation:abIn .45s cubic-bezier(.2,.7,.2,1)}
+.ab-terms.on .ab-col.cur li{animation:abIn .5s cubic-bezier(.2,.7,.2,1) backwards;animation-delay:calc(var(--i,0)*70ms)}
+.ab-terms.on .ab-col h3{display:none}
+
+/* where to start: a connected path */
+.ab-path{list-style:none;margin:1.5rem 0 0;padding:0;display:grid;gap:.9rem;position:relative}
+.ab-path::before{content:"";position:absolute;left:21px;top:28px;bottom:28px;width:2px;background:var(--line)}
+.ab-path::after{content:"";position:absolute;left:21px;top:28px;bottom:28px;width:2px;transform-origin:top;transform:scaleY(var(--p,1));background:linear-gradient(#FF5722,#FFB36B)}
+.ab-path li{position:relative;padding-left:58px;counter-increment:d}
+.ab-path li::before{content:counter(d);position:absolute;left:0;top:18px;display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:var(--card);border:1.5px solid #FF5722;font:700 1rem/1 var(--font-display);color:#FF5722;z-index:1;transition:background .3s,color .3s}
+.ab-path{counter-reset:d}
+.ab-path li.lit::before{background:#FF5722;color:#fff}
+.ab-door{display:block;position:relative;text-decoration:none;color:inherit;padding:1.15rem 3rem 1.2rem 1.25rem}
+.ab-door::after{content:"";position:absolute;right:1.15rem;top:50%;width:.6rem;height:.6rem;border-top:2px solid var(--accent);border-right:2px solid var(--accent);transform:translateY(-50%) rotate(45deg);transition:transform .25s}
+.ab-door:hover,.ab-door:focus-visible{border-color:rgba(255,87,34,.5);transform:translateX(4px)}
+.ab-door:hover::after,.ab-door:focus-visible::after{transform:translate(4px,-50%) rotate(45deg)}
+.ab-free{display:inline-block;font-style:normal;font-size:.72rem;font-weight:700;letter-spacing:.06em;padding:.25rem .55rem;border-radius:999px;background:color-mix(in srgb,#19C27A 14%,transparent);color:#0E9A5E;margin-bottom:.5rem}
+html:not([data-theme="day"]) .ab-free{color:#3ED596}
+.ab-paid .ab-free{background:rgba(255,87,34,.12);color:var(--accent)}
+.ab-door b{display:block;font-family:var(--font-display);font-size:1.12rem}
 .ab-door span{display:block;margin-top:.3rem;color:var(--ink-soft);font-size:.93rem;line-height:1.5}
-.ab-contact{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;margin-top:1.4rem}
-.ab-contact>div{border:1px solid var(--card-line,var(--line));border-radius:16px;padding:1.1rem 1.2rem;min-width:0}
-.ab-k{display:block;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:.4rem}
-.ab-contact a,.ab-v{font-family:var(--font-display);font-weight:600;color:var(--accent,#FF5722);text-decoration:none;word-break:break-word}
+.ab-tick{display:inline-flex;align-items:center;gap:.45rem;margin-top:.7rem;padding:.4rem .75rem;border-radius:10px;background:rgba(255,87,34,.1);font:600 .84rem/1.2 var(--font-body);color:var(--ink);font-variant-numeric:tabular-nums}
+
+/* contact */
+.ab-clock{display:flex;align-items:center;gap:.6rem;margin:.6rem 0 0;color:var(--ink-soft)}
+.ab-clock b{color:var(--ink);font-variant-numeric:tabular-nums}
+.ab-contact{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;margin-top:1.3rem}
+.ab-contact>div{display:flex;flex-direction:column;align-items:flex-start;padding:1.2rem 1.25rem;min-width:0}
+.ab-contact>div:hover{transform:translateY(-4px);border-color:rgba(255,87,34,.42)}
+.ab-k{display:block;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:.45rem}
+.ab-contact>div>a:not(.ab-act),.ab-v{font-family:var(--font-display);font-weight:600;color:var(--accent,#FF5722);text-decoration:none;word-break:break-word}
 .ab-v{color:inherit}
 .ab-contact small{display:block;margin-top:.45rem;color:var(--ink-soft);line-height:1.5}
+.ab-act{margin-top:auto;padding-top:0;font:600 .86rem/1 var(--font-body);color:var(--ink);text-decoration:none;background:none;border:1px solid var(--card-line);border-radius:999px;padding:.6rem .95rem;cursor:pointer;transition:border-color .2s,background .2s,color .2s}
+.ab-contact small+.ab-act{margin-top:1rem}
+.ab-act:hover,.ab-act:focus-visible{border-color:var(--accent);color:var(--accent)}
+.ab-act.ok{border-color:#19C27A;color:#0E9A5E}
+.ab-wa .ab-act{background:#25D366;border-color:#25D366;color:#06301A}
+.ab-wa .ab-act:hover{color:#06301A;filter:brightness(1.06)}
 
-.jr{position:relative;padding-top:clamp(3rem,8vw,6rem)}
+@media(max-width:820px){
+  .ab-stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .ab-founder,.ab-two,.ab-contact{grid-template-columns:1fr}
+  .ab-photo{max-width:280px;margin:14px}
+  .ab-chain-rail button span{font-size:.68rem}
+  .ab-chain-rail button b{width:40px;height:40px}
+  .ab-chain-line{top:20px}
+}
+@media(prefers-reduced-motion:reduce){
+  .ab-pulse,.ab-orbit::after{animation:none}
+  .ab-bar::after,.ab-dots s,.ab-chain-line>i,.ab-switch>i{transition:none}
+  .ab-chain.on .ab-five li.cur,.ab-terms.on .ab-col.cur,.ab-terms.on .ab-col.cur li{animation:none}
+}
+
 .jr-head{max-width:1180px}
 .jr-head h2 span{color:var(--accent,#FF5722)}
 .jr-chips{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.4rem}
@@ -591,7 +702,6 @@ html[data-theme="day"] .jr-now .jr-n,html[data-theme="day"] .jr-now .jr-when{col
 .jr-now::before{background:#19C27A}
 @media(max-width:760px){.jr-stop{min-height:92vh;align-items:flex-end;padding-bottom:9vh}.jr-card{max-width:none;margin-left:0}}
 @media(prefers-reduced-motion:reduce){.jr-card::before{transition:none}}
-@media(max-width:820px){.ab-stats{grid-template-columns:repeat(2,minmax(0,1fr))}.ab-founder,.ab-two,.ab-doors,.ab-contact{grid-template-columns:1fr}.ab-photo{max-width:300px}}
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"AboutPage","name":"About Everything Remote Job","url":"https://everythingremotejob.com/about.html","about":{"@id":"https://everythingremotejob.com/#organization"},"mainEntity":{"@id":"https://everythingremotejob.com/#organization"}}</script>
 <style id="erjNavReserve">body{padding-top:63px}@media(min-width:980px){body{padding-top:65px}}
@@ -650,37 +760,50 @@ html[data-theme="day"] .jr-now .jr-n,html[data-theme="day"] .jr-now .jr-when{col
 <li class="jr-stop" id="jr-abuja"><div class="wrap"><div class="jr-card jr-now"><span class="jr-n">06</span><h3>Abuja</h3><p class="jr-when">Now</p><p>Where ERJ runs today, teaching other professionals to do what this route proves: work for the world without leaving home.</p></div></div></li>
 </ol>
 </section>
-<section class="section-line wrap reveal" id="numbers">
-<p class="section-label">So far</p>
-<h2>The work behind the name. <span>Counted, not estimated.</span></h2>
+<section class="section-line wrap" id="numbers">
+<p class="section-label reveal">So far</p>
+<h2 class="reveal">The work behind the name. <span>Counted, not estimated.</span></h2>
 <div class="ab-stats">
-<div class="ab-stat"><b>446+</b><span>professionals trained</span></div>
-<div class="ab-stat"><b>382+</b><span>placed in remote roles</span></div>
-<div class="ab-stat"><b>10</b><span>cohorts completed</span></div>
-<div class="ab-stat"><b>Since 2013</b><span>our founder working remotely</span></div>
+<div class="ab-stat ab-g"><b><span data-count="446">446</span>+</b><span class="ab-sl">professionals trained</span><i class="ab-bar" style="--fill:1"></i></div>
+<div class="ab-stat ab-g"><b><span data-count="382">382</span>+</b><span class="ab-sl">placed in remote roles</span><i class="ab-bar" style="--fill:.856"></i></div>
+<div class="ab-stat ab-g"><b><span data-count="10">10</span></b><span class="ab-sl">cohorts completed</span><i class="ab-dots" aria-hidden="true"><s></s><s></s><s></s><s></s><s></s><s></s><s></s><s></s><s></s><s></s></i></div>
+<div class="ab-stat ab-g"><b>Since 2013</b><span class="ab-sl">our founder working remotely<em class="ab-years" data-since="2013"></em></span></div>
 </div>
-<p class="section-sub">Alongside the paid programmes we run a free job board of remote roles that people in Nigeria can actually apply for, checked and updated twice a day, and a free live CV session every Saturday.</p>
+<a class="ab-live" href="jobs/" id="abLive" hidden><i class="ab-pulse" aria-hidden="true"></i><span><b id="abLiveN"></b> remote roles live on the free board right now</span><small id="abLiveT"></small></a>
+<p class="section-sub reveal">Alongside the paid programmes we run a free job board of remote roles that people in Nigeria can actually apply for, checked and updated twice a day, and a free live CV session every Saturday.</p>
 </section>
 
 <section class="section-line wrap" id="how">
 <p class="section-label reveal">How we work</p>
 <h2 class="reveal">Find the problem. <span>Fix it.</span></h2>
-<p class="section-sub reveal">Most remote job searches fail at one of five points. We find which one is yours before we suggest anything, starting with the first.</p>
-<ol class="ab-five reveal">
-<li><b>Capacity</b><span>Can you do the work, remotely, without someone watching? You can't be hired for work you can't yet do.</span></li>
-<li><b>Supply</b><span>Are roles you are genuinely eligible for reaching you? You can't apply for a job you never saw.</span></li>
-<li><b>Representation</b><span>Do your CV and profile make your real work easy to read? If your CV can't be read, you were never really in the running.</span></li>
-<li><b>Aim</b><span>Are you applying for roles that fit your evidence? Applying everywhere isn't the same as applying where you'd get hired.</span></li>
-<li><b>Conversion</b><span>Once the interviews come, can you turn them into an offer? Interviews don't pay you. A signed offer does.</span></li>
+<p class="section-sub reveal">Most remote job searches fail at one of five points. We find which one is yours before we suggest anything, starting with the first. Tap a point to see it.</p>
+<div class="ab-chain" id="abChain">
+<div class="ab-chain-rail" role="tablist" aria-label="The five points" hidden>
+<i class="ab-chain-line" aria-hidden="true"><i></i></i>
+<button role="tab" type="button"><b>1</b><span>Capacity</span></button>
+<button role="tab" type="button"><b>2</b><span>Supply</span></button>
+<button role="tab" type="button"><b>3</b><span>Representation</span></button>
+<button role="tab" type="button"><b>4</b><span>Aim</span></button>
+<button role="tab" type="button"><b>5</b><span>Conversion</span></button>
+</div>
+<ol class="ab-five">
+<li class="ab-g"><b>Capacity</b><span>Can you do the work, remotely, without someone watching? You can't be hired for work you can't yet do.</span></li>
+<li class="ab-g"><b>Supply</b><span>Are roles you are genuinely eligible for reaching you? You can't apply for a job you never saw.</span></li>
+<li class="ab-g"><b>Representation</b><span>Do your CV and profile make your real work easy to read? If your CV can't be read, you were never really in the running.</span></li>
+<li class="ab-g"><b>Aim</b><span>Are you applying for roles that fit your evidence? Applying everywhere isn't the same as applying where you'd get hired.</span></li>
+<li class="ab-g"><b>Conversion</b><span>Once the interviews come, can you turn them into an offer? Interviews don't pay you. A signed offer does.</span></li>
 </ol>
+<a class="ab-chain-go" href="diagnose/">Find yours in 90 seconds</a>
+</div>
 </section>
 
 <section class="section-line wrap" id="who">
 <p class="section-label reveal">Who is behind it</p>
-<div class="ab-founder reveal">
-<figure class="ab-photo"><img src="photo-seyi-suit.webp" width="880" height="1100" alt="Oluwaseyi Ashiru, founder and Lead Facilitator of Everything Remote Job" loading="lazy" decoding="async"/></figure>
+<div class="ab-founder">
+<figure class="ab-photo"><i class="ab-orbit" aria-hidden="true"></i><img src="photo-seyi-suit.webp" width="880" height="1100" alt="Oluwaseyi Ashiru, founder and Lead Facilitator of Everything Remote Job" loading="lazy" decoding="async"/><figcaption class="ab-here"><i class="ab-pulse" aria-hidden="true"></i>Abuja <span id="abClockA"></span></figcaption></figure>
 <div class="ab-founder-text">
 <h2>Oluwaseyi Ashiru, <span>founder and Lead Facilitator.</span></h2>
+<ul class="ab-tags"><li>Remote since 2013</li><li>Training since 2021</li><li>Teaches every live class</li></ul>
 <p>Oluwaseyi has worked in remote roles since 2013 and has trained professionals into global roles since 2021. He is a business developer, software developer, curriculum designer and lecturer, and he teaches the live classes himself.</p>
 <p>ERJ is a brand of Business Play Limited (RC 2024689), a company registered in Nigeria, which also runs The Mentorine School. Every payment goes to Business Play Ltd. Our certificates are signed by two people: the Registrar, who handles payments and access, and the Lead Facilitator, who teaches and marks the work.</p>
 </div>
@@ -690,8 +813,10 @@ html[data-theme="day"] .jr-now .jr-n,html[data-theme="day"] .jr-now .jr-when{col
 <section class="section-line wrap" id="promise">
 <p class="section-label reveal">What we promise, and what we don't</p>
 <h2 class="reveal">Plain terms, <span>before you pay anything.</span></h2>
-<div class="ab-two reveal">
-<div class="ab-col ab-yes">
+<div class="ab-terms" id="abTerms">
+<div class="ab-switch" role="tablist" aria-label="Our terms" hidden><i aria-hidden="true"></i><button role="tab" type="button" aria-selected="true">We will</button><button role="tab" type="button" aria-selected="false">We won't</button></div>
+<div class="ab-two">
+<div class="ab-g ab-col ab-yes" role="tabpanel">
 <h3>We will</h3>
 <ul>
 <li>Publish every price, in full, on <a href="register.html">the store</a>.</li>
@@ -700,7 +825,7 @@ html[data-theme="day"] .jr-now .jr-n,html[data-theme="day"] .jr-now .jr-when{col
 <li>Stay with you. Our pledge: we will not let you go until you're hired. It is a promise to keep going, not a date.</li>
 </ul>
 </div>
-<div class="ab-col ab-no">
+<div class="ab-g ab-col ab-no" role="tabpanel">
 <h3>We won't</h3>
 <ul>
 <li>Promise you a job, a start date or a salary. Employers decide those.</li>
@@ -710,26 +835,28 @@ html[data-theme="day"] .jr-now .jr-n,html[data-theme="day"] .jr-now .jr-when{col
 </ul>
 </div>
 </div>
+</div>
 </section>
 
 <section class="section-line wrap" id="start">
 <p class="section-label reveal">Where to start</p>
 <h2 class="reveal">Try us free first. <span>Then decide.</span></h2>
-<div class="ab-doors reveal">
-<a class="ab-door" href="masterclass/"><b>The Launchpad</b><span>Free, every Saturday at 4:00 PM WAT on Zoom. Bring your CV; we audit it live.</span></a>
-<a class="ab-door" href="diagnose/"><b>The 90-second diagnosis</b><span>Five questions. Find which of the five points is holding you back.</span></a>
-<a class="ab-door" href="jobs/"><b>The free job board</b><span>Remote roles open to people in Nigeria, checked twice a day.</span></a>
-<a class="ab-door" href="foundationtraining/"><b>Foundation Training</b><span>Twenty days, live, with your work marked by a person.</span></a>
-</div>
+<ol class="ab-path">
+<li><a class="ab-g ab-door" href="masterclass/"><em class="ab-free">Free</em><b>The Launchpad</b><span>Every Saturday at 4:00 PM WAT on Zoom. Bring your CV; we audit it live.</span><strong class="ab-tick" id="abNext" hidden></strong></a></li>
+<li><a class="ab-g ab-door" href="diagnose/"><em class="ab-free">Free</em><b>The 90-second diagnosis</b><span>Five questions. Find which of the five points is holding you back.</span></a></li>
+<li><a class="ab-g ab-door" href="jobs/"><em class="ab-free">Free</em><b>The free job board</b><span>Remote roles open to people in Nigeria, checked twice a day.</span><strong class="ab-tick" id="abJobs" hidden></strong></a></li>
+<li><a class="ab-g ab-door ab-paid" href="foundationtraining/"><em class="ab-free">When you're ready</em><b>Foundation Training</b><span>Twenty days, live, with your work marked by a person.</span></a></li>
+</ol>
 </section>
 
 <section class="section-line wrap" id="contact">
 <p class="section-label reveal">Contact us</p>
 <h2 class="reveal">Three ways to <span>reach a person.</span></h2>
-<div class="ab-contact reveal">
-<div><span class="ab-k">WhatsApp</span><a href="https://wa.me/2348032925957" rel="noopener" target="_blank">+234 803 292 5957</a><small>The fastest way. This is our only phone line.</small></div>
-<div><span class="ab-k">Email</span><a href="mailto:info@everythingremotejob.com">info@everythingremotejob.com</a><small>For sponsors, organisations, data requests and anything you want in writing.</small></div>
-<div><span class="ab-k">Office</span><span class="ab-v">Block G3, Finance Quarters, Wuye, FCT, Abuja, Nigeria</span><small>Business Play Limited · RC 2024689</small></div>
+<p class="ab-clock" id="abClock" hidden><i class="ab-pulse" aria-hidden="true"></i>It is <b id="abClockT"></b> in Abuja right now.</p>
+<div class="ab-contact">
+<div class="ab-g ab-wa"><span class="ab-k">WhatsApp</span><a href="https://wa.me/2348032925957" rel="noopener" target="_blank">+234 803 292 5957</a><small>The fastest way. This is our only phone line.</small><a class="ab-act" href="https://wa.me/2348032925957" rel="noopener" target="_blank">Open a chat</a></div>
+<div class="ab-g"><span class="ab-k">Email</span><a href="mailto:info@everythingremotejob.com">info@everythingremotejob.com</a><small>For sponsors, organisations, data requests and anything you want in writing.</small><button class="ab-act" type="button" id="abCopy" data-copy="info@everythingremotejob.com" hidden>Copy address</button></div>
+<div class="ab-g"><span class="ab-k">Office</span><span class="ab-v">Block G3, Finance Quarters, Wuye, FCT, Abuja, Nigeria</span><small>Business Play Limited · RC 2024689</small><a class="ab-act" href="https://www.google.com/maps/search/?api=1&amp;query=Finance+Quarters+Wuye+Abuja" rel="noopener" target="_blank">Find it on a map</a></div>
 </div>
 </section>
 </main>
@@ -760,12 +887,73 @@ window.ERJ_WORLD={route:[['Lagos',6.52,3.38],['Benin Republic',6.37,2.42],['Lond
  {sel:'#jr-ghana',lat:7,lon:0,zoom:4.2,x:.7,y:.5,a:.92,mx:.5,my:.32,mzoom:3.2,ma:.7,leg:4},
  {sel:'#jr-ph',lat:6,lon:5.5,zoom:4.6,x:.7,y:.5,a:.92,mx:.5,my:.32,mzoom:3.4,ma:.7,leg:5,ng:.6},
  {sel:'#jr-abuja',lat:9,lon:7.5,zoom:5.2,x:.7,y:.5,a:.92,mx:.5,my:.32,mzoom:3.8,ma:.7,leg:6,ng:.8},
- {sel:'#numbers',lat:16,lon:6,zoom:1.5,x:.82,y:.5,a:.3,mx:.5,my:.2,ma:.18,leg:6},
- {sel:'#contact',lat:9,lon:7.5,zoom:2.4,x:.8,y:.5,a:.28,mx:.5,my:.2,ma:.18,leg:6,ng:.4}
+ {sel:'#numbers',lat:16,lon:6,zoom:1.5,x:1.02,y:.55,a:.18,mx:.8,my:.12,mzoom:.9,ma:.08,leg:6},
+ {sel:'#contact',lat:9,lon:7.5,zoom:2.4,x:1.0,y:.55,a:.18,mx:.8,my:.12,mzoom:.9,ma:.08,leg:6,ng:.4}
 ]};
 /* light the card and the chip of the city in view */
 (function(){var stops=[].slice.call(document.querySelectorAll('.jr-stop')),chips=[].slice.call(document.querySelectorAll('.jr-chips a'));if(!('IntersectionObserver' in window)||!stops.length)return;
 var io=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;stops.forEach(function(s){s.classList.toggle('here',s===e.target)});chips.forEach(function(c){c.classList.toggle('on',c.getAttribute('href')==='#'+e.target.id)})})},{rootMargin:'-45% 0px -45% 0px'});stops.forEach(function(s){io.observe(s)});})();
+</script>
+<script>
+/* About: live figures and the things you can tap. Every element already shows
+   its real text; this only animates it or fills extras that start hidden. */
+(function(){
+var d=document,still=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+function $(s){return d.querySelector(s)}function $$(s){return [].slice.call(d.querySelectorAll(s))}
+function seen(el,fn,m){if(!el)return;if(!('IntersectionObserver' in window)){fn();return}var io=new IntersectionObserver(function(es){if(es[0].isIntersecting){io.disconnect();fn()}},{rootMargin:m||'0px 0px -15% 0px'});io.observe(el)}
+/* pointer light on the glass cards */
+$$('.ab-g').forEach(function(c){c.addEventListener('pointermove',function(e){var r=c.getBoundingClientRect();c.style.setProperty('--mx',(e.clientX-r.left)+'px');c.style.setProperty('--my',(e.clientY-r.top)+'px')})});
+
+/* numbers: count up once, fill the bars */
+var st=$('.ab-stats');
+if(st){$$('.ab-dots s').forEach(function(s,i){s.style.setProperty('--i',i)});
+ var r=st.getBoundingClientRect();if(!still&&r.top>innerHeight)st.classList.add('wait');
+ seen(st,function(){st.classList.remove('wait');if(still)return;$$('[data-count]').forEach(function(el){var to=+el.dataset.count,t0=performance.now(),dur=1400;
+  (function f(t){var k=Math.min(1,(t-t0)/dur);el.textContent=Math.round(to*(1-Math.pow(1-k,3)));if(k<1)requestAnimationFrame(f)})(t0)})});}
+var y=$('.ab-years');if(y){var n=new Date().getFullYear()-(+y.dataset.since);y.textContent=n+' years and counting'}
+
+/* live job count from the board's own feed */
+fetch('jobs/data/latest.json',{cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(function(j){if(!j||!j.live)return;
+ $('#abLiveN').textContent=j.live;var a=$('#abLive');
+ if(j.updated){var u=new Date(j.updated);if(!isNaN(u)){var h=Math.round((Date.now()-u)/36e5);$('#abLiveT').textContent=h<1?'Updated within the hour':'Updated '+h+(h==1?' hour':' hours')+' ago'}}
+ a.hidden=false;var b=$('#abJobs');if(b){b.textContent=j.live+' roles live today';b.hidden=false}}).catch(function(){});
+
+/* the five points: a chain you step along; plays itself until you tap */
+var ch=$('#abChain');
+if(ch){var rail=ch.querySelector('.ab-chain-rail'),btns=[].slice.call(rail.querySelectorAll('button')),items=[].slice.call(ch.querySelectorAll('.ab-five li')),line=rail.querySelector('.ab-chain-line'),cur=0,timer=null,touched=false;
+ items.forEach(function(li,i){li.id='abp'+i;li.setAttribute('role','tabpanel');btns[i].setAttribute('aria-controls','abp'+i)});
+ function go(i){cur=i;btns.forEach(function(b,k){b.setAttribute('aria-selected',k===i);b.tabIndex=k===i?0:-1;b.classList.toggle('done',k<i)});items.forEach(function(li,k){li.classList.toggle('cur',k===i)});line.style.setProperty('--p',i/4)}
+ rail.hidden=false;ch.classList.add('on');go(0);
+ btns.forEach(function(b,i){b.addEventListener('click',function(){touched=true;clearInterval(timer);go(i)});b.addEventListener('keydown',function(e){var k=e.key==='ArrowRight'?1:e.key==='ArrowLeft'?-1:0;if(!k)return;e.preventDefault();touched=true;clearInterval(timer);var n=(cur+k+5)%5;go(n);btns[n].focus()})});
+ if(!still&&'IntersectionObserver' in window){new IntersectionObserver(function(es){clearInterval(timer);if(es[0].isIntersecting&&!touched)timer=setInterval(function(){go((cur+1)%5)},3800)},{threshold:.6}).observe(ch)}}
+
+/* promise: switch between the two lists */
+var tm=$('#abTerms');
+if(tm){var sw=tm.querySelector('.ab-switch'),sb=[].slice.call(sw.querySelectorAll('button')),cols=[].slice.call(tm.querySelectorAll('.ab-col'));
+ cols.forEach(function(c,i){c.id='abt'+i;sb[i].setAttribute('aria-controls','abt'+i);[].slice.call(c.querySelectorAll('li')).forEach(function(li,k){li.style.setProperty('--i',k)})});
+ function pick(i){sb.forEach(function(b,k){b.setAttribute('aria-selected',k===i);b.tabIndex=k===i?0:-1});cols.forEach(function(c,k){c.classList.toggle('cur',k===i)});tm.classList.toggle('no',i===1)}
+ sw.hidden=false;tm.classList.add('on');pick(0);
+ sb.forEach(function(b,i){b.addEventListener('click',function(){pick(i)});b.addEventListener('keydown',function(e){if(e.key==='ArrowRight'||e.key==='ArrowLeft'){e.preventDefault();var n=1-i;pick(n);sb[n].focus()}})});}
+
+/* where to start: the path lights as you scroll down it */
+var path=$('.ab-path');
+if(path&&!still){var steps=[].slice.call(path.children);function draw(){var r=path.getBoundingClientRect(),mid=innerHeight*.62,p=Math.max(0,Math.min(1,(mid-r.top)/r.height));path.style.setProperty('--p',p);steps.forEach(function(s){var q=s.getBoundingClientRect();s.classList.toggle('lit',q.top+30<mid)})}
+ var tick=false;addEventListener('scroll',function(){if(!tick){tick=true;requestAnimationFrame(function(){tick=false;draw()})}},{passive:true});draw();}
+else if(path){[].slice.call(path.children).forEach(function(s){s.classList.add('lit')})}
+
+/* clocks: Abuja time and the next Launchpad (Saturday 4:00 PM WAT = 15:00 UTC) */
+var fmt;try{fmt=new Intl.DateTimeFormat('en-GB',{timeZone:'Africa/Lagos',hour:'numeric',minute:'2-digit',hour12:true})}catch(e){}
+function nextLp(){var n=new Date(),t=new Date(Date.UTC(n.getUTCFullYear(),n.getUTCMonth(),n.getUTCDate(),15,0,0)),add=(6-t.getUTCDay()+7)%7;t.setUTCDate(t.getUTCDate()+add);if(t-n<-90*60000)t.setUTCDate(t.getUTCDate()+7);return t}
+function clocks(){if(fmt){var s=fmt.format(new Date()).replace(' am',' AM').replace(' pm',' PM');var a=$('#abClockT');if(a){a.textContent=s;$('#abClock').hidden=false}var b=$('#abClockA');if(b)b.textContent=s}
+ var el=$('#abNext');if(el){var ms=nextLp()-new Date();if(ms<=0){el.textContent='On now. Join on Zoom.'}else{var dd=Math.floor(ms/864e5),hh=Math.floor(ms%864e5/36e5),mm=Math.floor(ms%36e5/6e4),ss=Math.floor(ms%6e4/1e3);el.textContent='Next one in '+(dd?dd+'d ':'')+hh+'h '+String(mm).padStart(2,'0')+'m '+String(ss).padStart(2,'0')+'s'}el.hidden=false}}
+clocks();setInterval(clocks,1000);
+
+/* copy the email address */
+var cp=$('#abCopy');
+if(cp){cp.hidden=false;cp.addEventListener('click',function(){var v=cp.dataset.copy;function ok(){cp.textContent='Copied';cp.classList.add('ok');setTimeout(function(){cp.textContent='Copy address';cp.classList.remove('ok')},2200)}
+ if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(v).then(ok,function(){fallback()})}else fallback();
+ function fallback(){var t=d.createElement('textarea');t.value=v;t.setAttribute('readonly','');t.style.position='fixed';t.style.top='-99px';d.body.appendChild(t);t.select();try{d.execCommand('copy');ok()}catch(e){}d.body.removeChild(t)}})}
+})();
 </script>
 <script defer src="erj-world.js?v=20261116a"></script>
 </body>
