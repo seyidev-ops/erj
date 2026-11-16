@@ -568,6 +568,29 @@ a.promo-tick{text-decoration:none;display:block;}
 .ab-contact a,.ab-v{font-family:var(--font-display);font-weight:600;color:var(--accent,#FF5722);text-decoration:none;word-break:break-word}
 .ab-v{color:inherit}
 .ab-contact small{display:block;margin-top:.45rem;color:var(--ink-soft);line-height:1.5}
+
+.jr{position:relative;padding-top:clamp(3rem,8vw,6rem)}
+.jr-head{max-width:1180px}
+.jr-head h2 span{color:var(--accent,#FF5722)}
+.jr-chips{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.4rem}
+.jr-chips a{font:600 .82rem/1 var(--font-body);padding:.6rem .9rem;border-radius:999px;border:1px solid var(--card-line,var(--line));color:var(--ink);text-decoration:none;background:var(--card,transparent);transition:border-color .2s,color .2s}
+.jr-chips a:hover,.jr-chips a:focus-visible,.jr-chips a.on{border-color:var(--accent,#FF5722);color:var(--accent,#FF5722)}
+.jr-stops{list-style:none;margin:0;padding:0;counter-reset:none}
+.jr-stop{min-height:88vh;display:flex;align-items:center}
+.jr-stop .wrap{width:100%}
+.jr-card{max-width:420px;margin-left:clamp(0px,7vw,110px);padding:1.6rem 1.6rem 1.5rem;border-radius:22px;border:1px solid var(--card-line,var(--line));background:color-mix(in srgb,var(--paper,#000) 72%,transparent);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);position:relative}
+.jr-n{display:block;font:700 .9rem/1 var(--font-display);color:var(--accent,#FF5722);letter-spacing:.04em}
+.jr-card h3{margin:.55rem 0 .15rem;font-family:var(--font-display);font-size:clamp(2.2rem,5.4vw,3.6rem);line-height:1;letter-spacing:-.02em}
+.jr-when{margin:0 0 .9rem;font-weight:600;color:var(--accent,#FF5722)}
+.jr-card p:last-child{margin:0;color:var(--ink-soft);line-height:1.65}
+.jr-now{border-color:color-mix(in srgb,#19C27A 55%,transparent)}
+.jr-now .jr-n,.jr-now .jr-when{color:#19C27A}
+html[data-theme="day"] .jr-now .jr-n,html[data-theme="day"] .jr-now .jr-when{color:#0B7A47}
+.jr-card::before{content:"";position:absolute;left:-1px;top:22px;bottom:22px;width:3px;border-radius:3px;background:var(--accent,#FF5722);opacity:.0;transition:opacity .4s}
+.jr-stop.here .jr-card::before{opacity:1}
+.jr-now::before{background:#19C27A}
+@media(max-width:760px){.jr-stop{min-height:92vh;align-items:flex-end;padding-bottom:9vh}.jr-card{max-width:none;margin-left:0}}
+@media(prefers-reduced-motion:reduce){.jr-card::before{transition:none}}
 @media(max-width:820px){.ab-stats{grid-template-columns:repeat(2,minmax(0,1fr))}.ab-founder,.ab-two,.ab-doors,.ab-contact{grid-template-columns:1fr}.ab-photo{max-width:300px}}
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"AboutPage","name":"About Everything Remote Job","url":"https://everythingremotejob.com/about.html","about":{"@id":"https://everythingremotejob.com/#organization"},"mainEntity":{"@id":"https://everythingremotejob.com/#organization"}}</script>
@@ -594,6 +617,7 @@ a.promo-tick{text-decoration:none;display:block;}
 <!-- End Google Tag Manager (noscript) -->
 <div id="erjNavMount"></div>
 <script>window.ERJ_NAV={active:'about',onPage:[
+  {label:'The route',href:'#journey'},
   {label:'So far',href:'#numbers'},
   {label:'How we work',href:'#how'},
   {label:'Who is behind it',href:'#who'},
@@ -604,9 +628,28 @@ a.promo-tick{text-decoration:none;display:block;}
 <section class="hero wrap">
 <p class="section-label reveal"><span class="mark"></span>About Everything Remote Job</p>
 <h1 class="reveal">We help African professionals win remote work, <em>from home.</em></h1>
-<p class="lede reveal">Everything Remote Job (ERJ) is a career company in Abuja, run by Business Play Limited. We help professionals in Nigeria and across Africa get ready for remote roles, find the ones genuinely open to them, present their work so an employer abroad can read it, and turn interviews into offers.</p>
+<p class="lede reveal">Everything Remote Job (ERJ) is a career company in Abuja, run by Business Play Limited. We help professionals in Nigeria and across Africa get ready for remote roles, find the ones genuinely open to them, present their work so an employer abroad can read it, and turn interviews into offers. We know the road because we have travelled it.</p>
 </section>
 
+
+<section class="jr" id="journey" aria-labelledby="jrTitle">
+<div class="wrap jr-head">
+<p class="section-label"><span class="mark"></span>The founder's route</p>
+<h2 id="jrTitle">Remote since 2013. <span>Six places, one way of working.</span></h2>
+<p class="section-sub">Before ERJ taught anyone to work remotely, its founder did it, from every city below. Scroll, and the globe follows the route.</p>
+<nav class="jr-chips" aria-label="Jump to a city">
+<a href="#jr-lagos">Lagos</a><a href="#jr-benin">Benin Republic</a><a href="#jr-london">London</a><a href="#jr-ghana">Ghana</a><a href="#jr-ph">Port Harcourt</a><a href="#jr-abuja">Abuja</a>
+</nav>
+</div>
+<ol class="jr-stops">
+<li class="jr-stop" id="jr-lagos"><div class="wrap"><div class="jr-card"><span class="jr-n">01</span><h3>Lagos</h3><p class="jr-when">2013</p><p>Where it started: the first remote role, done from a Lagos desk for a team that was never in the room.</p></div></div></li>
+<li class="jr-stop" id="jr-benin"><div class="wrap"><div class="jr-card"><span class="jr-n">02</span><h3>Benin Republic</h3><p class="jr-when">Across the border</p><p>A new country, the same laptop and the same deadlines. The work did not notice the move.</p></div></div></li>
+<li class="jr-stop" id="jr-london"><div class="wrap"><div class="jr-card"><span class="jr-n">03</span><h3>London</h3><p class="jr-when">Inside the hiring world</p><p>Working from the city many remote employers hire from, and seeing how they read an application from Africa.</p></div></div></li>
+<li class="jr-stop" id="jr-ghana"><div class="wrap"><div class="jr-card"><span class="jr-n">04</span><h3>Ghana</h3><p class="jr-when">Back in West Africa</p><p>Another country, another time zone overlap to manage, and still delivering to teams abroad.</p></div></div></li>
+<li class="jr-stop" id="jr-ph"><div class="wrap"><div class="jr-card"><span class="jr-n">05</span><h3>Port Harcourt</h3><p class="jr-when">Home in Nigeria</p><p>Proof that the work holds up from anywhere in Nigeria, not only from Lagos.</p></div></div></li>
+<li class="jr-stop" id="jr-abuja"><div class="wrap"><div class="jr-card jr-now"><span class="jr-n">06</span><h3>Abuja</h3><p class="jr-when">Now</p><p>Where ERJ runs today, teaching other professionals to do what this route proves: work for the world without leaving home.</p></div></div></li>
+</ol>
+</section>
 <section class="section-line wrap reveal" id="numbers">
 <p class="section-label">So far</p>
 <h2>The work behind the name. <span>Counted, not estimated.</span></h2>
@@ -706,6 +749,24 @@ a.promo-tick{text-decoration:none;display:block;}
 <script defer="" src="erj-schema.js?v=20261116a"></script>
 <script defer="" src="erj-alive.js?v=20261004a"></script>
 <script defer="" src="erj-future.js?v=20261101a"></script>
-<script defer src="erj-world.js?v=20261111d"></script>
+<script>
+/* The founder's route: the globe flies city to city as the journey scrolls (see erj-world.js). */
+window.ERJ_WORLD={route:[['Lagos',6.52,3.38],['Benin Republic',6.37,2.42],['London',51.51,-0.13],['Ghana',5.6,-0.19],['Port Harcourt',4.82,7.03],['Abuja',9.06,7.49]],stations:[
+ {sel:'.hero',lat:22,lon:4,zoom:1.05,x:.8,y:.42,a:.55,mx:.5,my:.2,ma:.28,spin:1},
+ {sel:'.jr-head',lat:26,lon:3,zoom:1.35,x:.74,y:.52,a:.75,mx:.5,my:.3,ma:.45,leg:.6},
+ {sel:'#jr-lagos',lat:6.5,lon:3.4,zoom:5.5,x:.7,y:.5,a:.92,mx:.5,my:.32,mzoom:4,ma:.7,leg:1,ng:.5},
+ {sel:'#jr-benin',lat:7,lon:2.6,zoom:5.5,x:.7,y:.5,a:.92,mx:.5,my:.32,mzoom:4,ma:.7,leg:2,ng:.25},
+ {sel:'#jr-london',lat:35,lon:1,zoom:1.9,x:.7,y:.5,a:.92,mx:.5,my:.32,mzoom:1.5,ma:.7,leg:3},
+ {sel:'#jr-ghana',lat:7,lon:0,zoom:4.2,x:.7,y:.5,a:.92,mx:.5,my:.32,mzoom:3.2,ma:.7,leg:4},
+ {sel:'#jr-ph',lat:6,lon:5.5,zoom:4.6,x:.7,y:.5,a:.92,mx:.5,my:.32,mzoom:3.4,ma:.7,leg:5,ng:.6},
+ {sel:'#jr-abuja',lat:9,lon:7.5,zoom:5.2,x:.7,y:.5,a:.92,mx:.5,my:.32,mzoom:3.8,ma:.7,leg:6,ng:.8},
+ {sel:'#numbers',lat:16,lon:6,zoom:1.5,x:.82,y:.5,a:.3,mx:.5,my:.2,ma:.18,leg:6},
+ {sel:'#contact',lat:9,lon:7.5,zoom:2.4,x:.8,y:.5,a:.28,mx:.5,my:.2,ma:.18,leg:6,ng:.4}
+]};
+/* light the card and the chip of the city in view */
+(function(){var stops=[].slice.call(document.querySelectorAll('.jr-stop')),chips=[].slice.call(document.querySelectorAll('.jr-chips a'));if(!('IntersectionObserver' in window)||!stops.length)return;
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;stops.forEach(function(s){s.classList.toggle('here',s===e.target)});chips.forEach(function(c){c.classList.toggle('on',c.getAttribute('href')==='#'+e.target.id)})})},{rootMargin:'-45% 0px -45% 0px'});stops.forEach(function(s){io.observe(s)});})();
+</script>
+<script defer src="erj-world.js?v=20261116a"></script>
 </body>
 </html>
