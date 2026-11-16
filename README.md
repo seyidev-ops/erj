@@ -81,7 +81,7 @@ The Cohort 13 instalment window runs from 31 October to Sunday 22 November 2026,
 
 Any page still advertising an open instalment window after that date is stale and must be corrected.
 
-> **Note for future cohorts:** the ₦50,000 reservation mechanic used by the previous cohort has been retired. ₦50,000 on the current store is the price of two unrelated products, The Job Hunter's Hunt Month and Career Development — Self-Study. Do not reintroduce reservation copy at that figure.
+> **Note for future cohorts:** the ₦50,000 reservation mechanic used by the previous cohort has been retired. ₦50,000 on the current store is the price of two unrelated products, The Job Hunter's One Hunt and Career Development — Self-Study. Do not reintroduce reservation copy at that figure.
 
 ## The store — seventeen doors
 
@@ -92,8 +92,8 @@ Any page still advertising an open instalment window after that date is stale an
 | Google Search: Best Kept Open Secret (book) | ₦5,000 | Supply — carries the **Start here** badge |
 | The CV Engine | ₦5,000 / month | Representation — the instrument, operated by you |
 | From Intent to Offer (book) | ₦15,000 | The whole method — eighteen chapters, six appendices, instant download |
-| The Job Hunter — One Hunt | ₦15,000 | Aim and Supply — up to 25 roles open to Nigeria scored against the CV, application packs for the top 3; ERJ prepares, the buyer submits |
-| The Job Hunter — Hunt Month | ₦50,000 | The same, weekly for 30 days, up to 20 packs; one payment, no auto-renew |
+| The Job Hunter — One Hunt | ₦50,000 | Aim and Supply — up to 25 roles open to Nigeria scored against the CV, application packs for the top 3; ERJ prepares, the buyer submits |
+| The Job Hunter — Hunt Month | ₦120,000 | The same, weekly for 30 days, up to 20 packs; one payment, no auto-renew |
 | CV Fix — one CV, one field | ₦30,000 | Representation — the same work, done for you once |
 | The Self-Learn Pack — Stages 1–4 | ₦35,000 | Capacity and Representation |
 | The Interview Sprint | ₦40,000 | Conversion — two one-to-one sessions before a booked remote interview, test or trial task; paid by transfer, confirmed on WhatsApp |

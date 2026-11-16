@@ -36,7 +36,7 @@
       lead: 'A cohort has a date. Your job hunt doesn\u2019t.',
       body: 'These doors open the day you walk through them \u2014 no gate, no waiting list.',
       doors: [
-        { label: 'The Job Hunter \u2014 roles scored, applications prepared, from \u20a615,000', href: 'jobhunter/' },
+        { label: 'The Job Hunter \u2014 roles scored, applications prepared, from \u20a650,000', href: 'jobhunter/' },
         { label: 'The free stack \u2014 CV scan, blog, job board, Saturday Launchpad', href: 'free.html' }
       ]
     },
@@ -65,7 +65,7 @@
       jobBoard: 'Hello ERJ \u2014 I saw this role on the job board and I am not sure I qualify.\n\nRole: {title}\nCompany: {company}\nLink: {url}\n\nI will send my CV here. Please check the requirements with me.',
       /* Foundation Training page: hold a seat in a named cohort ({cohort} = 'Cohort 13, begins Mon 30 Nov'). */
       ftSeat: 'FOUNDATION TRAINING\n\nI want a seat in {cohort}.\n\nFull name:\nTarget role:\nClass I can keep: 7 PM weekdays / 8 PM weekdays / weekends\n\nPlease send me how to pay and what happens next.',
-      /* The Job Hunter (jobhunter/): {plan} = 'One Hunt \u00b7 \u20a615,000' or 'Hunt Month \u00b7 \u20a650,000'. */
+      /* The Job Hunter (jobhunter/): {plan} = 'One Hunt \u00b7 \u20a650,000' or 'Hunt Month \u00b7 \u20a6120,000'. */
       jobHunter: 'THE JOB HUNTER\n\nPlan: {plan}\n\nFull name:\nTarget role(s):\nCountries / time zones I can work in:\nLowest monthly pay I will accept:\nMy CV: I will attach it here.\n\nPlease send me how to pay and when my shortlist will arrive.',
       jobHunterAsk: 'Hello ERJ \u2014 I am looking at The Job Hunter and I have a question first:\n\n',
       /* Foundation Training page: a question before enrolling. */
@@ -172,9 +172,9 @@
         /* The Job Hunter: ERJ runs the hunt (career-ops method, MIT) for the
            buyer, a person checks every pack, the buyer presses Submit. No
            Paystack link yet, so paid by transfer and confirmed on WhatsApp. */
-        { id:'jobhunt',    name:'The Job Hunter \u2014 One Hunt',          naira:15000,  unit:'one-time', part:'aim',
+        { id:'jobhunt',    name:'The Job Hunter \u2014 One Hunt',          naira:50000,  unit:'one-time', part:'aim',
           href:'jobhunter/', pay:'https://wa.me/2348032925957', badge:'New' },
-        { id:'jobhuntmonth', name:'The Job Hunter \u2014 Hunt Month',      naira:50000,  unit:'one-time', part:'aim',
+        { id:'jobhuntmonth', name:'The Job Hunter \u2014 Hunt Month',      naira:120000,  unit:'one-time', part:'aim',
           href:'jobhunter/', pay:'https://wa.me/2348032925957' },
         /* The Interview Sprint: two one-to-one sessions before a booked remote
            interview or test. Paid by transfer, confirmed on the official line
