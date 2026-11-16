@@ -185,6 +185,7 @@ The site is a static HTML/CSS/JavaScript website hosted on **GitHub Pages** with
 - `/innercircle/` — the Inner Circle: twelve months one to one, open only to Foundation Training graduates (and Dream Job Offer buyers, which includes Foundation)
 - `/masterclass/` — The Remote Job Launchpad: the free weekly Saturday walkthrough (4:00 PM WAT) and its Zoom registration; the countdown rolls to the next Saturday by itself
 - `/self-learn-vs-foundation-training.html` — the honest seller-written comparison
+- `/about.html` — who runs ERJ, the published figures, what we promise and won't, and how to reach us (linked from every footer as "About ERJ", not from the main menu)
 - `/earlybird.html` — the Foundation Training instalment route
 - `/blog.html` — Remote Career Blog
 - `/blog/` — blog archive
