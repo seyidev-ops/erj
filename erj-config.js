@@ -110,7 +110,9 @@
          rendered by accident. */
       lines: {
         official: '2348032925957',
-        officialDisplay: '+234 803 292 5957'
+        officialDisplay: '+234 803 292 5957',
+        /* The one public email address. */
+        email: 'info@everythingremotejob.com'
       },
 
       figures: {
