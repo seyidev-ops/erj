@@ -47,8 +47,9 @@
       sprint: 'INTERVIEW SPRINT\n\nRole and company:\nInterview or test date:\nType (interview, test, trial task):\nMy CV: I will attach it here.\n\nPlease send me how to pay and book my two sessions.',
       shapeInterview: 'INTERVIEW SOON\n\nI have a remote interview or test coming up.\n\nRole and company:\nDate:\nMy CV: I will attach it here.\n\nWhat is the fastest way to prepare this week?',
       shapeSponsor: 'ENROL SOMEONE\n\nI want to pay for someone else to join Foundation Training.\n\nTheir name:\nTheir field / current work:\nTheir WhatsApp number:\n\nPlease tell me how to enrol them.',
-      scan: 'Hello ERJ \u2014 I just scored {score}/10 on the free CV scan.\n\nThe points I did not clear: {defaults}\n\nPlease send me the fix list for my score.',
-      scanClear: 'Hello ERJ \u2014 I scored {score}/10 on the free CV scan and cleared all ten points.\n\nMy CV is not the reason I am not getting interviews. Where should I look next?',
+      /* CV scan result (erj-capture.js). {want} is the option the person tapped; {options} is the lettered list. */
+      scanHelp: 'Hello ERJ \u2014 I need your help solving this problem.\n\nMy CV scan score: {score}/10\nPoints I did not clear: {defaults}\n\nI would like help with: {want}\n\nMy target role:',
+      scanChoose: 'Hello ERJ \u2014 I need your help solving this problem.\n\nMy CV scan score: {score}/10\nPoints I did not clear: {defaults}\n\nWhat I need help with (I will reply with a letter):\n{options}\n\nMy choice:\nMy target role:',
       channel: 'AUDIT\n\nI am on the ERJ free job channel and I have been applying for remote roles.\n\nTarget role:\nApplications in the last 30 days:\nInterviews in the last 30 days:\nCV/LinkedIn: I will attach or paste it here.\n\nPlease tell me which part of my search is breaking down and what I should fix first.',
       diagnose: 'AUDIT\n\nMy diagnostic says: {joint} \u2014 {law}\n\nTarget role:\nApplications in the last 30 days:\nInterviews in the last 30 days:\nCV/LinkedIn: I will attach or paste it here.\n\nMy diagnostic answers: {answer}\n\nPlease tell me what I should fix first. If I do not need a paid ERJ service, please tell me that too.',
       blog: 'Hello ERJ \u2014 I have been reading the blog and I want to sort out my job hunt properly. Where do I start?',
@@ -71,6 +72,43 @@
       /* Foundation Training page: a question before enrolling. */
       ftAsk: 'Hello ERJ \u2014 I am looking at Foundation Training and I have a question before I enrol:\n\n',
       careerdevIncluded: 'MENTORINE ACCESS\n\nI am enrolled in Foundation Training and I am ready for my included career-development access at The Mentorine School.\n\nFull name:\nEmail:\nTarget role:\nAssessment done: yes / not yet'
+    },
+
+    /* CV scan result (erj-capture.js): the help card shown under the score. Highest matching `min` wins.
+       Each option opens WhatsApp with `want` filled into messages.scanHelp. No prices here: the product pages carry them. */
+    scanHelp: {
+      tiers: [
+        { min: 8, head: 'Your CV is doing its job.',
+          lead: 'The gap now is getting it in front of the right roles. Want us to carry some of that work for you?',
+          options: [
+            { label: 'The Job Hunter', what: 'We find and score remote roles open to Nigeria against your CV and prepare your applications. You press Submit.',
+              want: 'The Job Hunter: find and score remote roles for me and prepare my applications' },
+            { label: 'Prepare my other application documents', what: 'Your LinkedIn profile, portfolio and the rest, so everything matches your CV.',
+              want: 'Prepare my other application documents (LinkedIn, portfolio and the rest) so they match my CV' }
+          ] },
+        { min: 5, head: 'The base is solid, but it does not represent you well enough yet.',
+          lead: 'We can help you represent yourself better. Choose the route that suits you.',
+          options: [
+            { label: 'CV Fix', what: 'We rewrite your CV for the remote roles you are aiming at.',
+              want: 'CV Fix: rewrite my CV for the remote roles I am aiming at' },
+            { label: 'The Self-Learn Pack', what: 'Fix it yourself, step by step, with the full rubric and the rebuild loop behind this scan.',
+              want: 'The Self-Learn Pack: I want to fix my CV myself, step by step' }
+          ] },
+        { min: 3, head: 'This is a representation problem, and partly a capacity one.',
+          lead: 'The CV needs rebuilding, and so does the way you present your skills for remote work.',
+          options: [
+            { label: 'CV Fix', what: 'We rewrite your CV for the remote roles you are aiming at.',
+              want: 'CV Fix: rewrite my CV for the remote roles I am aiming at' },
+            { label: 'Foundation Training', what: 'Twenty live days where you build your CV, profile and portfolio, with your work marked by a person.',
+              want: 'Foundation Training: I want to build my CV, profile and portfolio properly' }
+          ] },
+        { min: 0, head: 'Do not guess where to start.',
+          lead: 'Talk to us. We will tell you honestly where you stand, where to start, and what is and is not worth paying for.',
+          options: [
+            { label: 'Talk to us', what: 'A free, honest conversation about where you stand and your first step.',
+              want: 'a free, honest conversation: please tell me where I should start' }
+          ] }
+      ]
     },
 
     /* ═══════════════════════════════════════════════════════════
