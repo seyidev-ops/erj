@@ -83,8 +83,8 @@
           options: [
             { label: 'The Job Hunter', what: 'We find and score remote roles open to Nigeria against your CV and prepare your applications. You press Submit.',
               want: 'The Job Hunter: find and score remote roles for me and prepare my applications' },
-            { label: 'Prepare my other application documents', what: 'Your LinkedIn profile, portfolio and the rest, so everything matches your CV.',
-              want: 'Prepare my other application documents (LinkedIn, portfolio and the rest) so they match my CV' }
+            { label: 'Stage 4: Start Your Remote Career', what: 'A portfolio worth opening, plus video interview and STAR answer coaching, so the rest of your application is as strong as your CV.',
+              want: 'Stage 4, Start Your Remote Career: a portfolio and interview coaching to match my CV' }
           ] },
         { min: 5, head: 'The base is solid, but it does not represent you well enough yet.',
           lead: 'We can help you represent yourself better. Choose the route that suits you.',
@@ -103,10 +103,10 @@
               want: 'Foundation Training: I want to build my CV, profile and portfolio properly' }
           ] },
         { min: 0, head: 'Do not guess where to start.',
-          lead: 'Talk to us. We will tell you honestly where you stand, where to start, and what is and is not worth paying for.',
+          lead: 'Start from the ground up with a structured career track at The Mentorine School. Message us and we will help you pick the right one.',
           options: [
-            { label: 'Talk to us', what: 'A free, honest conversation about where you stand and your first step.',
-              want: 'a free, honest conversation: please tell me where I should start' }
+            { label: 'Career Development \u2014 Self-Study', what: 'A guided track at The Mentorine School: a roadmap, courses and practical exercises in the field you choose, at your own pace.',
+              want: 'Career Development, Self-Study at The Mentorine School: I want to start from the beginning. Please help me choose my track and tell me how to pay' }
           ] }
       ]
     },

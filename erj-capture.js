@@ -198,7 +198,7 @@
             tier.options.forEach((o, i) => {
                 const letter = String.fromCharCode(65 + i);
                 list += letter + '. ' + o.label + '\n';
-                const href = waLink('scanHelp', { score: score, defaults: left, want: o.label + ' \u2014 ' + o.want.replace(/^[^:]*:\s*/, '') });
+                const href = waLink('scanHelp', { score: score, defaults: left, want: o.label + ': ' + o.want.replace(/^[^:]*:\s*/, '') });
                 opts += '<a class="cap-opt" href="' + href + '" target="_blank" rel="noopener">' +
                     '<span class="cap-let">' + letter + '</span>' +
                     '<span class="cap-opt-tx"><span class="cap-opt-t">' + esc(o.label) + '</span><span class="cap-opt-d">' + esc(o.what) + '</span></span>' +
