@@ -43,6 +43,7 @@
         "@type": "ContactPoint",
         "contactType": "customer support",
         "telephone": "+234-803-292-5957",
+        "email": "info@everythingremotejob.com",
         "availableLanguage": [
           "en"
         ]

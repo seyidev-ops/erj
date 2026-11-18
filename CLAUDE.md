@@ -229,6 +229,11 @@ precached; keep it free of shared scripts so it renders with no network.
   Launchpad, where CVs are audited live. The job listing footer lives in
   `TEMPLATE` in `jobboard.py`; change it there, then run `jobboard.py build`.
 
+- **Public contact:** the official WhatsApp line and `info@everythingremotejob.com`
+  (`canon.lines.email`). Every footer carries the email and an "About ERJ" link
+  to `about.html`; `privacy.html` and `terms.html` name it for data and payment
+  questions. WhatsApp stays the sales route; email is for writing.
+
 ## Security reality
 
 There is no backend. Accounts, sessions, progress and blog drafts all live

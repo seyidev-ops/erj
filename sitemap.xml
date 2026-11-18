@@ -80,6 +80,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://everythingremotejob.com/about.html</loc>
+    <lastmod>2026-11-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://everythingremotejob.com/self-learn-vs-foundation-training.html</loc>
     <lastmod>2026-08-25</lastmod>
     <changefreq>monthly</changefreq>
@@ -800,7 +806,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
-  <url><loc>https://everythingremotejob.com/jobs/</loc><lastmod>2026-11-15</lastmod><changefreq>daily</changefreq><priority>0.9</priority></url>
+  <url><loc>https://everythingremotejob.com/jobs/</loc><lastmod>2026-11-18</lastmod><changefreq>daily</changefreq><priority>0.9</priority></url>
   <url><loc>https://everythingremotejob.com/terms.html</loc><lastmod>2026-08-25</lastmod><changefreq>yearly</changefreq><priority>0.2</priority></url>
   <url><loc>https://everythingremotejob.com/privacy.html</loc><lastmod>2026-08-25</lastmod><changefreq>yearly</changefreq><priority>0.2</priority></url>
   <url>
@@ -892,4 +898,6 @@
 <url><loc>https://everythingremotejob.com/blog/tax-and-the-remote-worker-in-nigeria-five-questions-to-ask-before-january/</loc><lastmod>2026-11-14</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
 <url><loc>https://everythingremotejob.com/blog/employed-and-looking-how-to-run-a-remote-job-search-without-quitting-first/</loc><lastmod>2026-11-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
 <url><loc>https://everythingremotejob.com/blog/one-week-left-to-pay-in-instalments-what-the-window-is-and-is-not/</loc><lastmod>2026-11-16</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+<url><loc>https://everythingremotejob.com/blog/operations-admin-and-project-roles-the-remote-jobs-hiding-behind-other-titles/</loc><lastmod>2026-11-17</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+<url><loc>https://everythingremotejob.com/blog/your-contract-ends-soon-a-thirty-day-remote-search-plan/</loc><lastmod>2026-11-18</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
 </urlset>

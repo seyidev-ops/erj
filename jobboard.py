@@ -828,6 +828,11 @@ def row_to_listing(tab, hm, vals, links, cfg, source_name):
         return None, f"status: {dash(g('status'))}"
     loc = dash(g("location"))
     region = dash(g("region")) or loc or (MICRO1_REGION if is_micro1 else MERCOR_REGION if is_mercor else "")
+    # micro1 and Mercor roles are global contractor roles: a sheet that writes only
+    # "Remote (contractor)" names no country, so read it as their usual reach.
+    m1 = is_micro1 or company.lower() == "micro1"
+    if (m1 or is_mercor or company.lower() == "mercor") and not location_ok(region)[0] and region_open_to_nigeria(region):
+        region = MICRO1_REGION if m1 else MERCOR_REGION
     if "eligible" in hm:
         if not sheet_eligible(g("eligible")):
             return None, f"eligibility not confirmed ({dash(g('eligible'))})"

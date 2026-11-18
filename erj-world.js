@@ -37,6 +37,8 @@
     ['Mexico City', 19.4, -99.1], ['Bogotá', 4.7, -74.1], ['São Paulo', -23.5, -46.6], ['Buenos Aires', -34.6, -58.4]]
     .map(function (t) { return { n: t[0], v: vec(t[1], t[2]), home: !!t[3], on: false, t0: 0 }; });
 
+  /* an optional route between named places (CFG.route: [name, lat, lon]); a station's `leg` says how far along it the camera is */
+  var ROUTE = (CFG && CFG.route ? CFG.route : []).map(function (t) { return { n: t[0], v: vec(t[1], t[2]) }; });
   var cv = document.createElement('canvas'); cv.id = 'erjWorld'; cv.setAttribute('aria-hidden', 'true');
   cv.style.cssText = 'position:fixed;left:0;top:0;width:100%;height:100%;z-index:-1;pointer-events:none;';
   body.insertBefore(cv, body.firstChild);
@@ -64,10 +66,11 @@
   function smooth(t) { t = t < 0 ? 0 : t > 1 ? 1 : t; return t * t * (3 - 2 * t); }
   function pick(s) { // a station's camera, for this screen
     var o = { lat: s.lat, lon: s.lon, zoom: narrow && s.mzoom != null ? s.mzoom : s.zoom, x: narrow && s.mx != null ? s.mx : s.x, y: narrow && s.my != null ? s.my : s.y, a: narrow && s.ma != null ? s.ma : s.a, arcs: s.arcs || 0, ng: s.ng || 0, spin: s.spin || 0, towns: s.towns || 0, turn: s.turn || 0, spots: s.spots || 0 };
+    o.leg = s.leg || 0;
     if (s.anchor) { var el = document.querySelector(s.anchor); if (el) { var r = el.getBoundingClientRect(); if (r.width > 40) { o.x = (r.left + r.width / 2) / VW; o.y = (r.top + r.height / 2) / VH; o.zoom = Math.min(r.width, r.height) * .45 / BASE; } } }
     return o;
   }
-  var KEYS = ['lat', 'lon', 'zoom', 'x', 'y', 'a', 'arcs', 'ng', 'spin', 'towns', 'turn', 'spots'];
+  var KEYS = ['lat', 'lon', 'zoom', 'x', 'y', 'a', 'arcs', 'ng', 'spin', 'towns', 'turn', 'spots', 'leg'];
   var stIndex = 0;
   function target() {
     var y = window.pageYOffset, a, b, k;
@@ -222,6 +225,17 @@
         if (age >= 0 && age < 2.6 && c.spots > .6) chip(p, sp.n, col, a * (age < 2 ? 1 : 1 - (age - 2) / .6));
       });
     }
+    // the route: each leg drawn as the scroll reaches it, every stop pinned, the current one named
+    if (ROUTE.length && c.leg > .02) {
+      var ra = Math.min(1, c.a * 1.8), L = c.leg - 1, cur = Math.max(0, Math.min(ROUTE.length - 1, Math.round(L)));
+      for (var ri = 0; ri < ROUTE.length - 1; ri++) { var rp = Math.max(0, Math.min(1, L - ri)); if (rp > 0) arc(ROUTE[ri].v, ROUTE[ri + 1].v, rp, ORANGE, t + ri, ra); }
+      ROUTE.forEach(function (r, i) {
+        if (i > L + .5) return; var q = proj(r.v); if (q.z <= 0) return;
+        var last = i === ROUTE.length - 1, col = last ? GREEN : ORANGE;
+        pin(q, col, t + i * .3, ra * (i === cur ? 1 : .55), i === cur);
+        if (i === cur && Math.abs(L - i) < .35) chip(q, r.n, col, ra);
+      });
+    }
     ctx.globalAlpha = 1;
   }
   function near(a, b) { return Math.abs(a.zoom - b.zoom) < .004 * b.zoom && Math.abs(a.x - b.x) < .0015 && Math.abs(a.y - b.y) < .0015 && Math.abs(a.lat - b.lat) < .05 && Math.abs(a.lon - b.lon) < .05 && Math.abs(a.a - b.a) < .004; }
@@ -234,6 +248,7 @@
       if (cam.arcs > .25) { worldT += dt; live = true; } else if (cam.arcs < .02) worldT = 0;
       if (cam.spin > .05 && (!narrow || cam.arcs > .25)) { swayT += dt; live = true; }
       if (cam.ng > .3 || cam.arcs > .02) live = cam.a > .03 || live; // pins pulse
+      if (cam.leg > .02) live = cam.a > .03 || live; // route pins pulse
       if (cam.turn > .05) { turnLon += dt * cam.turn; spotT += dt; live = true; } // a slow, steady turn
       else if (turnLon) { var home360 = Math.round(turnLon / 360) * 360; turnLon += (home360 - turnLon) * (1 - Math.pow(.0009, dt)); if (Math.abs(home360 - turnLon) < .05) turnLon = 0; else live = true; }
     }
