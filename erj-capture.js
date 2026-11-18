@@ -13,7 +13,7 @@
    themselves. They keep their privacy; we get a conversation.
 
    Four jobs, all driven by window.ERJ_CONFIG:
-     1. scan   — "Send me my scored report" on the CV scan result
+     1. scan   — "download your result" and a score-matched "I need your help" card on the CV scan result
      2. bridge — a reply route beside every one-way channel link
      3. evergreen — a door that opens today, under every countdown
      4. capacity — honest placement capacity, rendered from config
@@ -65,6 +65,31 @@
 .cap-btn.ghost:hover{background:transparent;border-color:var(--accent,#FF5722);color:var(--accent,#FF5722);}
 .cap-send{margin:2.2rem 0 .4rem;padding:1.5rem 1.6rem;background:var(--card,rgba(128,128,128,.06));
  border:1px solid var(--card-line,rgba(128,128,128,.2));border-left:3px solid var(--accent,#FF5722);border-radius:2px;}
+.cap-dl{margin:1.4rem 0 0;padding:1.4rem 1.6rem;border:1px solid var(--accent,#FF5722);border-radius:12px;
+ background:var(--card,rgba(128,128,128,.06));display:flex;flex-wrap:wrap;align-items:center;gap:1rem 1.4rem;}
+.cap-dl-copy{flex:1 1 260px;min-width:0;}
+.cap-dl-k{font-size:.63rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent,#FF5722);margin-bottom:.4rem;}
+.cap-dl-copy p{font-size:.92rem;line-height:1.6;color:var(--ink-soft,#a1a1a1);}
+.cap-dl-copy p b{color:var(--ink,#fff);}
+.cap-dl-copy small{display:block;margin-top:.4rem;font-size:.74rem;color:var(--ink-faint,#8a8a8a);}
+.cap-dl-btn{flex:none;border-radius:999px;box-shadow:0 0 0 0 rgba(255,87,34,.5);animation:capPulse 2.6s ease-out infinite;}
+@keyframes capPulse{0%{box-shadow:0 0 0 0 rgba(255,87,34,.5);}70%,100%{box-shadow:0 0 0 14px rgba(255,87,34,0);}}
+.cap-help-k{font-size:.63rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent,#FF5722);margin-bottom:.5rem;}
+.cap-help-head{font-family:var(--font-display,system-ui,sans-serif);font-weight:800;font-size:1.2rem;line-height:1.3;color:var(--ink,#fff);margin-bottom:.4rem;}
+.cap-help-lead{font-size:.92rem;line-height:1.65;color:var(--ink-soft,#a1a1a1);max-width:60ch;}
+.cap-opts{display:grid;gap:.7rem;margin-top:1.1rem;}
+.cap-opt{display:flex;align-items:center;gap:.9rem;padding:.9rem 1.1rem;border:1px solid var(--card-line,rgba(128,128,128,.25));
+ border-radius:12px;text-decoration:none;color:inherit;background:var(--paper-2,rgba(128,128,128,.04));
+ transition:transform .25s cubic-bezier(.22,1,.36,1),border-color .25s ease;}
+.cap-opt:hover{transform:translateY(-2px);border-color:var(--accent,#FF5722);}
+.cap-let{flex:none;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;border:2px solid var(--accent,#FF5722);
+ color:var(--accent,#FF5722);font-weight:800;font-size:.95rem;}
+.cap-opt-tx{flex:1;min-width:0;}
+.cap-opt-t{display:block;font-weight:700;color:var(--ink,#fff);}
+.cap-opt-d{display:block;margin-top:.15rem;font-size:.82rem;line-height:1.5;color:var(--ink-soft,#a1a1a1);}
+.cap-opt svg{flex:none;width:22px;height:22px;fill:var(--accent,#FF5722);}
+@media print{.cap-dl,.cap-send{display:none!important;}}
+@media(prefers-reduced-motion:reduce){.cap-dl-btn{animation:none;}.cap-opt{transition:none;}}
 .cap-note{margin-top:.9rem;font-size:.78rem;line-height:1.65;color:var(--ink-faint,#8a8a8a);max-width:56ch;}
 .cap-note b{color:var(--ink-soft,#a1a1a1);font-weight:600;}
 .cap-bridge{margin-top:.7rem;padding-left:.9rem;border-left:2px solid var(--accent,#FF5722);
@@ -139,6 +164,14 @@
            animates its own text for ~900ms too, so the observer fires on every
            frame regardless; the guard has to be cheap and correct. */
         let mo = null;
+        const esc = (t) => String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+        const tierFor = (score) => {
+            const tiers = (CFG.scanHelp && CFG.scanHelp.tiers) || [];
+            for (let i = 0; i < tiers.length; i++)
+                if (score >= tiers[i].min)
+                    return tiers[i];
+            return tiers[tiers.length - 1];
+        };
         const inject = () => {
             const actions = results.querySelector('.results-actions');
             if (!actions || results.querySelector('.cap-send'))
@@ -148,19 +181,46 @@
             const defaults = Array.from(results.querySelectorAll('.default-list li'))
                 .map(li => (li.textContent || '').replace(/^\d+/, '').trim())
                 .filter(Boolean);
-            const href = defaults.length
-                ? waLink('scan', { score: score, defaults: defaults.join('; ') })
-                : waLink('scanClear', { score: score });
+            const left = defaults.length ? defaults.join('; ') : 'none, I cleared all ten';
+            const tier = tierFor(Number(score));
+            // 1 · the result is on the page: say so, and make the download impossible to miss
+            const dl = el('div', 'cap-dl');
+            dl.innerHTML =
+                '<div class="cap-dl-copy"><div class="cap-dl-k">Your result is ready</div>' +
+                    '<p><b>This is your result.</b> Download it to keep: your score, the points to fix and how to fix each one.</p>' +
+                    '<small>On the print screen, choose \u201cSave as PDF\u201d.</small></div>' +
+                    '<button type="button" class="cap-btn cap-dl-btn"><span>Download my result</span> <span class="arrow">\u2193</span></button>';
+            dl.querySelector('button').addEventListener('click', () => window.print());
+            // 2 · ask for help with the problem the score points to, one tap per route
             const wrap = el('div', 'cap-send');
+            let opts = '';
+            let list = '';
+            tier.options.forEach((o, i) => {
+                const letter = String.fromCharCode(65 + i);
+                list += letter + '. ' + o.label + '\n';
+                const href = waLink('scanHelp', { score: score, defaults: left, want: o.label + ': ' + o.want.replace(/^[^:]*:\s*/, '') });
+                opts += '<a class="cap-opt" href="' + href + '" target="_blank" rel="noopener">' +
+                    '<span class="cap-let">' + letter + '</span>' +
+                    '<span class="cap-opt-tx"><span class="cap-opt-t">' + esc(o.label) + '</span><span class="cap-opt-d">' + esc(o.what) + '</span></span>' +
+                    WA_ICON + '</a>';
+            });
+            const unsure = tier.options.length > 1
+                ? '<a class="cap-btn small" href="' + waLink('scanChoose', { score: score, defaults: left, options: list.trim() }) +
+                    '" target="_blank" rel="noopener"><span>Not sure which? Message us and we will help you choose</span></a>'
+                : '';
             wrap.innerHTML =
-                '<a class="cap-btn" href="' + href + '" target="_blank" rel="noopener">' +
-                    WA_ICON + '<span>Send me my scored report</span></a>' +
-                    '<p class="cap-note">Your CV stays on this device \u2014 always. This only sends the ' +
-                    '<b>number</b> and the point names, from your own WhatsApp, if you tap it. ' +
-                    'You get the fix list back personally.</p>';
+                '<div class="cap-help-k">What next</div>' +
+                    '<div class="cap-help-head">' + esc(tier.head) + '</div>' +
+                    '<p class="cap-help-lead">' + esc(tier.lead) + '</p>' +
+                    '<div class="cap-opts">' + opts + '</div>' + unsure +
+                    '<p class="cap-note">Your CV stays on this device \u2014 always. Tapping a choice opens your own WhatsApp with ' +
+                    'your <b>score</b> and the point names filled in. You decide whether to send it.</p>';
             // Stop watching while we mutate, so our own insertion cannot re-enter.
             if (mo)
                 mo.disconnect();
+            const panel = results.querySelector('.score-panel');
+            if (panel && panel.parentNode)
+                panel.parentNode.insertBefore(dl, panel.nextSibling);
             actions.parentNode.insertBefore(wrap, actions);
             if (mo)
                 mo.observe(results, { childList: true, subtree: true });
