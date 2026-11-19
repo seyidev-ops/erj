@@ -103,6 +103,14 @@
  animation:capShine 3.6s ease-in-out infinite;}
 .cap-opt:nth-child(2) .cap-go::after{animation-delay:.9s;}
 @keyframes capShine{0%,55%{left:-60%;}100%{left:135%;}}
+.cap-opt-p{display:inline-block;margin-left:.5rem;padding:.12rem .6rem;border-radius:999px;border:1px solid var(--accent,#FF5722);
+ color:var(--accent,#FF5722);font-size:.8rem;font-weight:700;white-space:nowrap;vertical-align:.08em;}
+.cap-ask{display:flex;align-items:center;justify-content:center;gap:.5rem;margin-top:.8rem;padding:.35rem .5rem;text-align:center;
+ font-size:.84rem;line-height:1.35;font-weight:600;color:var(--accent,#FF5722);text-decoration:none;
+ border-bottom:1px solid transparent;transition:border-color .2s ease;}
+.cap-ask:hover{border-bottom-color:var(--accent,#FF5722);}
+.cap-ask svg{flex:none;width:17px;height:17px;fill:currentColor;}
+.cap-ask-wide{margin-top:1.1rem;}
 .cap-more{display:flex;align-items:center;justify-content:center;gap:.6rem;width:100%;min-height:50px;margin-top:1rem;padding:.8rem 1.1rem;
  border:2px solid var(--accent,#FF5722);border-radius:999px;background:rgba(255,87,34,.1);color:var(--accent,#FF5722);
  font-family:var(--font-display,system-ui,sans-serif);font-weight:800;font-size:.95rem;line-height:1.2;text-align:center;text-decoration:none;
@@ -219,23 +227,24 @@
             tier.options.forEach((o, i) => {
                 const letter = String.fromCharCode(65 + i);
                 list += letter + '. ' + o.label + '\n';
-                const href = waLink('scanHelp', { score: score, defaults: left, want: o.label + ': ' + o.want.replace(/^[^:]*:\s*/, '') });
+                const ask = waLink('scanHelp', { score: score, defaults: left, want: o.label });
                 opts += '<div class="cap-opt"><div class="cap-opt-top"><span class="cap-let">' + letter + '</span>' +
-                    '<span class="cap-opt-tx"><span class="cap-opt-t">' + esc(o.label) + '</span><span class="cap-opt-d">' + esc(o.what) + '</span></span></div>' +
-                    '<a class="cap-go" href="' + href + '" target="_blank" rel="noopener">' + WA_ICON +
-                    '<span>' + esc(o.cta || ('Choose ' + o.label)) + '</span><span class="arrow">\u2192</span></a></div>';
+                    '<span class="cap-opt-tx"><span class="cap-opt-t">' + esc(o.label) + (o.price ? ' <span class="cap-opt-p">' + esc(o.price) + '</span>' : '') + '</span>' +
+                    '<span class="cap-opt-d">' + esc(o.what) + '</span></span></div>' +
+                    '<a class="cap-go" href="' + base + esc(o.href) + '" target="_blank" rel="noopener"><span>' + esc(o.cta || ('Choose ' + o.label)) + '</span><span class="arrow">\u2192</span></a>' +
+                    '<a class="cap-ask" href="' + ask + '" target="_blank" rel="noopener">' + WA_ICON + '<span>Have a question first? Ask us on WhatsApp</span></a></div>';
             });
             const unsure = tier.options.length > 1
-                ? '<a class="cap-more" href="' + waLink('scanChoose', { score: score, defaults: left, options: list.trim() }) +
-                    '" target="_blank" rel="noopener">' + WA_ICON + '<span>Not sure which? Message us and we will help you choose</span></a>'
+                ? '<a class="cap-ask cap-ask-wide" href="' + waLink('scanChoose', { score: score, defaults: left, options: list.trim() }) +
+                    '" target="_blank" rel="noopener">' + WA_ICON + '<span>Not sure which? Ask us and we will help you choose</span></a>'
                 : '';
             wrap.innerHTML =
-                '<div class="cap-help-k">What next</div>' +
+                '<div class="cap-help-k">Your next step</div>' +
                     '<div class="cap-help-head">' + esc(tier.head) + '</div>' +
                     '<p class="cap-help-lead">' + esc(tier.lead) + '</p>' +
                     '<div class="cap-opts">' + opts + '</div>' + unsure +
-                    '<p class="cap-note">Your CV stays on this device \u2014 always. Tapping a choice opens your own WhatsApp with ' +
-                    'your <b>score</b> and the point names filled in. You decide whether to send it.</p>';
+                    '<p class="cap-note">Your CV stays on this device \u2014 always. The WhatsApp links only send your <b>score</b> ' +
+                    'and the point names, and only if you tap them and press send.</p>';
             // Stop watching while we mutate, so our own insertion cannot re-enter.
             if (mo)
                 mo.disconnect();

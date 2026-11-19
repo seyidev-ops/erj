@@ -48,8 +48,8 @@
       shapeInterview: 'INTERVIEW SOON\n\nI have a remote interview or test coming up.\n\nRole and company:\nDate:\nMy CV: I will attach it here.\n\nWhat is the fastest way to prepare this week?',
       shapeSponsor: 'ENROL SOMEONE\n\nI want to pay for someone else to join Foundation Training.\n\nTheir name:\nTheir field / current work:\nTheir WhatsApp number:\n\nPlease tell me how to enrol them.',
       /* CV scan result (erj-capture.js). {want} is the option the person tapped; {options} is the lettered list. */
-      scanHelp: 'SCORE\n\nHello ERJ \u2014 I need your help solving this problem.\n\nMy CV scan score: {score}/10\nPoints I did not clear: {defaults}\n\nI would like help with: {want}\n\nMy target role:',
-      scanChoose: 'SCORE\n\nHello ERJ \u2014 I need your help solving this problem.\n\nMy CV scan score: {score}/10\nPoints I did not clear: {defaults}\n\nWhat I need help with (I will reply with a letter):\n{options}\n\nMy choice:\nMy target role:',
+      scanHelp: 'SCORE\n\nHello ERJ \u2014 I scored {score}/10 on the CV scan and I have a question about {want} before I decide.\n\nPoints I did not clear: {defaults}\n\nMy question:',
+      scanChoose: 'SCORE\n\nHello ERJ \u2014 I scored {score}/10 on the CV scan and I am not sure which of these fits me:\n{options}\n\nPoints I did not clear: {defaults}\n\nMy question:',
       channel: 'AUDIT\n\nI am on the ERJ free job channel and I have been applying for remote roles.\n\nTarget role:\nApplications in the last 30 days:\nInterviews in the last 30 days:\nCV/LinkedIn: I will attach or paste it here.\n\nPlease tell me which part of my search is breaking down and what I should fix first.',
       diagnose: 'AUDIT\n\nMy diagnostic says: {joint} \u2014 {law}\n\nTarget role:\nApplications in the last 30 days:\nInterviews in the last 30 days:\nCV/LinkedIn: I will attach or paste it here.\n\nMy diagnostic answers: {answer}\n\nPlease tell me what I should fix first. If I do not need a paid ERJ service, please tell me that too.',
       blog: 'Hello ERJ \u2014 I have been reading the blog and I want to sort out my job hunt properly. Where do I start?',
@@ -74,39 +74,40 @@
       careerdevIncluded: 'MENTORINE ACCESS\n\nI am enrolled in Foundation Training and I am ready for my included career-development access at The Mentorine School.\n\nFull name:\nEmail:\nTarget role:\nAssessment done: yes / not yet'
     },
 
-    /* CV scan result (erj-capture.js): the help card shown under the score. Highest matching `min` wins.
-       Each option opens WhatsApp with `want` filled into messages.scanHelp. No prices here: the product pages carry them. */
+    /* CV scan result (erj-capture.js): the next-step card shown under the score. Highest matching `min` wins.
+       Each option sells straight to its page (href is relative to the site root); the WhatsApp link under it is only
+       for a question, built from messages.scanHelp. Prices must match canon. */
     scanHelp: {
       tiers: [
         { min: 8, head: 'Let us carry some of the work.',
           lead: 'Your CV is ready. Choose how you want us to help you get it in front of the right roles.',
           options: [
-            { cta: 'Get The Job Hunter', label: 'The Job Hunter', what: 'We find and score remote roles open to Nigeria against your CV and prepare your applications. You press Submit.',
-              want: 'The Job Hunter: find and score remote roles for me and prepare my applications' },
-            { cta: 'Start Stage 4', label: 'Stage 4: Start Your Remote Career', what: 'A portfolio worth opening, plus video interview and STAR answer coaching, so the rest of your application is as strong as your CV.',
-              want: 'Stage 4, Start Your Remote Career: a portfolio and interview coaching to match my CV' }
+            { label: 'The Job Hunter', price: '\u20a650,000', cta: 'Get The Job Hunter', href: 'jobhunter/',
+              what: 'We find and score remote roles open to Nigeria against your CV and prepare your applications. You press Submit.' },
+            { label: 'Stage 4: Start Your Remote Career', price: '\u20a6100,000', cta: 'Start Stage 4', href: 'register.html#stage4',
+              what: 'A portfolio worth opening, plus video interview and STAR answer coaching, so the rest of your application is as strong as your CV.' }
           ] },
         { min: 5, head: 'Let us help you represent yourself better.',
           lead: 'Choose the route that suits you.',
           options: [
-            { cta: 'Get my CV fixed', label: 'CV Fix', what: 'We rewrite your CV for the remote roles you are aiming at.',
-              want: 'CV Fix: rewrite my CV for the remote roles I am aiming at' },
-            { cta: 'Get the Self-Learn Pack', label: 'The Self-Learn Pack', what: 'Fix it yourself, step by step, with the full rubric and the rebuild loop behind this scan.',
-              want: 'The Self-Learn Pack: I want to fix my CV myself, step by step' }
+            { label: 'CV Fix', price: '\u20a630,000', cta: 'Get my CV fixed', href: 'register.html#cvfix',
+              what: 'We rewrite your CV for the remote roles you are aiming at.' },
+            { label: 'The Self-Learn Pack', price: '\u20a635,000', cta: 'Get the Self-Learn Pack', href: 'selflearn/',
+              what: 'Fix it yourself, step by step, with the full rubric and the rebuild loop behind this scan.' }
           ] },
         { min: 3, head: 'Rebuild it with us.',
           lead: 'Choose the route that suits you.',
           options: [
-            { cta: 'Get my CV fixed', label: 'CV Fix', what: 'We rewrite your CV for the remote roles you are aiming at.',
-              want: 'CV Fix: rewrite my CV for the remote roles I am aiming at' },
-            { cta: 'Join Foundation Training', label: 'Foundation Training', what: 'Twenty live days where you build your CV, profile and portfolio, with your work marked by a person.',
-              want: 'Foundation Training: I want to build my CV, profile and portfolio properly' }
+            { label: 'CV Fix', price: '\u20a630,000', cta: 'Get my CV fixed', href: 'register.html#cvfix',
+              what: 'We rewrite your CV for the remote roles you are aiming at.' },
+            { label: 'Foundation Training', price: '\u20a6250,000', cta: 'Join Foundation Training', href: 'foundationtraining/',
+              what: 'Twenty live days where you build your CV, profile and portfolio, with your work marked by a person.' }
           ] },
         { min: 0, head: 'Do not guess where to start.',
-          lead: 'Start from the ground up with a structured career track at The Mentorine School. Message us and we will help you pick the right one.',
+          lead: 'Start from the ground up with a structured career track at The Mentorine School.',
           options: [
-            { cta: 'Start my career track', label: 'Career Development \u2014 Self-Study', what: 'A guided track at The Mentorine School: a roadmap, courses and practical exercises in the field you choose, at your own pace.',
-              want: 'Career Development, Self-Study at The Mentorine School: I want to start from the beginning. Please help me choose my track and tell me how to pay' }
+            { label: 'Career Development \u2014 Self-Study', price: '\u20a650,000', cta: 'Start my career track', href: 'register.html#careerdev',
+              what: 'A guided track: a roadmap, courses and practical exercises in the field you choose, at your own pace.' }
           ] }
       ]
     },
