@@ -77,19 +77,40 @@
 .cap-help-k{font-size:.63rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent,#FF5722);margin-bottom:.5rem;}
 .cap-help-head{font-family:var(--font-display,system-ui,sans-serif);font-weight:800;font-size:1.2rem;line-height:1.3;color:var(--ink,#fff);margin-bottom:.4rem;}
 .cap-help-lead{font-size:.92rem;line-height:1.65;color:var(--ink-soft,#a1a1a1);max-width:60ch;}
-.cap-opts{display:grid;gap:.7rem;margin-top:1.1rem;}
-.cap-opt{display:flex;align-items:center;gap:.9rem;padding:.9rem 1.1rem;border:1px solid var(--card-line,rgba(128,128,128,.25));
- border-radius:12px;text-decoration:none;color:inherit;background:var(--paper-2,rgba(128,128,128,.04));
- transition:transform .25s cubic-bezier(.22,1,.36,1),border-color .25s ease;}
-.cap-opt:hover{transform:translateY(-2px);border-color:var(--accent,#FF5722);}
-.cap-let{flex:none;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;border:2px solid var(--accent,#FF5722);
- color:var(--accent,#FF5722);font-weight:800;font-size:.95rem;}
+.cap-opts{display:grid;gap:.9rem;margin-top:1.2rem;}
+.cap-opt{padding:1.1rem 1.15rem 1.15rem;border:1px solid var(--card-line,rgba(128,128,128,.25));border-radius:16px;
+ background:var(--paper-2,rgba(128,128,128,.04));}
+.cap-opt-top{display:flex;align-items:flex-start;gap:.85rem;}
+.cap-let{flex:none;width:32px;height:32px;border-radius:50%;display:grid;place-items:center;border:2px solid var(--accent,#FF5722);
+ color:var(--accent,#FF5722);font-weight:800;font-size:.9rem;}
 .cap-opt-tx{flex:1;min-width:0;}
-.cap-opt-t{display:block;font-weight:700;color:var(--ink,#fff);}
-.cap-opt-d{display:block;margin-top:.15rem;font-size:.82rem;line-height:1.5;color:var(--ink-soft,#a1a1a1);}
-.cap-opt svg{flex:none;width:22px;height:22px;fill:var(--accent,#FF5722);}
+.cap-opt-t{display:block;font-weight:700;font-size:1.02rem;color:var(--ink,#fff);}
+.cap-opt-d{display:block;margin-top:.2rem;font-size:.84rem;line-height:1.55;color:var(--ink-soft,#a1a1a1);}
+.cap-go{position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;gap:.7rem;width:100%;min-height:54px;
+ margin-top:1rem;padding:.9rem 1.2rem;border:0;border-radius:999px;cursor:pointer;text-decoration:none;color:#fff;
+ font-family:var(--font-display,system-ui,sans-serif);font-weight:800;font-size:1.05rem;line-height:1.1;
+ background:linear-gradient(135deg,#FF6A2B,#FF5722 55%,#D93D0C);
+ box-shadow:0 14px 30px -12px rgba(255,87,34,.8),inset 0 1px 0 rgba(255,255,255,.35);
+ transition:transform .25s cubic-bezier(.22,1,.36,1),box-shadow .25s ease;-webkit-tap-highlight-color:transparent;}
+.cap-go:hover{transform:translateY(-2px) scale(1.015);box-shadow:0 20px 40px -12px rgba(255,87,34,.95),inset 0 1px 0 rgba(255,255,255,.4);}
+.cap-go:active{transform:scale(.97);}
+.cap-go:focus-visible{outline:3px solid var(--ink,#fff);outline-offset:3px;}
+.cap-go svg{flex:none;width:21px;height:21px;fill:#fff;}
+.cap-go .arrow{display:inline-block;transition:transform .25s cubic-bezier(.22,1,.36,1);}
+.cap-go:hover .arrow{transform:translateX(5px);}
+.cap-go::after{content:"";position:absolute;top:0;bottom:0;left:-60%;width:38%;pointer-events:none;
+ background:linear-gradient(100deg,transparent,rgba(255,255,255,.5),transparent);transform:skewX(-20deg);
+ animation:capShine 3.6s ease-in-out infinite;}
+.cap-opt:nth-child(2) .cap-go::after{animation-delay:.9s;}
+@keyframes capShine{0%,55%{left:-60%;}100%{left:135%;}}
+.cap-more{display:flex;align-items:center;justify-content:center;gap:.6rem;width:100%;min-height:50px;margin-top:1rem;padding:.8rem 1.1rem;
+ border:2px solid var(--accent,#FF5722);border-radius:999px;background:rgba(255,87,34,.1);color:var(--accent,#FF5722);
+ font-family:var(--font-display,system-ui,sans-serif);font-weight:800;font-size:.95rem;line-height:1.2;text-align:center;text-decoration:none;
+ transition:transform .25s cubic-bezier(.22,1,.36,1),background .25s ease,color .25s ease;}
+.cap-more:hover{transform:translateY(-2px);background:var(--accent,#FF5722);color:#fff;}
+.cap-more svg{flex:none;width:19px;height:19px;fill:currentColor;}
 @media print{.cap-dl,.cap-send{display:none!important;}}
-@media(prefers-reduced-motion:reduce){.cap-dl-btn{animation:none;}.cap-opt{transition:none;}}
+@media(prefers-reduced-motion:reduce){.cap-dl-btn{animation:none;}.cap-go,.cap-more{transition:none;}.cap-go::after{animation:none;display:none;}}
 .cap-note{margin-top:.9rem;font-size:.78rem;line-height:1.65;color:var(--ink-faint,#8a8a8a);max-width:56ch;}
 .cap-note b{color:var(--ink-soft,#a1a1a1);font-weight:600;}
 .cap-bridge{margin-top:.7rem;padding-left:.9rem;border-left:2px solid var(--accent,#FF5722);
@@ -199,14 +220,14 @@
                 const letter = String.fromCharCode(65 + i);
                 list += letter + '. ' + o.label + '\n';
                 const href = waLink('scanHelp', { score: score, defaults: left, want: o.label + ': ' + o.want.replace(/^[^:]*:\s*/, '') });
-                opts += '<a class="cap-opt" href="' + href + '" target="_blank" rel="noopener">' +
-                    '<span class="cap-let">' + letter + '</span>' +
-                    '<span class="cap-opt-tx"><span class="cap-opt-t">' + esc(o.label) + '</span><span class="cap-opt-d">' + esc(o.what) + '</span></span>' +
-                    WA_ICON + '</a>';
+                opts += '<div class="cap-opt"><div class="cap-opt-top"><span class="cap-let">' + letter + '</span>' +
+                    '<span class="cap-opt-tx"><span class="cap-opt-t">' + esc(o.label) + '</span><span class="cap-opt-d">' + esc(o.what) + '</span></span></div>' +
+                    '<a class="cap-go" href="' + href + '" target="_blank" rel="noopener">' + WA_ICON +
+                    '<span>' + esc(o.cta || ('Choose ' + o.label)) + '</span><span class="arrow">\u2192</span></a></div>';
             });
             const unsure = tier.options.length > 1
-                ? '<a class="cap-btn small" href="' + waLink('scanChoose', { score: score, defaults: left, options: list.trim() }) +
-                    '" target="_blank" rel="noopener"><span>Not sure which? Message us and we will help you choose</span></a>'
+                ? '<a class="cap-more" href="' + waLink('scanChoose', { score: score, defaults: left, options: list.trim() }) +
+                    '" target="_blank" rel="noopener">' + WA_ICON + '<span>Not sure which? Message us and we will help you choose</span></a>'
                 : '';
             wrap.innerHTML =
                 '<div class="cap-help-k">What next</div>' +
@@ -219,9 +240,12 @@
             if (mo)
                 mo.disconnect();
             const panel = results.querySelector('.score-panel');
-            if (panel && panel.parentNode)
+            if (panel && panel.parentNode) {
                 panel.parentNode.insertBefore(dl, panel.nextSibling);
-            actions.parentNode.insertBefore(wrap, actions);
+                dl.parentNode.insertBefore(wrap, dl.nextSibling);
+            }
+            else
+                actions.parentNode.insertBefore(wrap, actions);
             if (mo)
                 mo.observe(results, { childList: true, subtree: true });
         };

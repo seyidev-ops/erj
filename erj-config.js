@@ -78,34 +78,34 @@
        Each option opens WhatsApp with `want` filled into messages.scanHelp. No prices here: the product pages carry them. */
     scanHelp: {
       tiers: [
-        { min: 8, head: 'Your CV is doing its job.',
-          lead: 'The gap now is getting it in front of the right roles. Want us to carry some of that work for you?',
+        { min: 8, head: 'Let us carry some of the work.',
+          lead: 'Your CV is ready. Choose how you want us to help you get it in front of the right roles.',
           options: [
-            { label: 'The Job Hunter', what: 'We find and score remote roles open to Nigeria against your CV and prepare your applications. You press Submit.',
+            { cta: 'Get The Job Hunter', label: 'The Job Hunter', what: 'We find and score remote roles open to Nigeria against your CV and prepare your applications. You press Submit.',
               want: 'The Job Hunter: find and score remote roles for me and prepare my applications' },
-            { label: 'Stage 4: Start Your Remote Career', what: 'A portfolio worth opening, plus video interview and STAR answer coaching, so the rest of your application is as strong as your CV.',
+            { cta: 'Start Stage 4', label: 'Stage 4: Start Your Remote Career', what: 'A portfolio worth opening, plus video interview and STAR answer coaching, so the rest of your application is as strong as your CV.',
               want: 'Stage 4, Start Your Remote Career: a portfolio and interview coaching to match my CV' }
           ] },
-        { min: 5, head: 'The base is solid, but it does not represent you well enough yet.',
-          lead: 'We can help you represent yourself better. Choose the route that suits you.',
+        { min: 5, head: 'Let us help you represent yourself better.',
+          lead: 'Choose the route that suits you.',
           options: [
-            { label: 'CV Fix', what: 'We rewrite your CV for the remote roles you are aiming at.',
+            { cta: 'Get my CV fixed', label: 'CV Fix', what: 'We rewrite your CV for the remote roles you are aiming at.',
               want: 'CV Fix: rewrite my CV for the remote roles I am aiming at' },
-            { label: 'The Self-Learn Pack', what: 'Fix it yourself, step by step, with the full rubric and the rebuild loop behind this scan.',
+            { cta: 'Get the Self-Learn Pack', label: 'The Self-Learn Pack', what: 'Fix it yourself, step by step, with the full rubric and the rebuild loop behind this scan.',
               want: 'The Self-Learn Pack: I want to fix my CV myself, step by step' }
           ] },
-        { min: 3, head: 'This is a representation problem, and partly a capacity one.',
-          lead: 'The CV needs rebuilding, and so does the way you present your skills for remote work.',
+        { min: 3, head: 'Rebuild it with us.',
+          lead: 'Choose the route that suits you.',
           options: [
-            { label: 'CV Fix', what: 'We rewrite your CV for the remote roles you are aiming at.',
+            { cta: 'Get my CV fixed', label: 'CV Fix', what: 'We rewrite your CV for the remote roles you are aiming at.',
               want: 'CV Fix: rewrite my CV for the remote roles I am aiming at' },
-            { label: 'Foundation Training', what: 'Twenty live days where you build your CV, profile and portfolio, with your work marked by a person.',
+            { cta: 'Join Foundation Training', label: 'Foundation Training', what: 'Twenty live days where you build your CV, profile and portfolio, with your work marked by a person.',
               want: 'Foundation Training: I want to build my CV, profile and portfolio properly' }
           ] },
         { min: 0, head: 'Do not guess where to start.',
           lead: 'Start from the ground up with a structured career track at The Mentorine School. Message us and we will help you pick the right one.',
           options: [
-            { label: 'Career Development \u2014 Self-Study', what: 'A guided track at The Mentorine School: a roadmap, courses and practical exercises in the field you choose, at your own pace.',
+            { cta: 'Start my career track', label: 'Career Development \u2014 Self-Study', what: 'A guided track at The Mentorine School: a roadmap, courses and practical exercises in the field you choose, at your own pace.',
               want: 'Career Development, Self-Study at The Mentorine School: I want to start from the beginning. Please help me choose my track and tell me how to pay' }
           ] }
       ]
