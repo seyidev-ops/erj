@@ -328,12 +328,12 @@
   @media(max-width:900px){.bk-gets{grid-template-columns:1fr 1fr;}}
   @media(max-width:520px){.bk-gets{grid-template-columns:1fr;}}
   /* the timeline of parts */
-  .tl{position:relative;max-width:760px;margin:2rem auto 0;padding-left:3.2rem;text-align:left;display:grid;gap:1rem;}
-  .tl-track{position:absolute;left:1.05rem;top:10px;bottom:10px;width:3px;border-radius:3px;background:var(--line);}
+  .tl{--lx:1.1rem;--pad:3.2rem;position:relative;max-width:760px;margin:2rem auto 0;padding-left:var(--pad);text-align:left;display:grid;gap:1rem;}
+  .tl-track{position:absolute;left:calc(var(--lx) - 1.5px);top:10px;bottom:10px;width:3px;border-radius:3px;background:var(--line);}
   .tl-fill{position:absolute;left:0;top:0;width:100%;height:calc(var(--p,0)*100%);border-radius:3px;background:linear-gradient(180deg,var(--accent),#ffb199);box-shadow:0 0 14px rgba(255,87,34,.8);}
   .tl-card{position:relative;padding:1.2rem 1.4rem;border-radius:22px;border:1px solid var(--card-line);background:var(--card);transition:border-color .3s,box-shadow .3s,transform .3s;}
-  .tl-dot{position:absolute;left:-2.8rem;top:1.5rem;width:16px;height:16px;border-radius:50%;background:var(--paper,#000);border:3px solid var(--line);transition:border-color .3s,background .3s,box-shadow .3s;}
-  .tl-card.lit{border-color:var(--accent);box-shadow:0 26px 56px -34px rgba(255,87,34,.7);transform:translateX(4px);}
+  .tl-dot{position:absolute;left:calc(var(--lx) - var(--pad) - 12px);top:1.4rem;box-sizing:border-box;width:22px;height:22px;border-radius:50%;background:var(--paper,#000);border:3px solid var(--line);transition:border-color .3s,background .3s,box-shadow .3s;}
+  .tl-card.lit{border-color:var(--accent);box-shadow:0 26px 56px -34px rgba(255,87,34,.7);}
   .tl-card.lit .tl-dot{border-color:var(--accent);background:var(--accent);box-shadow:0 0 0 6px rgba(255,87,34,.2);}
   .tl-card.past .tl-dot{border-color:var(--accent);}
   .tl-k{display:flex;align-items:baseline;gap:.7rem;flex-wrap:wrap;margin-bottom:.7rem;}
@@ -342,16 +342,15 @@
   .tl-card ol{list-style:none;margin:0;padding:0;display:grid;gap:.1rem;}
   .tl-card li{display:grid;grid-template-columns:2.1rem 1fr;font-size:.93rem;line-height:1.5;color:var(--ink-soft);padding:.2rem 0;}
   .tl-card li i{font-style:normal;color:var(--accent);font-weight:700;font-variant-numeric:tabular-nums;}
-  @media(max-width:560px){.tl{padding-left:2.5rem;}.tl-dot{left:-2.15rem;}.tl-track{left:.5rem;}.tl-card{padding:1.05rem 1.1rem;}}
+  @media(max-width:560px){.tl{--lx:.9rem;--pad:2.4rem;}.tl-card{padding:1.05rem 1.1rem;}}
   .apx-h{font-family:var(--font-display);font-size:1.15rem;color:var(--ink);margin:2.6rem 0 1rem;}
-  .apx{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.8rem;text-align:left;}
-  .apx-c{position:relative;padding:1.1rem 1.15rem;border-radius:20px;border:1px dashed var(--line);background:var(--card);transition:border-color .25s,border-style .25s,transform .25s,box-shadow .25s;overflow:hidden;}
+  .apx,.bk-how-slide{display:flex;gap:.8rem;text-align:left;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:.3rem .1rem 1rem;}
+  .apx::-webkit-scrollbar,.bk-how::-webkit-scrollbar{display:none;}
+  .apx-c{flex:0 0 min(74%,260px);scroll-snap-align:start;position:relative;padding:1.1rem 1.15rem;border-radius:20px;border:1px dashed var(--line);background:var(--card);transition:border-color .25s,border-style .25s,transform .25s,box-shadow .25s;overflow:hidden;}
   .apx-c:hover{border-style:solid;border-color:var(--accent);transform:translateY(-4px) rotate(-.6deg);box-shadow:0 22px 44px -30px rgba(255,87,34,.6);}
   .apx-c i{display:inline-grid;place-items:center;min-width:2.2rem;height:2.2rem;padding:0 .4rem;border-radius:11px;background:rgba(255,87,34,.14);color:var(--accent);font:800 .8rem var(--font-display);font-style:normal;margin-bottom:.7rem;}
   .apx-c b{display:block;font-family:var(--font-display);font-size:.98rem;color:var(--ink);margin-bottom:.15rem;}
   .apx-c span{font-size:.84rem;color:var(--ink-soft);}
-  @media(max-width:760px){.apx{grid-template-columns:1fr 1fr;}}
-  @media(max-width:440px){.apx{grid-template-columns:1fr;}}
   /* after you pay: three connected steps */
   .bk-how{list-style:none;margin:1.8rem 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;text-align:left;position:relative;}
   .bk-how li{position:relative;padding:1.4rem 1.3rem;border-radius:22px;border:1px solid var(--card-line);background:var(--card);transition:transform .25s,border-color .25s;}
@@ -360,7 +359,7 @@
   .bk-how i{display:grid;place-items:center;width:2.4rem;height:2.4rem;border-radius:50%;border:2px solid var(--accent);color:var(--accent);font:800 1rem var(--font-display);font-style:normal;margin-bottom:.8rem;}
   .bk-how b{display:block;font-family:var(--font-display);font-size:1.02rem;color:var(--ink);margin-bottom:.3rem;}
   .bk-how span{font-size:.9rem;line-height:1.6;color:var(--ink-soft);}
-  @media(max-width:760px){.bk-how{grid-template-columns:1fr;}.bk-how li:not(:last-child)::after{right:auto;left:50%;top:auto;bottom:-1rem;transform:translateX(-50%) rotate(90deg);}}
+  @media(max-width:760px){.bk-how{display:flex;gap:.8rem;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:.3rem .1rem 1rem;}.bk-how li{flex:0 0 82%;scroll-snap-align:start;}.bk-how li:not(:last-child)::after{display:none;}}
   /* the buy block */
   .bk-buy{position:relative;margin-top:clamp(2.6rem,7vw,4.4rem);padding:clamp(3rem,8vw,5rem) 0 clamp(3rem,8vw,5rem);text-align:center;overflow:hidden;
     border-top:1px solid rgba(255,87,34,.4);border-bottom:1px solid rgba(255,87,34,.4);
@@ -379,7 +378,7 @@
   @media(max-width:700px){.lb-hero{--w:128px;--h:192px;--t:14px;}}
   @media(max-width:520px){.lb-lg{--w:150px;--h:225px;--t:17px;}}
   .lb-float{position:absolute;left:0;top:10px;width:var(--w);height:var(--h);transform-style:preserve-3d;animation:lbFloat 5s ease-in-out infinite;}
-  .lb-book{position:relative;width:100%;height:100%;transform-style:preserve-3d;animation:lbTurn 20s ease-in-out infinite;}
+  .lb-book{position:relative;width:100%;height:100%;transform-style:preserve-3d;animation:lbSway 9s ease-in-out infinite alternate;}
   .lb-face{position:absolute;-webkit-backface-visibility:hidden;backface-visibility:hidden;}
   .lb-back{inset:0;transform:translateZ(calc(var(--t) / -2)) rotateY(180deg);background:#0b0b0b;border-radius:2px 7px 7px 2px;overflow:hidden;}
   .lb-back img,.lb-spine img{display:block;width:100%;height:100%;object-fit:fill;}
@@ -389,7 +388,7 @@
   .lb-pgB{top:100%;left:1%;width:98%;height:var(--t);transform:translateY(-50%) rotateX(-90deg);background:repeating-linear-gradient(0deg,#f7f3ea 0 2px,#ddd5c3 2px 3px);}
   .lb-spine{left:0;top:0;width:var(--t);height:100%;transform:translateX(-50%) rotateY(-90deg);background:#111;overflow:hidden;}
   .lb-inner{inset:1% 1% 1% 0;transform:translateZ(calc(var(--t) / 2 - 3px));background:#faf7f0;border-radius:0 6px 6px 0;}
-  .lb-cov{position:absolute;inset:0;transform-origin:left center;transform-style:preserve-3d;transform:translateZ(calc(var(--t) / 2));animation:lbOpen 20s cubic-bezier(.5,0,.3,1) infinite;}
+  .lb-cov{position:absolute;inset:0;transform-origin:left center;transform-style:preserve-3d;transform:translateZ(calc(var(--t) / 2));}
   .lb-front{inset:0;border-radius:2px 7px 7px 2px;overflow:hidden;background:#0b0b0b;}
   .lb-front img{display:block;width:100%;height:100%;object-fit:cover;}
   .lb-flip{inset:0;transform:rotateY(180deg);background:#f1ece0;border-radius:9px 3px 3px 9px;}
@@ -402,17 +401,21 @@
   html[data-theme="day"] .lb-shadow{background:radial-gradient(ellipse at center,rgba(60,30,10,.4),transparent 70%);}
   @keyframes lbFloat{0%,100%{transform:translateY(0);}50%{transform:translateY(-16px);}}
   @keyframes lbShadow{0%,100%{transform:scale(1);opacity:.9;}50%{transform:scale(.8);opacity:.55;}}
-  @keyframes lbTurn{
-    0%{transform:translateX(0) rotateX(5deg) rotateY(-26deg);}
-    16%{transform:translateX(0) rotateX(5deg) rotateY(26deg);}
-    28%{transform:translateX(calc(var(--w) * .1)) rotateX(3deg) rotateY(-8deg);}
-    38%,60%{transform:translateX(calc(var(--w) * .5)) rotateX(3deg) rotateY(-12deg);}
-    68%{transform:translateX(calc(var(--w) * .1)) rotateX(4deg) rotateY(-10deg);}
-    72%{transform:translateX(0) rotateX(5deg) rotateY(-10deg);}
-    100%{transform:translateX(0) rotateX(5deg) rotateY(334deg);}
+  @keyframes lbSway{0%{transform:translateX(0) rotateX(5deg) rotateY(-14deg);}100%{transform:translateX(0) rotateX(5deg) rotateY(24deg);}}
+  @keyframes lbBookTap{
+    0%{transform:translateX(0) rotateX(5deg) rotateY(-14deg);}
+    16%{transform:translateX(calc(var(--w) * .5)) rotateX(3deg) rotateY(-12deg);}
+    60%{transform:translateX(calc(var(--w) * .5)) rotateX(3deg) rotateY(-12deg);}
+    76%{transform:translateX(0) rotateX(5deg) rotateY(-14deg);}
+    100%{transform:translateX(0) rotateX(5deg) rotateY(346deg);}
   }
-  @keyframes lbOpen{0%,28%{transform:translateZ(calc(var(--t) / 2)) rotateY(0deg);}40%,58%{transform:translateZ(calc(var(--t) / 2)) rotateY(-152deg);}68%,100%{transform:translateZ(calc(var(--t) / 2)) rotateY(0deg);}}
-  @media(prefers-reduced-motion:reduce){.lb-float,.lb-book,.lb-cov,.lb-shadow{animation:none;}.lb-book{transform:rotateX(5deg) rotateY(-22deg);}}
+  @keyframes lbCovTap{0%{transform:translateZ(calc(var(--t) / 2)) rotateY(0deg);}18%,60%{transform:translateZ(calc(var(--t) / 2)) rotateY(-152deg);}76%,100%{transform:translateZ(calc(var(--t) / 2)) rotateY(0deg);}}
+  .lb{cursor:pointer;-webkit-tap-highlight-color:transparent;outline:none;}
+  .lb:focus-visible{outline:2px solid var(--accent);outline-offset:8px;border-radius:14px;}
+  .lb.tap .lb-book{animation:lbBookTap 6.5s cubic-bezier(.45,0,.3,1) 1 both;}
+  .lb.tap .lb-cov{animation:lbCovTap 6.5s cubic-bezier(.45,0,.3,1) 1 both;}
+  .lb-tip{display:block;margin:.2rem auto 0;font:700 .62rem/1 var(--font-body);letter-spacing:.16em;text-transform:uppercase;color:var(--ink-faint);text-align:center;}
+  @media(prefers-reduced-motion:reduce){.lb-float,.lb-book,.lb-shadow,.lb.tap .lb-book{animation:none;}.lb-book{transform:rotateX(5deg) rotateY(-22deg);}.lb.tap .lb-cov{animation:lbCovTap 6.5s linear 1 both;}}
 
   /* ══ The first block: the route arcs over the levitating book ══ */
   .rt{margin-top:clamp(1.4rem,4vw,2.4rem);}
@@ -458,6 +461,27 @@
   .bk-hero .bk-title{margin-top:0;}
   @media(max-width:520px){.rt-card{grid-template-columns:1fr;gap:.4rem;}}
   @media(prefers-reduced-motion:reduce){.rt-pulse,.rt-card.swap .rt-cb,.rt-card.swap .rt-cn{animation:none;}}
+
+  /* real pages from the book, shown when the cover opens */
+  .lb-inner,.lb-flip{background:#fbfaf6;overflow:hidden;}
+  .pg{position:absolute;inset:0;padding:8% 9% 9%;font:400 calc(var(--w) * .031)/1.42 'Lato',var(--font-body);color:#1c1a17;text-align:left;overflow:hidden;}
+  .pgB{display:none;}.lb.sb .pgA{display:none;}.lb.sb .pgB{display:block;}
+  .pg-h{font-size:.74em;letter-spacing:.2em;color:#9a958c;text-transform:uppercase;margin:0 0 7%;white-space:nowrap;overflow:hidden;}
+  .pg-k{font-weight:800;letter-spacing:.2em;color:#C9410C;font-size:.78em;margin-bottom:.3em;}
+  .pg-t{font:800 2.15em/1.05 Georgia,'Times New Roman',serif;color:#0d0c0a;}
+  .pg-s{font-style:italic;color:#6a655c;margin:.5em 0 .9em;font-size:.95em;}
+  .pg-r{height:2px;background:#E8470F;margin:0 0 1em;}
+  .pg p{margin:0 0 .75em;}
+  .pg b{font-weight:800;}
+  .pg-h2{font:800 1.45em/1.15 Georgia,'Times New Roman',serif;margin:.8em 0 .45em;color:#0d0c0a;}
+  .pg-h2.top{margin-top:.2em;}
+  .pg-q{font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#E8470F;font-size:.8em;line-height:1.35;margin:.9em 0 .4em;}
+  .pg-n{position:absolute;left:0;right:0;bottom:3.5%;text-align:center;color:#6a655c;font-size:.95em;}
+  .pg-tb{width:100%;border-collapse:collapse;font-size:.88em;line-height:1.35;margin:0 0 .6em;}
+  .pg-tb th{background:#111;color:#fff;text-align:left;font-size:.78em;letter-spacing:.12em;text-transform:uppercase;padding:.5em .6em;}
+  .pg-tb td{padding:.5em .6em;vertical-align:top;border-bottom:1px solid #e6e2d8;}
+  .pg-tb tr:nth-child(even) td{background:#f1eee6;}
+  .pg-tb td:first-child{font-weight:800;}
 </style>
 </head>
 <body>
@@ -487,18 +511,48 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="rt-stage">
 <svg class="rt-svg rt-wide" id="rtWide" viewBox="0 0 1000 470" role="group" aria-label="The route from intent to outcome, six points"></svg>
 <svg class="rt-svg rt-tall" id="rtTall" viewBox="0 0 360 340" role="group" aria-label="The route from intent to outcome, six points"></svg>
-<div class="rt-book"><div class="lb lb-hero" role="img" aria-label="The book From Intent to Offer by Oluwaseyi Ashiru, floating, opening and turning">
+<div class="rt-book"><div class="lb lb-hero" role="button" tabindex="0" aria-label="The book From Intent to Offer by Oluwaseyi Ashiru. Tap to open a page.">
 <div class="lb-float"><div class="lb-book">
 <div class="lb-face lb-back"><picture><source srcset="cover-back.webp" type="image/webp"><img src="cover-back.jpg" alt="" width="600" height="900" loading="lazy" decoding="async"></picture></div>
 <div class="lb-face lb-pg lb-pgR"></div><div class="lb-face lb-pg lb-pgT"></div><div class="lb-face lb-pg lb-pgB"></div>
 <div class="lb-face lb-spine"><picture><source srcset="spine.webp" type="image/webp"><img src="spine.jpg" alt="" width="84" height="1124" decoding="async"></picture></div>
-<div class="lb-face lb-inner"><div class="lb-pagetxt"><i>Chapter 06</i><b>Find What Is Holding You Back</b><span>Five questions. One sentence naming your first weak point.</span><em>Task for tonight</em></div></div>
+<div class="lb-face lb-inner"><div class="pg pgA"><div class="pg-h">FROM INTENT TO OFFER &nbsp;&middot;&nbsp; OLUWASEYI ASHIRU</div><div class="pg-q">Question two: in the last month, how many roles did you find that you were genuinely eligible for?</div><p>Eligible means the company can actually pay someone in your country and the role matches your level. That is a different question from whether the advert said &ldquo;remote&rdquo;.</p><p>If the answer is &ldquo;almost none&rdquo;, stop reading about interviews. Your leak is <b>Supply</b>, and everything downstream is being judged on far too little evidence to mean anything.</p>
+<div class="pg-q">Question three: of your last twenty applications, how many got any reply at all, even a rejection?</div><p>Total silence and a stream of rejections are completely different diagnoses. <b>Silence usually means</b> you were never read: that is <b>Representation</b>. Rejections mean you were read and passed over, which is closer to <b>Aim</b>.</p>
+<div class="pg-q">Question four: how do you choose what to apply to?</div><p>If the honest answer is &ldquo;whatever reaches me&rdquo; or &ldquo;as many as I can, quickly&rdquo;, your leak is <b>Aim</b>. Applications sent is a measure of effort, not direction, and a large number with no replies is evidence of a problem rather than proof of trying.</p>
+<div class="pg-q">Question five: when you get in front of a human, what happens?</div><p>If interviews come and offers do not, your CV is working and your aim is close enough. The leak is <b>Conversion</b>, and that is good news: the hard parts are already fixed, and the last conversation is the most learnable part of the whole process.</p>
+<div class="pg-h2">The five sentences</div><p>If you prefer, read these five sentences and find the one that describes your last month. One of them will feel more true than the others. That is your leak.</p>
+<div class="pg-n">45</div></div><div class="pg pgB"><div class="pg-h">FROM INTENT TO OFFER &nbsp;&middot;&nbsp; OLUWASEYI ASHIRU</div><div class="pg-h2 top">The five parts, and the five fixes</div>
+<table class="pg-tb"><thead><tr><th>Part</th><th>Symptom you feel</th><th>The first repair</th></tr></thead><tbody>
+<tr><td>Capacity</td><td>&ldquo;I could not actually do the job yet, or not without someone watching.&rdquo;</td><td>Build the skill and the remote operating system. Chapters 7 to 9.</td></tr>
+<tr><td>Supply</td><td>&ldquo;I cannot find real openings I am eligible for.&rdquo;</td><td>Build a verified source list and a company file. Chapter 10.</td></tr>
+<tr><td>Representation</td><td>&ldquo;I apply and hear nothing at all.&rdquo;</td><td>Rebuild the CV, LinkedIn and proof of work. Chapters 11 and 12.</td></tr>
+<tr><td>Aim</td><td>&ldquo;I apply constantly and nothing lands.&rdquo;</td><td>Narrow the target, check eligibility, reach the human. Chapter 13.</td></tr>
+<tr><td>Conversion</td><td>&ldquo;Interviews come, offers do not.&rdquo;</td><td>Prepare the room and the money. Chapters 14 and 15.</td></tr>
+</tbody></table>
+<div class="pg-h2">The content rule</div><p>Every page of this book should answer one question: <b>What execution is this supposed to cause?</b></p><p>If a page does not cause something, skip it. If it does, do the thing before you turn the page.</p>
+<div class="pg-n">11</div></div></div>
 <div class="lb-cov">
 <div class="lb-face lb-front"><picture><source srcset="cover-front.webp" type="image/webp"><img src="cover-front.jpg" alt="" width="600" height="900" decoding="async"></picture></div>
-<div class="lb-face lb-flip"><div class="lb-pagetxt"><i>Before you start</i><b>Every chapter ends with one task.</b><span>Do the task. Then turn the page.</span></div></div>
+<div class="lb-face lb-flip"><div class="pg pgA"><div class="pg-h">FROM INTENT TO OFFER &nbsp;&middot;&nbsp; OLUWASEYI ASHIRU</div><div class="pg-k">CHAPTER 06 &nbsp;&middot;&nbsp; DIAGNOSIS</div><div class="pg-t">Find Your Leak</div><div class="pg-s">Five questions, one sentence, and the ninety-day reset.</div><div class="pg-r"></div>
+<p>A pipe does not usually burst along its length. It fails at a joint. Your job search works the same way, and this is the single most useful thing we teach, because almost everybody gets it wrong in the same direction.</p>
+<p>When nothing is working, it feels like everything is broken. So people rewrite the CV, join more job groups, read about interviews, and change their LinkedIn photo, all in the same fortnight. Nothing changes, because the one thing that was actually broken got about a fifth of the attention, and the four things that were already fine got the rest.</p>
+<p>This chapter replaces that with a diagnosis. It takes about twenty minutes, on paper, alone.</p>
+<div class="pg-h2">The five questions</div><p>Answer these honestly, with nobody watching. Stop at the first one that catches you.</p>
+<div class="pg-q">Question one: could you do the work itself today, without training first?</div><p>If the honest answer is <b>no</b>, or &ldquo;yes, but never remotely&rdquo;, stop here. Your leak is <b>Capacity</b>, and every other repair in this book is downstream of it.</p>
+<div class="pg-n">44</div></div><div class="pg pgB"><div class="pg-h">FROM INTENT TO OFFER &nbsp;&middot;&nbsp; OLUWASEYI ASHIRU</div><div class="pg-k">THE FRAMEWORK</div><div class="pg-t">The Remote Job Framework on One Page</div><div class="pg-s">Tear it out, or photograph it. You will come back to it.</div><div class="pg-r"></div>
+<table class="pg-tb"><thead><tr><th>Stage</th><th>The question it answers</th><th>What should exist when you are done</th></tr></thead><tbody>
+<tr><td>Intent</td><td>What exactly am I trying to get?</td><td>A target sentence: role, company type, arrangement, pay band, overlap hours.</td></tr>
+<tr><td>Evidence</td><td>What have I actually done so far?</td><td>A ledger of your last twenty applications and five numbers from your last thirty days.</td></tr>
+<tr><td>Diagnosis</td><td>Where is my search breaking?</td><td>One sentence: &ldquo;My first leak is ___ because ___.&rdquo;</td></tr>
+<tr><td>Execution</td><td>What work repairs that point?</td><td>The specific asset or habit for your leak, finished to a published standard.</td></tr>
+<tr><td>Result</td><td>Did it move anything?</td><td>A measurable change in the next twenty rows of your ledger.</td></tr>
+<tr><td>Next result</td><td>What do I execute now?</td><td>The next leak, found from the new evidence.</td></tr>
+<tr><td>Outcome</td><td>What was it all for?</td><td>A signed offer, the first payment received, and a first ninety days that keeps the job.</td></tr>
+</tbody></table><div class="pg-n">10</div></div></div>
 </div>
 </div></div>
 <div class="lb-shadow"></div>
+<span class="lb-tip" aria-hidden="true">Tap to open</span>
 </div></div>
 </div>
 <div class="rt-card" id="jyCard" aria-live="polite">
@@ -609,18 +663,48 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <p class="section-label reveal">Get the Book</p>
 <h2 class="reveal">One payment. <span>Yours to keep.</span></h2>
 <div class="bk-bookwrap bk-bookwrap-lg">
-<div class="lb lb-lg" role="img" aria-label="The book From Intent to Offer by Oluwaseyi Ashiru, floating, opening and turning">
+<div class="lb lb-lg" role="button" tabindex="0" aria-label="The book From Intent to Offer by Oluwaseyi Ashiru. Tap to open a page.">
 <div class="lb-float"><div class="lb-book">
 <div class="lb-face lb-back"><picture><source srcset="cover-back.webp" type="image/webp"><img src="cover-back.jpg" alt="" width="600" height="900" loading="lazy" decoding="async"></picture></div>
 <div class="lb-face lb-pg lb-pgR"></div><div class="lb-face lb-pg lb-pgT"></div><div class="lb-face lb-pg lb-pgB"></div>
 <div class="lb-face lb-spine"><picture><source srcset="spine.webp" type="image/webp"><img src="spine.jpg" alt="" width="84" height="1124" decoding="async"></picture></div>
-<div class="lb-face lb-inner"><div class="lb-pagetxt"><i>Chapter 06</i><b>Find What Is Holding You Back</b><span>Five questions. One sentence naming your first weak point.</span><em>Task for tonight</em></div></div>
+<div class="lb-face lb-inner"><div class="pg pgA"><div class="pg-h">FROM INTENT TO OFFER &nbsp;&middot;&nbsp; OLUWASEYI ASHIRU</div><div class="pg-q">Question two: in the last month, how many roles did you find that you were genuinely eligible for?</div><p>Eligible means the company can actually pay someone in your country and the role matches your level. That is a different question from whether the advert said &ldquo;remote&rdquo;.</p><p>If the answer is &ldquo;almost none&rdquo;, stop reading about interviews. Your leak is <b>Supply</b>, and everything downstream is being judged on far too little evidence to mean anything.</p>
+<div class="pg-q">Question three: of your last twenty applications, how many got any reply at all, even a rejection?</div><p>Total silence and a stream of rejections are completely different diagnoses. <b>Silence usually means</b> you were never read: that is <b>Representation</b>. Rejections mean you were read and passed over, which is closer to <b>Aim</b>.</p>
+<div class="pg-q">Question four: how do you choose what to apply to?</div><p>If the honest answer is &ldquo;whatever reaches me&rdquo; or &ldquo;as many as I can, quickly&rdquo;, your leak is <b>Aim</b>. Applications sent is a measure of effort, not direction, and a large number with no replies is evidence of a problem rather than proof of trying.</p>
+<div class="pg-q">Question five: when you get in front of a human, what happens?</div><p>If interviews come and offers do not, your CV is working and your aim is close enough. The leak is <b>Conversion</b>, and that is good news: the hard parts are already fixed, and the last conversation is the most learnable part of the whole process.</p>
+<div class="pg-h2">The five sentences</div><p>If you prefer, read these five sentences and find the one that describes your last month. One of them will feel more true than the others. That is your leak.</p>
+<div class="pg-n">45</div></div><div class="pg pgB"><div class="pg-h">FROM INTENT TO OFFER &nbsp;&middot;&nbsp; OLUWASEYI ASHIRU</div><div class="pg-h2 top">The five parts, and the five fixes</div>
+<table class="pg-tb"><thead><tr><th>Part</th><th>Symptom you feel</th><th>The first repair</th></tr></thead><tbody>
+<tr><td>Capacity</td><td>&ldquo;I could not actually do the job yet, or not without someone watching.&rdquo;</td><td>Build the skill and the remote operating system. Chapters 7 to 9.</td></tr>
+<tr><td>Supply</td><td>&ldquo;I cannot find real openings I am eligible for.&rdquo;</td><td>Build a verified source list and a company file. Chapter 10.</td></tr>
+<tr><td>Representation</td><td>&ldquo;I apply and hear nothing at all.&rdquo;</td><td>Rebuild the CV, LinkedIn and proof of work. Chapters 11 and 12.</td></tr>
+<tr><td>Aim</td><td>&ldquo;I apply constantly and nothing lands.&rdquo;</td><td>Narrow the target, check eligibility, reach the human. Chapter 13.</td></tr>
+<tr><td>Conversion</td><td>&ldquo;Interviews come, offers do not.&rdquo;</td><td>Prepare the room and the money. Chapters 14 and 15.</td></tr>
+</tbody></table>
+<div class="pg-h2">The content rule</div><p>Every page of this book should answer one question: <b>What execution is this supposed to cause?</b></p><p>If a page does not cause something, skip it. If it does, do the thing before you turn the page.</p>
+<div class="pg-n">11</div></div></div>
 <div class="lb-cov">
 <div class="lb-face lb-front"><picture><source srcset="cover-front.webp" type="image/webp"><img src="cover-front.jpg" alt="" width="600" height="900" decoding="async"></picture></div>
-<div class="lb-face lb-flip"><div class="lb-pagetxt"><i>Before you start</i><b>Every chapter ends with one task.</b><span>Do the task. Then turn the page.</span></div></div>
+<div class="lb-face lb-flip"><div class="pg pgA"><div class="pg-h">FROM INTENT TO OFFER &nbsp;&middot;&nbsp; OLUWASEYI ASHIRU</div><div class="pg-k">CHAPTER 06 &nbsp;&middot;&nbsp; DIAGNOSIS</div><div class="pg-t">Find Your Leak</div><div class="pg-s">Five questions, one sentence, and the ninety-day reset.</div><div class="pg-r"></div>
+<p>A pipe does not usually burst along its length. It fails at a joint. Your job search works the same way, and this is the single most useful thing we teach, because almost everybody gets it wrong in the same direction.</p>
+<p>When nothing is working, it feels like everything is broken. So people rewrite the CV, join more job groups, read about interviews, and change their LinkedIn photo, all in the same fortnight. Nothing changes, because the one thing that was actually broken got about a fifth of the attention, and the four things that were already fine got the rest.</p>
+<p>This chapter replaces that with a diagnosis. It takes about twenty minutes, on paper, alone.</p>
+<div class="pg-h2">The five questions</div><p>Answer these honestly, with nobody watching. Stop at the first one that catches you.</p>
+<div class="pg-q">Question one: could you do the work itself today, without training first?</div><p>If the honest answer is <b>no</b>, or &ldquo;yes, but never remotely&rdquo;, stop here. Your leak is <b>Capacity</b>, and every other repair in this book is downstream of it.</p>
+<div class="pg-n">44</div></div><div class="pg pgB"><div class="pg-h">FROM INTENT TO OFFER &nbsp;&middot;&nbsp; OLUWASEYI ASHIRU</div><div class="pg-k">THE FRAMEWORK</div><div class="pg-t">The Remote Job Framework on One Page</div><div class="pg-s">Tear it out, or photograph it. You will come back to it.</div><div class="pg-r"></div>
+<table class="pg-tb"><thead><tr><th>Stage</th><th>The question it answers</th><th>What should exist when you are done</th></tr></thead><tbody>
+<tr><td>Intent</td><td>What exactly am I trying to get?</td><td>A target sentence: role, company type, arrangement, pay band, overlap hours.</td></tr>
+<tr><td>Evidence</td><td>What have I actually done so far?</td><td>A ledger of your last twenty applications and five numbers from your last thirty days.</td></tr>
+<tr><td>Diagnosis</td><td>Where is my search breaking?</td><td>One sentence: &ldquo;My first leak is ___ because ___.&rdquo;</td></tr>
+<tr><td>Execution</td><td>What work repairs that point?</td><td>The specific asset or habit for your leak, finished to a published standard.</td></tr>
+<tr><td>Result</td><td>Did it move anything?</td><td>A measurable change in the next twenty rows of your ledger.</td></tr>
+<tr><td>Next result</td><td>What do I execute now?</td><td>The next leak, found from the new evidence.</td></tr>
+<tr><td>Outcome</td><td>What was it all for?</td><td>A signed offer, the first payment received, and a first ninety days that keeps the job.</td></tr>
+</tbody></table><div class="pg-n">10</div></div></div>
 </div>
 </div></div>
 <div class="lb-shadow"></div>
+<span class="lb-tip" aria-hidden="true">Tap to open</span>
 </div>
 <h3 class="bk-title">From Intent to Offer</h3>
 <p class="bk-sub">How to Get a Remote Job &middot; by Oluwaseyi Ashiru</p>
@@ -783,6 +867,47 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     function onS() { if (!ticking) { ticking = true; requestAnimationFrame(paint); } }
     addEventListener('scroll', onS, { passive: true }); addEventListener('resize', onS); paint();
   }
+})();
+</script>
+<script>
+/* The book opens a free page on tap, closes, then spins. Sliders drift right to left. */
+(function () {
+  var still = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  [].forEach.call(document.querySelectorAll('.lb'), function (b) {
+    var n = 0;
+    function play() {
+      b.classList.toggle('sb', n++ % 2 === 1);
+      b.classList.remove('tap'); void b.offsetWidth; b.classList.add('tap');
+    }
+    b.addEventListener('click', play);
+    b.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); play(); } });
+    var book = b.querySelector('.lb-book');
+    if (book) book.addEventListener('animationend', function (e) { if (e.animationName === 'lbBookTap') b.classList.remove('tap'); });
+    /* show it once when it first comes into view */
+    if ('IntersectionObserver' in window && !still) {
+      var io = new IntersectionObserver(function (es) { if (es[0].isIntersecting) { io.disconnect(); setTimeout(play, 500); } }, { threshold: .6 });
+      io.observe(b);
+    }
+  });
+  function slider(el) {
+    var timer = 0, held = false, kids = [].slice.call(el.children);
+    function can() { return el.scrollWidth > el.clientWidth + 6; }
+    function next() {
+      if (held || !can() || document.hidden) return;
+      var at = el.scrollLeft, end = el.scrollWidth - el.clientWidth - 4, to = 0;
+      if (at < end) { for (var i = 0; i < kids.length; i++) { if (kids[i].offsetLeft - kids[i].parentNode.offsetLeft > at + 8) { to = kids[i].offsetLeft - el.offsetLeft; break; } } if (!to) to = 0; }
+      el.scrollTo({ left: to, behavior: 'smooth' });
+    }
+    function hold() { held = true; clearTimeout(el._r); }
+    function free() { clearTimeout(el._r); el._r = setTimeout(function () { held = false; }, 3500); }
+    ['pointerdown', 'touchstart', 'mouseenter', 'focusin'].forEach(function (t) { el.addEventListener(t, hold, { passive: true }); });
+    ['pointerup', 'touchend', 'mouseleave', 'focusout'].forEach(function (t) { el.addEventListener(t, free, { passive: true }); });
+    if (still) return;
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (es) { clearInterval(timer); if (es[0].isIntersecting) timer = setInterval(next, 3000); }, { threshold: .4 }).observe(el);
+    }
+  }
+  [].forEach.call(document.querySelectorAll('.apx, .bk-how'), slider);
 })();
 </script>
 </body>
