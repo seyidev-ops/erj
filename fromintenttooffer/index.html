@@ -373,9 +373,11 @@
   .bk-incl li::before{content:'\2713';position:absolute;left:0;top:.1rem;width:1.2rem;height:1.2rem;border-radius:50%;background:rgba(255,87,34,.16);color:var(--accent);font-size:.72rem;font-weight:800;display:grid;place-items:center;}
   .bk-no{margin:1.2rem auto 0;max-width:46ch;font-size:.8rem;line-height:1.6;color:var(--ink-faint);}
   /* the levitating book: floats, opens, closes, turns. No box, no background. */
-  .lb{--w:200px;--h:284px;--t:32px;position:relative;width:var(--w);height:calc(var(--h) + 70px);margin:0 auto;perspective:1200px;}
-  .lb-lg{--w:230px;--h:326px;--t:36px;}
-  @media(max-width:520px){.lb{--w:176px;--h:250px;--t:28px;}.lb-lg{--w:200px;--h:284px;--t:32px;}}
+  .lb{--w:200px;--h:300px;--t:32px;position:relative;width:var(--w);height:calc(var(--h) + 56px);margin:0 auto;perspective:1200px;}
+  .lb-lg{--w:230px;--h:345px;--t:36px;}
+  .lb-hero{--w:168px;--h:252px;--t:26px;}
+  @media(max-width:700px){.lb-hero{--w:128px;--h:192px;--t:22px;}}
+  @media(max-width:520px){.lb-lg{--w:196px;--h:294px;--t:32px;}}
   .lb-float{position:absolute;left:0;top:10px;width:var(--w);height:var(--h);transform-style:preserve-3d;animation:lbFloat 5s ease-in-out infinite;}
   .lb-book{position:relative;width:100%;height:100%;transform-style:preserve-3d;animation:lbTurn 20s ease-in-out infinite;}
   .lb-face{position:absolute;-webkit-backface-visibility:hidden;backface-visibility:hidden;}
@@ -385,26 +387,18 @@
   .lb-pgT{top:0;left:1%;width:98%;height:var(--t);transform:translateY(-50%) rotateX(90deg);background:repeating-linear-gradient(0deg,#f7f3ea 0 2px,#ddd5c3 2px 3px);}
   .lb-pgB{top:100%;left:1%;width:98%;height:var(--t);transform:translateY(-50%) rotateX(-90deg);background:repeating-linear-gradient(0deg,#f7f3ea 0 2px,#ddd5c3 2px 3px);}
   .lb-spine{left:0;top:0;width:var(--t);height:100%;transform:translateX(-50%) rotateY(-90deg);background:linear-gradient(90deg,#050505,#1c1c1c);display:grid;place-items:center;overflow:hidden;}
-  .lb-spine b{transform:rotate(90deg);white-space:nowrap;font:800 .62rem/1 var(--font-display);letter-spacing:.2em;color:#fff;}
+  .lb-spine b{transform:rotate(90deg);white-space:nowrap;font:800 calc(var(--t) * .4)/1 var(--font-display);letter-spacing:.16em;color:#fff;}
   .lb-inner{inset:1% 1% 1% 0;transform:translateZ(calc(var(--t) / 2 - 3px));background:#faf7f0;border-radius:0 6px 6px 0;}
   .lb-cov{position:absolute;inset:0;transform-origin:left center;transform-style:preserve-3d;transform:translateZ(calc(var(--t) / 2));animation:lbOpen 20s cubic-bezier(.5,0,.3,1) infinite;}
-  .lb-front{inset:0;border-radius:3px 9px 9px 3px;overflow:hidden;background:#0b0b0b;box-shadow:inset 6px 0 10px -6px rgba(255,255,255,.25);}
+  .lb-front{inset:0;border-radius:2px 7px 7px 2px;overflow:hidden;background:#0b0b0b;}
+  .lb-front img{display:block;width:100%;height:100%;object-fit:cover;}
+  .lb-spine u{text-decoration:none;color:#FF5722;}
   .lb-flip{inset:0;transform:rotateY(180deg);background:#f1ece0;border-radius:9px 3px 3px 9px;}
   .lb-pagetxt{position:absolute;inset:0;padding:1.4rem 1.1rem;display:flex;flex-direction:column;justify-content:center;text-align:left;color:#161412;}
   .lb-pagetxt i{font:700 .52rem/1 var(--font-body);letter-spacing:.18em;text-transform:uppercase;color:#C9410C;font-style:normal;margin-bottom:.5rem;}
   .lb-pagetxt b{font:800 .98rem/1.2 var(--font-display);margin-bottom:.5rem;}
   .lb-pagetxt span{font-size:.62rem;line-height:1.5;color:#4a443c;}
   .lb-pagetxt em{margin-top:.8rem;font:700 .5rem/1 var(--font-body);letter-spacing:.14em;text-transform:uppercase;color:#C9410C;font-style:normal;border-top:1px solid #d8cfbc;padding-top:.5rem;}
-  .cv{position:absolute;inset:0;padding:12% 11% 9%;display:flex;flex-direction:column;color:#fff;background:radial-gradient(120% 70% at 80% 0,rgba(255,87,34,.22),transparent 60%),#0b0b0b;}
-  .cv i{font:700 .42rem/1.3 var(--font-body);letter-spacing:.22em;color:#FF5722;font-style:normal;margin-bottom:.9rem;}
-  .cv b{font:800 1.62rem/1.02 var(--font-display);letter-spacing:-.02em;}
-  .lb-lg .cv b{font-size:1.85rem;}
-  .cv b u{text-decoration:none;color:#FF5722;}
-  .cv svg{width:78%;margin:auto 0 .6rem;fill:none;stroke:#FF5722;stroke-width:1.6;}
-  .cv svg rect{fill:rgba(255,255,255,.04);stroke:rgba(255,255,255,.35);stroke-width:1;}
-  .cv svg .hd{fill:#FF5722;stroke:none;}
-  .cv small{font:700 .62rem/1.2 var(--font-display);}
-  .cv em{font:400 .46rem/1.3 var(--font-body);color:#bdb7ad;font-style:normal;margin-top:.15rem;}
   .lb-shadow{position:absolute;left:50%;bottom:0;width:70%;height:22px;margin-left:-35%;border-radius:50%;background:radial-gradient(ellipse at center,rgba(0,0,0,.55),transparent 70%);animation:lbShadow 5s ease-in-out infinite;}
   html[data-theme="day"] .lb-shadow{background:radial-gradient(ellipse at center,rgba(60,30,10,.4),transparent 70%);}
   @keyframes lbFloat{0%,100%{transform:translateY(0);}50%{transform:translateY(-16px);}}
@@ -420,6 +414,51 @@
   }
   @keyframes lbOpen{0%,28%{transform:translateZ(calc(var(--t) / 2)) rotateY(0deg);}40%,58%{transform:translateZ(calc(var(--t) / 2)) rotateY(-152deg);}68%,100%{transform:translateZ(calc(var(--t) / 2)) rotateY(0deg);}}
   @media(prefers-reduced-motion:reduce){.lb-float,.lb-book,.lb-cov,.lb-shadow{animation:none;}.lb-book{transform:rotateX(5deg) rotateY(-22deg);}}
+
+  /* ══ The first block: the route arcs over the levitating book ══ */
+  .rt{margin-top:clamp(1.4rem,4vw,2.4rem);}
+  .rt-stage{position:relative;max-width:980px;margin:0 auto;}
+  .rt-svg{display:block;width:100%;height:auto;overflow:visible;}
+  .rt-tall{display:none;}
+  @media(max-width:700px){.rt-wide{display:none;}.rt-tall{display:block;}}
+  .rt-svg text{font-family:var(--font-body);}
+  .rt-ring{fill:none;stroke:var(--line-soft,rgba(127,127,127,.2));stroke-width:1.5;}
+  .rt-base{fill:none;stroke:var(--line);stroke-width:3;stroke-dasharray:3 9;stroke-linecap:round;}
+  .rt-prog{fill:none;stroke:var(--accent);stroke-width:4;stroke-linecap:round;filter:drop-shadow(0 0 6px rgba(255,87,34,.8));}
+  .rt-node{cursor:pointer;outline:none;}
+  .rt-nc{fill:var(--paper,#000);stroke:var(--line);stroke-width:2;transition:stroke .3s,fill .3s;}
+  .rt-nn{fill:var(--ink-soft);font-size:15px;font-weight:700;text-anchor:middle;dominant-baseline:central;transition:fill .3s;}
+  .rt-nl{fill:var(--ink-soft);font-size:21px;font-weight:600;transition:fill .3s;}
+  .rt-node.past .rt-nc{stroke:var(--accent);}
+  .rt-node.past .rt-nn{fill:var(--accent);}
+  .rt-node.on .rt-nc{fill:var(--accent);stroke:var(--accent);}
+  .rt-node.on .rt-nn{fill:#fff;}
+  .rt-node.on .rt-nl,.rt-node:hover .rt-nl,.rt-node:focus-visible .rt-nl{fill:var(--ink);}
+  .rt-node:hover .rt-nc,.rt-node:focus-visible .rt-nc{stroke:var(--accent);}
+  .rt-pulse{fill:none;stroke:var(--accent);stroke-width:2;transform-box:fill-box;transform-origin:center;animation:jyPulse 2s ease-out infinite;}
+  .rt-trav{fill:#fff;stroke:var(--accent);stroke-width:4;filter:drop-shadow(0 0 8px rgba(255,87,34,.95));}
+  .rt-glow{position:absolute;left:50%;bottom:6%;width:46%;aspect-ratio:1;transform:translateX(-50%);border-radius:50%;background:radial-gradient(circle,rgba(255,87,34,.22),transparent 68%);pointer-events:none;}
+  .rt-book{position:absolute;left:50%;bottom:3%;transform:translateX(-50%);z-index:2;}
+  .rt-card{display:grid;grid-template-columns:auto 1fr;gap:1.3rem;align-items:start;max-width:760px;margin:1.4rem auto 0;text-align:left;padding:clamp(1.2rem,3vw,1.7rem);
+    border:1px solid var(--accent);border-radius:22px;background:linear-gradient(160deg,rgba(255,87,34,.10),var(--card) 60%);box-shadow:0 26px 60px -38px rgba(255,87,34,.7);}
+  .rt-cn{font-family:var(--font-display);font-weight:800;font-size:clamp(2.2rem,7vw,3.6rem);line-height:1;color:var(--accent);letter-spacing:-.04em;}
+  .rt-k{font:700 .66rem/1 var(--font-body);letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:.5rem;}
+  .rt-cb h3{font-family:var(--font-display);font-size:clamp(1.3rem,3.4vw,1.8rem);margin:0 0 .3rem;color:var(--ink);}
+  .rt-q{font-size:1rem;line-height:1.5;color:var(--ink);font-style:italic;margin:0 0 .8rem;}
+  .rt-ch{list-style:none;margin:0;padding:0;display:grid;gap:.2rem;}
+  .rt-ch li{font-size:.88rem;line-height:1.45;color:var(--ink-soft);display:grid;grid-template-columns:2rem 1fr;}
+  .rt-ch li i{font-style:normal;color:var(--accent);font-variant-numeric:tabular-nums;font-weight:700;}
+  .rt-card.swap .rt-cb,.rt-card.swap .rt-cn{animation:jySwap .45s var(--ease,ease);}
+  .rt-ctl{display:flex;align-items:center;justify-content:center;gap:1rem;margin-top:1rem;}
+  .rt-ctl button{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--ink);font-size:1.1rem;cursor:pointer;transition:border-color .2s,transform .2s;}
+  .rt-ctl button:hover{border-color:var(--accent);transform:scale(1.06);}
+  .rt-dots{display:flex;gap:.45rem;}
+  .rt-dots i{width:8px;height:8px;border-radius:50%;background:var(--line);transition:background .3s,transform .3s;}
+  .rt-dots i.on{background:var(--accent);transform:scale(1.4);}
+  .bk-hero .bk-bookwrap{margin-top:clamp(1.8rem,4vw,2.6rem);}
+  .bk-hero .bk-title{margin-top:0;}
+  @media(max-width:520px){.rt-card{grid-template-columns:1fr;gap:.4rem;}}
+  @media(prefers-reduced-motion:reduce){.rt-pulse,.rt-card.swap .rt-cb,.rt-card.swap .rt-cn{animation:none;}}
 </style>
 </head>
 <body>
@@ -432,11 +471,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <main class="bk">
 
-<!-- HERO: the route from intent to outcome -->
+<!-- HERO: the route, with the book inside it -->
 <section class="bk-hero wrap jy" id="journey" aria-labelledby="bkH">
 <p class="section-label reveal"><span class="mark"></span>From remote job intent to offer</p>
 <h1 class="reveal" id="bkH">From remote job <em>intent</em> to <em>offer.</em></h1>
-<p class="lede reveal">Six points. One route. Watch it travel, or tap any point.</p>
+<p class="lede reveal">Six points on one route. Watch it travel, or tap any point.</p>
 <ol class="bk-chain jy-fallback">
 <li><b>Intent</b><span>What exactly am I trying to get?</span></li>
 <li><b>Evidence</b><span>What have I actually done so far?</span></li>
@@ -445,38 +484,36 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <li><b>Result</b><span>Did it move anything, and what do I execute next?</span></li>
 <li><b>Outcome</b><span>A signed offer, and a job you keep.</span></li>
 </ol>
-<div class="jy-app" hidden>
-<div class="jy-stage">
-<svg class="jy-svg jy-wide" id="jyWide" viewBox="0 0 1000 540" role="group" aria-label="The route from intent to outcome, six points"></svg>
-<svg class="jy-svg jy-tall" id="jyTall" viewBox="0 0 360 700" role="group" aria-label="The route from intent to outcome, six points"></svg>
-</div>
-<div class="jy-card" id="jyCard" aria-live="polite">
-<div class="jy-cn" id="jyN">01</div>
-<div class="jy-cb">
-<div class="jy-k" id="jyK">Part One</div>
-<h3 id="jyName">Intent</h3>
-<p class="jy-q" id="jyQ"></p>
-<ul class="jy-ch" id="jyCh"></ul>
-</div>
-</div>
-<div class="jy-ctl"><button type="button" id="jyPrev" aria-label="Previous point">&larr;</button><span class="jy-dots" id="jyDots"></span><button type="button" id="jyNext" aria-label="Next point">&rarr;</button></div>
-</div>
-<div class="bk-bookwrap">
-<div class="lb lb-hero" role="img" aria-label="The book From Intent to Offer by Oluwaseyi Ashiru, floating, opening and turning">
+<div class="rt" hidden>
+<div class="rt-stage">
+<svg class="rt-svg rt-wide" id="rtWide" viewBox="0 0 1000 470" role="group" aria-label="The route from intent to outcome, six points"></svg>
+<svg class="rt-svg rt-tall" id="rtTall" viewBox="0 0 360 340" role="group" aria-label="The route from intent to outcome, six points"></svg>
+<div class="rt-book"><div class="lb lb-hero" role="img" aria-label="The book From Intent to Offer by Oluwaseyi Ashiru, floating, opening and turning">
 <div class="lb-float"><div class="lb-book">
 <div class="lb-face lb-back"><span>Everything<br>Remote Job</span></div>
 <div class="lb-face lb-pg lb-pgR"></div><div class="lb-face lb-pg lb-pgT"></div><div class="lb-face lb-pg lb-pgB"></div>
-<div class="lb-face lb-spine"><b>FROM INTENT TO OFFER</b></div>
+<div class="lb-face lb-spine"><b>FROM INTENT TO <u>OFFER</u></b></div>
 <div class="lb-face lb-inner"><div class="lb-pagetxt"><i>Chapter 06</i><b>Find What Is Holding You Back</b><span>Five questions. One sentence naming your first weak point.</span><em>Task for tonight</em></div></div>
 <div class="lb-cov">
-<div class="lb-face lb-front"><div class="cv"><i>HOW TO GET A REMOTE JOB</i><b>FROM<br>INTENT<br>TO <u>OFFER</u></b>
-<svg viewBox="0 0 120 60" aria-hidden="true"><rect x="8" y="34" width="14" height="22" rx="1"/><rect x="32" y="26" width="14" height="30" rx="1"/><rect x="56" y="16" width="14" height="40" rx="1"/><rect x="80" y="6" width="14" height="50" rx="1"/><path d="M6 44 C 36 40, 60 26, 108 4" /><path class="hd" d="M98 4 L110 3 L106 15 Z"/></svg>
-<small>Oluwaseyi Ashiru</small><em>Founder, Everything Remote Job</em></div></div>
+<div class="lb-face lb-front"><picture><source srcset="cover-front.webp" type="image/webp"><img src="cover-front.jpg" alt="" width="600" height="900" decoding="async"></picture></div>
 <div class="lb-face lb-flip"><div class="lb-pagetxt"><i>Before you start</i><b>Every chapter ends with one task.</b><span>Do the task. Then turn the page.</span></div></div>
 </div>
 </div></div>
 <div class="lb-shadow"></div>
+</div></div>
 </div>
+<div class="rt-card" id="jyCard" aria-live="polite">
+<div class="rt-cn" id="jyN">01</div>
+<div class="rt-cb">
+<div class="rt-k" id="jyK">Part One</div>
+<h3 id="jyName">Intent</h3>
+<p class="rt-q" id="jyQ"></p>
+<ul class="rt-ch" id="jyCh"></ul>
+</div>
+</div>
+<div class="rt-ctl"><button type="button" id="jyPrev" aria-label="Previous point">&larr;</button><span class="rt-dots" id="jyDots"></span><button type="button" id="jyNext" aria-label="Next point">&rarr;</button></div>
+</div>
+<div class="bk-bookwrap">
 <h2 class="bk-title">From Intent to Offer</h2>
 <p class="bk-sub">How to Get a Remote Job &middot; by Oluwaseyi Ashiru</p>
 <p class="bk-facts"><span>171 pages</span><span>18 chapters</span><span>6 appendices</span><span>Instant download</span></p>
@@ -577,12 +614,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="lb-float"><div class="lb-book">
 <div class="lb-face lb-back"><span>Everything<br>Remote Job</span></div>
 <div class="lb-face lb-pg lb-pgR"></div><div class="lb-face lb-pg lb-pgT"></div><div class="lb-face lb-pg lb-pgB"></div>
-<div class="lb-face lb-spine"><b>FROM INTENT TO OFFER</b></div>
+<div class="lb-face lb-spine"><b>FROM INTENT TO <u>OFFER</u></b></div>
 <div class="lb-face lb-inner"><div class="lb-pagetxt"><i>Chapter 06</i><b>Find What Is Holding You Back</b><span>Five questions. One sentence naming your first weak point.</span><em>Task for tonight</em></div></div>
 <div class="lb-cov">
-<div class="lb-face lb-front"><div class="cv"><i>HOW TO GET A REMOTE JOB</i><b>FROM<br>INTENT<br>TO <u>OFFER</u></b>
-<svg viewBox="0 0 120 60" aria-hidden="true"><rect x="8" y="34" width="14" height="22" rx="1"/><rect x="32" y="26" width="14" height="30" rx="1"/><rect x="56" y="16" width="14" height="40" rx="1"/><rect x="80" y="6" width="14" height="50" rx="1"/><path d="M6 44 C 36 40, 60 26, 108 4" /><path class="hd" d="M98 4 L110 3 L106 15 Z"/></svg>
-<small>Oluwaseyi Ashiru</small><em>Founder, Everything Remote Job</em></div></div>
+<div class="lb-face lb-front"><picture><source srcset="cover-front.webp" type="image/webp"><img src="cover-front.jpg" alt="" width="600" height="900" decoding="async"></picture></div>
 <div class="lb-face lb-flip"><div class="lb-pagetxt"><i>Before you start</i><b>Every chapter ends with one task.</b><span>Do the task. Then turn the page.</span></div></div>
 </div>
 </div></div>
@@ -667,39 +702,34 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   var still = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
   function el(tag, attrs, parent) { var e = document.createElementNS(NS, tag); for (var k in attrs) e.setAttribute(k, attrs[k]); if (parent) parent.appendChild(e); return e; }
   function $(id) { return document.getElementById(id); }
-  var sec = document.getElementById('journey'), app = sec && sec.querySelector('.jy-app');
+  var sec = document.getElementById('journey'), app = sec && sec.querySelector('.rt');
   if (app) {
     sec.classList.add('js'); app.hidden = false;
     var cur = 0, auto = !still, timer = 0, maps = [];
     var layouts = {
-      jyWide: { d: 'M70 470 C 170 60, 830 60, 930 470', globe: [500, 330, 190], lab: function (x, y) { var dx = x - 500, dy = y - 330, l = Math.sqrt(dx * dx + dy * dy) || 1; if (Math.abs(dx) > 400) return [x, y + 46, 'middle']; return [x + dx / l * 38, y + dy / l * 38 + 6, dx < -60 ? 'end' : dx > 60 ? 'start' : 'middle']; } },
-      jyTall: { d: 'M80 40 C 290 120, 70 220, 270 320 S 80 520, 270 660', globe: [180, 350, 120], lab: function (x, y) { return x < 180 ? [x + 28, y + 6, 'start'] : [x - 28, y + 6, 'end']; } }
+      rtWide: { d: 'M80 420 C 150 -70, 850 -70, 920 420', rings: [[500, 440, 330], [500, 440, 250]], lab: function (x, y) { var dx = x - 500, dy = y - 440, l = Math.sqrt(dx * dx + dy * dy) || 1; if (Math.abs(dx) > 380) return [x, y + 46, 'middle']; return [x + dx / l * 40, y + dy / l * 40 + 6, dx < -60 ? 'end' : dx > 60 ? 'start' : 'middle']; }, r: 17 },
+      rtTall: { d: 'M26 310 C 34 -60, 326 -60, 334 310', rings: [[180, 330, 150]], lab: function () { return null; }, r: 16 }
     };
     Object.keys(layouts).forEach(function (id) {
-      var svg = $(id), L = layouts[id], g = L.globe, defs = el('defs', {}, svg);
-      var rg = el('radialGradient', { id: id + 'G', cx: '50%', cy: '40%', r: '65%' }, defs);
-      el('stop', { offset: '0', 'stop-color': 'rgba(255,87,34,.22)' }, rg); el('stop', { offset: '1', 'stop-color': 'rgba(255,87,34,0)' }, rg);
-      var cp = el('clipPath', { id: id + 'C' }, defs); el('circle', { cx: g[0], cy: g[1], r: g[2] }, cp);
-      var sp = el('circle', { cx: g[0], cy: g[1], r: g[2], class: 'jy-sphere' }, svg); sp.setAttribute('fill', 'url(#' + id + 'G)');
-      var gr = el('g', { 'clip-path': 'url(#' + id + 'C)' }, svg);
-      [-.62, -.31, 0, .31, .62].forEach(function (f) { var ry = Math.sqrt(1 - f * f) * g[2]; el('ellipse', { cx: g[0], cy: g[1] + f * g[2], rx: ry, ry: ry * .14, class: 'jy-grat' }, gr); });
-      [0, 1, 2].forEach(function () { el('ellipse', { cx: g[0], cy: g[1], rx: g[2], ry: g[2], class: 'jy-mer' }, gr); });
-      el('path', { d: L.d, class: 'jy-base' }, svg);
-      var prog = el('path', { d: L.d, class: 'jy-prog' }, svg);
+      var svg = $(id), L = layouts[id];
+      L.rings.forEach(function (c) { el('circle', { cx: c[0], cy: c[1], r: c[2], class: 'rt-ring' }, svg); });
+      el('path', { d: L.d, class: 'rt-base' }, svg);
+      var prog = el('path', { d: L.d, class: 'rt-prog' }, svg);
       var total = prog.getTotalLength(); prog.style.strokeDasharray = total; prog.style.strokeDashoffset = total;
       var nodes = [], pts = [];
       STEPS.forEach(function (st, i) {
         var len = total * i / (STEPS.length - 1), pt = prog.getPointAtLength(len); pts.push(len);
-        var gn = el('g', { class: 'jy-node', tabindex: '0', role: 'button', 'aria-label': (i + 1) + '. ' + st.n }, svg);
-        el('circle', { cx: pt.x, cy: pt.y, r: 26, fill: 'transparent' }, gn);
-        el('circle', { cx: pt.x, cy: pt.y, r: 17, class: 'jy-ring' }, gn);
-        var t = el('text', { x: pt.x, y: pt.y, class: 'jy-num' }, gn); t.textContent = i + 1;
-        var lp = L.lab(pt.x, pt.y), lt = el('text', { x: lp[0], y: lp[1], class: 'jy-lab', 'text-anchor': lp[2] }, gn); lt.textContent = st.n;
+        var gn = el('g', { class: 'rt-node', tabindex: '0', role: 'button', 'aria-label': (i + 1) + '. ' + st.n }, svg);
+        el('circle', { cx: pt.x, cy: pt.y, r: L.r + 10, fill: 'transparent' }, gn);
+        el('circle', { cx: pt.x, cy: pt.y, r: L.r, class: 'rt-nc' }, gn);
+        var t = el('text', { x: pt.x, y: pt.y, class: 'rt-nn' }, gn); t.textContent = i + 1;
+        var lp = L.lab(pt.x, pt.y);
+        if (lp) { var lt = el('text', { x: lp[0], y: lp[1], class: 'rt-nl', 'text-anchor': lp[2] }, gn); lt.textContent = st.n; }
         gn.addEventListener('click', function () { manual(); go(i); });
         gn.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); manual(); go(i); } });
         nodes.push(gn);
       });
-      var pulse = el('circle', { r: 12, class: 'jy-pulse' }, svg), trav = el('circle', { r: 9, class: 'jy-trav' }, svg);
+      var pulse = el('circle', { r: 12, class: 'rt-pulse' }, svg), trav = el('circle', { r: 9, class: 'rt-trav' }, svg);
       maps.push({ prog: prog, total: total, nodes: nodes, pts: pts, pulse: pulse, trav: trav, pos: 0 });
     });
     function place(m, len) {
