@@ -93,6 +93,29 @@
      visible before the first question loads, and answer rows that look
      tappable when nothing is hovering them. ── */
   .dx-hero-cta{margin-top:2rem;}
+  /* the diagnosis stands out: a lit panel, first on the page */
+  .dx-frame.dx-lit{border:1px solid rgba(255,87,34,.55);border-top:3px solid var(--accent);border-radius:22px;
+    background:linear-gradient(165deg,rgba(255,87,34,.10),var(--card) 46%);
+    box-shadow:0 34px 90px -44px rgba(255,87,34,.65),inset 0 1px 0 rgba(255,255,255,.06);}
+  /* the five parts as dropdowns */
+  .jds{display:grid;gap:.7rem;margin-top:1.4rem;}
+  .jd{border:1px solid var(--line);border-radius:16px;background:var(--card);transition:border-color .2s,box-shadow .2s;}
+  .jd:hover,.jd[open]{border-color:var(--accent);}
+  .jd[open]{box-shadow:0 18px 44px -28px rgba(255,87,34,.6);}
+  .jd summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:1rem;padding:1rem 1.15rem;}
+  .jd summary::-webkit-details-marker{display:none;}
+  .jd summary::after{content:"";flex:none;margin-left:auto;width:10px;height:10px;border-right:2px solid var(--accent);border-bottom:2px solid var(--accent);transform:rotate(45deg) translateY(-2px);transition:transform .25s cubic-bezier(.22,1,.36,1);}
+  .jd[open] summary::after{transform:rotate(-135deg) translateY(-2px);}
+  .jd-n{flex:none;width:36px;height:36px;border-radius:50%;display:grid;place-items:center;border:2px solid var(--accent);color:var(--accent);font-family:var(--font-display);font-weight:800;font-size:.85rem;}
+  .jd-tx{min-width:0;}
+  .jd-tx b{display:block;font-family:var(--font-display);font-size:1.05rem;color:var(--ink);}
+  .jd-tx small{display:block;margin-top:.1rem;font-size:.86rem;line-height:1.45;color:var(--ink-soft);}
+  .jd-body{padding:0 1.15rem 1.15rem 4.2rem;animation:jdIn .3s ease;}
+  .jd-body p{margin:0 0 .5rem;font-size:.92rem;line-height:1.65;color:var(--ink-soft);}
+  .jd-law{font-weight:700;color:var(--ink)!important;}
+  @keyframes jdIn{from{opacity:.4;transform:translateY(-4px);}to{opacity:1;transform:none;}}
+  @media(max-width:560px){.jd-body{padding-left:1.15rem;}}
+  @media(prefers-reduced-motion:reduce){.jd-body{animation:none;}}
   .dx-handoff{margin-top:1.6rem;}
 
   .dx-frame{
@@ -200,22 +223,35 @@
 <section class="hero wrap">
 <div class="section-label"><span class="mark"></span>Free · 90 seconds · instant result</div>
 <h1>Find what is <em>holding back</em> your job search.</h1>
-<p class="lede">Most people patch the wrong point for months — rewriting a CV when the problem was aim, or hunting for more job boards when the problem was the document. Five questions, and you will know where to spend your next thirty days.</p>
-<div class="stat-row">
-<div><div class="stat-num">5</div><div class="stat-lbl">Questions</div></div>
-<div><div class="stat-num">1</div><div class="stat-lbl">Answer that matters</div></div>
-<div><div class="stat-num">0</div><div class="stat-lbl">Payment required</div></div>
-</div>
+<p class="lede">Five questions. You will know where to spend your next thirty days.</p>
 <div class="erj-actions dx-hero-cta">
-<a class="btn-yes btn-primary-ui" href="#dx"><span>Start The 5 Questions</span><span class="arrow-wrap"><span class="arrow is-down">↓</span></span></a>
-<a class="btn-more btn-secondary-ui" href="#parts"><span>Show Me How It Works First</span><span class="arrow-wrap"><span class="arrow is-down">↓</span></span></a>
+<a class="btn-yes btn-primary-ui" href="#dx"><span>Start the 5 questions</span><span class="arrow-wrap"><span class="arrow is-down">↓</span></span></a>
 </div>
 </section>
-<!-- ── FIRST: THE MODEL ───────────────── -->
+
+<!-- ── THE DIAGNOSIS ───────────── -->
+<section class="section-line wrap" id="dx">
+<div class="section-label"><span class="mark"></span>The diagnosis</div>
+<h2>Answer honestly. <span>Nobody is watching.</span></h2>
+<p class="section-sub">No wrong answers. About ninety seconds. Nothing is uploaded or stored.</p>
+<div class="dx-frame dx-lit">
+<div class="dx-frame-top">
+<span class="dx-frame-k">The diagnostic</span>
+<span class="dx-dots" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+</div>
+<div class="dx" id="dxBox">
+<div class="dx-progress"><span id="dxBar" style="width:0%"></span></div>
+<div class="dx-step" id="dxStep"></div>
+</div>
+</div>
+<div class="dx-result" hidden="" id="dxResult"></div>
+</section>
+
+<!-- ── THE MODEL ───────────────── -->
 <section class="section-line wrap reveal" id="parts">
-<div class="section-label"><span class="mark"></span>First · how this works</div>
+<div class="section-label"><span class="mark"></span>How it works</div>
 <h2>Five parts. <span>Start at the earliest.</span></h2>
-<p class="section-sub">A pipe does not usually burst along its length. It fails at a joint. Every remote job search runs on these same five. More than one can be weak at a time, which is why the order matters — and when it is not producing offers, the fault is almost always at one of them.</p>
+<p class="section-sub">Every remote job search runs on the same five. When it is not producing offers, the fault is almost always at one of them. Tap a part to see how it shows up.</p>
 <div aria-hidden="true" class="pipe">
 <svg role="img" viewbox="0 0 800 190" xmlns="http://www.w3.org/2000/svg">
 <rect fill="#0d0d0d" height="190" width="800"></rect>
@@ -240,74 +276,14 @@
 <text fill="#FF5722" font-family="Inter,system-ui" font-size="11" text-anchor="middle" x="555" y="158">the weak point</text>
 </svg>
 </div>
-<div class="joints">
-<div class="joint reveal">
-<div class="joint-n">01</div>
-<div>
-<div class="joint-t">Capacity</div>
-<p class="joint-ask">Can you already do the job itself?</p>
-<p class="joint-law">You can't be hired for work you can't yet do.</p>
-<p class="joint-leak"><b>You will recognise it when:</b> you are not yet able to do the job itself, or you have never worked where nobody is watching. Either the skill is still being built, or the habits that let a stranger trust you with unsupervised work are.</p>
+<div class="jds">
+<details class="jd reveal"><summary><span class="jd-n">01</span><span class="jd-tx"><b>Capacity</b><small>Can you already do the job itself?</small></span></summary><div class="jd-body"><p class="jd-law">You can't be hired for work you can't yet do.</p><p><b>You will recognise it when:</b> you are not yet able to do the job itself, or you have never worked where nobody is watching. Either the skill is still being built, or the habits that let a stranger trust you with unsupervised work are.</p></div></details>
+<details class="jd reveal"><summary><span class="jd-n">02</span><span class="jd-tx"><b>Supply</b><small>Are you finding enough real jobs you can apply for from here?</small></span></summary><div class="jd-body"><p class="jd-law">You can't apply for a job you never saw.</p><p><b>You will recognise it when:</b> you cannot find real openings at all — or everything you find smells like a scam, is already closed, or was never open to applicants from here.</p></div></details>
+<details class="jd reveal"><summary><span class="jd-n">03</span><span class="jd-tx"><b>Representation</b><small>Do your CV and LinkedIn show employers what you can do?</small></span></summary><div class="jd-body"><p class="jd-law">If your CV can't be read, you were never really in the running.</p><p><b>You will recognise it when:</b> you apply and hear nothing. Your CV, LinkedIn and portfolio either do not exist, cannot be read by the software that screens them, or do not say what you can actually do.</p></div></details>
+<details class="jd reveal"><summary><span class="jd-n">04</span><span class="jd-tx"><b>Aim</b><small>Are you applying to the jobs most likely to hire you?</small></span></summary><div class="jd-body"><p class="jd-law">Applying everywhere isn't the same as applying where you'd get hired.</p><p><b>You will recognise it when:</b> you are applying — a lot — but at the wrong roles, the wrong companies, or into portals where the application dies. Volume without direction.</p></div></details>
+<details class="jd reveal"><summary><span class="jd-n">05</span><span class="jd-tx"><b>Conversion</b><small>Do your interviews turn into job offers?</small></span></summary><div class="jd-body"><p class="jd-law">Interviews don't pay you. A signed offer does.</p><p><b>You will recognise it when:</b> replies come, even interviews come — but offers do not. Or the offer arrives and the money is wrong because nobody taught you to negotiate it.</p></div></details>
 </div>
-</div>
-<div class="joint reveal">
-<div class="joint-n">02</div>
-<div>
-<div class="joint-t">Supply</div>
-<p class="joint-ask">Are you finding enough real jobs you can apply for from here?</p>
-<p class="joint-law">You can't apply for a job you never saw.</p>
-<p class="joint-leak"><b>You will recognise it when:</b> you cannot find real openings at all — or everything you find smells like a scam, is already closed, or was never open to applicants from here.</p>
-</div>
-</div>
-<div class="joint reveal">
-<div class="joint-n">03</div>
-<div>
-<div class="joint-t">Representation</div>
-<p class="joint-ask">Do your CV and LinkedIn show employers what you can do?</p>
-<p class="joint-law">If your CV can't be read, you were never really in the running.</p>
-<p class="joint-leak"><b>You will recognise it when:</b> you apply and hear nothing. Your CV, LinkedIn and portfolio either do not exist, cannot be read by the software that screens them, or do not say what you can actually do.</p>
-</div>
-</div>
-<div class="joint reveal">
-<div class="joint-n">04</div>
-<div>
-<div class="joint-t">Aim</div>
-<p class="joint-ask">Are you applying to the jobs most likely to hire you?</p>
-<p class="joint-law">Applying everywhere isn't the same as applying where you'd get hired.</p>
-<p class="joint-leak"><b>You will recognise it when:</b> you are applying — a lot — but at the wrong roles, the wrong companies, or into portals where the application dies. Volume without direction.</p>
-</div>
-</div>
-<div class="joint reveal">
-<div class="joint-n">05</div>
-<div>
-<div class="joint-t">Conversion</div>
-<p class="joint-ask">Do your interviews turn into job offers?</p>
-<p class="joint-law">Interviews don't pay you. A signed offer does.</p>
-<p class="joint-leak"><b>You will recognise it when:</b> replies come, even interviews come — but offers do not. Or the offer arrives and the money is wrong because nobody taught you to negotiate it.</p>
-</div>
-</div>
-</div>
-<p class="joints-close reveal"><b>Fix the earliest one first.</b> More than one part can be weak at the same time; the common mistake is trying to repair all five at once and finishing none of them. The five questions below name the one to start with.</p>
-<div class="erj-actions dx-handoff">
-<a class="btn-yes btn-primary-ui" href="#dx"><span>I Understand — Start The Questions</span><span class="arrow-wrap"><span class="arrow is-down">↓</span></span></a>
-</div>
-</section>
-<!-- ── SECOND: THE QUESTIONS ───────────── -->
-<section class="section-line wrap" id="dx">
-<div class="section-label"><span class="mark"></span>Second · the five questions</div>
-<h2>Answer honestly. <span>Nobody is watching.</span></h2>
-<p class="section-sub">There are no wrong answers and no scoring against anyone else. These five questions only sort your situation into one of the five parts above. About ninety seconds, and nothing is uploaded or stored.</p>
-<div class="dx-frame">
-<div class="dx-frame-top">
-<span class="dx-frame-k">The diagnostic</span>
-<span class="dx-dots" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-</div>
-<div class="dx" id="dxBox">
-<div class="dx-progress"><span id="dxBar" style="width:0%"></span></div>
-<div class="dx-step" id="dxStep"></div>
-</div>
-</div>
-<div class="dx-result" hidden="" id="dxResult"></div>
+<p class="joints-close reveal"><b>Fix the earliest one first.</b> The five questions above name the one to start with.</p>
 </section>
 </main>
 <footer class="foot wrap">
@@ -318,8 +294,8 @@
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"></path></svg>
 </a>
 <script>window.ERJ_NAV={active:'diagnose',base:'../',onPage:[
-  {label:'How This Works',href:'#four',sub:'The five parts, and why only one of them is yours'},
-  {label:'The 5 Questions',href:'#dx',sub:'About 90 seconds · instant result · nothing stored'}
+  {label:'The 5 Questions',href:'#dx',sub:'About 90 seconds · instant result · nothing stored'},
+  {label:'The five parts',href:'#parts',sub:'How a job search breaks, and where'}
 ]};</script>
 <script src="../erj-theme.js?v=20260911a"></script>
 <script src="../erj-nav.js?v=20261113b"></script>
@@ -330,7 +306,7 @@
 <script src="../erj-product.js?v=20260924c"></script>
 <script src="../erj-schema.js?v=20261116a"></script>
 <script defer="" src="../erj-alive.js?v=20261004a"></script>
-<script defer="" src="../erj-future.js?v=20261101a"></script>
+<script defer="" src="../erj-future.js?v=20261120a"></script>
 <script defer src="../erj-world.js?v=20261116a"></script>
 </body>
 </html>
