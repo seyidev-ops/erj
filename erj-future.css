@@ -271,3 +271,23 @@ html[data-alive="lite"] .hz-cursor{display:none;}
   .hz-cursor{display:none;}
 }
 @media print{html::before,html::after,.hz-cursor{display:none!important;}html{background:#fff;}}
+
+/* ── Floating action bar: one look everywhere (20 Nov) ──────────────────
+   The "Get the Book" pill: inset from the screen edges, rounded, orange
+   outline, a lit button at its right. Pages that carry a mobile bar
+   (.sl-bar, .sticky-cta) all get it from here. */
+html body .sl-bar,html body .sticky-cta{
+  left:14px!important;right:14px!important;bottom:calc(14px + env(safe-area-inset-bottom))!important;
+  border-radius:22px!important;border:1px solid var(--accent,#FF5722)!important;
+  padding:.5rem .55rem .5rem 1.1rem!important;gap:.8rem!important;
+  background:var(--paper-2,#111)!important;box-shadow:0 18px 40px rgba(0,0,0,.35)!important;
+  -webkit-backdrop-filter:none!important;backdrop-filter:none!important;
+}
+html[data-theme="day"] body .sl-bar,html[data-theme="day"] body .sticky-cta{background:#F0ECE6!important;box-shadow:0 18px 40px rgba(60,30,10,.22)!important;}
+html body .sl-bar .btn-primary-ui,html body .sticky-cta .btn-yes,html body .sticky-cta .btn-primary-ui{
+  min-height:50px!important;padding:.55rem .95rem!important;border-radius:999px!important;font-size:1.02rem!important;font-weight:700!important;
+  background:linear-gradient(180deg,#FF6A38,#FF5722)!important;border:1px solid #FF7A4D!important;color:#fff!important;
+  box-shadow:0 12px 26px -12px rgba(255,87,34,.9)!important;gap:.5rem!important;
+}
+html body .sl-bar .arrow-wrap,html body .sticky-cta .arrow-wrap{width:34px!important;height:34px!important;border-radius:50%!important;background:rgba(255,255,255,.22)!important;}
+html body .sticky-cta .s-txt strong{font-size:.95rem!important;}

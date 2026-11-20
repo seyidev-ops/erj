@@ -192,7 +192,7 @@
   @media(max-width:760px){.sl-bar{display:flex;}}
   @media(prefers-reduced-motion:reduce){.sl-bar{transition:none;}}
 </style><link href="../erj-alive.css?v=20261028b" rel="stylesheet" media="print" onload="this.media='all'"/><noscript><link href="../erj-alive.css?v=20261028b" rel="stylesheet"/></noscript>
-<link href="../erj-future.css?v=20261104a" rel="stylesheet"/>
+<link href="../erj-future.css?v=20261120a" rel="stylesheet"/>
 <style id="erjBookExtra">
   /* book-only pieces, on top of the shared sl-* components */
   .bk-chain{list-style:none;margin:1.6rem 0 0;padding:0;display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:.5rem;counter-reset:c;}
@@ -302,6 +302,124 @@
   .cpt li i{font-style:normal;color:var(--ink-faint);font-variant-numeric:tabular-nums;}
   @media(max-width:560px){.cpt ol{padding-left:1.2rem;}}
   @media(prefers-reduced-motion:reduce){.jy-mer,.jy-pulse,.jy-card.swap .jy-cb,.jy-card.swap .jy-cn,.fv-panel.swap,.cpt ol{animation:none;}.jy-mer{transform:scaleX(.6);}}
+
+  /* ══ Book page, 20 Nov: one route, a levitating book, a lit timeline ══ */
+  .bk .wrap{padding-left:max(1.4rem,env(safe-area-inset-left));padding-right:max(1.4rem,env(safe-area-inset-right));}
+  .bk-hero{text-align:center;padding-top:clamp(2rem,6vw,3.6rem);}
+  .bk-hero h1{font-size:clamp(2.2rem,6.4vw,4rem);line-height:1.08;margin-bottom:.7rem;}
+  .bk-hero .lede{max-width:46ch;margin:0 auto;}
+  .bk-sec{padding-top:clamp(2.6rem,7vw,4.4rem);text-align:center;}
+  .bk-sec .section-sub{margin-left:auto;margin-right:auto;}
+  .bk-sec .sl-fit,.bk-sec .sl-faq{text-align:left;}
+  .bk-bookwrap{margin:clamp(2rem,5vw,3.2rem) auto 0;text-align:center;}
+  .bk-title{font-family:var(--font-display);font-size:clamp(1.5rem,4vw,2.1rem);margin:1.1rem 0 .2rem;color:var(--ink);letter-spacing:-.02em;}
+  .bk-sub{font-size:.95rem;color:var(--ink-soft);margin:0 0 .9rem;}
+  .bk-facts{display:flex;flex-wrap:wrap;gap:.45rem;justify-content:center;margin:0 0 1.4rem;}
+  .bk-facts span{font-size:.74rem;color:var(--ink-soft);padding:.4rem .75rem;border:1px solid var(--line);border-radius:999px;}
+  .bk-bookwrap .hero-cta{justify-content:center;}
+  .jy-card{text-align:left;}
+  .bk-gets{list-style:none;margin:1.8rem 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.9rem;text-align:left;}
+  .bk-gets li{position:relative;padding:1.3rem 1.2rem 1.2rem;border-radius:22px;border:1px solid var(--card-line);background:var(--card);overflow:hidden;transition:border-color .25s,transform .25s,box-shadow .25s;}
+  .bk-gets li:hover{border-color:rgba(255,87,34,.6);transform:translateY(-5px);box-shadow:0 26px 50px -32px rgba(255,87,34,.6);}
+  .bk-gets li::after{content:"";position:absolute;right:-30px;top:-30px;width:90px;height:90px;border-radius:50%;background:radial-gradient(circle,rgba(255,87,34,.3),transparent 70%);}
+  .bk-gets i{display:block;font:800 1.9rem/1 var(--font-display);color:var(--accent);letter-spacing:-.04em;margin-bottom:.7rem;font-style:normal;}
+  .bk-gets b{display:block;font-family:var(--font-display);font-size:1.02rem;color:var(--ink);margin-bottom:.25rem;}
+  .bk-gets span{font-size:.86rem;line-height:1.5;color:var(--ink-soft);}
+  @media(max-width:900px){.bk-gets{grid-template-columns:1fr 1fr;}}
+  @media(max-width:520px){.bk-gets{grid-template-columns:1fr;}}
+  /* the timeline of parts */
+  .tl{position:relative;max-width:760px;margin:2rem auto 0;padding-left:3.2rem;text-align:left;display:grid;gap:1rem;}
+  .tl-track{position:absolute;left:1.05rem;top:10px;bottom:10px;width:3px;border-radius:3px;background:var(--line);}
+  .tl-fill{position:absolute;left:0;top:0;width:100%;height:calc(var(--p,0)*100%);border-radius:3px;background:linear-gradient(180deg,var(--accent),#ffb199);box-shadow:0 0 14px rgba(255,87,34,.8);}
+  .tl-card{position:relative;padding:1.2rem 1.4rem;border-radius:22px;border:1px solid var(--card-line);background:var(--card);transition:border-color .3s,box-shadow .3s,transform .3s;}
+  .tl-dot{position:absolute;left:-2.8rem;top:1.5rem;width:16px;height:16px;border-radius:50%;background:var(--paper,#000);border:3px solid var(--line);transition:border-color .3s,background .3s,box-shadow .3s;}
+  .tl-card.lit{border-color:var(--accent);box-shadow:0 26px 56px -34px rgba(255,87,34,.7);transform:translateX(4px);}
+  .tl-card.lit .tl-dot{border-color:var(--accent);background:var(--accent);box-shadow:0 0 0 6px rgba(255,87,34,.2);}
+  .tl-card.past .tl-dot{border-color:var(--accent);}
+  .tl-k{display:flex;align-items:baseline;gap:.7rem;flex-wrap:wrap;margin-bottom:.7rem;}
+  .tl-k b{font:700 .66rem/1 var(--font-body);letter-spacing:.16em;text-transform:uppercase;color:var(--accent);}
+  .tl-k em{font:800 1.25rem/1.1 var(--font-display);font-style:normal;color:var(--ink);}
+  .tl-card ol{list-style:none;margin:0;padding:0;display:grid;gap:.1rem;}
+  .tl-card li{display:grid;grid-template-columns:2.1rem 1fr;font-size:.93rem;line-height:1.5;color:var(--ink-soft);padding:.2rem 0;}
+  .tl-card li i{font-style:normal;color:var(--accent);font-weight:700;font-variant-numeric:tabular-nums;}
+  @media(max-width:560px){.tl{padding-left:2.5rem;}.tl-dot{left:-2.15rem;}.tl-track{left:.5rem;}.tl-card{padding:1.05rem 1.1rem;}}
+  .apx-h{font-family:var(--font-display);font-size:1.15rem;color:var(--ink);margin:2.6rem 0 1rem;}
+  .apx{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.8rem;text-align:left;}
+  .apx-c{position:relative;padding:1.1rem 1.15rem;border-radius:20px;border:1px dashed var(--line);background:var(--card);transition:border-color .25s,border-style .25s,transform .25s,box-shadow .25s;overflow:hidden;}
+  .apx-c:hover{border-style:solid;border-color:var(--accent);transform:translateY(-4px) rotate(-.6deg);box-shadow:0 22px 44px -30px rgba(255,87,34,.6);}
+  .apx-c i{display:inline-grid;place-items:center;min-width:2.2rem;height:2.2rem;padding:0 .4rem;border-radius:11px;background:rgba(255,87,34,.14);color:var(--accent);font:800 .8rem var(--font-display);font-style:normal;margin-bottom:.7rem;}
+  .apx-c b{display:block;font-family:var(--font-display);font-size:.98rem;color:var(--ink);margin-bottom:.15rem;}
+  .apx-c span{font-size:.84rem;color:var(--ink-soft);}
+  @media(max-width:760px){.apx{grid-template-columns:1fr 1fr;}}
+  @media(max-width:440px){.apx{grid-template-columns:1fr;}}
+  /* after you pay: three connected steps */
+  .bk-how{list-style:none;margin:1.8rem 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;text-align:left;position:relative;}
+  .bk-how li{position:relative;padding:1.4rem 1.3rem;border-radius:22px;border:1px solid var(--card-line);background:var(--card);transition:transform .25s,border-color .25s;}
+  .bk-how li:hover{transform:translateY(-4px);border-color:rgba(255,87,34,.55);}
+  .bk-how li:not(:last-child)::after{content:"\2192";position:absolute;right:-.95rem;top:50%;transform:translateY(-50%);z-index:2;width:1.6rem;height:1.6rem;border-radius:50%;background:var(--accent-btn,#FF5722);color:#fff;display:grid;place-items:center;font-size:.85rem;}
+  .bk-how i{display:grid;place-items:center;width:2.4rem;height:2.4rem;border-radius:50%;border:2px solid var(--accent);color:var(--accent);font:800 1rem var(--font-display);font-style:normal;margin-bottom:.8rem;}
+  .bk-how b{display:block;font-family:var(--font-display);font-size:1.02rem;color:var(--ink);margin-bottom:.3rem;}
+  .bk-how span{font-size:.9rem;line-height:1.6;color:var(--ink-soft);}
+  @media(max-width:760px){.bk-how{grid-template-columns:1fr;}.bk-how li:not(:last-child)::after{right:auto;left:50%;top:auto;bottom:-1rem;transform:translateX(-50%) rotate(90deg);}}
+  /* the buy block */
+  .bk-buy{position:relative;margin-top:clamp(2.6rem,7vw,4.4rem);padding:clamp(3rem,8vw,5rem) 0 clamp(3rem,8vw,5rem);text-align:center;overflow:hidden;
+    border-top:1px solid rgba(255,87,34,.4);border-bottom:1px solid rgba(255,87,34,.4);
+    background:radial-gradient(700px 420px at 50% 38%,rgba(255,87,34,.20),transparent 70%),radial-gradient(900px 300px at 50% 110%,rgba(255,87,34,.12),transparent 70%);}
+  .bk-buy .wrap{position:relative;}
+  .bk-price{font:800 clamp(2.8rem,9vw,4.2rem)/1 var(--font-display);letter-spacing:-.04em;color:var(--ink);margin:.5rem 0 .3rem;}
+  .bk-pricesub{font-size:.9rem;color:var(--ink-soft);margin:0 0 1.2rem;}
+  .bk-incl{list-style:none;margin:0 auto 1.5rem;padding:0;max-width:460px;display:grid;gap:.5rem;text-align:left;}
+  .bk-incl li{position:relative;padding-left:1.8rem;font-size:.95rem;line-height:1.5;color:var(--ink-soft);}
+  .bk-incl li::before{content:'\2713';position:absolute;left:0;top:.1rem;width:1.2rem;height:1.2rem;border-radius:50%;background:rgba(255,87,34,.16);color:var(--accent);font-size:.72rem;font-weight:800;display:grid;place-items:center;}
+  .bk-no{margin:1.2rem auto 0;max-width:46ch;font-size:.8rem;line-height:1.6;color:var(--ink-faint);}
+  /* the levitating book: floats, opens, closes, turns. No box, no background. */
+  .lb{--w:200px;--h:284px;--t:32px;position:relative;width:var(--w);height:calc(var(--h) + 70px);margin:0 auto;perspective:1200px;}
+  .lb-lg{--w:230px;--h:326px;--t:36px;}
+  @media(max-width:520px){.lb{--w:176px;--h:250px;--t:28px;}.lb-lg{--w:200px;--h:284px;--t:32px;}}
+  .lb-float{position:absolute;left:0;top:10px;width:var(--w);height:var(--h);transform-style:preserve-3d;animation:lbFloat 5s ease-in-out infinite;}
+  .lb-book{position:relative;width:100%;height:100%;transform-style:preserve-3d;animation:lbTurn 20s ease-in-out infinite;}
+  .lb-face{position:absolute;-webkit-backface-visibility:hidden;backface-visibility:hidden;}
+  .lb-back{inset:0;transform:translateZ(calc(var(--t) / -2)) rotateY(180deg);background:#0d0d0d;border-radius:3px 8px 8px 3px;display:grid;place-items:center;color:#FF5722;font:700 .85rem/1.3 var(--font-display);text-align:center;letter-spacing:.06em;text-transform:uppercase;}
+  .lb-pg{background:repeating-linear-gradient(90deg,#f7f3ea 0 2px,#ddd5c3 2px 3px);}
+  .lb-pgR{left:100%;top:1%;width:var(--t);height:98%;transform:translateX(-50%) rotateY(90deg);}
+  .lb-pgT{top:0;left:1%;width:98%;height:var(--t);transform:translateY(-50%) rotateX(90deg);background:repeating-linear-gradient(0deg,#f7f3ea 0 2px,#ddd5c3 2px 3px);}
+  .lb-pgB{top:100%;left:1%;width:98%;height:var(--t);transform:translateY(-50%) rotateX(-90deg);background:repeating-linear-gradient(0deg,#f7f3ea 0 2px,#ddd5c3 2px 3px);}
+  .lb-spine{left:0;top:0;width:var(--t);height:100%;transform:translateX(-50%) rotateY(-90deg);background:linear-gradient(90deg,#050505,#1c1c1c);display:grid;place-items:center;overflow:hidden;}
+  .lb-spine b{transform:rotate(90deg);white-space:nowrap;font:800 .62rem/1 var(--font-display);letter-spacing:.2em;color:#fff;}
+  .lb-inner{inset:1% 1% 1% 0;transform:translateZ(calc(var(--t) / 2 - 3px));background:#faf7f0;border-radius:0 6px 6px 0;}
+  .lb-cov{position:absolute;inset:0;transform-origin:left center;transform-style:preserve-3d;transform:translateZ(calc(var(--t) / 2));animation:lbOpen 20s cubic-bezier(.5,0,.3,1) infinite;}
+  .lb-front{inset:0;border-radius:3px 9px 9px 3px;overflow:hidden;background:#0b0b0b;box-shadow:inset 6px 0 10px -6px rgba(255,255,255,.25);}
+  .lb-flip{inset:0;transform:rotateY(180deg);background:#f1ece0;border-radius:9px 3px 3px 9px;}
+  .lb-pagetxt{position:absolute;inset:0;padding:1.4rem 1.1rem;display:flex;flex-direction:column;justify-content:center;text-align:left;color:#161412;}
+  .lb-pagetxt i{font:700 .52rem/1 var(--font-body);letter-spacing:.18em;text-transform:uppercase;color:#C9410C;font-style:normal;margin-bottom:.5rem;}
+  .lb-pagetxt b{font:800 .98rem/1.2 var(--font-display);margin-bottom:.5rem;}
+  .lb-pagetxt span{font-size:.62rem;line-height:1.5;color:#4a443c;}
+  .lb-pagetxt em{margin-top:.8rem;font:700 .5rem/1 var(--font-body);letter-spacing:.14em;text-transform:uppercase;color:#C9410C;font-style:normal;border-top:1px solid #d8cfbc;padding-top:.5rem;}
+  .cv{position:absolute;inset:0;padding:12% 11% 9%;display:flex;flex-direction:column;color:#fff;background:radial-gradient(120% 70% at 80% 0,rgba(255,87,34,.22),transparent 60%),#0b0b0b;}
+  .cv i{font:700 .42rem/1.3 var(--font-body);letter-spacing:.22em;color:#FF5722;font-style:normal;margin-bottom:.9rem;}
+  .cv b{font:800 1.62rem/1.02 var(--font-display);letter-spacing:-.02em;}
+  .lb-lg .cv b{font-size:1.85rem;}
+  .cv b u{text-decoration:none;color:#FF5722;}
+  .cv svg{width:78%;margin:auto 0 .6rem;fill:none;stroke:#FF5722;stroke-width:1.6;}
+  .cv svg rect{fill:rgba(255,255,255,.04);stroke:rgba(255,255,255,.35);stroke-width:1;}
+  .cv svg .hd{fill:#FF5722;stroke:none;}
+  .cv small{font:700 .62rem/1.2 var(--font-display);}
+  .cv em{font:400 .46rem/1.3 var(--font-body);color:#bdb7ad;font-style:normal;margin-top:.15rem;}
+  .lb-shadow{position:absolute;left:50%;bottom:0;width:70%;height:22px;margin-left:-35%;border-radius:50%;background:radial-gradient(ellipse at center,rgba(0,0,0,.55),transparent 70%);animation:lbShadow 5s ease-in-out infinite;}
+  html[data-theme="day"] .lb-shadow{background:radial-gradient(ellipse at center,rgba(60,30,10,.4),transparent 70%);}
+  @keyframes lbFloat{0%,100%{transform:translateY(0);}50%{transform:translateY(-16px);}}
+  @keyframes lbShadow{0%,100%{transform:scale(1);opacity:.9;}50%{transform:scale(.8);opacity:.55;}}
+  @keyframes lbTurn{
+    0%{transform:translateX(0) rotateX(5deg) rotateY(-26deg);}
+    16%{transform:translateX(0) rotateX(5deg) rotateY(26deg);}
+    28%{transform:translateX(calc(var(--w) * .1)) rotateX(3deg) rotateY(-8deg);}
+    38%,60%{transform:translateX(calc(var(--w) * .5)) rotateX(3deg) rotateY(-12deg);}
+    68%{transform:translateX(calc(var(--w) * .1)) rotateX(4deg) rotateY(-10deg);}
+    72%{transform:translateX(0) rotateX(5deg) rotateY(-10deg);}
+    100%{transform:translateX(0) rotateX(5deg) rotateY(334deg);}
+  }
+  @keyframes lbOpen{0%,28%{transform:translateZ(calc(var(--t) / 2)) rotateY(0deg);}40%,58%{transform:translateZ(calc(var(--t) / 2)) rotateY(-152deg);}68%,100%{transform:translateZ(calc(var(--t) / 2)) rotateY(0deg);}}
+  @media(prefers-reduced-motion:reduce){.lb-float,.lb-book,.lb-cov,.lb-shadow{animation:none;}.lb-book{transform:rotateX(5deg) rotateY(-22deg);}}
 </style>
 </head>
 <body>
@@ -310,55 +428,27 @@
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 <div id="erjNavMount"></div>
-<script>window.ERJ_NAV={active:'book',base:'../',onPage:[{label:'The route',href:'#idea'},{label:'The five repairs',href:'#five'},{label:'What is inside',href:'#contents'},{label:'After you pay',href:'#how'},{label:'Is it for you?',href:'#fit'},{label:'Questions',href:'#faq'},{label:'Get the Book',href:'#buy'}]};</script>
+<script>window.ERJ_NAV={active:'book',base:'../',onPage:[{label:'The route',href:'#journey'},{label:'The method',href:'#find'},{label:'What is inside',href:'#inside'},{label:'Is it for you?',href:'#fit'},{label:'Before you pay',href:'#faq'},{label:'After you pay',href:'#how'},{label:'Get the Book',href:'#buy'}]};</script>
 
-<main>
+<main class="bk">
 
-<!-- HERO -->
-<section class="hero wrap">
-<div class="sl-hero">
-<div>
-<p class="section-label reveal"><span class="mark"></span> The book · From Intent to Offer</p>
-<h1 class="reveal">Find where your job search breaks. <em>Then fix it.</em></h1>
-<p class="lede reveal">The whole ERJ method in one book, from intent to signed offer, written to be executed alone. Every chapter ends with one task to do.</p>
-<ul class="sl-gets reveal">
-<li><b>Name the exact result</b> you are going after</li>
-<li><b>Find your first weak point</b> in about twenty minutes</li>
-<li><b>The repair for each of the five parts</b>, chapter by chapter</li>
-<li><b>A fourteen-day plan</b>, scripts and trackers to keep open</li>
-</ul>
-<div class="sl-price reveal"><span class="amt">₦15,000</span><span class="amt-sub">One payment · instant download · 171 pages</span></div>
-<div class="hero-cta reveal">
-<a href="https://selar.com/from_intent_to_offer" class="btn-primary-ui btn-yes" id="slHeroCta" rel="noopener" target="_blank"><span>Get the Book</span><span class="arrow-wrap"><span class="arrow">→</span></span></a>
-<a href="#contents" class="btn-more btn-secondary-ui"><span>See what's inside</span><span class="arrow-wrap"><span class="arrow is-down">↓</span></span></a>
-</div>
-<div class="sl-trust reveal"><span>18 chapters · 6 appendices</span><span>By Oluwaseyi Ashiru, founder of ERJ</span><span>Nothing renews</span></div>
-</div>
-<figure class="sl-box reveal">
-<picture><source srcset="../shop/intentbook-centred.webp" type="image/webp"><img src="../shop/intentbook-centred.jpg" alt="From Intent to Offer by Oluwaseyi Ashiru: the book cover" width="900" height="900" loading="eager" decoding="async" fetchpriority="high"></picture>
-<figcaption>Instant download</figcaption>
-</figure>
-</div>
-</section>
-
-<!-- JOURNEY -->
-<section class="section-line wrap jy" id="idea" aria-labelledby="jyT">
-<p class="section-label reveal">The one idea</p>
-<h2 class="reveal" id="jyT">Information is <span>not the result.</span></h2>
-<p class="section-sub reveal">You have watched the videos and saved the job posts. The result still hasn't come, because information hasn't become execution yet. The book follows the one route every successful search takes. Watch it travel, or tap any point.</p>
+<!-- HERO: the route from intent to outcome -->
+<section class="bk-hero wrap jy" id="journey" aria-labelledby="bkH">
+<p class="section-label reveal"><span class="mark"></span>From remote job intent to offer</p>
+<h1 class="reveal" id="bkH">From remote job <em>intent</em> to <em>offer.</em></h1>
+<p class="lede reveal">Six points. One route. Watch it travel, or tap any point.</p>
 <ol class="bk-chain jy-fallback">
 <li><b>Intent</b><span>What exactly am I trying to get?</span></li>
 <li><b>Evidence</b><span>What have I actually done so far?</span></li>
 <li><b>Diagnosis</b><span>Where is my search breaking?</span></li>
 <li><b>Execution</b><span>What work repairs that point?</span></li>
-<li><b>Result</b><span>Did it move anything?</span></li>
-<li><b>Next result</b><span>What do I execute now?</span></li>
+<li><b>Result</b><span>Did it move anything, and what do I execute next?</span></li>
 <li><b>Outcome</b><span>A signed offer, and a job you keep.</span></li>
 </ol>
 <div class="jy-app" hidden>
 <div class="jy-stage">
-<svg class="jy-svg jy-wide" id="jyWide" viewBox="0 0 1000 540" role="group" aria-label="The route from intent to outcome, seven points"></svg>
-<svg class="jy-svg jy-tall" id="jyTall" viewBox="0 0 360 700" role="group" aria-label="The route from intent to outcome, seven points"></svg>
+<svg class="jy-svg jy-wide" id="jyWide" viewBox="0 0 1000 540" role="group" aria-label="The route from intent to outcome, six points"></svg>
+<svg class="jy-svg jy-tall" id="jyTall" viewBox="0 0 360 700" role="group" aria-label="The route from intent to outcome, six points"></svg>
 </div>
 <div class="jy-card" id="jyCard" aria-live="polite">
 <div class="jy-cn" id="jyN">01</div>
@@ -371,73 +461,72 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div>
 <div class="jy-ctl"><button type="button" id="jyPrev" aria-label="Previous point">&larr;</button><span class="jy-dots" id="jyDots"></span><button type="button" id="jyNext" aria-label="Next point">&rarr;</button></div>
 </div>
+<div class="bk-bookwrap">
+<div class="lb lb-hero" role="img" aria-label="The book From Intent to Offer by Oluwaseyi Ashiru, floating, opening and turning">
+<div class="lb-float"><div class="lb-book">
+<div class="lb-face lb-back"><span>Everything<br>Remote Job</span></div>
+<div class="lb-face lb-pg lb-pgR"></div><div class="lb-face lb-pg lb-pgT"></div><div class="lb-face lb-pg lb-pgB"></div>
+<div class="lb-face lb-spine"><b>FROM INTENT TO OFFER</b></div>
+<div class="lb-face lb-inner"><div class="lb-pagetxt"><i>Chapter 06</i><b>Find What Is Holding You Back</b><span>Five questions. One sentence naming your first weak point.</span><em>Task for tonight</em></div></div>
+<div class="lb-cov">
+<div class="lb-face lb-front"><div class="cv"><i>HOW TO GET A REMOTE JOB</i><b>FROM<br>INTENT<br>TO <u>OFFER</u></b>
+<svg viewBox="0 0 120 60" aria-hidden="true"><rect x="8" y="34" width="14" height="22" rx="1"/><rect x="32" y="26" width="14" height="30" rx="1"/><rect x="56" y="16" width="14" height="40" rx="1"/><rect x="80" y="6" width="14" height="50" rx="1"/><path d="M6 44 C 36 40, 60 26, 108 4" /><path class="hd" d="M98 4 L110 3 L106 15 Z"/></svg>
+<small>Oluwaseyi Ashiru</small><em>Founder, Everything Remote Job</em></div></div>
+<div class="lb-face lb-flip"><div class="lb-pagetxt"><i>Before you start</i><b>Every chapter ends with one task.</b><span>Do the task. Then turn the page.</span></div></div>
+</div>
+</div></div>
+<div class="lb-shadow"></div>
+</div>
+<h2 class="bk-title">From Intent to Offer</h2>
+<p class="bk-sub">How to Get a Remote Job &middot; by Oluwaseyi Ashiru</p>
+<p class="bk-facts"><span>171 pages</span><span>18 chapters</span><span>6 appendices</span><span>Instant download</span></p>
+<div class="hero-cta">
+<a href="https://selar.com/from_intent_to_offer" class="btn-primary-ui btn-yes" id="slHeroCta" rel="noopener" target="_blank"><span>Get the Book</span><span class="arrow-wrap"><span class="arrow">&rarr;</span></span></a>
+<a href="#inside" class="btn-more btn-secondary-ui"><span>See what's inside</span><span class="arrow-wrap"><span class="arrow is-down">&darr;</span></span></a>
+</div>
+</div>
 </section>
 
-<!-- FIVE -->
-<section class="section-line wrap" id="five">
-<p class="section-label reveal">The Five-Finger Model</p>
-<h2 class="reveal">Five places a search breaks. <span>A repair for each.</span></h2>
-<p class="section-sub reveal">Chapter 6 finds yours on paper, alone. Then you repair that one point and leave the other four. Tap the one that sounds like you.</p>
-<div class="fv" id="fv">
-<div class="fv-tabs" role="tablist" aria-label="The five parts">
-<button type="button" role="tab" class="on" aria-selected="true" data-i="0"><i>01</i>Capacity</button>
-<button type="button" role="tab" aria-selected="false" data-i="1"><i>02</i>Supply</button>
-<button type="button" role="tab" aria-selected="false" data-i="2"><i>03</i>Representation</button>
-<button type="button" role="tab" aria-selected="false" data-i="3"><i>04</i>Aim</button>
-<button type="button" role="tab" aria-selected="false" data-i="4"><i>05</i>Conversion</button>
-</div>
-<div class="fv-panel" role="tabpanel" aria-live="polite">
-<q id="fvQ"></q>
-<p class="fv-r"><b>Repair</b><span id="fvR"></span></p>
-<p class="fv-c" id="fvC"></p>
-</div>
-</div>
-<noscript><div class="bk-fix">
-<div><b>01 Capacity</b><q>I couldn't do the job yet, or not without someone watching.</q><small>Repair: the skill and a remote operating system. Chapters 7–9.</small></div>
-<div><b>02 Supply</b><q>I can't find real openings I'm eligible for.</q><small>Repair: a verified source list and company file. Chapter 10.</small></div>
-<div><b>03 Representation</b><q>I apply and hear nothing at all.</q><small>Repair: CV, LinkedIn and proof of work. Chapters 11–12.</small></div>
-<div><b>04 Aim</b><q>I apply constantly and nothing lands.</q><small>Repair: narrow the target, check eligibility, reach the human. Chapter 13.</small></div>
-<div><b>05 Conversion</b><q>Interviews come, offers don't.</q><small>Repair: prepare the room and the money. Chapters 14–15.</small></div>
-</div></noscript>
-<p class="note reveal" style="margin-top:1.3rem">Want to know your weak point before buying anything? <a href="../diagnose/" style="color:var(--accent);font-weight:700">Run the free 90-second diagnosis →</a></p>
+<!-- THE METHOD -->
+<section class="wrap bk-sec" id="find">
+<p class="section-label reveal">The method</p>
+<h2 class="reveal">Find where your job search breaks. <span>Then fix it.</span></h2>
+<p class="section-sub reveal">The whole ERJ method in one book, from intent to signed offer, written to be executed alone. Every chapter ends with one task to do.</p>
+<ul class="bk-gets">
+<li class="reveal"><i>01</i><b>Name the exact result</b><span>you are going after</span></li>
+<li class="reveal"><i>02</i><b>Find your first weak point</b><span>in about twenty minutes</span></li>
+<li class="reveal"><i>03</i><b>The repair for each break</b><span>chapter by chapter</span></li>
+<li class="reveal"><i>04</i><b>A fourteen-day plan</b><span>scripts and trackers to keep open</span></li>
+</ul>
+<p class="note reveal">Want to know your weak point before buying anything? <a href="../diagnose/" style="color:var(--accent);font-weight:700">Run the free 90-second diagnosis &rarr;</a></p>
 </section>
 
-<!-- CONTENTS -->
-<section class="section-line wrap" id="contents">
+<!-- WHAT IS INSIDE -->
+<section class="wrap bk-sec" id="inside">
 <p class="section-label reveal">What is inside</p>
 <h2 class="reveal">Eighteen chapters. <span>Seven parts, one order.</span></h2>
-<div class="cpts">
-<details class="cpt" open><summary><span class="cpt-n">01</span><b>Part One · Intent</b></summary><ol><li><i>01</i>What a Remote Job Actually Is</li><li><i>02</i>The Honest Economics</li><li><i>03</i>Name the Result</li></ol></details>
-<details class="cpt"><summary><span class="cpt-n">02</span><b>Part Two · Evidence</b></summary><ol><li><i>04</i>Your Search Is a Pipeline</li><li><i>05</i>The Ledger and the Scoreboard</li></ol></details>
-<details class="cpt"><summary><span class="cpt-n">03</span><b>Part Three · Diagnosis</b></summary><ol><li><i>06</i>Find What Is Holding You Back</li></ol></details>
-<details class="cpt"><summary><span class="cpt-n">04</span><b>Part Four · Execution</b></summary><ol><li><i>07</i>The Remote Operating System</li><li><i>08</i>The Toolkit and AI Fluency</li><li><i>09</i>Writing That Works Without You</li><li><i>10</i>Find Roles You Can Actually Win</li><li><i>11</i>A CV a Machine Can Read and a Stranger Can Believe</li><li><i>12</i>Be Findable, and Show the Work</li><li><i>13</i>Apply Where You Would Get Hired</li><li><i>14</i>The Room</li><li><i>15</i>The Money, the Contract and the First Payment</li></ol></details>
-<details class="cpt"><summary><span class="cpt-n">05-07</span><b>Parts Five to Seven · Result to Outcome</b></summary><ol><li><i>16</i>The First Ninety Days, and Leaving Well</li><li><i>17</i>The Loop, and the Second Role</li><li><i>18</i>Four Levels of Help</li></ol></details>
+<p class="section-sub reveal">Follow the line down. Each part is a stop on the same route.</p>
+<div class="tl" id="tl">
+<div class="tl-track"><span class="tl-fill" id="tlFill"></span></div>
+<article class="tl-card"><span class="tl-dot"></span><div class="tl-k"><b>Part One</b><em>Intent</em></div><ol><li><i>01</i>What a Remote Job Actually Is</li><li><i>02</i>The Honest Economics</li><li><i>03</i>Name the Result</li></ol></article>
+<article class="tl-card"><span class="tl-dot"></span><div class="tl-k"><b>Part Two</b><em>Evidence</em></div><ol><li><i>04</i>Your Search Is a Pipeline</li><li><i>05</i>The Ledger and the Scoreboard</li></ol></article>
+<article class="tl-card"><span class="tl-dot"></span><div class="tl-k"><b>Part Three</b><em>Diagnosis</em></div><ol><li><i>06</i>Find What Is Holding You Back</li></ol></article>
+<article class="tl-card tl-big"><span class="tl-dot"></span><div class="tl-k"><b>Part Four</b><em>Execution</em></div><ol><li><i>07</i>The Remote Operating System</li><li><i>08</i>The Toolkit and AI Fluency</li><li><i>09</i>Writing That Works Without You</li><li><i>10</i>Find Roles You Can Actually Win</li><li><i>11</i>A CV a Machine Can Read and a Stranger Can Believe</li><li><i>12</i>Be Findable, and Show the Work</li><li><i>13</i>Apply Where You Would Get Hired</li><li><i>14</i>The Room</li><li><i>15</i>The Money, the Contract and the First Payment</li></ol></article>
+<article class="tl-card"><span class="tl-dot"></span><div class="tl-k"><b>Parts Five to Seven</b><em>Result to Outcome</em></div><ol><li><i>16</i>The First Ninety Days, and Leaving Well</li><li><i>17</i>The Loop, and the Second Role</li><li><i>18</i>Four Levels of Help</li></ol></article>
 </div>
-<div class="sl-folder reveal"><b>Plus six appendices you will keep open</b>
-<ul>
-<li>The First Fourteen Days<i>one task a day</i></li>
-<li>Templates and scripts<i>outreach, follow-ups, salary</i></li>
-<li>Trackers<i>ledger and scoreboard</i></li>
-<li>Glossary<i>ATS, STAR, WAT overlap</i></li>
-<li>The ERJ doors<i>every route</i></li>
-<li>Free resources<i>tools at no cost</i></li>
-</ul>
+<h3 class="apx-h reveal">Plus six appendices you will keep open</h3>
+<div class="apx">
+<div class="apx-c reveal"><i>A1</i><b>The First Fourteen Days</b><span>one task a day</span></div>
+<div class="apx-c reveal"><i>A2</i><b>Templates and scripts</b><span>outreach, follow-ups, salary</span></div>
+<div class="apx-c reveal"><i>A3</i><b>Trackers</b><span>ledger and scoreboard</span></div>
+<div class="apx-c reveal"><i>A4</i><b>Glossary</b><span>ATS, STAR, WAT overlap</span></div>
+<div class="apx-c reveal"><i>A5</i><b>The ERJ doors</b><span>every route</span></div>
+<div class="apx-c reveal"><i>A6</i><b>Free resources</b><span>tools at no cost</span></div>
 </div>
-</section>
-
-<!-- HOW -->
-<section class="section-line wrap" id="how">
-<p class="section-label reveal">After you pay</p>
-<h2 class="reveal">Download it now. <span>Know your weak point tonight.</span></h2>
-<ol class="sl-steps">
-<li class="reveal"><b>Immediately</b><span>Selar releases the download the moment payment clears and emails you the link. Nothing is posted.</span></li>
-<li class="reveal"><b>Tonight: Chapter 6</b><span>Answer the five questions and end the evening with one sentence naming your first weak point.</span></li>
-<li class="reveal"><b>This week</b><span>Not sure where to start? The First Fourteen Days is the plan: an hour or less a day, nothing more to buy.</span></li>
-</ol>
 </section>
 
 <!-- FIT -->
-<section class="section-line wrap" id="fit">
+<section class="wrap bk-sec" id="fit">
 <p class="section-label reveal">Is it for you?</p>
 <h2 class="reveal">Who this is for, <span>and who it isn't.</span></h2>
 <div class="sl-fit">
@@ -455,7 +544,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </section>
 
 <!-- FAQ -->
-<section class="section-line wrap" id="faq">
+<section class="wrap bk-sec" id="faq">
 <p class="section-label reveal">Questions</p>
 <h2 class="reveal">Before you <span>pay.</span></h2>
 <div class="sl-faq">
@@ -467,26 +556,52 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div>
 </section>
 
-<!-- BUY -->
-<section class="section-line wrap" id="buy">
+<!-- AFTER YOU PAY -->
+<section class="wrap bk-sec" id="how">
+<p class="section-label reveal">After you pay</p>
+<h2 class="reveal">Download it now. <span>Know your weak point tonight.</span></h2>
+<ol class="bk-how">
+<li class="reveal"><i>1</i><b>Immediately</b><span>Selar releases the download the moment payment clears and emails you the link. Nothing is posted.</span></li>
+<li class="reveal"><i>2</i><b>Tonight: Chapter 6</b><span>Answer the five questions and end the evening with one sentence naming your first weak point.</span></li>
+<li class="reveal"><i>3</i><b>This week</b><span>Not sure where to start? The First Fourteen Days is the plan: an hour or less a day, nothing more to buy.</span></li>
+</ol>
+</section>
+
+<!-- GET THE BOOK -->
+<section class="bk-buy" id="buy">
+<div class="wrap">
 <p class="section-label reveal">Get the Book</p>
 <h2 class="reveal">One payment. <span>Yours to keep.</span></h2>
-<div class="sl-buy reveal">
-<picture><source srcset="../shop/intentbook-centred.webp" type="image/webp"><img src="../shop/intentbook-centred.jpg" alt="" width="900" height="900" loading="lazy" decoding="async"></picture>
-<div>
-<h3>From Intent to Offer: How to Get a Remote Job</h3>
-<div class="amt">₦15,000</div>
-<p class="amt-sub">One-time · instant download · nothing renews</p>
-<ul class="sl-gets">
+<div class="bk-bookwrap bk-bookwrap-lg">
+<div class="lb lb-lg" role="img" aria-label="The book From Intent to Offer by Oluwaseyi Ashiru, floating, opening and turning">
+<div class="lb-float"><div class="lb-book">
+<div class="lb-face lb-back"><span>Everything<br>Remote Job</span></div>
+<div class="lb-face lb-pg lb-pgR"></div><div class="lb-face lb-pg lb-pgT"></div><div class="lb-face lb-pg lb-pgB"></div>
+<div class="lb-face lb-spine"><b>FROM INTENT TO OFFER</b></div>
+<div class="lb-face lb-inner"><div class="lb-pagetxt"><i>Chapter 06</i><b>Find What Is Holding You Back</b><span>Five questions. One sentence naming your first weak point.</span><em>Task for tonight</em></div></div>
+<div class="lb-cov">
+<div class="lb-face lb-front"><div class="cv"><i>HOW TO GET A REMOTE JOB</i><b>FROM<br>INTENT<br>TO <u>OFFER</u></b>
+<svg viewBox="0 0 120 60" aria-hidden="true"><rect x="8" y="34" width="14" height="22" rx="1"/><rect x="32" y="26" width="14" height="30" rx="1"/><rect x="56" y="16" width="14" height="40" rx="1"/><rect x="80" y="6" width="14" height="50" rx="1"/><path d="M6 44 C 36 40, 60 26, 108 4" /><path class="hd" d="M98 4 L110 3 L106 15 Z"/></svg>
+<small>Oluwaseyi Ashiru</small><em>Founder, Everything Remote Job</em></div></div>
+<div class="lb-face lb-flip"><div class="lb-pagetxt"><i>Before you start</i><b>Every chapter ends with one task.</b><span>Do the task. Then turn the page.</span></div></div>
+</div>
+</div></div>
+<div class="lb-shadow"></div>
+</div>
+<h3 class="bk-title">From Intent to Offer</h3>
+<p class="bk-sub">How to Get a Remote Job &middot; by Oluwaseyi Ashiru</p>
+<div class="bk-price">&#8358;15,000</div>
+<p class="bk-pricesub">One payment &middot; instant download &middot; nothing renews</p>
+<ul class="bk-incl">
 <li>18 chapters across seven parts, 171 pages</li>
 <li>Six appendices: the 14-day plan, scripts, trackers</li>
 <li>One task to execute at the end of every chapter</li>
 </ul>
-<div class="sl-buy-btns hero-cta">
-<a href="https://selar.com/from_intent_to_offer" class="btn-primary-ui btn-yes" rel="noopener" target="_blank"><span>Buy on Selar</span><span class="arrow-wrap"><span class="arrow">→</span></span></a>
-<a href="https://wa.me/2348032925957?text=I%20have%20a%20question%20about%20the%20book%20From%20Intent%20to%20Offer%3A%20" class="btn-more btn-secondary-ui" rel="noopener" target="_blank"><span>Ask a question</span><span class="arrow-wrap"><span class="arrow">→</span></span></a>
+<div class="hero-cta">
+<a href="https://selar.com/from_intent_to_offer" class="btn-primary-ui btn-yes" rel="noopener" target="_blank"><span>Buy on Selar</span><span class="arrow-wrap"><span class="arrow">&rarr;</span></span></a>
+<a href="https://wa.me/2348032925957?text=I%20have%20a%20question%20about%20the%20book%20From%20Intent%20to%20Offer%3A%20" class="btn-more btn-secondary-ui" rel="noopener" target="_blank"><span>Ask a question</span><span class="arrow-wrap"><span class="arrow">&rarr;</span></span></a>
 </div>
-<p class="sl-buy-no">Card, transfer or USSD through Selar. If the download fails, message the official line, <a href="https://wa.me/2348032925957" target="_blank" rel="noopener" style="color:var(--accent)">+234 803 292 5957</a>, and we send it directly.</p>
+<p class="bk-no">Card, transfer or USSD through Selar. If the download fails, message the official line, <a href="https://wa.me/2348032925957" target="_blank" rel="noopener" style="color:var(--accent)">+234 803 292 5957</a>, and we send it directly.</p>
 </div>
 </div>
 </section>
@@ -538,8 +653,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <script defer="" src="../erj-future.js?v=20261120a"></script>
 <script defer src="../erj-world.js?v=20261116a"></script>
 <script>
-/* The journey (seven points on one route), the five-part tabs. Progressive:
-   with no script the plain list and the plain cards stay as they were. */
+/* The route (six points) and the lit timeline. Progressive: with no script the plain list stays. */
 (function () {
   var NS = 'http://www.w3.org/2000/svg';
   var STEPS = [
@@ -547,15 +661,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     { n: 'Evidence', k: 'Part Two', q: 'What have I actually done so far?', ch: [['04', 'Your Search Is a Pipeline'], ['05', 'The Ledger and the Scoreboard']] },
     { n: 'Diagnosis', k: 'Part Three', q: 'Where is my search breaking?', ch: [['06', 'Find What Is Holding You Back']] },
     { n: 'Execution', k: 'Part Four', q: 'What work repairs that point?', ch: [['07', 'The Remote Operating System'], ['08', 'The Toolkit and AI Fluency'], ['09', 'Writing That Works Without You'], ['10', 'Find Roles You Can Actually Win'], ['11', 'A CV a Machine Can Read and a Stranger Can Believe'], ['12', 'Be Findable, and Show the Work'], ['13', 'Apply Where You Would Get Hired'], ['14', 'The Room'], ['15', 'The Money, the Contract and the First Payment']] },
-    { n: 'Result', k: 'Part Five', q: 'Did it move anything?', ch: [['16', 'The First Ninety Days, and Leaving Well']] },
-    { n: 'Next result', k: 'Part Six', q: 'What do I execute now?', ch: [['17', 'The Loop, and the Second Role']] },
+    { n: 'Result', k: 'Parts Five and Six', q: 'Did it move anything, and what do I execute next?', ch: [['16', 'The First Ninety Days, and Leaving Well'], ['17', 'The Loop, and the Second Role']] },
     { n: 'Outcome', k: 'Part Seven', q: 'A signed offer, and a job you keep.', ch: [['18', 'Four Levels of Help']] }
   ];
   var still = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
   function el(tag, attrs, parent) { var e = document.createElementNS(NS, tag); for (var k in attrs) e.setAttribute(k, attrs[k]); if (parent) parent.appendChild(e); return e; }
   function $(id) { return document.getElementById(id); }
-
-  var sec = document.getElementById('idea'), app = sec && sec.querySelector('.jy-app');
+  var sec = document.getElementById('journey'), app = sec && sec.querySelector('.jy-app');
   if (app) {
     sec.classList.add('js'); app.hidden = false;
     var cur = 0, auto = !still, timer = 0, maps = [];
@@ -587,9 +699,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         gn.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); manual(); go(i); } });
         nodes.push(gn);
       });
-      var c0 = prog.getPointAtLength(0), c1 = prog.getPointAtLength(total);
-      var cap = el('text', { x: c0.x, y: c0.y + (id === 'jyWide' ? 52 : -26), class: 'jy-cap', 'text-anchor': id === 'jyWide' ? 'start' : 'start' }, svg);
-      cap.textContent = '';
       var pulse = el('circle', { r: 12, class: 'jy-pulse' }, svg), trav = el('circle', { r: 9, class: 'jy-trav' }, svg);
       maps.push({ prog: prog, total: total, nodes: nodes, pts: pts, pulse: pulse, trav: trav, pos: 0 });
     });
@@ -608,7 +717,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       });
     }
     var dots = $('jyDots'); STEPS.forEach(function () { dots.appendChild(document.createElement('i')); });
-    function go(i, quiet) {
+    function go(i) {
       cur = (i + STEPS.length) % STEPS.length;
       var st = STEPS[cur];
       maps.forEach(function (m) { m.nodes.forEach(function (n, k) { n.classList.toggle('on', k === cur); n.classList.toggle('past', k < cur); }); });
@@ -630,28 +739,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       }, { threshold: .35 }).observe(app);
     }
   }
-
-  /* five parts: tabs */
-  var FV = [
-    ['I couldn’t do the job yet, or not without someone watching.', 'The skill and a remote operating system.', 'Chapters 7–9'],
-    ['I can’t find real openings I’m eligible for.', 'A verified source list and a company file.', 'Chapter 10'],
-    ['I apply and hear nothing at all.', 'CV, LinkedIn and proof of work.', 'Chapters 11–12'],
-    ['I apply constantly and nothing lands.', 'Narrow the target, check eligibility, reach the human.', 'Chapter 13'],
-    ['Interviews come, offers don’t.', 'Prepare the room and the money.', 'Chapters 14–15']
-  ];
-  var fv = $('fv');
-  if (fv) {
-    var tabs = [].slice.call(fv.querySelectorAll('[role=tab]')), pan = fv.querySelector('.fv-panel');
-    function pick(i) {
-      tabs.forEach(function (t, k) { t.classList.toggle('on', k === i); t.setAttribute('aria-selected', k === i ? 'true' : 'false'); });
-      $('fvQ').textContent = '“' + FV[i][0] + '”'; $('fvR').textContent = FV[i][1]; $('fvC').textContent = FV[i][2];
-      pan.classList.remove('swap'); void pan.offsetWidth; pan.classList.add('swap');
+  /* the contents timeline: the line fills and the stop nearest the middle lights up */
+  var tl = $('tl');
+  if (tl) {
+    var cards = [].slice.call(tl.querySelectorAll('.tl-card')), fill = $('tlFill'), ticking = false;
+    function paint() {
+      ticking = false;
+      var r = tl.getBoundingClientRect(), mid = innerHeight * .55;
+      var p = Math.max(0, Math.min(1, (mid - r.top) / r.height));
+      tl.style.setProperty('--p', p.toFixed(3));
+      var best = -1, bd = 1e9;
+      cards.forEach(function (c, i) { var cr = c.getBoundingClientRect(), d = Math.abs(cr.top + cr.height / 2 - mid); if (d < bd) { bd = d; best = i; } });
+      cards.forEach(function (c, i) { c.classList.toggle('lit', i === best && r.top < mid && r.bottom > mid * .4); c.classList.toggle('past', i < best); });
     }
-    tabs.forEach(function (t, k) {
-      t.addEventListener('click', function () { pick(k); });
-      t.addEventListener('keydown', function (e) { if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') { var n = (k + (e.key === 'ArrowRight' ? 1 : tabs.length - 1)) % tabs.length; tabs[n].focus(); pick(n); } });
-    });
-    pick(0);
+    function onS() { if (!ticking) { ticking = true; requestAnimationFrame(paint); } }
+    addEventListener('scroll', onS, { passive: true }); addEventListener('resize', onS); paint();
   }
 })();
 </script>
