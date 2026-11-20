@@ -16,7 +16,7 @@
       <p class="check-ev">${e.evidence}</p>
       ${e.verdict==="pass"?"":`<p class="check-fix"><strong>Fix</strong>${e.fix}</p>`}
     </div>
-  </article>`}function q(e,t){let{score:n,band:s,checks:o}=e,a=o.filter(d=>d.verdict==="pass").length,i=o.filter(d=>d.verdict==="partial").length,l=o.filter(d=>d.verdict==="fail").length,c=o.filter(d=>d.verdict!=="pass");$.innerHTML=`
+  </article>`}function q(e,t){window.ERJ_CV={r:e,f:t};let{score:n,band:s,checks:o}=e,a=o.filter(d=>d.verdict==="pass").length,i=o.filter(d=>d.verdict==="partial").length,l=o.filter(d=>d.verdict==="fail").length,c=o.filter(d=>d.verdict!=="pass");$.innerHTML=`
     <div class="score-panel band-${s.key}">
       <div class="score-dial" role="img" aria-label="Score ${n} out of 10">
         <svg viewBox="0 0 120 120">

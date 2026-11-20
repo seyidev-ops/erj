@@ -27,7 +27,7 @@ const SHELL = [
   '/fonts/inter-300.woff2',
   '/fonts/inter-400.woff2',
   '/fonts/inter-500.woff2',
-  '/erj-nav.js?v=20261113b',
+  '/erj-nav.js?v=20261120b',
   '/erj-track.js?v=20261104b',
   '/erj-theme.js?v=20260911a',
   '/erj-config.js?v=20261119c',
