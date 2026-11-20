@@ -217,9 +217,23 @@
             dl.innerHTML =
                 '<div class="cap-dl-copy"><div class="cap-dl-k">Your result is ready</div>' +
                     '<p><b>This is your result.</b> Download it to keep: your score, the points to fix and how to fix each one.</p>' +
-                    '<small>On the print screen, choose \u201cSave as PDF\u201d.</small></div>' +
+                    '<small>A clean PDF with your name on it, ready to keep or send.</small></div>' +
                     '<button type="button" class="cap-btn cap-dl-btn"><span>Download my result</span> <span class="arrow">\u2193</span></button>';
-            dl.querySelector('button').addEventListener('click', () => window.print());
+            const withPdf = (fn) => {
+                if (window.ERJCvPDF) return fn();
+                const sc = document.createElement('script');
+                sc.src = 'report-pdf.js?v=20261120a';
+                sc.onload = fn;
+                sc.onerror = () => { if (fn !== showTitle) window.print(); };
+                document.head.appendChild(sc);
+            };
+            const showTitle = () => {
+                const d = window.ERJCvPDF && window.ERJCvPDF.collect();
+                const k = dl.querySelector('.cap-dl-k');
+                if (d && k) k.textContent = d.title;
+            };
+            withPdf(showTitle);
+            dl.querySelector('button').addEventListener('click', () => withPdf(() => window.ERJCvPDF.download()));
             // 2 · ask for help with the problem the score points to, one tap per route
             const wrap = el('div', 'cap-send');
             let opts = '';

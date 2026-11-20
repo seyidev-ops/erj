@@ -4,7 +4,7 @@
 
    SEVEN top-level items, everywhere:
      Home ▾ · Remote Jobs · How We Help ▾ (free and paid, by DIY / DWY / DFY) ·
-     Success Stories · Register · Blog
+     Success Stories · Shop · Blog
    Every dropdown shows the same list on every page; the current
    page is marked inside it. A page's own sections live in its
    in-page tour and the side arrows, never in the main menu.
@@ -69,7 +69,7 @@
             ]
         },
         { key: 'stories', label: 'Success Stories', href: 'testimonials.html', keys: ['stories', 'jobs'] },
-        { key: 'pricing', label: 'Register', href: 'register.html', keys: ['pricing'] },
+        { key: 'pricing', label: 'Shop', href: 'register.html', keys: ['pricing'] },
         { key: 'blog', label: 'Blog', href: 'blog.html', keys: ['blog'] }
     ];
     /* Admin-side menu: the surfaces NOT open to the public live here,

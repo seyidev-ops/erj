@@ -84,7 +84,7 @@
   @media(max-width:860px){.sl-hero{grid-template-columns:1fr;}.sl-box{max-width:340px;margin:0 auto;}}
   /* phones: the headline and price lead; the box shot waits for the buy block */
   @media(max-width:600px){.sl-hero .sl-box{max-width:280px;margin:.4rem auto 0;}.sl-hero .lede{font-size:1rem;}.sl-gets li{font-size:.92rem;}.sl-hero .sl-gets{gap:.35rem;margin-bottom:1.1rem;}}
-  body:has(.sl-bar.is-on) .wa-float{bottom:calc(5.4rem + env(safe-area-inset-bottom));transition:bottom .3s;}
+  body:has(.sl-bar.is-on) .wa-float{bottom:calc(6.6rem + env(safe-area-inset-bottom));transition:bottom .3s;}
 
   /* five parts */
   .sl-parts{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:.6rem;margin-top:1.6rem;}
@@ -180,9 +180,9 @@
   .sl-final .hero-cta{justify-content:center;}
 
   /* sticky bar: phones only, hidden while the hero or buy block is on screen */
-  .sl-bar{position:fixed;left:0;right:0;bottom:0;z-index:60;display:none;align-items:center;justify-content:space-between;gap:.8rem;
-    padding:.55rem 1rem calc(.55rem + env(safe-area-inset-bottom));background:var(--paper-2);border-top:1px solid var(--line);
-    box-shadow:0 -10px 30px rgba(0,0,0,.18);transform:translateY(110%);transition:transform .3s var(--ease);}
+  .sl-bar{position:fixed;left:14px;right:14px;bottom:calc(14px + env(safe-area-inset-bottom));border-radius:22px;z-index:60;display:none;align-items:center;justify-content:space-between;gap:.8rem;
+    padding:.55rem .6rem .55rem 1.1rem;background:var(--paper-2);border:1px solid var(--accent);
+    box-shadow:0 18px 40px rgba(0,0,0,.35);transform:translateY(110%);transition:transform .3s var(--ease);}
   .sl-bar.is-on{transform:none;}
   .sl-bar>div{min-width:0;}
   .sl-bar b{display:block;font-family:var(--font-display);font-size:.95rem;color:var(--ink);white-space:nowrap;}
@@ -218,6 +218,90 @@
   .bk-pt li{display:grid;grid-template-columns:1.9rem minmax(0,1fr);font-size:.88rem;line-height:1.45;color:var(--ink-soft);padding:.25rem 0;}
   .bk-pt li i{font-style:normal;color:var(--ink-faint);font-variant-numeric:tabular-nums;}
   .sl-box img{background:#f4efe6;}
+
+  /* ══ The journey: one route from intent to outcome (20 Nov) ══ */
+  .jy-app{margin:2rem auto 0;padding:0 clamp(.2rem,1.5vw,1rem);max-width:980px;}
+  .jy-card,.jy-ctl{margin-left:auto;margin-right:auto;}
+  .jy-ctl{padding-bottom:.4rem;}
+  .jy.js .jy-fallback{display:none;}
+  .jy-stage{position:relative;border:1px solid var(--card-line);border-radius:28px;overflow:hidden;padding:.4rem;
+    background:radial-gradient(700px 360px at 50% 70%,rgba(255,87,34,.14),transparent 70%),var(--card);}
+  .jy-svg{display:block;width:100%;height:auto;}
+  .jy-tall{display:none;}
+  @media(max-width:700px){.jy-wide{display:none;}.jy-tall{display:block;}}
+  .jy-svg text{font-family:var(--font-body);}
+  .jy-sphere{fill:url(#jyG);stroke:var(--line);stroke-width:1.2;}
+  .jy-grat{fill:none;stroke:var(--ink-faint);stroke-width:1;opacity:.35;}
+  .jy-mer{fill:none;stroke:var(--ink-faint);stroke-width:1;opacity:.4;transform-box:fill-box;transform-origin:center;animation:jySpin 14s linear infinite;}
+  .jy-mer:nth-of-type(2){animation-delay:-4.6s;}.jy-mer:nth-of-type(3){animation-delay:-9.3s;}
+  @keyframes jySpin{0%{transform:scaleX(.08);}50%{transform:scaleX(1);}100%{transform:scaleX(.08);}}
+  .jy-base{fill:none;stroke:var(--line);stroke-width:3;stroke-dasharray:3 9;stroke-linecap:round;}
+  .jy-prog{fill:none;stroke:var(--accent);stroke-width:4;stroke-linecap:round;filter:drop-shadow(0 0 6px rgba(255,87,34,.8));}
+  .jy-node{cursor:pointer;outline:none;}
+  .jy-ring{fill:var(--paper,#000);stroke:var(--line);stroke-width:2;transition:stroke .3s,fill .3s;}
+  .jy-num{fill:var(--ink-soft);font-size:15px;font-weight:700;text-anchor:middle;dominant-baseline:central;transition:fill .3s;}
+  .jy-lab{fill:var(--ink-soft);font-size:21px;font-weight:600;transition:fill .3s;}
+  .jy-node.past .jy-ring{stroke:var(--accent);}
+  .jy-node.past .jy-num{fill:var(--accent);}
+  .jy-node.on .jy-ring{fill:var(--accent);stroke:var(--accent);}
+  .jy-node.on .jy-num{fill:#fff;}
+  .jy-node.on .jy-lab,.jy-node:hover .jy-lab,.jy-node:focus-visible .jy-lab{fill:var(--ink);}
+  .jy-node:hover .jy-ring,.jy-node:focus-visible .jy-ring{stroke:var(--accent);}
+  .jy-pulse{fill:none;stroke:var(--accent);stroke-width:2;transform-box:fill-box;transform-origin:center;animation:jyPulse 2s ease-out infinite;}
+  @keyframes jyPulse{0%{transform:scale(1);opacity:.9;}100%{transform:scale(2.4);opacity:0;}}
+  .jy-trav{fill:#fff;stroke:var(--accent);stroke-width:4;filter:drop-shadow(0 0 8px rgba(255,87,34,.95));}
+  .jy-end{fill:var(--accent);}
+  .jy-cap{fill:var(--ink-faint);font-size:15px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;}
+  .jy-card{display:grid;grid-template-columns:auto 1fr;gap:1.3rem;align-items:start;margin-top:1rem;padding:clamp(1.2rem,3vw,1.8rem);
+    border:1px solid var(--accent);border-radius:22px;background:linear-gradient(160deg,rgba(255,87,34,.10),var(--card) 60%);
+    box-shadow:0 26px 60px -38px rgba(255,87,34,.7);}
+  .jy-cn{font-family:var(--font-display);font-weight:800;font-size:clamp(2.4rem,7vw,4rem);line-height:1;color:var(--accent);letter-spacing:-.04em;}
+  .jy-k{font:700 .66rem/1 var(--font-body);letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:.5rem;}
+  .jy-cb h3{font-family:var(--font-display);font-size:clamp(1.35rem,3.4vw,1.9rem);margin:0 0 .3rem;color:var(--ink);}
+  .jy-q{font-size:1.02rem;line-height:1.5;color:var(--ink);font-style:italic;margin:0 0 .8rem;}
+  .jy-ch{list-style:none;margin:0;padding:0;display:grid;gap:.2rem;}
+  .jy-ch li{font-size:.88rem;line-height:1.45;color:var(--ink-soft);display:grid;grid-template-columns:2rem 1fr;}
+  .jy-ch li i{font-style:normal;color:var(--accent);font-variant-numeric:tabular-nums;font-weight:700;}
+  .jy-card.swap .jy-cb,.jy-card.swap .jy-cn{animation:jySwap .45s var(--ease,ease);}
+  @keyframes jySwap{from{transform:translateY(10px);}to{transform:none;}}
+  .jy-ctl{display:flex;align-items:center;justify-content:center;gap:1rem;margin-top:1rem;}
+  .jy-ctl button{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--ink);font-size:1.1rem;cursor:pointer;transition:border-color .2s,transform .2s;}
+  .jy-ctl button:hover{border-color:var(--accent);transform:scale(1.06);}
+  .jy-dots{display:flex;gap:.45rem;}
+  .jy-dots i{width:8px;height:8px;border-radius:50%;background:var(--line);transition:background .3s,transform .3s;}
+  .jy-dots i.on{background:var(--accent);transform:scale(1.4);}
+  @media(max-width:520px){.jy-card{grid-template-columns:1fr;gap:.4rem;}}
+  /* five parts as tabs */
+  .fv{margin-top:1.6rem;}
+  .fv-tabs{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;}
+  .fv-tabs button{appearance:none;display:inline-flex;align-items:center;gap:.5rem;padding:.7rem 1.1rem;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:inherit;font-weight:600;font-size:.92rem;cursor:pointer;white-space:nowrap;transition:background .25s,border-color .25s,color .25s,transform .2s,box-shadow .25s;}
+  .fv-tabs button i{font-style:normal;font-size:.7rem;letter-spacing:.1em;color:var(--accent);}
+  .fv-tabs button:hover{border-color:var(--accent);transform:translateY(-2px);}
+  .fv-tabs button.on{background:var(--accent-btn,#FF5722);border-color:var(--accent);color:#fff;box-shadow:0 14px 30px -14px rgba(255,87,34,.85);}
+  .fv-tabs button.on i{color:#fff;}
+  .fv-panel{margin:1.1rem auto 0;max-width:720px;padding:clamp(1.3rem,3vw,2rem);border:1px solid var(--card-line);border-radius:22px;background:var(--card);text-align:center;}
+  .fv-panel q{display:block;font-family:var(--font-display);font-size:clamp(1.2rem,3.2vw,1.7rem);line-height:1.3;color:var(--ink);font-weight:600;}
+  .fv-panel q::before,.fv-panel q::after{content:none;}
+  .fv-r{margin:1.1rem 0 0;font-size:.98rem;line-height:1.55;color:var(--ink);}
+  .fv-r b{display:block;font:700 .66rem/1 var(--font-body);letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:.4rem;}
+  .fv-c{margin:.6rem 0 0;font-size:.86rem;color:var(--ink-soft);}
+  .fv-panel.swap{animation:jySwap .4s var(--ease,ease);}
+  /* contents as part dropdowns */
+  .cpts{display:grid;gap:.7rem;margin-top:1.6rem;}
+  .cpt{border:1px solid var(--card-line);border-radius:18px;background:var(--card);transition:border-color .2s,box-shadow .2s;}
+  .cpt:hover,.cpt[open]{border-color:var(--accent);}
+  .cpt[open]{box-shadow:0 20px 46px -30px rgba(255,87,34,.6);}
+  .cpt summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:1rem;padding:1rem 1.2rem;}
+  .cpt summary::-webkit-details-marker{display:none;}
+  .cpt summary::after{content:"";margin-left:auto;flex:none;width:10px;height:10px;border-right:2px solid var(--accent);border-bottom:2px solid var(--accent);transform:rotate(45deg) translateY(-2px);transition:transform .25s;}
+  .cpt[open] summary::after{transform:rotate(-135deg) translateY(-2px);}
+  .cpt-n{flex:none;min-width:2.4rem;height:2.4rem;padding:0 .4rem;border-radius:999px;border:2px solid var(--accent);display:grid;place-items:center;color:var(--accent);font:800 .74rem var(--font-display);}
+  .cpt summary b{font-family:var(--font-display);font-size:1.02rem;color:var(--ink);}
+  .cpt ol{list-style:none;margin:0;padding:0 1.2rem 1.1rem 4.6rem;animation:jySwap .3s ease;}
+  .cpt li{display:grid;grid-template-columns:2rem 1fr;font-size:.92rem;line-height:1.5;color:var(--ink-soft);padding:.22rem 0;}
+  .cpt li i{font-style:normal;color:var(--ink-faint);font-variant-numeric:tabular-nums;}
+  @media(max-width:560px){.cpt ol{padding-left:1.2rem;}}
+  @media(prefers-reduced-motion:reduce){.jy-mer,.jy-pulse,.jy-card.swap .jy-cb,.jy-card.swap .jy-cn,.fv-panel.swap,.cpt ol{animation:none;}.jy-mer{transform:scaleX(.6);}}
 </style>
 </head>
 <body>
@@ -226,7 +310,7 @@
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 <div id="erjNavMount"></div>
-<script>window.ERJ_NAV={active:'book',base:'../',onPage:[{label:'The idea',href:'#idea'},{label:'The five repairs',href:'#five'},{label:'What is inside',href:'#contents'},{label:'After you pay',href:'#how'},{label:'Is it for you?',href:'#fit'},{label:'Questions',href:'#faq'},{label:'Get the Book',href:'#buy'}]};</script>
+<script>window.ERJ_NAV={active:'book',base:'../',onPage:[{label:'The route',href:'#idea'},{label:'The five repairs',href:'#five'},{label:'What is inside',href:'#contents'},{label:'After you pay',href:'#how'},{label:'Is it for you?',href:'#fit'},{label:'Questions',href:'#faq'},{label:'Get the Book',href:'#buy'}]};</script>
 
 <main>
 
@@ -257,34 +341,64 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div>
 </section>
 
-<!-- IDEA -->
-<section class="section-line wrap" id="idea">
+<!-- JOURNEY -->
+<section class="section-line wrap jy" id="idea" aria-labelledby="jyT">
 <p class="section-label reveal">The one idea</p>
-<h2 class="reveal">Information is <span>not the result.</span></h2>
-<p class="section-sub reveal">You have watched the videos and saved the job posts. The result still hasn't come, because information hasn't become execution yet. The book is built on the chain every successful search follows:</p>
-<ol class="bk-chain">
-<li class="reveal"><b>Intent</b><span>What exactly am I trying to get?</span></li>
-<li class="reveal"><b>Evidence</b><span>What have I actually done so far?</span></li>
-<li class="reveal"><b>Diagnosis</b><span>Where is my search breaking?</span></li>
-<li class="reveal"><b>Execution</b><span>What work repairs that point?</span></li>
-<li class="reveal"><b>Result</b><span>Did it move anything?</span></li>
-<li class="reveal"><b>Next result</b><span>What do I execute now?</span></li>
-<li class="reveal"><b>Outcome</b><span>A signed offer, and a job you keep.</span></li>
+<h2 class="reveal" id="jyT">Information is <span>not the result.</span></h2>
+<p class="section-sub reveal">You have watched the videos and saved the job posts. The result still hasn't come, because information hasn't become execution yet. The book follows the one route every successful search takes. Watch it travel, or tap any point.</p>
+<ol class="bk-chain jy-fallback">
+<li><b>Intent</b><span>What exactly am I trying to get?</span></li>
+<li><b>Evidence</b><span>What have I actually done so far?</span></li>
+<li><b>Diagnosis</b><span>Where is my search breaking?</span></li>
+<li><b>Execution</b><span>What work repairs that point?</span></li>
+<li><b>Result</b><span>Did it move anything?</span></li>
+<li><b>Next result</b><span>What do I execute now?</span></li>
+<li><b>Outcome</b><span>A signed offer, and a job you keep.</span></li>
 </ol>
+<div class="jy-app" hidden>
+<div class="jy-stage">
+<svg class="jy-svg jy-wide" id="jyWide" viewBox="0 0 1000 540" role="group" aria-label="The route from intent to outcome, seven points"></svg>
+<svg class="jy-svg jy-tall" id="jyTall" viewBox="0 0 360 700" role="group" aria-label="The route from intent to outcome, seven points"></svg>
+</div>
+<div class="jy-card" id="jyCard" aria-live="polite">
+<div class="jy-cn" id="jyN">01</div>
+<div class="jy-cb">
+<div class="jy-k" id="jyK">Part One</div>
+<h3 id="jyName">Intent</h3>
+<p class="jy-q" id="jyQ"></p>
+<ul class="jy-ch" id="jyCh"></ul>
+</div>
+</div>
+<div class="jy-ctl"><button type="button" id="jyPrev" aria-label="Previous point">&larr;</button><span class="jy-dots" id="jyDots"></span><button type="button" id="jyNext" aria-label="Next point">&rarr;</button></div>
+</div>
 </section>
 
 <!-- FIVE -->
 <section class="section-line wrap" id="five">
 <p class="section-label reveal">The Five-Finger Model</p>
 <h2 class="reveal">Five places a search breaks. <span>A repair for each.</span></h2>
-<p class="section-sub reveal">Chapter 6 finds yours on paper, alone. Then you repair that one point and leave the other four.</p>
-<div class="bk-fix">
-<div class="reveal"><b>01 Capacity</b><q>I couldn't do the job yet, or not without someone watching.</q><small>Repair: the skill and a remote operating system. Chapters 7–9.</small></div>
-<div class="reveal"><b>02 Supply</b><q>I can't find real openings I'm eligible for.</q><small>Repair: a verified source list and company file. Chapter 10.</small></div>
-<div class="reveal"><b>03 Representation</b><q>I apply and hear nothing at all.</q><small>Repair: CV, LinkedIn and proof of work. Chapters 11–12.</small></div>
-<div class="reveal"><b>04 Aim</b><q>I apply constantly and nothing lands.</q><small>Repair: narrow the target, check eligibility, reach the human. Chapter 13.</small></div>
-<div class="reveal"><b>05 Conversion</b><q>Interviews come, offers don't.</q><small>Repair: prepare the room and the money. Chapters 14–15.</small></div>
+<p class="section-sub reveal">Chapter 6 finds yours on paper, alone. Then you repair that one point and leave the other four. Tap the one that sounds like you.</p>
+<div class="fv" id="fv">
+<div class="fv-tabs" role="tablist" aria-label="The five parts">
+<button type="button" role="tab" class="on" aria-selected="true" data-i="0"><i>01</i>Capacity</button>
+<button type="button" role="tab" aria-selected="false" data-i="1"><i>02</i>Supply</button>
+<button type="button" role="tab" aria-selected="false" data-i="2"><i>03</i>Representation</button>
+<button type="button" role="tab" aria-selected="false" data-i="3"><i>04</i>Aim</button>
+<button type="button" role="tab" aria-selected="false" data-i="4"><i>05</i>Conversion</button>
 </div>
+<div class="fv-panel" role="tabpanel" aria-live="polite">
+<q id="fvQ"></q>
+<p class="fv-r"><b>Repair</b><span id="fvR"></span></p>
+<p class="fv-c" id="fvC"></p>
+</div>
+</div>
+<noscript><div class="bk-fix">
+<div><b>01 Capacity</b><q>I couldn't do the job yet, or not without someone watching.</q><small>Repair: the skill and a remote operating system. Chapters 7–9.</small></div>
+<div><b>02 Supply</b><q>I can't find real openings I'm eligible for.</q><small>Repair: a verified source list and company file. Chapter 10.</small></div>
+<div><b>03 Representation</b><q>I apply and hear nothing at all.</q><small>Repair: CV, LinkedIn and proof of work. Chapters 11–12.</small></div>
+<div><b>04 Aim</b><q>I apply constantly and nothing lands.</q><small>Repair: narrow the target, check eligibility, reach the human. Chapter 13.</small></div>
+<div><b>05 Conversion</b><q>Interviews come, offers don't.</q><small>Repair: prepare the room and the money. Chapters 14–15.</small></div>
+</div></noscript>
 <p class="note reveal" style="margin-top:1.3rem">Want to know your weak point before buying anything? <a href="../diagnose/" style="color:var(--accent);font-weight:700">Run the free 90-second diagnosis →</a></p>
 </section>
 
@@ -292,12 +406,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <section class="section-line wrap" id="contents">
 <p class="section-label reveal">What is inside</p>
 <h2 class="reveal">Eighteen chapters. <span>Seven parts, one order.</span></h2>
-<div class="bk-parts">
-<div class="bk-pt reveal"><b>Part One · Intent</b><ol><li><i>01</i>What a Remote Job Actually Is</li><li><i>02</i>The Honest Economics</li><li><i>03</i>Name the Result</li></ol></div>
-<div class="bk-pt reveal"><b>Part Two · Evidence</b><ol><li><i>04</i>Your Search Is a Pipeline</li><li><i>05</i>The Ledger and the Scoreboard</li></ol></div>
-<div class="bk-pt reveal"><b>Part Three · Diagnosis</b><ol><li><i>06</i>Find What Is Holding You Back</li></ol></div>
-<div class="bk-pt reveal"><b>Part Four · Execution</b><ol><li><i>07</i>The Remote Operating System</li><li><i>08</i>The Toolkit and AI Fluency</li><li><i>09</i>Writing That Works Without You</li><li><i>10</i>Find Roles You Can Actually Win</li><li><i>11</i>A CV a Machine Can Read and a Stranger Can Believe</li><li><i>12</i>Be Findable, and Show the Work</li><li><i>13</i>Apply Where You Would Get Hired</li><li><i>14</i>The Room</li><li><i>15</i>The Money, the Contract and the First Payment</li></ol></div>
-<div class="bk-pt reveal"><b>Parts Five to Seven · Result to Outcome</b><ol><li><i>16</i>The First Ninety Days, and Leaving Well</li><li><i>17</i>The Loop, and the Second Role</li><li><i>18</i>Four Levels of Help</li></ol></div>
+<div class="cpts">
+<details class="cpt" open><summary><span class="cpt-n">01</span><b>Part One · Intent</b></summary><ol><li><i>01</i>What a Remote Job Actually Is</li><li><i>02</i>The Honest Economics</li><li><i>03</i>Name the Result</li></ol></details>
+<details class="cpt"><summary><span class="cpt-n">02</span><b>Part Two · Evidence</b></summary><ol><li><i>04</i>Your Search Is a Pipeline</li><li><i>05</i>The Ledger and the Scoreboard</li></ol></details>
+<details class="cpt"><summary><span class="cpt-n">03</span><b>Part Three · Diagnosis</b></summary><ol><li><i>06</i>Find What Is Holding You Back</li></ol></details>
+<details class="cpt"><summary><span class="cpt-n">04</span><b>Part Four · Execution</b></summary><ol><li><i>07</i>The Remote Operating System</li><li><i>08</i>The Toolkit and AI Fluency</li><li><i>09</i>Writing That Works Without You</li><li><i>10</i>Find Roles You Can Actually Win</li><li><i>11</i>A CV a Machine Can Read and a Stranger Can Believe</li><li><i>12</i>Be Findable, and Show the Work</li><li><i>13</i>Apply Where You Would Get Hired</li><li><i>14</i>The Room</li><li><i>15</i>The Money, the Contract and the First Payment</li></ol></details>
+<details class="cpt"><summary><span class="cpt-n">05-07</span><b>Parts Five to Seven · Result to Outcome</b></summary><ol><li><i>16</i>The First Ninety Days, and Leaving Well</li><li><i>17</i>The Loop, and the Second Role</li><li><i>18</i>Four Levels of Help</li></ol></details>
 </div>
 <div class="sl-folder reveal"><b>Plus six appendices you will keep open</b>
 <ul>
@@ -405,7 +519,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </script>
 
 <footer class="foot wrap">
-<nav class="foot-links"><a href="../index.html">Home</a><a href="../starthere.html">Your Starting Line</a><a href="../free.html">Free For You</a><a href="../blog.html">Blog</a><a href="../about.html">About ERJ</a><a href="../register.html">Register</a><a href="../login.html">Participant Login</a></nav>
+<nav class="foot-links"><a href="../index.html">Home</a><a href="../about.html">About ERJ</a><a href="../starthere.html">Your Starting Line</a><a href="../free.html">Free For You</a><a href="../blog.html">Blog</a><a href="../login.html">Participant Login</a></nav>
   <div class="erj-rights-line" role="note" style="max-width:900px;margin:1rem auto 0;padding-top:.85rem;border-top:1px solid rgba(127,127,127,.18);font-size:.72rem;line-height:1.6;letter-spacing:.02em;text-align:center;color:#8A8A86;">© 2026 Business Play Limited · Everything Remote Job · Block G3, Finance Quarters, Wuye, FCT, Abuja, Nigeria. Built for <span style="color:var(--accent,#FF5722)">global career scale.</span> All rights reserved. ERJ frameworks, curriculum and paid resources are not licensed for redistribution. <a href="../terms.html" style="color:var(--accent,#FF5722);text-decoration:none">Terms</a> · <a href="../privacy.html" style="color:var(--accent,#FF5722);text-decoration:none">Privacy</a> · <a href="mailto:info@everythingremotejob.com" style="color:var(--accent,#FF5722);text-decoration:none">info@everythingremotejob.com</a></div>
 </footer>
 
@@ -415,14 +529,132 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <script src="../erj-theme.js?v=20260911a"></script>
 <script src="../erj-product.js?v=20260924c"></script>
-<script src="../erj-nav.js?v=20261113b"></script>
+<script src="../erj-nav.js?v=20261120b"></script>
 <script src="../erj-config.js?v=20261119c"></script>
-<script src="../erj-capture.js?v=20261119b"></script>
+<script src="../erj-capture.js?v=20261120a"></script>
 <script>if("serviceWorker" in navigator){window.addEventListener("load",function(){var go=function(){navigator.serviceWorker.register("/sw.js").then(function(reg){reg.update();}).catch(function(){});};if("requestIdleCallback" in window){requestIdleCallback(go,{timeout:3000});}else{setTimeout(go,1200);}});}</script>
 <script src="../erj-schema.js?v=20261116a"></script>
 <script defer="" src="../erj-alive.js?v=20261004a"></script>
 <script defer="" src="../erj-future.js?v=20261120a"></script>
 <script defer src="../erj-world.js?v=20261116a"></script>
+<script>
+/* The journey (seven points on one route), the five-part tabs. Progressive:
+   with no script the plain list and the plain cards stay as they were. */
+(function () {
+  var NS = 'http://www.w3.org/2000/svg';
+  var STEPS = [
+    { n: 'Intent', k: 'Part One', q: 'What exactly am I trying to get?', ch: [['01', 'What a Remote Job Actually Is'], ['02', 'The Honest Economics'], ['03', 'Name the Result']] },
+    { n: 'Evidence', k: 'Part Two', q: 'What have I actually done so far?', ch: [['04', 'Your Search Is a Pipeline'], ['05', 'The Ledger and the Scoreboard']] },
+    { n: 'Diagnosis', k: 'Part Three', q: 'Where is my search breaking?', ch: [['06', 'Find What Is Holding You Back']] },
+    { n: 'Execution', k: 'Part Four', q: 'What work repairs that point?', ch: [['07', 'The Remote Operating System'], ['08', 'The Toolkit and AI Fluency'], ['09', 'Writing That Works Without You'], ['10', 'Find Roles You Can Actually Win'], ['11', 'A CV a Machine Can Read and a Stranger Can Believe'], ['12', 'Be Findable, and Show the Work'], ['13', 'Apply Where You Would Get Hired'], ['14', 'The Room'], ['15', 'The Money, the Contract and the First Payment']] },
+    { n: 'Result', k: 'Part Five', q: 'Did it move anything?', ch: [['16', 'The First Ninety Days, and Leaving Well']] },
+    { n: 'Next result', k: 'Part Six', q: 'What do I execute now?', ch: [['17', 'The Loop, and the Second Role']] },
+    { n: 'Outcome', k: 'Part Seven', q: 'A signed offer, and a job you keep.', ch: [['18', 'Four Levels of Help']] }
+  ];
+  var still = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function el(tag, attrs, parent) { var e = document.createElementNS(NS, tag); for (var k in attrs) e.setAttribute(k, attrs[k]); if (parent) parent.appendChild(e); return e; }
+  function $(id) { return document.getElementById(id); }
+
+  var sec = document.getElementById('idea'), app = sec && sec.querySelector('.jy-app');
+  if (app) {
+    sec.classList.add('js'); app.hidden = false;
+    var cur = 0, auto = !still, timer = 0, maps = [];
+    var layouts = {
+      jyWide: { d: 'M70 470 C 170 60, 830 60, 930 470', globe: [500, 330, 190], lab: function (x, y) { var dx = x - 500, dy = y - 330, l = Math.sqrt(dx * dx + dy * dy) || 1; if (Math.abs(dx) > 400) return [x, y + 46, 'middle']; return [x + dx / l * 38, y + dy / l * 38 + 6, dx < -60 ? 'end' : dx > 60 ? 'start' : 'middle']; } },
+      jyTall: { d: 'M80 40 C 290 120, 70 220, 270 320 S 80 520, 270 660', globe: [180, 350, 120], lab: function (x, y) { return x < 180 ? [x + 28, y + 6, 'start'] : [x - 28, y + 6, 'end']; } }
+    };
+    Object.keys(layouts).forEach(function (id) {
+      var svg = $(id), L = layouts[id], g = L.globe, defs = el('defs', {}, svg);
+      var rg = el('radialGradient', { id: id + 'G', cx: '50%', cy: '40%', r: '65%' }, defs);
+      el('stop', { offset: '0', 'stop-color': 'rgba(255,87,34,.22)' }, rg); el('stop', { offset: '1', 'stop-color': 'rgba(255,87,34,0)' }, rg);
+      var cp = el('clipPath', { id: id + 'C' }, defs); el('circle', { cx: g[0], cy: g[1], r: g[2] }, cp);
+      var sp = el('circle', { cx: g[0], cy: g[1], r: g[2], class: 'jy-sphere' }, svg); sp.setAttribute('fill', 'url(#' + id + 'G)');
+      var gr = el('g', { 'clip-path': 'url(#' + id + 'C)' }, svg);
+      [-.62, -.31, 0, .31, .62].forEach(function (f) { var ry = Math.sqrt(1 - f * f) * g[2]; el('ellipse', { cx: g[0], cy: g[1] + f * g[2], rx: ry, ry: ry * .14, class: 'jy-grat' }, gr); });
+      [0, 1, 2].forEach(function () { el('ellipse', { cx: g[0], cy: g[1], rx: g[2], ry: g[2], class: 'jy-mer' }, gr); });
+      el('path', { d: L.d, class: 'jy-base' }, svg);
+      var prog = el('path', { d: L.d, class: 'jy-prog' }, svg);
+      var total = prog.getTotalLength(); prog.style.strokeDasharray = total; prog.style.strokeDashoffset = total;
+      var nodes = [], pts = [];
+      STEPS.forEach(function (st, i) {
+        var len = total * i / (STEPS.length - 1), pt = prog.getPointAtLength(len); pts.push(len);
+        var gn = el('g', { class: 'jy-node', tabindex: '0', role: 'button', 'aria-label': (i + 1) + '. ' + st.n }, svg);
+        el('circle', { cx: pt.x, cy: pt.y, r: 26, fill: 'transparent' }, gn);
+        el('circle', { cx: pt.x, cy: pt.y, r: 17, class: 'jy-ring' }, gn);
+        var t = el('text', { x: pt.x, y: pt.y, class: 'jy-num' }, gn); t.textContent = i + 1;
+        var lp = L.lab(pt.x, pt.y), lt = el('text', { x: lp[0], y: lp[1], class: 'jy-lab', 'text-anchor': lp[2] }, gn); lt.textContent = st.n;
+        gn.addEventListener('click', function () { manual(); go(i); });
+        gn.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); manual(); go(i); } });
+        nodes.push(gn);
+      });
+      var c0 = prog.getPointAtLength(0), c1 = prog.getPointAtLength(total);
+      var cap = el('text', { x: c0.x, y: c0.y + (id === 'jyWide' ? 52 : -26), class: 'jy-cap', 'text-anchor': id === 'jyWide' ? 'start' : 'start' }, svg);
+      cap.textContent = '';
+      var pulse = el('circle', { r: 12, class: 'jy-pulse' }, svg), trav = el('circle', { r: 9, class: 'jy-trav' }, svg);
+      maps.push({ prog: prog, total: total, nodes: nodes, pts: pts, pulse: pulse, trav: trav, pos: 0 });
+    });
+    function place(m, len) {
+      var p = m.prog.getPointAtLength(len);
+      m.trav.setAttribute('cx', p.x); m.trav.setAttribute('cy', p.y); m.pulse.setAttribute('cx', p.x); m.pulse.setAttribute('cy', p.y);
+      m.prog.style.strokeDashoffset = m.total - len; m.pos = len;
+    }
+    function tween(i) {
+      maps.forEach(function (m) {
+        var from = m.pos, to = m.pts[i];
+        if (still) { place(m, to); return; }
+        var t0 = performance.now(), dur = 900;
+        cancelAnimationFrame(m.raf);
+        (function step(now) { var k = Math.min(1, (now - t0) / dur), e = 1 - Math.pow(1 - k, 3); place(m, from + (to - from) * e); if (k < 1) m.raf = requestAnimationFrame(step); })(t0);
+      });
+    }
+    var dots = $('jyDots'); STEPS.forEach(function () { dots.appendChild(document.createElement('i')); });
+    function go(i, quiet) {
+      cur = (i + STEPS.length) % STEPS.length;
+      var st = STEPS[cur];
+      maps.forEach(function (m) { m.nodes.forEach(function (n, k) { n.classList.toggle('on', k === cur); n.classList.toggle('past', k < cur); }); });
+      Array.prototype.forEach.call(dots.children, function (d, k) { d.classList.toggle('on', k === cur); });
+      $('jyN').textContent = String(cur + 1).padStart(2, '0'); $('jyK').textContent = st.k; $('jyName').textContent = st.n; $('jyQ').textContent = st.q;
+      $('jyCh').innerHTML = st.ch.map(function (c) { return '<li><i>' + c[0] + '</i>' + c[1] + '</li>'; }).join('');
+      var card = $('jyCard'); card.classList.remove('swap'); void card.offsetWidth; card.classList.add('swap');
+      tween(cur);
+    }
+    function manual() { auto = false; clearInterval(timer); }
+    function tick() { if (auto && !document.hidden) go(cur + 1); }
+    $('jyPrev').addEventListener('click', function () { manual(); go(cur - 1); });
+    $('jyNext').addEventListener('click', function () { manual(); go(cur + 1); });
+    maps.forEach(function (m) { place(m, 0); }); go(0);
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (es) {
+        clearInterval(timer);
+        if (es[0].isIntersecting && auto) timer = setInterval(tick, 3400);
+      }, { threshold: .35 }).observe(app);
+    }
+  }
+
+  /* five parts: tabs */
+  var FV = [
+    ['I couldn’t do the job yet, or not without someone watching.', 'The skill and a remote operating system.', 'Chapters 7–9'],
+    ['I can’t find real openings I’m eligible for.', 'A verified source list and a company file.', 'Chapter 10'],
+    ['I apply and hear nothing at all.', 'CV, LinkedIn and proof of work.', 'Chapters 11–12'],
+    ['I apply constantly and nothing lands.', 'Narrow the target, check eligibility, reach the human.', 'Chapter 13'],
+    ['Interviews come, offers don’t.', 'Prepare the room and the money.', 'Chapters 14–15']
+  ];
+  var fv = $('fv');
+  if (fv) {
+    var tabs = [].slice.call(fv.querySelectorAll('[role=tab]')), pan = fv.querySelector('.fv-panel');
+    function pick(i) {
+      tabs.forEach(function (t, k) { t.classList.toggle('on', k === i); t.setAttribute('aria-selected', k === i ? 'true' : 'false'); });
+      $('fvQ').textContent = '“' + FV[i][0] + '”'; $('fvR').textContent = FV[i][1]; $('fvC').textContent = FV[i][2];
+      pan.classList.remove('swap'); void pan.offsetWidth; pan.classList.add('swap');
+    }
+    tabs.forEach(function (t, k) {
+      t.addEventListener('click', function () { pick(k); });
+      t.addEventListener('keydown', function (e) { if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') { var n = (k + (e.key === 'ArrowRight' ? 1 : tabs.length - 1)) % tabs.length; tabs[n].focus(); pick(n); } });
+    });
+    pick(0);
+  }
+})();
+</script>
 </body>
 </html>
 

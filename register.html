@@ -8,10 +8,10 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <link href="manifest.json" rel="manifest"/>
 <meta content="#000000" id="metaThemeColor" name="theme-color"/>
-<title>ERJ Prices: Remote Job Training, CV and Application Services</title>
-<meta content="Every ERJ product and price on one page. Pay securely with Paystack." name="description"/>
-<meta content="ERJ Prices: Remote Job Training, CV and Application Services" property="og:title">
-<meta content="Every ERJ product and price on one page. Pay securely with Paystack." property="og:description">
+<title>ERJ Shop: Remote Job Training, CV and Application Services</title>
+<meta content="Every ERJ product and its price in one shop. Buy now or add to your basket. Pay securely with Paystack." name="description"/>
+<meta content="ERJ Shop: Remote Job Training, CV and Application Services" property="og:title">
+<meta content="Every ERJ product and its price in one shop. Buy now or add to your basket. Pay securely with Paystack." property="og:description">
 <meta content="https://everythingremotejob.com/preview-register.jpg" property="og:image">
 <meta content="1200" property="og:image:width"/>
 <meta content="630" property="og:image:height"/>
@@ -19,8 +19,8 @@
 <meta content="website" property="og:type"/>
 <meta content="Everything Remote Job" property="og:site_name"/>
 <meta content="summary_large_image" name="twitter:card"/>
-<meta content="ERJ Prices: Remote Job Training, CV and Application Services" name="twitter:title"/>
-<meta content="Every ERJ product and price on one page. Pay securely with Paystack." name="twitter:description"/>
+<meta content="ERJ Shop: Remote Job Training, CV and Application Services" name="twitter:title"/>
+<meta content="Every ERJ product and its price in one shop. Buy now or add to your basket. Pay securely with Paystack." name="twitter:description"/>
 <meta content="https://everythingremotejob.com/preview-register.jpg" name="twitter:image"/>
 <link rel="preload" href="/fonts/space-grotesk-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/inter-300.woff2" as="font" type="font/woff2" crossorigin>
@@ -827,11 +827,60 @@ a.promo-tick{text-decoration:none;display:block;}
   .ch-alt{font-size:0.82rem;color:var(--ink-faint);font-weight:300;line-height:1.7;margin-top:1.1rem;padding-top:1.1rem;border-top:1px solid var(--line);}
   .ch-alt a{color:var(--accent);text-decoration:none;font-weight:500;}
   .ch-alt a:hover{text-decoration:underline;}
+
+  /* ══ SHOP (20 Nov): a storefront, not a brochure ══ */
+  .shop-head{padding-top:clamp(2.4rem,6vw,3.6rem);padding-bottom:.4rem;text-align:center;}
+  .shop-head .reg-h1{font-size:clamp(2.2rem,7vw,3.8rem);margin-bottom:.7rem;}
+  .shop-head .reg-sub{max-width:52ch;margin:0 auto;}
+  .shop-head .urgency{margin-top:1.3rem;transform:scale(.92);transform-origin:center top;}
+  #sec-store{padding-top:1rem;}
+  .store-jump{position:sticky;top:76px;z-index:20;margin:0 auto 2rem;padding:.5rem;width:max-content;max-width:100%;
+    border:1px solid var(--line);border-radius:999px;background:color-mix(in srgb,var(--paper,#000) 82%,transparent);
+    -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);gap:.3rem;overflow-x:auto;scrollbar-width:none;}
+  .store-jump::-webkit-scrollbar{display:none;}
+  .store-jump button{appearance:none;display:inline-flex;align-items:center;gap:.45rem;padding:.55rem 1rem;border:1px solid transparent;border-radius:999px;
+    background:none;color:var(--ink);font:inherit;font-size:.84rem;cursor:pointer;white-space:nowrap;transition:background .25s,border-color .25s,color .25s,transform .2s;}
+  .store-jump button b{font-family:var(--font-display);font-weight:800;letter-spacing:.08em;color:var(--accent);transition:color .25s;}
+  .store-jump button:hover{border-color:var(--accent);}
+  .store-jump button:active{transform:scale(.96);}
+  .store-jump button.on{background:var(--accent-btn,#FF5722);border-color:var(--accent);color:#fff;box-shadow:0 10px 26px -12px rgba(255,87,34,.8);}
+  .store-jump button.on b{color:#fff;}
+  html[data-theme="day"] .store-jump button b{color:#AD350A;}
+  html[data-theme="day"] .store-jump button.on b{color:#fff;}
+  .store-group[hidden]{display:none;}
+  .store-group.shown .pcard{animation:shopIn .5s var(--ease) both;}
+  @keyframes shopIn{from{transform:translateY(14px) scale(.985);}to{transform:none;}}
+  .store-group .sg-head{padding-bottom:1.1rem;border-bottom:1px solid var(--line);}
+  .grid{grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:1.2rem;}
+  .pcard{border-radius:20px;}
+  .pcard:hover{border-color:rgba(255,87,34,.6);transform:translateY(-6px);box-shadow:0 30px 60px -34px rgba(255,87,34,.55);}
+  .p-body{padding:1.15rem 1.25rem 1.3rem;}
+  .p-stage{font-size:.58rem;letter-spacing:.14em;margin-bottom:.45rem;}
+  .p-title{font-size:1.12rem;margin-bottom:.4rem;}
+  .p-hook{font-size:.88rem;margin:0 0 .5rem;}
+  .p-line{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;font-size:.82rem;margin-bottom:.8rem;}
+  .p-more{margin-bottom:.9rem;}
+  .p-pricing{margin:auto 0 .9rem;}
+  .p-amount{font-size:1.7rem;}
+  .p-acts{display:grid;grid-template-columns:1fr;gap:.5rem;}
+  .p-buy{order:1;display:flex;align-items:center;justify-content:center;padding:.8rem 1rem;border-radius:100px;border:1px solid var(--accent);
+    background:var(--accent-btn,#FF5722);color:#fff;font-size:.98rem;font-weight:700;text-decoration:none;white-space:nowrap;transition:transform .25s var(--ease),background .25s,box-shadow .25s;}
+  .p-buy:hover{background:var(--accent-h);color:#fff;transform:translateY(-2px);box-shadow:0 14px 30px -14px rgba(255,87,34,.85);}
+  .p-add{order:2;background:transparent;color:var(--accent);padding:.7rem 1rem;font-size:.92rem;white-space:nowrap;}
+  html[data-theme="day"] .p-add{color:#AD350A;border-color:#AD350A;}
+  .p-add:hover{background:rgba(255,87,34,.12);color:var(--accent);}
+  .p-add.in{background:rgba(255,87,34,.14);}
+  .p-sub{order:3;display:flex;align-items:center;justify-content:center;gap:.2rem;flex-wrap:wrap;}
+  .p-learn{display:inline-flex;align-items:center;gap:.3rem;padding:.35rem .7rem;border-radius:100px;font-size:.8rem;font-weight:600;color:var(--ink-soft);text-decoration:none;transition:color .2s,background .2s;}
+  .p-learn:hover{color:var(--accent);background:var(--line-soft);}
+  .p-sub .p-share{align-self:auto;}
+  @media(max-width:560px){.store-jump{top:70px;justify-content:flex-start;}.grid{grid-template-columns:1fr;}.p-shot{aspect-ratio:5/4;}}
+  @media(prefers-reduced-motion:reduce){.store-group.shown .pcard{animation:none;}}
 </style>
 <link href="https://everythingremotejob.com/register.html" rel="canonical"/>
 <meta content="en_NG" property="og:locale"/>
 <meta content="index,follow,max-image-preview:large,max-snippet:-1" name="robots"/>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://everythingremotejob.com/"},{"@type":"ListItem","position":2,"name":"Register","item":"https://everythingremotejob.com/register.html"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://everythingremotejob.com/"},{"@type":"ListItem","position":2,"name":"Shop","item":"https://everythingremotejob.com/register.html"}]}</script>
 <style id="erjNavReserve">body{padding-top:63px}@media(min-width:980px){body{padding-top:65px}}
 /* A skip link is white on orange and only ever seen on keyboard focus.
    Sized to clear the large-text bar so it is compliant while it is visible. */
@@ -907,32 +956,16 @@ html[data-theme="day"] .cvp-reg{background:#fff;}
 <noscript><iframe height="0" src="https://www.googletagmanager.com/ns.html?id=GTM-NMFHS59B" style="display:none;visibility:hidden" width="0"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 <div id="erjNavMount"></div>
-<script>window.ERJ_NAV={active:'pricing',onPage:[{label:'Do It Yourself',href:'#diy'},{label:'Done With You',href:'#dwy'},{label:'Done For You',href:'#dfy'},{label:'Cohort 13',href:'#foundation'},{label:'Under ₦40,000',href:'#book'},{label:'How payment works',href:'#sec-paystack'}]}; /* canon-ok: navigation threshold, not a product price */</script>
+<script>window.ERJ_NAV={active:'pricing',onPage:[{label:'Do It Yourself',href:'#diy'},{label:'Done With You',href:'#dwy'},{label:'Done For You',href:'#dfy'},{label:'How payment works',href:'#sec-paystack'}]}; /* canon-ok: navigation threshold, not a product price */</script>
 <main>
-<div class="promo-tick" role="note" aria-label="You can start from somewhere, at the lowest budget.">
-<div class="promo-track">You can start from somewhere, <em>at the lowest budget.</em></div>
-</div>
-<section class="wrap reg-hero">
-<div class="kicker"><span class="mark"></span> The ERJ Store</div>
-<h1 class="reg-h1">Sixteen doors.<br/><em>One of them is yours.</em></h1>
-<p class="reg-sub">Do it yourself, done with you, done for you. The price is on every box. Not sure which? <a href="diagnose/">Take the free 90-second diagnosis</a>.</p>
-<div class="urgency" data-closed-label="Enrolment has closed" data-deadline="2026-11-29T20:00:00+01:00" data-next-deadline="2027-01-03T20:00:00+01:00" data-next-label="Remote Job Foundation Training Cohort 14 enrolment closes in" data-next-date="Open now · <strong>closes Sun 3 Jan · 8:00 PM WAT</strong>. Cohort 14 begins Mon 4 Jan.">
-<span class="urg-lbl" data-lbl="">Remote Job Foundation Training Cohort 13 enrolment closes in</span>
-<span class="urg-count">
-<span><span data-k="d">00</span><small>d</small></span>
-<span><span data-k="h">00</span><small>h</small></span>
-<span><span data-k="m">00</span><small>m</small></span>
-<span><span data-k="s">00</span><small>s</small></span>
-</span>
-<span class="urg-date">Open now · <strong>closes Sun 29 Nov · 8:00 PM WAT</strong>. Cohort 13 begins Mon 30 Nov.</span>
-</div>
-<div class="trust">
-<span><b>382+</b> placed</span><span><b>10</b> cohorts completed</span><span><b>Paystack</b> secured</span><span><b>Cancel</b> any time</span>
-</div>
+<section class="wrap shop-head">
+<div class="kicker"><span class="mark"></span> Shop</div>
+<h1 class="reg-h1">Pick it. <em>Own it.</em></h1>
+<p class="reg-sub">Every ERJ product with its price on the box. Buy now, or add to your basket and pay once. Not sure which? <a href="starthere.html">Start here</a>.</p>
 </section>
 
 <section class="wrap section-line" id="sec-store">
-<div class="store-jump" role="navigation" aria-label="Store sections"><a href="#diy"><b>DIY</b> Do It Yourself</a><a href="#dwy"><b>DWY</b> Done With You</a><a href="#dfy"><b>DFY</b> Done For You</a></div>
+<div class="store-jump" role="tablist" aria-label="Shop sections"><button type="button" class="on" data-f="all" role="tab" aria-selected="true"><b>All</b> Everything</button><button type="button" data-f="diy" role="tab" aria-selected="false"><b>DIY</b> Do It Yourself</button><button type="button" data-f="dwy" role="tab" aria-selected="false"><b>DWY</b> Done With You</button><button type="button" data-f="dfy" role="tab" aria-selected="false"><b>DFY</b> Done For You</button></div>
 <div class="store-group" id="diy">
 <div class="sg-head"><span class="sg-acr">DIY</span><div><h2 class="sg-title">Do It Yourself</h2><p class="sg-line">Books, a tool, the self-paced course pack and a career-skills track. You do the work, on your own time, at the lowest cost.</p></div></div>
 <div class="grid"><article class="pcard reveal" id="book" data-p-id="book" data-p-name="Google Search: Best Kept Open Secret" data-p-price="5000" data-p-link="https://paystack.com/buy/google-search-best-kept-open-secret" data-p-contains=""><div class="p-shot"><picture><source srcset="shop/book.webp" type="image/webp"/><img alt="Google Search: Best Kept Open Secret" height="900" loading="lazy" src="shop/book.jpg" width="900"/></picture><span class="p-badge">Start here</span></div><div class="p-body"><div class="p-stage">Book · Instant download</div><h3 class="p-title">Google Search: Best Kept Open Secret</h3><p class="p-hook">Find the jobs nobody else can see</p><p class="p-line">Most roles are filled before they ever reach a job board. This is how you reach them first.</p><details class="p-more"><summary>What’s included</summary><ul class="p-feat"><li>Search operators and dorking that surface unposted roles</li><li>AI search prompts that filter by eligibility, not just keyword</li><li>Career pages, hiring-manager names and company documents, on demand</li></ul></details><div class="p-pricing"><div class="p-amount">₦5,000</div></div><div class="p-acts"><button class="p-add" type="button"><span>Add to basket</span></button><a class="p-buy" href="https://paystack.com/buy/google-search-best-kept-open-secret" rel="noopener" target="_blank">Buy now &rarr;</a></div></div></article><article class="pcard reveal" id="cvpass" data-p-id="cvpass" data-p-name="The CV Engine" data-p-price="5000" data-p-link="https://paystack.shop/pay/84mjv4w4x7" data-p-contains=""><div class="p-shot"><picture><source srcset="shop/cvpass.webp" type="image/webp"/><img alt="The CV Engine" height="900" loading="lazy" src="shop/cvpass.jpg" width="900"/></picture></div><div class="p-body"><div class="p-stage">Tool · ₦5,000/month</div><h3 class="p-title">The CV Engine</h3><p class="p-hook">Stop being rejected by software</p><p class="p-line">If you are qualified and hearing nothing, the document is losing you before a human opens it.</p><details class="p-more"><summary>What’s included</summary><ul class="p-feat"><li>Unlimited rebuilds, every month you stay subscribed</li><li>Scored live against the same ten-point rubric we mark cohorts with</li><li>Real .docx out. Cancel any time, from the first month</li></ul></details><div class="p-pricing"><div class="p-amount">₦5,000<span class="p-per">/month</span></div></div><div class="p-acts"><button class="p-add" type="button"><span>Add to basket</span></button><a class="p-buy" href="https://paystack.shop/pay/84mjv4w4x7">Buy now &rarr;</a></div></div></article><article class="pcard reveal" id="intentbook" data-p-id="intentbook" data-p-name="From Intent to Offer" data-p-price="15000" data-p-link="https://selar.com/from_intent_to_offer" data-p-contains=""><div class="p-shot"><picture><source srcset="shop/intentbook-centred.webp" type="image/webp"/><img alt="From Intent to Offer — the book, by Oluwaseyi Ashiru" height="900" loading="lazy" src="shop/intentbook-centred.jpg" width="900"/></picture><span class="p-badge">New</span></div><div class="p-body"><div class="p-stage">Book · 171 pages · Instant download</div><h3 class="p-title">How to Get a Remote Job: From Intent to Offer</h3><p class="p-hook"><a class="p-titlelink" href="fromintenttooffer/">The whole method, intent to signed offer</a></p><p class="p-line">Eighteen chapters, six appendices, 171 pages. Every chapter ends with one task to execute, not a lesson to remember.</p><details class="p-more"><summary>What’s included</summary><ul class="p-feat"><li>Find which of the five parts of your search is broken, in twenty minutes</li><li>The repair for each one: CV, LinkedIn, sourcing, aim, interview, the money</li><li>The First Fourteen Days, templates, trackers and the free-resource list</li></ul></details><div class="p-pricing"><div class="p-amount">₦15,000</div></div><div class="p-acts"><button class="p-add" type="button"><span>Add to basket</span></button><a class="p-buy" href="https://selar.com/from_intent_to_offer" rel="noopener" target="_blank">Buy now &rarr;</a></div></div></article><article class="pcard reveal" id="selflearn" data-p-id="selflearn" data-p-name="The Self-Learn Pack" data-p-price="35000" data-p-link="https://selar.com/77v230274x" data-p-contains=""><div class="p-shot"><picture><source srcset="shop/selflearn-foundation.webp" type="image/webp"/><img alt="The Self-Learn Pack" height="900" loading="lazy" src="shop/selflearn-foundation.jpg" width="900"/></picture></div><div class="p-body"><div class="p-stage">Foundation Training courses 1–4 · Self-paced</div><h3 class="p-title">The Self-Learn Pack</h3><p class="p-hook">The entire curriculum, starting tonight</p><p class="p-line">Same four stages, same rubrics, same four deliverables. No start date to wait for.</p><details class="p-more"><summary>What’s included</summary><ul class="p-feat"><li>Twenty sessions across all four stages</li><li>Four finished assets you keep forever</li><li>Instant download plus the private community</li><li><b>₦35,000 credited</b> against Foundation Training if you upgrade within 90 days — you would pay ₦215,000, not ₦250,000</li>
@@ -1028,7 +1061,7 @@ html[data-theme="day"] .cvp-reg{background:#fff;}
 </section>
 </main>
 <footer class="foot wrap">
-<nav class="foot-links"><a href="index.html">Home</a><a href="starthere.html">Your Starting Line</a><a href="free.html">Free For You</a><a href="blog.html">Blog</a><a href="about.html">About ERJ</a><a href="register.html">Register</a><a href="login.html">Participant Login</a></nav>
+<nav class="foot-links"><a href="index.html">Home</a><a href="about.html">About ERJ</a><a href="starthere.html">Your Starting Line</a><a href="free.html">Free For You</a><a href="blog.html">Blog</a><a href="login.html">Participant Login</a></nav>
 <div class="erj-rights-line" role="note" style="max-width:900px;margin:1rem auto 0;padding-top:.85rem;border-top:1px solid rgba(127,127,127,.18);font-size:.72rem;line-height:1.6;letter-spacing:.02em;text-align:center;color:#8A8A86;">© 2026 Business Play Limited · Everything Remote Job · Block G3, Finance Quarters, Wuye, FCT, Abuja, Nigeria. Built for <span style="color:var(--accent,#FF5722)">global career scale.</span> All rights reserved. ERJ frameworks, curriculum and paid resources are not licensed for redistribution. <a href="terms.html" style="color:var(--accent,#FF5722);text-decoration:none">Terms</a> · <a href="privacy.html" style="color:var(--accent,#FF5722);text-decoration:none">Privacy</a> · <a href="mailto:info@everythingremotejob.com" style="color:var(--accent,#FF5722);text-decoration:none">info@everythingremotejob.com</a></div>
 </footer>
 <a class="wa-float" href="https://wa.me/2348032925957" rel="noopener" target="_blank" title="Chat on WhatsApp">
@@ -1293,10 +1326,46 @@ html[data-theme="day"] .cvp-reg{background:#fff;}
   if (document.readyState === 'complete') here(); else window.addEventListener('load', here);
 })();
 </script>
+<script>
+/* Shop: filter by group, and a Learn more link on every product that has a page. */
+(function () {
+  var PAGE = { cvpass: 'cvbuilder.html', intentbook: 'fromintenttooffer/', selflearn: 'selflearn/',
+    stage1: 'foundationtraining/', stage2: 'foundationtraining/', stage3: 'foundationtraining/', stage4: 'foundationtraining/',
+    foundation: 'foundationtraining/', sprint: 'interviewsprint/', inner: 'innercircle/', jobhunt: 'jobhunter/',
+    placement: 'jobapplication/', dreamjob: 'jobapplication/' };
+  function wrapActs() {
+    [].forEach.call(document.querySelectorAll('.pcard[id] .p-acts'), function (acts) {
+      if (acts.querySelector('.p-sub')) return;
+      var card = acts.closest('.pcard'), sub = document.createElement('div'); sub.className = 'p-sub';
+      var href = PAGE[card.id];
+      if (href) { var a = document.createElement('a'); a.className = 'p-learn'; a.href = href; a.innerHTML = 'Learn more <span aria-hidden="true">&rarr;</span>'; sub.appendChild(a); }
+      var sh = acts.querySelector('.p-share'); if (sh) sub.appendChild(sh);
+      acts.appendChild(sub);
+    });
+  }
+  var tabs = [].slice.call(document.querySelectorAll('.store-jump button')), groups = [].slice.call(document.querySelectorAll('.store-group'));
+  function show(f, scroll) {
+    tabs.forEach(function (t) { var on = t.getAttribute('data-f') === f; t.classList.toggle('on', on); t.setAttribute('aria-selected', on ? 'true' : 'false'); });
+    groups.forEach(function (g) { var on = f === 'all' || g.id === f; g.hidden = !on; g.classList.remove('shown'); if (on) { void g.offsetWidth; g.classList.add('shown'); } });
+    if (scroll) { var top = document.getElementById('sec-store'); if (top) window.scrollTo({ top: top.getBoundingClientRect().top + window.pageYOffset - 70, behavior: 'smooth' }); }
+  }
+  tabs.forEach(function (t) { t.addEventListener('click', function () { show(t.getAttribute('data-f'), t.getAttribute('data-f') !== 'all'); }); });
+  /* a shared link or a menu jump to a group or product opens its group first */
+  function fromHash() {
+    var id = location.hash.slice(1); if (!id) return;
+    var el = document.getElementById(id); if (!el) return;
+    var g = el.classList.contains('store-group') ? el : el.closest('.store-group');
+    if (g && g.hidden) show('all', false);
+  }
+  window.addEventListener('hashchange', fromHash);
+  window.addEventListener('load', function () { wrapActs(); fromHash(); });
+  setTimeout(wrapActs, 400);
+})();
+</script>
 <script defer="" src="erj-product.js?v=20260924c"></script>
-<script defer="" src="erj-nav.js?v=20261113b"></script>
+<script defer="" src="erj-nav.js?v=20261120b"></script>
 <script defer="" src="erj-config.js?v=20261119c"></script>
-<script defer="" src="erj-capture.js?v=20261119b"></script>
+<script defer="" src="erj-capture.js?v=20261120a"></script>
 <script>if("serviceWorker" in navigator){window.addEventListener("load",function(){var go=function(){navigator.serviceWorker.register("/sw.js").then(function(reg){reg.update();}).catch(function(){});};if("requestIdleCallback" in window){requestIdleCallback(go,{timeout:3000});}else{setTimeout(go,1200);}});}</script>
 <script defer="" src="erj-schema.js?v=20261116a"></script>
 <script defer="" src="erj-cart.js?v=20261004a"></script>

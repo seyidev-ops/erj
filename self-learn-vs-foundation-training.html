@@ -540,30 +540,56 @@ a.promo-tick{text-decoration:none;display:block;}
 </style>
 <!-- END product.css -->
 <style>
-  /* The comparison table is the page. Everything else supports it. */
-  .cmp{margin-top:1.8rem;border:1px solid var(--card-line);border-radius:18px;overflow:hidden;}
-  .cmp-row{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr) minmax(0,1fr);
-    border-top:1px solid var(--card-line);}
-  .cmp-row:first-child{border-top:0;}
-  .cmp-row.head{background:var(--card);}
-  .cmp-c{padding:1.15rem 1.3rem;border-left:1px solid var(--card-line);}
-  .cmp-c:first-child{border-left:0;}
-  .cmp-lbl{font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--ink-faint);font-weight:600;}
-  .cmp-row.head .cmp-c b{font-family:var(--font-display);font-size:1.1rem;font-weight:800;
-    letter-spacing:-0.02em;color:var(--ink);display:block;}
-  .cmp-row.head .cmp-c span{font-size:0.82rem;color:var(--ink-soft);font-weight:300;}
-  .cmp-q{font-size:0.9rem;color:var(--ink);font-weight:600;line-height:1.5;}
-  .cmp-a{font-size:0.9rem;color:var(--ink-soft);font-weight:300;line-height:1.6;}
-  .cmp-a.same{color:var(--ink);}
-  .cmp-a em{font-style:normal;color:var(--accent);font-weight:600;}
-  @media(max-width:760px){
-    .cmp-row{grid-template-columns:1fr;}
-    .cmp-c{border-left:0;border-top:1px solid var(--card-line);}
-    .cmp-c:first-child{border-top:0;background:var(--card);}
-    .cmp-row.head{display:none;}
-    .cmp-c[data-p]::before{content:attr(data-p);display:block;font-size:0.65rem;
-      letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:0.35rem;}
-  }
+  /* Comparison page: gutters first, then cards that never touch the walls. */
+  .svf .wrap{padding-left:max(1.6rem,env(safe-area-inset-left));padding-right:max(1.6rem,env(safe-area-inset-right));}
+  .svf-hero{padding-top:clamp(2.4rem,7vw,4rem);padding-bottom:1rem;}
+  .svf-sec{padding-top:clamp(2.2rem,6vw,3.6rem);padding-bottom:clamp(.6rem,2vw,1.4rem);}
+  .svf-last{padding-bottom:clamp(3rem,8vw,5rem);}
+  .svf h2{margin-bottom:1rem;}
+  /* the three-question chooser */
+  .qz{max-width:760px;margin:0 auto;border:1px solid var(--accent);border-radius:26px;padding:clamp(1.3rem,4vw,2.2rem);
+    background:radial-gradient(520px 260px at 90% -10%,rgba(255,87,34,.16),transparent 70%),var(--card);box-shadow:0 30px 70px -44px rgba(255,87,34,.7);}
+  .qz-top{display:flex;justify-content:space-between;gap:1rem;align-items:center;margin-bottom:.8rem;}
+  .qz-k{font:700 .66rem/1 var(--font-body);letter-spacing:.18em;text-transform:uppercase;color:var(--accent);}
+  .qz-step{font-size:.78rem;color:var(--ink-soft);}
+  .qz-bar{height:5px;border-radius:9px;background:var(--line-soft);overflow:hidden;margin-bottom:1.4rem;}
+  .qz-bar span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent),#ffb199);border-radius:9px;transition:width .5s var(--ease,ease);}
+  .qz-q{font-family:var(--font-display);font-size:clamp(1.25rem,3.6vw,1.8rem);line-height:1.25;color:var(--ink);margin:0 0 .5rem;}
+  .qz-s{font-size:.9rem;color:var(--ink-soft);margin:0 0 1.3rem;}
+  .qz-go{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;}
+  .qz-go button{appearance:none;padding:1rem 1.1rem;border-radius:16px;border:1px solid var(--line);background:var(--paper-2,transparent);color:var(--ink);font:inherit;font-size:1rem;font-weight:600;cursor:pointer;transition:border-color .2s,background .2s,transform .2s;}
+  .qz-go button:hover{border-color:var(--accent);background:rgba(255,87,34,.1);transform:translateY(-2px);}
+  .qz-res h3{font-family:var(--font-display);font-size:clamp(1.4rem,4vw,2rem);margin:.2rem 0 .6rem;color:var(--ink);}
+  .qz-res h3 em{font-style:normal;color:var(--accent);}
+  .qz-res p{font-size:.96rem;line-height:1.65;color:var(--ink-soft);margin:0 0 1rem;}
+  .qz-res .row{display:flex;gap:.7rem;flex-wrap:wrap;align-items:center;}
+  .qz-redo{appearance:none;background:none;border:0;color:var(--ink-soft);font:inherit;font-size:.86rem;text-decoration:underline;cursor:pointer;}
+  .qz-in{animation:qzIn .4s var(--ease,ease);}
+  @keyframes qzIn{from{transform:translateY(10px);}to{transform:none;}}
+  /* side by side, as cards */
+  .svf-key{display:flex;flex-wrap:wrap;gap:.6rem;margin:0 0 1.2rem;}
+  .svf-key .k{display:inline-flex;flex-direction:column;gap:.1rem;padding:.7rem 1.1rem;border-radius:14px;border:1px solid var(--line);font-family:var(--font-display);font-weight:800;color:var(--ink);}
+  .svf-key .k small{font:400 .76rem var(--font-body);color:var(--ink-soft);}
+  .svf-key .k.ft{border-color:var(--accent);}
+  .svf-rows{display:grid;gap:.9rem;}
+  .svf-row{padding:1.2rem 1.35rem;border:1px solid var(--card-line);border-radius:20px;background:var(--card);transition:border-color .25s,transform .25s,box-shadow .25s;}
+  .svf-row:hover{border-color:rgba(255,87,34,.55);transform:translateY(-3px);box-shadow:0 22px 46px -30px rgba(255,87,34,.5);}
+  .svf-row h3{font:700 .68rem/1 var(--font-body);letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin:0 0 .8rem;}
+  .svf-row.same p{margin:0;font-size:1rem;line-height:1.6;color:var(--ink);}
+  .svf-row .pair{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;}
+  .svf-row .pair>div{padding:.85rem 1rem;border-radius:14px;border:1px solid var(--line);}
+  .svf-row .pair .ft{border-color:rgba(255,87,34,.5);background:rgba(255,87,34,.07);}
+  .svf-row .pair b{display:block;font:700 .64rem/1 var(--font-body);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:.45rem;}
+  .svf-row .pair .ft b{color:var(--accent);}
+  .svf-row .pair p{margin:0;font-size:.95rem;line-height:1.55;color:var(--ink);}
+  .svf-row em{font-style:normal;color:var(--accent);font-weight:700;}
+  @media(max-width:560px){.svf-row .pair{grid-template-columns:1fr;}.qz-go{grid-template-columns:1fr;}}
+  .svf-note{margin:1.1rem 0 0;font-size:.95rem;color:var(--ink-soft);}
+  .svf .sl-credit{margin-top:1.4rem;border-radius:20px;padding:1.4rem 1.5rem;background:linear-gradient(160deg,rgba(255,87,34,.10),var(--card) 60%);}
+  .svf-honest{max-width:760px;margin:0 auto;text-align:center;padding:clamp(1.6rem,5vw,2.6rem);border:1px solid var(--card-line);border-radius:26px;background:var(--card);}
+  .svf-honest p{font-size:1.02rem;line-height:1.7;color:var(--ink-soft);}
+  .svf-honest .hero-cta{justify-content:center;margin-top:1.3rem;}
+  @media(prefers-reduced-motion:reduce){.qz-in{animation:none;}}
   .verdict{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.2rem;margin-top:1.6rem;}
   .vc{border:1px solid var(--card-line);border-radius:16px;padding:1.6rem 1.7rem;background:var(--card);}
   .vc h3{font-family:var(--font-display);font-size:1.1rem;font-weight:800;margin:0 0 0.8rem;color:var(--ink);}
@@ -600,36 +626,48 @@ a.promo-tick{text-decoration:none;display:block;}
 <!-- End Google Tag Manager (noscript) -->
 <div id="erjNavMount"></div>
 <script>window.ERJ_NAV={active:'compare',onPage:[
+  {label:'Which one is you',href:'#quiz'},
   {label:'Side by side',href:'#table'},
-  {label:'Which one is you',href:'#verdict'},
+  {label:'The short version',href:'#verdict'},
   {label:'The honest bit',href:'#honest'}
 ]};</script>
-<main>
-<section class="hero wrap">
+<main class="svf">
+<section class="svf-hero wrap">
 <p class="section-label reveal"><span class="mark"></span>Self-Learn or the live cohort?</p>
 <h1 class="reveal">Same stages. <em>Different delivery.</em></h1>
-<p class="lede reveal">The material is identical. What you are choosing is whether anybody watches you do the work.</p>
+<p class="lede reveal">The material is identical. What you are choosing is whether anybody watches you do the work. Answer three quick questions and I will tell you which one fits.</p>
 </section>
 
-<section class="section-line wrap" id="table">
-<div class="cmp reveal">
-<div class="cmp-row head">
-<div class="cmp-c"><span class="cmp-lbl">&nbsp;</span></div>
-<div class="cmp-c"><b>Self-Learn Pack</b><span>₦35,000 · self-paced</span></div>
-<div class="cmp-c"><b>Foundation Training</b><span>₦250,000 · live cohort</span></div>
+<section class="wrap svf-sec" id="quiz">
+<div class="qz" id="qz">
+<div class="qz-top"><span class="qz-k">Which one is you</span><span class="qz-step" id="qzStep">Question 1 of 3</span></div>
+<div class="qz-bar"><span id="qzBar"></span></div>
+<div class="qz-body" id="qzBody"></div>
 </div>
-<div class="cmp-row"><div class="cmp-c cmp-q">The same in both</div><div class="cmp-c cmp-a same" data-p="Self-Learn">All four stages, twenty sessions, the ten-point rubric, the four deliverables.</div><div class="cmp-c cmp-a same" data-p="Foundation">All four stages, twenty sessions, the ten-point rubric, the four deliverables.</div></div>
-<div class="cmp-row"><div class="cmp-c cmp-q">Teaching</div><div class="cmp-c cmp-a" data-p="Self-Learn">None. You read and do the exercise.</div><div class="cmp-c cmp-a" data-p="Foundation">Live, every session.</div></div>
-<div class="cmp-row"><div class="cmp-c cmp-q">Your work</div><div class="cmp-c cmp-a" data-p="Self-Learn">Nobody marks it. No certificate.</div><div class="cmp-c cmp-a" data-p="Foundation">Marked, with a written verdict. Certificate on completion.</div></div>
-<div class="cmp-row"><div class="cmp-c cmp-q">Start and pace</div><div class="cmp-c cmp-a" data-p="Self-Learn"><em>Today</em>, any hour, no clock.</div><div class="cmp-c cmp-a" data-p="Foundation">The next cohort date. Weekdays 7 PM or 8 PM, or weekends.</div></div>
-<div class="cmp-row"><div class="cmp-c cmp-q">If you stall</div><div class="cmp-c cmp-a" data-p="Self-Learn">Nothing. Nobody notices. <em>This is the real risk.</em></div><div class="cmp-c cmp-a" data-p="Foundation">You are missed, and chased.</div></div>
-<div class="cmp-row"><div class="cmp-c cmp-q">Also included</div><div class="cmp-c cmp-a" data-p="Self-Learn">Nothing extra.</div><div class="cmp-c cmp-a" data-p="Foundation"><em>The CV Engine</em> and 30 days of a Mentorine career track.</div></div>
-</div>
-<p class="note reveal">Nothing in the left column is a weakened version of the right. What the extra money buys is teaching, marking, a certificate and someone noticing when you stop.</p>
 </section>
 
-<section class="section-line wrap" id="verdict">
-<p class="section-label reveal">Which one is you</p>
+<section class="wrap svf-sec" id="table">
+<p class="section-label reveal">Side by side</p>
+<h2 class="reveal">What is the <span>same</span>, and what is not.</h2>
+<div class="svf-key reveal"><span class="k sl">Self-Learn Pack <small>₦35,000 · self-paced</small></span><span class="k ft">Foundation Training <small>₦250,000 · live cohort</small></span></div>
+<div class="svf-rows">
+<article class="svf-row same reveal"><h3>The same in both</h3><p>All four stages, twenty sessions, the ten-point rubric and the four deliverables. Nothing in the Self-Learn Pack is a weakened version of the live course.</p></article>
+<article class="svf-row reveal"><h3>Teaching</h3><div class="pair"><div class="sl"><b>Self-Learn</b><p>None. You read and do the exercise.</p></div><div class="ft"><b>Foundation</b><p>Live, every session.</p></div></div></article>
+<article class="svf-row reveal"><h3>Your work</h3><div class="pair"><div class="sl"><b>Self-Learn</b><p>Nobody marks it. No certificate.</p></div><div class="ft"><b>Foundation</b><p>Marked, with a written verdict. Certificate on completion.</p></div></div></article>
+<article class="svf-row reveal"><h3>Start and pace</h3><div class="pair"><div class="sl"><b>Self-Learn</b><p><em>Today</em>, any hour, no clock.</p></div><div class="ft"><b>Foundation</b><p>The next cohort date. Weekdays 7 PM or 8 PM, or weekends.</p></div></div></article>
+<article class="svf-row reveal"><h3>If you stall</h3><div class="pair"><div class="sl"><b>Self-Learn</b><p>Nothing happens. Nobody notices. <em>This is the real risk.</em></p></div><div class="ft"><b>Foundation</b><p>You are missed, and chased.</p></div></div></article>
+<article class="svf-row reveal"><h3>Also included</h3><div class="pair"><div class="sl"><b>Self-Learn</b><p>Nothing extra.</p></div><div class="ft"><b>Foundation</b><p><em>The CV Engine</em> and 30 days of a Mentorine career track.</p></div></div></article>
+</div>
+<p class="svf-note reveal">What the extra money buys is teaching, marking, a certificate and someone noticing when you stop.</p>
+<div class="sl-credit reveal">
+<b>The ₦35,000 is not money spent instead of the cohort</b>
+<p>If you upgrade to <a href="foundationtraining/">Remote Job Foundation Training</a> within <b>90 days</b> of buying this pack, the full <b>₦35,000 is credited</b> against the fee. You pay <b>₦215,000</b>, not ₦250,000. This is a credit, not a discount: send the Registrar your Selar receipt at enrolment and it is applied to your payment.</p>
+<p class="sl-credit-terms">Foundation Training only, not Stage 5, the Inner Circle or Dream Job Offer. One per person, once, non-transferable. Combines with the instalment route, which changes payment timing and not price, so the balance owed becomes ₦215,000.</p>
+</div>
+</section>
+
+<section class="wrap svf-sec" id="verdict">
+<p class="section-label reveal">The short version</p>
 <h2 class="reveal">Pick honestly. <span>The wrong one is expensive either way.</span></h2>
 <div class="verdict">
 <div class="vc reveal">
@@ -653,17 +691,19 @@ a.promo-tick{text-decoration:none;display:block;}
 </div>
 </section>
 
-<section class="section-line wrap reveal" id="honest">
+<section class="wrap svf-sec svf-last" id="honest">
+<div class="svf-honest reveal">
 <p class="section-label">The honest bit</p>
-<p class="section-sub"><strong>Neither gets you a job.</strong> Both make you hireable. Neither applies for you or sits in your interviews. And if you have not run the free ninety-second diagnosis, do that first: your weak point may be somewhere training cannot fix.</p>
+<p><strong>Neither gets you a job.</strong> Both make you hireable. Neither applies for you or sits in your interviews. And if you have not run the free ninety-second diagnosis, do that first: your weak point may be somewhere training cannot fix.</p>
 <div class="hero-cta">
 <a class="btn-primary-ui btn-yes" href="diagnose/"><span>Run the free diagnosis</span><span class="arrow-wrap"><span class="arrow">→</span></span></a>
 <a class="btn-more btn-secondary-ui" href="starthere.html"><span>See every route</span><span class="arrow-wrap"><span class="arrow">→</span></span></a>
 </div>
+</div>
 </section>
 </main>
 <footer class="foot wrap">
-<nav class="foot-links"><a href="index.html">Home</a><a href="starthere.html">Your Starting Line</a><a href="free.html">Free For You</a><a href="blog.html">Blog</a><a href="about.html">About ERJ</a><a href="register.html">Register</a><a href="login.html">Participant Login</a></nav>
+<nav class="foot-links"><a href="index.html">Home</a><a href="about.html">About ERJ</a><a href="starthere.html">Your Starting Line</a><a href="free.html">Free For You</a><a href="blog.html">Blog</a><a href="login.html">Participant Login</a></nav>
 <div class="erj-rights-line" role="note" style="max-width:900px;margin:1rem auto 0;padding-top:.85rem;border-top:1px solid rgba(127,127,127,.18);font-size:.72rem;line-height:1.6;letter-spacing:.02em;text-align:center;color:#8A8A86;">© 2026 Business Play Limited · Everything Remote Job · Block G3, Finance Quarters, Wuye, FCT, Abuja, Nigeria. Built for <span style="color:var(--accent,#FF5722)">global career scale.</span> All rights reserved. ERJ frameworks, curriculum and paid resources are not licensed for redistribution. <a href="terms.html" style="color:var(--accent,#FF5722);text-decoration:none">Terms</a> · <a href="privacy.html" style="color:var(--accent,#FF5722);text-decoration:none">Privacy</a> · <a href="mailto:info@everythingremotejob.com" style="color:var(--accent,#FF5722);text-decoration:none">info@everythingremotejob.com</a></div>
 </footer>
 <a class="wa-float" href="https://wa.me/2348032925957" rel="noopener" target="_blank" title="Chat on WhatsApp">
@@ -671,18 +711,43 @@ a.promo-tick{text-decoration:none;display:block;}
 </a>
 <script defer="" src="erj-theme.js?v=20260911a"></script>
 <script defer="" src="erj-product.js?v=20260924c"></script>
-<script defer="" src="erj-nav.js?v=20261113b"></script>
+<script defer="" src="erj-nav.js?v=20261120b"></script>
 <script defer="" src="erj-config.js?v=20261119c"></script>
-<script defer="" src="erj-capture.js?v=20261119b"></script>
+<script defer="" src="erj-capture.js?v=20261120a"></script>
 <script>if("serviceWorker" in navigator){window.addEventListener("load",function(){var go=function(){navigator.serviceWorker.register("/sw.js").then(function(reg){reg.update();}).catch(function(){});};if("requestIdleCallback" in window){requestIdleCallback(go,{timeout:3000});}else{setTimeout(go,1200);}});}</script>
 <script defer="" src="erj-schema.js?v=20261116a"></script>
 <script defer="" src="erj-alive.js?v=20261004a"></script>
 <script defer="" src="erj-future.js?v=20261120a"></script>
 <script defer src="erj-world.js?v=20261116a"></script>
+<script>
+/* Three questions, one honest answer. Nothing is stored or sent. */
+(function(){
+  var Q=[
+    ['Have you finished something before that nobody was checking?','A course, a certificate, a project. If you can name it, you can name your own discipline.'],
+    ['Do you want your work marked, with a certificate at the end?','Foundation Training marks every deliverable with a written verdict. The Self-Learn Pack does not.'],
+    ['Is \u20A6250,000 available to you now?','Honest answers only. This is the question that is hardest to say yes to.']
+  ];
+  var body=document.getElementById('qzBody'),bar=document.getElementById('qzBar'),stepEl=document.getElementById('qzStep');
+  if(!body)return;
+  var a=[],i=0;
+  function ask(){
+    bar.style.width=(i/3*100)+'%';stepEl.textContent='Question '+(i+1)+' of 3';
+    body.innerHTML='<div class="qz-in"><h3 class="qz-q">'+Q[i][0]+'</h3><p class="qz-s">'+Q[i][1]+'</p><div class="qz-go"><button type="button" data-v="1">Yes</button><button type="button" data-v="0">Not really</button></div></div>';
+    [].forEach.call(body.querySelectorAll('button'),function(b){b.addEventListener('click',function(){a[i]=b.getAttribute('data-v')==='1';i++;i<3?ask():done();});});
+  }
+  function done(){
+    bar.style.width='100%';stepEl.textContent='Your answer';
+    var finished=a[0],marked=a[1],money=a[2],h,t,link,lab,alt='';
+    if(marked&&money){h='Take <em>Foundation Training</em>.';t='You want your work marked and the fee is available. That is exactly what the live cohort is for.';link='foundationtraining/';lab='See Foundation Training';}
+    else if(marked&&!money){h='Start with the <em>Self-Learn Pack</em>.';t='You want marking, but the cohort fee is not available yet. Start the pack at \u20A635,000 and keep going: if you join Foundation Training within 90 days, the full \u20A635,000 is credited, so you pay \u20A6215,000.';link='selflearn/';lab='See the Self-Learn Pack';}
+    else if(!marked&&finished){h='Take the <em>Self-Learn Pack</em>.';t='You have finished things alone before, and you do not need a certificate. The pack is the same material, at a fraction of the price.';link='selflearn/';lab='See the Self-Learn Pack';}
+    else if(!finished&&money){h='Take <em>Foundation Training</em>.';t='Not having finished a course alone before is the strongest sign you need someone watching. The live cohort misses you when you stall.';link='foundationtraining/';lab='See Foundation Training';}
+    else{h='Start with the <em>Self-Learn Pack</em>, and set a schedule.';t='It is the one you can afford today. The real risk is stalling with nobody noticing, so book your sessions like appointments. You can move to Foundation Training later and the \u20A635,000 is credited within 90 days.';link='selflearn/';lab='See the Self-Learn Pack';}
+    body.innerHTML='<div class="qz-res qz-in"><h3>'+h+'</h3><p>'+t+'</p><div class="row"><a class="btn-primary-ui btn-yes" href="'+link+'"><span>'+lab+'</span><span class="arrow-wrap"><span class="arrow">\u2192</span></span></a><button type="button" class="qz-redo" id="qzRedo">Answer again</button></div></div>';
+    document.getElementById('qzRedo').addEventListener('click',function(){a=[];i=0;ask();});
+  }
+  ask();
+})();
+</script>
 </body>
-</html><div class="sl-credit reveal">
-<b>The ₦35,000 is not money spent instead of the cohort</b>
-<p>If you upgrade to <a href="foundationtraining/">Remote Job Foundation Training</a> within <b>90 days</b> of buying this pack, the full <b>₦35,000 is credited</b> against the fee. You pay <b>₦215,000</b>, not ₦250,000. This is a credit, not a discount — send the Registrar your Selar receipt at enrolment and it is applied to your payment.</p>
-<p class="sl-credit-terms">Foundation Training only — not Stage 5, the Inner Circle or Dream Job Offer. One per person, once, non-transferable. Combines with the instalment route, which changes payment timing and not price, so the balance owed becomes ₦215,000.</p>
-</div>
-
+</html>
