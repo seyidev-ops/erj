@@ -373,26 +373,25 @@
   .bk-incl li::before{content:'\2713';position:absolute;left:0;top:.1rem;width:1.2rem;height:1.2rem;border-radius:50%;background:rgba(255,87,34,.16);color:var(--accent);font-size:.72rem;font-weight:800;display:grid;place-items:center;}
   .bk-no{margin:1.2rem auto 0;max-width:46ch;font-size:.8rem;line-height:1.6;color:var(--ink-faint);}
   /* the levitating book: floats, opens, closes, turns. No box, no background. */
-  .lb{--w:200px;--h:300px;--t:32px;position:relative;width:var(--w);height:calc(var(--h) + 56px);margin:0 auto;perspective:1200px;}
-  .lb-lg{--w:230px;--h:345px;--t:36px;}
-  .lb-hero{--w:168px;--h:252px;--t:26px;}
-  @media(max-width:700px){.lb-hero{--w:128px;--h:192px;--t:22px;}}
-  @media(max-width:520px){.lb-lg{--w:150px;--h:225px;--t:26px;}}
+  .lb{--w:200px;--h:300px;--t:22px;position:relative;width:var(--w);height:calc(var(--h) + 56px);margin:0 auto;perspective:1200px;}
+  .lb-lg{--w:230px;--h:345px;--t:26px;}
+  .lb-hero{--w:168px;--h:252px;--t:19px;}
+  @media(max-width:700px){.lb-hero{--w:128px;--h:192px;--t:14px;}}
+  @media(max-width:520px){.lb-lg{--w:150px;--h:225px;--t:17px;}}
   .lb-float{position:absolute;left:0;top:10px;width:var(--w);height:var(--h);transform-style:preserve-3d;animation:lbFloat 5s ease-in-out infinite;}
   .lb-book{position:relative;width:100%;height:100%;transform-style:preserve-3d;animation:lbTurn 20s ease-in-out infinite;}
   .lb-face{position:absolute;-webkit-backface-visibility:hidden;backface-visibility:hidden;}
-  .lb-back{inset:0;transform:translateZ(calc(var(--t) / -2)) rotateY(180deg);background:#0d0d0d;border-radius:3px 8px 8px 3px;display:grid;place-items:center;color:#FF5722;font:700 .85rem/1.3 var(--font-display);text-align:center;letter-spacing:.06em;text-transform:uppercase;}
+  .lb-back{inset:0;transform:translateZ(calc(var(--t) / -2)) rotateY(180deg);background:#0b0b0b;border-radius:2px 7px 7px 2px;overflow:hidden;}
+  .lb-back img,.lb-spine img{display:block;width:100%;height:100%;object-fit:fill;}
   .lb-pg{background:repeating-linear-gradient(90deg,#f7f3ea 0 2px,#ddd5c3 2px 3px);}
   .lb-pgR{left:100%;top:1%;width:var(--t);height:98%;transform:translateX(-50%) rotateY(90deg);}
   .lb-pgT{top:0;left:1%;width:98%;height:var(--t);transform:translateY(-50%) rotateX(90deg);background:repeating-linear-gradient(0deg,#f7f3ea 0 2px,#ddd5c3 2px 3px);}
   .lb-pgB{top:100%;left:1%;width:98%;height:var(--t);transform:translateY(-50%) rotateX(-90deg);background:repeating-linear-gradient(0deg,#f7f3ea 0 2px,#ddd5c3 2px 3px);}
-  .lb-spine{left:0;top:0;width:var(--t);height:100%;transform:translateX(-50%) rotateY(-90deg);background:linear-gradient(90deg,#050505,#1c1c1c);display:grid;place-items:center;overflow:hidden;}
-  .lb-spine b{transform:rotate(90deg);white-space:nowrap;font:800 calc(var(--t) * .4)/1 var(--font-display);letter-spacing:.16em;color:#fff;}
+  .lb-spine{left:0;top:0;width:var(--t);height:100%;transform:translateX(-50%) rotateY(-90deg);background:#111;overflow:hidden;}
   .lb-inner{inset:1% 1% 1% 0;transform:translateZ(calc(var(--t) / 2 - 3px));background:#faf7f0;border-radius:0 6px 6px 0;}
   .lb-cov{position:absolute;inset:0;transform-origin:left center;transform-style:preserve-3d;transform:translateZ(calc(var(--t) / 2));animation:lbOpen 20s cubic-bezier(.5,0,.3,1) infinite;}
   .lb-front{inset:0;border-radius:2px 7px 7px 2px;overflow:hidden;background:#0b0b0b;}
   .lb-front img{display:block;width:100%;height:100%;object-fit:cover;}
-  .lb-spine u{text-decoration:none;color:#FF5722;}
   .lb-flip{inset:0;transform:rotateY(180deg);background:#f1ece0;border-radius:9px 3px 3px 9px;}
   .lb-pagetxt{position:absolute;inset:0;padding:1.4rem 1.1rem;display:flex;flex-direction:column;justify-content:center;text-align:left;color:#161412;}
   .lb-pagetxt i{font:700 .52rem/1 var(--font-body);letter-spacing:.18em;text-transform:uppercase;color:#C9410C;font-style:normal;margin-bottom:.5rem;}
@@ -490,9 +489,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <svg class="rt-svg rt-tall" id="rtTall" viewBox="0 0 360 340" role="group" aria-label="The route from intent to outcome, six points"></svg>
 <div class="rt-book"><div class="lb lb-hero" role="img" aria-label="The book From Intent to Offer by Oluwaseyi Ashiru, floating, opening and turning">
 <div class="lb-float"><div class="lb-book">
-<div class="lb-face lb-back"><span>Everything<br>Remote Job</span></div>
+<div class="lb-face lb-back"><picture><source srcset="cover-back.webp" type="image/webp"><img src="cover-back.jpg" alt="" width="600" height="900" loading="lazy" decoding="async"></picture></div>
 <div class="lb-face lb-pg lb-pgR"></div><div class="lb-face lb-pg lb-pgT"></div><div class="lb-face lb-pg lb-pgB"></div>
-<div class="lb-face lb-spine"><b>FROM INTENT TO <u>OFFER</u></b></div>
+<div class="lb-face lb-spine"><picture><source srcset="spine.webp" type="image/webp"><img src="spine.jpg" alt="" width="84" height="1124" decoding="async"></picture></div>
 <div class="lb-face lb-inner"><div class="lb-pagetxt"><i>Chapter 06</i><b>Find What Is Holding You Back</b><span>Five questions. One sentence naming your first weak point.</span><em>Task for tonight</em></div></div>
 <div class="lb-cov">
 <div class="lb-face lb-front"><picture><source srcset="cover-front.webp" type="image/webp"><img src="cover-front.jpg" alt="" width="600" height="900" decoding="async"></picture></div>
@@ -612,9 +611,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="bk-bookwrap bk-bookwrap-lg">
 <div class="lb lb-lg" role="img" aria-label="The book From Intent to Offer by Oluwaseyi Ashiru, floating, opening and turning">
 <div class="lb-float"><div class="lb-book">
-<div class="lb-face lb-back"><span>Everything<br>Remote Job</span></div>
+<div class="lb-face lb-back"><picture><source srcset="cover-back.webp" type="image/webp"><img src="cover-back.jpg" alt="" width="600" height="900" loading="lazy" decoding="async"></picture></div>
 <div class="lb-face lb-pg lb-pgR"></div><div class="lb-face lb-pg lb-pgT"></div><div class="lb-face lb-pg lb-pgB"></div>
-<div class="lb-face lb-spine"><b>FROM INTENT TO <u>OFFER</u></b></div>
+<div class="lb-face lb-spine"><picture><source srcset="spine.webp" type="image/webp"><img src="spine.jpg" alt="" width="84" height="1124" decoding="async"></picture></div>
 <div class="lb-face lb-inner"><div class="lb-pagetxt"><i>Chapter 06</i><b>Find What Is Holding You Back</b><span>Five questions. One sentence naming your first weak point.</span><em>Task for tonight</em></div></div>
 <div class="lb-cov">
 <div class="lb-face lb-front"><picture><source srcset="cover-front.webp" type="image/webp"><img src="cover-front.jpg" alt="" width="600" height="900" decoding="async"></picture></div>
