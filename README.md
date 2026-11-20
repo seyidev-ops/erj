@@ -83,7 +83,7 @@ Any page still advertising an open instalment window after that date is stale an
 
 > **Note for future cohorts:** the ₦50,000 reservation mechanic used by the previous cohort has been retired. ₦50,000 on the current store is the price of two unrelated products, The Job Hunter's One Hunt and Career Development — Self-Study. Do not reintroduce reservation copy at that figure.
 
-## The store — seventeen doors
+## The store — sixteen doors
 
 `register.html` presents the full catalogue with a basket, in three groups: **DIY — Do It Yourself** (the books, The CV Engine, the Self-Learn Pack, Career Development — Self-Study), **DWY — Done With You** (the live Foundation Training courses, Stages 1–4 individually or all four together, the Interview Sprint, and the Inner Circle 1:1) and **DFY — Done For You** (The Job Hunter, CV Fix, the Placement Engine and Get Your Dream Job Offer). A buyer can add several items or buy any one outright. Every price is a one-time payment unless the product states otherwise.
 
@@ -168,7 +168,7 @@ The site is a static HTML/CSS/JavaScript website hosted on **GitHub Pages** with
 
 - `/` — main website
 - `/starthere.html` — first-contact routing gateway, the default cold-traffic destination
-- `/register.html` — the store: seventeen doors, basket, enrolment
+- `/register.html` — the store: sixteen doors, basket, enrolment
 - `/free.html` — the free layer in one place
 - `/diagnose/` — the five-part Job Search Diagnostic and branded PDF result
 - `/capacityscan/` — the Capacity Audit: fourteen role families, ten questions, scored out of ten, runs entirely in the browser. **The gate for the other four fingers.**

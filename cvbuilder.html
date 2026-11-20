@@ -555,7 +555,7 @@ a.promo-tick{text-decoration:none;display:block;}
   @media(max-width:760px){.free-item,.free-item.flip{grid-template-columns:1fr;}
     .free-item.flip .fi-copy{order:0;}.fi-art{max-width:420px;}}
 </style>
-<script>window.ERJ_NAV={active:'cvpass',onPage:[{label:'What It Does',href:'#what',sub:'Import, rebuild, score, export'},{label:'The Ten Points',href:'#rubric',sub:'The published scan it is built against'},{label:'Who It Is For',href:'#fit',sub:'And who should not buy it'},{label:'The Subscription',href:'#buy',sub:'₦5,000 a month · cancel any time'},{label:'After You Pay',href:'#after',sub:'How the code reaches you'}]};</script>
+<script>window.ERJ_NAV={active:'cvpass',onPage:[{label:'What It Does',href:'#what'},{label:'The Ten Points',href:'#rubric'},{label:'Who It Is For',href:'#fit'},{label:'The Subscription',href:'#buy',sub:'₦5,000 a month · cancel any time'},{label:'After You Pay',href:'#after'}]};</script>
 <style id="erjNavReserve">body{padding-top:63px}@media(min-width:980px){body{padding-top:65px}}
 /* A skip link is white on orange and only ever seen on keyboard focus.
    Sized to clear the large-text bar so it is compliant while it is visible. */
@@ -576,6 +576,13 @@ a.promo-tick{text-decoration:none;display:block;}
   .cp-amt{font-family:var(--font-display);font-size:clamp(2.2rem,6vw,3.2rem);font-weight:800;color:var(--accent);letter-spacing:-.03em;line-height:1;}
   .cp-amt-note{font-size:.86rem;color:var(--ink-faint);line-height:1.55;max-width:34ch;}
 
+  .cp-more{margin:1.4rem 0 0;}
+  .cp-more summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:.8rem;padding:.8rem 1.05rem;border:1px solid var(--line);border-radius:12px;font-size:.9rem;font-weight:600;color:var(--ink);transition:border-color .2s,background .2s;}
+  .cp-more summary::-webkit-details-marker{display:none;}
+  .cp-more summary::after{content:"";width:9px;height:9px;border-right:2px solid var(--accent);border-bottom:2px solid var(--accent);transform:rotate(45deg) translateY(-2px);transition:transform .25s;flex:none;}
+  .cp-more summary:hover,.cp-more[open] summary{border-color:var(--accent);}
+  .cp-more[open] summary{background:rgba(255,87,34,.07);}
+  .cp-more[open] summary::after{transform:rotate(-135deg) translateY(-2px);}
   .cp-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line);
     border:1px solid var(--line);border-radius:16px;overflow:hidden;margin-top:2rem;}
   .cp-cell{background:var(--card);padding:clamp(1.2rem,2.8vw,1.7rem);}
@@ -664,76 +671,58 @@ a.promo-tick{text-decoration:none;display:block;}
 <noscript><iframe height="0" src="https://www.googletagmanager.com/ns.html?id=GTM-NMFHS59B" style="display:none;visibility:hidden" width="0"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 <main>
-<a class="promo-tick" href="#buy" aria-label="Only your CV is broken? Rent the engine for a month."><div class="promo-track">Only your CV is broken? <em>Rent the engine for a month.</em></div></a>
-
 <section class="hero wrap cp-hero" id="what">
-<p class="section-label"><span class="mark"></span> The CV Engine · ₦5,000 a month</p>
-<h1>The same CV engine our participants use — <em>on its own.</em></h1>
-<p class="cp-lede">No cohort, no training, no stages. You get an access code to the tool that was built against our published ten-point scan, and the thirty days start the first time you use it — not the day you pay.</p>
-<div class="cp-price-strip">
-<span class="cp-amt">₦5,000<span style="font-size:.42em;font-weight:500;letter-spacing:0;"> /month</span></span>
-<span class="cp-amt-note">Monthly subscription · cancel any time · each month starts the first time you use it</span>
-</div>
+<p class="section-label"><span class="mark"></span> The CV Engine</p>
+<h1>Build a CV software can read. <em>See the score move.</em></h1>
+<p class="cp-lede">A tool, not a course. Your 30 days start the first time you use your access code, not the day you pay.</p>
+<div class="cp-price-strip"><span class="cp-amt">₦5,000<span style="font-size:.42em;font-weight:500;letter-spacing:0;"> /month</span></span> <span class="cp-amt-note">Monthly · cancel any time</span></div>
 <div class="erj-actions">
 <a class="btn-yes btn-primary-ui" href="register.html#cvpass"><span>Subscribe — ₦5,000/month</span><span class="arrow-wrap"><span class="arrow">→</span></span></a>
 <a class="btn-more btn-secondary-ui" href="cvscan/"><span>Score My CV Free First</span><span class="arrow-wrap"><span class="arrow">→</span></span></a>
 </div>
-<p class="cp-foot-note">Not sure the CV is your problem? <a href="diagnose/">Run the five-question diagnostic</a> — it takes ninety seconds and it will tell you if your money belongs somewhere else. We would rather you spent nothing than spent it on the wrong rung.</p>
+<p class="cp-foot-note">Not sure the CV is your problem? <a href="diagnose/">Run the free diagnosis</a>.</p>
 </section>
 
 <section class="wrap section-line">
-<p class="section-label"><span class="mark"></span> What the engine actually does</p>
-<h2 class="cost-h" style="margin-bottom:.9rem;">Five steps, and you leave with <em>a file, not advice.</em></h2>
-<p class="cp-lede" style="margin-bottom:0;">Everything runs on your own device. Nothing uploads, nothing is stored, and there is no account to make.</p>
+<p class="section-label"><span class="mark"></span> How it works</p>
+<h2 class="cost-h" style="margin-bottom:.9rem;">Five steps. <em>You leave with a file.</em></h2>
 <div class="cp-grid">
-<div class="cp-cell"><span class="cp-step">Step 1</span><b>Start from what you already have</b><p>Upload your current CV as .docx or .pdf, or paste it as text, and the engine pulls it apart into fields you can edit. It is read entirely inside your browser — this page has no server and sends nothing anywhere.</p></div>
-<div class="cp-cell"><span class="cp-step">Step 2</span><b>Fix the structure that scores</b><p>Your details go into the layout that survives a parser. If your current CV is the problem, you can skip the import and build clean from the structure instead.</p></div>
-<div class="cp-cell"><span class="cp-step">Step 3</span><b>Aim it at one real advert</b><p>Paste the role you are actually applying for and the engine tailors the wording to it, so you send a fresh version per application rather than one CV everywhere.</p></div>
-<div class="cp-cell"><span class="cp-step">Step 4</span><b>Take the machine tone back out</b><p>A CV that reads like it was generated gets treated like it was generated. This step puts your own voice back into the lines the structure just straightened.</p></div>
-<div class="cp-cell"><span class="cp-step">Step 5</span><b>Export something a recruiter can open</b><p>Download .docx, print to PDF, or copy plain text for the boxes that only take plain text. Formatting a parser can read, on every route out.</p></div>
-<div class="cp-cell"><span class="cp-step">Throughout</span><b>Scored against the published ten points</b><p>The same ten points as the free CV Scan, live as you build, so you can see the score move rather than guess at it.</p></div>
+<div class="cp-cell"><span class="cp-step">Step 1</span><b>Start from your CV</b><p>Upload a .docx or .pdf, or paste the text. It is read in your browser and goes nowhere.</p></div>
+<div class="cp-cell"><span class="cp-step">Step 2</span><b>Use the structure that scores</b><p>Your details go into a layout a parser can read.</p></div>
+<div class="cp-cell"><span class="cp-step">Step 3</span><b>Aim it at one advert</b><p>Paste the role. A fresh version for every application.</p></div>
+<div class="cp-cell"><span class="cp-step">Step 4</span><b>Put your own voice back</b><p>A CV that reads as generated gets treated as generated.</p></div>
+<div class="cp-cell"><span class="cp-step">Step 5</span><b>Export</b><p>.docx, PDF or plain text, formatted for parsers.</p></div>
+<div class="cp-cell"><span class="cp-step">Throughout</span><b>A live score</b><p>Scored against the ten points below as you build.</p></div>
 </div>
-</section>
-
-<section class="wrap section-line" id="rubric">
-<p class="section-label"><span class="mark"></span> The marking scheme</p>
-<h2 class="cost-h" style="margin-bottom:.9rem;">We print the ten points <em>rather than withhold them.</em></h2>
-<p class="cp-lede" style="margin-bottom:0;">Withholding the criteria is how weaker training keeps people coming back. Here is the whole scheme. Fix your CV against it yourself, for nothing, and we would still count that a good outcome.</p>
+<details class="cp-more" id="rubric"><summary>The ten points it scores against</summary>
 <div class="cp-rubric">
-<div class="cp-pt"><i>01</i><span>A file a parser can actually open — no tables, columns, text boxes or images</span></div>
-<div class="cp-pt"><i>02</i><span>A job title line that matches the role you are applying for</span></div>
-<div class="cp-pt"><i>03</i><span>Contact details a recruiter can act on, in the body and not the header</span></div>
-<div class="cp-pt"><i>04</i><span>A summary that says what you do, not what you are passionate about</span></div>
-<div class="cp-pt"><i>05</i><span>Achievements carrying a number, a scale or a result</span></div>
-<div class="cp-pt"><i>06</i><span>Verbs at the start of bullets, not responsibility-for phrasing</span></div>
-<div class="cp-pt"><i>07</i><span>Keywords the advert itself uses, in the words the advert uses</span></div>
+<div class="cp-pt"><i>01</i><span>A file a parser can open: no tables, columns, text boxes or images</span></div>
+<div class="cp-pt"><i>02</i><span>A job title line that matches the role you apply for</span></div>
+<div class="cp-pt"><i>03</i><span>Contact details in the body, not the header</span></div>
+<div class="cp-pt"><i>04</i><span>A summary that says what you do</span></div>
+<div class="cp-pt"><i>05</i><span>Achievements with a number, a scale or a result</span></div>
+<div class="cp-pt"><i>06</i><span>Verbs at the start of bullets</span></div>
+<div class="cp-pt"><i>07</i><span>The advert's own keywords, in its own words</span></div>
 <div class="cp-pt"><i>08</i><span>Evidence of remote or async work, however small</span></div>
-<div class="cp-pt"><i>09</i><span>Dates and gaps stated plainly rather than hidden by formatting</span></div>
-<div class="cp-pt"><i>10</i><span>One page per decade of work, and nothing older than it earns</span></div>
+<div class="cp-pt"><i>09</i><span>Dates and gaps stated plainly</span></div>
+<div class="cp-pt"><i>10</i><span>One page per decade of work</span></div>
 </div>
-<p class="cp-foot-note">The <a href="cvscan/">free CV Scan</a> scores you against exactly these, in under a minute, with no payment and no email. The CV Engine is what you subscribe to when you already know the score and want the instrument that moves it.</p>
+<p class="cp-foot-note">The free <a href="cvscan/">CV Scan</a> is a separate check, built around remote-readiness.</p>
+</details>
 </section>
 
 <section class="wrap section-line" id="fit">
 <p class="section-label"><span class="mark"></span> Before you pay</p>
-<h2 class="cost-h" style="margin-bottom:.9rem;">Who this is for — <em>and who should not buy it.</em></h2>
+<h2 class="cost-h" style="margin-bottom:.9rem;">Who it is for — <em>and who should skip it.</em></h2>
 <div class="cp-two">
-<div class="cp-col is-for">
-<h3>Subscribe if</h3>
-<ul><li>Your CV is the thing that is failing — you apply and hear nothing back</li>
-<li>You already know what you can do; you need it written where software can read it</li>
-<li>You are applying often enough that one CV for every advert is costing you</li>
-<li>You want the instrument now, and a twenty-day programme is not the answer</li>
-<li>You scored below seven on the free CV Scan and know exactly why</li></ul>
-</div>
-<div class="cp-col is-not">
-<h3>Do not subscribe if</h3>
-<ul><li>Your weak point is not the CV. If roles are not reaching you at all, that is Supply and the free WhatsApp channel is your door</li>
-<li>You want to be taught the method. It buys a tool, never teaching — that is the Self-Learn Pack</li>
-<li>Your CV is already producing interviews. Do not rebuild what is working; your weak point is later</li>
-<li>You want it to write the CV for you. It structures, scores and exports — you still supply the truth</li>
-<li>You want to pay once and own it. It is a monthly subscription: it renews until you cancel, and you can cancel any time</li></ul>
-</div>
+<div class="cp-col is-for"><h3>Subscribe if</h3><ul>
+<li>Your CV is the thing failing: you apply and hear nothing</li>
+<li>You know what you can do and need it written for software</li>
+<li>You apply often and one CV for every advert is costing you</li></ul></div>
+<div class="cp-col is-not"><h3>Skip it if</h3><ul>
+<li>Your CV already gets interviews, or roles are not reaching you at all</li>
+<li>You want to be taught the method: that is the Self-Learn Pack</li>
+<li>You want it to write the CV for you. It structures, scores and exports; you supply the truth</li></ul></div>
 </div>
 </section>
 
@@ -746,46 +735,41 @@ a.promo-tick{text-decoration:none;display:block;}
 <div><span class="cp-amt">₦5,000<span style="font-size:.42em;font-weight:500;letter-spacing:0;"> /month</span></span></div>
 </div>
 <ul class="cp-inc">
-<li>Build and rebuild as many versions as you want, every month you stay subscribed</li>
-<li>Import your existing .docx or .pdf, or start clean from the structure that scores</li>
-<li>Tailor a fresh version per application instead of sending one CV everywhere</li>
-<li>Export .docx, PDF and plain text — formatting a parser can actually read</li>
-<li>Scored live against the same ten points that decide if a human ever sees it</li>
+<li>Build and rebuild as many versions as you like</li>
+<li>Import your .docx or .pdf, or start clean</li>
+<li>Tailor a fresh version per application</li>
+<li>Export .docx, PDF and plain text</li>
 </ul>
+<details class="cp-more"><summary>The limits, before the button</summary>
 <div class="cp-limit">
-<b>The limits, before the button</b>
-<p><b style="display:inline;letter-spacing:0;text-transform:none;font-size:.9rem;">It buys a tool, never teaching.</b> There is no curriculum here, no marking, no facilitator and no certificate. If what is missing is the method rather than the document, the <a href="selflearn/" style="color:var(--accent)">Self-Learn Pack at ₦35,000</a> is the honest door and this one will disappoint you.</p>
-<p><b style="display:inline;letter-spacing:0;text-transform:none;font-size:.9rem;">The gate runs in your browser.</b> A determined person can read the format, and we would rather say so than pretend otherwise. Only codes on the issued list are accepted, and each carries a hard expiry, so clearing your browser cannot buy an extra month. Each successful monthly charge issues a fresh code, and cancelling stops both the charge and the next code.</p>
-<p><b style="display:inline;letter-spacing:0;text-transform:none;font-size:.9rem;">A scanned PDF has no text layer.</b> If your only copy is a photograph of a printed CV, nothing can be read from it — use the paste box instead.</p>
-</div>
+<p><b style="display:inline;letter-spacing:0;text-transform:none;font-size:.9rem;">A tool, never teaching.</b> No curriculum, marking or certificate. If the method is what is missing, the <a href="selflearn/" style="color:var(--accent)">Self-Learn Pack</a> is the honest door.</p>
+<p><b style="display:inline;letter-spacing:0;text-transform:none;font-size:.9rem;">The gate runs in your browser.</b> A determined person can read the format. Codes carry a hard expiry, and cancelling stops the next code.</p>
+<p><b style="display:inline;letter-spacing:0;text-transform:none;font-size:.9rem;">A scanned PDF has no text layer.</b> If your only copy is a photo, use the paste box.</p>
+</div></details>
 <div class="erj-actions">
 <a class="btn-yes btn-primary-ui" href="register.html#cvpass"><span>Subscribe — ₦5,000/month</span><span class="arrow-wrap"><span class="arrow">→</span></span></a>
 <a class="btn-more btn-secondary-ui" href="cvbuilder/"><span>See The Engine</span><span class="arrow-wrap"><span class="arrow">→</span></span></a>
 </div>
 <div class="cvfix-alt">
 <div class="cvfix-alt-k">Or have us do it · CV Fix · ₦30,000</div>
-<p>The Engine is the instrument you operate yourself. If you would rather hand it over once, <b>CV Fix</b> is one CV rebuilt for one named field by our team — ATS-safe, scored against the same ten points before we send it, delivered as .docx and PDF inside 72 hours, with two revision rounds.</p>
-<p class="cvfix-alt-no">We turn it down unless all three are true: you can demonstrably do the work, there is real evidence to point at, and your weak point is Representation and nothing earlier. If Supply or Capacity is breaking down, a better-written CV changes nothing — <a href="diagnose/">run the free diagnosis</a> first.</p>
-<div class="cvfix-alt-acts"><a class="cvfix-alt-btn" href="register.html#cvfix">See CV Fix on the store &rarr;</a><a class="cvfix-alt-quiet" href="https://wa.me/2348032925957?text=CV%20FIX%20%E2%80%94%20%E2%82%A630%2C000%0A%0AI%20would%20like%20CV%20Fix.%20My%20target%20field%20is%3A%20%0AMy%20current%20CV%20is%20attached." rel="noopener" target="_blank">Send my CV on WhatsApp</a></div>
+<p>One CV rebuilt for one named field by our team, in 72 hours, with two revision rounds. We turn it down unless you can do the work, have evidence to point at, and your weak point is the CV.</p>
+<div class="cvfix-alt-acts"><a class="cvfix-alt-btn" href="register.html#cvfix">See CV Fix &rarr;</a><a class="cvfix-alt-quiet" href="https://wa.me/2348032925957?text=CV%20FIX%20%E2%80%94%20%E2%82%A630%2C000%0A%0AI%20would%20like%20CV%20Fix.%20My%20target%20field%20is%3A%20%0AMy%20current%20CV%20is%20attached." rel="noopener" target="_blank">Send my CV on WhatsApp</a></div>
 </div>
-<p class="cp-foot-note" style="margin-top:1.2rem;"><b style="display:inline;letter-spacing:0;text-transform:none;font-size:.9rem;">Cancelling.</b> Message the Registrar on <a href="https://wa.me/2348032925957" rel="noopener" style="color:var(--accent)" target="_blank">WhatsApp</a> and the subscription stops at the end of the month you have paid for. No notice period, no reason required, and nothing to cancel by email.</p>
-<p class="cp-foot-note" style="margin-top:.9rem;">Secure Paystack checkout — cards, transfer and USSD. Payment is to <b>Business Play Limited</b>, through a payment processor rather than a personal account. You should check that before you pay anyone anything.</p>
+<p class="cp-foot-note" style="margin-top:1.2rem;">To cancel, message the Registrar on <a href="https://wa.me/2348032925957" rel="noopener" style="color:var(--accent)" target="_blank">WhatsApp</a>; it stops at the end of the month you paid for. Secure Paystack checkout, paid to <b>Business Play Limited</b>.</p>
 </div>
 </section>
 
 <section class="wrap section-line" id="after">
 <p class="section-label"><span class="mark"></span> After you pay</p>
-<h2 class="cost-h" style="margin-bottom:.9rem;">Three steps, and the clock has <em>still not started.</em></h2>
+<h2 class="cost-h" style="margin-bottom:.9rem;">Three steps. <em>The clock waits for you.</em></h2>
 <div class="cp-after">
-<div><span class="cp-step">01</span><b>Send the receipt</b><p>Message <b>+234 803 292 5957</b> on WhatsApp with the words <b>CV PASS</b> and your receipt attached.</p></div>
-<div><span class="cp-step">02</span><b>Your code arrives the same day</b><p>Fulfilment is a person, not a robot — which is why it is same-day rather than instant, and why you can ask a question in the same thread.</p></div>
-<div><span class="cp-step">03</span><b>The thirty days begin when you do</b><p>The clock starts the first time the code is used, not the moment you paid. Buy it on a Monday and start on a Saturday if that is when you have the evening.</p></div>
+<div><span class="cp-step">01</span><b>Send the receipt</b><p>WhatsApp <b>+234 803 292 5957</b> with the words <b>CV PASS</b>.</p></div>
+<div><span class="cp-step">02</span><b>Your code arrives the same day</b><p>A person fulfils it, so you can ask a question in the same thread.</p></div>
+<div><span class="cp-step">03</span><b>Thirty days from first use</b><p>The clock starts the first time the code is used, not when you paid.</p></div>
 </div>
 <div class="erj-actions" style="margin-top:1.8rem;">
-<a class="btn-yes btn-primary-ui" href="register.html#cvpass"><span>Subscribe — ₦5,000/month</span><span class="arrow-wrap"><span class="arrow">→</span></span></a>
 <a class="btn-more btn-secondary-ui" href="https://wa.me/2348032925957?text=CV%20PASS%0A%0AI%20have%20paid%20for%20The%20CV%20Engine.%20My%20receipt%20is%20attached." rel="noopener" target="_blank"><span>Ask Before I Pay</span><span class="arrow-wrap"><span class="arrow">→</span></span></a>
 </div>
-<p class="cp-foot-note">If the CV Engine turns out to be the wrong rung for you, say so in that thread. A clean answer can be <b>yes</b>, <b>not now</b>, or <b>not this product</b> — and any of the three is more use to you than being kept warm.</p>
 </section>
 </main>
 <footer class="foot wrap">
@@ -799,7 +783,7 @@ a.promo-tick{text-decoration:none;display:block;}
 <script defer="" src="erj-capture.js?v=20261119b"></script>
 <script defer="" src="erj-schema.js?v=20261116a"></script>
 <script defer="" src="erj-alive.js?v=20261004a"></script>
-<script defer="" src="erj-future.js?v=20261101a"></script>
+<script defer="" src="erj-future.js?v=20261120a"></script>
 <script defer src="erj-world.js?v=20261116a"></script>
 </body>
 </html>

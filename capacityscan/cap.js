@@ -204,7 +204,7 @@
     });
     box.appendChild(start);
 
-    var other = el('a', 'csc-ask', 'My job is not listed. Ask us for a manual audit');
+    var other = el('a', 'csc-ask', 'Not listed? Ask us for a manual audit');
     other.href = 'https://wa.me/2348032925957?text=' + encodeURIComponent(
       'CAPACITY AUDIT\n\nMy target role is not in the list. The role I want to be hired for is: ');
     other.rel = 'noopener'; other.target = '_blank';
@@ -366,15 +366,24 @@
     var options;
     if (b.pass) {
       wrap.appendChild(el('h3', 'csc-head', 'The skill is there. Now: can employers read you?'));
-      options = [
-        { label: 'Scan your CV', price: 'Free', cta: 'Scan my CV', href: '../cvscan/',
-          what: 'Ten checks and a score out of 10 in 5 seconds. It shows whether your CV carries the skill you just proved.' },
-        { label: 'Find what is holding your search back', price: 'Free', cta: 'Run the free diagnosis', href: '../diagnose/',
-          what: 'Five questions, about 90 seconds. It names the part of your search to fix first.' }
-      ];
+      var scan = { label: 'Scan your CV', price: 'Free', cta: 'Scan my CV', href: '../cvscan/',
+        what: 'Ten checks and a score out of 10 in 5 seconds. It shows whether your CV carries the skill you just proved.' };
+      var fix = { label: 'CV Fix', price: '\u20a630,000', cta: 'Get my CV fixed', href: '../register.html#cvfix',
+        what: 'We rewrite your CV for the remote roles you are aiming at.' };
+      if (r.total >= 8) {
+        options = [scan,
+          { label: 'The Job Hunter', price: '\u20a650,000', cta: 'Get The Job Hunter', href: '../jobhunter/',
+            what: 'We find and score remote roles open to Nigeria against your CV and prepare your applications. You press Submit.' },
+          { label: 'Stage 4: Start Your Remote Career', price: '\u20a6100,000', cta: 'Start Stage 4', href: '../register.html#stage4',
+            what: 'A portfolio worth opening, plus video interview and STAR answer coaching.' }];
+      } else {
+        options = [scan, fix,
+          { label: 'Foundation Training', price: '\u20a6250,000', cta: 'Join Foundation Training', href: '../foundationtraining/',
+            what: 'Twenty live days where you build your CV, profile and portfolio, with your work marked by a person.' }];
+      }
     } else {
       wrap.appendChild(el('h3', 'csc-head', 'Build the skill first.'));
-      wrap.appendChild(el('p', 'csc-next-lead', 'A better CV will not fix this. A structured track will.'));
+      wrap.appendChild(el('p', 'csc-next-lead', 'A better CV will not fix this. Choose how you want to build it.'));
       var t = CD_TRACK.hasOwnProperty(r.fam.id) ? CD_TRACK[r.fam.id] : '';
       options = [
         { label: 'Career Development \u2014 Self-Study', price: '\u20a650,000', cta: 'Start my career track',
@@ -387,17 +396,25 @@
       var c = el('div', 'csc-nx-card',
         '<span class="csc-nx-t">' + esc(o.label) + (o.price ? ' <span class="csc-nx-p">' + esc(o.price) + '</span>' : '') + '</span>' +
         '<span class="csc-nx-d">' + esc(o.what) + '</span>' +
-        '<a class="csc-go" href="' + esc(o.href) + '"' + (/^\.\.\/(register|cvscan|diagnose)/.test(o.href) ? ' target="_blank" rel="noopener"' : '') +
+        '<a class="csc-go" href="' + esc(o.href) + '"' + (/^\.\.\/(register|cvscan|diagnose|jobhunter|foundationtraining)/.test(o.href) ? ' target="_blank" rel="noopener"' : '') +
         '><span>' + esc(o.cta) + '</span><span class="arrow">\u2192</span></a>');
       cards.appendChild(c);
     });
     wrap.appendChild(cards);
     if (!b.pass) {
-      var free = el('a', 'csc-ask', 'Prefer to start free? See the free resources');
-      free.href = '../free.html';
+      var free = el('a', 'csc-ask', 'Start free: your step-by-step plan is below');
+      free.href = '#cscPlan';
+      free.addEventListener('click', function (e) {
+        var t = document.getElementById('cscPlan');
+        if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+      });
       wrap.appendChild(free);
+    } else {
+      var dx = el('a', 'csc-ask', 'Not sure what is next? Run the free diagnosis');
+      dx.href = '../diagnose/';
+      wrap.appendChild(dx);
     }
-    var ask = el('a', 'csc-ask', 'Have a question first? Ask us on WhatsApp');
+    var ask = el('a', 'csc-ask', 'Question first? Ask us on WhatsApp');
     ask.href = 'https://wa.me/2348032925957?text=' + encodeURIComponent(
       'CAPACITY\n\nI scanned for ' + r.fam.label + ' and scored ' + shown + '/10. I have a question: ');
     ask.rel = 'noopener'; ask.target = '_blank';
@@ -453,7 +470,9 @@
     }
 
     if (g.length) {
-      box.appendChild(el('p', 'csc-sub', 'What to build, question by question'));
+      var planHead = el('p', 'csc-sub', 'Your free plan: what to build, question by question');
+      planHead.id = 'cscPlan';
+      box.appendChild(planHead);
       var list = el('div', 'csc-fixes');
       g.forEach(function (x) {
         var it = el('div', 'csc-fix' + (x.core ? ' is-core' : ''));
