@@ -387,11 +387,12 @@
   .lb-pgT{top:0;left:1%;width:98%;height:var(--t);transform:translateY(-50%) rotateX(90deg);background:repeating-linear-gradient(0deg,#f7f3ea 0 2px,#ddd5c3 2px 3px);}
   .lb-pgB{top:100%;left:1%;width:98%;height:var(--t);transform:translateY(-50%) rotateX(-90deg);background:repeating-linear-gradient(0deg,#f7f3ea 0 2px,#ddd5c3 2px 3px);}
   .lb-spine{left:0;top:0;width:var(--t);height:100%;transform:translateX(-50%) rotateY(-90deg);background:#111;overflow:hidden;}
-  .lb-inner{inset:0;transform:translateZ(calc(var(--t) / 2 - 2px));background:#faf7f0;border-radius:0 4px 4px 0;}
+  .lb-inner{inset:0;transform:translateZ(calc(var(--t) / 2 - 2px));background:#f4f2ee;border-radius:0 4px 4px 0;overflow:hidden;}
   .lb-cov{position:absolute;inset:0;transform-origin:left center;transform-style:preserve-3d;transform:translateZ(calc(var(--t) / 2));}
   .lb-front{inset:0;border-radius:2px 7px 7px 2px;overflow:hidden;background:#0b0b0b;}
   .lb-front img{display:block;width:100%;height:100%;object-fit:cover;}
-  .lb-flip{inset:0;transform:rotateY(180deg);background:#faf7f0;border-radius:4px 0 0 4px;}
+  .lb-flip{inset:0;transform:rotateY(180deg);background:#f4f2ee;border-radius:4px 0 0 4px;overflow:hidden;}
+  .lb-inner img,.lb-flip img{display:block;width:100%;height:100%;object-fit:fill;}
   .lb-pagetxt{position:absolute;inset:0;padding:1.4rem 1.1rem;display:flex;flex-direction:column;justify-content:center;text-align:left;color:#161412;}
   .lb-pagetxt i{font:700 .52rem/1 var(--font-body);letter-spacing:.18em;text-transform:uppercase;color:#C9410C;font-style:normal;margin-bottom:.5rem;}
   .lb-pagetxt b{font:800 .98rem/1.2 var(--font-display);margin-bottom:.5rem;}
@@ -404,8 +405,8 @@
   @keyframes lbSway{0%{transform:translateX(0) rotateX(5deg) rotateY(-14deg);}100%{transform:translateX(0) rotateX(5deg) rotateY(24deg);}}
   @keyframes lbBookTap{
     0%{transform:translateX(0) rotateX(5deg) rotateY(-14deg);}
-    18%{transform:translateX(calc(var(--w) * .5)) rotateX(24deg) rotateY(0deg);}
-    60%{transform:translateX(calc(var(--w) * .5)) rotateX(24deg) rotateY(0deg);}
+    18%{transform:translateX(calc(var(--w) * .5)) rotateX(22deg) rotateY(0deg);}
+    60%{transform:translateX(calc(var(--w) * .5)) rotateX(22deg) rotateY(0deg);}
     76%{transform:translateX(0) rotateX(5deg) rotateY(-14deg);}
     100%{transform:translateX(0) rotateX(5deg) rotateY(346deg);}
   }
@@ -414,7 +415,6 @@
   .lb:focus-visible{outline:2px solid var(--accent);outline-offset:8px;border-radius:14px;}
   .lb.tap .lb-book{animation:lbBookTap 6.5s cubic-bezier(.45,0,.3,1) 1 both;}
   .lb.tap .lb-cov{animation:lbCovTap 6.5s cubic-bezier(.45,0,.3,1) 1 both;}
-  .lb-tip{display:block;margin:.2rem auto 0;font:700 .62rem/1 var(--font-body);letter-spacing:.16em;text-transform:uppercase;color:var(--ink-faint);text-align:center;}
   @media(prefers-reduced-motion:reduce){.lb-float,.lb-book,.lb-shadow,.lb.tap .lb-book{animation:none;}.lb-book{transform:rotateX(5deg) rotateY(-22deg);}.lb.tap .lb-cov{animation:lbCovTap 6.5s linear 1 both;}}
 
   /* ══ The first block: the route arcs over the levitating book ══ */
@@ -461,30 +461,6 @@
   .bk-hero .bk-title{margin-top:0;}
   @media(max-width:520px){.rt-card{grid-template-columns:1fr;gap:.4rem;}}
   @media(prefers-reduced-motion:reduce){.rt-pulse,.rt-card.swap .rt-cb,.rt-card.swap .rt-cn{animation:none;}}
-
-  /* real pages from the book, shown when the cover opens */
-  .lb-inner,.lb-flip{background:#fbfaf6;overflow:hidden;}
-  .pg{position:absolute;inset:0;padding:8% 9% 9%;font:400 calc(var(--w) * .031)/1.42 'Lato',var(--font-body);color:#1c1a17;text-align:left;overflow:hidden;}
-  .lb-inner::after,.lb-flip::after{content:"";position:absolute;top:0;bottom:0;width:14%;pointer-events:none;z-index:3;}
-  .lb-inner::after{left:0;background:linear-gradient(90deg,rgba(0,0,0,.22),rgba(0,0,0,0));}
-  .lb-flip::after{right:0;background:linear-gradient(270deg,rgba(0,0,0,.22),rgba(0,0,0,0));}
-  .pgB{display:none;}.lb.sb .pgA{display:none;}.lb.sb .pgB{display:block;}
-  .pg-h{font-size:.74em;letter-spacing:.2em;color:#9a958c;text-transform:uppercase;margin:0 0 7%;white-space:nowrap;overflow:hidden;}
-  .pg-k{font-weight:800;letter-spacing:.2em;color:#C9410C;font-size:.78em;margin-bottom:.3em;}
-  .pg-t{font:800 2.15em/1.05 Georgia,'Times New Roman',serif;color:#0d0c0a;}
-  .pg-s{font-style:italic;color:#6a655c;margin:.5em 0 .9em;font-size:.95em;}
-  .pg-r{height:2px;background:#E8470F;margin:0 0 1em;}
-  .pg p{margin:0 0 .75em;}
-  .pg b{font-weight:800;}
-  .pg-h2{font:800 1.45em/1.15 Georgia,'Times New Roman',serif;margin:.8em 0 .45em;color:#0d0c0a;}
-  .pg-h2.top{margin-top:.2em;}
-  .pg-q{font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#E8470F;font-size:.8em;line-height:1.35;margin:.9em 0 .4em;}
-  .pg-n{position:absolute;left:0;right:0;bottom:3.5%;text-align:center;color:#6a655c;font-size:.95em;}
-  .pg-tb{width:100%;border-collapse:collapse;font-size:.88em;line-height:1.35;margin:0 0 .6em;}
-  .pg-tb th{background:#111;color:#fff;text-align:left;font-size:.78em;letter-spacing:.12em;text-transform:uppercase;padding:.5em .6em;}
-  .pg-tb td{padding:.5em .6em;vertical-align:top;border-bottom:1px solid #e6e2d8;}
-  .pg-tb tr:nth-child(even) td{background:#f1eee6;}
-  .pg-tb td:first-child{font-weight:800;}
 </style>
 </head>
 <body>
@@ -514,48 +490,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="rt-stage">
 <svg class="rt-svg rt-wide" id="rtWide" viewBox="0 0 1000 470" role="group" aria-label="The route from intent to outcome, six points"></svg>
 <svg class="rt-svg rt-tall" id="rtTall" viewBox="0 0 360 340" role="group" aria-label="The route from intent to outcome, six points"></svg>
-<div class="rt-book"><div class="lb lb-hero" role="button" tabindex="0" aria-label="The book From Intent to Offer by Oluwaseyi Ashiru. Tap to open a page.">
+<div class="rt-book"><div class="lb lb-hero" role="button" tabindex="0" aria-label="The book From Intent to Offer by Oluwaseyi Ashiru. Opens to a page when pressed.">
 <div class="lb-float"><div class="lb-book">
 <div class="lb-face lb-back"><picture><source srcset="cover-back.webp" type="image/webp"><img src="cover-back.jpg" alt="" width="600" height="900" loading="lazy" decoding="async"></picture></div>
 <div class="lb-face lb-pg lb-pgR"></div><div class="lb-face lb-pg lb-pgT"></div><div class="lb-face lb-pg lb-pgB"></div>
 <div class="lb-face lb-spine"><picture><source srcset="spine.webp" type="image/webp"><img src="spine.jpg" alt="" width="84" height="1124" decoding="async"></picture></div>
-<div class="lb-face lb-inner"><div class="pg pgA"><div class="pg-h">FROM INTENT TO OFFER &nbsp;&middot;&nbsp; OLUWASEYI ASHIRU</div><div class="pg-q">Question two: in the last month, how many roles did you find that you were genuinely eligible for?</div><p>Eligible means the company can actually pay someone in your country and the role matches your level. That is a different question from whether the advert said &ldquo;remote&rdquo;.</p><p>If the answer is &ldquo;almost none&rdquo;, stop reading about interviews. Your leak is <b>Supply</b>, and everything downstream is being judged on far too little evidence to mean anything.</p>
-<div class="pg-q">Question three: of your last twenty applications, how many got any reply at all, even a rejection?</div><p>Total silence and a stream of rejections are completely different diagnoses. <b>Silence usually means</b> you were never read: that is <b>Representation</b>. Rejections mean you were read and passed over, which is closer to <b>Aim</b>.</p>
-<div class="pg-q">Question four: how do you choose what to apply to?</div><p>If the honest answer is &ldquo;whatever reaches me&rdquo; or &ldquo;as many as I can, quickly&rdquo;, your leak is <b>Aim</b>. Applications sent is a measure of effort, not direction, and a large number with no replies is evidence of a problem rather than proof of trying.</p>
-<div class="pg-q">Question five: when you get in front of a human, what happens?</div><p>If interviews come and offers do not, your CV is working and your aim is close enough. The leak is <b>Conversion</b>, and that is good news: the hard parts are already fixed, and the last conversation is the most learnable part of the whole process.</p>
-<div class="pg-h2">The five sentences</div><p>If you prefer, read these five sentences and find the one that describes your last month. One of them will feel more true than the others. That is your leak.</p>
-<div class="pg-n">45</div></div><div class="pg pgB"><div class="pg-h">FROM INTENT TO OFFER &nbsp;&middot;&nbsp; OLUWASEYI ASHIRU</div><div class="pg-h2 top">The five parts, and the five fixes</div>
-<table class="pg-tb"><thead><tr><th>Part</th><th>Symptom you feel</th><th>The first repair</th></tr></thead><tbody>
-<tr><td>Capacity</td><td>&ldquo;I could not actually do the job yet, or not without someone watching.&rdquo;</td><td>Build the skill and the remote operating system. Chapters 7 to 9.</td></tr>
-<tr><td>Supply</td><td>&ldquo;I cannot find real openings I am eligible for.&rdquo;</td><td>Build a verified source list and a company file. Chapter 10.</td></tr>
-<tr><td>Representation</td><td>&ldquo;I apply and hear nothing at all.&rdquo;</td><td>Rebuild the CV, LinkedIn and proof of work. Chapters 11 and 12.</td></tr>
-<tr><td>Aim</td><td>&ldquo;I apply constantly and nothing lands.&rdquo;</td><td>Narrow the target, check eligibility, reach the human. Chapter 13.</td></tr>
-<tr><td>Conversion</td><td>&ldquo;Interviews come, offers do not.&rdquo;</td><td>Prepare the room and the money. Chapters 14 and 15.</td></tr>
-</tbody></table>
-<div class="pg-h2">The content rule</div><p>Every page of this book should answer one question: <b>What execution is this supposed to cause?</b></p><p>If a page does not cause something, skip it. If it does, do the thing before you turn the page.</p>
-<div class="pg-n">11</div></div></div>
+<div class="lb-face lb-inner"><picture><source srcset="page-right.webp" type="image/webp"><img src="page-right.jpg" alt="" width="560" height="840" loading="lazy" decoding="async"></picture></div>
 <div class="lb-cov">
 <div class="lb-face lb-front"><picture><source srcset="cover-front.webp" type="image/webp"><img src="cover-front.jpg" alt="" width="600" height="900" decoding="async"></picture></div>
-<div class="lb-face lb-flip"><div class="pg pgA"><div class="pg-h">FROM INTENT TO OFFER &nbsp;&middot;&nbsp; OLUWASEYI ASHIRU</div><div class="pg-k">CHAPTER 06 &nbsp;&middot;&nbsp; DIAGNOSIS</div><div class="pg-t">Find Your Leak</div><div class="pg-s">Five questions, one sentence, and the ninety-day reset.</div><div class="pg-r"></div>
-<p>A pipe does not usually burst along its length. It fails at a joint. Your job search works the same way, and this is the single most useful thing we teach, because almost everybody gets it wrong in the same direction.</p>
-<p>When nothing is working, it feels like everything is broken. So people rewrite the CV, join more job groups, read about interviews, and change their LinkedIn photo, all in the same fortnight. Nothing changes, because the one thing that was actually broken got about a fifth of the attention, and the four things that were already fine got the rest.</p>
-<p>This chapter replaces that with a diagnosis. It takes about twenty minutes, on paper, alone.</p>
-<div class="pg-h2">The five questions</div><p>Answer these honestly, with nobody watching. Stop at the first one that catches you.</p>
-<div class="pg-q">Question one: could you do the work itself today, without training first?</div><p>If the honest answer is <b>no</b>, or &ldquo;yes, but never remotely&rdquo;, stop here. Your leak is <b>Capacity</b>, and every other repair in this book is downstream of it.</p>
-<div class="pg-n">44</div></div><div class="pg pgB"><div class="pg-h">FROM INTENT TO OFFER &nbsp;&middot;&nbsp; OLUWASEYI ASHIRU</div><div class="pg-k">THE FRAMEWORK</div><div class="pg-t">The Remote Job Framework on One Page</div><div class="pg-s">Tear it out, or photograph it. You will come back to it.</div><div class="pg-r"></div>
-<table class="pg-tb"><thead><tr><th>Stage</th><th>The question it answers</th><th>What should exist when you are done</th></tr></thead><tbody>
-<tr><td>Intent</td><td>What exactly am I trying to get?</td><td>A target sentence: role, company type, arrangement, pay band, overlap hours.</td></tr>
-<tr><td>Evidence</td><td>What have I actually done so far?</td><td>A ledger of your last twenty applications and five numbers from your last thirty days.</td></tr>
-<tr><td>Diagnosis</td><td>Where is my search breaking?</td><td>One sentence: &ldquo;My first leak is ___ because ___.&rdquo;</td></tr>
-<tr><td>Execution</td><td>What work repairs that point?</td><td>The specific asset or habit for your leak, finished to a published standard.</td></tr>
-<tr><td>Result</td><td>Did it move anything?</td><td>A measurable change in the next twenty rows of your ledger.</td></tr>
-<tr><td>Next result</td><td>What do I execute now?</td><td>The next leak, found from the new evidence.</td></tr>
-<tr><td>Outcome</td><td>What was it all for?</td><td>A signed offer, the first payment received, and a first ninety days that keeps the job.</td></tr>
-</tbody></table><div class="pg-n">10</div></div></div>
+<div class="lb-face lb-flip"><picture><source srcset="page-left.webp" type="image/webp"><img src="page-left.jpg" alt="" width="560" height="840" loading="lazy" decoding="async"></picture></div>
 </div>
 </div></div>
 <div class="lb-shadow"></div>
-<span class="lb-tip" aria-hidden="true">Tap to open</span>
 </div></div>
 </div>
 <div class="rt-card" id="jyCard" aria-live="polite">
@@ -666,48 +612,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <p class="section-label reveal">Get the Book</p>
 <h2 class="reveal">One payment. <span>Yours to keep.</span></h2>
 <div class="bk-bookwrap bk-bookwrap-lg">
-<div class="lb lb-lg" role="button" tabindex="0" aria-label="The book From Intent to Offer by Oluwaseyi Ashiru. Tap to open a page.">
+<div class="lb lb-lg" role="button" tabindex="0" aria-label="The book From Intent to Offer by Oluwaseyi Ashiru. Opens to a page when pressed.">
 <div class="lb-float"><div class="lb-book">
 <div class="lb-face lb-back"><picture><source srcset="cover-back.webp" type="image/webp"><img src="cover-back.jpg" alt="" width="600" height="900" loading="lazy" decoding="async"></picture></div>
 <div class="lb-face lb-pg lb-pgR"></div><div class="lb-face lb-pg lb-pgT"></div><div class="lb-face lb-pg lb-pgB"></div>
 <div class="lb-face lb-spine"><picture><source srcset="spine.webp" type="image/webp"><img src="spine.jpg" alt="" width="84" height="1124" decoding="async"></picture></div>
-<div class="lb-face lb-inner"><div class="pg pgA"><div class="pg-h">FROM INTENT TO OFFER &nbsp;&middot;&nbsp; OLUWASEYI ASHIRU</div><div class="pg-q">Question two: in the last month, how many roles did you find that you were genuinely eligible for?</div><p>Eligible means the company can actually pay someone in your country and the role matches your level. That is a different question from whether the advert said &ldquo;remote&rdquo;.</p><p>If the answer is &ldquo;almost none&rdquo;, stop reading about interviews. Your leak is <b>Supply</b>, and everything downstream is being judged on far too little evidence to mean anything.</p>
-<div class="pg-q">Question three: of your last twenty applications, how many got any reply at all, even a rejection?</div><p>Total silence and a stream of rejections are completely different diagnoses. <b>Silence usually means</b> you were never read: that is <b>Representation</b>. Rejections mean you were read and passed over, which is closer to <b>Aim</b>.</p>
-<div class="pg-q">Question four: how do you choose what to apply to?</div><p>If the honest answer is &ldquo;whatever reaches me&rdquo; or &ldquo;as many as I can, quickly&rdquo;, your leak is <b>Aim</b>. Applications sent is a measure of effort, not direction, and a large number with no replies is evidence of a problem rather than proof of trying.</p>
-<div class="pg-q">Question five: when you get in front of a human, what happens?</div><p>If interviews come and offers do not, your CV is working and your aim is close enough. The leak is <b>Conversion</b>, and that is good news: the hard parts are already fixed, and the last conversation is the most learnable part of the whole process.</p>
-<div class="pg-h2">The five sentences</div><p>If you prefer, read these five sentences and find the one that describes your last month. One of them will feel more true than the others. That is your leak.</p>
-<div class="pg-n">45</div></div><div class="pg pgB"><div class="pg-h">FROM INTENT TO OFFER &nbsp;&middot;&nbsp; OLUWASEYI ASHIRU</div><div class="pg-h2 top">The five parts, and the five fixes</div>
-<table class="pg-tb"><thead><tr><th>Part</th><th>Symptom you feel</th><th>The first repair</th></tr></thead><tbody>
-<tr><td>Capacity</td><td>&ldquo;I could not actually do the job yet, or not without someone watching.&rdquo;</td><td>Build the skill and the remote operating system. Chapters 7 to 9.</td></tr>
-<tr><td>Supply</td><td>&ldquo;I cannot find real openings I am eligible for.&rdquo;</td><td>Build a verified source list and a company file. Chapter 10.</td></tr>
-<tr><td>Representation</td><td>&ldquo;I apply and hear nothing at all.&rdquo;</td><td>Rebuild the CV, LinkedIn and proof of work. Chapters 11 and 12.</td></tr>
-<tr><td>Aim</td><td>&ldquo;I apply constantly and nothing lands.&rdquo;</td><td>Narrow the target, check eligibility, reach the human. Chapter 13.</td></tr>
-<tr><td>Conversion</td><td>&ldquo;Interviews come, offers do not.&rdquo;</td><td>Prepare the room and the money. Chapters 14 and 15.</td></tr>
-</tbody></table>
-<div class="pg-h2">The content rule</div><p>Every page of this book should answer one question: <b>What execution is this supposed to cause?</b></p><p>If a page does not cause something, skip it. If it does, do the thing before you turn the page.</p>
-<div class="pg-n">11</div></div></div>
+<div class="lb-face lb-inner"><picture><source srcset="page-right.webp" type="image/webp"><img src="page-right.jpg" alt="" width="560" height="840" loading="lazy" decoding="async"></picture></div>
 <div class="lb-cov">
 <div class="lb-face lb-front"><picture><source srcset="cover-front.webp" type="image/webp"><img src="cover-front.jpg" alt="" width="600" height="900" decoding="async"></picture></div>
-<div class="lb-face lb-flip"><div class="pg pgA"><div class="pg-h">FROM INTENT TO OFFER &nbsp;&middot;&nbsp; OLUWASEYI ASHIRU</div><div class="pg-k">CHAPTER 06 &nbsp;&middot;&nbsp; DIAGNOSIS</div><div class="pg-t">Find Your Leak</div><div class="pg-s">Five questions, one sentence, and the ninety-day reset.</div><div class="pg-r"></div>
-<p>A pipe does not usually burst along its length. It fails at a joint. Your job search works the same way, and this is the single most useful thing we teach, because almost everybody gets it wrong in the same direction.</p>
-<p>When nothing is working, it feels like everything is broken. So people rewrite the CV, join more job groups, read about interviews, and change their LinkedIn photo, all in the same fortnight. Nothing changes, because the one thing that was actually broken got about a fifth of the attention, and the four things that were already fine got the rest.</p>
-<p>This chapter replaces that with a diagnosis. It takes about twenty minutes, on paper, alone.</p>
-<div class="pg-h2">The five questions</div><p>Answer these honestly, with nobody watching. Stop at the first one that catches you.</p>
-<div class="pg-q">Question one: could you do the work itself today, without training first?</div><p>If the honest answer is <b>no</b>, or &ldquo;yes, but never remotely&rdquo;, stop here. Your leak is <b>Capacity</b>, and every other repair in this book is downstream of it.</p>
-<div class="pg-n">44</div></div><div class="pg pgB"><div class="pg-h">FROM INTENT TO OFFER &nbsp;&middot;&nbsp; OLUWASEYI ASHIRU</div><div class="pg-k">THE FRAMEWORK</div><div class="pg-t">The Remote Job Framework on One Page</div><div class="pg-s">Tear it out, or photograph it. You will come back to it.</div><div class="pg-r"></div>
-<table class="pg-tb"><thead><tr><th>Stage</th><th>The question it answers</th><th>What should exist when you are done</th></tr></thead><tbody>
-<tr><td>Intent</td><td>What exactly am I trying to get?</td><td>A target sentence: role, company type, arrangement, pay band, overlap hours.</td></tr>
-<tr><td>Evidence</td><td>What have I actually done so far?</td><td>A ledger of your last twenty applications and five numbers from your last thirty days.</td></tr>
-<tr><td>Diagnosis</td><td>Where is my search breaking?</td><td>One sentence: &ldquo;My first leak is ___ because ___.&rdquo;</td></tr>
-<tr><td>Execution</td><td>What work repairs that point?</td><td>The specific asset or habit for your leak, finished to a published standard.</td></tr>
-<tr><td>Result</td><td>Did it move anything?</td><td>A measurable change in the next twenty rows of your ledger.</td></tr>
-<tr><td>Next result</td><td>What do I execute now?</td><td>The next leak, found from the new evidence.</td></tr>
-<tr><td>Outcome</td><td>What was it all for?</td><td>A signed offer, the first payment received, and a first ninety days that keeps the job.</td></tr>
-</tbody></table><div class="pg-n">10</div></div></div>
+<div class="lb-face lb-flip"><picture><source srcset="page-left.webp" type="image/webp"><img src="page-left.jpg" alt="" width="560" height="840" loading="lazy" decoding="async"></picture></div>
 </div>
 </div></div>
 <div class="lb-shadow"></div>
-<span class="lb-tip" aria-hidden="true">Tap to open</span>
 </div>
 <h3 class="bk-title">From Intent to Offer</h3>
 <p class="bk-sub">How to Get a Remote Job &middot; by Oluwaseyi Ashiru</p>
@@ -877,9 +793,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 (function () {
   var still = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
   [].forEach.call(document.querySelectorAll('.lb'), function (b) {
-    var n = 0;
     function play() {
-      b.classList.toggle('sb', n++ % 2 === 1);
       b.classList.remove('tap'); void b.offsetWidth; b.classList.add('tap');
     }
     b.addEventListener('click', play);
