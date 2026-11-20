@@ -95,19 +95,19 @@
     block(d.file + '   |   ' + d.words + ' words   |   Scanned ' + d.date, { size: 8.5, color: SOFT, after: 14 });
 
     /* Score panel */
-    var ph = 92;
+    var ph = 112;
     need(ph + 10);
     rect(L, y - ph + 14, R - L, ph, PANEL);
     rect(L, y - ph + 14, 5, ph, d.verdictColor);
     var score = String(d.score);
     text(score, L + 24, y - 40, 46, true, INK);
     text('out of 10', L + 24 + score.length * 26 + 8, y - 40, 11, false, SOFT);
-    text(d.range.toUpperCase() + '  -  ' + d.headline.toUpperCase(), L + 24, y - 62, 8.5, true, d.verdictColor);
-    var tx = L + 205, ty = y - 20;
+    text(d.range.toUpperCase() + '  -  ' + d.headline.toUpperCase(), L + 24, y - 66, 8.5, true, d.verdictColor);
+    var tx = L + 205, ty = y - 24;
     wrap(d.message, 10, R - tx - 14, false).slice(0, 4).forEach(function (ln) { text(ln, tx, ty, 10, false, INK); ty -= 14; });
-    text(d.pass + ' Yes', tx, y - 76, 9.5, true, GREEN);
-    text(d.partial + ' Partly', tx + 62, y - 76, 9.5, true, AMBER);
-    text(d.fail + ' No', tx + 135, y - 76, 9.5, true, RED);
+    text(d.pass + ' Yes', tx, y - 90, 9.5, true, GREEN);
+    text(d.partial + ' Partly', tx + 62, y - 90, 9.5, true, AMBER);
+    text(d.fail + ' No', tx + 135, y - 90, 9.5, true, RED);
     y -= ph + 16;
 
     /* Where you default */
@@ -129,7 +129,7 @@
       var qLines = wrap(k.question, 9, R - L - 36, false).length;
       var evLines = wrap(k.evidence, 9.5, R - L - 36, false).length;
       var fxLines = k.fix ? wrap(k.fix, 9, R - L - 60, false).length : 0;
-      need(24 + qLines * 12 + evLines * 13 + (fxLines ? fxLines * 12 + 22 : 0) + 14);
+      need(28 + qLines * 12 + evLines * 13 + (fxLines ? fxLines * 12 + 22 : 0) + 14);
       var top = y;
       rect(L, top - 3, 3, 16, v[1]);
       text(k.n, L + 10, top, 9, true, FAINT);
@@ -148,8 +148,8 @@
         fl.forEach(function (ln) { text(ln, L + 40, fy, 9, false, SOFT); fy -= 12; });
         y -= bh + 4;
       }
-      y -= 8;
-      rule(y + 4, L + 30, R); y -= 6;
+      y -= 12;
+      rule(y, L + 30, R); y -= 26;
     });
 
     /* What it measures */

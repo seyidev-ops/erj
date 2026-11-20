@@ -84,7 +84,7 @@
   @media(max-width:860px){.sl-hero{grid-template-columns:1fr;}.sl-box{max-width:340px;margin:0 auto;}}
   /* phones: the headline and price lead; the box shot waits for the buy block */
   @media(max-width:600px){.sl-hero .sl-box{max-width:280px;margin:.4rem auto 0;}.sl-hero .lede{font-size:1rem;}.sl-gets li{font-size:.92rem;}.sl-hero .sl-gets{gap:.35rem;margin-bottom:1.1rem;}}
-  body:has(.sl-bar.is-on) .wa-float{bottom:calc(5.4rem + env(safe-area-inset-bottom));transition:bottom .3s;}
+  body:has(.sl-bar.is-on) .wa-float{bottom:calc(6.6rem + env(safe-area-inset-bottom));transition:bottom .3s;}
 
   /* five parts */
   .sl-parts{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:.6rem;margin-top:1.6rem;}
@@ -180,9 +180,9 @@
   .sl-final .hero-cta{justify-content:center;}
 
   /* sticky bar: phones only, hidden while the hero or buy block is on screen */
-  .sl-bar{position:fixed;left:0;right:0;bottom:0;z-index:60;display:none;align-items:center;justify-content:space-between;gap:.8rem;
-    padding:.55rem 1rem calc(.55rem + env(safe-area-inset-bottom));background:var(--paper-2);border-top:1px solid var(--line);
-    box-shadow:0 -10px 30px rgba(0,0,0,.18);transform:translateY(110%);transition:transform .3s var(--ease);}
+  .sl-bar{position:fixed;left:14px;right:14px;bottom:calc(14px + env(safe-area-inset-bottom));border-radius:22px;z-index:60;display:none;align-items:center;justify-content:space-between;gap:.8rem;
+    padding:.55rem .6rem .55rem 1.1rem;background:var(--paper-2);border:1px solid var(--accent);
+    box-shadow:0 18px 40px rgba(0,0,0,.35);transform:translateY(110%);transition:transform .3s var(--ease);}
   .sl-bar.is-on{transform:none;}
   .sl-bar>div{min-width:0;}
   .sl-bar b{display:block;font-family:var(--font-display);font-size:.95rem;color:var(--ink);white-space:nowrap;}
@@ -220,9 +220,11 @@
   .sl-box img{background:#f4efe6;}
 
   /* ══ The journey: one route from intent to outcome (20 Nov) ══ */
-  .jy-app{margin-top:2rem;}
+  .jy-app{margin:2rem auto 0;padding:0 clamp(.2rem,1.5vw,1rem);max-width:980px;}
+  .jy-card,.jy-ctl{margin-left:auto;margin-right:auto;}
+  .jy-ctl{padding-bottom:.4rem;}
   .jy.js .jy-fallback{display:none;}
-  .jy-stage{position:relative;border:1px solid var(--card-line);border-radius:28px;overflow:hidden;
+  .jy-stage{position:relative;border:1px solid var(--card-line);border-radius:28px;overflow:hidden;padding:.4rem;
     background:radial-gradient(700px 360px at 50% 70%,rgba(255,87,34,.14),transparent 70%),var(--card);}
   .jy-svg{display:block;width:100%;height:auto;}
   .jy-tall{display:none;}
