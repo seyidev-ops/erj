@@ -387,11 +387,12 @@
   .lb-pgT{top:0;left:1%;width:98%;height:var(--t);transform:translateY(-50%) rotateX(90deg);background:repeating-linear-gradient(0deg,#f7f3ea 0 2px,#ddd5c3 2px 3px);}
   .lb-pgB{top:100%;left:1%;width:98%;height:var(--t);transform:translateY(-50%) rotateX(-90deg);background:repeating-linear-gradient(0deg,#f7f3ea 0 2px,#ddd5c3 2px 3px);}
   .lb-spine{left:0;top:0;width:var(--t);height:100%;transform:translateX(-50%) rotateY(-90deg);background:#111;overflow:hidden;}
-  .lb-inner{inset:1% 1% 1% 0;transform:translateZ(calc(var(--t) / 2 - 3px));background:#faf7f0;border-radius:0 6px 6px 0;}
+  .lb-inner{inset:0;transform:translateZ(calc(var(--t) / 2 - 2px));background:#f4f2ee;border-radius:0 4px 4px 0;overflow:hidden;}
   .lb-cov{position:absolute;inset:0;transform-origin:left center;transform-style:preserve-3d;transform:translateZ(calc(var(--t) / 2));}
   .lb-front{inset:0;border-radius:2px 7px 7px 2px;overflow:hidden;background:#0b0b0b;}
   .lb-front img{display:block;width:100%;height:100%;object-fit:cover;}
-  .lb-flip{inset:0;transform:rotateY(180deg);background:#f1ece0;border-radius:9px 3px 3px 9px;}
+  .lb-flip{inset:0;transform:rotateY(180deg);background:#f4f2ee;border-radius:4px 0 0 4px;overflow:hidden;}
+  .lb-inner img,.lb-flip img{display:block;width:100%;height:100%;object-fit:fill;}
   .lb-pagetxt{position:absolute;inset:0;padding:1.4rem 1.1rem;display:flex;flex-direction:column;justify-content:center;text-align:left;color:#161412;}
   .lb-pagetxt i{font:700 .52rem/1 var(--font-body);letter-spacing:.18em;text-transform:uppercase;color:#C9410C;font-style:normal;margin-bottom:.5rem;}
   .lb-pagetxt b{font:800 .98rem/1.2 var(--font-display);margin-bottom:.5rem;}
@@ -404,20 +405,16 @@
   @keyframes lbSway{0%{transform:translateX(0) rotateX(5deg) rotateY(-14deg);}100%{transform:translateX(0) rotateX(5deg) rotateY(24deg);}}
   @keyframes lbBookTap{
     0%{transform:translateX(0) rotateX(5deg) rotateY(-14deg);}
-    16%{transform:translateX(calc(var(--w) * .5)) rotateX(3deg) rotateY(-12deg);}
-    60%{transform:translateX(calc(var(--w) * .5)) rotateX(3deg) rotateY(-12deg);}
+    18%{transform:translateX(calc(var(--w) * .5)) rotateX(22deg) rotateY(0deg);}
+    60%{transform:translateX(calc(var(--w) * .5)) rotateX(22deg) rotateY(0deg);}
     76%{transform:translateX(0) rotateX(5deg) rotateY(-14deg);}
     100%{transform:translateX(0) rotateX(5deg) rotateY(346deg);}
   }
-  @keyframes lbCovTap{0%{transform:translateZ(calc(var(--t) / 2)) rotateY(0deg);}18%,60%{transform:translateZ(calc(var(--t) / 2)) rotateY(-152deg);}76%,100%{transform:translateZ(calc(var(--t) / 2)) rotateY(0deg);}}
+  @keyframes lbCovTap{0%{transform:translateZ(calc(var(--t) / 2)) rotateY(0deg);}18%,60%{transform:translateZ(calc(var(--t) / 2)) rotateY(-179deg);}76%,100%{transform:translateZ(calc(var(--t) / 2)) rotateY(0deg);}}
   .lb{cursor:pointer;-webkit-tap-highlight-color:transparent;outline:none;}
   .lb:focus-visible{outline:2px solid var(--accent);outline-offset:8px;border-radius:14px;}
   .lb.tap .lb-book{animation:lbBookTap 6.5s cubic-bezier(.45,0,.3,1) 1 both;}
   .lb.tap .lb-cov{animation:lbCovTap 6.5s cubic-bezier(.45,0,.3,1) 1 both;}
-  .lb-photo{position:absolute;left:50%;top:46%;width:calc(var(--w) * 2.4);aspect-ratio:3/2;transform:translate(-50%,-50%) scale(.92);opacity:0;pointer-events:none;z-index:6;border-radius:16px;overflow:hidden;box-shadow:0 30px 70px -30px rgba(0,0,0,.6);transition:opacity .5s ease,transform .5s ease;}
-  .lb-photo img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 52%;}
-  .lb.show .lb-photo{opacity:1;transform:translate(-50%,-50%) scale(1);}
-  .lb-tip{display:block;margin:.2rem auto 0;font:700 .62rem/1 var(--font-body);letter-spacing:.16em;text-transform:uppercase;color:var(--ink-faint);text-align:center;}
   @media(prefers-reduced-motion:reduce){.lb-float,.lb-book,.lb-shadow,.lb.tap .lb-book{animation:none;}.lb-book{transform:rotateX(5deg) rotateY(-22deg);}.lb.tap .lb-cov{animation:lbCovTap 6.5s linear 1 both;}}
 
   /* ══ The first block: the route arcs over the levitating book ══ */
@@ -493,20 +490,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="rt-stage">
 <svg class="rt-svg rt-wide" id="rtWide" viewBox="0 0 1000 470" role="group" aria-label="The route from intent to outcome, six points"></svg>
 <svg class="rt-svg rt-tall" id="rtTall" viewBox="0 0 360 340" role="group" aria-label="The route from intent to outcome, six points"></svg>
-<div class="rt-book"><div class="lb lb-hero" role="button" tabindex="0" aria-label="The book From Intent to Offer by Oluwaseyi Ashiru. Tap to open a page.">
+<div class="rt-book"><div class="lb lb-hero" role="button" tabindex="0" aria-label="The book From Intent to Offer by Oluwaseyi Ashiru. Opens to a page when pressed.">
 <div class="lb-float"><div class="lb-book">
 <div class="lb-face lb-back"><picture><source srcset="cover-back.webp" type="image/webp"><img src="cover-back.jpg" alt="" width="600" height="900" loading="lazy" decoding="async"></picture></div>
 <div class="lb-face lb-pg lb-pgR"></div><div class="lb-face lb-pg lb-pgT"></div><div class="lb-face lb-pg lb-pgB"></div>
 <div class="lb-face lb-spine"><picture><source srcset="spine.webp" type="image/webp"><img src="spine.jpg" alt="" width="84" height="1124" decoding="async"></picture></div>
-<div class="lb-face lb-inner"><div class="lb-pagetxt"><i>Chapter 06</i><b>Find What Is Holding You Back</b><span>Five questions. One sentence naming your first weak point.</span><em>Task for tonight</em></div></div>
+<div class="lb-face lb-inner"><picture><source srcset="page-right.webp" type="image/webp"><img src="page-right.jpg" alt="" width="560" height="840" loading="lazy" decoding="async"></picture></div>
 <div class="lb-cov">
 <div class="lb-face lb-front"><picture><source srcset="cover-front.webp" type="image/webp"><img src="cover-front.jpg" alt="" width="600" height="900" decoding="async"></picture></div>
-<div class="lb-face lb-flip"><div class="lb-pagetxt"><i>Before you start</i><b>Every chapter ends with one task.</b><span>Do the task. Then turn the page.</span></div></div>
+<div class="lb-face lb-flip"><picture><source srcset="page-left.webp" type="image/webp"><img src="page-left.jpg" alt="" width="560" height="840" loading="lazy" decoding="async"></picture></div>
 </div>
 </div></div>
-<div class="lb-photo" aria-hidden="true"><picture><source srcset="open-view.webp" type="image/webp"><img src="open-view.jpg" alt="" width="1000" height="1000" loading="lazy" decoding="async"></picture></div>
 <div class="lb-shadow"></div>
-<span class="lb-tip" aria-hidden="true">Tap to open</span>
 </div></div>
 </div>
 <div class="rt-card" id="jyCard" aria-live="polite">
@@ -617,20 +612,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <p class="section-label reveal">Get the Book</p>
 <h2 class="reveal">One payment. <span>Yours to keep.</span></h2>
 <div class="bk-bookwrap bk-bookwrap-lg">
-<div class="lb lb-lg" role="button" tabindex="0" aria-label="The book From Intent to Offer by Oluwaseyi Ashiru. Tap to open a page.">
+<div class="lb lb-lg" role="button" tabindex="0" aria-label="The book From Intent to Offer by Oluwaseyi Ashiru. Opens to a page when pressed.">
 <div class="lb-float"><div class="lb-book">
 <div class="lb-face lb-back"><picture><source srcset="cover-back.webp" type="image/webp"><img src="cover-back.jpg" alt="" width="600" height="900" loading="lazy" decoding="async"></picture></div>
 <div class="lb-face lb-pg lb-pgR"></div><div class="lb-face lb-pg lb-pgT"></div><div class="lb-face lb-pg lb-pgB"></div>
 <div class="lb-face lb-spine"><picture><source srcset="spine.webp" type="image/webp"><img src="spine.jpg" alt="" width="84" height="1124" decoding="async"></picture></div>
-<div class="lb-face lb-inner"><div class="lb-pagetxt"><i>Chapter 06</i><b>Find What Is Holding You Back</b><span>Five questions. One sentence naming your first weak point.</span><em>Task for tonight</em></div></div>
+<div class="lb-face lb-inner"><picture><source srcset="page-right.webp" type="image/webp"><img src="page-right.jpg" alt="" width="560" height="840" loading="lazy" decoding="async"></picture></div>
 <div class="lb-cov">
 <div class="lb-face lb-front"><picture><source srcset="cover-front.webp" type="image/webp"><img src="cover-front.jpg" alt="" width="600" height="900" decoding="async"></picture></div>
-<div class="lb-face lb-flip"><div class="lb-pagetxt"><i>Before you start</i><b>Every chapter ends with one task.</b><span>Do the task. Then turn the page.</span></div></div>
+<div class="lb-face lb-flip"><picture><source srcset="page-left.webp" type="image/webp"><img src="page-left.jpg" alt="" width="560" height="840" loading="lazy" decoding="async"></picture></div>
 </div>
 </div></div>
-<div class="lb-photo" aria-hidden="true"><picture><source srcset="open-view.webp" type="image/webp"><img src="open-view.jpg" alt="" width="1000" height="1000" loading="lazy" decoding="async"></picture></div>
 <div class="lb-shadow"></div>
-<span class="lb-tip" aria-hidden="true">Tap to open</span>
 </div>
 <h3 class="bk-title">From Intent to Offer</h3>
 <p class="bk-sub">How to Get a Remote Job &middot; by Oluwaseyi Ashiru</p>
@@ -800,16 +793,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 (function () {
   var still = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
   [].forEach.call(document.querySelectorAll('.lb'), function (b) {
-    var n = 0, tm = [];
     function play() {
-      tm.forEach(clearTimeout); tm = [];
-      b.classList.remove('show');
       b.classList.remove('tap'); void b.offsetWidth; b.classList.add('tap');
-      /* every second tap: the real open book appears over it for a moment */
-      if (n++ % 2 === 1) {
-        tm.push(setTimeout(function () { b.classList.add('show'); }, 1500));
-        tm.push(setTimeout(function () { b.classList.remove('show'); }, 4300));
-      }
     }
     b.addEventListener('click', play);
     b.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); play(); } });
