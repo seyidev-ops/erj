@@ -128,24 +128,87 @@
     var h = el('div', 'csc-step');
     h.appendChild(el('p', 'csc-kicker', 'Step 1 of 2'));
     h.appendChild(el('h3', 'csc-q', 'What job do you want to be hired to do?'));
-    h.appendChild(el('p', 'csc-help', 'Pick the family closest to the work itself. We are checking the skill, not the job title.'));
+    h.appendChild(el('p', 'csc-help', 'Pick the closest match. We check the skill, not the job title.'));
     box.appendChild(h);
-    var grid = el('div', 'csc-roles');
-    BANK.families.forEach(function (f) {
-      var b = el('button', 'csc-role', esc(f.label));
-      b.type = 'button';
-      b.addEventListener('click', function () {
-        state.family = f.id; state.answers = []; state.i = 0; viewQuestion();
-      });
-      grid.appendChild(b);
+
+    var chosen = null, active = -1;
+    var dd = el('div', 'csc-dd');
+    var btn = el('button', 'csc-dd-btn',
+      '<span class="csc-dd-val is-ph" id="cscDdVal">Choose your job</span>' +
+      '<svg class="csc-dd-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>');
+    btn.type = 'button';
+    btn.id = 'cscDdBtn';
+    btn.setAttribute('role', 'combobox');
+    btn.setAttribute('aria-haspopup', 'listbox');
+    btn.setAttribute('aria-expanded', 'false');
+    btn.setAttribute('aria-controls', 'cscDdList');
+    var list = el('ul', 'csc-dd-list');
+    list.id = 'cscDdList'; list.setAttribute('role', 'listbox'); list.setAttribute('aria-label', 'Jobs'); list.hidden = true;
+    var split = function (label) { var p = label.split(' \u00b7 '); return { main: p[0], sub: p.slice(1).join(' \u00b7 ') }; };
+    var opts = BANK.families.map(function (f, i) {
+      var t = split(f.label);
+      var li = el('li', 'csc-dd-opt', '<span>' + esc(t.main) + (t.sub ? '<small>' + esc(t.sub) + '</small>' : '') + '</span>');
+      li.id = 'cscOpt' + i; li.setAttribute('role', 'option'); li.setAttribute('aria-selected', 'false');
+      li.addEventListener('mousemove', function () { setActive(i); });
+      li.addEventListener('click', function () { choose(i); close(true); });
+      list.appendChild(li);
+      return li;
     });
-    var other = el('a', 'csc-role is-other',
-      'My role is not here — request a manual audit');
+    function setActive(i) {
+      active = i;
+      opts.forEach(function (o, k) { o.classList.toggle('is-active', k === i); });
+      if (i >= 0) { btn.setAttribute('aria-activedescendant', opts[i].id); opts[i].scrollIntoView({ block: 'nearest' }); }
+      else btn.removeAttribute('aria-activedescendant');
+    }
+    function open() {
+      list.hidden = false; dd.classList.add('is-open'); btn.setAttribute('aria-expanded', 'true');
+      var cur = chosen === null ? 0 : chosen; setActive(cur);
+    }
+    function close(refocus) {
+      list.hidden = true; dd.classList.remove('is-open'); btn.setAttribute('aria-expanded', 'false'); setActive(-1);
+      if (refocus) btn.focus();
+    }
+    function choose(i) {
+      chosen = i; var t = split(BANK.families[i].label);
+      var v = $('#cscDdVal', box);
+      v.className = 'csc-dd-val';
+      v.innerHTML = esc(t.main) + (t.sub ? '<small>' + esc(t.sub) + '</small>' : '');
+      opts.forEach(function (o, k) { o.setAttribute('aria-selected', k === i ? 'true' : 'false'); });
+      start.disabled = false;
+    }
+    btn.addEventListener('click', function () { list.hidden ? open() : close(false); });
+    btn.addEventListener('keydown', function (e) {
+      var k = e.key;
+      if (k === 'ArrowDown' || k === 'ArrowUp') {
+        e.preventDefault();
+        if (list.hidden) { open(); return; }
+        setActive(k === 'ArrowDown' ? Math.min(opts.length - 1, active + 1) : Math.max(0, active - 1));
+      } else if (k === 'Home' && !list.hidden) { e.preventDefault(); setActive(0); }
+      else if (k === 'End' && !list.hidden) { e.preventDefault(); setActive(opts.length - 1); }
+      else if ((k === 'Enter' || k === ' ') && !list.hidden) { e.preventDefault(); if (active >= 0) choose(active); close(true); }
+      else if (k === 'Escape' && !list.hidden) { e.preventDefault(); close(true); }
+      else if (k === 'Tab' && !list.hidden) { close(false); }
+    });
+    var away = function (e) { if (!dd.contains(e.target)) close(false); };
+    document.addEventListener('click', away);
+    dd.appendChild(btn); dd.appendChild(list);
+    box.appendChild(dd);
+
+    var start = el('button', 'btn-primary-ui btn-yes csc-start',
+      '<span>Start the audit</span><span class="arrow-wrap"><span class="arrow">\u2192</span></span>');
+    start.type = 'button'; start.disabled = true;
+    start.addEventListener('click', function () {
+      if (chosen === null) return;
+      document.removeEventListener('click', away);
+      state.family = BANK.families[chosen].id; state.answers = []; state.i = 0; viewQuestion();
+    });
+    box.appendChild(start);
+
+    var other = el('a', 'csc-ask', 'My job is not listed. Ask us for a manual audit');
     other.href = 'https://wa.me/2348032925957?text=' + encodeURIComponent(
       'CAPACITY AUDIT\n\nMy target role is not in the list. The role I want to be hired for is: ');
     other.rel = 'noopener'; other.target = '_blank';
-    grid.appendChild(other);
-    box.appendChild(grid);
+    box.appendChild(other);
   }
 
   function viewQuestion() {
@@ -287,6 +350,62 @@
     ];
   }
 
+  /* One line for the PDF and one short line under the next step. */
+  function nextLineFor(b) {
+    return b.pass
+      ? 'Capacity is the first of five. The next four checkpoints are Supply, Representation, Aim and Conversion, and the diagnostic names which one is costing you most.'
+      : 'We are not going to sell you Foundation Training today. Positioning cannot compensate for a skill that is not there yet, and telling you so costs you less than finding out after you have paid.';
+  }
+
+  /* The next step sells straight to its page. WhatsApp is only for a question. */
+  function nextStep(r, b, shown) {
+    var CD_TRACK = { admin:'Virtual Assistant', support:'Customer Support Specialist', marketing:'Digital Marketer',
+      writing:'Copywriter', data:'Data Analyst', dev:'', pm:'Project Manager', design:'', product:'Product Manager' };
+    var wrap = el('div', 'csc-next');
+    wrap.appendChild(el('p', 'csc-kicker', 'Your next step'));
+    var options;
+    if (b.pass) {
+      wrap.appendChild(el('h3', 'csc-head', 'The skill is there. Now: can employers read you?'));
+      options = [
+        { label: 'Scan your CV', price: 'Free', cta: 'Scan my CV', href: '../cvscan/',
+          what: 'Ten checks and a score out of 10 in 5 seconds. It shows whether your CV carries the skill you just proved.' },
+        { label: 'Find what is holding your search back', price: 'Free', cta: 'Run the free diagnosis', href: '../diagnose/',
+          what: 'Five questions, about 90 seconds. It names the part of your search to fix first.' }
+      ];
+    } else {
+      wrap.appendChild(el('h3', 'csc-head', 'Build the skill first.'));
+      wrap.appendChild(el('p', 'csc-next-lead', 'A better CV will not fix this. A structured track will.'));
+      var t = CD_TRACK.hasOwnProperty(r.fam.id) ? CD_TRACK[r.fam.id] : '';
+      options = [
+        { label: 'Career Development \u2014 Self-Study', price: '\u20a650,000', cta: 'Start my career track',
+          href: '../register.html' + (t ? '?track=' + encodeURIComponent(t) : '') + '#careerdev',
+          what: 'A guided track at The Mentorine School' + (t ? ' (' + t + ')' : '') + ': a roadmap, courses and practical exercises, at your own pace.' }
+      ];
+    }
+    var cards = el('div', 'csc-nx');
+    options.forEach(function (o) {
+      var c = el('div', 'csc-nx-card',
+        '<span class="csc-nx-t">' + esc(o.label) + (o.price ? ' <span class="csc-nx-p">' + esc(o.price) + '</span>' : '') + '</span>' +
+        '<span class="csc-nx-d">' + esc(o.what) + '</span>' +
+        '<a class="csc-go" href="' + esc(o.href) + '"' + (/^\.\.\/(register|cvscan|diagnose)/.test(o.href) ? ' target="_blank" rel="noopener"' : '') +
+        '><span>' + esc(o.cta) + '</span><span class="arrow">\u2192</span></a>');
+      cards.appendChild(c);
+    });
+    wrap.appendChild(cards);
+    if (!b.pass) {
+      var free = el('a', 'csc-ask', 'Prefer to start free? See the free resources');
+      free.href = '../free.html';
+      wrap.appendChild(free);
+    }
+    var ask = el('a', 'csc-ask', 'Have a question first? Ask us on WhatsApp');
+    ask.href = 'https://wa.me/2348032925957?text=' + encodeURIComponent(
+      'CAPACITY\n\nI scanned for ' + r.fam.label + ' and scored ' + shown + '/10. I have a question: ');
+    ask.rel = 'noopener'; ask.target = '_blank';
+    wrap.appendChild(ask);
+    if (!b.pass) wrap.appendChild(el('p', 'csc-note', 'Foundation Training and application help wait until the skill is there.'));
+    return wrap;
+  }
+
   function viewResult() {
     var r = score(), b = band(r), g = gaps(r), p = plan(r, b, g);
     var box = mount();
@@ -303,14 +422,18 @@
     card.appendChild(el('h3', 'csc-head', esc(b.head)));
     card.appendChild(el('p', 'csc-body', esc(b.body)));
     card.appendChild(el('p', 'csc-role-line',
-      'Role family assessed: <b>' + esc(r.fam.label) + '</b>'));
+      'Job assessed: <b>' + esc(r.fam.label) + '</b>'));
     box.appendChild(card);
 
-    /* the report button sits high, where people look for it */
-    var dl = el('div', 'csc-dl');
-    dl.innerHTML = '<button class="btn-primary-ui btn-yes" type="button" id="capPdf"><span>Download Your Report (PDF)</span><span class="arrow-wrap"><span class="arrow is-down">↓</span></span></button>' +
-      '<span class="csc-dl-note">Your score, your gaps and your action plan. Made on this device — nothing is uploaded.</span>';
+    /* the result is on the page: say so, then the download, then the next step */
+    var dl = el('div', 'csc-dl2');
+    dl.innerHTML = '<div class="csc-dl2-copy"><p class="csc-kicker">Your result is ready</p>' +
+      '<p><b>This is your result.</b> Download it to keep: your score, your gaps and what to build first.</p></div>' +
+      '<button class="btn-primary-ui btn-yes" type="button" id="capPdf"><span>Download my result</span><span class="arrow-wrap"><span class="arrow is-down">\u2193</span></span></button>';
     box.appendChild(dl);
+
+    var nextLine = nextLineFor(b);
+    box.appendChild(nextStep(r, b, shown));
 
     box.appendChild(el('p', 'csc-sub', 'Where the score came from'));
     var grid = el('div', 'csc-dims');
@@ -326,26 +449,17 @@
 
     if (!r.corePass) {
       box.appendChild(el('p', 'csc-note is-warn',
-        'The central task of this profession — <b>' + esc(coreQuestion(r)) + '</b> — scored zero. That is the one result the audit will not pass, at any total.'));
+        'The central task of this profession \u2014 <b>' + esc(coreQuestion(r)) + '</b> \u2014 scored zero. That is the one result the audit will not pass, at any total.'));
     }
-
-    box.appendChild(el('p', 'csc-sub', 'Your action plan'));
-    var ol = el('ol', 'csc-plan');
-    p.forEach(function (s) {
-      ol.appendChild(el('li', null, '<b>' + esc(s.title) + '</b><span>' + esc(s.body) + '</span>'));
-    });
-    box.appendChild(ol);
 
     if (g.length) {
       box.appendChild(el('p', 'csc-sub', 'What to build, question by question'));
-      box.appendChild(el('p', 'csc-help',
-        'Every answer below the top level, the central task first, then lowest first. Move each one up a level and your score rises by half a point.'));
       var list = el('div', 'csc-fixes');
       g.forEach(function (x) {
         var it = el('div', 'csc-fix' + (x.core ? ' is-core' : ''));
         it.innerHTML =
-          '<p class="csc-fix-k">' + (x.core ? 'Central task · ' : '') + esc(x.dim) +
-          ' · you answered <b>' + esc(x.answer) + '</b></p>' +
+          '<p class="csc-fix-k">' + (x.core ? 'Central task \u00b7 ' : '') + esc(x.dim) +
+          ' \u00b7 you answered <b>' + esc(x.answer) + '</b></p>' +
           '<p class="csc-fix-q">' + esc(x.q) + '</p>' +
           '<p class="csc-fix-a"><b>Do this:</b> ' + esc(x.fix) + '</p>';
         list.appendChild(it);
@@ -353,50 +467,12 @@
       box.appendChild(list);
     }
 
-    if (r.strong.length) {
-      box.appendChild(el('p', 'csc-sub', 'What you already have'));
-      box.appendChild(el('p', 'csc-note', 'Strongest: <b>' + esc(r.strong.join(', ')) + '</b>.'));
-    }
-
-    box.appendChild(el('p', 'csc-sub', 'Your next move'));
-    var acts = el('div', 'csc-acts');
-    var nextLine;
-    if (b.pass) {
-      acts.innerHTML =
-        '<a class="btn-primary-ui btn-yes" href="../diagnose/"><span>Continue Your ERJ Diagnosis — Free</span><span class="arrow-wrap"><span class="arrow">→</span></span></a>' +
-        '<a class="btn-more btn-secondary-ui" href="../cvscan/"><span>Next: Can Employers Read You?</span><span class="arrow-wrap"><span class="arrow">→</span></span></a>';
-      nextLine = 'Capacity is the first of five. The next four checkpoints are Supply, Representation, Aim and Conversion — and the diagnostic names which one is costing you most.';
-    } else {
-      acts.innerHTML =
-        '<a class="btn-primary-ui btn-yes" href="../free.html"><span>Build The Skill — Free Resources</span><span class="arrow-wrap"><span class="arrow">→</span></span></a>' +
-        '<a class="btn-more btn-secondary-ui" href="' +
-        'https://wa.me/2348032925957?text=' + encodeURIComponent(
-          'CAPACITY\n\nI scanned for ' + r.fam.label + ' and scored ' + shown +
-          '/10. I would like to know what to build first.') +
-        '" rel="noopener" target="_blank"><span>Ask What To Build First</span><span class="arrow-wrap"><span class="arrow">→</span></span></a>';
-      nextLine = 'We are not going to sell you Foundation Training today. Positioning cannot compensate for a skill that is not there yet — and telling you so is cheaper for you than finding out after you have paid.';
-    }
-    box.appendChild(acts);
-    box.appendChild(el('p', 'csc-note', esc(nextLine)));
-    /* A paid route to build the skill, offered only below the threshold and
-       only where The Mentorine School actually has a matching track. The free
-       route stays first. '' = several tracks fit, so nothing is preselected. */
-    var CD_TRACK = { admin:'Virtual Assistant', support:'Customer Support Specialist', marketing:'Digital Marketer',
-      writing:'Copywriter', data:'Data Analyst', dev:'', pm:'Project Manager', design:'', product:'Product Manager' };
-    if (!b.pass && r.fam && CD_TRACK.hasOwnProperty(r.fam.id)) {
-      var t = CD_TRACK[r.fam.id];
-      box.appendChild(el('p', 'csc-note',
-        'Want a structured way to build it? <a href="../register.html' + (t ? '?track=' + encodeURIComponent(t) : '') +
-        '#careerdev">Career Development — Self-Study</a> gives you ' + (t ? 'the ' + esc(t) + ' track' : 'a career track of your choice') +
-        ' at The Mentorine School for 30 days: a roadmap, courses and practical exercises. It is paid; the free route above is not.'));
-    }
-
     var nav = el('div', 'csc-nav');
-    var redo = el('button', 'csc-back', 'Retake for the same role');
+    var redo = el('button', 'csc-back', 'Retake for the same job');
     redo.type = 'button';
     redo.addEventListener('click', function () { state.answers = []; state.i = 0; viewQuestion(); });
     nav.appendChild(redo);
-    var again = el('button', 'csc-back', 'Scan a different role');
+    var again = el('button', 'csc-back', 'Scan a different job');
     again.type = 'button';
     again.addEventListener('click', viewPick);
     nav.appendChild(again);
@@ -409,7 +485,7 @@
       if (!window.ERJCapacityPDF) return;
       window.ERJCapacityPDF.download({
         score: shown, tag: b.tag, head: b.head, body: b.body, pass: b.pass,
-        gate: gateLine(r), family: r.fam.label, familyShort: r.fam.label.split('·')[0].trim(),
+        gate: gateLine(r), family: r.fam.label, familyShort: r.fam.label.split('\u00b7')[0].trim(),
         dims: dimRows, plan: p,
         gaps: g.map(function (x) { return { q: x.q, core: x.core, dim: x.dim, answer: x.answer, fix: x.fix }; }),
         strong: r.strong,
