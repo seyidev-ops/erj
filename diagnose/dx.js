@@ -188,7 +188,7 @@
     function renderStep() {
         const doneEl = document.getElementById('dxDone');
         stepEl.innerHTML = QUESTIONS.map((q, qi) =>
-            '<div class="dxq" data-q="' + qi + '">' +
+            '<div class="dxq" data-q="' + qi + '"' + (qi ? ' hidden' : '') + '>' +
                 '<div class="dxq-top"><span class="dxq-n">0' + (qi + 1) + '</span><div>' +
                 '<h3 class="dx-q">' + esc(q.q) + '</h3><p class="dx-why">' + esc(q.why) + '</p></div></div>' +
                 '<button type="button" class="dxd-btn" id="dxb' + qi + '" role="combobox" aria-haspopup="listbox" aria-expanded="false" aria-controls="dxl' + qi + '">' +
@@ -196,9 +196,9 @@
                 '<ul class="dxd-list" id="dxl' + qi + '" role="listbox" hidden>' +
                 q.answers.map((a, i) => '<li class="dxd-opt" role="option" aria-selected="false" data-i="' + i + '" id="dxo' + qi + '_' + i + '">' + esc(a.label) +
                     (a.note ? '<small>' + esc(a.note) + '</small>' : '') + '</li>').join('') +
-                '</ul></div>').join('') +
-            '<div class="dxq-go"><button type="button" class="dx-submit" id="dxGo" disabled>Show my result</button>' +
-            '<span id="dxHint">Answer all five to see your result</span></div>';
+                '</ul>' + (qi ? '<button type="button" class="dxq-back" data-b="' + qi + '">\u2190 Previous question</button>' : '') + '</div>').join('') +
+            '<div class="dxq-go" id="dxGoWrap" hidden><button type="button" class="dx-submit" id="dxGo" disabled>Show my result</button>' +
+            '<span id="dxHint"></span></div>';
         const rows = Array.from(stepEl.querySelectorAll('.dxq'));
         const go = document.getElementById('dxGo');
         const hint = document.getElementById('dxHint');
@@ -232,15 +232,24 @@
             row.classList.add('done');
             close(row);
             sync();
-            const next = rows.find((r, k) => !picked[k]);
-            if (next) {
-                open(next);
-                next.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            const next = rows.findIndex((r, k) => !picked[k]);
+            if (next >= 0) {
+                showRow(next);
+                stepEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
             else {
+                document.getElementById('dxGoWrap').hidden = false;
                 go.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }
         }
+        function showRow(k) {
+            rows.forEach((r, x) => { r.hidden = x !== k; if (x !== k) close(r); });
+            document.getElementById('dxGoWrap').hidden = true;
+            const r = rows[k];
+            r.classList.remove('dxq-in'); void r.offsetWidth; r.classList.add('dxq-in');
+            open(r);
+        }
+        Array.from(stepEl.querySelectorAll('.dxq-back')).forEach(b => b.addEventListener('click', () => showRow(Number(b.dataset.b) - 1)));
         rows.forEach(row => {
             const btn = row.querySelector('.dxd-btn');
             const opts = Array.from(row.querySelectorAll('.dxd-opt'));
@@ -262,7 +271,7 @@
             renderResult();
         });
         sync();
-        open(rows[0]);
+        showRow(0);
     }
     function winner() {
         // highest score; ties resolve UPSTREAM — an early weak point makes

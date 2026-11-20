@@ -149,6 +149,9 @@
   .dxd-opt small{display:block;margin-top:.15rem;font-size:.76rem;color:var(--ink-soft);}
   .dxd-opt:hover,.dxd-opt.act{background:rgba(255,87,34,.13);}
   .dxd-opt[aria-selected="true"]{color:var(--accent);font-weight:600;}
+  .dxq-back{appearance:none;background:none;border:0;color:var(--ink-soft);font:inherit;font-size:.84rem;text-decoration:underline;cursor:pointer;margin-top:.8rem;padding:0;}
+  .dxq-in{animation:dxqIn .4s var(--ease,ease);}
+  @keyframes dxqIn{from{transform:translateY(14px);}to{transform:none;}}
   .dxq-go{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;margin-top:1.1rem;}
   .dx-submit{appearance:none;border:1px solid var(--accent);background:var(--accent-btn,#FF5722);color:#fff;font:inherit;font-weight:700;font-size:1rem;padding:.9rem 1.7rem;border-radius:100px;cursor:pointer;white-space:nowrap;transition:transform .25s,box-shadow .25s,opacity .25s;}
   .dx-submit:disabled{opacity:.4;cursor:not-allowed;}
@@ -251,7 +254,7 @@
 <link href="/favicon-96.png" rel="icon" sizes="96x96" type="image/png"/>
 <link href="/appletouchicon.png" rel="apple-touch-icon"/>
 <link href="../erj-alive.css?v=20261028b" rel="stylesheet" media="print" onload="this.media='all'"/><noscript><link href="../erj-alive.css?v=20261028b" rel="stylesheet"/></noscript>
-<link href="../erj-future.css?v=20261104a" rel="stylesheet"/>
+<link href="../erj-future.css?v=20261120a" rel="stylesheet"/>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -317,7 +320,7 @@
 <div class="dxw-head">
 <div class="section-label"><span class="mark"></span>The diagnosis</div>
 <h2>Five answers. <span>One weak point.</span></h2>
-<p class="section-sub">Tap each question and pick the answer closest to you. No wrong answers, nothing uploaded or stored.</p>
+<p class="section-sub">One question at a time. Pick the answer closest to you. No wrong answers, nothing uploaded or stored.</p>
 </div>
 <div class="dx-frame dx-lit">
 <div class="dx-frame-top">
@@ -351,7 +354,7 @@
 <script src="../erj-config.js?v=20261119c"></script>
 <script src="../erj-capture.js?v=20261120a"></script>
 <script src="report-pdf.js?v=20261114a"></script>
-<script src="dx.js?v=20261120a"></script>
+<script src="dx.js?v=20261120b"></script>
 <script src="../erj-product.js?v=20260924c"></script>
 <script src="../erj-schema.js?v=20261116a"></script>
 <script defer="" src="../erj-alive.js?v=20261004a"></script>
