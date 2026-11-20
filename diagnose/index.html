@@ -116,6 +116,47 @@
   @keyframes jdIn{from{opacity:.4;transform:translateY(-4px);}to{opacity:1;transform:none;}}
   @media(max-width:560px){.jd-body{padding-left:1.15rem;}}
   @media(prefers-reduced-motion:reduce){.jd-body{animation:none;}}
+
+  /* the diagnosis lives in its own world: a lit band, not a card in a page */
+  .dx-world{position:relative;margin:3.2rem 0;padding:clamp(2.6rem,7vw,4.6rem) 0;overflow:hidden;
+    border-top:1px solid rgba(255,87,34,.5);border-bottom:1px solid rgba(255,87,34,.5);
+    background:radial-gradient(900px 420px at 15% -10%,rgba(255,87,34,.20),transparent 62%),radial-gradient(700px 380px at 95% 110%,rgba(255,87,34,.14),transparent 60%),var(--paper-2,#0b0b0b);}
+  .dx-world::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.35;
+    background-image:linear-gradient(var(--line-soft,rgba(127,127,127,.18)) 1px,transparent 1px),linear-gradient(90deg,var(--line-soft,rgba(127,127,127,.18)) 1px,transparent 1px);
+    background-size:44px 44px;-webkit-mask-image:radial-gradient(ellipse at 50% 30%,#000 10%,transparent 70%);mask-image:radial-gradient(ellipse at 50% 30%,#000 10%,transparent 70%);}
+  .dx-world .wrap{position:relative;}
+  .dxw-head{text-align:center;max-width:640px;margin:0 auto 1.8rem;}
+  .dxw-count{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);}
+  .dxw-count b{color:var(--accent);font-size:1rem;}
+  .dx-world .dx-frame{max-width:820px;margin:0 auto;}
+  .dxq{border:1px solid var(--line);border-radius:16px;background:var(--paper-2,transparent);padding:1.05rem 1.1rem;margin-bottom:.85rem;transition:border-color .25s,box-shadow .25s;}
+  .dxq.open,.dxq.done{border-color:var(--accent);}
+  .dxq.open{box-shadow:0 20px 50px -30px rgba(255,87,34,.7);}
+  .dxq-top{display:flex;gap:.9rem;align-items:flex-start;margin-bottom:.8rem;}
+  .dxq-n{flex:none;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;border:2px solid var(--accent);color:var(--accent);font-family:var(--font-display);font-weight:800;font-size:.8rem;transition:background .25s,color .25s;}
+  .dxq.done .dxq-n{background:var(--accent);color:#fff;}
+  .dxq .dx-q{font-size:clamp(1.02rem,2.4vw,1.2rem)!important;line-height:1.3!important;margin:0 0 .25rem!important;}
+  .dxq .dx-why{font-size:.82rem!important;margin:0!important;color:var(--ink-soft);}
+  .dxd-btn{appearance:none;width:100%;display:flex;align-items:center;justify-content:space-between;gap:.8rem;text-align:left;cursor:pointer;
+    padding:.85rem 1rem;border:1px solid var(--line);border-radius:12px;background:var(--card);color:var(--ink);font:inherit;font-size:.95rem;transition:border-color .2s,background .2s;}
+  .dxd-btn:hover,.dxq.open .dxd-btn{border-color:var(--accent);}
+  .dxd-btn i{flex:none;width:9px;height:9px;border-right:2px solid var(--accent);border-bottom:2px solid var(--accent);transform:rotate(45deg) translateY(-2px);transition:transform .25s;}
+  .dxq.open .dxd-btn i{transform:rotate(-135deg) translateY(-2px);}
+  .dxd-val.ph{color:var(--ink-soft);}
+  .dxd-list{list-style:none;margin:.5rem 0 0;padding:.35rem;border:1px solid var(--line);border-radius:12px;background:var(--card);display:grid;gap:.2rem;animation:jdIn .25s ease;}
+  .dxd-list[hidden]{display:none;}
+  .dxd-opt{padding:.7rem .85rem;border-radius:9px;cursor:pointer;font-size:.93rem;line-height:1.4;transition:background .15s;}
+  .dxd-opt small{display:block;margin-top:.15rem;font-size:.76rem;color:var(--ink-soft);}
+  .dxd-opt:hover,.dxd-opt.act{background:rgba(255,87,34,.13);}
+  .dxd-opt[aria-selected="true"]{color:var(--accent);font-weight:600;}
+  .dxq-go{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;margin-top:1.1rem;}
+  .dx-submit{appearance:none;border:1px solid var(--accent);background:var(--accent-btn,#FF5722);color:#fff;font:inherit;font-weight:700;font-size:1rem;padding:.9rem 1.7rem;border-radius:100px;cursor:pointer;white-space:nowrap;transition:transform .25s,box-shadow .25s,opacity .25s;}
+  .dx-submit:disabled{opacity:.4;cursor:not-allowed;}
+  .dx-submit:not(:disabled){box-shadow:0 16px 36px -14px rgba(255,87,34,.9);animation:dxPulse 2.4s ease-in-out infinite;}
+  .dx-submit:not(:disabled):hover{transform:translateY(-2px);}
+  @keyframes dxPulse{0%,100%{box-shadow:0 16px 36px -14px rgba(255,87,34,.9);}50%{box-shadow:0 16px 44px -8px rgba(255,87,34,1);}}
+  #dxHint{font-size:.82rem;color:var(--ink-soft);}
+  @media(prefers-reduced-motion:reduce){.dx-submit:not(:disabled){animation:none;}.dxd-list{animation:none;}}
   .dx-handoff{margin-top:1.6rem;}
 
   .dx-frame{
@@ -225,32 +266,17 @@
 <h1>Find what is <em>holding back</em> your job search.</h1>
 <p class="lede">Five questions. You will know where to spend your next thirty days.</p>
 <div class="erj-actions dx-hero-cta">
-<a class="btn-yes btn-primary-ui" href="#dx"><span>Start the 5 questions</span><span class="arrow-wrap"><span class="arrow is-down">↓</span></span></a>
+<a class="btn-yes btn-primary-ui" href="#dx"><span>Start the diagnosis</span><span class="arrow-wrap"><span class="arrow is-down">↓</span></span></a>
 </div>
 </section>
 
 <!-- ── THE DIAGNOSIS ───────────── -->
-<section class="section-line wrap" id="dx">
-<div class="section-label"><span class="mark"></span>The diagnosis</div>
-<h2>Answer honestly. <span>Nobody is watching.</span></h2>
-<p class="section-sub">No wrong answers. About ninety seconds. Nothing is uploaded or stored.</p>
-<div class="dx-frame dx-lit">
-<div class="dx-frame-top">
-<span class="dx-frame-k">The diagnostic</span>
-<span class="dx-dots" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-</div>
-<div class="dx" id="dxBox">
-<div class="dx-progress"><span id="dxBar" style="width:0%"></span></div>
-<div class="dx-step" id="dxStep"></div>
-</div>
-</div>
-<div class="dx-result" hidden="" id="dxResult"></div>
-</section>
+
 
 <!-- ── THE MODEL ───────────────── -->
 <section class="section-line wrap reveal" id="parts">
 <div class="section-label"><span class="mark"></span>How it works</div>
-<h2>Five parts. <span>Start at the earliest.</span></h2>
+<h2>How it works. <span>Five parts, in order.</span></h2>
 <p class="section-sub">Every remote job search runs on the same five. When it is not producing offers, the fault is almost always at one of them. Tap a part to see how it shows up.</p>
 <div aria-hidden="true" class="pipe">
 <svg role="img" viewbox="0 0 800 190" xmlns="http://www.w3.org/2000/svg">
@@ -283,8 +309,31 @@
 <details class="jd reveal"><summary><span class="jd-n">04</span><span class="jd-tx"><b>Aim</b><small>Are you applying to the jobs most likely to hire you?</small></span></summary><div class="jd-body"><p class="jd-law">Applying everywhere isn't the same as applying where you'd get hired.</p><p><b>You will recognise it when:</b> you are applying — a lot — but at the wrong roles, the wrong companies, or into portals where the application dies. Volume without direction.</p></div></details>
 <details class="jd reveal"><summary><span class="jd-n">05</span><span class="jd-tx"><b>Conversion</b><small>Do your interviews turn into job offers?</small></span></summary><div class="jd-body"><p class="jd-law">Interviews don't pay you. A signed offer does.</p><p><b>You will recognise it when:</b> replies come, even interviews come — but offers do not. Or the offer arrives and the money is wrong because nobody taught you to negotiate it.</p></div></details>
 </div>
-<p class="joints-close reveal"><b>Fix the earliest one first.</b> The five questions above name the one to start with.</p>
+<p class="joints-close reveal"><b>Fix the earliest one first.</b> The diagnosis below names the one to start with.</p>
 </section>
+
+<section class="dx-world" id="dx">
+<div class="wrap">
+<div class="dxw-head">
+<div class="section-label"><span class="mark"></span>The diagnosis</div>
+<h2>Five answers. <span>One weak point.</span></h2>
+<p class="section-sub">Tap each question and pick the answer closest to you. No wrong answers, nothing uploaded or stored.</p>
+</div>
+<div class="dx-frame dx-lit">
+<div class="dx-frame-top">
+<span class="dx-frame-k">Diagnostic</span>
+<span class="dxw-count"><b id="dxDone">0</b> / 5 answered</span>
+<span class="dx-dots" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
+</div>
+<div class="dx" id="dxBox">
+<div class="dx-progress"><span id="dxBar" style="width:0%"></span></div>
+<div class="dx-step" id="dxStep"></div>
+</div>
+</div>
+<div class="dx-result" hidden="" id="dxResult"></div>
+</div>
+</section>
+
 </main>
 <footer class="foot wrap">
 <nav class="foot-links"><a href="../index.html">Home</a><a href="../about.html">About ERJ</a><a href="../starthere.html">Your Starting Line</a><a href="../free.html">Free For You</a><a href="../blog.html">Blog</a><a href="../login.html">Participant Login</a></nav>
@@ -294,15 +343,15 @@
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"></path></svg>
 </a>
 <script>window.ERJ_NAV={active:'diagnose',base:'../',onPage:[
-  {label:'The 5 Questions',href:'#dx',sub:'About 90 seconds · instant result · nothing stored'},
-  {label:'The five parts',href:'#parts',sub:'How a job search breaks, and where'}
+  {label:'How it works',href:'#parts',sub:'How a job search breaks, and where'},
+  {label:'The diagnosis',href:'#dx',sub:'About 90 seconds · instant result · nothing stored'}
 ]};</script>
 <script src="../erj-theme.js?v=20260911a"></script>
 <script src="../erj-nav.js?v=20261120b"></script>
 <script src="../erj-config.js?v=20261119c"></script>
 <script src="../erj-capture.js?v=20261120a"></script>
 <script src="report-pdf.js?v=20261114a"></script>
-<script src="dx.js?v=20261114a"></script>
+<script src="dx.js?v=20261120a"></script>
 <script src="../erj-product.js?v=20260924c"></script>
 <script src="../erj-schema.js?v=20261116a"></script>
 <script defer="" src="../erj-alive.js?v=20261004a"></script>

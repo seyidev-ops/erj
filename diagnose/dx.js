@@ -180,53 +180,89 @@
     function esc(s) {
         return s.replace(/[&<>"]/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[m]));
     }
+    function recompute() {
+        ORDER.forEach(k => { scores[k] = 0; });
+        picked.forEach(a => { if (a) Object.keys(a.weight).forEach(k => { scores[k] += a.weight[k] || 0; }); });
+    }
+    function answered() { return QUESTIONS.filter((q, i) => picked[i]).length; }
     function renderStep() {
-        const q = QUESTIONS[step];
-        barEl.style.width = Math.round((step / QUESTIONS.length) * 100) + '%';
-        paintDots(step);
-        stepEl.innerHTML =
-            '<div class="dx-count">Question ' + (step + 1) + ' of ' + QUESTIONS.length + '</div>' +
-                '<h3 class="dx-q">' + esc(q.q) + '</h3>' +
-                '<p class="dx-why">' + esc(q.why) + '</p>' +
-                '<div class="dx-answers">' +
-                q.answers.map((a, i) => '<button type="button" class="dx-a" data-i="' + i + '">' +
-                    '<span class="dx-a-t">' + esc(a.label) + '</span>' +
-                    (a.note ? '<span class="dx-a-n">' + esc(a.note) + '</span>' : '') +
-                    '<span class="dx-a-x">\u2192</span></button>').join('') +
-                '</div>' +
-                (step > 0 ? '<button type="button" class="dx-back" id="dxBack">\u2190 Previous question</button>' : '');
-        Array.from(stepEl.querySelectorAll('.dx-a')).forEach(btn => {
-            btn.addEventListener('click', () => {
-                const a = QUESTIONS[step].answers[Number(btn.dataset.i)];
-                Object.keys(a.weight).forEach(k => {
-                    scores[k] += a.weight[k] || 0;
-                });
-                chosen[step] = a.label;
-                picked[step] = a;
-                step++;
-                if (step >= QUESTIONS.length) {
-                    renderResult();
-                }
-                else {
-                    renderStep();
-                    stepEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                }
-            });
-        });
-        const back = document.getElementById('dxBack');
-        if (back) {
-            back.addEventListener('click', () => {
-                step--;
-                const prev = QUESTIONS[step].answers.find(a => a.label === chosen[step]);
-                picked[step] = undefined;
-                if (prev) {
-                    Object.keys(prev.weight).forEach(k => {
-                        scores[k] -= prev.weight[k] || 0;
-                    });
-                }
-                renderStep();
-            });
+        const doneEl = document.getElementById('dxDone');
+        stepEl.innerHTML = QUESTIONS.map((q, qi) =>
+            '<div class="dxq" data-q="' + qi + '">' +
+                '<div class="dxq-top"><span class="dxq-n">0' + (qi + 1) + '</span><div>' +
+                '<h3 class="dx-q">' + esc(q.q) + '</h3><p class="dx-why">' + esc(q.why) + '</p></div></div>' +
+                '<button type="button" class="dxd-btn" id="dxb' + qi + '" role="combobox" aria-haspopup="listbox" aria-expanded="false" aria-controls="dxl' + qi + '">' +
+                '<span class="dxd-val ph">Choose your answer</span><i aria-hidden="true"></i></button>' +
+                '<ul class="dxd-list" id="dxl' + qi + '" role="listbox" hidden>' +
+                q.answers.map((a, i) => '<li class="dxd-opt" role="option" aria-selected="false" data-i="' + i + '" id="dxo' + qi + '_' + i + '">' + esc(a.label) +
+                    (a.note ? '<small>' + esc(a.note) + '</small>' : '') + '</li>').join('') +
+                '</ul></div>').join('') +
+            '<div class="dxq-go"><button type="button" class="dx-submit" id="dxGo" disabled>Show my result</button>' +
+            '<span id="dxHint">Answer all five to see your result</span></div>';
+        const rows = Array.from(stepEl.querySelectorAll('.dxq'));
+        const go = document.getElementById('dxGo');
+        const hint = document.getElementById('dxHint');
+        function sync() {
+            const n = answered();
+            barEl.style.width = Math.round((n / QUESTIONS.length) * 100) + '%';
+            paintDots(n - 1);
+            if (doneEl) doneEl.textContent = String(n);
+            go.disabled = n < QUESTIONS.length;
+            hint.textContent = n < QUESTIONS.length ? 'Answer all five to see your result (' + (QUESTIONS.length - n) + ' to go)' : 'Ready. Your result is one tap away.';
         }
+        function close(row) {
+            row.classList.remove('open');
+            row.querySelector('.dxd-btn').setAttribute('aria-expanded', 'false');
+            row.querySelector('.dxd-list').hidden = true;
+        }
+        function open(row) {
+            rows.forEach(r => { if (r !== row) close(r); });
+            row.classList.add('open');
+            row.querySelector('.dxd-btn').setAttribute('aria-expanded', 'true');
+            row.querySelector('.dxd-list').hidden = false;
+        }
+        function choose(row, i) {
+            const qi = Number(row.dataset.q);
+            picked[qi] = QUESTIONS[qi].answers[i];
+            chosen[qi] = picked[qi].label;
+            const val = row.querySelector('.dxd-val');
+            val.textContent = picked[qi].label;
+            val.classList.remove('ph');
+            Array.from(row.querySelectorAll('.dxd-opt')).forEach((o, k) => o.setAttribute('aria-selected', k === i ? 'true' : 'false'));
+            row.classList.add('done');
+            close(row);
+            sync();
+            const next = rows.find((r, k) => !picked[k]);
+            if (next) {
+                open(next);
+                next.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+            else {
+                go.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        }
+        rows.forEach(row => {
+            const btn = row.querySelector('.dxd-btn');
+            const opts = Array.from(row.querySelectorAll('.dxd-opt'));
+            let act = -1;
+            const mark = (k) => { act = (k + opts.length) % opts.length; opts.forEach((o, x) => o.classList.toggle('act', x === act)); btn.setAttribute('aria-activedescendant', opts[act].id); };
+            btn.addEventListener('click', () => { row.classList.contains('open') ? close(row) : open(row); });
+            btn.addEventListener('keydown', e => {
+                const isOpen = row.classList.contains('open');
+                if (e.key === 'ArrowDown' || e.key === 'ArrowUp') { e.preventDefault(); if (!isOpen) open(row); mark(act < 0 ? 0 : act + (e.key === 'ArrowDown' ? 1 : -1)); }
+                else if ((e.key === 'Enter' || e.key === ' ') && isOpen && act >= 0) { e.preventDefault(); choose(row, act); }
+                else if (e.key === 'Escape' && isOpen) { e.preventDefault(); close(row); }
+            });
+            opts.forEach(o => o.addEventListener('click', () => choose(row, Number(o.dataset.i))));
+        });
+        go.addEventListener('click', () => {
+            if (answered() < QUESTIONS.length) return;
+            recompute();
+            step = QUESTIONS.length;
+            renderResult();
+        });
+        sync();
+        open(rows[0]);
     }
     function winner() {
         // highest score; ties resolve UPSTREAM — an early weak point makes
