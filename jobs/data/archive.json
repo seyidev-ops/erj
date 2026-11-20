@@ -19411,6 +19411,35 @@
    "direct": true,
    "closed": "2026-11-20",
    "closed_reason": "employer page closed"
+  },
+  {
+   "id": "077518e9f3",
+   "title": "Senior Backend Engineer - Mobility",
+   "company": "M-KOPA",
+   "region": "Nairobi / Cape Town / Lagos / Kampala / Accra / Johannesburg",
+   "type": "Full-Time",
+   "experience": "Not stated",
+   "salary": "Undisclosed",
+   "bullets": [
+    "Strong grasp of C# .NET development",
+    "Experience with event-driven systems: Service Bus or similar messaging technologies such as Kafka or RabbitMQ",
+    "Microservices architecture experience",
+    "Experience with Azure, or other major cloud providers such as AWS or GCP"
+   ],
+   "apply": "https://jobs.ashbyhq.com/M-KOPA/4f814df8-71c1-4aef-99ca-4ca5e47dd266",
+   "posted": "2026-10-27",
+   "deadline": null,
+   "checked": "2026-11-20",
+   "added": "2026-10-27",
+   "listed": "2026-10-27",
+   "source": "Ashby",
+   "origin": "feed",
+   "ats_id": "4f814df8-71c1-4aef-99ca-4ca5e47dd266",
+   "family": "Tech & IT",
+   "why": "Open to candidates in Nigeria by name. You apply directly on the employer's own page.",
+   "direct": true,
+   "closed": "2026-11-20",
+   "closed_reason": "employer page closed"
   }
  ]
 }

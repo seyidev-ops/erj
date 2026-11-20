@@ -94,7 +94,7 @@
     "Strong proficiency in AutoCAD for technical drawings and layouts",
     "Proficiency in 3ds Max, V-Ray, Lumion, or similar rendering software"
    ],
-   "apply": "https://weworkremotely.com/remote-jobs/prospex-crm-interior-designer",
+   "apply": "https://jobs.lever.co/toptal/14cdeac3-9087-4216-b223-0a7b293a7a22?lever-origin=applied&lever-source%5B%5D=We%20Work%20Remotely",
    "posted": "2026-10-21",
    "deadline": null,
    "checked": "2026-11-20",
@@ -105,7 +105,7 @@
    "ats_id": null,
    "family": "Marketing & Creative",
    "why": "Open worldwide with no country exclusion, so you can apply from Nigeria.",
-   "direct": false
+   "direct": true
   },
   {
    "id": "d373c41350",
@@ -1540,33 +1540,6 @@
    "ats_id": "5017312101",
    "family": "Sales & Accounts",
    "why": "Open to candidates in Nigeria by name, and pays in foreign currency ($182). You apply directly on the employer's own page.",
-   "direct": true
-  },
-  {
-   "id": "077518e9f3",
-   "title": "Senior Backend Engineer - Mobility",
-   "company": "M-KOPA",
-   "region": "Nairobi / Cape Town / Lagos / Kampala / Accra / Johannesburg",
-   "type": "Full-Time",
-   "experience": "Not stated",
-   "salary": "Undisclosed",
-   "bullets": [
-    "Strong grasp of C# .NET development",
-    "Experience with event-driven systems: Service Bus or similar messaging technologies such as Kafka or RabbitMQ",
-    "Microservices architecture experience",
-    "Experience with Azure, or other major cloud providers such as AWS or GCP"
-   ],
-   "apply": "https://jobs.ashbyhq.com/M-KOPA/4f814df8-71c1-4aef-99ca-4ca5e47dd266",
-   "posted": "2026-10-27",
-   "deadline": null,
-   "checked": "2026-11-20",
-   "added": "2026-10-27",
-   "listed": "2026-10-27",
-   "source": "Ashby",
-   "origin": "feed",
-   "ats_id": "4f814df8-71c1-4aef-99ca-4ca5e47dd266",
-   "family": "Tech & IT",
-   "why": "Open to candidates in Nigeria by name. You apply directly on the employer's own page.",
    "direct": true
   },
   {
@@ -8931,6 +8904,87 @@
    "ats_id": "4ee6b96f-cc38-4531-aadd-7ff0f8e87e25",
    "family": "Executive & Operations",
    "why": "Open worldwide with no country exclusion, so you can apply from Nigeria. You apply directly on the employer's own page.",
+   "direct": true
+  },
+  {
+   "id": "5093393b53",
+   "title": "Software Engineer",
+   "company": "Upsun",
+   "region": "Anywhere in the World",
+   "type": "Full-Time",
+   "experience": "Not stated",
+   "salary": "Undisclosed",
+   "bullets": [
+    "Production experience",
+    "Systems understanding",
+    "APIs and data: Experience building or consuming APIs and working with data stores such as relational databases",
+    "Testing and correctness"
+   ],
+   "apply": "https://weworkremotely.com/remote-jobs/upsun-software-engineer",
+   "posted": "2026-11-20",
+   "deadline": null,
+   "checked": "2026-11-20",
+   "added": "2026-11-20",
+   "listed": "2026-11-20",
+   "source": "We Work Remotely",
+   "origin": "feed",
+   "ats_id": null,
+   "family": "Tech & IT",
+   "why": "Open worldwide with no country exclusion, so you can apply from Nigeria.",
+   "direct": false
+  },
+  {
+   "id": "26149be884",
+   "title": "Head of Operations & Compliance Audit",
+   "company": "Moniepoint",
+   "region": "Remote, Nigeria",
+   "type": "Internship",
+   "experience": "12–15 years",
+   "salary": "Undisclosed",
+   "bullets": [
+    "Minimum of 12-15 years progressive internal audit, control, or risk management experience within Financial Services (Fintech",
+    "Minimum of 5 years in a senior supervisory or managerial role leading internal audit teams",
+    "Proven track record in revenue assurance, financial controls, branch operations audit, and regulatory compliance",
+    "Minimum of a Bachelor's Degree (B.Sc. / HND) in Accounting, Finance, Economics, Business Administration, or related fields"
+   ],
+   "apply": "https://job-boards.eu.greenhouse.io/moniepoint/jobs/5043648101",
+   "posted": "2026-11-20",
+   "deadline": null,
+   "checked": "2026-11-20",
+   "added": "2026-11-20",
+   "listed": "2026-11-20",
+   "source": "Greenhouse",
+   "origin": "feed",
+   "ats_id": "5043648101",
+   "family": "Legal",
+   "why": "Open to candidates in Nigeria by name. You apply directly on the employer's own page.",
+   "direct": true
+  },
+  {
+   "id": "7c19e7f850",
+   "title": "Product Marketing Manager",
+   "company": "Scale Army",
+   "region": "Egypt / Argentina / Ethiopia / South Africa / Nigeria",
+   "type": "Contract",
+   "experience": "5+ years",
+   "salary": "$2.2K – $3K per month",
+   "bullets": [
+    "5+ years of B2B SaaS product marketing experience , with demonstrated ownership of positioning, messaging, and go-to-market initiatives",
+    "Experience marketing SaaS products or platforms to U.S. business buyers",
+    "Proven experience developing messaging frameworks, buyer personas, competitive intelligence, and sales enablement materials",
+    "Experience translating technical product capabilities into compelling business value propositions"
+   ],
+   "apply": "https://jobs.ashbyhq.com/Scale%20Army%20Careers/87b7850e-db85-41c7-8c4a-7300aaa40078",
+   "posted": "2026-11-20",
+   "deadline": null,
+   "checked": "2026-11-20",
+   "added": "2026-11-20",
+   "listed": "2026-11-20",
+   "source": "Ashby",
+   "origin": "feed",
+   "ats_id": "87b7850e-db85-41c7-8c4a-7300aaa40078",
+   "family": "Marketing & Creative",
+   "why": "Open to candidates in Nigeria by name, and pays in foreign currency ($2.2K – $3K per month). Contract work: a fast way to earn a first remote reference.",
    "direct": true
   }
  ]
