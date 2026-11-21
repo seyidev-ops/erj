@@ -8667,6 +8667,87 @@
    "family": "Virtual Assistant & Admin",
    "why": "Open worldwide with no country exclusion, so you can apply from Nigeria. Part-time, so it can sit beside a current job.",
    "direct": true
+  },
+  {
+   "id": "cd201f86cc",
+   "title": "Billing Engineer",
+   "company": "Tailscale",
+   "region": "Anywhere in the World",
+   "type": "Not stated",
+   "experience": "Not stated",
+   "salary": "$191,620",
+   "bullets": [
+    "Experience in backend software engineering, with a strong focus on billing, payments, or financial systems",
+    "Deep knowledge of SaaS billing models, including subscriptions, usage-based pricing, proration, discounts, and entitlements",
+    "Proven experience integrating with third-party billing platforms such as Stripe, Metronome, Orb, Zuora, etc",
+    "Experience designing and managing distributed systems, microservices, and event-driven architectures"
+   ],
+   "apply": "https://weworkremotely.com/remote-jobs/tailscale-billing-engineer",
+   "posted": "2026-11-21",
+   "deadline": null,
+   "checked": "2026-11-21",
+   "added": "2026-11-21",
+   "listed": "2026-11-21",
+   "source": "We Work Remotely",
+   "origin": "feed",
+   "ats_id": null,
+   "family": "Tech & IT",
+   "why": "Open worldwide with no country exclusion, so you can apply from Nigeria, and pays in foreign currency ($191,620).",
+   "direct": false
+  },
+  {
+   "id": "52907c8ab1",
+   "title": "Director, Revenue & Strategic Finance",
+   "company": "Bitwarden",
+   "region": "Anywhere in the World",
+   "type": "Full-Time",
+   "experience": "10+ years",
+   "salary": "Undisclosed",
+   "bullets": [
+    "10+ years of progressive experience in FP&A, sales finance, strategic finance or a mix, with at least 3 years leading revenue planning",
+    "Experience helping a SaaS business scale through a major growth stage, such as from roughly $50M to $100M+ in ARR",
+    "Deep fluency in SaaS revenue metrics and classic sales motion KPIs: bookings, ARR, NRR and GRR, CAC payback, LTV, pipeline coverage",
+    "Hands-on experience working with large customer and billing datasets"
+   ],
+   "apply": "https://weworkremotely.com/remote-jobs/bitwarden-director-revenue-strategic-finance",
+   "posted": "2026-11-21",
+   "deadline": null,
+   "checked": "2026-11-21",
+   "added": "2026-11-21",
+   "listed": "2026-11-21",
+   "source": "We Work Remotely",
+   "origin": "feed",
+   "ats_id": null,
+   "family": "Finance & Accounting",
+   "why": "Open worldwide with no country exclusion, so you can apply from Nigeria.",
+   "direct": false
+  },
+  {
+   "id": "5533fa2fca",
+   "title": "Remote High-End Automotive AI Retoucher | South Africa | R700 per hour or project fee | Ad hoc work in 2027",
+   "company": "No Sweat Work Media",
+   "region": "Africa Only",
+   "type": "Contract",
+   "experience": "Not stated",
+   "salary": "Undisclosed",
+   "bullets": [
+    "A high-end automotive retouching portfolio, with before and after examples",
+    "Expert skills in Adobe Creative Cloud (Photoshop essential)",
+    "Experience with AI tools for visuals, such as Adobe Firefly and Generative Fill, Midjourney",
+    "Experience on automotive or related brands, for example Mercedes, BMW, Toyota, Kia, etc or JCB, Cat, buses and heavy-duty vehicles"
+   ],
+   "apply": "https://weworkremotely.com/remote-jobs/no-sweat-work-media-remote-high-end-automotive-ai-retoucher-south-africa-r700-per",
+   "posted": "2026-11-21",
+   "deadline": null,
+   "checked": "2026-11-21",
+   "added": "2026-11-21",
+   "listed": "2026-11-21",
+   "source": "We Work Remotely",
+   "origin": "feed",
+   "ats_id": null,
+   "family": "Executive & Operations",
+   "why": "Open across Africa, Nigeria included. Contract work: a fast way to earn a first remote reference.",
+   "direct": false
   }
  ]
 }
