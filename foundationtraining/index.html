@@ -489,6 +489,11 @@ html[data-theme="day"] .fx-frame{box-shadow:0 26px 60px rgba(20,17,14,.18);}
 .fx-tab-bar{position:absolute;top:.4rem;bottom:.4rem;left:.4rem;width:calc((100% - .8rem - 1.2rem)/4);border-radius:13px;background:linear-gradient(135deg,#FF5722,#E8470F);
   box-shadow:0 10px 26px rgba(255,87,34,.35);transition:transform .45s var(--ease);}
 .fx-panes{position:relative;}
+.st-list,.cl-list{display:flex!important;flex-direction:column;gap:.8rem;max-width:900px;margin:1.2rem auto 0;}
+.st-dd .fx-pane,.cl-dd .cl-card{display:grid!important;margin-top:.8rem!important;animation:none;}
+.cl-dd .cl-card{display:block!important;}
+.cl-dd .cl-tag{margin-left:.5rem;vertical-align:middle;}
+.cl-dd .fa-t small{flex-wrap:wrap;}
 .fx-pane{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(1.4rem,4vw,3rem);align-items:center;padding:clamp(1.2rem,3vw,2rem);border-radius:24px;border:1px solid var(--line);background:var(--card);}
 .js-fx .fx-pane{display:none;}
 .js-fx .fx-pane.on{display:grid;}
@@ -1265,19 +1270,11 @@ html[data-theme="day"] .wc-tk{color:#AD350A;}
 <section class="wrap fx-sec" id="stages">
 <p class="section-label">The build · Stages 1–4</p>
 <h2>Four stages. Twenty days. <span>Every day ends with something real.</span></h2>
-<div class="fx-tabs" role="tablist" aria-label="The four stages">
-<button class="fx-tab on" role="tab" aria-selected="true" aria-controls="st1" id="tb1" type="button"><b>01</b>Remote Mindset</button>
-<button class="fx-tab" role="tab" aria-selected="false" aria-controls="st2" id="tb2" type="button"><b>02</b>Digital Toolkit</button>
-<button class="fx-tab" role="tab" aria-selected="false" aria-controls="st3" id="tb3" type="button"><b>03</b>Async Communication</button>
-<button class="fx-tab" role="tab" aria-selected="false" aria-controls="st4" id="tb4" type="button"><b>04</b>Career Launch</button>
-<span class="fx-tab-bar" aria-hidden="true"></span>
-</div>
-<div class="fx-panes">
-<article class="fx-pane on" id="st1" role="tabpanel" aria-labelledby="tb1">
+<div class="fx-panes st-list">
+<details class="ft-all fa-sm st-dd"><summary class="fa-btn"><span class="fa-n" aria-hidden="true"><b>01</b><small>Stage</small></span><span class="fa-t"><b>Remote Mindset Blueprint</b><small>5 days · 5 assets</small></span><span class="fa-go" aria-hidden="true">↓</span></summary>
+<article class="fx-pane on" id="st1">
 <figure><picture><source srcset="../shop/stage1-cut.webp" type="image/webp"/><img alt="Stage 1 — Remote Mindset Blueprint box" height="900" loading="lazy" src="../shop/stage1.jpg" width="900"/></picture></figure>
 <div>
-<span class="fx-pane-k">Stage 1 · 5 days</span>
-<h3>Remote Mindset Blueprint</h3>
 <ul class="fx-ticks">
 <li>Protect your peak hours with two 90-minute deep-work blocks a day</li>
 <li>Run the Pomodoro Protocol: four 25-minute sprints, no self-interruption</li>
@@ -1286,11 +1283,11 @@ html[data-theme="day"] .wc-tk{color:#AD350A;}
 </ul>
 </div>
 </article>
-<article class="fx-pane" id="st2" role="tabpanel" aria-labelledby="tb2">
+</details>
+<details class="ft-all fa-sm st-dd"><summary class="fa-btn"><span class="fa-n" aria-hidden="true"><b>02</b><small>Stage</small></span><span class="fa-t"><b>The Digital Toolkit</b><small>5 days · 4 assets</small></span><span class="fa-go" aria-hidden="true">↓</span></summary>
+<article class="fx-pane on" id="st2">
 <figure><picture><source srcset="../shop/stage2-cut.webp" type="image/webp"/><img alt="Stage 2 — The Digital Toolkit box" height="900" loading="lazy" src="../shop/stage2.jpg" width="900"/></picture></figure>
 <div>
-<span class="fx-pane-k">Stage 2 · 5 days</span>
-<h3>The Digital Toolkit</h3>
 <ul class="fx-ticks">
 <li>Run screen shares, annotation and chat in Zoom, Google Meet and Microsoft Teams</li>
 <li>Set up cloud recordings with transcription and protected links</li>
@@ -1300,11 +1297,11 @@ html[data-theme="day"] .wc-tk{color:#AD350A;}
 </ul>
 </div>
 </article>
-<article class="fx-pane" id="st3" role="tabpanel" aria-labelledby="tb3">
+</details>
+<details class="ft-all fa-sm st-dd"><summary class="fa-btn"><span class="fa-n" aria-hidden="true"><b>03</b><small>Stage</small></span><span class="fa-t"><b>Async Communication Mastery</b><small>5 days · 4 assets</small></span><span class="fa-go" aria-hidden="true">↓</span></summary>
+<article class="fx-pane on" id="st3">
 <figure><picture><source srcset="../shop/stage3-cut.webp" type="image/webp"/><img alt="Stage 3 — Async Communication Mastery box" height="900" loading="lazy" src="../shop/stage3.jpg" width="900"/></picture></figure>
 <div>
-<span class="fx-pane-k">Stage 3 · 5 days</span>
-<h3>Async Communication Mastery</h3>
 <ul class="fx-ticks">
 <li>Write zero-follow-up emails that never need a clarifying reply</li>
 <li>Use the Batch Message Protocol in Slack and Teams</li>
@@ -1313,11 +1310,11 @@ html[data-theme="day"] .wc-tk{color:#AD350A;}
 </ul>
 </div>
 </article>
-<article class="fx-pane" id="st4" role="tabpanel" aria-labelledby="tb4">
+</details>
+<details class="ft-all fa-sm st-dd"><summary class="fa-btn"><span class="fa-n" aria-hidden="true"><b>04</b><small>Stage</small></span><span class="fa-t"><b>Start Your Remote Career</b><small>5 days · 3 assets</small></span><span class="fa-go" aria-hidden="true">↓</span></summary>
+<article class="fx-pane on" id="st4">
 <figure><picture><source srcset="../shop/stage4-cut.webp" type="image/webp"/><img alt="Stage 4 — Start Your Remote Career box" height="900" loading="lazy" src="../shop/stage4.jpg" width="900"/></picture></figure>
 <div>
-<span class="fx-pane-k">Stage 4 · 5 days</span>
-<h3>Start Your Remote Career</h3>
 <ul class="fx-ticks">
 <li>Build a remote-first, ATS-readable CV</li>
 <li>Write a LinkedIn summary recruiters find</li>
@@ -1326,6 +1323,7 @@ html[data-theme="day"] .wc-tk{color:#AD350A;}
 </ul>
 </div>
 </article>
+</details>
 </div>
 <p class="fx-hand">It works on your whole search, all five fingers: <b>Capacity</b> · <b>Supply</b> · <b>Representation</b> · <b>Aim</b> · <b>Conversion</b>.</p>
 </section>
@@ -1367,9 +1365,10 @@ html[data-theme="day"] .wc-tk{color:#AD350A;}
 <p class="section-label">Choose your hour</p>
 <h2>Three classes. <span>One programme.</span></h2>
 <p class="section-sub">Same programme, fee and certificate. Pick the hour you can keep.</p>
-<div class="cl-grid">
-<article class="cl-card reveal cl-full" data-full-until="2026-11-29T20:00:00+01:00">
-<div class="cl-top"><span class="cl-no">Class 1</span><span class="cl-tag">Full for Cohort 13</span><span class="cl-kind">Weekday</span></div>
+<div class="cl-grid cl-list">
+<details class="ft-all fa-sm cl-dd cl-full" data-full-until="2026-11-29T20:00:00+01:00"><summary class="fa-btn"><span class="fa-n" aria-hidden="true"><b>1</b><small>Class</small></span><span class="fa-t"><b>7:00 PM WAT · Weekday</b><small>Monday to Friday, 7 to 8 PM<span class="cl-tag">Full for Cohort 13</span></small></span><span class="fa-go" aria-hidden="true">↓</span></summary>
+<article class="cl-card">
+<div class="cl-top"><span class="cl-no">Class 1</span><span class="cl-kind">Weekday</span></div>
 <div class="cl-time"><b>7:00</b><span>PM WAT</span></div>
 <p class="cl-to">to 8:00 PM · Monday to Friday</p>
 <div class="cl-week" aria-hidden="true"><i class="on">M</i><i class="on">T</i><i class="on">W</i><i class="on">T</i><i class="on">F</i><i class="">S</i><i class="">S</i></div>
@@ -1378,7 +1377,9 @@ html[data-theme="day"] .wc-tk{color:#AD350A;}
 <a class="cl-go" href="https://wa.me/2348032925957?text=Hello%20ERJ%2C%20I%20want%20to%20join%20Class%201%20%28Weekday%2C%207-8%20PM%29%20of%20the%20Remote%20Job%20Foundation%20Training.%20Please%20send%20me%20the%20details%20on%20how%20to%20enrol%20and%20join%20the%20class." rel="noopener" target="_blank"><span>Save my seat in Class 1</span><i aria-hidden="true">→</i></a>
 <small class="cl-note">Opens WhatsApp with your class already named</small>
 </article>
-<article class="cl-card reveal">
+</details>
+<details class="ft-all fa-sm cl-dd"><summary class="fa-btn"><span class="fa-n" aria-hidden="true"><b>2</b><small>Class</small></span><span class="fa-t"><b>8:00 PM WAT · Weekday</b><small>Monday to Friday, 8 to 9 PM</small></span><span class="fa-go" aria-hidden="true">↓</span></summary>
+<article class="cl-card">
 <div class="cl-top"><span class="cl-no">Class 2</span><span class="cl-kind">Weekday</span></div>
 <div class="cl-time"><b>8:00</b><span>PM WAT</span></div>
 <p class="cl-to">to 9:00 PM · Monday to Friday</p>
@@ -1388,8 +1389,10 @@ html[data-theme="day"] .wc-tk{color:#AD350A;}
 <a class="cl-go" href="https://wa.me/2348032925957?text=Hello%20ERJ%2C%20I%20want%20to%20join%20Class%202%20%28Weekday%2C%208-9%20PM%29%20of%20the%20Remote%20Job%20Foundation%20Training.%20Please%20send%20me%20the%20details%20on%20how%20to%20enrol%20and%20join%20the%20class." rel="noopener" target="_blank"><span>Save my seat in Class 2</span><i aria-hidden="true">→</i></a>
 <small class="cl-note">Opens WhatsApp with your class already named</small>
 </article>
-<article class="cl-card reveal cl-full" data-full-until="2026-11-29T20:00:00+01:00">
-<div class="cl-top"><span class="cl-no">Class 3</span><span class="cl-tag">Full for Cohort 13</span><span class="cl-kind">Weekend</span></div>
+</details>
+<details class="ft-all fa-sm cl-dd cl-full" data-full-until="2026-11-29T20:00:00+01:00"><summary class="fa-btn"><span class="fa-n" aria-hidden="true"><b>3</b><small>Class</small></span><span class="fa-t"><b>7:00 PM WAT · Weekend</b><small>Saturday and Sunday, 7 to 8:30 PM<span class="cl-tag">Full for Cohort 13</span></small></span><span class="fa-go" aria-hidden="true">↓</span></summary>
+<article class="cl-card">
+<div class="cl-top"><span class="cl-no">Class 3</span><span class="cl-kind">Weekend</span></div>
 <div class="cl-time"><b>7:00</b><span>PM WAT</span></div>
 <p class="cl-to">to 8:30 PM · Saturday &amp; Sunday</p>
 <div class="cl-week" aria-hidden="true"><i class="">M</i><i class="">T</i><i class="">W</i><i class="">T</i><i class="">F</i><i class="on">S</i><i class="on">S</i></div>
@@ -1398,6 +1401,7 @@ html[data-theme="day"] .wc-tk{color:#AD350A;}
 <a class="cl-go" href="https://wa.me/2348032925957?text=Hello%20ERJ%2C%20I%20want%20to%20join%20Class%203%20%28Weekend%2C%207-8%3A30%20PM%29%20of%20the%20Remote%20Job%20Foundation%20Training.%20Please%20send%20me%20the%20details%20on%20how%20to%20enrol%20and%20join%20the%20class." rel="noopener" target="_blank"><span>Save my seat in Class 3</span><i aria-hidden="true">→</i></a>
 <small class="cl-note">Opens WhatsApp with your class already named</small>
 </article>
+</details>
 </div>
 </section>
 
