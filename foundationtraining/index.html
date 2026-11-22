@@ -496,8 +496,13 @@ html[data-theme="day"] .fx-frame{box-shadow:0 26px 60px rgba(20,17,14,.18);}
 @keyframes fxIn{from{transform:translateY(14px)}}
 .fx-pane+.fx-pane{margin-top:1rem;}
 .js-fx .fx-pane+.fx-pane{margin-top:0;}
-.fx-pane figure{margin:0;border-radius:18px;overflow:hidden;}
-.fx-pane img{display:block;width:100%;height:auto;}
+.fx-pane figure{margin:0 auto;width:100%;max-width:340px;position:relative;display:grid;place-items:center;padding:.4rem 0 1.4rem;overflow:visible;background:none;}
+.fx-pane figure::after,.fx-bonus-img::after{content:"";position:absolute;left:22%;right:22%;bottom:.2rem;height:14px;border-radius:50%;background:radial-gradient(closest-side,rgba(0,0,0,.55),transparent);filter:blur(2px);}
+.fx-pane figure picture,.fx-bonus-img picture{display:block;width:88%;margin:0 auto;filter:drop-shadow(0 24px 30px rgba(0,0,0,.55)) drop-shadow(0 0 40px rgba(255,87,34,.18));}
+@media(prefers-reduced-motion:no-preference){.fx-pane figure picture,.fx-bonus-img picture{animation:lev 5s ease-in-out infinite;}.fx-pane figure::after,.fx-bonus-img::after{animation:levS 5s ease-in-out infinite;}}
+@keyframes lev{50%{transform:translateY(-12px)}}
+@keyframes levS{50%{transform:scaleX(.82);opacity:.6}}
+.fx-pane img{display:block;width:100%;height:auto;background:none;}
 .fx-pane-k{font-size:.66rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);}
 .fx-pane h3{font-family:var(--font-display);font-size:clamp(1.4rem,3vw,1.9rem);font-weight:800;margin:.4rem 0 1rem;color:var(--ink);}
 .fx-ticks{list-style:none;margin:0 0 1.2rem;padding:0;display:grid;gap:.55rem;}
@@ -511,7 +516,7 @@ html[data-theme="day"] .fx-frame{box-shadow:0 26px 60px rgba(20,17,14,.18);}
   .fx-tabs{grid-template-columns:repeat(4,minmax(0,1fr));}
   .fx-tab{flex-direction:column;align-items:flex-start;gap:.15rem;font-size:.66rem;padding:.6rem .5rem;line-height:1.2;}
   .fx-pane{grid-template-columns:1fr;}
-  .fx-pane figure{max-width:260px;}
+  .fx-pane figure{max-width:240px;}
 }
 
 /* sixteen assets */
@@ -569,8 +574,8 @@ html[data-theme="day"] .fx-cert-tilt{box-shadow:0 30px 70px rgba(20,17,14,.22);}
 .fx-bonus{position:relative;display:grid;grid-template-columns:minmax(0,.7fr) minmax(0,1.3fr);gap:clamp(1.4rem,4vw,3rem);align-items:center;padding:clamp(1.4rem,4vw,2.6rem);border-radius:28px;
   border:1px solid rgba(37,211,102,.35);background:radial-gradient(90% 120% at 0 0,rgba(37,150,80,.22),transparent 60%),var(--card);}
 .fx-ribbon{position:absolute;top:-.8rem;left:50%;transform:translateX(-50%);padding:.4rem .9rem;border-radius:999px;background:#1E8E4E;color:#fff;font-size:.66rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap;}
-.fx-bonus-img{position:relative;}
-.fx-bonus-img img{display:block;width:100%;height:auto;border-radius:18px;}
+.fx-bonus-img{position:relative;display:grid;place-items:center;padding-bottom:1.4rem;background:none;}
+.fx-bonus-img img{display:block;width:100%;height:auto;border-radius:0;background:none;box-shadow:none;}
 .fx-seal{position:absolute;right:-.6rem;top:-.6rem;width:84px;height:84px;border-radius:50%;background:#FF5722;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:.58rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;transform:rotate(12deg);box-shadow:0 12px 30px rgba(255,87,34,.4);text-align:center;line-height:1.2;}
 .fx-seal b{font-size:1.15rem;letter-spacing:.02em;}
 .fx-bonus h2{font-size:clamp(1.6rem,3.6vw,2.4rem);margin:0 0 .8rem;}
@@ -924,7 +929,7 @@ html[data-theme="night"] .bn-val b{color:#3ddc97;}
 .bn-cta i{font-style:normal;transition:transform .3s;}
 .bn-cta:hover i{transform:translateX(4px);}
 @media(prefers-reduced-motion:no-preference){
-  .fx-bonus-img picture{display:block;animation:bnFloat 6s ease-in-out infinite alternate;}
+
   .fx-seal{animation:bnSeal 4s ease-in-out infinite;}}
 @keyframes bnFloat{from{transform:translateY(6px) rotate(-.6deg)}to{transform:translateY(-8px) rotate(.6deg)}}
 @keyframes bnSeal{0%,100%{transform:rotate(-8deg) scale(1)}50%{transform:rotate(6deg) scale(1.06)}}
@@ -936,13 +941,22 @@ html[data-theme="night"] .bn-val b{color:#3ddc97;}
 #pricing .iv-offer{margin-top:clamp(1.8rem,4vw,2.6rem);}
 .ft-dd-b{padding:1rem .2rem .2rem;}
 .iv-dd .iv-sub{margin:0 0 .8rem;}
-.iv-dd .iv-packs{grid-template-columns:1fr 1fr!important;}
-.iv-dd .iv-pack{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"st price" "name buy";align-items:center;gap:.15rem .8rem;padding:.75rem .9rem;border-radius:16px;}
-.iv-dd .iv-st{grid-area:st;}.iv-dd .iv-name{grid-area:name;font-size:.95rem;}
-.iv-dd .iv-price{grid-area:price;margin:0;font-size:1.1rem;text-align:right;}
-.iv-dd .iv-buy{grid-area:buy;margin:0;gap:.4rem;padding:.45rem .8rem;font-size:.82rem;white-space:nowrap;justify-self:end;}
+.iv-dd .iv-packs{grid-template-columns:1fr 1fr!important;gap:.8rem!important;}
+.iv-dd .iv-pack{position:relative;display:flex;flex-direction:column;gap:.7rem;padding:.95rem;border-radius:18px;border:1px solid rgba(255,87,34,.22);
+  background:radial-gradient(120% 140% at 0 0,rgba(255,87,34,.10),transparent 55%),var(--card);box-shadow:none;transition:transform .35s cubic-bezier(.22,1,.36,1),border-color .3s,box-shadow .35s;}
+.iv-dd .iv-pack:hover{transform:translateY(-3px);border-color:rgba(255,87,34,.6);box-shadow:0 18px 36px -22px rgba(255,87,34,.8);}
+.iv-dd .iv-txt{display:flex;flex-direction:column;gap:.3rem;}
+.iv-dd .iv-st{font-size:.6rem;}
+.iv-dd .iv-name{font-size:1rem;line-height:1.2;}
+.iv-dd .iv-buy{display:flex;align-items:center;gap:.6rem;width:100%;margin:0;padding:.55rem .55rem .55rem 1rem;border-radius:999px;border:0;font-size:.88rem;font-weight:800;white-space:nowrap;color:#fff;
+  background:linear-gradient(100deg,#E8470F 0%,#FF5722 30%,#FF9A62 50%,#FF5722 70%,#E8470F 100%);background-size:300% 100%;box-shadow:0 10px 22px -12px rgba(255,87,34,.9);}
+.iv-dd .iv-buy span{flex:1;text-align:left;}
+.iv-dd .iv-buy b{font:800 1.02rem/1 var(--font-display);letter-spacing:-.01em;padding-left:.7rem;border-left:1px solid rgba(255,255,255,.35);}
+.iv-dd .iv-buy i{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,.22);font-style:normal;font-size:.85rem;transition:transform .3s;}
+.iv-dd .iv-buy:hover{color:#fff;}
+.iv-dd .iv-buy:hover i{transform:translateX(3px);}
+@media(prefers-reduced-motion:no-preference){.iv-dd .iv-buy{animation:fxFlow 3.2s linear infinite;}}
 @media(max-width:700px){.iv-dd .iv-packs{grid-template-columns:1fr!important;}}
-.iv-dd .iv-price{margin-top:.2rem;}
 .fa-cert-n b{font-size:1.4rem!important;}
 #fit .ft-dd,#certificate .ft-dd{margin:0 auto;max-width:900px;}
 #fit.fx-sec,#certificate.fx-sec{padding-top:clamp(.6rem,1.6vw,1rem)!important;padding-bottom:clamp(.6rem,1.6vw,1rem)!important;}
@@ -1015,7 +1029,6 @@ html[data-theme="night"] .iv-plus em{color:#3ddc97;}
   {label:'In 33 seconds',href:'#film'},
   {label:'Is this for you?',href:'#fit'},
   {label:'The 4 stages',href:'#stages'},
-  {label:'Certificate',href:'#certificate'},
   {label:'Proof',href:'#proof'},
   {label:'Choose your class',href:'#tracks'},
   {label:'Pricing',href:'#pricing'},
@@ -1097,7 +1110,7 @@ html[data-theme="night"] .iv-plus em{color:#3ddc97;}
 </div>
 </div>
 <div class="wc-proof">
-<div class="wc-tile wc-cert"><div><span class="wc-tk">Certificate</span><b>Your name and student number on it.</b><p>Issued when your sixteen are marked.</p></div><img alt="" aria-hidden="true" height="170" loading="lazy" src="cert-proficiency-sample-800.webp" width="240"/></div>
+<div class="wc-tile wc-cert" id="certificate"><div><span class="wc-tk">Certificate</span><b>Your name and student number on it.</b><p>Issued when your sixteen are marked. Add it to LinkedIn and your applications.</p></div><img alt="" aria-hidden="true" height="170" loading="lazy" src="cert-proficiency-sample-800.webp" width="240"/></div>
 <div class="wc-tile wc-audit"><div><span class="wc-tk">Private audit</span><b>Your search, reviewed by your facilitator.</b><p>What to fix, in order.</p></div><div class="wc-doc" aria-hidden="true"><i></i><i></i><i></i><i></i><s></s></div></div>
 </div>
 <p class="why-not"><b>Not for</b> you if you can&rsquo;t give it about 90 minutes a day, or the fee competes with rent or school fees.</p>
@@ -1261,7 +1274,7 @@ html[data-theme="day"] .wc-tk{color:#AD350A;}
 </div>
 <div class="fx-panes">
 <article class="fx-pane on" id="st1" role="tabpanel" aria-labelledby="tb1">
-<figure><picture><source srcset="../shop/stage1.webp" type="image/webp"/><img alt="Stage 1 — Remote Mindset Blueprint box" height="900" loading="lazy" src="../shop/stage1.jpg" width="900"/></picture></figure>
+<figure><picture><source srcset="../shop/stage1-cut.webp" type="image/webp"/><img alt="Stage 1 — Remote Mindset Blueprint box" height="900" loading="lazy" src="../shop/stage1.jpg" width="900"/></picture></figure>
 <div>
 <span class="fx-pane-k">Stage 1 · 5 days</span>
 <h3>Remote Mindset Blueprint</h3>
@@ -1271,11 +1284,10 @@ html[data-theme="day"] .wc-tk{color:#AD350A;}
 <li>Set 3 measurable KPIs each morning and send a structured end-of-day report each evening</li>
 <li>Audit your physical and digital workspace</li>
 </ul>
-<p class="fx-out"><b>You walk away with</b>Your personal remote operating system: calendar blocks, KPI sheet, Pomodoro tracker and end-of-day template.</p>
 </div>
 </article>
 <article class="fx-pane" id="st2" role="tabpanel" aria-labelledby="tb2">
-<figure><picture><source srcset="../shop/stage2.webp" type="image/webp"/><img alt="Stage 2 — The Digital Toolkit box" height="900" loading="lazy" src="../shop/stage2.jpg" width="900"/></picture></figure>
+<figure><picture><source srcset="../shop/stage2-cut.webp" type="image/webp"/><img alt="Stage 2 — The Digital Toolkit box" height="900" loading="lazy" src="../shop/stage2.jpg" width="900"/></picture></figure>
 <div>
 <span class="fx-pane-k">Stage 2 · 5 days</span>
 <h3>The Digital Toolkit</h3>
@@ -1286,11 +1298,10 @@ html[data-theme="day"] .wc-tk{color:#AD350A;}
 <li>Build AI fluency: prompt craft, AI-assisted drafting and review, and knowing when not to use it</li>
 <li>Co-edit documents in Suggestion Mode with full version history</li>
 </ul>
-<p class="fx-out"><b>You walk away with</b>The Integrated Sprint: a project board with 5 task cards, a linked document and a 2-minute recorded walkthrough.</p>
 </div>
 </article>
 <article class="fx-pane" id="st3" role="tabpanel" aria-labelledby="tb3">
-<figure><picture><source srcset="../shop/stage3.webp" type="image/webp"/><img alt="Stage 3 — Async Communication Mastery box" height="900" loading="lazy" src="../shop/stage3.jpg" width="900"/></picture></figure>
+<figure><picture><source srcset="../shop/stage3-cut.webp" type="image/webp"/><img alt="Stage 3 — Async Communication Mastery box" height="900" loading="lazy" src="../shop/stage3.jpg" width="900"/></picture></figure>
 <div>
 <span class="fx-pane-k">Stage 3 · 5 days</span>
 <h3>Async Communication Mastery</h3>
@@ -1300,11 +1311,10 @@ html[data-theme="day"] .wc-tk{color:#AD350A;}
 <li>Keep a warm tone in writing without losing directness</li>
 <li>Build your &ldquo;Working With Me&rdquo; manual and a tech fallback plan</li>
 </ul>
-<p class="fx-out"><b>You walk away with</b>5 professional communication assets, ready from day one of a remote role.</p>
 </div>
 </article>
 <article class="fx-pane" id="st4" role="tabpanel" aria-labelledby="tb4">
-<figure><picture><source srcset="../shop/stage4.webp" type="image/webp"/><img alt="Stage 4 — Start Your Remote Career box" height="900" loading="lazy" src="../shop/stage4.jpg" width="900"/></picture></figure>
+<figure><picture><source srcset="../shop/stage4-cut.webp" type="image/webp"/><img alt="Stage 4 — Start Your Remote Career box" height="900" loading="lazy" src="../shop/stage4.jpg" width="900"/></picture></figure>
 <div>
 <span class="fx-pane-k">Stage 4 · 5 days</span>
 <h3>Start Your Remote Career</h3>
@@ -1314,7 +1324,6 @@ html[data-theme="day"] .wc-tk{color:#AD350A;}
 <li>Curate a 2–3 project portfolio with short read-me briefs</li>
 <li>Record a 2-minute STAR-format interview answer</li>
 </ul>
-<p class="fx-out"><b>You walk away with</b>The Global Ready Package: remote-first CV (PDF), portfolio (public link) and your STAR video.</p>
 </div>
 </article>
 </div>
@@ -1322,25 +1331,7 @@ html[data-theme="day"] .wc-tk{color:#AD350A;}
 </section>
 
 
-<!-- CERTIFICATE -->
-<section class="wrap fx-sec" id="certificate">
-<details class="ft-all fa-sm ft-dd"><summary class="fa-btn"><span class="fa-n fa-cert-n" aria-hidden="true"><b>🎓</b></span><span class="fa-t"><b>Finish certified</b><small>Your name and student number, when all 16 are marked</small></span><span class="fa-go" aria-hidden="true">↓</span></summary>
-<div class="fx-cert-grid ft-dd-b">
-<div class="fx-cert-copy">
-<p class="section-sub">Complete Stages 1–4 and receive the <b>Remote Job Proficiency Certificate</b>, with your name and your own student number. It names what you proved: a remote-work mindset and deep-work system, digital toolkit mastery, and async communication.</p>
-<ul class="fx-ticks">
-<li>Add it to LinkedIn under Licences &amp; Certifications</li>
-<li>Attach it to applications and your portfolio</li>
-<li>Comes with the live cohort, not with the self-paced pack</li>
-</ul>
-</div>
-<div class="fx-cert">
-<div class="fx-cert-tilt"><picture><source srcset="cert-proficiency-sample-800.webp 800w, cert-proficiency-sample.webp 1491w" sizes="(max-width:860px) 92vw, 560px" type="image/webp"/><img alt="Sample Remote Job Proficiency Certificate from Everything Remote Job, for completing Remote Job Foundation Training" height="1055" loading="lazy" src="cert-proficiency-sample.jpg" width="1491"/></picture><i class="fx-shine" aria-hidden="true"></i></div>
-<span class="fx-cert-tag">Sample · your name goes here</span>
-</div>
-</div>
-</details>
-</section>
+
 
 <!-- PROOF -->
 <section class="wrap fx-sec" id="proof">
@@ -1414,7 +1405,7 @@ html[data-theme="day"] .wc-tk{color:#AD350A;}
 <section class="wrap fx-sec" id="careerdev">
 <div class="fx-bonus reveal">
 <span class="fx-ribbon">Bonus · included with your enrolment</span>
-<div class="fx-bonus-img"><picture><source srcset="../shop/careerdev-mentorine-30days.webp" type="image/webp"/><img alt="Career Development — Self-Study box from The Mentorine School: one career track of your choice, roadmap, courses and practical work, 30 days from the day you activate" height="900" loading="lazy" src="../shop/careerdev-mentorine-30days.jpg" width="900"/></picture><span class="fx-seal" aria-hidden="true"><b>FREE</b>with Foundation</span></div>
+<div class="fx-bonus-img"><picture><source srcset="../shop/careerdev-mentorine-30days-cut.webp" type="image/webp"/><img alt="Career Development — Self-Study box from The Mentorine School: one career track of your choice, roadmap, courses and practical work, 30 days from the day you activate" height="900" loading="lazy" src="../shop/careerdev-mentorine-30days.jpg" width="900"/></picture><span class="fx-seal" aria-hidden="true"><b>FREE</b>with Foundation</span></div>
 <div>
 <h2>Plus 30 days of <span>career development.</span></h2>
 <p>A self-study career track at The Mentorine School, matched to your target role, free with your enrolment.</p>
@@ -1467,12 +1458,12 @@ html[data-theme="day"] .wc-tk{color:#AD350A;}
 </article>
 <details class="ft-all fa-sm ft-dd iv-dd"><summary class="fa-btn"><span class="fa-n" aria-hidden="true"><b>1</b><small>stage</small></span><span class="fa-t"><b>Need only one stage?</b><small>Each stage is sold on its own too</small></span><span class="fa-go" aria-hidden="true">↓</span></summary>
 <div class="ft-dd-b">
-<p class="iv-sub">Take the stage you need on its own. All four together cost ₦120,000 less than buying them one by one.</p>
+<p class="iv-sub">All four together cost ₦120,000 less than buying them one by one.</p>
 <div class="iv-packs">
-<article class="iv-pack"><span class="iv-st">Stage 1</span><b class="iv-name">Remote Mindset Blueprint</b><div class="iv-price">₦70,000</div><a class="iv-buy" href="https://paystack.shop/pay/Stage1" rel="noopener" target="_blank">Get Stage 1 <i aria-hidden="true">→</i></a></article>
-<article class="iv-pack"><span class="iv-st">Stage 2</span><b class="iv-name">The Digital Toolkit</b><div class="iv-price">₦130,000</div><a class="iv-buy" href="https://paystack.shop/pay/stage2ai" rel="noopener" target="_blank">Get Stage 2 <i aria-hidden="true">→</i></a></article>
-<article class="iv-pack"><span class="iv-st">Stage 3</span><b class="iv-name">Async Communication Mastery</b><div class="iv-price">₦70,000</div><a class="iv-buy" href="https://paystack.shop/pay/stage3alony" rel="noopener" target="_blank">Get Stage 3 <i aria-hidden="true">→</i></a></article>
-<article class="iv-pack"><span class="iv-st">Stage 4</span><b class="iv-name">Start Your Remote Career</b><div class="iv-price">₦100,000</div><a class="iv-buy" href="https://paystack.shop/pay/stage4only" rel="noopener" target="_blank">Get Stage 4 <i aria-hidden="true">→</i></a></article>
+<article class="iv-pack"><div class="iv-txt"><span class="iv-st">Stage 1 · 5 assets</span><b class="iv-name">Remote Mindset Blueprint</b></div><a class="iv-buy" href="https://paystack.shop/pay/Stage1" rel="noopener" target="_blank"><span>Get Stage 1</span><b>₦70,000</b><i aria-hidden="true">→</i></a></article>
+<article class="iv-pack"><div class="iv-txt"><span class="iv-st">Stage 2 · 4 assets</span><b class="iv-name">The Digital Toolkit</b></div><a class="iv-buy" href="https://paystack.shop/pay/stage2ai" rel="noopener" target="_blank"><span>Get Stage 2</span><b>₦130,000</b><i aria-hidden="true">→</i></a></article>
+<article class="iv-pack"><div class="iv-txt"><span class="iv-st">Stage 3 · 4 assets</span><b class="iv-name">Async Communication Mastery</b></div><a class="iv-buy" href="https://paystack.shop/pay/stage3alony" rel="noopener" target="_blank"><span>Get Stage 3</span><b>₦70,000</b><i aria-hidden="true">→</i></a></article>
+<article class="iv-pack"><div class="iv-txt"><span class="iv-st">Stage 4 · 3 assets</span><b class="iv-name">Start Your Remote Career</b></div><a class="iv-buy" href="https://paystack.shop/pay/stage4only" rel="noopener" target="_blank"><span>Get Stage 4</span><b>₦100,000</b><i aria-hidden="true">→</i></a></article>
 </div>
 </div>
 </details>
@@ -1510,7 +1501,6 @@ html[data-theme="day"] .wc-tk{color:#AD350A;}
 <details class="reveal"><summary><span>How do I pay?</span><i aria-hidden="true"></i></summary><div class="fq-a"><p>Through <strong>Paystack</strong>, which takes cards, bank transfer and USSD. ERJ never receives your card details. The Enrol button on this page opens the Paystack page for Foundation Training; after you pay, send your receipt on WhatsApp and your LMS login arrives within 24 hours.</p></div></details>
 <details class="reveal"><summary><span>What happens after I pay?</span><i aria-hidden="true"></i></summary><div class="fq-a"><p>Send your receipt on WhatsApp to <a href="https://wa.me/2348032925957" rel="noopener" target="_blank">+234 803 292 5957</a>. Your LMS login arrives within 24 hours, and your Mentorine activation follows your assessment.</p></div></details>
 <details class="reveal"><summary><span>What is the private audit?</span><i aria-hidden="true"></i></summary><div class="fq-a"><p>Your facilitator goes through your search with you, one to one: the role you are aiming for, the applications and interviews you have had, and your CV. You come out knowing which of the five parts is holding you back first, Capacity, Supply, Representation, Aim or Conversion, and what to fix. We only do this for people in the programme. If you would like to see how we read a CV before you enrol, come to the free <a href="../masterclass/">Launchpad</a> any Saturday at 4:00 PM WAT, where we audit CVs live.</p></div></details>
-<details class="reveal"><summary><span>What is the career-development access from The Mentorine School?</span><i aria-hidden="true"></i></summary><div class="fq-a"><p>Everyone who enrols and pays for <strong>Remote Job Foundation Training, Stages 1–4</strong> receives <strong>30 days of access to one self-study career track at The Mentorine School</strong>, at no additional cost. Your assessment decides how you use it: if Capacity is your gap, we assign the learning and practical work that closes it; if it is not, we focus on your other gaps and the access stays open for you. The 30 days start when you activate.</p></div></details>
 <details class="reveal"><summary><span>Should I take the self-paced pack instead?</span><i aria-hidden="true"></i></summary><div class="fq-a"><p>If you have finished a course on your own before, the <a href="../selflearn/">Self-Learn Pack</a> may serve you well. If you usually stop halfway, the live cohort is the fix. <a href="../self-learn-vs-foundation-training.html">The honest comparison →</a></p></div></details>
 <details class="reveal"><summary><span>What comes after the twenty days?</span><i aria-hidden="true"></i></summary><div class="fq-a"><p>Graduates can join <a href="../innercircle/">the Inner Circle</a>: a year of one-to-one work on your search, open only to Foundation Training alumni. It starts where your cohort ends: co-applying, interview dry-runs and offer review, for twelve months.</p></div></details>
 <details class="reveal"><summary><span>I am not sure this is my problem.</span><i aria-hidden="true"></i></summary><div class="fq-a"><p>Then do not pay yet. <a href="../diagnose/">The free diagnosis</a> takes about ninety seconds and tells you which part of your search is breaking. If you do not need a paid ERJ service, we will tell you. Or bring your CV to the free <a href="../masterclass/">Launchpad</a> on Saturday and we will tell you live.</p></div></details>
