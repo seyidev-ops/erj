@@ -808,6 +808,9 @@ html[data-theme="night"] .fx-now-live{color:#3ddc97;}
 .fnd-seg i.now{background:#FFB25C;box-shadow:0 0 0 3px rgba(255,178,92,.25);}
 .fnd-seg::after{content:"";position:absolute;left:0;top:0;bottom:0;width:var(--w,0%);pointer-events:none;border-radius:3px;
   background:linear-gradient(90deg,transparent,rgba(255,255,255,.5),transparent) no-repeat;background-size:30% 100%;background-position:-40% 0;}
+.fnd-seg.pct{display:block;height:10px;border-radius:10px;background:rgba(255,87,34,.14);overflow:hidden;}
+.fnd-seg.pct .fnd-fill{display:block;width:var(--w);height:100%;border-radius:inherit;background:linear-gradient(90deg,#C9410C,#FF5722 70%,#FFB25C);}
+.fnd-seg.pct::after{border-radius:10px;}
 @media(max-width:420px){.fnd-seg{gap:2px;}.fnd-seg i{height:10px;border-radius:2px;}}
 @media(prefers-reduced-motion:no-preference){
   .fx-now::before{animation:nwSpin 5s linear infinite;}
@@ -1429,7 +1432,7 @@ html[data-theme="day"] .wc-tk{color:#AD350A;}
 <div class="iv-main">
 <h3>The full programme, <span>Stages 1–4.</span></h3>
 <div class="iv-sum" aria-label="The four stages bought one by one come to ₦370,000"><span>₦70,000</span><i>+</i><span>₦130,000</span><i>+</i><span>₦70,000</span><i>+</i><span>₦100,000</span><i>=</i><s>₦370,000</s></div>
-<div class="iv-now"><small>Yours for</small><b>₦250,000</b><em>You save ₦120,000</em></div>
+<div class="iv-now"><small>Yours for</small><b>₦250,000</b><em>₦120,000 less than four single stages</em></div>
 <p class="iv-plus-k">Only with the full programme</p>
 <ul class="iv-plus">
 <li>Live classes at the hour you choose, for twenty days</li>
@@ -1452,7 +1455,7 @@ html[data-theme="day"] .wc-tk{color:#AD350A;}
 </article>
 <details class="ft-all fa-sm ft-dd iv-dd"><summary class="fa-btn"><span class="fa-n" aria-hidden="true"><b>1</b><small>stage</small></span><span class="fa-t"><b>Need only one stage?</b><small>Each stage is sold on its own too</small></span><span class="fa-go" aria-hidden="true">↓</span></summary>
 <div class="ft-dd-b">
-<p class="iv-sub">Take the stage you need on its own, or take all four together and save ₦120,000.</p>
+<p class="iv-sub">Take the stage you need on its own. All four together cost ₦120,000 less than buying them one by one.</p>
 <div class="iv-packs">
 <article class="iv-pack"><span class="iv-st">Stage 1</span><b class="iv-name">Remote Mindset Blueprint</b><div class="iv-price">₦70,000</div><a class="iv-buy" href="https://paystack.shop/pay/Stage1" rel="noopener" target="_blank">Get Stage 1 <i aria-hidden="true">→</i></a></article>
 <article class="iv-pack"><span class="iv-st">Stage 2</span><b class="iv-name">The Digital Toolkit</b><div class="iv-price">₦130,000</div><a class="iv-buy" href="https://paystack.shop/pay/stage2ai" rel="noopener" target="_blank">Get Stage 2 <i aria-hidden="true">→</i></a></article>
@@ -1609,7 +1612,10 @@ html[data-theme="day"] .wc-tk{color:#AD350A;}
     if(fd){ var DAY=864e5, tot=Math.ceil((e-o)/DAY), day=Math.min(tot,Math.max(1,Math.floor((now()-o)/DAY)+1)), seg=fd.querySelector('.fnd-seg'), h='';
       for(var k=1;k<=tot;k++) h+='<i class="'+(k<day?'on':k===day?'now':'')+'"></i>';
       seg.innerHTML=h; seg.style.setProperty('--w',(day/tot*100).toFixed(1)+'%');
-      fd.querySelector('.fnd-n').textContent=day; fd.querySelector('.fnd-t').textContent=tot; fd.classList.add('on'); }
+      fd.querySelector('.fnd-n').textContent=day; fd.querySelector('.fnd-t').textContent=tot;
+      if(fd.getAttribute('data-mode')==='pct'){ var pc=Math.min(100,Math.max(1,Math.floor((now()-o)/(e-o)*100)));
+        fd.querySelector('.fnd-row b').innerHTML='<em>'+pc+'%</em> through'; seg.innerHTML='<i class="fnd-fill"></i>'; seg.classList.add('pct'); seg.style.setProperty('--w',pc+'%'); }
+      fd.classList.add('on'); }
     if(msgs.ftSeat) [].forEach.call(d.querySelectorAll('.fx-hero .fx-seat,.iv-offer .fx-seat'),function(a){ a.href=wa(msgs.ftSeat.replace('{cohort}',cur.getAttribute('data-co'))); });
   }
 
