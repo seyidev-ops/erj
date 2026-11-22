@@ -936,13 +936,23 @@ html[data-theme="night"] .bn-val b{color:#3ddc97;}
 #pricing .iv-offer{margin-top:clamp(1.8rem,4vw,2.6rem);}
 .ft-dd-b{padding:1rem .2rem .2rem;}
 .iv-dd .iv-sub{margin:0 0 .8rem;}
-.iv-dd .iv-packs{grid-template-columns:1fr 1fr!important;}
-.iv-dd .iv-pack{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"st price" "name buy";align-items:center;gap:.15rem .8rem;padding:.75rem .9rem;border-radius:16px;}
-.iv-dd .iv-st{grid-area:st;}.iv-dd .iv-name{grid-area:name;font-size:.95rem;}
-.iv-dd .iv-price{grid-area:price;margin:0;font-size:1.1rem;text-align:right;}
-.iv-dd .iv-buy{grid-area:buy;margin:0;gap:.4rem;padding:.45rem .8rem;font-size:.82rem;white-space:nowrap;justify-self:end;}
-@media(max-width:700px){.iv-dd .iv-packs{grid-template-columns:1fr!important;}}
-.iv-dd .iv-price{margin-top:.2rem;}
+.iv-dd .iv-packs{grid-template-columns:1fr 1fr!important;gap:.8rem!important;}
+.iv-dd .iv-pack{position:relative;display:grid;grid-template-columns:64px minmax(0,1fr) auto;grid-template-areas:"art st price" "art name buy";align-items:center;gap:.25rem .9rem;
+  padding:.8rem .85rem .8rem .8rem;border-radius:18px;border:1px solid rgba(255,87,34,.22);
+  background:radial-gradient(120% 140% at 0 0,rgba(255,87,34,.10),transparent 55%),var(--card);box-shadow:none;transition:transform .35s cubic-bezier(.22,1,.36,1),border-color .3s,box-shadow .35s;}
+.iv-dd .iv-pack:hover{transform:translateY(-3px);border-color:rgba(255,87,34,.6);box-shadow:0 18px 36px -22px rgba(255,87,34,.8);}
+.iv-dd .iv-art{grid-area:art;display:block;width:64px;height:64px;border-radius:12px;overflow:hidden;background:#0b0c10;box-shadow:0 8px 18px -10px rgba(0,0,0,.7);}
+.iv-dd .iv-art img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .5s;}
+.iv-dd .iv-pack:hover .iv-art img{transform:scale(1.06);}
+.iv-dd .iv-st{grid-area:st;align-self:end;font-size:.6rem;}
+.iv-dd .iv-name{grid-area:name;align-self:start;font-size:.98rem;line-height:1.2;}
+.iv-dd .iv-price{grid-area:price;align-self:end;margin:0;font-size:1.15rem;text-align:right;white-space:nowrap;}
+.iv-dd .iv-buy{grid-area:buy;align-self:start;justify-self:end;margin:0;gap:.45rem;padding:.45rem .5rem .45rem .85rem;border-radius:999px;border:0;font-size:.8rem;font-weight:800;white-space:nowrap;color:#fff;
+  background:linear-gradient(100deg,#E8470F 0%,#FF5722 30%,#FF9A62 50%,#FF5722 70%,#E8470F 100%);background-size:300% 100%;box-shadow:0 8px 18px -10px rgba(255,87,34,.9);}
+.iv-dd .iv-buy i{display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:rgba(255,255,255,.22);font-size:.8rem;}
+.iv-dd .iv-buy:hover{background-position:100% 0;color:#fff;}
+@media(prefers-reduced-motion:no-preference){.iv-dd .iv-buy{animation:fxFlow 3.2s linear infinite;}}
+@media(max-width:700px){.iv-dd .iv-packs{grid-template-columns:1fr!important;}.iv-dd .iv-pack{grid-template-columns:56px minmax(0,1fr) auto;}.iv-dd .iv-art{width:56px;height:56px;}}
 .fa-cert-n b{font-size:1.4rem!important;}
 #fit .ft-dd,#certificate .ft-dd{margin:0 auto;max-width:900px;}
 #fit.fx-sec,#certificate.fx-sec{padding-top:clamp(.6rem,1.6vw,1rem)!important;padding-bottom:clamp(.6rem,1.6vw,1rem)!important;}
@@ -1467,12 +1477,12 @@ html[data-theme="day"] .wc-tk{color:#AD350A;}
 </article>
 <details class="ft-all fa-sm ft-dd iv-dd"><summary class="fa-btn"><span class="fa-n" aria-hidden="true"><b>1</b><small>stage</small></span><span class="fa-t"><b>Need only one stage?</b><small>Each stage is sold on its own too</small></span><span class="fa-go" aria-hidden="true">↓</span></summary>
 <div class="ft-dd-b">
-<p class="iv-sub">Take the stage you need on its own. All four together cost ₦120,000 less than buying them one by one.</p>
+<p class="iv-sub">Each stage is taught live in the same cohort. All four together cost ₦120,000 less than buying them one by one.</p>
 <div class="iv-packs">
-<article class="iv-pack"><span class="iv-st">Stage 1</span><b class="iv-name">Remote Mindset Blueprint</b><div class="iv-price">₦70,000</div><a class="iv-buy" href="https://paystack.shop/pay/Stage1" rel="noopener" target="_blank">Get Stage 1 <i aria-hidden="true">→</i></a></article>
-<article class="iv-pack"><span class="iv-st">Stage 2</span><b class="iv-name">The Digital Toolkit</b><div class="iv-price">₦130,000</div><a class="iv-buy" href="https://paystack.shop/pay/stage2ai" rel="noopener" target="_blank">Get Stage 2 <i aria-hidden="true">→</i></a></article>
-<article class="iv-pack"><span class="iv-st">Stage 3</span><b class="iv-name">Async Communication Mastery</b><div class="iv-price">₦70,000</div><a class="iv-buy" href="https://paystack.shop/pay/stage3alony" rel="noopener" target="_blank">Get Stage 3 <i aria-hidden="true">→</i></a></article>
-<article class="iv-pack"><span class="iv-st">Stage 4</span><b class="iv-name">Start Your Remote Career</b><div class="iv-price">₦100,000</div><a class="iv-buy" href="https://paystack.shop/pay/stage4only" rel="noopener" target="_blank">Get Stage 4 <i aria-hidden="true">→</i></a></article>
+<article class="iv-pack"><picture class="iv-art"><source srcset="../shop/stage1.webp" type="image/webp"/><img alt="" height="900" loading="lazy" src="../shop/stage1.jpg" width="900"/></picture><span class="iv-st">Stage 1 · 5 assets</span><b class="iv-name">Remote Mindset Blueprint</b><div class="iv-price">₦70,000</div><a class="iv-buy" href="https://paystack.shop/pay/Stage1" rel="noopener" target="_blank">Get Stage 1 <i aria-hidden="true">→</i></a></article>
+<article class="iv-pack"><picture class="iv-art"><source srcset="../shop/stage2.webp" type="image/webp"/><img alt="" height="900" loading="lazy" src="../shop/stage2.jpg" width="900"/></picture><span class="iv-st">Stage 2 · 4 assets</span><b class="iv-name">The Digital Toolkit</b><div class="iv-price">₦130,000</div><a class="iv-buy" href="https://paystack.shop/pay/stage2ai" rel="noopener" target="_blank">Get Stage 2 <i aria-hidden="true">→</i></a></article>
+<article class="iv-pack"><picture class="iv-art"><source srcset="../shop/stage3.webp" type="image/webp"/><img alt="" height="900" loading="lazy" src="../shop/stage3.jpg" width="900"/></picture><span class="iv-st">Stage 3 · 4 assets</span><b class="iv-name">Async Communication Mastery</b><div class="iv-price">₦70,000</div><a class="iv-buy" href="https://paystack.shop/pay/stage3alony" rel="noopener" target="_blank">Get Stage 3 <i aria-hidden="true">→</i></a></article>
+<article class="iv-pack"><picture class="iv-art"><source srcset="../shop/stage4.webp" type="image/webp"/><img alt="" height="900" loading="lazy" src="../shop/stage4.jpg" width="900"/></picture><span class="iv-st">Stage 4 · 3 assets</span><b class="iv-name">Start Your Remote Career</b><div class="iv-price">₦100,000</div><a class="iv-buy" href="https://paystack.shop/pay/stage4only" rel="noopener" target="_blank">Get Stage 4 <i aria-hidden="true">→</i></a></article>
 </div>
 </div>
 </details>
