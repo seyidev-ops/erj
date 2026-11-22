@@ -797,18 +797,29 @@ html[data-theme="night"] .fx-now-live{color:#3ddc97;}
 .fx-now .fx-clock>div{min-width:0;padding:.6rem .3rem;border-radius:14px;border:1px solid var(--line);background:var(--card);text-align:center;}
 .fx-now .fx-clock>div:last-child{border-color:rgba(255,87,34,.5);}
 .fx-now .fx-clock b{font-size:clamp(1.5rem,3.6vw,2rem);}
-.fx-now-bar{position:relative;height:6px;margin-top:.9rem;border-radius:6px;background:rgba(255,87,34,.12);overflow:hidden;}
-.fx-now-bar i{position:absolute;left:0;top:0;bottom:0;width:var(--left,60%);border-radius:inherit;
-  background:linear-gradient(90deg,#C9410C,#FF5722,#FFB25C);background-size:200% 100%;}
+.fx-now-days{display:none;margin-top:1rem;}
+.fx-now-days.on{display:block;}
+.fnd-row{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;margin-bottom:.55rem;font-size:.68rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft);}
+.fnd-row b{font:800 1.05rem/1 var(--font-display);letter-spacing:0;text-transform:none;color:var(--ink);}
+.fnd-row em{font-style:normal;color:var(--accent);}
+.fnd-seg{position:relative;display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:3px;}
+.fnd-seg i{height:11px;border-radius:3px;background:rgba(255,87,34,.14);}
+.fnd-seg i.on{background:linear-gradient(180deg,#FF6A3D,#E8470F);}
+.fnd-seg i.now{background:#FFB25C;box-shadow:0 0 0 3px rgba(255,178,92,.25);}
+.fnd-seg::after{content:"";position:absolute;left:0;top:0;bottom:0;width:var(--w,0%);pointer-events:none;border-radius:3px;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.5),transparent) no-repeat;background-size:30% 100%;background-position:-40% 0;}
+@media(max-width:420px){.fnd-seg{gap:2px;}.fnd-seg i{height:10px;border-radius:2px;}}
 @media(prefers-reduced-motion:no-preference){
   .fx-now::before{animation:nwSpin 5s linear infinite;}
   .fx-now-live i{animation:nwPing 1.8s infinite;}
   .fx-now .fx-clock>div:last-child{animation:nwTick 1s ease-in-out infinite;}
-  .fx-now-bar i{animation:nwFlow 2.4s linear infinite;}}
+  .fnd-seg::after{animation:fndRun 2.8s cubic-bezier(.45,0,.55,1) infinite;}
+  .fnd-seg i.now{animation:fndNow 1.6s ease-in-out infinite;}}
+@keyframes fndRun{to{background-position:140% 0}}
+@keyframes fndNow{50%{box-shadow:0 0 0 5px rgba(255,178,92,.12)}}
 @keyframes nwSpin{to{--nw-a:360deg}}
 @keyframes nwPing{0%{box-shadow:0 0 0 0 rgba(25,194,122,.6)}100%{box-shadow:0 0 0 9px rgba(25,194,122,0)}}
 @keyframes nwTick{0%,100%{box-shadow:0 0 0 0 rgba(255,87,34,0)}50%{box-shadow:0 0 0 4px rgba(255,87,34,.16)}}
-@keyframes nwFlow{to{background-position:-200% 0}}
 @media(max-width:340px){.fx-now-facts{grid-template-columns:1fr;}}
 
 /* Is this for you? a meter, numbered cards that light up, Yes/No that answer back */
@@ -1031,7 +1042,7 @@ html[data-theme="night"] .iv-plus em{color:#3ddc97;}
 <div class="fx-clock" data-no-evergreen="" data-closed-label="Registration has closed" data-deadline="2026-11-29T20:00:00+01:00">
 <div><b data-k="d">00</b><span>days</span></div><div><b data-k="h">00</b><span>hrs</span></div><div><b data-k="m">00</b><span>min</span></div><div><b data-k="s">00</b><span>sec</span></div>
 </div></div>
-<div class="fx-now-bar" aria-hidden="true"><i></i></div>
+<div class="fx-now-days" aria-hidden="true"><div class="fnd-row"><span>Registration</span><b>Day <em class="fnd-n"></em> of <span class="fnd-t"></span></b></div><div class="fnd-seg"></div></div>
 </div>
 <div class="fx-now" data-ends="2027-01-03T20:00:00+01:00" data-opens="2026-11-29T20:00:00+01:00" data-co="Cohort 14, begins Mon 4 Jan 2027" data-sticky="Cohort 14 registration closes Sun 3 Jan|Classes begin Mon 4 Jan · 8 PM WAT">
 <div class="fx-now-top"><span class="fx-now-live"><i aria-hidden="true"></i>Registering now</span><span class="fx-now-n">Cohort 14</span></div>
@@ -1040,7 +1051,7 @@ html[data-theme="night"] .iv-plus em{color:#3ddc97;}
 <div class="fx-clock" data-no-evergreen="" data-closed-label="Registration has closed" data-deadline="2027-01-03T20:00:00+01:00">
 <div><b data-k="d">00</b><span>days</span></div><div><b data-k="h">00</b><span>hrs</span></div><div><b data-k="m">00</b><span>min</span></div><div><b data-k="s">00</b><span>sec</span></div>
 </div></div>
-<div class="fx-now-bar" aria-hidden="true"><i></i></div>
+<div class="fx-now-days" aria-hidden="true"><div class="fnd-row"><span>Registration</span><b>Day <em class="fnd-n"></em> of <span class="fnd-t"></span></b></div><div class="fnd-seg"></div></div>
 </div>
 </div>
 
@@ -1593,8 +1604,12 @@ html[data-theme="day"] .wc-tk{color:#AD350A;}
   var ivo=[].filter.call(d.querySelectorAll('.iv-co[data-ends]'),function(c){return now()<new Date(c.getAttribute('data-ends'));});
   if(ivo[0]) ivo[0].classList.remove('is-past');
   if(open[0]){
-    var cur=open[0], o=new Date(cur.getAttribute('data-opens')), e=new Date(cur.getAttribute('data-ends')), bar=cur.querySelector('.fx-now-bar i');
-    if(bar){ var left=Math.min(1,Math.max(.04,(e-now())/(e-o))); bar.style.setProperty('--left',(left*100).toFixed(1)+'%'); }
+    var cur=open[0], o=new Date(cur.getAttribute('data-opens')), e=new Date(cur.getAttribute('data-ends'));
+    var fd=cur.querySelector('.fx-now-days');
+    if(fd){ var DAY=864e5, tot=Math.ceil((e-o)/DAY), day=Math.min(tot,Math.max(1,Math.floor((now()-o)/DAY)+1)), seg=fd.querySelector('.fnd-seg'), h='';
+      for(var k=1;k<=tot;k++) h+='<i class="'+(k<day?'on':k===day?'now':'')+'"></i>';
+      seg.innerHTML=h; seg.style.setProperty('--w',(day/tot*100).toFixed(1)+'%');
+      fd.querySelector('.fnd-n').textContent=day; fd.querySelector('.fnd-t').textContent=tot; fd.classList.add('on'); }
     if(msgs.ftSeat) [].forEach.call(d.querySelectorAll('.fx-hero .fx-seat,.iv-offer .fx-seat'),function(a){ a.href=wa(msgs.ftSeat.replace('{cohort}',cur.getAttribute('data-co'))); });
   }
 
