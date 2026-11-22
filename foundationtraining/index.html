@@ -395,7 +395,9 @@ html[data-theme="day"] .fx-tag{color:#B4600C;} html[data-theme="day"] .fx-tag.no
 .fx-cta-sm .arrow-wrap{width:1.6rem;height:1.6rem;flex-basis:1.6rem;}
 .fx-cta-sm .btn-primary-ui span:first-child,.fx-cta-sm .btn-secondary-ui span:first-child{white-space:nowrap;}
 @media (max-width:520px){.fx-cta-sm .btn-primary-ui,.fx-cta-sm .btn-secondary-ui{flex:1 1 0;font-size:.95rem!important;padding:.6rem .9rem!important;min-height:48px!important;}.fx-cta-sm .arrow-wrap{display:none;}}
-@media(prefers-reduced-motion:no-preference){.fx-pulse{animation:fxBtn 2.6s ease-in-out infinite}}
+.fx-pulse{background:linear-gradient(100deg,#E8470F 0%,#FF5722 25%,#FF9A62 50%,#FF5722 75%,#E8470F 100%)!important;background-size:300% 100%!important;}
+@media(prefers-reduced-motion:no-preference){.fx-pulse:not(:hover){animation:fxFlow 3.2s linear infinite}}
+@keyframes fxFlow{from{background-position:0 0}to{background-position:-300% 0}}
 @keyframes fxBtn{0%,100%{box-shadow:0 0 0 0 rgba(255,87,34,.45)}50%{box-shadow:0 0 0 12px rgba(255,87,34,0)}}
 
 /* hero photo with floating proof */
@@ -644,7 +646,7 @@ html[data-theme="day"] .fx-price-save{color:#1E8E4E;}
 
 /* hide the old sticky copy on desktop as before; sticky text updates by JS */
 /* ── alive: every block rises into place (transform only: nothing is ever hidden) ── */
-#film~section .reveal.pre{transform:translateY(34px) scale(.975);}
+#film~section .reveal.pre{transform:translateY(28px);}
 #film~section .reveal{transition:transform .8s cubic-bezier(.22,1,.36,1);}
 /* a slow light sweep across the enrol buttons, on every screen */
 @keyframes ftSheen{0%,72%{transform:translateX(-120%)}100%{transform:translateX(120%)}}
@@ -731,7 +733,7 @@ html[data-theme="day"] .why-k,html[data-theme="day"] .why-k2{color:#AD350A;}
 .fa-btn::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;
   background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,.18) 50%,transparent 65%);background-size:250% 100%;background-position:120% 0;}
 .fa-btn:hover{transform:translateY(-3px);box-shadow:0 26px 50px -22px rgba(255,87,34,.9);}
-.fa-btn:active{transform:scale(.985);}
+.fa-btn:active{transform:translateY(1px);}
 .fa-btn:focus-visible{outline:2px solid var(--accent);outline-offset:4px;}
 .fa-n{display:grid;place-items:center;align-content:center;width:clamp(58px,9vw,72px);aspect-ratio:1;border-radius:18px;color:#fff;
   background:linear-gradient(140deg,#FF5722,#C9410C);box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 10px 22px -10px rgba(201,65,12,.9);}
@@ -824,14 +826,14 @@ html[data-theme="night"] .fx-now-live{color:#3ddc97;}
 #fit .ft-q p b{font-size:clamp(1rem,1.9vw,1.15rem);}
 #fit .ft-yn{gap:0;padding:4px;border-radius:999px;background:rgba(255,87,34,.08);border:1px solid rgba(255,87,34,.2);}
 #fit .ft-yn button{border:0;min-width:4.6rem;padding:.65rem 1rem;transition:background .25s,color .25s,transform .2s;}
-#fit .ft-yn button:active{transform:scale(.94);}
+#fit .ft-yn button:active{transform:translateY(1px);}
 #fit .ft-yn button[aria-pressed="true"][data-a="1"]{background:linear-gradient(135deg,#FF5722,#C9410C);box-shadow:0 6px 16px -8px rgba(201,65,12,.9);}
 #fit .ft-fit-out.js .ft-o.on{position:relative;padding:clamp(1.1rem,2.6vw,1.4rem);border-radius:22px;font-size:1rem;border:0;
   background:radial-gradient(120% 160% at 0 0,rgba(255,87,34,.2),transparent 60%),var(--card);box-shadow:0 0 0 2px rgba(255,87,34,.55),0 20px 40px -24px rgba(255,87,34,.8);}
 #fit .ft-o.on b{font-size:1.15rem;}
 #fit .ft-o.on a{padding:.6rem 1rem;border-radius:999px;background:#C9410C;color:#fff;}
 @media(prefers-reduced-motion:no-preference){#fit .ft-fit-out.js .ft-o.on{animation:fitPop .5s cubic-bezier(.22,1,.36,1);}}
-@keyframes fitPop{0%{transform:scale(.97)}60%{transform:scale(1.01)}100%{transform:none}}
+@keyframes fitPop{0%{transform:translateY(6px)}100%{transform:none}}
 
 /* the three classes: each a ticket with its hour, its days and a real call to action */
 .cl-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(.8rem,2vw,1.2rem);margin-top:1.8rem;}
@@ -910,7 +912,20 @@ html[data-theme="night"] .bn-val b{color:#3ddc97;}
 
 /* Invest in yourself: each stage priced on its own, then the offer that beats the sum */
 .iv-sub{color:var(--ink-soft);margin:.2rem 0 1.4rem;max-width:62ch;}
-.iv-packs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.8rem;}
+.iv-packs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.6rem;}
+.iv-dd{margin:1rem 0 .4rem;}
+.ft-dd-b{padding:1rem .2rem .2rem;}
+.iv-dd .iv-sub{margin:0 0 .8rem;}
+.iv-dd .iv-packs{grid-template-columns:1fr 1fr!important;}
+.iv-dd .iv-pack{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"st price" "name buy";align-items:center;gap:.15rem .8rem;padding:.75rem .9rem;border-radius:16px;}
+.iv-dd .iv-st{grid-area:st;}.iv-dd .iv-name{grid-area:name;font-size:.95rem;}
+.iv-dd .iv-price{grid-area:price;margin:0;font-size:1.1rem;text-align:right;}
+.iv-dd .iv-buy{grid-area:buy;margin:0;gap:.4rem;padding:.45rem .8rem;font-size:.82rem;white-space:nowrap;justify-self:end;}
+@media(max-width:700px){.iv-dd .iv-packs{grid-template-columns:1fr!important;}}
+.iv-dd .iv-price{margin-top:.2rem;}
+.fa-cert-n b{font-size:1.4rem!important;}
+#fit .ft-dd,#certificate .ft-dd{margin:0 auto;max-width:900px;}
+#fit.fx-sec,#certificate.fx-sec{padding-top:clamp(.6rem,1.6vw,1rem)!important;padding-bottom:clamp(.6rem,1.6vw,1rem)!important;}
 .iv-pack{display:flex;flex-direction:column;gap:.45rem;padding:1.15rem 1.15rem 1.05rem;border-radius:22px;background:var(--card);
   box-shadow:0 0 0 1px var(--card-line,var(--line));transition:transform .3s cubic-bezier(.22,1,.36,1),box-shadow .3s;}
 .iv-pack:hover{transform:translateY(-4px);box-shadow:0 0 0 1px rgba(255,87,34,.5),0 18px 36px -24px rgba(255,87,34,.7);}
@@ -1055,10 +1070,10 @@ html[data-theme="night"] .iv-plus em{color:#3ddc97;}
 <div class="wc-board" id="wcBoard">
 <div class="wc-count" aria-hidden="true"><div class="wc-badge"><b id="wcN">16</b><small>assets</small></div><div class="wc-ct"><b><span id="wcM">16</span> of 16 marked</b><small>Every one yours to show a remote employer</small><i class="wc-bar"><s id="wcBar"></s></i></div></div>
 <div class="wc-stages">
-<article class="wc-stage"><header><b>01</b><span>Remote Mindset</span><em>5 assets</em></header><ul><li><i class="wc-e" aria-hidden="true">📅</i><span>Deep Work Calendar Blocks</span><i class="wc-tick" aria-hidden="true">✓</i></li><li><i class="wc-e" aria-hidden="true">⏱</i><span>Pomodoro Tracker + Log</span><i class="wc-tick" aria-hidden="true">✓</i></li><li><i class="wc-e" aria-hidden="true">🎯</i><span>Daily KPI Planning Sheet</span><i class="wc-tick" aria-hidden="true">✓</i></li><li><i class="wc-e" aria-hidden="true">📋</i><span>End-of-Day Report System</span><i class="wc-tick" aria-hidden="true">✓</i></li><li><i class="wc-e" aria-hidden="true">🖥</i><span>Workspace Audit + Photo</span><i class="wc-tick" aria-hidden="true">✓</i></li></ul></article>
-<article class="wc-stage"><header><b>02</b><span>Digital Toolkit</span><em>4 assets</em></header><ul><li><i class="wc-e" aria-hidden="true">🎙</i><span>Zoom Cloud Recording</span><i class="wc-tick" aria-hidden="true">✓</i></li><li><i class="wc-e" aria-hidden="true">📌</i><span>Project Board with 5 Task Cards</span><i class="wc-tick" aria-hidden="true">✓</i></li><li><i class="wc-e" aria-hidden="true">📄</i><span>Linked Cloud Document</span><i class="wc-tick" aria-hidden="true">✓</i></li><li><i class="wc-e" aria-hidden="true">🔄</i><span>Async Sprint Board Review</span><i class="wc-tick" aria-hidden="true">✓</i></li></ul></article>
-<article class="wc-stage"><header><b>03</b><span>Async Communication</span><em>4 assets</em></header><ul><li><i class="wc-e" aria-hidden="true">✉️</i><span>Zero-Follow-Up Email</span><i class="wc-tick" aria-hidden="true">✓</i></li><li><i class="wc-e" aria-hidden="true">💬</i><span>Slack Batch Message</span><i class="wc-tick" aria-hidden="true">✓</i></li><li><i class="wc-e" aria-hidden="true">🤝</i><span>Working With Me Manual</span><i class="wc-tick" aria-hidden="true">✓</i></li><li><i class="wc-e" aria-hidden="true">🛠</i><span>Tech Emergency Fallback Plan</span><i class="wc-tick" aria-hidden="true">✓</i></li></ul></article>
-<article class="wc-stage"><header><b>04</b><span>Career Launch</span><em>3 assets</em></header><ul><li><i class="wc-e" aria-hidden="true">📝</i><span>Remote-First CV (PDF)</span><i class="wc-tick" aria-hidden="true">✓</i></li><li><i class="wc-e" aria-hidden="true">🗂</i><span>Digital Portfolio (2&ndash;3 projects)</span><i class="wc-tick" aria-hidden="true">✓</i></li><li><i class="wc-e" aria-hidden="true">🎬</i><span>STAR Video Answer (2 min)</span><i class="wc-tick" aria-hidden="true">✓</i></li></ul></article>
+<details class="ft-all fa-sm wc-stage"><summary class="fa-btn"><span class="fa-n" aria-hidden="true"><b>01</b><small>Stage</small></span><span class="fa-t"><b>Remote Mindset</b><small><span class="wc-dots" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>5 assets</small></span><span class="fa-go" aria-hidden="true">↓</span></summary><ul><li><i class="wc-e" aria-hidden="true">📅</i><span>Deep Work Calendar Blocks</span><i class="wc-tick" aria-hidden="true">✓</i></li><li><i class="wc-e" aria-hidden="true">⏱</i><span>Pomodoro Tracker + Log</span><i class="wc-tick" aria-hidden="true">✓</i></li><li><i class="wc-e" aria-hidden="true">🎯</i><span>Daily KPI Planning Sheet</span><i class="wc-tick" aria-hidden="true">✓</i></li><li><i class="wc-e" aria-hidden="true">📋</i><span>End-of-Day Report System</span><i class="wc-tick" aria-hidden="true">✓</i></li><li><i class="wc-e" aria-hidden="true">🖥</i><span>Workspace Audit + Photo</span><i class="wc-tick" aria-hidden="true">✓</i></li></ul></details>
+<details class="ft-all fa-sm wc-stage"><summary class="fa-btn"><span class="fa-n" aria-hidden="true"><b>02</b><small>Stage</small></span><span class="fa-t"><b>Digital Toolkit</b><small><span class="wc-dots" aria-hidden="true"><i></i><i></i><i></i><i></i></span>4 assets</small></span><span class="fa-go" aria-hidden="true">↓</span></summary><ul><li><i class="wc-e" aria-hidden="true">🎙</i><span>Zoom Cloud Recording</span><i class="wc-tick" aria-hidden="true">✓</i></li><li><i class="wc-e" aria-hidden="true">📌</i><span>Project Board with 5 Task Cards</span><i class="wc-tick" aria-hidden="true">✓</i></li><li><i class="wc-e" aria-hidden="true">📄</i><span>Linked Cloud Document</span><i class="wc-tick" aria-hidden="true">✓</i></li><li><i class="wc-e" aria-hidden="true">🔄</i><span>Async Sprint Board Review</span><i class="wc-tick" aria-hidden="true">✓</i></li></ul></details>
+<details class="ft-all fa-sm wc-stage"><summary class="fa-btn"><span class="fa-n" aria-hidden="true"><b>03</b><small>Stage</small></span><span class="fa-t"><b>Async Communication</b><small><span class="wc-dots" aria-hidden="true"><i></i><i></i><i></i><i></i></span>4 assets</small></span><span class="fa-go" aria-hidden="true">↓</span></summary><ul><li><i class="wc-e" aria-hidden="true">✉️</i><span>Zero-Follow-Up Email</span><i class="wc-tick" aria-hidden="true">✓</i></li><li><i class="wc-e" aria-hidden="true">💬</i><span>Slack Batch Message</span><i class="wc-tick" aria-hidden="true">✓</i></li><li><i class="wc-e" aria-hidden="true">🤝</i><span>Working With Me Manual</span><i class="wc-tick" aria-hidden="true">✓</i></li><li><i class="wc-e" aria-hidden="true">🛠</i><span>Tech Emergency Fallback Plan</span><i class="wc-tick" aria-hidden="true">✓</i></li></ul></details>
+<details class="ft-all fa-sm wc-stage"><summary class="fa-btn"><span class="fa-n" aria-hidden="true"><b>04</b><small>Stage</small></span><span class="fa-t"><b>Career Launch</b><small><span class="wc-dots" aria-hidden="true"><i></i><i></i><i></i></span>3 assets</small></span><span class="fa-go" aria-hidden="true">↓</span></summary><ul><li><i class="wc-e" aria-hidden="true">📝</i><span>Remote-First CV (PDF)</span><i class="wc-tick" aria-hidden="true">✓</i></li><li><i class="wc-e" aria-hidden="true">🗂</i><span>Digital Portfolio (2&ndash;3 projects)</span><i class="wc-tick" aria-hidden="true">✓</i></li><li><i class="wc-e" aria-hidden="true">🎬</i><span>STAR Video Answer (2 min)</span><i class="wc-tick" aria-hidden="true">✓</i></li></ul></details>
 </div>
 </div>
 <div class="wc-proof">
@@ -1095,12 +1110,9 @@ html[data-theme="night"] .iv-plus em{color:#3ddc97;}
 .wc-ct small{display:block;margin-top:.2rem;font-size:.88rem;color:var(--ink-soft);}
 .wc-bar{display:block;margin-top:.6rem;height:6px;border-radius:6px;background:var(--line);overflow:hidden;}
 .wc-bar s{display:block;height:100%;width:100%;border-radius:inherit;background:linear-gradient(90deg,#E8470F,#FFB25C);transition:width .25s ease;}
-.wc-stages{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.8rem;}
-.wc-stage{padding:.9rem;border-radius:18px;border:1px solid var(--line);background:rgba(127,127,127,.04);}
-.wc-stage header{display:flex;align-items:baseline;gap:.5rem;flex-wrap:wrap;margin-bottom:.7rem;}
-.wc-stage header b{font:800 1.3rem/1 var(--font-display);color:var(--accent);}
-.wc-stage header span{font-weight:700;color:var(--ink);font-size:.95rem;}
-.wc-stage header em{flex-basis:100%;font-style:normal;font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);}
+.wc-stages{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.7rem;align-items:start;}
+.wc-stage{margin:0;}
+.wc-stage ul{margin:.6rem 0 0;}
 .wc-stage ul{list-style:none;margin:0;padding:0;display:grid;gap:.45rem;}
 .wc-stage li{display:flex;align-items:center;gap:.55rem;padding:.6rem .7rem;border-radius:12px;border:1px solid rgba(255,87,34,.45);
   background:linear-gradient(135deg,rgba(255,87,34,.12),transparent 70%),var(--card);font-size:.86rem;font-weight:600;line-height:1.3;color:var(--ink);
@@ -1134,7 +1146,20 @@ html[data-theme="day"] .wc-tk{color:#AD350A;}
 }
 @keyframes wcScan{0%,100%{top:6%}50%{top:90%}}
 @keyframes wcPing{0%{box-shadow:0 0 0 0 rgba(255,87,34,.5)}100%{box-shadow:0 0 0 12px rgba(255,87,34,0)}}
-@media(max-width:980px){.wc-stages{grid-template-columns:1fr 1fr;}}
+/* compact dropdown variant (stages, questions, certificate, single stages) */
+.fa-sm .fa-btn{gap:.8rem;padding:.7rem .8rem .7rem .7rem;border-radius:18px;}
+.fa-sm .fa-n{width:48px;border-radius:13px;}
+.fa-sm .fa-n b{font-size:1.15rem;}
+.fa-sm .fa-n small{font-size:.48rem;}
+.fa-sm .fa-t b{font-size:1.02rem;}
+.fa-sm .fa-t small{font-size:.8rem;margin-top:.2rem;display:flex;align-items:center;gap:.5rem;}
+.fa-sm .fa-go{width:36px;font-size:.95rem;}
+.ft-all[open]>*:not(summary){animation:ddIn .45s cubic-bezier(.22,1,.36,1);}
+@keyframes ddIn{from{transform:translateY(-8px)}}
+.wc-dots{display:inline-flex;gap:3px;}
+.wc-dots i{width:7px;height:7px;border-radius:50%;background:#FF5722;transition:background .3s,box-shadow .3s;}
+.wc.armed .wc-dots i{background:var(--line);}
+.wc.armed .wc-dots i.lit{background:#FF5722;box-shadow:0 0 0 3px rgba(255,87,34,.2);}
 @media(max-width:620px){
   .wc-stage li{padding:.5rem .65rem;}
   .wc-journey{grid-template-columns:1fr;gap:.5rem;}
@@ -1143,6 +1168,7 @@ html[data-theme="day"] .wc-tk{color:#AD350A;}
   .wc.armed .wc-path b{transform:scaleY(0);} .wc.armed.go .wc-path b{transform:scaleY(1);}
   .wc-path i{right:auto;left:50%;top:auto;bottom:-6px;margin:0 0 0 -6px;}
   .wc-stages,.wc-proof{grid-template-columns:1fr;}
+  .wc-stages{gap:.55rem;}
 }
 </style>
 
@@ -1173,9 +1199,9 @@ html[data-theme="day"] .wc-tk{color:#AD350A;}
 
 <!-- IS THIS FOR YOU? The four-question test from the ERJ client profile -->
 <section class="wrap fx-sec" id="fit">
-<p class="section-label">Is this for you?</p>
-<h2>Four questions. <span>An honest answer in under a minute.</span></h2>
-<p class="ft-fit-sub">These are the questions we ask before we recommend anything. Answer them for yourself first.</p>
+<details class="ft-all fa-sm ft-dd" id="fitDd"><summary class="fa-btn"><span class="fa-n" aria-hidden="true"><b>4</b><small>Qs</small></span><span class="fa-t"><b>Is this for you?</b><small>Four questions, an honest answer in a minute</small></span><span class="fa-go" aria-hidden="true">↓</span></summary>
+<div class="ft-dd-b">
+<p class="ft-fit-sub">The questions we ask before we recommend anything. Answer them for yourself first.</p>
 <div class="ft-meter" aria-hidden="true"><span id="ftMeterT">0 of 4 answered</span><i><b id="ftMeterB"></b></i></div>
 <ol class="ft-fit" id="ftFit">
 <li class="ft-q"><p><b>Do you have real work experience?</b><span>A year or more of actual work, not just a certificate or a title.</span></p><div class="ft-yn" role="group" aria-label="Real work experience"><button type="button" data-a="1">Yes</button><button type="button" data-a="0">No</button></div></li>
@@ -1188,6 +1214,8 @@ html[data-theme="day"] .wc-tk{color:#AD350A;}
 <div class="ft-o" data-o="maybe"><b>Two yes: one free step first.</b><span>Take the 90-second diagnosis now, and come back when the date or the money is in place.</span><a href="../diagnose/">Take the free diagnosis →</a></div>
 <div class="ft-o" data-o="no"><b>One or none: not yet, and that’s fine.</b><span>Use the free job board and the Channel. Pay when the timing is right, not before.</span><a href="../jobs/">Open the free job board →</a></div>
 </div>
+</div>
+</details>
 </section>
 
 
@@ -1267,10 +1295,9 @@ html[data-theme="day"] .wc-tk{color:#AD350A;}
 
 <!-- CERTIFICATE -->
 <section class="wrap fx-sec" id="certificate">
-<div class="fx-cert-grid reveal">
+<details class="ft-all fa-sm ft-dd"><summary class="fa-btn"><span class="fa-n fa-cert-n" aria-hidden="true"><b>🎓</b></span><span class="fa-t"><b>Finish certified</b><small>Your name and student number, when all 16 are marked</small></span><span class="fa-go" aria-hidden="true">↓</span></summary>
+<div class="fx-cert-grid ft-dd-b">
 <div class="fx-cert-copy">
-<p class="section-label">Certification</p>
-<h2>Finish certified. <span>Show it anywhere.</span></h2>
 <p class="section-sub">Complete Stages 1–4 and receive the <b>Remote Job Proficiency Certificate</b>, with your name and your own student number. It names what you proved: a remote-work mindset and deep-work system, digital toolkit mastery, and async communication.</p>
 <ul class="fx-ticks">
 <li>Add it to LinkedIn under Licences &amp; Certifications</li>
@@ -1283,6 +1310,7 @@ html[data-theme="day"] .wc-tk{color:#AD350A;}
 <span class="fx-cert-tag">Sample · your name goes here</span>
 </div>
 </div>
+</details>
 </section>
 
 <!-- PROOF -->
@@ -1381,14 +1409,6 @@ html[data-theme="day"] .wc-tk{color:#AD350A;}
 <section class="wrap fx-sec" id="pricing">
 <p class="section-label">Investment</p>
 <h2>Invest in <span>yourself.</span></h2>
-<p class="iv-sub">Take the stage you need on its own, or take all four together and save ₦120,000.</p>
-<div class="iv-packs">
-<article class="iv-pack reveal"><span class="iv-st">Stage 1</span><b class="iv-name">Remote Mindset Blueprint</b><p>Your remote operating system: calendar blocks, KPI sheet and end-of-day reports.</p><div class="iv-price">₦70,000</div><a class="iv-buy" href="https://paystack.shop/pay/Stage1" rel="noopener" target="_blank">Get Stage 1 <i aria-hidden="true">→</i></a></article>
-<article class="iv-pack reveal"><span class="iv-st">Stage 2</span><b class="iv-name">The Digital Toolkit</b><p>The Integrated Sprint: a project board, a linked document and a recorded walkthrough.</p><div class="iv-price">₦130,000</div><a class="iv-buy" href="https://paystack.shop/pay/stage2ai" rel="noopener" target="_blank">Get Stage 2 <i aria-hidden="true">→</i></a></article>
-<article class="iv-pack reveal"><span class="iv-st">Stage 3</span><b class="iv-name">Async Communication Mastery</b><p>Five communication assets that show how you work when nobody is online.</p><div class="iv-price">₦70,000</div><a class="iv-buy" href="https://paystack.shop/pay/stage3alony" rel="noopener" target="_blank">Get Stage 3 <i aria-hidden="true">→</i></a></article>
-<article class="iv-pack reveal"><span class="iv-st">Stage 4</span><b class="iv-name">Start Your Remote Career</b><p>The Global Ready Package: remote-first CV, portfolio and your STAR video.</p><div class="iv-price">₦100,000</div><a class="iv-buy" href="https://paystack.shop/pay/stage4only" rel="noopener" target="_blank">Get Stage 4 <i aria-hidden="true">→</i></a></article>
-</div>
-<p class="iv-or"><span>or take all four together</span></p>
 <article class="iv-offer reveal" id="offer">
 <span class="iv-ribbon">Our offer · best value</span>
 <div class="iv-offer-grid">
@@ -1416,6 +1436,17 @@ html[data-theme="day"] .wc-tk{color:#AD350A;}
 </div>
 </div>
 </article>
+<details class="ft-all fa-sm ft-dd iv-dd"><summary class="fa-btn"><span class="fa-n" aria-hidden="true"><b>1</b><small>stage</small></span><span class="fa-t"><b>Need only one stage?</b><small>Each stage is sold on its own too</small></span><span class="fa-go" aria-hidden="true">↓</span></summary>
+<div class="ft-dd-b">
+<p class="iv-sub">Take the stage you need on its own, or take all four together and save ₦120,000.</p>
+<div class="iv-packs">
+<article class="iv-pack"><span class="iv-st">Stage 1</span><b class="iv-name">Remote Mindset Blueprint</b><div class="iv-price">₦70,000</div><a class="iv-buy" href="https://paystack.shop/pay/Stage1" rel="noopener" target="_blank">Get Stage 1 <i aria-hidden="true">→</i></a></article>
+<article class="iv-pack"><span class="iv-st">Stage 2</span><b class="iv-name">The Digital Toolkit</b><div class="iv-price">₦130,000</div><a class="iv-buy" href="https://paystack.shop/pay/stage2ai" rel="noopener" target="_blank">Get Stage 2 <i aria-hidden="true">→</i></a></article>
+<article class="iv-pack"><span class="iv-st">Stage 3</span><b class="iv-name">Async Communication Mastery</b><div class="iv-price">₦70,000</div><a class="iv-buy" href="https://paystack.shop/pay/stage3alony" rel="noopener" target="_blank">Get Stage 3 <i aria-hidden="true">→</i></a></article>
+<article class="iv-pack"><span class="iv-st">Stage 4</span><b class="iv-name">Start Your Remote Career</b><div class="iv-price">₦100,000</div><a class="iv-buy" href="https://paystack.shop/pay/stage4only" rel="noopener" target="_blank">Get Stage 4 <i aria-hidden="true">→</i></a></article>
+</div>
+</div>
+</details>
 <p class="iv-fine">Single stages are taught in the same cohort. The certificate needs all four stages, and the career-development bonus comes with the full programme only. Can’t start this month? Pay now and register forward for Cohort 14 (begins Mon 4 Jan).</p>
 </section>
 
@@ -1620,12 +1651,18 @@ html[data-theme="day"] .wc-tk{color:#AD350A;}
       wc.classList.add('armed'); wn.textContent='0'; wm.textContent='0'; wbar.style.width='0%';
       var wio=new IntersectionObserver(function(es){ if(!es[0].isIntersecting) return; wio.disconnect();
         wc.classList.add('go');
-        lis.forEach(function(li,k){ setTimeout(function(){ li.classList.add('lit'); var c=String(k+1); wn.textContent=c; wm.textContent=c; wbar.style.width=((k+1)/lis.length*100)+'%'; },250+k*140); });
+        var dts=[].slice.call(wc.querySelectorAll('.wc-dots i'));
+        lis.forEach(function(li,k){ setTimeout(function(){ li.classList.add('lit'); if(dts[k]) dts[k].classList.add('lit'); var c=String(k+1); wn.textContent=c; wm.textContent=c; wbar.style.width=((k+1)/lis.length*100)+'%'; },250+k*140); });
       },{threshold:.25});
       wio.observe(wcB);
       setTimeout(function(){ if(!wc.classList.contains('go')){ wio.disconnect(); wc.classList.remove('armed'); wn.textContent='16'; wm.textContent='16'; wbar.style.width='100%'; } },20000);
     }
   }
+
+  /* a link to #fit or #certificate opens its dropdown */
+  function ddOpen(id){ var t=d.getElementById(id); if(!t) return; var dd=t.matches&&t.matches('details')?t:t.querySelector('details.ft-dd'); if(dd) dd.open=true; }
+  d.addEventListener('click',function(e){ var a=e.target.closest&&e.target.closest('a[href^="#"]'); if(a&&a.getAttribute('href').length>1) ddOpen(a.getAttribute('href').slice(1)); });
+  if(location.hash.length>1) ddOpen(location.hash.slice(1));
 
   /* sticky bar: after the hero, until pricing; its text follows the open cohort */
   var sticky=d.getElementById('stickyCta'), hero=d.getElementById('top'), price=d.getElementById('pricing');
