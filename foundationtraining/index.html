@@ -747,6 +747,9 @@ html[data-theme="day"] .why-k,html[data-theme="day"] .why-k2{color:#AD350A;}
 .fa-go{display:grid;place-items:center;width:clamp(42px,6vw,50px);aspect-ratio:1;border-radius:50%;font:800 1.15rem/1 var(--font-body);color:#fff;background:#C9410C;
   transition:transform .45s cubic-bezier(.22,1,.36,1),background .3s;}
 .fa-btn:hover .fa-go{background:#FF5722;}
+/* the arrow: a drawn chevron, centred, that turns over when open */
+.fa-go{font-size:0!important;color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,.3),0 8px 18px -8px rgba(201,65,12,.9);}
+.fa-go::before{content:"";display:block;width:20px;height:20px;align-self:center;justify-self:center;background:currentColor;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9.5l6 6 6-6'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9.5l6 6 6-6'/%3E%3C/svg%3E") center/contain no-repeat;}
 .ft-all[open] .fa-go{transform:rotate(180deg);}
 .ft-all[open] .fa-btn{box-shadow:0 10px 30px -20px rgba(255,87,34,.7);}
 @media(max-width:1100px){.fa-strip i:nth-child(n+6){display:none;}}
@@ -760,7 +763,7 @@ html[data-theme="day"] .why-k,html[data-theme="day"] .why-k2{color:#AD350A;}
   .fa-strip i:nth-child(5){animation-delay:.6s}.fa-strip i:nth-child(6){animation-delay:.75s}.fa-strip i:nth-child(7){animation-delay:.9s}.fa-strip i:nth-child(8){animation-delay:1.05s}}
 @keyframes faSpin{to{--fa-a:360deg}}
 @keyframes faSheen{0%,55%{background-position:120% 0}100%{background-position:-60% 0}}
-@keyframes faBob{0%,100%{transform:none}50%{transform:translateY(4px)}}
+@keyframes faBob{0%,100%{transform:none}50%{transform:translateY(3px)}}
 @keyframes faHop{0%,70%,100%{transform:none}80%{transform:translateY(-5px)}}
 .ft-sponsor{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1.2rem 2rem;padding:clamp(1.3rem,3vw,2rem);border-radius:26px;border:1px solid rgba(255,87,34,.5);background:radial-gradient(100% 140% at 0 0,rgba(255,87,34,.13),transparent 60%),var(--card);}
 .ft-sponsor>div{flex:1 1 420px;}
@@ -797,18 +800,32 @@ html[data-theme="night"] .fx-now-live{color:#3ddc97;}
 .fx-now .fx-clock>div{min-width:0;padding:.6rem .3rem;border-radius:14px;border:1px solid var(--line);background:var(--card);text-align:center;}
 .fx-now .fx-clock>div:last-child{border-color:rgba(255,87,34,.5);}
 .fx-now .fx-clock b{font-size:clamp(1.5rem,3.6vw,2rem);}
-.fx-now-bar{position:relative;height:6px;margin-top:.9rem;border-radius:6px;background:rgba(255,87,34,.12);overflow:hidden;}
-.fx-now-bar i{position:absolute;left:0;top:0;bottom:0;width:var(--left,60%);border-radius:inherit;
-  background:linear-gradient(90deg,#C9410C,#FF5722,#FFB25C);background-size:200% 100%;}
+.fx-now-days{display:none;margin-top:1rem;}
+.fx-now-days.on{display:block;}
+.fnd-row{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;margin-bottom:.55rem;font-size:.68rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft);}
+.fnd-row b{font:800 1.05rem/1 var(--font-display);letter-spacing:0;text-transform:none;color:var(--ink);}
+.fnd-row em{font-style:normal;color:var(--accent);}
+.fnd-seg{position:relative;display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:3px;}
+.fnd-seg i{height:11px;border-radius:3px;background:rgba(255,87,34,.14);}
+.fnd-seg i.on{background:linear-gradient(180deg,#FF6A3D,#E8470F);}
+.fnd-seg i.now{background:#FFB25C;box-shadow:0 0 0 3px rgba(255,178,92,.25);}
+.fnd-seg::after{content:"";position:absolute;left:0;top:0;bottom:0;width:var(--w,0%);pointer-events:none;border-radius:3px;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.5),transparent) no-repeat;background-size:30% 100%;background-position:-40% 0;}
+.fnd-seg.pct{display:block;height:10px;border-radius:10px;background:rgba(255,87,34,.14);overflow:hidden;}
+.fnd-seg.pct .fnd-fill{display:block;width:var(--w);height:100%;border-radius:inherit;background:linear-gradient(90deg,#C9410C,#FF5722 70%,#FFB25C);}
+.fnd-seg.pct::after{border-radius:10px;}
+@media(max-width:420px){.fnd-seg{gap:2px;}.fnd-seg i{height:10px;border-radius:2px;}}
 @media(prefers-reduced-motion:no-preference){
   .fx-now::before{animation:nwSpin 5s linear infinite;}
   .fx-now-live i{animation:nwPing 1.8s infinite;}
   .fx-now .fx-clock>div:last-child{animation:nwTick 1s ease-in-out infinite;}
-  .fx-now-bar i{animation:nwFlow 2.4s linear infinite;}}
+  .fnd-seg::after{animation:fndRun 2.8s cubic-bezier(.45,0,.55,1) infinite;}
+  .fnd-seg i.now{animation:fndNow 1.6s ease-in-out infinite;}}
+@keyframes fndRun{to{background-position:140% 0}}
+@keyframes fndNow{50%{box-shadow:0 0 0 5px rgba(255,178,92,.12)}}
 @keyframes nwSpin{to{--nw-a:360deg}}
 @keyframes nwPing{0%{box-shadow:0 0 0 0 rgba(25,194,122,.6)}100%{box-shadow:0 0 0 9px rgba(25,194,122,0)}}
 @keyframes nwTick{0%,100%{box-shadow:0 0 0 0 rgba(255,87,34,0)}50%{box-shadow:0 0 0 4px rgba(255,87,34,.16)}}
-@keyframes nwFlow{to{background-position:-200% 0}}
 @media(max-width:340px){.fx-now-facts{grid-template-columns:1fr;}}
 
 /* Is this for you? a meter, numbered cards that light up, Yes/No that answer back */
@@ -1031,7 +1048,7 @@ html[data-theme="night"] .iv-plus em{color:#3ddc97;}
 <div class="fx-clock" data-no-evergreen="" data-closed-label="Registration has closed" data-deadline="2026-11-29T20:00:00+01:00">
 <div><b data-k="d">00</b><span>days</span></div><div><b data-k="h">00</b><span>hrs</span></div><div><b data-k="m">00</b><span>min</span></div><div><b data-k="s">00</b><span>sec</span></div>
 </div></div>
-<div class="fx-now-bar" aria-hidden="true"><i></i></div>
+<div class="fx-now-days" data-mode="pct" aria-hidden="true"><div class="fnd-row"><span>Registration</span><b>Day <em class="fnd-n"></em> of <span class="fnd-t"></span></b></div><div class="fnd-seg"></div></div>
 </div>
 <div class="fx-now" data-ends="2027-01-03T20:00:00+01:00" data-opens="2026-11-29T20:00:00+01:00" data-co="Cohort 14, begins Mon 4 Jan 2027" data-sticky="Cohort 14 registration closes Sun 3 Jan|Classes begin Mon 4 Jan · 8 PM WAT">
 <div class="fx-now-top"><span class="fx-now-live"><i aria-hidden="true"></i>Registering now</span><span class="fx-now-n">Cohort 14</span></div>
@@ -1040,7 +1057,7 @@ html[data-theme="night"] .iv-plus em{color:#3ddc97;}
 <div class="fx-clock" data-no-evergreen="" data-closed-label="Registration has closed" data-deadline="2027-01-03T20:00:00+01:00">
 <div><b data-k="d">00</b><span>days</span></div><div><b data-k="h">00</b><span>hrs</span></div><div><b data-k="m">00</b><span>min</span></div><div><b data-k="s">00</b><span>sec</span></div>
 </div></div>
-<div class="fx-now-bar" aria-hidden="true"><i></i></div>
+<div class="fx-now-days" data-mode="pct" aria-hidden="true"><div class="fnd-row"><span>Registration</span><b>Day <em class="fnd-n"></em> of <span class="fnd-t"></span></b></div><div class="fnd-seg"></div></div>
 </div>
 </div>
 
@@ -1112,7 +1129,7 @@ html[data-theme="night"] .iv-plus em{color:#3ddc97;}
 .wc-bar{display:block;margin-top:.6rem;height:6px;border-radius:6px;background:var(--line);overflow:hidden;}
 .wc-bar s{display:block;height:100%;width:100%;border-radius:inherit;background:linear-gradient(90deg,#E8470F,#FFB25C);transition:width .25s ease;}
 .wc-stages{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.7rem;align-items:start;}
-.wc-stage{margin:0;}
+.wc-stage{margin:0;width:100%;}
 .wc-col{display:flex;flex-direction:column;gap:.7rem;min-width:0;}
 .wc-stage ul{margin:.6rem 0 0;}
 .wc-stage ul{list-style:none;margin:0;padding:0;display:grid;gap:.45rem;}
@@ -1156,6 +1173,7 @@ html[data-theme="day"] .wc-tk{color:#AD350A;}
 .fa-sm .fa-t b{font-size:1.02rem;}
 .fa-sm .fa-t small{font-size:.8rem;margin-top:.2rem;display:flex;align-items:center;gap:.5rem;}
 .fa-sm .fa-go{width:36px;font-size:.95rem;}
+.fa-sm .fa-go::before{width:17px!important;height:17px!important;}
 .ft-all[open]>*:not(summary){animation:ddIn .45s cubic-bezier(.22,1,.36,1);}
 @keyframes ddIn{from{transform:translateY(-8px)}}
 .wc-dots{display:inline-flex;gap:3px;}
@@ -1418,7 +1436,7 @@ html[data-theme="day"] .wc-tk{color:#AD350A;}
 <div class="iv-main">
 <h3>The full programme, <span>Stages 1–4.</span></h3>
 <div class="iv-sum" aria-label="The four stages bought one by one come to ₦370,000"><span>₦70,000</span><i>+</i><span>₦130,000</span><i>+</i><span>₦70,000</span><i>+</i><span>₦100,000</span><i>=</i><s>₦370,000</s></div>
-<div class="iv-now"><small>Yours for</small><b>₦250,000</b><em>You save ₦120,000</em></div>
+<div class="iv-now"><small>Yours for</small><b>₦250,000</b><em>₦120,000 less than four single stages</em></div>
 <p class="iv-plus-k">Only with the full programme</p>
 <ul class="iv-plus">
 <li>Live classes at the hour you choose, for twenty days</li>
@@ -1441,7 +1459,7 @@ html[data-theme="day"] .wc-tk{color:#AD350A;}
 </article>
 <details class="ft-all fa-sm ft-dd iv-dd"><summary class="fa-btn"><span class="fa-n" aria-hidden="true"><b>1</b><small>stage</small></span><span class="fa-t"><b>Need only one stage?</b><small>Each stage is sold on its own too</small></span><span class="fa-go" aria-hidden="true">↓</span></summary>
 <div class="ft-dd-b">
-<p class="iv-sub">Take the stage you need on its own, or take all four together and save ₦120,000.</p>
+<p class="iv-sub">Take the stage you need on its own. All four together cost ₦120,000 less than buying them one by one.</p>
 <div class="iv-packs">
 <article class="iv-pack"><span class="iv-st">Stage 1</span><b class="iv-name">Remote Mindset Blueprint</b><div class="iv-price">₦70,000</div><a class="iv-buy" href="https://paystack.shop/pay/Stage1" rel="noopener" target="_blank">Get Stage 1 <i aria-hidden="true">→</i></a></article>
 <article class="iv-pack"><span class="iv-st">Stage 2</span><b class="iv-name">The Digital Toolkit</b><div class="iv-price">₦130,000</div><a class="iv-buy" href="https://paystack.shop/pay/stage2ai" rel="noopener" target="_blank">Get Stage 2 <i aria-hidden="true">→</i></a></article>
@@ -1593,8 +1611,15 @@ html[data-theme="day"] .wc-tk{color:#AD350A;}
   var ivo=[].filter.call(d.querySelectorAll('.iv-co[data-ends]'),function(c){return now()<new Date(c.getAttribute('data-ends'));});
   if(ivo[0]) ivo[0].classList.remove('is-past');
   if(open[0]){
-    var cur=open[0], o=new Date(cur.getAttribute('data-opens')), e=new Date(cur.getAttribute('data-ends')), bar=cur.querySelector('.fx-now-bar i');
-    if(bar){ var left=Math.min(1,Math.max(.04,(e-now())/(e-o))); bar.style.setProperty('--left',(left*100).toFixed(1)+'%'); }
+    var cur=open[0], o=new Date(cur.getAttribute('data-opens')), e=new Date(cur.getAttribute('data-ends'));
+    var fd=cur.querySelector('.fx-now-days');
+    if(fd){ var DAY=864e5, tot=Math.ceil((e-o)/DAY), day=Math.min(tot,Math.max(1,Math.floor((now()-o)/DAY)+1)), seg=fd.querySelector('.fnd-seg'), h='';
+      for(var k=1;k<=tot;k++) h+='<i class="'+(k<day?'on':k===day?'now':'')+'"></i>';
+      seg.innerHTML=h; seg.style.setProperty('--w',(day/tot*100).toFixed(1)+'%');
+      fd.querySelector('.fnd-n').textContent=day; fd.querySelector('.fnd-t').textContent=tot;
+      if(fd.getAttribute('data-mode')==='pct'){ var pc=Math.min(100,Math.max(1,Math.floor((now()-o)/(e-o)*100)));
+        fd.querySelector('.fnd-row b').innerHTML='<em>'+pc+'%</em> through'; seg.innerHTML='<i class="fnd-fill"></i>'; seg.classList.add('pct'); seg.style.setProperty('--w',pc+'%'); }
+      fd.classList.add('on'); }
     if(msgs.ftSeat) [].forEach.call(d.querySelectorAll('.fx-hero .fx-seat,.iv-offer .fx-seat'),function(a){ a.href=wa(msgs.ftSeat.replace('{cohort}',cur.getAttribute('data-co'))); });
   }
 
@@ -1692,7 +1717,7 @@ html[data-theme="day"] .wc-tk{color:#AD350A;}
 </script>
 <script src="../erj-schema.js?v=20261116a"></script>
 <script defer="" src="../erj-alive.js?v=20261004a"></script>
-<script defer="" src="../erj-future.js?v=20261120a"></script>
+<script defer="" src="../erj-future.js?v=20261122a"></script>
 <script>
 /* Is this for you? Count the yes answers: 3–4 enrol, 2 one free step, 0–1 free route.
    Without JS all three outcomes stay visible as plain guidance. */

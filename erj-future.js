@@ -12,8 +12,12 @@
   st.textContent = SEL.split(',').map(function (x) { return x + ',' + x + ' *'; }).join(',') + '{white-space:nowrap!important;}';
   (document.head || document.documentElement).appendChild(st);
   function fitOne(el) {
+    /* fit once per screen width: refitting on every page change made labels
+       grow and shrink while counters ticked and bars slid in (it read as a zoom) */
+    if (el.__erjFitW === window.innerWidth && el.__erjFitT === el.textContent) return;
     var cs = getComputedStyle(el);
     if (cs.display === 'none' || !el.getClientRects().length) return;
+    el.__erjFitW = window.innerWidth; el.__erjFitT = el.textContent;
     el.style.removeProperty('font-size');
     var size = parseFloat(getComputedStyle(el).fontSize), guard = 0;
     var par = el.parentElement;
