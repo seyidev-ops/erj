@@ -678,7 +678,7 @@ a.promo-tick{text-decoration:none;display:block;}
 <link href="/favicon-96.png" rel="icon" sizes="96x96" type="image/png"/>
 <link href="/appletouchicon.png" rel="apple-touch-icon"/>
 <link href="erj-alive.css?v=20261028b" rel="stylesheet" media="print" onload="this.media='all'"/><noscript><link href="erj-alive.css?v=20261028b" rel="stylesheet"/></noscript>
-<link href="erj-future.css?v=20261120a" rel="stylesheet"/>
+<link href="erj-future.css?v=20261122b" rel="stylesheet"/>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -694,8 +694,8 @@ a.promo-tick{text-decoration:none;display:block;}
 <section class="eb-top">
 <div>
 <span class="eb-badge"><span class="dot"></span> Cohort 13 · Instalment Window</span>
-<h1 class="eb-h1">Start with <em>any amount.</em><br/>Hold your seat in <em>Cohort 13.</em></h1>
-<p class="eb-sub">The fee is <strong>₦250,000</strong> and it never changes. What changes is how you pay: start with any amount, pay it down, and finish by <strong>Sunday 22 November 2026</strong>. After that, full payment only.</p>
+<h1 class="eb-h1" data-after="Instalments have <em>closed.</em><br/>Full payment only, until <em>29 November.</em>">Start with <em>any amount.</em><br/>Hold your seat in <em>Cohort 13.</em></h1>
+<p class="eb-sub" data-after="The fee is <strong>₦250,000</strong> and it never changes. The instalment window closed on <strong>Sunday 22 November 2026, 11:59 PM WAT</strong>. From now, full payment only. Started paying before then? You keep every naira; the balance is due before the gate on <strong>Sunday 29 November, 8:00 PM WAT</strong>.">The fee is <strong>₦250,000</strong> and it never changes. What changes is how you pay: start with any amount, pay it down, and finish by <strong>Sunday 22 November 2026</strong>. After that, full payment only.</p>
 </div>
 <figure class="eb-photo">
 <img alt="Oluwaseyi Ashiru, Lead Facilitator, welcoming you with a hand on his heart" decoding="async" fetchpriority="high" height="1100" loading="eager" src="photo-seyi-welcome.webp" width="880"/>
@@ -712,7 +712,7 @@ a.promo-tick{text-decoration:none;display:block;}
 </div>
 <div class="eb-when">
 <div class="eb-when-a">
-<p class="eb-start">It begins with an instalment of <em>any amount.</em></p>
+<p class="eb-start" data-after="Full payment only, from now.">It begins with an instalment of <em>any amount.</em></p>
 <div aria-live="polite" class="eb-clock" id="ebClock">
 <div class="eb-unit"><b data-d="">--</b><span>Days</span></div>
 <div class="eb-unit"><b data-h="">--</b><span>Hours</span></div>
@@ -728,7 +728,7 @@ a.promo-tick{text-decoration:none;display:block;}
 <!-- HOW IT WORKS -->
 <section class="eb-sec">
 <div class="eb-steps">
-<div class="eb-step reveal"><div class="eb-step-n">01 · FROM TODAY</div><div class="eb-step-t">Pay any amount</div><p class="eb-step-d">No minimum. Your seat is held the moment it lands.</p></div>
+<div class="eb-step reveal" data-after="&lt;div class=&quot;eb-step-n&quot;&gt;01 · NOW&lt;/div&gt;&lt;div class=&quot;eb-step-t&quot;&gt;Pay the full fee&lt;/div&gt;&lt;p class=&quot;eb-step-d&quot;&gt;Instalments have closed. One payment of ₦250,000 holds your seat.&lt;/p&gt;"><div class="eb-step-n">01 · FROM TODAY</div><div class="eb-step-t">Pay any amount</div><p class="eb-step-d">No minimum. Your seat is held the moment it lands.</p></div>
 <div class="eb-step reveal"><div class="eb-step-n">02 · AT YOUR PACE</div><div class="eb-step-t">Pay down the rest</div><p class="eb-step-d">Every payment is recorded against your name and your balance confirmed.</p></div>
 <div class="eb-step reveal"><div class="eb-step-n">03 · BY 22 NOVEMBER</div><div class="eb-step-t">Balance up, and begin</div><p class="eb-step-d">Complete the fee and your full access opens when Cohort 13 begins.</p></div>
 </div>
@@ -742,10 +742,10 @@ a.promo-tick{text-decoration:none;display:block;}
 <h2>Pay by card or transfer</h2>
 <ul class="eb-bank">
 <li><span>Pay with</span><b>Card, transfer or USSD</b></li>
-<li><span>Minimum</span><b>None — any amount</b></li>
+<li><span>Minimum</span><b data-after="The full fee, ₦250,000">None — any amount</b></li>
 </ul>
-<a class="eb-btn" href="https://paystack.shop/pay/earlybirdstages1-4">Start with any amount →</a>
-<p class="eb-fine">Enter any amount on the payment page.</p>
+<a class="eb-btn" href="https://paystack.shop/pay/earlybirdstages1-4" data-after="Pay the full fee →">Start with any amount →</a>
+<p class="eb-fine" data-after="Enter the full fee of ₦250,000 on the payment page, or the balance you still owe.">Enter any amount on the payment page.</p>
 </div>
 <div class="eb-card">
 <h2>Or transfer directly</h2>
@@ -786,6 +786,7 @@ a.promo-tick{text-decoration:none;display:block;}
   function tick(){
     var diff = DEADLINE - Date.now();
     if(diff <= 0){
+      after();
       box.innerHTML = '<div style="font-family:var(--font-display);font-weight:700;color:var(--accent);">The instalment window has closed. Cohort 13 is still open at the full fee until 29 November.</div>';
       clearInterval(timer);
       return;
@@ -796,13 +797,17 @@ a.promo-tick{text-decoration:none;display:block;}
     m.textContent = pad(Math.floor(sec%3600/60));
     s.textContent = pad(sec%60);
   }
+  /* After the instalment gate, nothing on this page may still promise that any amount holds a seat. */
+  function after(){
+    [].forEach.call(document.querySelectorAll('[data-after]'), function(el){ el.innerHTML = el.getAttribute('data-after'); el.removeAttribute('data-after'); });
+  }
   tick();
   var timer = setInterval(tick, 1000);
 })();
 </script>
 <script defer="" src="erj-theme.js?v=20260911a"></script>
 <script defer="" src="erj-product.js?v=20260924c"></script>
-<script defer="" src="erj-config.js?v=20261119c"></script>
+<script defer="" src="erj-config.js?v=20261122a"></script>
 <script defer="" src="erj-capture.js?v=20261120a"></script>
 <script defer="" src="erj-alive.js?v=20261004a"></script>
 <script defer="" src="erj-future.js?v=20261120a"></script>
