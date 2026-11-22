@@ -747,6 +747,9 @@ html[data-theme="day"] .why-k,html[data-theme="day"] .why-k2{color:#AD350A;}
 .fa-go{display:grid;place-items:center;width:clamp(42px,6vw,50px);aspect-ratio:1;border-radius:50%;font:800 1.15rem/1 var(--font-body);color:#fff;background:#C9410C;
   transition:transform .45s cubic-bezier(.22,1,.36,1),background .3s;}
 .fa-btn:hover .fa-go{background:#FF5722;}
+/* the arrow: a drawn chevron, centred, that turns over when open */
+.fa-go{font-size:0!important;color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,.3),0 8px 18px -8px rgba(201,65,12,.9);}
+.fa-go::before{content:"";display:block;width:20px;height:20px;align-self:center;justify-self:center;background:currentColor;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9.5l6 6 6-6'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9.5l6 6 6-6'/%3E%3C/svg%3E") center/contain no-repeat;}
 .ft-all[open] .fa-go{transform:rotate(180deg);}
 .ft-all[open] .fa-btn{box-shadow:0 10px 30px -20px rgba(255,87,34,.7);}
 @media(max-width:1100px){.fa-strip i:nth-child(n+6){display:none;}}
@@ -760,7 +763,7 @@ html[data-theme="day"] .why-k,html[data-theme="day"] .why-k2{color:#AD350A;}
   .fa-strip i:nth-child(5){animation-delay:.6s}.fa-strip i:nth-child(6){animation-delay:.75s}.fa-strip i:nth-child(7){animation-delay:.9s}.fa-strip i:nth-child(8){animation-delay:1.05s}}
 @keyframes faSpin{to{--fa-a:360deg}}
 @keyframes faSheen{0%,55%{background-position:120% 0}100%{background-position:-60% 0}}
-@keyframes faBob{0%,100%{transform:none}50%{transform:translateY(4px)}}
+@keyframes faBob{0%,100%{transform:none}50%{transform:translateY(3px)}}
 @keyframes faHop{0%,70%,100%{transform:none}80%{transform:translateY(-5px)}}
 .ft-sponsor{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1.2rem 2rem;padding:clamp(1.3rem,3vw,2rem);border-radius:26px;border:1px solid rgba(255,87,34,.5);background:radial-gradient(100% 140% at 0 0,rgba(255,87,34,.13),transparent 60%),var(--card);}
 .ft-sponsor>div{flex:1 1 420px;}
@@ -1045,7 +1048,7 @@ html[data-theme="night"] .iv-plus em{color:#3ddc97;}
 <div class="fx-clock" data-no-evergreen="" data-closed-label="Registration has closed" data-deadline="2026-11-29T20:00:00+01:00">
 <div><b data-k="d">00</b><span>days</span></div><div><b data-k="h">00</b><span>hrs</span></div><div><b data-k="m">00</b><span>min</span></div><div><b data-k="s">00</b><span>sec</span></div>
 </div></div>
-<div class="fx-now-days" aria-hidden="true"><div class="fnd-row"><span>Registration</span><b>Day <em class="fnd-n"></em> of <span class="fnd-t"></span></b></div><div class="fnd-seg"></div></div>
+<div class="fx-now-days" data-mode="pct" aria-hidden="true"><div class="fnd-row"><span>Registration</span><b>Day <em class="fnd-n"></em> of <span class="fnd-t"></span></b></div><div class="fnd-seg"></div></div>
 </div>
 <div class="fx-now" data-ends="2027-01-03T20:00:00+01:00" data-opens="2026-11-29T20:00:00+01:00" data-co="Cohort 14, begins Mon 4 Jan 2027" data-sticky="Cohort 14 registration closes Sun 3 Jan|Classes begin Mon 4 Jan · 8 PM WAT">
 <div class="fx-now-top"><span class="fx-now-live"><i aria-hidden="true"></i>Registering now</span><span class="fx-now-n">Cohort 14</span></div>
@@ -1054,7 +1057,7 @@ html[data-theme="night"] .iv-plus em{color:#3ddc97;}
 <div class="fx-clock" data-no-evergreen="" data-closed-label="Registration has closed" data-deadline="2027-01-03T20:00:00+01:00">
 <div><b data-k="d">00</b><span>days</span></div><div><b data-k="h">00</b><span>hrs</span></div><div><b data-k="m">00</b><span>min</span></div><div><b data-k="s">00</b><span>sec</span></div>
 </div></div>
-<div class="fx-now-days" aria-hidden="true"><div class="fnd-row"><span>Registration</span><b>Day <em class="fnd-n"></em> of <span class="fnd-t"></span></b></div><div class="fnd-seg"></div></div>
+<div class="fx-now-days" data-mode="pct" aria-hidden="true"><div class="fnd-row"><span>Registration</span><b>Day <em class="fnd-n"></em> of <span class="fnd-t"></span></b></div><div class="fnd-seg"></div></div>
 </div>
 </div>
 
@@ -1126,7 +1129,7 @@ html[data-theme="night"] .iv-plus em{color:#3ddc97;}
 .wc-bar{display:block;margin-top:.6rem;height:6px;border-radius:6px;background:var(--line);overflow:hidden;}
 .wc-bar s{display:block;height:100%;width:100%;border-radius:inherit;background:linear-gradient(90deg,#E8470F,#FFB25C);transition:width .25s ease;}
 .wc-stages{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.7rem;align-items:start;}
-.wc-stage{margin:0;}
+.wc-stage{margin:0;width:100%;}
 .wc-col{display:flex;flex-direction:column;gap:.7rem;min-width:0;}
 .wc-stage ul{margin:.6rem 0 0;}
 .wc-stage ul{list-style:none;margin:0;padding:0;display:grid;gap:.45rem;}
@@ -1170,6 +1173,7 @@ html[data-theme="day"] .wc-tk{color:#AD350A;}
 .fa-sm .fa-t b{font-size:1.02rem;}
 .fa-sm .fa-t small{font-size:.8rem;margin-top:.2rem;display:flex;align-items:center;gap:.5rem;}
 .fa-sm .fa-go{width:36px;font-size:.95rem;}
+.fa-sm .fa-go::before{width:17px!important;height:17px!important;}
 .ft-all[open]>*:not(summary){animation:ddIn .45s cubic-bezier(.22,1,.36,1);}
 @keyframes ddIn{from{transform:translateY(-8px)}}
 .wc-dots{display:inline-flex;gap:3px;}
@@ -1713,7 +1717,7 @@ html[data-theme="day"] .wc-tk{color:#AD350A;}
 </script>
 <script src="../erj-schema.js?v=20261116a"></script>
 <script defer="" src="../erj-alive.js?v=20261004a"></script>
-<script defer="" src="../erj-future.js?v=20261120a"></script>
+<script defer="" src="../erj-future.js?v=20261122a"></script>
 <script>
 /* Is this for you? Count the yes answers: 3–4 enrol, 2 one free step, 0–1 free route.
    Without JS all three outcomes stay visible as plain guidance. */
