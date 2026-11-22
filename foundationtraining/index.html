@@ -751,7 +751,7 @@ html[data-theme="day"] .why-k,html[data-theme="day"] .why-k2{color:#AD350A;}
 .fa-n small{font:700 .55rem/1 var(--font-body);letter-spacing:.14em;text-transform:uppercase;opacity:.9;margin-top:.2rem;}
 .fa-t b{display:block;font:800 clamp(1.08rem,2.4vw,1.4rem)/1.2 var(--font-display);letter-spacing:-.02em;}
 .fa-t small{display:block;margin-top:.25rem;font-size:clamp(.8rem,1.6vw,.9rem);color:var(--ink-soft);}
-.ft-all[open] .fa-closed,.ft-all:not([open]) .fa-opened{display:none;}
+.ft-all[open]>summary .fa-closed,.ft-all:not([open])>summary .fa-opened{display:none;}
 .fa-strip{display:flex;gap:.3rem;}
 .fa-strip i{font-style:normal;display:grid;place-items:center;width:34px;height:34px;border-radius:10px;font-size:1rem;background:rgba(255,87,34,.1);border:1px solid rgba(255,87,34,.22);}
 .fa-go{display:grid;place-items:center;width:clamp(42px,6vw,50px);aspect-ratio:1;border-radius:50%;font:800 1.15rem/1 var(--font-body);color:#fff;background:#C9410C;
@@ -762,14 +762,14 @@ html[data-theme="day"] .why-k,html[data-theme="day"] .why-k2{color:#AD350A;}
 .fa-go::before{content:"";display:block;width:23px;height:23px;align-self:center;justify-self:center;background:linear-gradient(180deg,rgba(255,255,255,.45) 0%,#fff 35%,#fff 50%,rgba(255,255,255,.45) 85%);background-size:100% 300%;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23000' stroke='%23000' stroke-width='2' stroke-linejoin='round'%3E%3Cpath d='M5.5 3.5h13L12 10.8z'/%3E%3Cpath d='M5.5 12.2h13L12 19.5z'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23000' stroke='%23000' stroke-width='2' stroke-linejoin='round'%3E%3Cpath d='M5.5 3.5h13L12 10.8z'/%3E%3Cpath d='M5.5 12.2h13L12 19.5z'/%3E%3C/svg%3E") center/contain no-repeat;}
 @media(prefers-reduced-motion:no-preference){.fa-go::before{animation:ffFlow 1.4s linear infinite;}}
 @keyframes ffFlow{from{background-position:0 100%}to{background-position:0 -50%}}
-.ft-all[open] .fa-go{transform:rotate(180deg);}
-.ft-all[open] .fa-btn{box-shadow:0 10px 30px -20px rgba(255,87,34,.7);}
+.ft-all[open]>summary .fa-go{transform:rotate(180deg);}
+.ft-all[open]>.fa-btn{box-shadow:0 10px 30px -20px rgba(255,87,34,.7);}
 @media(max-width:1100px){.fa-strip i:nth-child(n+6){display:none;}}
 @media(max-width:860px){.fa-strip{display:none;}.fa-btn{grid-template-columns:auto minmax(0,1fr) auto;}}
 @media(prefers-reduced-motion:no-preference){
   .fa-btn::before{animation:faSpin 4.5s linear infinite;}
-  .ft-all:not([open]) .fa-btn::after{animation:faSheen 3.6s ease-in-out infinite;}
-  .ft-all:not([open]) .fa-go{animation:faBob 1.8s ease-in-out infinite;}
+  .ft-all:not([open])>.fa-btn::after{animation:faSheen 3.6s ease-in-out infinite;}
+  .ft-all:not([open])>summary .fa-go{animation:faBob 1.8s ease-in-out infinite;}
   .fa-strip i{animation:faHop 3.2s ease-in-out infinite;}
   .fa-strip i:nth-child(2){animation-delay:.15s}.fa-strip i:nth-child(3){animation-delay:.3s}.fa-strip i:nth-child(4){animation-delay:.45s}
   .fa-strip i:nth-child(5){animation-delay:.6s}.fa-strip i:nth-child(6){animation-delay:.75s}.fa-strip i:nth-child(7){animation-delay:.9s}.fa-strip i:nth-child(8){animation-delay:1.05s}}
@@ -1021,6 +1021,27 @@ html[data-theme="night"] .iv-plus em{color:#3ddc97;}
 @media(max-width:860px){.iv-offer-grid{grid-template-columns:1fr;}}
 @media(max-width:520px){.iv-packs{grid-template-columns:1fr;}}
 @media(prefers-reduced-motion:reduce){.fx-now::before,.cl-card::before,.iv-offer::before{animation:none!important;}}
+
+/* ── 22 Nov: bonus and offer as dropdowns; figures on one line; effects wait for the reader ── */
+.bn-dd,.of-dd{max-width:900px;margin:0 auto;}
+.bn-dd .bn-k{color:#4BE39C;font-size:.86rem!important;letter-spacing:.1em;text-transform:uppercase;}
+.of-dd .of-k{color:#FF7A45;font-size:.86rem!important;letter-spacing:.1em;text-transform:uppercase;}
+.bn-dd>.fx-bonus,.of-dd>.iv-offer{margin-top:.9rem;}
+.of-dd>.iv-offer{margin-top:.9rem!important;}
+.fx-bonus .fx-bonus-img{justify-self:center;width:100%;max-width:300px;margin:0 auto;}
+.ft-imp{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin:1.4rem 0 1.8rem;border:1px solid rgba(255,87,34,.25);border-radius:22px;overflow:hidden;
+  background:linear-gradient(90deg,rgba(255,87,34,.08),transparent 40%,transparent 60%,rgba(255,87,34,.08)),var(--card);position:relative;}
+.ft-imp>div{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:.35rem;padding:clamp(.9rem,2.4vw,1.4rem) .4rem;}
+.ft-imp>div+div{border-left:1px solid var(--line);}
+.ft-imp b{font:800 clamp(1.35rem,4.4vw,2.4rem)/1 var(--font-display);letter-spacing:-.03em;background:linear-gradient(120deg,var(--ink) 20%,#FF5722 70%,#FFB25C);-webkit-background-clip:text;background-clip:text;color:transparent;}
+.ft-imp span{font-size:clamp(.62rem,1.6vw,.8rem);line-height:1.3;color:var(--ink-soft);}
+.ft-imp-cur b{display:inline-block;-webkit-text-fill-color:#FF5722;color:#FF5722;}
+.ft-imp::after{content:"";position:absolute;left:0;top:0;height:2px;width:30%;background:linear-gradient(90deg,transparent,#FF5722,transparent);transform:translateX(-100%);}
+@media(prefers-reduced-motion:no-preference){.ft-imp-cur b{animation:impSpin 6s linear infinite;}.ft-imp::after{animation:impRun 4s ease-in-out infinite;}}
+@keyframes impSpin{to{transform:rotate(360deg)}}
+@keyframes impRun{to{transform:translateX(340%)}}
+/* special effects wait until their block is on screen */
+html.fx-wait main>section:not(#top):not(.seen) *,html.fx-wait main>section:not(#top):not(.seen)::before,html.fx-wait main>section:not(#top):not(.seen)::after{animation-play-state:paused!important;}
 </style>
 </head>
 <body>
@@ -1335,10 +1356,11 @@ html[data-theme="day"] .wc-tk{color:#AD350A;}
 <section class="wrap fx-sec" id="proof">
 <p class="section-label">People ERJ has worked with</p>
 <h2>Same people. <span>Different evidence.</span></h2>
-<div class="stat-row stats-counter fx-stats" id="ftImpact">
-<div><div class="stat-num" data-count="446" data-suffix="+">446+</div><div class="stat-lbl">Professionals trained</div></div>
-<div><div class="stat-num" data-count="382" data-suffix="+">382+</div><div class="stat-lbl">Professionals placed</div></div>
-<div><div class="stat-num" data-count="10">10</div><div class="stat-lbl">Cohorts completed</div></div>
+<div class="ft-imp" id="ftImpact">
+<div><b class="stat-num" data-count="446" data-suffix="+">446+</b><span>Professionals trained</span></div>
+<div><b class="stat-num" data-count="382" data-suffix="+">382+</b><span>Professionals placed</span></div>
+<div><b class="stat-num" data-count="12">12</b><span>Cohorts completed</span></div>
+<div class="ft-imp-cur"><b aria-hidden="true">↻</b><span>Curriculum updated after every cohort</span></div>
 </div>
 <div class="ft-stories">
 <article class="ft-story reveal">
@@ -1407,8 +1429,8 @@ html[data-theme="day"] .wc-tk{color:#AD350A;}
 
 <!-- BONUS -->
 <section class="wrap fx-sec" id="careerdev">
-<div class="fx-bonus reveal">
-<span class="fx-ribbon">Bonus · included with your enrolment</span>
+<details class="ft-all fa-sm ft-dd bn-dd"><summary class="fa-btn bn-btn"><span class="fa-n" aria-hidden="true"><b>30</b><small>days</small></span><span class="fa-t"><b class="bn-k">Bonus · included with your enrolment</b><small>Career development at The Mentorine School, free with Foundation</small></span><span class="fa-go" aria-hidden="true">↓</span></summary>
+<div class="fx-bonus">
 <div class="fx-bonus-img"><picture><source srcset="../shop/careerdev-mentorine-30days-cutb.webp" type="image/webp"/><img alt="Career Development — Self-Study box from The Mentorine School: one career track of your choice, roadmap, courses and practical work, 30 days from the day you activate" height="900" loading="lazy" src="../shop/careerdev-mentorine-30days.jpg" width="900"/></picture><span class="fx-seal" aria-hidden="true"><b>FREE</b>with Foundation</span></div>
 <div>
 <h2>Plus 30 days of <span>career development.</span></h2>
@@ -1427,14 +1449,15 @@ html[data-theme="day"] .wc-tk{color:#AD350A;}
 <p class="fx-fine">Delivered in partnership with The Mentorine School · <a href="https://thementorineschool.com/" rel="noopener" target="_blank">thementorineschool.com</a></p>
 </div>
 </div>
+</details>
 </section>
 
 <!-- PRICING -->
 <section class="wrap fx-sec" id="pricing">
 <p class="section-label">Investment</p>
 <h2>Invest in <span>yourself.</span></h2>
-<article class="iv-offer reveal" id="offer">
-<span class="iv-ribbon">Our offer · best value</span>
+<details class="ft-all fa-sm ft-dd of-dd" id="offer"><summary class="fa-btn"><span class="fa-n" aria-hidden="true"><b>1–4</b><small>stages</small></span><span class="fa-t"><b class="of-k">Our offer · best value</b><small>The full programme, Stages 1–4 · ₦250,000</small></span><span class="fa-go" aria-hidden="true">↓</span></summary>
+<article class="iv-offer">
 <div class="iv-offer-grid">
 <div class="iv-main">
 <h3>The full programme, <span>Stages 1–4.</span></h3>
@@ -1460,6 +1483,7 @@ html[data-theme="day"] .wc-tk{color:#AD350A;}
 </div>
 </div>
 </article>
+</details>
 <details class="ft-all fa-sm ft-dd iv-dd"><summary class="fa-btn"><span class="fa-n" aria-hidden="true"><b>1</b><small>stage</small></span><span class="fa-t"><b>Need only one stage?</b><small>Each stage is sold on its own too</small></span><span class="fa-go" aria-hidden="true">↓</span></summary>
 <div class="ft-dd-b">
 <p class="iv-sub">All four together cost ₦120,000 less than buying them one by one.</p>
@@ -1560,7 +1584,7 @@ html[data-theme="day"] .wc-tk{color:#AD350A;}
 </script>
 <script src="../erj-product.js?v=20260924c"></script>
 <script src="../erj-nav.js?v=20261120b"></script>
-<script src="../erj-config.js?v=20261122a"></script>
+<script src="../erj-config.js?v=20261122b"></script>
 <script src="../erj-capture.js?v=20261120a"></script>
 <script>if("serviceWorker" in navigator){window.addEventListener("load",function(){var go=function(){navigator.serviceWorker.register("/sw.js").then(function(reg){reg.update();}).catch(function(){});};if("requestIdleCallback" in window){requestIdleCallback(go,{timeout:3000});}else{setTimeout(go,1200);}});}</script>
 <script>
@@ -1701,9 +1725,16 @@ html[data-theme="day"] .wc-tk{color:#AD350A;}
     })();
   }
   dds.forEach(function(dd){ dd.addEventListener('toggle',function(){
-    if(dd.open){ dds.forEach(function(o){ if(o!==dd&&o.open) o.open=false; }); if(dd.classList.contains('wc-stage')) runLoop(dd); }
+    if(dd.open){ dds.forEach(function(o){ if(o!==dd&&o.open&&!o.contains(dd)&&!dd.contains(o)) o.open=false; }); if(dd.classList.contains('wc-stage')) runLoop(dd); }
     else if(dd===loopEl) stopLoop();
   }); });
+
+  /* special effects start when their section scrolls into view, not at load */
+  if('IntersectionObserver' in window){
+    d.documentElement.classList.add('fx-wait');
+    var secIO=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('seen'); secIO.unobserve(e.target); } }); },{threshold:.15});
+    [].forEach.call(d.querySelectorAll('main>section'),function(sec){ secIO.observe(sec); });
+  }
 
   /* a link to #fit or #certificate opens its dropdown */
   function ddOpen(id){ var t=d.getElementById(id); if(!t) return; var dd=t.matches&&t.matches('details')?t:t.querySelector('details.ft-dd'); if(dd) dd.open=true; }
