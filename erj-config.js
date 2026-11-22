@@ -157,7 +157,7 @@
       figures: {
         trained: '446+',
         placed: '382+',
-        cohortsCompleted: 10
+        cohortsCompleted: 12
       },
 
       /* The diagnostic model. Capacity is first and the order is
