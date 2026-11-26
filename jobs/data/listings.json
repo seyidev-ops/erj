@@ -3127,33 +3127,6 @@
    "direct": true
   },
   {
-   "id": "98581e4317",
-   "title": "Business Operations Associate",
-   "company": "Trust Wallet",
-   "region": "Remote - Global",
-   "type": "Full-Time",
-   "experience": "3+ years",
-   "salary": "Undisclosed",
-   "bullets": [
-    "3 years in business operations, procurement or finance operations, ideally at a startup or tech company",
-    "Experience with vendor management, invoices and payments",
-    "Highly organized, detail-oriented, with strong follow-through",
-    "Comfortable administering SaaS tools (Google Workspace, Notion, Slack)"
-   ],
-   "apply": "https://jobs.ashbyhq.com/trust-wallet/0402849c-50f8-4fee-a551-1b2dc1d1d011",
-   "posted": "2026-11-11",
-   "deadline": null,
-   "checked": "2026-11-26",
-   "added": "2026-11-11",
-   "listed": "2026-11-11",
-   "source": "Ashby",
-   "origin": "feed",
-   "ats_id": "0402849c-50f8-4fee-a551-1b2dc1d1d011",
-   "family": "Executive & Operations",
-   "why": "Open worldwide with no country exclusion, so you can apply from Nigeria. You apply directly on the employer's own page.",
-   "direct": true
-  },
-  {
    "id": "7bf5459348",
    "title": "Adjunct Instructor - Multiple Disciplines",
    "company": "University of the People",
@@ -8544,6 +8517,33 @@
    "ats_id": null,
    "family": "Tech & IT",
    "why": "Open to candidates in Nigeria by name, and pays in foreign currency ($20–25/hour).",
+   "direct": false
+  },
+  {
+   "id": "ca13d8d545",
+   "title": "Commercial Credit Operations Manager",
+   "company": "Stripe",
+   "region": "Anywhere in the World",
+   "type": "Full-Time",
+   "experience": "10–15 years",
+   "salary": "Undisclosed",
+   "bullets": [
+    "10-15 years of work experience in commercial credit underwriting",
+    "3-5 years of experience leading credit risk or underwriting teams in a fast-paced, high-growth environment",
+    "Experience in financial risk modeling or cash-flow forecasting",
+    "Proven track record of building, leading, and developing high-performing teams, including setting goals, managing performance"
+   ],
+   "apply": "https://weworkremotely.com/remote-jobs/stripe-commercial-credit-operations-manager",
+   "posted": "2026-11-26",
+   "deadline": null,
+   "checked": "2026-11-26",
+   "added": "2026-11-26",
+   "listed": "2026-11-26",
+   "source": "We Work Remotely",
+   "origin": "feed",
+   "ats_id": null,
+   "family": "Executive & Operations",
+   "why": "Open worldwide with no country exclusion, so you can apply from Nigeria.",
    "direct": false
   }
  ]
