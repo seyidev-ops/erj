@@ -63,7 +63,7 @@
     "Device management deployment",
     "Automation and scripting"
    ],
-   "apply": "https://weworkremotely.com/remote-jobs/upsun-senior-it-systems-engineer",
+   "apply": "https://jobs.lever.co/toptal/14cdeac3-9087-4216-b223-0a7b293a7a22?lever-origin=applied&lever-source%5B%5D=We%20Work%20Remotely",
    "posted": "2026-10-27",
    "deadline": null,
    "checked": "2026-11-26",
@@ -74,7 +74,7 @@
    "ats_id": null,
    "family": "Tech & IT",
    "why": "Open worldwide with no country exclusion, so you can apply from Nigeria.",
-   "direct": false
+   "direct": true
   },
   {
    "id": "70aecdd872",
@@ -1025,7 +1025,7 @@
    "family": "Virtual Assistant & Admin",
    "posted": "2026-10-30",
    "deadline": null,
-   "checked": null,
+   "checked": "2026-11-26",
    "listed": "2026-10-31",
    "source": "Career page",
    "origin": "sheet",
@@ -5912,7 +5912,7 @@
     "Passion for building strong user-facing experiences, including working with React and modern frontend architecture",
     "Strong product and design instincts"
    ],
-   "apply": "https://weworkremotely.com/remote-jobs/netlify-staff-software-engineer-interfaces",
+   "apply": "https://jobs.lever.co/toptal/14cdeac3-9087-4216-b223-0a7b293a7a22?lever-origin=applied&lever-source%5B%5D=We%20Work%20Remotely",
    "posted": "2026-11-19",
    "deadline": null,
    "checked": "2026-11-26",
@@ -5923,7 +5923,7 @@
    "ats_id": null,
    "family": "Tech & IT",
    "why": "Open worldwide with no country exclusion, so you can apply from Nigeria, and pays in foreign currency ($200).",
-   "direct": false
+   "direct": true
   },
   {
    "id": "7c51c22ffb",
@@ -8466,6 +8466,85 @@
    "family": "Virtual Assistant & Admin",
    "why": "Open worldwide with no country exclusion, so you can apply from Nigeria. Part-time, so it can sit beside a current job.",
    "direct": true
+  },
+  {
+   "id": "f0974cddeb",
+   "title": "Brazilian Subject Matter Expert in Fashion & Style",
+   "company": "Welocalize",
+   "region": "Remote, Worldwide / Brazil",
+   "type": "Contract",
+   "experience": "Not stated",
+   "salary": "Undisclosed",
+   "bullets": [
+    "Share an updated CV",
+    "A brief overview of your relevant experience, particularly in Fashion & Style and how many years you have worked in the field",
+    "Your current availability and estimated monthly capacity"
+   ],
+   "apply": "https://jobs.lever.co/weloglobal/9b4cbd97-b845-4c89-b077-db8aac729c02",
+   "posted": "2026-11-26",
+   "deadline": null,
+   "checked": "2026-11-26",
+   "added": "2026-11-26",
+   "listed": "2026-11-26",
+   "source": "Lever",
+   "origin": "feed",
+   "ats_id": "9b4cbd97-b845-4c89-b077-db8aac729c02",
+   "family": "Executive & Operations",
+   "why": "Open worldwide with no country exclusion, so you can apply from Nigeria. Contract work: a fast way to earn a first remote reference.",
+   "direct": true
+  },
+  {
+   "id": "921f3f8534",
+   "title": "Brazilian Subject Matter Expert in TV & Movies",
+   "company": "Welocalize",
+   "region": "Remote, Worldwide / Brazil",
+   "type": "Contract",
+   "experience": "Not stated",
+   "salary": "Undisclosed",
+   "bullets": [
+    "Share an updated CV",
+    "A brief overview of your relevant experience, particularly in TV & Movies and how many years you have worked in the field",
+    "Your current availability and estimated monthly capacity"
+   ],
+   "apply": "https://jobs.lever.co/weloglobal/942097f3-8cb3-4ea5-a39e-604bced98933",
+   "posted": "2026-11-26",
+   "deadline": null,
+   "checked": "2026-11-26",
+   "added": "2026-11-26",
+   "listed": "2026-11-26",
+   "source": "Lever",
+   "origin": "feed",
+   "ats_id": "942097f3-8cb3-4ea5-a39e-604bced98933",
+   "family": "Executive & Operations",
+   "why": "Open worldwide with no country exclusion, so you can apply from Nigeria. Contract work: a fast way to earn a first remote reference.",
+   "direct": true
+  },
+  {
+   "id": "3140d8b634",
+   "title": "Senior JavaScript Developer (Remote, Contract)",
+   "company": "Kashia",
+   "region": "Remote — Nigeria",
+   "type": "Full-Time",
+   "experience": "Not stated",
+   "salary": "$20–25/hour",
+   "bullets": [
+    "Strong, senior-level JavaScript experience (frontend, backend or both)",
+    "Able to commit full-time right away, with no other job or ongoing engagements",
+    "Coachable and open to feedback",
+    "Reliable and consistent, with clear communication and on-time delivery"
+   ],
+   "apply": "https://www.kashiahq.com/careers/senior-javascript-developer-remote-contract-0a5b0ac3",
+   "posted": "2026-11-26",
+   "deadline": null,
+   "checked": "2026-11-26",
+   "added": "2026-11-26",
+   "listed": "2026-11-26",
+   "source": "Company site",
+   "origin": "feed",
+   "ats_id": null,
+   "family": "Tech & IT",
+   "why": "Open to candidates in Nigeria by name, and pays in foreign currency ($20–25/hour).",
+   "direct": false
   }
  ]
 }
