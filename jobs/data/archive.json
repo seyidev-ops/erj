@@ -22162,6 +22162,64 @@
    "direct": true,
    "closed": "2026-11-27",
    "closed_reason": "older than the board's age limit"
+  },
+  {
+   "id": "7c51c22ffb",
+   "title": "Assurance Climate Risk Consultant",
+   "company": "Jobgether partner",
+   "region": "Nigeria",
+   "type": "Full-Time",
+   "experience": "7+ years",
+   "salary": "Undisclosed",
+   "bullets": [
+    "Develop and refine climate risk indicators and comprehensive frameworks covering both physical and transition risks",
+    "Design indicators using the IPCC AR6 hazard, exposure, and vulnerability framework, including thresholds, normalization methods",
+    "Support the development of climate scenario analysis solutions aligned with IFRS S2 and ESRS methodologies, including selecting",
+    "Prepare detailed indicator specifications, data dictionaries, and methodology documentation that Product"
+   ],
+   "apply": "https://jobs.lever.co/jobgether/da3fdbc2-732b-45cb-9af4-bb53bf39be49",
+   "posted": "2026-11-19",
+   "deadline": null,
+   "checked": "2026-11-26",
+   "added": "2026-11-19",
+   "listed": "2026-11-19",
+   "source": "Lever",
+   "origin": "feed",
+   "ats_id": "da3fdbc2-732b-45cb-9af4-bb53bf39be49",
+   "family": "Executive & Operations",
+   "why": "Open to candidates in Nigeria by name. You apply directly on the employer's own page.",
+   "direct": true,
+   "closed": "2026-11-27",
+   "closed_reason": "employer page closed"
+  },
+  {
+   "id": "f6c243b796",
+   "title": "Software Engineer - Postgres Tooling",
+   "company": "Supabase",
+   "region": "Remote, Global",
+   "type": "Full-Time",
+   "experience": "8+ years",
+   "salary": "Undisclosed",
+   "bullets": [
+    "Have 8+ years of experience as a software engineer, including deep, hands-on work with PostgreSQL ",
+    "Know Postgres internals at the catalog level: pg_catalog , pg_depend , object ownership, grants and default privileges, RLS policies",
+    "Understand DDL and migration semantics: which changes take locks, which can’t run inside a transaction",
+    "Treat a migration that silently loosens access as a top-severity bug"
+   ],
+   "apply": "https://jobs.ashbyhq.com/supabase/2184cfbd-927e-4d3c-b34a-f2301d3e8281",
+   "posted": "2026-11-19",
+   "deadline": null,
+   "checked": "2026-11-26",
+   "added": "2026-11-19",
+   "listed": "2026-11-19",
+   "source": "Ashby",
+   "origin": "feed",
+   "ats_id": "2184cfbd-927e-4d3c-b34a-f2301d3e8281",
+   "family": "Tech & IT",
+   "why": "Open worldwide with no country exclusion, so you can apply from Nigeria. You apply directly on the employer's own page.",
+   "direct": true,
+   "closed": "2026-11-27",
+   "closed_reason": "employer page closed"
   }
  ]
 }
