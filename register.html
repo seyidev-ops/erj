@@ -834,19 +834,27 @@ a.promo-tick{text-decoration:none;display:block;}
   .shop-head .reg-sub{max-width:52ch;margin:0 auto;}
   .shop-head .urgency{margin-top:1.3rem;transform:scale(.92);transform-origin:center top;}
   #sec-store{padding-top:1rem;}
-  .store-jump{position:sticky;top:76px;z-index:20;margin:0 auto 2rem;padding:.5rem;width:max-content;max-width:100%;
-    border:1px solid var(--line);border-radius:999px;background:color-mix(in srgb,var(--paper,#000) 82%,transparent);
-    -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);gap:.3rem;overflow-x:auto;scrollbar-width:none;}
-  .store-jump::-webkit-scrollbar{display:none;}
-  .store-jump button{appearance:none;display:inline-flex;align-items:center;gap:.45rem;padding:.55rem 1rem;border:1px solid transparent;border-radius:999px;
-    background:none;color:var(--ink);font:inherit;font-size:.84rem;cursor:pointer;white-space:nowrap;transition:background .25s,border-color .25s,color .25s,transform .2s;}
-  .store-jump button b{font-family:var(--font-display);font-weight:800;letter-spacing:.08em;color:var(--accent);transition:color .25s;}
-  .store-jump button:hover{border-color:var(--accent);}
-  .store-jump button:active{transform:scale(.96);}
-  .store-jump button.on{background:var(--accent-btn,#FF5722);border-color:var(--accent);color:#fff;box-shadow:0 10px 26px -12px rgba(255,87,34,.8);}
-  .store-jump button.on b{color:#fff;}
+  .store-jump{position:sticky;top:76px;z-index:20;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px;
+    width:min(100%,720px);margin:0 auto 2rem;padding:5px;box-sizing:border-box;
+    border:1px solid var(--line);border-radius:18px;background:color-mix(in srgb,var(--paper,#000) 84%,transparent);
+    -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);box-shadow:0 14px 34px -22px rgba(0,0,0,.55);isolation:isolate;}
+  .store-jump .sj-ind{position:absolute;z-index:0;top:5px;bottom:5px;left:0;width:0;border-radius:13px;pointer-events:none;
+    background:var(--accent-btn,#FF5722);box-shadow:0 10px 24px -12px rgba(255,87,34,.85);opacity:0;
+    transition:transform .38s cubic-bezier(.2,.8,.2,1),width .38s cubic-bezier(.2,.8,.2,1),opacity .2s;}
+  .store-jump.ready .sj-ind{opacity:1;}
+  .store-jump button{appearance:none;position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;
+    min-width:0;min-height:58px;padding:.55rem .35rem;border:0;border-radius:13px;background:none;color:var(--ink);font:inherit;
+    text-align:center;line-height:1.15;cursor:pointer;transition:color .25s,background .25s;-webkit-tap-highlight-color:transparent;}
+  .store-jump button b{font-family:var(--font-display);font-weight:800;font-size:.86rem;letter-spacing:.09em;color:var(--accent);transition:color .25s;}
+  .store-jump button span{font-size:.74rem;color:var(--ink-soft,var(--ink));transition:color .25s;}
+  .store-jump button:not(.on):hover{background:color-mix(in srgb,var(--accent,#FF5722) 10%,transparent);}
+  .store-jump button:focus-visible{outline:2px solid var(--accent,#FF5722);outline-offset:2px;}
+  .store-jump button.on,.store-jump button.on b,.store-jump button.on span{color:#fff;}
+  .store-jump:not(.ready) button.on{background:var(--accent-btn,#FF5722);}
   html[data-theme="day"] .store-jump button b{color:#AD350A;}
   html[data-theme="day"] .store-jump button.on b{color:#fff;}
+  @media(min-width:700px){.store-jump button{flex-direction:row;gap:.5rem;min-height:48px;}.store-jump button b{font-size:.84rem;}.store-jump button span{font-size:.86rem;}}
+  @media(prefers-reduced-motion:reduce){.store-jump .sj-ind{transition:none;}}
   .store-group[hidden]{display:none;}
   .store-group.shown .pcard{animation:shopIn .5s var(--ease) both;}
   @keyframes shopIn{from{transform:translateY(14px) scale(.985);}to{transform:none;}}
@@ -874,7 +882,7 @@ a.promo-tick{text-decoration:none;display:block;}
   .p-learn{display:inline-flex;align-items:center;gap:.3rem;padding:.35rem .7rem;border-radius:100px;font-size:.8rem;font-weight:600;color:var(--ink-soft);text-decoration:none;transition:color .2s,background .2s;}
   .p-learn:hover{color:var(--accent);background:var(--line-soft);}
   .p-sub .p-share{align-self:auto;}
-  @media(max-width:560px){.store-jump{top:70px;justify-content:flex-start;}.grid{grid-template-columns:1fr;}}
+  @media(max-width:560px){.store-jump{top:70px;}.grid{grid-template-columns:1fr;}}
   @media(prefers-reduced-motion:reduce){.store-group.shown .pcard{animation:none;}}
 </style>
 <link href="https://everythingremotejob.com/register.html" rel="canonical"/>
@@ -965,7 +973,7 @@ html[data-theme="day"] .cvp-reg{background:#fff;}
 </section>
 
 <section class="wrap section-line" id="sec-store">
-<div class="store-jump" role="tablist" aria-label="Shop sections"><button type="button" class="on" data-f="all" role="tab" aria-selected="true"><b>All</b> Everything</button><button type="button" data-f="diy" role="tab" aria-selected="false"><b>DIY</b> Do It Yourself</button><button type="button" data-f="dwy" role="tab" aria-selected="false"><b>DWY</b> Done With You</button><button type="button" data-f="dfy" role="tab" aria-selected="false"><b>DFY</b> Done For You</button></div>
+<div class="store-jump" role="tablist" aria-label="Shop sections"><span class="sj-ind" aria-hidden="true"></span><button type="button" class="on" data-f="all" role="tab" aria-selected="true"><b>ALL</b><span>Everything</span></button><button type="button" data-f="diy" role="tab" aria-selected="false"><b>DIY</b><span>Do It Yourself</span></button><button type="button" data-f="dwy" role="tab" aria-selected="false"><b>DWY</b><span>Done With You</span></button><button type="button" data-f="dfy" role="tab" aria-selected="false"><b>DFY</b><span>Done For You</span></button></div>
 <div class="store-group" id="diy">
 <div class="sg-head"><span class="sg-acr">DIY</span><div><h2 class="sg-title">Do It Yourself</h2><p class="sg-line">Books, a tool, the self-paced course pack and a career-skills track. You do the work, on your own time, at the lowest cost.</p></div></div>
 <div class="grid"><article class="pcard reveal" id="book" data-p-id="book" data-p-name="Google Search: Best Kept Open Secret" data-p-price="5000" data-p-link="https://paystack.com/buy/google-search-best-kept-open-secret" data-p-contains=""><div class="p-shot"><picture><source srcset="shop/book.webp" type="image/webp"/><img alt="Google Search: Best Kept Open Secret" height="900" loading="lazy" src="shop/book.jpg" width="900"/></picture><span class="p-badge">Start here</span></div><div class="p-body"><div class="p-stage">Book · Instant download</div><h3 class="p-title">Google Search: Best Kept Open Secret</h3><p class="p-hook">Find the jobs nobody else can see</p><p class="p-line">Most roles are filled before they ever reach a job board. This is how you reach them first.</p><details class="p-more"><summary>What’s included</summary><ul class="p-feat"><li>Search operators and dorking that surface unposted roles</li><li>AI search prompts that filter by eligibility, not just keyword</li><li>Career pages, hiring-manager names and company documents, on demand</li></ul></details><div class="p-pricing"><div class="p-amount">₦5,000</div></div><div class="p-acts"><button class="p-add" type="button"><span>Add to basket</span></button><a class="p-buy" href="https://paystack.com/buy/google-search-best-kept-open-secret" rel="noopener" target="_blank">Buy now &rarr;</a></div></div></article><article class="pcard reveal" id="cvpass" data-p-id="cvpass" data-p-name="The CV Engine" data-p-price="5000" data-p-link="https://paystack.shop/pay/84mjv4w4x7" data-p-contains=""><div class="p-shot"><picture><source srcset="shop/cvpass.webp" type="image/webp"/><img alt="The CV Engine" height="900" loading="lazy" src="shop/cvpass.jpg" width="900"/></picture></div><div class="p-body"><div class="p-stage">Tool · ₦5,000/month</div><h3 class="p-title">The CV Engine</h3><p class="p-hook">Stop being rejected by software</p><p class="p-line">If you are qualified and hearing nothing, the document is losing you before a human opens it.</p><details class="p-more"><summary>What’s included</summary><ul class="p-feat"><li>Unlimited rebuilds, every month you stay subscribed</li><li>Scored live against the same ten-point rubric we mark cohorts with</li><li>Real .docx out. Cancel any time, from the first month</li></ul></details><div class="p-pricing"><div class="p-amount">₦5,000<span class="p-per">/month</span></div></div><div class="p-acts"><button class="p-add" type="button"><span>Add to basket</span></button><a class="p-buy" href="https://paystack.shop/pay/84mjv4w4x7">Buy now &rarr;</a></div></div></article><article class="pcard reveal" id="intentbook" data-p-id="intentbook" data-p-name="From Intent to Offer" data-p-price="15000" data-p-link="https://selar.com/from_intent_to_offer" data-p-contains=""><div class="p-shot"><picture><source srcset="shop/intentbook-centred.webp" type="image/webp"/><img alt="From Intent to Offer — the book, by Oluwaseyi Ashiru" height="900" loading="lazy" src="shop/intentbook-centred.jpg" width="900"/></picture><span class="p-badge">New</span></div><div class="p-body"><div class="p-stage">Book · 171 pages · Instant download</div><h3 class="p-title">How to Get a Remote Job: From Intent to Offer</h3><p class="p-hook"><a class="p-titlelink" href="fromintenttooffer/">The whole method, intent to signed offer</a></p><p class="p-line">Eighteen chapters, six appendices, 171 pages. Every chapter ends with one task to execute, not a lesson to remember.</p><details class="p-more"><summary>What’s included</summary><ul class="p-feat"><li>Find which of the five parts of your search is broken, in twenty minutes</li><li>The repair for each one: CV, LinkedIn, sourcing, aim, interview, the money</li><li>The First Fourteen Days, templates, trackers and the free-resource list</li></ul></details><div class="p-pricing"><div class="p-amount">₦15,000</div></div><div class="p-acts"><button class="p-add" type="button"><span>Add to basket</span></button><a class="p-buy" href="https://selar.com/from_intent_to_offer" rel="noopener" target="_blank">Buy now &rarr;</a></div></div></article><article class="pcard reveal" id="selflearn" data-p-id="selflearn" data-p-name="The Self-Learn Pack" data-p-price="35000" data-p-link="https://selar.com/77v230274x" data-p-contains=""><div class="p-shot"><picture><source srcset="shop/selflearn-foundation.webp" type="image/webp"/><img alt="The Self-Learn Pack" height="900" loading="lazy" src="shop/selflearn-foundation.jpg" width="900"/></picture></div><div class="p-body"><div class="p-stage">Foundation Training courses 1–4 · Self-paced</div><h3 class="p-title">The Self-Learn Pack</h3><p class="p-hook">The entire curriculum, starting tonight</p><p class="p-line">Same four stages, same rubrics, same four deliverables. No start date to wait for.</p><details class="p-more"><summary>What’s included</summary><ul class="p-feat"><li>Twenty sessions across all four stages</li><li>Four finished assets you keep forever</li><li>Instant download plus the private community</li><li><b>₦35,000 credited</b> against Foundation Training if you upgrade within 90 days — you would pay ₦215,000, not ₦250,000</li>
@@ -1344,12 +1352,23 @@ html[data-theme="day"] .cvp-reg{background:#fff;}
     });
   }
   var tabs = [].slice.call(document.querySelectorAll('.store-jump button')), groups = [].slice.call(document.querySelectorAll('.store-group'));
+  var bar = document.querySelector('.store-jump'), ind = bar && bar.querySelector('.sj-ind');
+  function slide() {
+    if (!ind) return;
+    var on = bar.querySelector('button.on'); if (!on) return;
+    ind.style.width = on.offsetWidth + 'px'; ind.style.transform = 'translateX(' + on.offsetLeft + 'px)';
+    bar.classList.add('ready');
+  }
+  window.addEventListener('resize', slide); window.addEventListener('load', slide);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(slide);
   function show(f, scroll) {
     tabs.forEach(function (t) { var on = t.getAttribute('data-f') === f; t.classList.toggle('on', on); t.setAttribute('aria-selected', on ? 'true' : 'false'); });
+    slide();
     groups.forEach(function (g) { var on = f === 'all' || g.id === f; g.hidden = !on; g.classList.remove('shown'); if (on) { void g.offsetWidth; g.classList.add('shown'); } });
     if (scroll) { var top = document.getElementById('sec-store'); if (top) window.scrollTo({ top: top.getBoundingClientRect().top + window.pageYOffset - 70, behavior: 'smooth' }); }
   }
   tabs.forEach(function (t) { t.addEventListener('click', function () { show(t.getAttribute('data-f'), t.getAttribute('data-f') !== 'all'); }); });
+  slide();
   /* a shared link or a menu jump to a group or product opens its group first */
   function fromHash() {
     var id = location.hash.slice(1); if (!id) return;
