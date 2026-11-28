@@ -67,7 +67,7 @@
     "Must be able to work as a team player, yet can work independently",
     "Analytical, results-driven, and have a solution-oriented approach"
    ],
-   "apply": "https://weworkremotely.com/remote-jobs/legion-senior-integration-engineer",
+   "apply": "https://jobs.lever.co/toptal/14cdeac3-9087-4216-b223-0a7b293a7a22?lever-origin=applied&lever-source%5B%5D=We%20Work%20Remotely",
    "posted": "2026-10-29",
    "deadline": null,
    "checked": "2026-11-28",
@@ -78,7 +78,7 @@
    "ats_id": null,
    "family": "Tech & IT",
    "why": "Open worldwide with no country exclusion, so you can apply from Nigeria, and pays in foreign currency ($3,200).",
-   "direct": false
+   "direct": true
   },
   {
    "id": "20758f22a7",
@@ -94,7 +94,7 @@
     "Our mission is to “build a better web” and that cannot be done without a diversity of skill sets, backgrounds and thoughts",
     "We are devoted to building a team of people with diverse backgrounds and lifestyles"
    ],
-   "apply": "https://weworkremotely.com/remote-jobs/netlify-your-chance-to-join-our-talent-community",
+   "apply": "https://jobs.lever.co/toptal/14cdeac3-9087-4216-b223-0a7b293a7a22?lever-origin=applied&lever-source%5B%5D=We%20Work%20Remotely",
    "posted": "2026-10-29",
    "deadline": null,
    "checked": "2026-11-28",
@@ -105,7 +105,7 @@
    "ats_id": null,
    "family": "Community Management",
    "why": "Open worldwide with no country exclusion, so you can apply from Nigeria.",
-   "direct": false
+   "direct": true
   },
   {
    "id": "97e5ebbcbf",
@@ -121,7 +121,7 @@
     "Superior verbal and written communication skills",
     "Experience working with organizations over 5,000 employees"
    ],
-   "apply": "https://weworkremotely.com/remote-jobs/legion-sales-development-representative-strategics",
+   "apply": "https://jobs.lever.co/toptal/14cdeac3-9087-4216-b223-0a7b293a7a22?lever-origin=applied&lever-source%5B%5D=We%20Work%20Remotely",
    "posted": "2026-10-29",
    "deadline": null,
    "checked": "2026-11-28",
@@ -132,7 +132,7 @@
    "ats_id": null,
    "family": "Sales & Accounts",
    "why": "Open worldwide with no country exclusion, so you can apply from Nigeria, and pays in foreign currency ($70,000.00 - $80,000.00).",
-   "direct": false
+   "direct": true
   },
   {
    "id": "b24c8bf381",
@@ -8508,6 +8508,60 @@
    "family": "Executive & Operations",
    "why": "Open to candidates in Nigeria by name. You apply directly on the employer's own page.",
    "direct": true
+  },
+  {
+   "id": "1ed36d3384",
+   "title": "Senior Digital Project Manager",
+   "company": "AirVu Media",
+   "region": "Africa Only",
+   "type": "Full-Time",
+   "experience": "4+ years",
+   "salary": "Undisclosed",
+   "bullets": [
+    "4+ years of hands-on digital project management experience, preferably in a digital agency",
+    "Experience managing multiple concurrent projects and multidisciplinary teams across UX/UI design, content, development and QA",
+    "Strong experience delivering WordPress websites, including custom functionality, WooCommerce and third-party integrations",
+    "Practical understanding of Agile, Scrum and sprint-based delivery, with the judgment to adapt workflows to project needs and capacity"
+   ],
+   "apply": "https://weworkremotely.com/remote-jobs/airvu-media-senior-digital-project-manager",
+   "posted": "2026-11-28",
+   "deadline": null,
+   "checked": "2026-11-28",
+   "added": "2026-11-28",
+   "listed": "2026-11-28",
+   "source": "We Work Remotely",
+   "origin": "feed",
+   "ats_id": null,
+   "family": "Executive & Operations",
+   "why": "Open across Africa, Nigeria included.",
+   "direct": false
+  },
+  {
+   "id": "a5cc41d1b0",
+   "title": "Director, Revenue Enablement",
+   "company": "Tailscale",
+   "region": "Anywhere in the World",
+   "type": "Full-Time",
+   "experience": "10+ years",
+   "salary": "$200,000",
+   "bullets": [
+    "10+ years of experience in revenue enablement, sales enablement, technical enablement, sales leadership",
+    "Proven success scaling enablement in high-growth environments , supporting both commercial and technical customer-facing organizations",
+    "Strong technical aptitude , with the ability to understand complex infrastructure, networking, security, or developer-focused products",
+    "Deep expertise in adult learning, instructional design, and competency development"
+   ],
+   "apply": "https://weworkremotely.com/remote-jobs/tailscale-director-revenue-enablement",
+   "posted": "2026-11-28",
+   "deadline": null,
+   "checked": "2026-11-28",
+   "added": "2026-11-28",
+   "listed": "2026-11-28",
+   "source": "We Work Remotely",
+   "origin": "feed",
+   "ats_id": null,
+   "family": "Executive & Operations",
+   "why": "Open worldwide with no country exclusion, so you can apply from Nigeria, and pays in foreign currency ($200,000).",
+   "direct": false
   }
  ]
 }
